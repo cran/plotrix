@@ -1,11 +1,14 @@
 axis.break		Put a slash or zigzag "break" in a plot axis
-clock24.plot		Plot values as line lengths on a 24 hour "clockface"
+clock24.plot		Plot values as lines/polygon on a 24 hour "clockface"
+color.gradient		Calculate values for a color gradient
+color.scale		Transform numeric values into a series of colors
 floating.pie		Display a pie chart at a specified position
 gradient.rect		Display a rectangle with an arbitrary color gradient
 pie.labels		Place labels at specified radial positions
-polar.plot		Plot values as line lengths on a 0-360 degree scale
-radial.plot		Plot values as line lengths on a 0-2*pi radian scale
+polar.plot		Plot values as lines/polygon on a 0-360 degree scale
+radial.plot		Plot values as lines/polygon on a 0-2*pi radian scale
 rescale			Linearly scale a vector of numbers to a new range
+rgb.to.hex		Convert an RGB triplet into a hexadecimal color code
 spread.labels		Spread out labels for irregularly spaced values
 staxlab			Display staggered labels on an axis
 thigmophobe		Find the direction away from the nearest other point

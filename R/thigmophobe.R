@@ -1,4 +1,4 @@
-# thigmophobe returns the direction (as 1|2|3|4 - see pos= in text) 
+# thigmophobe returns the direction (as 1|2|3|4 - see pos= in the text function) 
 # _away_ from the nearest point where x and y are vectors of 2D coordinates
 
 thigmophobe<-function(x,y) {
@@ -24,7 +24,7 @@ thigmophobe<-function(x,y) {
  xdiff<-x - x[nearest.index]
  ydiff<-y - y[nearest.index]
  # first set the east/west direction
- dir.ew<-ifelse(xdiff > 0,2,4)
+ dir.ew<-ifelse(xdiff > 0,4,2)
  # now do the north/south
  dir.ns<-ifelse(ydiff > 0,3,1)
  dir.away<-ifelse(abs(xdiff)>abs(ydiff),dir.ew,dir.ns)

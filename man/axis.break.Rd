@@ -16,7 +16,7 @@
 }
 }
 \value{nil}
-\author{Jim Lemon}
+\author{Jim Lemon and Ben Bolker}
 \examples{
  plot(3:10)
  axis.break(1,0.9)
