@@ -1,4 +1,4 @@
-# scales a vector of numbers to a new range
+# linearly transforms a vector of numbers to a new range
 
 rescale<-function(x,newrange) {
  if(missing(x) | missing(newrange)) {
@@ -109,4 +109,3 @@ radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
  }
  text(xpos,ypos,adj=0.5,labels)
 }
-

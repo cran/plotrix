@@ -1,7 +1,7 @@
 \name{gradient.rect}
 \title{gradient.rect}
 \usage{
- gradient.rect(xleft,ybottom,xright,ytop,reds,greens,blues,nslices=20,
+ gradient.rect(xleft,ybottom,xright,ytop,reds,greens,blues,nslices=50,
   gradient="x")
 }
 \alias{gradient.rect}
@@ -26,13 +26,15 @@
  # get an empty box
  plot(0:10,type="n",axes=FALSE)
  # first try a "rainbow"
- gradient.rect(1,0,3,6,c(1,0),c(seq(0,1,length=10),seq(1,0,length=10)),c(0,1),
-  gradient="y")
+ gradient.rect(1,0,3,6,reds=c(1,0),
+  greens=c(seq(0,1,length=10),seq(1,0,length=10)),
+  blues=c(0,1),gradient="y")
  # now a "danger gradient"
  gradient.rect(4,0,6,6,c(seq(0,1,length=10),rep(1,10)),
   c(rep(1,10),seq(1,0,length=10)),c(0,0),gradient="y")
  # finally a real mess
- gradient.rect(7,0,9,6,c(1,0),rescale(rnorm(20),c(0,1)),c(1,0),c(0,1),
+ gradient.rect(7,0,9,6,reds=c(1,0),
+  greens=rescale(rnorm(20),c(0,1)),blues=c(1,0),
   gradient="y")
 }
 \keyword{misc}
