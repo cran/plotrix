@@ -1,7 +1,7 @@
 \name{thigmophobe.labels}
 \title{thigmophobe.labels}
 \usage{
- thigmophobe.labels(x,y,labels,xoffset=strwidth("F"),yoffset=strheight("I"),...)
+ thigmophobe.labels(x,y,labels=1:length(x),...)
 }
 \alias{thigmophobe.labels}
 \arguments{
@@ -9,15 +9,12 @@
   plotted points.}
  \item{labels}{A vector of strings that will be placed adjacent to
   each point. Defaults to the indices of the coordinates.}
- \item{xoffset}{The amount of space to offset the left- or right-aligned
-  label from the point.}
- \item{yoffset}{The amount of space to offset the center-aligned
-  label from the point.}
  \item{...}{additional arguments are passed to \code{text}}.
 }
 \description{
  \code{thigmophobe.labels} places labels adjacent to each point, 
-  offsetting and aligning each in the direction returned by \code{thigmophobe}.}
+  offsetting each label in the direction returned by 
+  \code{thigmophobe}.}
 }
 \details{
  Typically used to automatically place labels on a scatterplot or 
