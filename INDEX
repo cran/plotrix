@@ -1,0 +1,9 @@
+axis.break		Put a slash or zigzag "break" in a plot axis
+clock24.plot		Plot values on a 24 hour "clockface"
+error.bars		Add error bars to a plot
+polar.plot		Plot values in polar coordinates
+radial.plot		Plot values on a radial axis
+rescale			Linearly scale a vector of numbers to a new range
+staxlab			Display staggered labels on an axis
+thigmophobe		Find the direction away from the nearest other point
+thigmophobe.labels	Place point labels away from the nearest other point
