@@ -24,7 +24,8 @@ floating.pie<-function (xpos,ypos,x,edges=200,radius=1,col=NULL,...) {
  return(bc)
 }
 
-# place text labels on a pie chart centered at x,y
+# place text labels at the specified distance from x,y on the radial lines
+# specified by angles.
 
 pie.labels<-function(x,y,angles,labels,radius=1,col="white",border=TRUE,...) {
  if(nargs()<4)

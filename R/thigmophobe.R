@@ -1,5 +1,5 @@
-# thigmophobe returns the direction (as n|e|s|w) _away_ from
-# the nearest point where x and y are vectors of 2D coordinates
+# thigmophobe returns the direction (as 1|2|3|4 - see pos= in text) 
+# _away_ from the nearest point where x and y are vectors of 2D coordinates
 
 thigmophobe<-function(x,y) {
  # get the current upper and lower limits of the plot
@@ -24,9 +24,9 @@ thigmophobe<-function(x,y) {
  xdiff<-x - x[nearest.index]
  ydiff<-y - y[nearest.index]
  # first set the east/west direction
- dir.ew<-ifelse(xdiff > 0,"e","w")
+ dir.ew<-ifelse(xdiff > 0,2,4)
  # now do the north/south
- dir.ns<-ifelse(ydiff > 0,"n","s")
+ dir.ns<-ifelse(ydiff > 0,3,1)
  dir.away<-ifelse(abs(xdiff)>abs(ydiff),dir.ew,dir.ns)
  return(dir.away)
 }
@@ -35,33 +35,11 @@ thigmophobe<-function(x,y) {
 # are most distant from the nearest other point, where the
 # points are described as x and y coordinates.
 
-thigmophobe.labels<-function(x,y,labels,xoffset=strwidth("F"),
- yoffset=strheight("I"),...) {
+thigmophobe.labels<-function(x,y,labels=1:length(x),...) {
  
  if(!missing(x) && !missing(y)) {
-  lenx<-length(x)
-  if(missing(labels)) labels<-as.character(1:lenx)
-  dir.away<-thigmophobe(x,y)
-  text.adj<-rep(0,lenx)
-  for(i in 1:lenx) {
-   if(dir.away[i] == "n") {
-    y[i]<-y[i]+yoffset
-    text.adj[i]<-0.5
-   }
-   if(dir.away[i] == "e") {
-    x[i]<-x[i]+xoffset
-    text.adj[i]<-0
-   }
-   if(dir.away[i] == "s") {
-    y[i]<-y[i]-yoffset
-    text.adj[i]<-0.5
-   }
-   if(dir.away[i] == "w") {
-    x[i]<-x[i]-xoffset
-    text.adj[i]<-1
-   }
-  }
-  text(x,y,labels,...)
+  text.pos<-thigmophobe(x,y)
+  text(x,y,labels,pos=text.pos,...)
  }
  else
   cat("Usage: thigmophobe.labels(x,y,labels=1:length(x),...)\n")

@@ -9,8 +9,9 @@
   plotted points.}
 }
 \description{
- \code{thigmophobe} returns the direction (as N|E|S|W) away from the
-  nearest point to each of the points described by \code{x} and \code{y}.
+ \code{thigmophobe} returns the direction (as 1|2|3|4 - see pos= in 
+  \code{text}) away from the nearest point to each of the points 
+  described by \code{x} and \code{y}.
 }
 \details{
  Typically used to get the offset to automatically place labels on
