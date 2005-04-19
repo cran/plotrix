@@ -28,6 +28,11 @@ thigmophobe<-function(x,y) {
  # now do the north/south
  dir.ns<-ifelse(ydiff > 0,3,1)
  dir.away<-ifelse(abs(xdiff)>abs(ydiff),dir.ew,dir.ns)
+ # set any congruent points to N/S labels or they'll overprint
+ for(i in 1:lenx) {
+  if(!xdiff[i] & !ydiff[i])
+   dir.away[c(i,nearest.index[i])]<-c(1,3)
+ }
  return(dir.away)
 }
 

@@ -42,7 +42,8 @@ color.gradient<-function(reds,greens,blues,nslices=50,scale.up=FALSE) {
 
 gradient.rect<-function(xleft,ybottom,xright,ytop,reds,greens,blues,
  nslices=50,gradient="x") {
- colvec<-color.gradient(reds,greens,blues,nslices)
+ # assume that the user will never want black gradients, so scale up
+ colvec<-color.gradient(reds,greens,blues,nslices,scale.up=TRUE)
  if(!is.null(colvec)) {
   if(gradient == "x") {
    if(length(xleft) == 1) {

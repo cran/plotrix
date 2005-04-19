@@ -10,15 +10,18 @@
   {color ranges into which to scale the numeric vector \code{x}}
  \item{scale.up}{Whether to scale color values less than or equal 
   to 1 into a 0->255 range. If colors are specified in a 0->1 range, 
-  set this to TRUE.}
+  set this to TRUE or all colors will be essentially black.}
 }
 \description{
- \code{color.scale} calculates sequences of three colors by linearly
-  interpolating between the values specified for each color. If only
-  one number is supplied for a color, that color remains constant for
+ \code{color.scale} calculates a sequence of colors by a linear
+  transformation of the numeric values supplied into the ranges 
+  for red, green and blue. If only one number is supplied for a
+  color range, that color remains constant for
   all values of \code{x}. If more than two values are supplied, only
   the first two are used. If any values for a color range are less
-  than 0 or greater than 255, that range is rescaled into 0->255.}
+  than 0 or greater than 255, that range is rescaled into 0->255.
+  The function is useful for highlighting a numeric dimension or
+  adding an extra "dimension" to a plot.}
 }
 \value{A vector of hexadecimal color values as used by \code{col}.}
 \authors{Jim Lemon}

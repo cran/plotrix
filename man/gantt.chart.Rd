@@ -4,7 +4,7 @@
 \description{
  Displays a Gantt chart with priority coloring
 }
-\usage{gantt.chart(x=NULL,format="%Y/%m/%d",xlim=NULL,
+\usage{gantt.chart(x=NULL,format="\%Y/\%m/\%d",xlim=NULL,
  taskcolors=NULL,main="",ylab="")}
 \arguments{
  \item{x}{a list of task labels, start/end times and

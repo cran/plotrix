@@ -4,7 +4,7 @@
 \description{
  Allows the user to enter the information for a Gantt chart.
 }
-\usage{get.gantt.info(format="%Y/%m/%d")
+\usage{get.gantt.info(format="\%Y/\%m/\%d")
 }
 \arguments{
  \item{format}{the format to be used in entering dates/times. Defaults to

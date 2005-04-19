@@ -95,35 +95,36 @@ axis.POSIXct.tickpos<-function (side,x,format,...) {
  return(z)
 }
 
-gantt.chart<-function(gantt.info=NULL,format="%Y/%m/%d",xlim=NULL,
+gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,
  taskcolors=NULL,main="",ylab="") {
  oldpar<-par(no.readonly=TRUE)
- if(is.null(gantt.info)) gantt.info<-get.gantt.info(format=format)
- ntasks<-length(gantt.info$labels)
+ if(is.null(x)) x<-get.x(format=format)
+ ntasks<-length(x$labels)
  plot.new()
  charheight<-strheight("M",units="inches")
- maxwidth<-max(strwidth(gantt.info$labels,units="inches"))*1.5
- if(is.null(xlim)) xlim=range(c(gantt.info$starts,gantt.info$ends))
+ maxwidth<-max(strwidth(x$labels,units="inches"))*1.5
+ if(is.null(xlim)) xlim=range(c(x$starts,x$ends))
  if(is.null(taskcolors))
-  taskcolors<-color.gradient(c(255,0),c(0,0),c(0,255),max(gantt.info$priorities))
+  taskcolors<-color.gradient(c(255,0),c(0,0),c(0,255),max(x$priorities))
  par(mai=c(0,maxwidth,charheight*5,0.1))
  par(omi=c(0.1,0.1,0.1,0.1))
- plot(gantt.info$starts,1:ntasks,xlim=xlim,ylim=c(0.5,ntasks+0.5),
+ plot(x$starts,1:ntasks,xlim=xlim,ylim=c(0.5,ntasks+0.5),
      main="",xlab="",ylab=ylab,axes=FALSE,type="n")
  box()
  if(nchar(main)) mtext(main,3,2)
  axis.POSIXct(3,xlim)
  topdown<-seq(ntasks,1)
- axis(2,at=topdown,labels=gantt.info$labels,las=2)
+ axis(2,at=topdown,labels=x$labels,las=2)
  xrange<-par("usr")[1:2]
- abline(v=axis.POSIXct.tickpos(3,xlim),col="darkgray",lty=3)
+ abline(v=axTicks(3),col="darkgray",lty=3)
+# abline(v=axis.POSIXct.tickpos(3,xlim),col="darkgray",lty=3)
  half.height <- 0.25
  for(i in 1:ntasks) {
-  rect(gantt.info$starts[i],topdown[i]-half.height,
-   gantt.info$ends[i],topdown[i]+half.height,
-   col=taskcolors[gantt.info$priorities[i]],
+  rect(x$starts[i],topdown[i]-half.height,
+   x$ends[i],topdown[i]+half.height,
+   col=taskcolors[x$priorities[i]],
    border=FALSE)
  }
  par(oldpar)
- invisible(gantt.info)
+ invisible(x)
 }
