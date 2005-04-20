@@ -4,7 +4,7 @@
 \description{
  Places a "break" mark on an axis on an existing plot
 }
-\usage{axis.break(axis=1,breakpos,bgcol="white",breakcol="black",
+\usage{axis.break(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
   style="slash",brw=0.02)}
 \arguments{
  \item{axis}{which axis to break}
@@ -19,7 +19,8 @@
 \author{Jim Lemon and Ben Bolker}
 \examples{
  plot(3:10)
- axis.break(1,0.9)
+ # put a break at the default axis and position
+ axis.break()
  axis.break(2,2.9,style="zigzag")
 }
 \keyword{misc}

@@ -23,7 +23,7 @@
 }
 \keyword{misc}
 \authors{Jim Lemon}
-\seealso{\code{thigmophobe.labels}}
+\seealso{\code{\link{thigmophobe.labels}}}
 \examples{
  x<-rnorm(10)
  y<-rnorm(10)

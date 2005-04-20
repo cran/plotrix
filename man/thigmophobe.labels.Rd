@@ -25,7 +25,7 @@
 }
 \keyword{misc}
 \authors{Jim Lemon}
-\seealso{\code{thigmophobe}}
+\seealso{\code{\link{thigmophobe}}}
 \examples{
  x<-rnorm(10)
  y<-rnorm(10)
@@ -37,6 +37,7 @@
  ylim<-c(ylim[1]-yspace,ylim[2]+yspace)
  plotlabels<-
   c("one","two","three","four","five","six","seven","eight","nine","ten")
- plot(x=x,y=y,xlim=xlim,ylim=ylim)
- thigmophobe.labels(x,y,plotlabels,col=2:11)
+ plot(x=x,y=y,xlim=xlim,ylim=ylim,main="Test thigmophobe.labels")
+ # skip the almost invisible yellow label
+ thigmophobe.labels(x,y,plotlabels,col=c(2:6,8:12))
 }
