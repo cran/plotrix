@@ -4,8 +4,10 @@
 \description{
  Places a "break" mark on an axis on an existing plot
 }
-\usage{axis.break(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
-  style="slash",brw=0.02)}
+\usage{
+ axis.break(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
+  style="slash",brw=0.02)
+}
 \arguments{
  \item{axis}{which axis to break}
  \item{breakpos}{where to place the break in user units}

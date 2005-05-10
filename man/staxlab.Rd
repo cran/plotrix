@@ -4,7 +4,9 @@
 \description{
  Places labels on an axis in a regular staggered order
 }
-\usage{staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8)}
+\usage{
+ staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8)
+}
 \arguments{
  \item{side}{axis on which to place the labels, as in \code{axis}}
  \item{at}{where to place the labels in user units, as in \code{axis}}

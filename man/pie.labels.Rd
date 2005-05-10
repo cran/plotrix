@@ -4,7 +4,9 @@
 \description{
  Places labels on a pie chart
 }
-\usage{pie.labels(x,y,angles,labels,radius=1,col="white",border=TRUE,...)}
+\usage{
+ pie.labels(x,y,angles,labels,radius=1,col="white",border=TRUE,...)
+}
 \arguments{
  \item{x,y}{x and y position of the center of the pie chart}
  \item{angles}{A numeric vector representing angles in radians. This is

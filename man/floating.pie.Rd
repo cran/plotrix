@@ -4,7 +4,9 @@
 \description{
  Displays a pie chart at an arbitrary position on an existing plot
 }
-\usage{floating.pie(xpos,ypos,x,edges=200,radius=1,col=NULL,...)}
+\usage{
+ floating.pie(xpos,ypos,x,edges=200,radius=1,col=NULL,...)
+}
 \arguments{
  \item{xpos,ypos}{x and y position of the center of the pie chart}
  \item{x}{a numeric vector for which each value will be a sector}

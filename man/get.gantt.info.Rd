@@ -4,7 +4,8 @@
 \description{
  Allows the user to enter the information for a Gantt chart.
 }
-\usage{get.gantt.info(format="\%Y/\%m/\%d")
+\usage{
+ get.gantt.info(format="\%Y/\%m/\%d")
 }
 \arguments{
  \item{format}{the format to be used in entering dates/times. Defaults to
@@ -16,10 +17,10 @@
  \item{starts,ends}{The task starts/ends as POSIXct dates/times.}
  \item{priorities}{Task priorities as integers in the range 1 to 10.
   There can be less than 10 levels of priority, but if priorities do
-  not start at 1 (assumed the highest), the default priority colors
+  not start at 1 (assumed to be the highest), the default priority colors
   will be calculated from 1.}
 }
-\author{Jim Lemon (original by Scott Waichler)}
+\author{Jim Lemon}
 \seealso{\code{\link{gantt.chart}}}
 \examples{
  # get task times using HH:MM (hour:minute) format
