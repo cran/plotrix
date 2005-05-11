@@ -4,11 +4,14 @@
 \description{
  Calculates the positions of the ticks on a POSIXt date/time axis.
 }
-\usage{axis.POSIXct.tickpos(side,x,format,...}
+\usage{
+ axis.POSIXct.tickpos(side,x,format,...)
+}
 \arguments{
  \item{side}{The side of the plot.}
  \item{x}{A POSIXct date object.}
  \item{format}{The optional date format.}
+ \item{...}{Additional arguments as in \code{axis.POSIXct}.}
 }
 \value{
  The positions of the axis ticks in user (i.e. date/time) units.
@@ -18,6 +21,6 @@
  lines used in \code{gantt.chart}. It is basically a copy of the 
  \code{axis.POSIXct} function without the call to \code{axis}.}
 }
-\author{Jim Lemon}
+\author{probably R core team - with slight modification by Jim Lemon}
 \seealso{\code{\link{gantt.chart}}}
 \keyword{misc}

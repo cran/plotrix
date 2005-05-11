@@ -4,7 +4,9 @@
 \description{
  Places labels in boxes on an existing plot
 }
-\usage{boxed.labels(x,y,labels,col="white",border=TRUE,xpad=0.6,ypad=0.6,...)}
+\usage{
+ boxed.labels(x,y,labels,col="white",border=TRUE,xpad=0.6,ypad=0.6,...)
+}
 \arguments{
  \item{x,y}{x and y position of the centers of the labels}
  \item{col}{The color of the rectangles on which the labels are displayed.}

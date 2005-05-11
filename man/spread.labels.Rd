@@ -4,7 +4,9 @@
 \description{
  Places labels for irregularly spaced values in a regular staggered order
 }
-\usage{spread.labels(x,y,labels=NULL,offset,col="white",border=FALSE,...)}
+\usage{
+ spread.labels(x,y,labels=NULL,offset,col="white",border=FALSE,...)
+}
 \arguments{
  \item{x,y}{x and y data values}
  \item{labels}{text strings}
