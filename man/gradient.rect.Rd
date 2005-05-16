@@ -20,8 +20,7 @@
   'sliced' in the direction specified by \code{gradient}.}
 }
 \value{the vector of hexadecimal color values}
-\authors{Jim Lemon}
-\seealso{\code{rgb.to.hex}}
+\author{Jim Lemon}
 \examples{
  # get an empty box
  plot(0:10,type="n",axes=FALSE)

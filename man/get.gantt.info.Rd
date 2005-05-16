@@ -23,7 +23,7 @@
 \author{Jim Lemon}
 \seealso{\code{\link{gantt.chart}}}
 \examples{
- # get task times using HH:MM (hour:minute) format
+ cat("Enter task times using HH:MM (hour:minute) format\n")
  get.gantt.info("\%H:\%M")
 }
 \keyword{misc}

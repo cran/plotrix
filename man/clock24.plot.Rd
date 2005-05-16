@@ -21,7 +21,7 @@
 }
 \value{nil}
 \keyword{misc}
-\authors{Jim Lemon}
+\author{Jim Lemon}
 \seealso{\code{polar.plot},\code{radial.plot}}
 \examples{
  testlen<-c(rnorm(24)*2+5)

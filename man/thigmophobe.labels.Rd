@@ -24,7 +24,7 @@
  A vector of directions away from the point nearest to each point.
 }
 \keyword{misc}
-\authors{Jim Lemon}
+\author{Jim Lemon}
 \seealso{\code{\link{thigmophobe}}}
 \examples{
  x<-rnorm(10)
