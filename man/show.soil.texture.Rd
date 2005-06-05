@@ -3,7 +3,7 @@
 \title{show.soil.texture}
 \usage{
  show.soil.texture(soiltexture,pch=NULL,col.symbols=NULL,bg.symbols=NA,
-  show.legend=FALSE,...)
+  show.legend=FALSE)
 }
 \arguments{
  \item{soiltexture}{Matrix of soil textures where each row is a 
@@ -13,8 +13,9 @@
  \item{pch}{Symbols to use for plotting the observations.}
  \item{col.symbols}{Colors to use for plotting the observations.}
  \item{bg.symbols}{Fill colors for symbols.}
- \item{show.legend}{Logical - whether to show a legend.}
- \item{...}{additional arguments passed to \code{points}.}
+ \item{show.legend}{Logical - whether to show a legend. If there are more 
+  than about six soil textures, it is probably better to add a legend 
+  separately.}
 }
 \description{
  \code{show.soil.texture} displays points on the soil triangle plotted
@@ -24,10 +25,10 @@
 \author{Sander Oom and Jim Lemon}
 \seealso{\code{\link{get.soil.texture}, \code{\link{soil.texture}}}}
 \examples{
- data(oksoil)
+ data(soils)
  # first just show the soil triangle
- soil.texture()
+ soil.texture(main="Soil Texture Triangle")
  # now plot the observations
- show.soil.texture(oksoil,pch=2,col=2)
+ show.soil.texture(soils,pch=2,col.symbols=2)
 }
 \keyword{misc}

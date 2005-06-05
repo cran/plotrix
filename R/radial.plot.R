@@ -34,8 +34,8 @@ clock24.plot<-function(lengths,clock.pos,rp.type="r",...) {
  # rescale to a range of pi/2 to 2.5*pi
  # starting at "midnight" and going clockwise
  clock.radial.pos<-rescale(c(clock.pos,radial.range),newrange)[1:npos]
- clock.labels<-as.character(seq(100,2400,by=100))
- clock.label.pos<-seq(29*pi/12,pi/2,by=-pi/12)
+ clock.labels<-as.character(seq(0,2300,by=100))
+ clock.label.pos<-rev(seq(pi/2,29*pi/12,by=pi/12))
  radial.plot(lengths,clock.radial.pos,newrange,clock.labels,clock.label.pos,
   rp.type=rp.type,...)
 }
@@ -49,20 +49,15 @@ polar.plot<-function(lengths,polar.pos,labels,label.pos,rp.type="r",...) {
  npos<-length(lengths)
  # if no positions are given, add the average distance between positions so that
  # the first and last line don't overlap
- if(missing(polar.pos)) polar.pos<-seq(0,360-360/(npos+1),length=npos)
+ if(missing(polar.pos)) radial.pos<-seq(0,(2-2/(npos+1))*pi,length=npos)
+ else radial.pos<-pi*polar.pos/180
  if(missing(labels)) {
-  label.pos<-seq(0,340,by=20)
-  labels<-as.character(label.pos)
-  label.range<-c(0,pi*340/180)
+  labels<-as.character(seq(0,340,by=20))
+  label.pos<-seq(0,1.9*pi,length=18)
  }
- if(missing(label.pos)) label.pos<-polar.pos
- polar.range<-range(polar.pos)
- newrange<-c(pi*polar.range[1]/180,pi*(2-(360-polar.range[2])/180))
- # rescale to radians
- radial.pos<-rescale(c(polar.pos,polar.range),newrange)[1:npos]
- nlabels<-length(labels)
- label.pos<-rescale(c(label.pos,0,360),c(0,2*pi))[1:nlabels]
- radial.plot(lengths,radial.pos,newrange,labels,label.pos,rp.type=rp.type,...)
+ if(missing(label.pos)) label.pos<-pi*label.pos/180
+ radial.plot(lengths,radial.pos,range(radial.pos),labels,label.pos,
+  rp.type=rp.type,...)
 }
 
 # plots radial lines of length 'lengths' or a polygon with corresponding
@@ -72,40 +67,80 @@ polar.plot<-function(lengths,polar.pos,labels,label.pos,rp.type="r",...) {
 # radial position of the labels
 
 radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
- rp.type="r",label.prop=1.1,main="",xlab="",ylab="",...) {
- maxlength<-label.prop*max(lengths)
+ rp.type="r",label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),
+ mar=c(2,2,3,2),show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),...) {
+ 
+ length.dim<-dim(lengths)
+ if(is.null(length.dim)) {
+  npoints<-length(lengths)
+  nsets<-1
+  lengths<-matrix(lengths,nrow=1)
+ }
+ else {
+  npoints<-length.dim[2]
+  nsets<-length.dim[1]
+ }
+ if(missing(radial.pos))
+  radial.pos<-seq(0,pi*(2-2/(npoints+1)),length=npoints)
+ radial.pos.dim<-dim(radial.pos)
+ if(is.null(radial.pos.dim))
+  radial.pos<-matrix(rep(radial.pos,nsets),nrow=nsets,byrow=TRUE)
  # calculate missing range as above
  if(missing(radial.range)) {
   radial.range<-range(radial.pos)
   radial.range[1]<-radial.range[1]-(radial.range[2]-radial.range[1])/
   (length(radial.pos)-1)
  }
+ if(show.grid) {
+  grid.pos<-pretty(lengths)
+  if(grid.pos[1] <= 0) grid.pos<-grid.pos[-1]
+  maxlength<-max(grid.pos)
+  angles<-seq(0,2*pi,by=0.04*pi)
+ }
+ else {
+  grid.pos<-NA
+  maxlength<-label.prop*max(lengths)
+ }
+ oldmar<-par("mar")
+ par(mar=mar)
  plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
   main=main,xlab=xlab,ylab=ylab,...)
- # get the vector of x positions
- xpos<-cos(radial.pos)*lengths
- # get the vector of y positions
- ypos<-sin(radial.pos)*lengths
- # plot radial lines if rp.type == "r"    
- if(rp.type == "r") segments(0,0,xpos,ypos,...)
- else polygon(xpos,ypos,...)
+ par(xpd=TRUE)
+ if(show.grid) {
+  for(i in 1:length(grid.pos)) {
+   xpos<-cos(angles)*grid.pos[i]
+   ypos<-sin(angles)*grid.pos[i]
+   polygon(xpos,ypos,border=grid.col,col=grid.bg)
+  }
+  ypos<-rep(-maxlength/15,length(grid.pos))
+  boxed.labels(grid.pos,ypos,as.character(grid.pos))
+ }
+ if(length(line.col) < nsets) line.col<-1:nsets
+ for(i in 1:nsets) {
+  # get the vector of x positions
+  xpos<-cos(radial.pos[i,])*lengths[i,]
+  # get the vector of y positions
+  ypos<-sin(radial.pos[i,])*lengths[i,]
+  # plot radial lines if rp.type == "r"    
+  if(rp.type == "r") segments(0,0,xpos,ypos,col=line.col[i],...)
+  else polygon(xpos,ypos,border=line.col[i],col=NA,...)
+ }
  if(missing(labels)) {
   if(length(radial.pos) <= 20) {
    labels<-as.character(round(radial.pos,2))
    label.pos<-radial.pos
   }
   else {
-   label.pos<-seq(0,1.95*pi,length=19)
+   label.pos<-seq(0,1.9*pi,length=9)
    labels<-as.character(round(label.pos,2))
   }
  }
- if(missing(label.pos)) {
-  xpos<-cos(radial.pos)*maxlength
-  ypos<-sin(radial.pos)*maxlength
- }
- else {
-  xpos<-cos(label.pos)*maxlength
-  ypos<-sin(label.pos)*maxlength
- }
- text(xpos,ypos,adj=0.5,labels)
+ if(missing(label.pos)) label.pos<-seq(0,pi*(2-2/npoints),length=npoints)
+ xpos<-cos(label.pos)*maxlength
+ ypos<-sin(label.pos)*maxlength
+ segments(0,0,xpos,ypos,col=grid.col)
+ xpos<-cos(label.pos)*maxlength*label.prop
+ ypos<-sin(label.pos)*maxlength*label.prop
+ boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE)
+ par(mar=oldmar,xpd=FALSE)
 }

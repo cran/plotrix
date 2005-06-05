@@ -3,7 +3,7 @@
 \title{soil.texture}
 \usage{
  soil.texture(soiltexture=NULL,
- show.names=FALSE,show.lines=FALSE,show.grid=FALSE,bg.names="white",main="",
+ show.names=TRUE,show.lines=TRUE,show.grid=FALSE,bg.names="white",main="",
  col.axis="black",col.names="gray",col.lines="gray",col.grid="gray",...)
 }
 \arguments{
@@ -39,17 +39,19 @@
 \value{If \code{soiltexture} was included, a list of the \code{x,y} 
  positions of the soil types plotted. If not, nil.}
 \author{Sander Oom and Jim Lemon}
-\seealso{\code{\link{get.soil.texture}, \code{\link{show.soil.texture}}}}
+\seealso{\code{\link{get.soil.texture}}, \code{\link{show.soil.texture}}}
 \examples{
- data(oksoil)
- # first just show the soil triangle
+ data(soils)
  soil.texture()
- # now plot a minimal soil triangle with the observations
- soil.texture(oksoil,main="DEFAULT")
- # do it again but with the soil names and boundaries
- soil.texture(oksoil,main="LINES AND NAMES",show.lines=TRUE,show.names=TRUE)
- # again with the grid, legend and specified colors
- soil.texture(oksoil,main="GRID AND LEGEND",show.grid=TRUE,col.symbols=c(4,5,6),
-  show.legend=TRUE)
+ if(dev.interactive()) par(ask=TRUE)
+ main.title<-"DEFAULT"
+ soil.texture(soils,main=main.title,pch=2)
+ main.title<-"LINES AND NAMES"
+ soil.texture(soils,main=main.title,show.lines=TRUE,show.names=TRUE,
+  pch=3)
+ main.title<- "GRID AND LEGEND"
+ soil.texture(soils[1:6,],main=main.title,show.grid=TRUE,pch=4,
+  col.symbols=1:6,show.legend=TRUE)
+ if(dev.interactive()) par(ask=FALSE)
 }
 \keyword{misc}

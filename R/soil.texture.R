@@ -1,10 +1,10 @@
 show.soil.texture<-function(soiltexture,pch=NULL,col.symbols=NULL,
- bg.symbols=NA,show.legend=FALSE,...) {
+ bg.symbols=NA,show.legend=FALSE) {
  
  if(dev.cur() == 1)
   stop("Cannot add points unless the soil.triangle has been drawn")
  if(missing(soiltexture))
-  stop("Usage: soil.points(soiltexture,pch=NULL,col.symbols=NULL,show.legend=FALSE,...)")
+  stop("Usage: soil.points(soiltexture,pch=NULL,col.symbols=NULL,show.legend=FALSE)")
  if(!is.matrix(soiltexture) && !is.data.frame(soiltexture))
   stop("soiltexture must be a matrix with at least three columns and one row.")
  if(any(soiltexture > 1) || any(soiltexture < 0)) {
@@ -12,7 +12,6 @@ show.soil.texture<-function(soiltexture,pch=NULL,col.symbols=NULL,
    stop("All soil proportions must be between zero and one.")
   if(any(soiltexture > 100))
    stop("All soil percentages must be between zero and 100.")
-  cat("Converting from percentages to proportions\n")
   soiltexture<-soiltexture/100
  }
  if(any(abs(rowSums(soiltexture)-1) > 0.01))
@@ -22,10 +21,10 @@ show.soil.texture<-function(soiltexture,pch=NULL,col.symbols=NULL,
  nobs<-dim(soiltexture)[1]
  if(is.null(pch)) pch<-1:nobs
  if(is.null(col.symbols)) col.symbols<-2:(nobs+1)
- points(x=xpos,y=ypos,pch=pch,col=col.symbols,bg=bg.symbols,...)
+ points(x=xpos,y=ypos,pch=pch,col=col.symbols,bg=bg.symbols)
  if(show.legend) {
-  samplenames<-rownames(soiltexture)
-  legend(0,0.8+0.05*length(samplenames),legend=samplenames,pch=pch,
+  sample.labels<-rownames(soiltexture)
+  legend(0,0.65+0.04*length(sample.labels),legend=sample.labels,pch=pch,
    col=col.symbols)
  }
  invisible(list(x=xpos,y=ypos)) 
@@ -65,11 +64,11 @@ get.soil.texture<-function(use.percentages=FALSE) {
 }
 
 soil.texture<-function(soiltexture=NULL,
- show.names=FALSE,show.lines=FALSE,show.grid=FALSE,bg.names="white",main="",
+ show.names=TRUE,show.lines=TRUE,show.grid=FALSE,bg.names="white",main="",
  col.axis="black",col.names="gray",col.lines="gray",col.grid="gray",...) {
 
  par(xpd=TRUE)
- plot(0.5,type="n",axes=FALSE,xlim=c(0,1),ylim=c(0,1),main="",xlab="",ylab="")
+ plot(0.5,type="n",axes=FALSE,xlim=c(0,1.1),ylim=c(0,1),main="",xlab="",ylab="")
  sin60<-sin(pi/3)
  # bottom ticks
  bx1<-seq(0.1,0.9,by=0.1)
@@ -90,12 +89,12 @@ soil.texture<-function(soiltexture=NULL,
  currentfg<-par("fg")
  par(fg=col.axis)
  text(lx1-0.05,ly1,as.character(ten2ninety))
- par(srt=60)
+ par(srt=57)
  text(0.13,0.5,"percent clay")
  arrows(0.12,0.41,0.22,0.57,length=0.15)
  text(rx2+0.02,ry1+0.04,as.character(rev(ten2ninety)))
- par(srt=300)
- text(0.85,0.52,"percent silt")
+ par(srt=303)
+ text(0.86,0.52,"percent silt")
  arrows(0.78,0.57,0.88,0.41,length=0.15)
  text(bx1+0.025,by1-0.05,as.character(rev(ten2ninety)))
  par(srt=0)
@@ -110,8 +109,8 @@ soil.texture<-function(soiltexture=NULL,
  if(show.lines) {
   par(fg=col.lines)
   # boundary of clay with extensions
-  x1<-c(0.275,0.36,0.6)
-  x2<-c(0.42,0.79,0.7)
+  x1<-c(0.275,0.355,0.6)
+  x2<-c(0.42,0.8,0.7)
   y1<-c(0.55*sin60,0.4*sin60,0.4*sin60)
   y2<-c(0.28*sin60,0.4*sin60,0.6*sin60)
   segments(x1,y1,x2,y2)
@@ -121,8 +120,8 @@ soil.texture<-function(soiltexture=NULL,
   y1<-c(0.28*sin60,0.28*sin60)
   y2<-c(0.28*sin60,0.4*sin60)
   segments(x1,y1,x2,y2)
-  x1<-c(0.18,0.1,0.38)
-  x2<-c(0.38,0.38,0.42)
+  x1<-c(0.175,0.1,0.38)
+  x2<-c(0.383,0.38,0.42)
   y1<-c(0.35*sin60,0.2*sin60,0.2*sin60)
   y2<-c(0.35*sin60,0.2*sin60,0.28*sin60)
   segments(x1,y1,x2,y2)
@@ -132,10 +131,10 @@ soil.texture<-function(soiltexture=NULL,
   y1<-c(0.1*sin60,0.15*sin60)
   y2<-c(0,0)
   segments(x1,y1,x2,y2)
-  x1<-c(0.38,0.445,0.5,0.8,0.86)
-  x2<-c(0.445,0.54,0.64,0.86,0.94)
-  y1<-c(0.2*sin60,0.075*sin60,0,0,0.12*sin60)
-  y2<-c(0.075*sin60,0.075*sin60,0.28*sin60,0.12*sin60,0.12*sin60)
+  x1<-c(0.38,0.44,0.5,0.8,0.86)
+  x2<-c(0.44,0.54,0.64,0.86,0.94)
+  y1<-c(0.2*sin60,0.078*sin60,0,0,0.12*sin60)
+  y2<-c(0.078*sin60,0.078*sin60,0.28*sin60,0.12*sin60,0.12*sin60)
   segments(x1,y1,x2,y2)
  }
  if(show.names) {
@@ -167,6 +166,7 @@ soil.texture<-function(soiltexture=NULL,
  if(nchar(main)) {
   par(cex=1.5)
   text(0.5,1,main)
+  par(cex=1)
  }
  par(xpd=FALSE,fg=currentfg)
  if(!is.null(soiltexture)) soilpoints<-show.soil.texture(soiltexture,...)
