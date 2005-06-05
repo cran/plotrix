@@ -15,7 +15,7 @@
   will be accepted.}
 }
 \value{On success, the rescaled vector.}
-\authors{Jim Lemon}
+\author{Jim Lemon}
 \examples{
  # scale one vector into the range of another
  normal.counts<-tabulate(cut(rnorm(100),breaks=seq(-3,3,by=1)))

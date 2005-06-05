@@ -10,7 +10,7 @@
 \arguments{
  \item{x,y}{x and y position of the center of the pie chart}
  \item{angles}{A numeric vector representing angles in radians. This is
-  return value of \code{floating.pie}.}
+  the return value of \code{floating.pie}.}
  \item{labels}{Text strings to label each sector.}
  \item{radius}{The radius at which to place the labels in user units. The
   default is 1.}

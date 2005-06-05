@@ -23,7 +23,7 @@
   moving counterclockwise.}
 }
 \value{nil}
-\authors{Jim Lemon}
+\author{Jim Lemon}
 \keyword{misc}
 \seealso{\code{radial.plot}}
 \examples{

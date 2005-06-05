@@ -18,17 +18,21 @@
 }
 \details{
  This function is best for regularly spaced labels where overlapping is
- not a problem. See \code{thigmophobe.labels} for squeezing labels in tight
- places.
+ not a problem. See \code{\link{thigmophobe.labels}} for squeezing labels 
+ in tight places.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{spread.labels}, \code{thigmophobe.labels}}
+\seealso{\code{\link{spread.labels}}, \code{\link{thigmophobe.labels}}}
 \examples{
  x<-rnorm(10)
  y<-rnorm(10)
  plot(x,y,type="p")
  nums<-c("one","two","three","four","five","six","seven","eight","nine","ten")
  boxed.labels(x,y-0.1,nums)
+ readline("Press <Enter> to continue")
+ # now label a barplot
+ xpos<-barplot(c(1,3,2,4))
+ boxed.labels(xpos,0.5,nums[1:4])
 }
 \keyword{misc}

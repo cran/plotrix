@@ -37,9 +37,9 @@
  times of the day, and so on. While \code{radial.plot} actually does
  the plotting, another function is usually called for specific types
  of cyclic data.}
-\authors{Jim Lemon}
+\author{Jim Lemon}
 \keyword{misc}
-\seealso{\code{polar.plot},\code{clock24.plot}}
+\seealso{\code{\link{polar.plot}},\code{\link{clock24.plot}}}
 \examples{
  testlen<-rnorm(10)*2+5
  testpos<-seq(0,18*pi/10,length=10)
