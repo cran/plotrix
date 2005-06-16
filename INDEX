@@ -16,7 +16,6 @@ get.soil.texture	Enter information for soil textures
 gradient.rect		Display a rectangle with an arbitrary color gradient
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
-oksoil			Soil texture data from Oklahoma soils
 pie.labels		Place labels at specified radial positions
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon on a 0-360 degree scale
@@ -25,6 +24,7 @@ remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
 show.soil.texture	Add soil composition points to a "soil texture triangle"
 soil.texture		Display a "soil texture triangle"
+soils			Soil texture data from 125 soils
 spread.labels		Spread out labels for irregularly spaced values
 sizeplot		Plot symbols as larger by the number of overlays
 symbolbox		Draw a box filled with symbols

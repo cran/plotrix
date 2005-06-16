@@ -1,11 +1,12 @@
-\name{oksoil}
-\alias{oksoil}
-\title{Soil texture data from Oklahoma soils}
+\name{soils}
+\alias{soils}
+\title{Soil texture data from 125 soils}
 \description{
- A set of 125 soil texture measurements from Oklahoma soils.
+ A set of 125 soil texture measurements from soils from various parts of the
+  world.
 }
 \usage{
- oksoil
+ data(soils)
 }
 \source{
  T.H. Skaggs, L.M. Arya, P.J. Shouse and B.P. Mohanty (2001)
