@@ -20,7 +20,7 @@ rescale<-function(x,newrange) {
 }
 
 # plots data as radial lines or a polygon on a 24 hour "clockface" going 
-# clockwise. radial.pos and radial.range should be in hours.
+# clockwise. clock.pos should be in decimal hours between 0 and 24.
 # Remember to convert hour/minute values to hour/decimal values.
 # example: clock24.plot(rnorm(16)+3,seq(5.5,20.5))
 
@@ -29,15 +29,14 @@ clock24.plot<-function(lengths,clock.pos,rp.type="r",...) {
  # if no positions are given, spread the lines out over the circle 
  if(missing(clock.pos)) clock.pos<-seq(0,24-24/(npos+1),length=npos)
  radial.range<-range(clock.pos)
- radial.range[1]<-radial.range[1]-(radial.range[2]-radial.range[1])/(npos-1)
- newrange<-c(pi*(2.5-radial.range[1]/12),pi*(0.5+(24-radial.range[2])/12))
+ newrange<-c(pi*(radial.range[2]+31)/12,pi*(radial.range[1]+31)/12)
  # rescale to a range of pi/2 to 2.5*pi
  # starting at "midnight" and going clockwise
  clock.radial.pos<-rescale(c(clock.pos,radial.range),newrange)[1:npos]
  clock.labels<-as.character(seq(0,2300,by=100))
- clock.label.pos<-rev(seq(pi/2,29*pi/12,by=pi/12))
- radial.plot(lengths,clock.radial.pos,newrange,clock.labels,clock.label.pos,
-  rp.type=rp.type,...)
+ clock.label.pos<-seq(30*pi/12,7*pi/12,by=-pi/12)
+ radial.plot(lengths,clock.radial.pos,newrange,clock.labels,
+  clock.label.pos,rp.type=rp.type,...)
 }
 
 # plots data as radial lines or a polygon starting at the right and going
@@ -55,7 +54,7 @@ polar.plot<-function(lengths,polar.pos,labels,label.pos,rp.type="r",...) {
   labels<-as.character(seq(0,340,by=20))
   label.pos<-seq(0,1.9*pi,length=18)
  }
- if(missing(label.pos)) label.pos<-pi*label.pos/180
+ if(!missing(label.pos)) label.pos<-pi*label.pos/180
  radial.plot(lengths,radial.pos,range(radial.pos),labels,label.pos,
   rp.type=rp.type,...)
 }
@@ -68,7 +67,8 @@ polar.plot<-function(lengths,polar.pos,labels,label.pos,rp.type="r",...) {
 
 radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
  rp.type="r",label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),
- mar=c(2,2,3,2),show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),...) {
+ mar=c(2,2,3,2),show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),
+ point.symbols=NULL,point.col=NULL,...) {
  
  length.dim<-dim(lengths)
  if(is.null(length.dim)) {
@@ -81,7 +81,7 @@ radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
   nsets<-length.dim[1]
  }
  if(missing(radial.pos))
-  radial.pos<-seq(0,pi*(2-2/(npoints+1)),length=npoints)
+  radial.pos<-seq(0,pi*(2-2/npoints),length=npoints)
  radial.pos.dim<-dim(radial.pos)
  if(is.null(radial.pos.dim))
   radial.pos<-matrix(rep(radial.pos,nsets),nrow=nsets,byrow=TRUE)
@@ -95,11 +95,11 @@ radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
   grid.pos<-pretty(lengths)
   if(grid.pos[1] <= 0) grid.pos<-grid.pos[-1]
   maxlength<-max(grid.pos)
-  angles<-seq(0,2*pi,by=0.04*pi)
+  angles<-seq(0,1.96*pi,by=0.04*pi)
  }
  else {
   grid.pos<-NA
-  maxlength<-label.prop*max(lengths)
+  maxlength<-max(lengths)
  }
  oldmar<-par("mar")
  par(mar=mar)
@@ -107,7 +107,7 @@ radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
   main=main,xlab=xlab,ylab=ylab,...)
  par(xpd=TRUE)
  if(show.grid) {
-  for(i in 1:length(grid.pos)) {
+  for(i in seq(length(grid.pos),1,by=-1)) {
    xpos<-cos(angles)*grid.pos[i]
    ypos<-sin(angles)*grid.pos[i]
    polygon(xpos,ypos,border=grid.col,col=grid.bg)
@@ -116,6 +116,10 @@ radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
   boxed.labels(grid.pos,ypos,as.character(grid.pos))
  }
  if(length(line.col) < nsets) line.col<-1:nsets
+ if(rp.type == "s") {
+  if(is.null(point.symbols)) point.symbols<-1:nsets
+  if(is.null(point.col)) point.col<-1:nsets
+ }
  for(i in 1:nsets) {
   # get the vector of x positions
   xpos<-cos(radial.pos[i,])*lengths[i,]
@@ -123,7 +127,8 @@ radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
   ypos<-sin(radial.pos[i,])*lengths[i,]
   # plot radial lines if rp.type == "r"    
   if(rp.type == "r") segments(0,0,xpos,ypos,col=line.col[i],...)
-  else polygon(xpos,ypos,border=line.col[i],col=NA,...)
+  if(rp.type == "p") polygon(xpos,ypos,border=line.col[i],col=NA,...)
+  if(rp.type == "s") points(xpos,ypos,pch=point.symbols[i],col=point.col[i],...)
  }
  if(missing(labels)) {
   if(length(radial.pos) <= 20) {
@@ -131,11 +136,12 @@ radial.plot<-function(lengths,radial.pos,radial.range,labels,label.pos,
    label.pos<-radial.pos
   }
   else {
-   label.pos<-seq(0,1.9*pi,length=9)
+   label.pos<-seq(0,1.8*pi,length=9)
    labels<-as.character(round(label.pos,2))
   }
  }
- if(missing(label.pos)) label.pos<-seq(0,pi*(2-2/npoints),length=npoints)
+ if(missing(label.pos))
+  label.pos<-seq(0,pi*(2-2/npoints),length=npoints)
  xpos<-cos(label.pos)*maxlength
  ypos<-sin(label.pos)*maxlength
  segments(0,0,xpos,ypos,col=grid.col)

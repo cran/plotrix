@@ -3,7 +3,8 @@
 \usage{
  radial.plot(lengths,radial.pos,radial.range,labels,label.pos,rp.type="r",
  label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),mar=c(2,2,3,2),
- show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),...)
+ show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),point.symbols=NULL,
+ point.col=NULL,...)
 }
 \alias{radial.plot}
 \arguments{
@@ -22,8 +23,8 @@
  \item{label.pos}{the positions of the labels as distance from the
   'center' of the plot. If missing, they will be placed at 1.1
   times the maximum of \code{lengths}.}
- \item{rp.type}{whether to draw radial lines or a polygon.}
- \item{label.prop}{the label position radius as aproportion of the 
+ \item{rp.type}{whether to draw (r)adial lines, a (p)olygon or (s)ymbols.}
+ \item{label.prop}{the label position radius as a proportion of the 
   maximum line length.}
  \item{main}{The title for the plot.}
  \item{xlab,ylab}{Normally x and y axis labels are suppressed.}
@@ -33,12 +34,15 @@
  \item{show.grid}{Logical - whether to draw a circular grid.}
  \item{grid.col}{Color of the circular grid.}
  \item{grid.bg}{Fill color of above.}
+ \item{point.symbols}{the symbols for plotting (as in pch).}
+ \item{point.col}{colors for the symbols.}
  \item{...}{additional arguments are passed to \code{plot}.}
 }
 \description{
- \code{radial.plot} displays a plot of radial lines or polygon(s)
-  centered at the midpoint of the plot frame, the lengths or
-  vertices corresponding to the numeric magnitudes of the data values.
+ \code{radial.plot} displays a plot of radial lines, polygon(s) or
+  symbols centered at the midpoint of the plot frame, the lengths,
+  vertices or positions corresponding to the numeric magnitudes of the 
+  data values.
 }
 \value{nil}
 \details{The radial.plot family of plots is useful for illustrating
@@ -54,9 +58,10 @@
  testpos<-seq(0,18*pi/10,length=10)
  testlab<-letters[1:10]
  radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",lwd=3)
- par(ask=TRUE)
+ if(dev.interactive()) par(ask=TRUE)
  testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
  testpos<-seq(0,1.98*pi,length=100)
  radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")
+ radial.plot(testlen,testpos,rp.type="s",main="Test Symbols",point.col="green")
  par(ask=FALSE)
 }

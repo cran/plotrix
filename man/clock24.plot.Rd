@@ -17,18 +17,20 @@
  \code{clock24.plot} displays a plot of radial lines or a polygon
   centered at the midpoint of the plot frame on a 24 hour 'clockface'. 
   In contrast to \code{radial.plot}, the positions are interpreted as 
-  beginning at vertical (2400) and moving clockwise.}
+  beginning at vertical (000) and moving clockwise.}
 }
 \value{nil}
 \keyword{misc}
 \author{Jim Lemon}
 \seealso{\code{polar.plot},\code{radial.plot}}
 \examples{
- testlen<-c(rnorm(24)*2+5)
+ testlen<-rnorm(24)*2+5
  testpos<-0:23+rnorm(24)/4
- clock24.plot(testlen,testpos,main="Test Clock24")
+ clock24.plot(testlen,testpos,main="Test Clock24",show.grid=FALSE,
+  line.col="green",lwd=3)
  par(ask=TRUE)
  # now do a 'daylight' plot
- clock24.plot(testlen[5:19],testpos[5:19],main="Test Clock24 daytime")
+ clock24.plot(testlen[5:19],testpos[5:19],main="Test Clock24 daytime",
+  line.col="blue",lwd=3)
  par(ask=FALSE)
 }
