@@ -1,6 +1,6 @@
 \name{color.scale}
 \alias{color.scale}
-\title{color.scale}
+\title{Linearly transform numeric values into colors.}
 \usage{
  color.scale(x,redrange,greenrange,bluerange)
 }

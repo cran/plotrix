@@ -1,5 +1,5 @@
 \name{clock24.plot}
-\title{clock24.plot}
+\title{Plot values on a 24 hour "clockface".}
 \usage{
  clock24.plot(lengths,clock.pos,rp.type="r",...)
 }
@@ -30,7 +30,7 @@
   line.col="green",lwd=3)
  par(ask=TRUE)
  # now do a 'daylight' plot
- clock24.plot(testlen[5:19],testpos[5:19],main="Test Clock24 daytime",
+ clock24.plot(testlen[7:19],testpos[7:19],main="Test Clock24 daytime",
   line.col="blue",lwd=3)
  par(ask=FALSE)
 }

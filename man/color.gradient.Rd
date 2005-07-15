@@ -1,5 +1,5 @@
 \name{color.gradient}
-\title{color.gradient}
+\title{Calculate an arbitrary sequence of colors.}
 \usage{
  color.gradient(reds,greens,blues,nslices=50)
 }
