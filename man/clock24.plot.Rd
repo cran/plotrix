@@ -30,7 +30,7 @@
   line.col="green",lwd=3)
  par(ask=TRUE)
  # now do a 'daylight' plot
- clock24.plot(testlen[7:19],testpos[7:19],main="Test Clock24 daytime",
+ clock24.plot(testlen[5:19],testpos[5:19],main="Test Clock24 daytime",
   line.col="blue",lwd=3)
  par(ask=FALSE)
 }

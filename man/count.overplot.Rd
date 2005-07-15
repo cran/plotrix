@@ -14,9 +14,7 @@
 \description{
  \code{count.overplot} checks for overlying points defined as points
   separated by a maximum of \code{tol}, a two element numeric vector of
-  the x and y tolerance.  Defaults to 1/2 of the width of a lower case 
-  "o" in the x direction and 1/2 of the height of a lower case "o" in 
-  the y direction..
+  the x and y tolerance. This defaults to 1/1000 of the plot range.
 }
 \value{nil}
 \keyword{misc}
