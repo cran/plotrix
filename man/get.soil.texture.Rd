@@ -14,11 +14,11 @@
 }
 \value{A matrix of the components of one or more soil samples.}
 \author{Sander Oom and Jim Lemon}
-\seealso{\code{\link{show.soil.texture}, \code{\link{soil.texture}}}}
+\seealso{\code{\link{show.soil.texture}},\code{\link{soil.texture}}}
 \examples{
  newsp<-get.soil.texture()
  # show the soil triangle
- get.soil.texture()
+ soil.texture()
  # now plot the observations
  show.soil.texture(newsp)
 }

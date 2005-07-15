@@ -1,4 +1,3 @@
-axis.POSIXct.tickpos	Calculate the tick positions for a POSIXct axis
 axis.break		Put a slash or zigzag "break" in a plot axis
 barplot.symbol.default	Barplot with bars filled with symbols : height
 boxed.labels		Display text strings in boxes at specified positions
@@ -11,14 +10,13 @@ color.scale		Transform numeric values into a series of colors
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
+feather.plot		Display vectors along a horizontal line
 floating.pie		Display a pie chart at a specified position
 freq			Calculate frequencies
 gantt.chart		Display a Gantt chart with task priority colors
 get.gantt.info		Enter information for a Gantt chart
 get.soil.texture	Enter information for soil textures
 gradient.rect		Display a rectangle with an arbitrary color gradient
-last.call		Retrieve the last call containing a specified string
-legend.outside		Display a legend outside the plot
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
 pie.labels		Place labels at specified radial positions
@@ -39,3 +37,4 @@ symbolbox		Draw a box filled with symbols
 textbox			Display justified text in an optional box
 thigmophobe		Find the direction away from the nearest other point
 thigmophobe.labels	Place point labels away from the nearest other point
+thigmophobe.points	Move close points away from each other

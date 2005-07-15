@@ -24,7 +24,7 @@
  than manually entering the information each time the chart is displayed.
 }
 \author{Jim Lemon (original by Scott Waichler)}
-\seealso{\code{\link{get.gantt.info}}, \code{\link{axis.POSIXct.tickpos}}}
+\seealso{\code{\link{get.gantt.info}}}
 \examples{
  Ymd.format<-"\%Y/\%m/\%d"
  gantt.info<-list(labels=

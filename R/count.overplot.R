@@ -7,9 +7,17 @@ count.overplot<-function(x,y,tol=NULL,...) {
   y<-x[,2]
   x<-x[,1]
  }
+ xlim<-range(x)
+ ylim<-range(y)
+ # get rid of any pairs containing NA
+ if(any(is.na(x)|is.na(y))) {
+  indices<-!is.na(x)&!is.na(y)
+  x<-x[indices]
+  y<-y[indices]
+ }
  xlen<-length(x)
  if(xlen != length(y)) stop("x and y must be the same length.")
- if(is.null(tol)) tol<-c((max(x)-min(x))/1000,(max(y)-min(y))/1000)
+ if(is.null(tol)) tol<-c(strwidth("o")/2,strheight("o")/2)
  flags<-1:xlen
  xsep<-ysep<-xdup<-ydup<-xydup<-rep(0,xlen)
  nsep<-ndup<-0
@@ -31,6 +39,6 @@ count.overplot<-function(x,y,tol=NULL,...) {
   }
   flags[dups]<-NA
  }
- plot(xsep[1:nsep],ysep[1:nsep],...)
+ plot(xsep[1:nsep],ysep[1:nsep],xlim=xlim,ylim=ylim,...)
  text(xdup[1:ndup],ydup[1:ndup],xydup[1:ndup])
 }

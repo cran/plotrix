@@ -1,10 +1,10 @@
 \name{radial.plot}
 \title{Plot values on a circular grid of 0 to 2*pi radians.}
 \usage{
- radial.plot(lengths,radial.pos,radial.range,labels,label.pos,rp.type="r",
+ radial.plot(lengths,radial.pos,labels,label.pos,rp.type="r",
  label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),mar=c(2,2,3,2),
  show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),point.symbols=NULL,
- point.col=NULL,...)
+ point.col=NULL,show.centroid=FALSE,radial.lim=NA,...)
 }
 \alias{radial.plot}
 \arguments{
@@ -15,8 +15,6 @@
   These are interpreted as beginning at the right (0 radians) and moving
   counterclockwise. If \code{radial.pos} is a matrix, the rows must 
   correspond to rows of \code{lengths}.}
- \item{radial.range}{range of positions in radians. This allows a vector
-  of lines to be spread over part of the 2*pi range of the plot.}
  \item{labels}{character strings to be placed at the outer ends of
   the lines. If set to NULL, will suppress printing of labels,
   but if missing, the radial positions will be used.}
@@ -36,13 +34,17 @@
  \item{grid.bg}{Fill color of above.}
  \item{point.symbols}{the symbols for plotting (as in pch).}
  \item{point.col}{colors for the symbols.}
+ \item{show.centroid}{whether to display a centroid.}
+ \item{radial.lim}{the value of the outermost grid circle. Defaults
+  to \code{pretty(range((lengths)))}.}
  \item{...}{additional arguments are passed to \code{plot}.}
 }
 \description{
  \code{radial.plot} displays a plot of radial lines, polygon(s) or
   symbols centered at the midpoint of the plot frame, the lengths,
   vertices or positions corresponding to the numeric magnitudes of the 
-  data values.
+  data values. If \code{show.centroid} is TRUE, an enlarged point at the
+  centroid of values is displayed.
 }
 \value{nil}
 \details{The radial.plot family of plots is useful for illustrating
@@ -62,6 +64,7 @@
  testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
  testpos<-seq(0,1.98*pi,length=100)
  radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")
- radial.plot(testlen,testpos,rp.type="s",main="Test Symbols",point.col="green")
+ radial.plot(testlen,testpos,rp.type="s",main="Test Symbols",point.col="green",
+  show.centroid=TRUE)
  par(ask=FALSE)
 }

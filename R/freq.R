@@ -1,5 +1,6 @@
-# freq displays a simple frequency table for a vector, or steps through
-# the columns of a data frame or matrix and returns the result of tabulate()
+# freq calculates a simple frequency table for a vector, or steps through
+# the columns of a data frame or matrix and returns a list of the freqwuncy
+# table(s).
 
 freq<-function(x,variable.labels=NULL,display.na=TRUE) {
  
