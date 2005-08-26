@@ -1,5 +1,5 @@
 \name{gradient.rect}
-\title{gradient.rect}
+\title{Display a rectangle filled with an arbitrary color gradient.}
 \usage{
  gradient.rect(xleft,ybottom,xright,ytop,reds,greens,blues,nslices=50,
   gradient="x")

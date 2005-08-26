@@ -1,6 +1,6 @@
 \name{show.soil.texture}
 \alias{show.soil.texture}
-\title{show.soil.texture}
+\title{Display points on a soil texture triangle.}
 \usage{
  show.soil.texture(soiltexture,pch=NULL,col.symbols=NULL,bg.symbols=NA,
   show.legend=FALSE)
@@ -19,7 +19,8 @@
 }
 \description{
  \code{show.soil.texture} displays points on the soil triangle plotted
-  by \code{\link{soil.texture}} as symbols.}
+  by \code{\link{soil.texture}} as symbols. It is most useful for adding 
+  new points to an existing plot.}
 }
 \value{A list of the \code{x,y} positions of the soil types plotted.}
 \author{Sander Oom and Jim Lemon}

@@ -116,8 +116,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,
  topdown<-seq(ntasks,1)
  axis(2,at=topdown,labels=x$labels,las=2)
  xrange<-par("usr")[1:2]
- abline(v=axTicks(3),col="darkgray",lty=3)
-# abline(v=axis.POSIXct.tickpos(3,xlim),col="darkgray",lty=3)
+ abline(v=axis.POSIXct.tickpos(3,xlim),col="darkgray",lty=3)
  half.height <- 0.25
  for(i in 1:ntasks) {
   rect(x$starts[i],topdown[i]-half.height,

@@ -1,6 +1,6 @@
 \name{get.soil.texture}
 \alias{get.soil.texture}
-\title{get.soil.texture}
+\title{Enter soil texture data.}
 \usage{
  get.soil.texture(use.percentages=FALSE)
 }

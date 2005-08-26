@@ -1,5 +1,5 @@
 \name{clock24.plot}
-\title{clock24.plot}
+\title{Plot values on a 24 hour "clockface".}
 \usage{
  clock24.plot(lengths,clock.pos,rp.type="r",...)
 }

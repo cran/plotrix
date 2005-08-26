@@ -1,34 +1,41 @@
-axis.break		Put a slash or zigzag "break" in a plot axis
 axis.POSIXct.tickpos	Calculate the tick positions for a POSIXct axis
+axis.break		Put a slash or zigzag "break" in a plot axis
 barplot.symbol.default	Barplot with bars filled with symbols : height
 boxed.labels		Display text strings in boxes at specified positions
 clean.args		Remove arguments that would cause an error
 clock24.plot		Plot values as lines/polygon on a 24 hour "clockface"
+cluster.overplot	Display overlying points as clusters
 color.gradient		Calculate values for a color gradient
 color.id		Find the closest named color to a hexadecimal RGB code
 color.scale		Transform numeric values into a series of colors
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
+count.overplot		Display overlying points as the number of points
 floating.pie		Display a pie chart at a specified position
+freq			Calculate frequencies
 gantt.chart		Display a Gantt chart with task priority colors
 get.gantt.info		Enter information for a Gantt chart
 get.soil.texture	Enter information for soil textures
 gradient.rect		Display a rectangle with an arbitrary color gradient
+last.call		Retrieve the last call containing a specified string
+legend.outside		Display a legend outside the plot
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
 pie.labels		Place labels at specified radial positions
+plot.freq		Display a horizontal barplot of frequencies
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon on a 0-360 degree scale
+print.freq		Display frequency tables
 radial.plot		Plot values as lines/polygon on a 0-2*pi radian scale
 remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
 show.soil.texture	Add soil composition points to a "soil texture triangle"
+sizeplot		Display overlying points as larger points
 soil.texture		Display a "soil texture triangle"
 soils			Soil texture data from 125 soils
 spread.labels		Spread out labels for irregularly spaced values
-sizeplot		Plot symbols as larger by the number of overlays
-symbolbox		Draw a box filled with symbols
 staxlab			Display staggered labels on an axis
+symbolbox		Draw a box filled with symbols
 textbox			Display justified text in an optional box
 thigmophobe		Find the direction away from the nearest other point
 thigmophobe.labels	Place point labels away from the nearest other point

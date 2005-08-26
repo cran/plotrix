@@ -50,11 +50,11 @@ polar.plot<-function(lengths,polar.pos,labels,label.pos,rp.type="r",...) {
  # the first and last line don't overlap
  if(missing(polar.pos)) radial.pos<-seq(0,(2-2/(npos+1))*pi,length=npos)
  else radial.pos<-pi*polar.pos/180
+ if(!missing(label.pos)) label.pos<-pi*label.pos/180
  if(missing(labels)) {
   labels<-as.character(seq(0,340,by=20))
-  label.pos<-seq(0,1.9*pi,length=18)
+  label.pos<-seq(0,1.89*pi,length=18)
  }
- if(!missing(label.pos)) label.pos<-pi*label.pos/180
  radial.plot(lengths,radial.pos,range(radial.pos),labels,label.pos,
   rp.type=rp.type,...)
 }

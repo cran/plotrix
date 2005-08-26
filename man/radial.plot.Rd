@@ -1,5 +1,5 @@
 \name{radial.plot}
-\title{radial.plot}
+\title{Plot values on a circular grid of 0 to 2*pi radians.}
 \usage{
  radial.plot(lengths,radial.pos,radial.range,labels,label.pos,rp.type="r",
  label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),mar=c(2,2,3,2),

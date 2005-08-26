@@ -1,9 +1,6 @@
 \name{axis.POSIXct.tickpos}
 \alias{axis.POSIXct.tickpos}
 \title{Positions of the ticks on a POSIXt date/time axis}
-\description{
- Calculates the positions of the ticks on a POSIXt date/time axis.
-}
 \usage{
  axis.POSIXct.tickpos(side,x,format,...)
 }
@@ -12,6 +9,9 @@
  \item{x}{A POSIXct date object.}
  \item{format}{The optional date format.}
  \item{...}{Additional arguments as in \code{axis.POSIXct}.}
+}
+\description{
+ Calculates the positions of the ticks on a POSIXt date/time axis.
 }
 \value{
  The positions of the axis ticks in user (i.e. date/time) units.
