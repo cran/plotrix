@@ -10,6 +10,7 @@ color.scale		Transform numeric values into a series of colors
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
+feather.plot		Display vectors along a horizontal line
 floating.pie		Display a pie chart at a specified position
 freq			Calculate frequencies
 gantt.chart		Display a Gantt chart with task priority colors

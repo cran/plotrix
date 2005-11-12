@@ -4,7 +4,7 @@ sizeplot<-function(x,y,scale=1,pow=0.5,powscale=TRUE,size=c(1,4),add=FALSE,...) 
  f<-factor(pair(x, y))
  n<-table(f)
  if(min(n) == max(n)) {
-  warn("all points repeated equally (why use sizeplot?)")
+  warning("all points repeated equally (why use sizeplot?)")
   if(powscale) psize <- rep(length(f), scale)
   else psize <- rep(length(f), size[1])
  }
