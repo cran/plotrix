@@ -23,7 +23,7 @@
 }
 \value{A vector of hexadecimal color values as used by \code{col}.}
 \author{Jim Lemon}
-\seealso{\code{\link{rescale}, \link{color.scale}}}
+\seealso{\code{\link{rescale}}, \code{\link{color.scale}}}
 \examples{
  # try it with red endpoints, green midpoints, and a blue vector longer
  # than 'nslices'
