@@ -14,6 +14,8 @@ feather.plot		Display vectors along a horizontal line
 floating.pie		Display a pie chart at a specified position
 freq			Calculate frequencies
 gantt.chart		Display a Gantt chart with task priority colors
+gap.barplot		Display a barplot with a range of values omitted
+gap.plot		Display a plot with a range of values omitted
 get.gantt.info		Enter information for a Gantt chart
 get.soil.texture	Enter information for soil textures
 gradient.rect		Display a rectangle with an arbitrary color gradient

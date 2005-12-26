@@ -21,7 +21,7 @@
  text labels for each sector.
 }
 \author{Jim Lemon}
-\seealso{\code{pie.labels}, \code{boxed.labels}}
+\seealso{\code{\link{pie.labels}}, \code{\link{boxed.labels}}}
 \examples{
  pieval<-c(2,4,6,8)
  plot(1:5,type="n",axes=FALSE)

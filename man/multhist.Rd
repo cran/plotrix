@@ -6,10 +6,11 @@
  of the elements
 }
 \usage{
- multhist(x,...)
+ multhist(x,breaks="Sturges",...)
 }
 \arguments{
  \item{x}{a list of numeric vectors}
+ \item{breaks}{vector of breakpoints passed to \code{hist}.}
  \item{...}{additional arguments to barplot}
 }
 \value{

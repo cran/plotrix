@@ -31,51 +31,80 @@ axis.break<-function(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
  # correct for logarithmic axes
  if(xaxl) br[c(1,3)]<-10^br[c(1,3)]
  if(yaxl) br[c(2,4)]<-10^br[c(2,4)]
- # draw the "blank" rectangle
- rect(br[1],br[2],br[3],br[4],col=bgcol,border=bgcol)
- if(style == "slash") {
-  # calculate the slash ends
+ if(style == "gap") {
+  # blank out the gap area and calculate the line segments
   if(axis == 1 || axis == 3) {
-   xbegin<-c(breakpos-xw,breakpos)
+   rect(breakpos,figxy[3],breakpos+xw,figxy[4]+yw,col=bgcol,border=bgcol)
+   xbegin<-c(breakpos,breakpos+xw)
+   ybegin<-c(figxy[3],figxy[3])
    xend<-c(breakpos,breakpos+xw)
-   ybegin<-c(br[2],br[2])
-   yend<-c(br[4],br[4])
+   yend<-c(figxy[4],figxy[4])
    if(xaxl) {
     xbegin<-10^xbegin
     xend<-10^xend
    }
   }
   else {
-   xbegin<-c(br[1],br[1])
-   xend<-c(br[3],br[3])
-   ybegin<-c(breakpos-yw,breakpos)
+   rect(figxy[1]-xw,breakpos,figxy[2]+xw,breakpos+yw,col=bgcol,border=bgcol)
+   xbegin<-c(figxy[1],figxy[1])
+   ybegin<-c(breakpos,breakpos+yw)
+   xend<-c(figxy[2],figxy[2])
    yend<-c(breakpos,breakpos+yw)
-   if(yaxl) {
-    ybegin<-10^ybegin
-    yend<-10^yend
+   if(xaxl) {
+    xbegin<-10^xbegin
+    xend<-10^xend
    }
   }
+  # clip the lines
+  par(xpd=TRUE)
  }
  else {
-  # calculate the zigzag ends
-  if(axis == 1 || axis == 3) {
-   xbegin<-c(breakpos-xw/2,breakpos-xw/4,breakpos+xw/4)
-   xend<-c(breakpos-xw/4,breakpos+xw/4,breakpos+xw/2)
-   ybegin<-c(ifelse(yaxl,10^figxy[3+(axis==3)],figxy[3+(axis==3)]),br[4],br[2])
-   yend<-c(br[4],br[2],ifelse(yaxl,10^figxy[3+(axis==3)],figxy[3+(axis==3)]))
-   if(xaxl) {
-    xbegin<-10^xbegin
-    xend<-10^xend
+  # draw the "blank" rectangle
+  rect(br[1],br[2],br[3],br[4],col=bgcol,border=bgcol)
+  if(style == "slash") {
+   # calculate the slash ends
+   if(axis == 1 || axis == 3) {
+    xbegin<-c(breakpos-xw,breakpos)
+    xend<-c(breakpos,breakpos+xw)
+    ybegin<-c(br[2],br[2])
+    yend<-c(br[4],br[4])
+    if(xaxl) {
+     xbegin<-10^xbegin
+     xend<-10^xend
+    }
+   }
+   else {
+    xbegin<-c(br[1],br[1])
+    xend<-c(br[3],br[3])
+    ybegin<-c(breakpos-yw,breakpos)
+    yend<-c(breakpos,breakpos+yw)
+    if(yaxl) {
+     ybegin<-10^ybegin
+     yend<-10^yend
+    }
    }
   }
   else {
-   xbegin<-c(ifelse(xaxl,10^figxy[1+(axis==4)],figxy[1+(axis==4)]),br[1],br[3])
-   xend<-c(br[1],br[3],ifelse(xaxl,10^figxy[1+(axis==4)],figxy[1+(axis==4)]))
-   ybegin<-c(breakpos-yw/2,breakpos-yw/4,breakpos+yw/4)
-   yend<-c(breakpos-yw/4,breakpos+yw/4,breakpos+yw/2)
-   if(yaxl) {
-    ybegin<-10^ybegin
-    yend<-10^yend
+   # calculate the zigzag ends
+   if(axis == 1 || axis == 3) {
+    xbegin<-c(breakpos-xw/2,breakpos-xw/4,breakpos+xw/4)
+    xend<-c(breakpos-xw/4,breakpos+xw/4,breakpos+xw/2)
+    ybegin<-c(ifelse(yaxl,10^figxy[3+(axis==3)],figxy[3+(axis==3)]),br[4],br[2])
+    yend<-c(br[4],br[2],ifelse(yaxl,10^figxy[3+(axis==3)],figxy[3+(axis==3)]))
+    if(xaxl) {
+     xbegin<-10^xbegin
+     xend<-10^xend
+    }
+   }
+   else {
+    xbegin<-c(ifelse(xaxl,10^figxy[1+(axis==4)],figxy[1+(axis==4)]),br[1],br[3])
+    xend<-c(br[1],br[3],ifelse(xaxl,10^figxy[1+(axis==4)],figxy[1+(axis==4)]))
+    ybegin<-c(breakpos-yw/2,breakpos-yw/4,breakpos+yw/4)
+    yend<-c(breakpos-yw/4,breakpos+yw/4,breakpos+yw/2)
+    if(yaxl) {
+     ybegin<-10^ybegin
+     yend<-10^yend
+    }
    }
   }
  }
