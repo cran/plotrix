@@ -12,7 +12,7 @@
  \item{labels}{text labels to place on the periphery of the circle. This 
   defaults to labels every 20 degrees. For no labels, pass an empty string.}
  \item{label.pos}{positions of the labels in degrees}
- \item{rp.type}{Whether to plot radial lines or a polygon.}
+ \item{rp.type}{Whether to plot radial lines, symbols or a polygon.}
  \item{...}{additional arguments passed to \code{radial.plot} and
   then to \code{plot}.}
 }

@@ -9,7 +9,7 @@
   line lengths.}
  \item{clock.pos}{numeric vector of positions on the 'clockface'.
   These must be in decimal hours and will be rescaled to radians.}
- \item{rp.type}{Whether to plot radial lines or a polygon.}
+ \item{rp.type}{Whether to plot radial lines, symbols or a polygon.}
  \item{...}{additional arguments are passed to \code{radial.plot} and
   then to \code{plot}.}
 }

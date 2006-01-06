@@ -26,7 +26,7 @@
  values. See \code{\link{axis.break}} for a brief discussion of plotting
  on discontinuous coordinates.
 }
-\author{Jim Lemon}
+\author{Jim Lemon and Ben Bolker}
 \seealso{\code{\link{gap.barplot}}}
 \examples{
  twogrp<-c(rnorm(10)+4,rnorm(10)+20)

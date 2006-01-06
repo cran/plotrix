@@ -37,8 +37,9 @@
  \code{\link{cluster.overplot}}}
 \examples{
  xy.mat<-cbind(rnorm(80),rnorm(80))
- plot(xy.mat,main="Before calling thigmophobe")
+ plot(xy.mat,main="Before calling thigmophobe",xlab="X",ylab="Y")
  if(dev.interactive()) par(ask=TRUE)
- plot(thigmophobe.points(xy.mat),main="After calling thigmophobe")
+ plot(thigmophobe.points(xy.mat),main="After calling thigmophobe",
+  xlab="X",ylab="Y")
  par(ask=FALSE)
 }

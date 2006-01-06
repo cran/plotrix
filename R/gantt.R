@@ -36,9 +36,11 @@ get.gantt.info<-function(format="%Y/%m/%d") {
 }
 
 gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,
- taskcolors=NULL,main="",ylab="") {
+ taskcolors=NULL,vgridpos=NULL,vgridlab=NULL,half.height=0.25,hgrid=FALSE,
+ main="",ylab="") {
+
  oldpar<-par(no.readonly=TRUE)
- if(is.null(x)) x<-get.x(format=format)
+ if(is.null(x)) x<-get.gantt.info(format=format)
  ntasks<-length(x$labels)
  plot.new()
  charheight<-strheight("M",units="inches")
@@ -49,21 +51,28 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,
  par(mai=c(0,maxwidth,charheight*5,0.1))
  par(omi=c(0.1,0.1,0.1,0.1))
  plot(x$starts,1:ntasks,xlim=xlim,ylim=c(0.5,ntasks+0.5),
-     main="",xlab="",ylab=ylab,axes=FALSE,type="n")
+  main="",xlab="",ylab=ylab,axes=FALSE,type="n")
  box()
  if(nchar(main)) mtext(main,3,2)
- tickpos<-axis.POSIXct(3,xlim)
+ if(is.null(vgridpos)) tickpos<-axis.POSIXct(3,xlim)
+ else tickpos<-vgridpos
+ # if no tick labels, use the grid positions if there
+ if(is.null(vgridlab) && !is.null(vgridpos))
+  vgridlab<-format.POSIXct(vgridpos,"%y/%m/%d")
+ # if vgridpos wasn't specified, use default axis ticks
+ if(is.null(vgridlab)) axis.POSIXct(3,xlim)
+ else axis(3,at=tickpos,labels=vgridlab)
  topdown<-seq(ntasks,1)
  axis(2,at=topdown,labels=x$labels,las=2)
- xrange<-par("usr")[1:2]
  abline(v=tickpos,col="darkgray",lty=3)
- half.height <- 0.25
  for(i in 1:ntasks) {
   rect(x$starts[i],topdown[i]-half.height,
-   x$ends[i],topdown[i]+half.height,
-   col=taskcolors[x$priorities[i]],
-   border=FALSE)
+  x$ends[i],topdown[i]+half.height,
+  col=taskcolors[x$priorities[i]],
+  border=FALSE)
  }
+ if(hgrid)
+  abline(h=(topdown[1:(ntasks-1)]+topdown[2:ntasks])/2,col="darkgray",lty=3)
  par(oldpar)
  invisible(x)
 }

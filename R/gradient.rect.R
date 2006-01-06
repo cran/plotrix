@@ -14,6 +14,7 @@ gradient.rect<-function(xleft,ybottom,xright,ytop,reds,greens,blues,
     xrights<-xright
    }
    rect(xlefts,ybottom,xrights,ytop,col=colvec,lty=0)
+   rect(xlefts[1],ybottom,xrights[nslices],ytop,border="black")
   }
   else {
    if(length(ybottom) == 1) {
@@ -26,6 +27,7 @@ gradient.rect<-function(xleft,ybottom,xright,ytop,reds,greens,blues,
     ytops<-ytop
    }
    rect(xleft,ybottoms,xright,ytops,col=colvec,lty=0)
+   rect(xleft,ybottoms[1],xright,ytops[nslices],border="black")
   }
  }
  return(colvec)
