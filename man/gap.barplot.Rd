@@ -1,6 +1,6 @@
 \name{gap.barplot}
 \alias{gap.barplot}
-\title{Display a plot with a gap (missing range) on one axis}
+\title{Display a barplot with a gap (missing range) on one axis}
 \description{
  Displays a barplot with a missing range.
 }

@@ -24,7 +24,7 @@
 }
 \value{A list of the \code{x,y} positions of the soil types plotted.}
 \author{Sander Oom and Jim Lemon}
-\seealso{\code{\link{get.soil.texture}, \code{\link{soil.texture}}}}
+\seealso{\code{\link{get.soil.texture}}, \code{\link{soil.texture}}}
 \examples{
  data(soils)
  # first just show the soil triangle

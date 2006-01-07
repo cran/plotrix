@@ -5,13 +5,14 @@
  Places labels for irregularly spaced values in a regular staggered order
 }
 \usage{
- spread.labels(x,y,labels=NULL,offset,col="white",border=FALSE,...)
+ spread.labels(x,y,labels=NULL,offset,bg="white",border=FALSE,...)
 }
 \arguments{
  \item{x,y}{x and y data values}
  \item{labels}{text strings}
- \item{offset}{How far away from the data points to place the labels.}
- \item{col}{The color of the background rectangles on which to place the
+ \item{offset}{How far away from the data points to place the labels.
+  Defaults to one quarter of the plot span.}
+ \item{bg}{The color of the background rectangles on which to place the
   labels.}
  \item{border}{Whether to draw a border around the labels.}
  \item{...}{additional arguments passed to \code{boxed.labels}.}
