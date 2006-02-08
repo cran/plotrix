@@ -1,5 +1,5 @@
 \name{thigmophobe.labels}
-\title{thigmophobe.labels}
+\title{Place labels away from the nearest point}
 \usage{
  thigmophobe.labels(x,y,labels=1:length(x),...)
 }

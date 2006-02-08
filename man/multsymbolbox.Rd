@@ -1,6 +1,6 @@
 \name{multsymbolbox}
 \alias{multsymbolbox}
-\title{draw boxes filled with symbols}
+\title{Draw boxes filled with symbols}
 \description{
  Draw boxes on the current figure filled with symbols representing
  individual counts.
