@@ -1,6 +1,10 @@
 \name{soil.texture}
 \alias{soil.texture}
-\title{soil.texture}
+\title{Soil texture triangle plot}
+\description{
+ Display a soil texture triangle with optional grid, labels and soil texture
+ points.
+}
 \usage{
  soil.texture(soiltexture=NULL,
  show.names=TRUE,show.lines=TRUE,show.grid=FALSE,bg.names="white",main="",
@@ -28,7 +32,7 @@
  \item{...}{Additional arguments passed to \code{\link{show.soil.texture}}
   or \code{points}.}
 }
-\description{
+\details{
  \code{soil.texture} displays a triangular plot area on which soil
   textures defined as proportions of sand, silt and clay can be plotted.
   Optional grid, vertex labels, soil type divisions and names may also 

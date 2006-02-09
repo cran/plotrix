@@ -20,7 +20,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{floating.pie}, \code{boxed.labels}}
+\seealso{\code{\link{floating.pie}}, \code{\link{boxed.labels}}}
 \examples{
  pieval<-c(2,4,6,8)
  plot(1:5,type="n",axes=FALSE)
