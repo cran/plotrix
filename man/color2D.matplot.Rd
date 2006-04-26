@@ -6,7 +6,7 @@
 }
 \usage{
  color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
-  show.legend=FALSE,...)
+  show.legend=FALSE,xlab="Column",ylab="Row",...)
 }
 \arguments{
  \item{x}{data values}
@@ -14,6 +14,7 @@
   that will be scaled to represent the range of numeric values}
  \item{show.legend}{whether to display a color range rectangle with the
   extreme numeric values in the lower left corner of the plot}
+ \item{xlab,ylab}{axis labels for the plot.}
  \item{...}{arguments passed to \code{plot}.}
 }
 \value{nil}
@@ -24,9 +25,13 @@
  conventional display of a 2D matrix with rows beginning at the top and
  columns at the left. The color scale defaults to black for the minimum
  value and white for the maximum.
+ The function \code{\link{image}} performs almost the same when passed a
+ matrix of values without grid positions, except that it assigns values to
+ a finite list of colors rather than calculating a color for each distinct
+ value.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{color.scale}}}
+\seealso{\code{\link{color.scale}}, \code{\link{image}}}
 \examples{
  x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
  color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,

@@ -1,3 +1,4 @@
+# x,y values are the center of the labels
 boxed.labels<-function(x,y,labels,bg="white",border=TRUE,xpad=0.6,ypad=0.6,...) {
  widths<-strwidth(labels)
  heights<-strheight(labels)

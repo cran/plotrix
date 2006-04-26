@@ -1,12 +1,12 @@
 \name{thigmophobe.labels}
 \title{Place labels away from the nearest point}
 \usage{
- thigmophobe.labels(x,y,labels=1:length(x),...)
+ thigmophobe.labels(x,y,labels=NULL,...)
 }
 \alias{thigmophobe.labels}
 \arguments{
- \item{x,y}{Numeric data vectors. Typically the x/y coordinates of
-  plotted points.}
+ \item{x,y}{Numeric data vectors or a list with two components. 
+  Typically the x/y coordinates of plotted points.}
  \item{labels}{A vector of strings that will be placed adjacent to
   each point. Defaults to the indices of the coordinates.}
  \item{...}{additional arguments are passed to \code{text}}.

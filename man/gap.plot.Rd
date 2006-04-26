@@ -23,8 +23,9 @@
 \details{
  Displays a plot omitting a range of values on one axis. Typically used 
  when there is a relatively large gap in the overall range of one set of
- values. See \code{\link{axis.break}} for a brief discussion of plotting
- on discontinuous coordinates.
+ values. The function warns the user if any values have been omitted by 
+ being in the"gap". See \code{\link{axis.break}} for a brief discussion 
+ of plotting on discontinuous coordinates.
 }
 \author{Jim Lemon and Ben Bolker}
 \seealso{\code{\link{gap.barplot}}}
