@@ -1,4 +1,4 @@
-# linearly transforms a vector of numbers to a new range
+# linearly transforms a vector or matrix of numbers to a new range
 
 rescale<-function(x,newrange) {
  if(missing(x) | missing(newrange)) {

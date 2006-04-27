@@ -1,3 +1,5 @@
+# linearly scales values of x into the color range specified
+
 color.scale<-function(x,redrange,greenrange,bluerange){
  ncolors<-length(x)
  if(length(redrange) > 1) {
@@ -15,6 +17,8 @@ color.scale<-function(x,redrange,greenrange,bluerange){
   if(min(blues) < 0 || max(blues) > 1) blues<-rescale(blues,c(0,1))
  }
  else blues<-rep(bluerange,ncolors)
- colvec<-rgb(reds,greens,blues)
- return(colvec)
+ xdim<-dim(x)
+ if(is.null(xdim)) colors<-rgb(reds,greens,blues)
+ else colors<-matrix(rgb(reds,greens,blues),nrow=xdim[1])
+ return(colors)
 }

@@ -40,49 +40,18 @@ thigmophobe<-function(x,y) {
 # are most distant from the nearest other point, where the
 # points are described as x and y coordinates.
 
-thigmophobe.labels<-function(x,y,labels=1:length(x),...) {
- if(!missing(x) && !missing(y)) {
-  text.pos<-thigmophobe(x,y)
-  text(x,y,labels,pos=text.pos,...)
- }
- else
-  cat("Usage: thigmophobe.labels(x,y,labels=1:length(x),...)\n")
-}
-
-# thigmophobe.points moves points closer than 'tol' away from
-# each other by 'away'
-
-thigmophobe.points<-function(x,y,away=NULL,tol=NULL) {
+thigmophobe.labels<-function(x,y,labels=NULL,...) {
  if(missing(x))
-  stop("Usage: thigmophobe.points(x,y,away=NULL,tol=NULL)")
- dimx<-dim(x)
- # if x is a data frame or matrix with at least two columns, split it
- if(missing(y) && !is.null(dimx)) {
-  y<-x[,2]
-  x<-x[,1]
- }
- xlen<-length(x)
- if(xlen != length(y)) stop("x and y must be the same length.")
- if(is.null(away)) away<-c(strwidth("o")/4,strheight("o")/4)
- if(is.null(tol)) tol<-c(strwidth("o")/2,strheight("o")/2)
- # use 'pos' to index offset
- away.x<-c(0,-away[1],0,away[1])
- away.y<-c(-away[2],0,away[2],0)
- away.index<-thigmophobe(x,y)
- flags<-1:xlen
- for(i in 1:xlen) {
-  if(!is.na(flags[i])) {
-   overplots<-abs(x - x[i]) <= tol[1] & abs(y - y[i]) <= tol[2]
-   if(sum(overplots) > 1) {
-    for(j in 1:xlen) {
-     if(overplots[j]) {
-      x[j]<-x[j]+away.x[away.index[j]]
-      y[j]<-y[j]+away.y[away.index[j]]
-     }
-    }
-   }
+  stop("Usage: thigmophobe.labels(x,y,labels=1:length(x))")
+ # if x has at least two columns, split it
+ if(missing(y)) {
+  if(is.list(x) && length(x) >= 2) {
+   y<-x[[2]]
+   x<-x[[1]]
   }
-  flags[overplots]<-NA
+  else stop("if y is missing, x must be a list with at least 2 columns")
  }
- return(list(x=x,y=y))
+ if(is.null(labels)) labels<-1:length(x)
+ text.pos<-thigmophobe(x,y)
+ text(x,y,labels,pos=text.pos,...)
 }

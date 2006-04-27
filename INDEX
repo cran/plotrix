@@ -12,18 +12,22 @@ color2D.matplot		Display a numeric matrix as a color matrix
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
+draw.tilted.sector	Display a single 3D pie sector
 feather.plot		Display vectors along a horizontal line
-floating.pie		Display a pie chart at a specified position
+floating.pie		Display a flat pie chart at a specified position
 freq			Calculate frequencies
 gantt.chart		Display a Gantt chart with task priority colors
 gap.barplot		Display a barplot with a range of values omitted
 gap.plot		Display a plot with a range of values omitted
 get.gantt.info		Enter information for a Gantt chart
 get.soil.texture	Enter information for soil textures
+get.triprop		Enter triplets of proportions or percentages
 gradient.rect		Display a rectangle with an arbitrary color gradient
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
-pie.labels		Place labels at specified radial positions
+pie3D			Display a 3D pie chart
+pie3D.labels		Display a label on a 3D pie chart
+pie.labels		Place flat pie chart labels at specified radial positions
 plot.freq		Display a horizontal barplot of frequencies
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon on a 0-360 degree scale
@@ -31,8 +35,8 @@ print.freq		Display frequency tables
 radial.plot		Plot values as lines/polygon on a 0-2*pi radian scale
 remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
-show.soil.texture	Add soil composition points to a "soil texture triangle"
 sizeplot		Display overlying points as larger points
+smoothColors		Build a vector of interpolated colors
 soil.texture		Display a "soil texture triangle"
 soils			Soil texture data from 125 soils
 spread.labels		Spread out labels for irregularly spaced values
@@ -41,4 +45,7 @@ symbolbox		Draw a box filled with symbols
 textbox			Display justified text in an optional box
 thigmophobe		Find the direction away from the nearest other point
 thigmophobe.labels	Place point labels away from the nearest other point
-thigmophobe.points	Move close points away from each other
+triax.abline		Display one or more lines across a triangle plot
+triax.frame		Display a three axis frame with optional grid
+triax.plot		Display a triangle (three axis) plot
+triax.points		Display triplets of values as points on a triangle plot

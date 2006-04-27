@@ -1,5 +1,5 @@
 color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
- show.legend=FALSE,...) {
+ show.legend=FALSE,xlab="Column",ylab="Row",...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)

@@ -5,9 +5,9 @@
  color.scale(x,redrange,greenrange,bluerange)
 }
 \arguments{
- \item{x}{a numeric vector}
+ \item{x}{a numeric vector, matrix or data frame}
  \item{redrange,greenrange,bluerange}
-  {color ranges into which to scale the numeric vector \code{x}}
+  {color ranges into which to scale \code{x}}
 }
 \description{
  \code{color.scale} calculates a sequence of colors by a linear
@@ -19,7 +19,7 @@
   0 and 1. The function is useful for highlighting a numeric 
   dimension or adding an extra "dimension" to a plot.}
 }
-\value{A vector of hexadecimal color values as used by \code{col}.}
+\value{A vector or matrix of hexadecimal color values.}
 \author{Jim Lemon}
 \seealso{\code{\link{rescale}}}
 \examples{

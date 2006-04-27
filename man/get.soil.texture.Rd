@@ -2,24 +2,28 @@
 \alias{get.soil.texture}
 \title{Enter soil texture data.}
 \usage{
- get.soil.texture(use.percentages=FALSE)
+ get.soil.texture(use.percentages=FALSE,cnames=c("sand","silt","clay"))
 }
 \arguments{
  \item{use.percentages}{Logical - whether to treat the entries as
   percentages and scale to proportions.}
+ \item{cnames}{column names for the resulting three column matrix.}
 }
 \description{
- \code{get.soil.texture} allows the user to enter soil textures as the
-  proportions or percentages of three components, sand, silt and clay.}
+ \code{get.soil.texture} calls \code{get.triprop} to allow the user to 
+ enter soil textures as the proportions or percentages of three 
+ components, sand, silt and clay.}
 }
 \value{A matrix of the components of one or more soil samples.}
 \author{Sander Oom and Jim Lemon}
-\seealso{\code{\link{show.soil.texture}},\code{\link{soil.texture}}}
+\seealso{\code{\link{soil.texture}},\code{\link{get.triprop}}}
 \examples{
- newsp<-get.soil.texture()
- # show the soil triangle
- soil.texture()
- # now plot the observations
- show.soil.texture(newsp)
+ if(dev.interactive()) {
+  newsp<-get.soil.texture()
+  # show the soil triangle
+  soil.texture()
+  # now plot the observations
+  show.soil.texture(newsp)
+ }
 }
 \keyword{misc}

@@ -1,6 +1,7 @@
 plot.freq<-function(x,main=NULL,col=NULL,show.prop=TRUE,show.pc=FALSE,
  show.labels=FALSE,show.axis=FALSE,...) {
- if(class(x) != "freq") stop("Usage: plot.freq(x) where x is a \"freq\" object") 
+ if(class(x) != "freq")
+  stop("Usage: plot.freq(x,...) where x is a \"freq\" object") 
  oldmar<-par("mar")
  par(mar=c(2,4,4,1))
  nbars<-length(x)

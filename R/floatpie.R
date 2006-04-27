@@ -3,7 +3,7 @@
 floating.pie<-function (xpos,ypos,x,edges=200,radius=1,col=NULL,
  startpos=0,...) {
  if (!is.numeric(x) || any(is.na(x) | x<=0))
-  stop("floating.pie: `sectors' values must be positive.")
+  stop("floating.pie: x values must be positive.")
  x<-c(0,cumsum(x)/sum(x))
  dx <- diff(x)
  nx <- length(dx)

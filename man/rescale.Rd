@@ -1,21 +1,22 @@
 \name{rescale}
 \title{Scale numbers into a new range.}
-\description{Scale a vector of numbers into a new range.}
+\description{Scale a vector or matrix of numbers into a new range.}
 \usage{
  rescale(x,newrange)
 }
 \alias{rescale}
 \arguments{
- \item{x}{A numeric vector.}
+ \item{x}{A numeric vector, matrix or data frame.}
  \item{newrange}{The minimum and maximum value of the range into which
   \code{x} will be scaled.}
 }
 \details{
  \code{rescale} performs a simple linear conversion of \code{x} into the
-  range specified by \code{newrange}. Only numeric vectors with some variation
-  will be accepted. NAs are now preserved - formerly the function would fail.}
+  range specified by \code{newrange}. Only numeric vectors, matrices or data
+  frames with some variation will be accepted. NAs are now preserved - 
+  formerly the function would fail.}
 }
-\value{On success, the rescaled vector.}
+\value{On success, the rescaled object.}
 \author{Jim Lemon}
 \examples{
  # scale one vector into the range of another
