@@ -24,7 +24,7 @@
 \author{Jim Lemon}
 \seealso{\code{\link{triax.plot}}}
 \examples{
- triax.plot(data.frame(l=0.3,r=0.3,b=0.4))
+ triax.plot(data.frame(l=0.3,r=0.3,b=0.4),main="Triax ablines")
  triax.abline(l=0.2,col="red")
  triax.abline(r=0.4,col="green")
  triax.abline(b=0.6,col="blue")

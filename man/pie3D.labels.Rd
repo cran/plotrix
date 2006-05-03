@@ -22,15 +22,17 @@
 }
 \details{
  \code{pie3D.label} displays labels on a 3D pie chart. The positions
- of the labels may be given as angles in radians (usually the bisector of a 
- pie sector) or explicitly in user units. The latter overrides the calculation
- of the former.
+ of the labels are given as angles in radians (usually the bisector of the
+ pie sectors). As the labels can be passed directly to \code{\link{pie3D}},
+ this function would probably not be called by the user.
 }
 \author{Jim Lemon}
 \seealso{\code{\link{pie3D}}, \code{\link{draw.tilted.sector}}}
 \examples{
  pieval<-c(2,4,6,8)
- bisectors<-pie3D(pieval,explode=0.1,main="3D PIE")
- pie3D.labels(bisectors,labels=c("TWO","FOUR","SIX","EIGHT"))
+ bisectors<-pie3D(pieval,explode=0.1,main="3D PIE OPINIONS")
+ pielabels<-
+  c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
+ pie3D.labels(bisectors,labels=pielabels)
 }
 \keyword{misc}

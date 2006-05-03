@@ -9,13 +9,17 @@ floating.pie<-function (xpos,ypos,x,edges=200,radius=1,col=NULL,
  nx <- length(dx)
  if (is.null(col)) col<-rainbow(nx)
  else if(length(col) < nx) col<-rep(col,nx)
+ # scale the y radius
+ xylim<-par("usr")
+ plotdim<-par("pin")
+ yradius<-radius*(xylim[4]-xylim[3])/(xylim[2]-xylim[1])*plotdim[1]/plotdim[2]
  # get the center values in radians
  bc<-2*pi*(x[1:nx]+dx/2)+startpos
  for(i in 1:nx) {
   n<-max(2,floor(edges*dx[i]))
   t2p<-2*pi*seq(x[i],x[i + 1],length=n)+startpos
   xc<-c(cos(t2p)*radius+xpos,xpos)
-  yc<-c(sin(t2p)*radius+ypos,ypos)
+  yc<-c(sin(t2p)*yradius+ypos,ypos)
   polygon(xc,yc,col=col[i],...)
   t2p<-2*pi*mean(x[i+0:1])+startpos
   xc<-cos(t2p)*radius
@@ -31,7 +35,11 @@ floating.pie<-function (xpos,ypos,x,edges=200,radius=1,col=NULL,
 pie.labels<-function(x,y,angles,labels,radius=1,bg="white",border=TRUE,...) {
  if(nargs()<4)
   stop("Usage: pie.labels(x,y,angles,labels,radius=1,bg=\"white\",border=TRUE,...)")
+ # scale the y radius
+ xylim<-par("usr")
+ plotdim<-par("pin")
+ yradius<-radius*(xylim[4]-xylim[3])/(xylim[2]-xylim[1])*plotdim[1]/plotdim[2]
  xc<-cos(angles)*radius+x
- yc<-sin(angles)*radius+y
+ yc<-sin(angles)*yradius+y
  boxed.labels(xc,yc,labels,bg=bg,border=border,...)
 }

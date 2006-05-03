@@ -72,7 +72,7 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
  labels,labelcol=par("fg"),labelcex=1.5) {
 
  oldcex<-par("cex")
- par(cex=labelcex)
+ par(cex=labelcex,xpd=TRUE)
  for(i in 1:length(labels)) {
   xpos<-1.2 * cos(radialpos[i])
   fr<-radialpos[i] > pi
@@ -80,7 +80,7 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
   ypos<-sin(radialpos[i])*(1-sin(theta)) * 0.75 * radius + offset
   text(xpos,ypos,labels[i],adj=0.5,col=labelcol)
  }
- par(cex=oldcex)
+ par(cex=oldcex,xpd=FALSE)
 }
 
 pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,

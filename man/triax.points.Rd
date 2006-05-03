@@ -31,8 +31,8 @@
 \seealso{\code{\link{triax.plot}},\code{\link{thigmophobe.labels}}}
 \examples{
  data(soils)
- if(dev.interactive()) par(ask=TRUE)
  triax.plot(soils[1:10,],main="Adding points to a triangle plot")
+ if(dev.interactive()) par(ask=TRUE)
  triax.points(soils[11:20,],col.symbols="green",pch=3)
  if(dev.interactive()) par(ask=FALSE)
 }

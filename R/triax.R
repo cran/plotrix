@@ -1,4 +1,4 @@
-get.triprop<-function(use.percentages=FALSE,cnames=c("1","2","3")) {
+get.triprop<-function(use.percentages=FALSE,cnames=c("1st","2nd","3rd")) {
  cat("Enter the label and ")
  cat(ifelse(use.percentages,"percentages ","proportions "))
  cat("of",cnames[1],cnames[2],"and",cnames[3],"for each observation.\n")
@@ -17,13 +17,16 @@ get.triprop<-function(use.percentages=FALSE,cnames=c("1","2","3")) {
   if(nchar(nextlabel)) {
    if(is.na(proplabels[1])) proplabels<-nextlabel
    else proplabels<-c(proplabels,nextlabel)
-   nextprop<-as.numeric(readline(cnames[1]))
+   cat(cnames[1],"- ")
+   nextprop<-as.numeric(readline())
    if(is.na(prop1[1])) prop1<-nextprop
    else prop1<-c(prop1,nextprop)
-   nextprop<-as.numeric(readline(cnames[2]))
+   cat(cnames[2],"- ")
+   nextprop<-as.numeric(readline())
    if(is.na(prop2[1])) prop2<-nextprop
    else prop2<-c(prop2,nextprop)
-   nextprop<-as.numeric(readline(cnames[3]))
+   cat(cnames[3],"- ")
+   nextprop<-as.numeric(readline())
    if(is.na(prop3[1])) prop3<-nextprop
    else prop3<-c(prop3,nextprop)
    nprop<-nprop+1

@@ -23,9 +23,10 @@
 \author{Jim Lemon}
 \seealso{\code{\link{pie.labels}}, \code{\link{boxed.labels}}}
 \examples{
- pieval<-c(2,4,6,8)
- plot(1:5,type="n",axes=FALSE)
+ plot(1:5,type="n",main="Floating Pie test",axes=FALSE)
  box()
- floating.pie(3,3,pieval)
+ floating.pie(2,4,c(2,4,6,8),radius=0.5)
+ floating.pie(3,3,c(1,4,7,8),radius=0.5)
+ floating.pie(4,2,c(3,4,6,7),radius=0.5)
 }
 \keyword{misc}
