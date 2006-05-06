@@ -2,7 +2,7 @@
 \alias{get.triprop}
 \title{Enter three proportion data - usually soil textures.}
 \usage{
- get.triprop(use.percentages=FALSE,cnames=c("1","2","3"))
+ get.triprop(use.percentages=FALSE,cnames=c("1st","2nd","3rd"))
 }
 \arguments{
  \item{use.percentages}{Logical - whether to treat the entries as
@@ -24,9 +24,9 @@
   # get the default proportions for soil textures
   newsp<-get.triprop()
   # show the soil triangle
-  soil.texture()
+  soil.texture(main="Soil proportions")
   # now plot the observations
-  show.soil.texture(newsp)
+  triax.points(newsp)
  }
 }
 \keyword{misc}

@@ -30,7 +30,7 @@
 \author{Jim Lemon and Ben Bolker}
 \seealso{\code{\link{gap.plot}}}
 \examples{
- plot(3:10)
+ plot(3:10,main="Axis break test")
  # put a break at the default axis and position
  axis.break()
  axis.break(2,2.9,style="zigzag")

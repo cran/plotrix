@@ -41,6 +41,8 @@
 \seealso{\code{\link{pie3D.labels}}, \code{\link{draw.tilted.sector}}}
 \examples{
  pieval<-c(2,4,6,8)
- pie3D(pieval,labels=c("TWO","FOUR","SIX","EIGHT"),explode=0.1,main="3D PIE")
+ pielabels<-
+  c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
+ pie3D(pieval,labels=pielabels,explode=0.1,main="3D PIE OPINIONS")
 }
 \keyword{misc}

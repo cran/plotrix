@@ -30,6 +30,6 @@
 \author{Jim Lemon}
 \seealso{\code{\link{count.overplot}},\code{\link{sizeplot}}}
 \examples{
- xy.mat<-cbind(sample(1:10,100,TRUE),sample(1:10,100,TRUE))
- plot(cluster.overplot(xy.mat))
+ xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
+ plot(cluster.overplot(xy.mat),main="Cluster overplot test")
 }

@@ -16,7 +16,7 @@
   separated by a maximum of \code{tol}, a two element numeric vector of
   the x and y tolerance.  Defaults to 1/2 of the width of a lower case 
   "o" in the x direction and 1/2 of the height of a lower case "o" in 
-  the y direction..
+  the y direction.
 }
 \value{nil}
 \keyword{misc}
@@ -24,5 +24,6 @@
 \seealso{\code{\link{cluster.overplot}},\code{\link{sizeplot}}}
 \examples{
  xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
- count.overplot(xy.mat)
+ count.overplot(xy.mat,main="Count overplot test",
+  xlab="X values",ylab="Y values")
 }
