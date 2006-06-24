@@ -9,7 +9,10 @@ cluster.overplot<-function(x,y,away=NULL,tol=NULL) {
  }
  xlen<-length(x)
  if(xlen != length(y)) stop("x and y must be the same length.")
- if(is.null(away)) away<-c(strwidth("o"),5*strheight("o")/8)
+ if(is.null(away)) {
+  plot(x,y,main="",xlab="",ylab="",axes=FALSE,type="n")
+  away<-c(strwidth("o"),5*strheight("o")/8)
+ }
  if(is.null(tol)) tol<-c(strwidth("o")/2,strheight("o")/2)
  away.x<-c(0,-away[1],away[1],0,0,-away[1],away[1],-away[1],away[1])
  away.y<-c(0,0,0,-away[2],away[2],-away[2],away[2],away[2],-away[2])

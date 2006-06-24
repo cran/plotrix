@@ -14,7 +14,7 @@
   then to \code{plot}.}
 }
 \description{
- \code{clock24.plot} displays a plot of radial lines or a polygon
+ \code{clock24.plot} displays a plot of radial lines, symbols or a polygon
   centered at the midpoint of the plot frame on a 24 hour 'clockface'. 
   In contrast to \code{radial.plot}, the positions are interpreted as 
   beginning at vertical (000) and moving clockwise.}
@@ -26,11 +26,12 @@
 \examples{
  testlen<-rnorm(24)*2+5
  testpos<-0:23+rnorm(24)/4
- clock24.plot(testlen,testpos,main="Test Clock24",show.grid=FALSE,
+ clock24.plot(testlen,testpos,main="Test Clock24 (lines)",show.grid=FALSE,
   line.col="green",lwd=3)
- par(ask=TRUE)
+ if(dev.interactive()) par(ask=TRUE)
  # now do a 'daylight' plot
- clock24.plot(testlen[7:19],testpos[7:19],main="Test Clock24 daytime",
-  line.col="blue",lwd=3)
+ clock24.plot(testlen[7:19],testpos[7:19],
+  main="Test Clock24 daytime (symbols)",
+  line.col="blue",rp.type="s",lwd=3)
  par(ask=FALSE)
 }

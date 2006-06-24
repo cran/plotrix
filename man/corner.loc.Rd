@@ -1,7 +1,7 @@
 \name{corner.loc}
 \alias{corner.loc}
 \alias{corner.label}
-\title{Find corner points and add labels in corners}
+\title{Find corner locations and display a label}
 \description{
  Finds the coordinates in user parameters of a specified corner of the
  figure region and/or puts a label there

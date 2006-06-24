@@ -35,9 +35,9 @@ get.gantt.info<-function(format="%Y/%m/%d") {
   priorities=priorities))
 }
 
-gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,
- taskcolors=NULL,vgridpos=NULL,vgridlab=NULL,half.height=0.25,hgrid=FALSE,
- main="",ylab="") {
+gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
+ priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,half.height=0.25,
+ hgrid=FALSE,main="",ylab="") {
 
  oldpar<-par(no.readonly=TRUE)
  if(is.null(x)) x<-get.gantt.info(format=format)
@@ -46,10 +46,16 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,
  charheight<-strheight("M",units="inches")
  maxwidth<-max(strwidth(x$labels,units="inches"))*1.5
  if(is.null(xlim)) xlim=range(c(x$starts,x$ends))
+ npriorities<-max(x$priorities)
  if(is.null(taskcolors))
-  taskcolors<-color.gradient(c(255,0),c(0,0),c(0,255),max(x$priorities))
- par(mai=c(0,maxwidth,charheight*5,0.1))
- par(omi=c(0.1,0.1,0.1,0.1))
+  taskcolors<-color.gradient(c(255,0),c(0,0),c(0,255),npriorities)
+ else {
+  if(length(taskcolors) < npriorities)
+   taskcolors<-rep(taskcolors,length.out=npriorities)
+ }
+ bottom.margin<-ifelse(priority.legend,0.5,0) 
+ par(mai=c(bottom.margin,maxwidth,charheight*5,0.1))
+ par(omi=c(0.1,0.1,0.1,0.1),xaxs="i",yaxs="i")
  plot(x$starts,1:ntasks,xlim=xlim,ylim=c(0.5,ntasks+0.5),
   main="",xlab="",ylab=ylab,axes=FALSE,type="n")
  box()
@@ -73,6 +79,13 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,
  }
  if(hgrid)
   abline(h=(topdown[1:(ntasks-1)]+topdown[2:ntasks])/2,col="darkgray",lty=3)
+ if(priority.legend) {
+  par(xpd=TRUE)
+  plim<-par("usr")
+  gradient.rect(plim[1],0,plim[1]+(plim[2]-plim[1])/4,0.3,col=taskcolors)
+  text(plim[1],0.2,"Priorities  ",adj=c(1,0.5))
+  text(c(plim[1],plim[1]+(plim[2]-plim[1])/4),c(0.4,0.4),c("High","Low"))
+ }
  par(oldpar)
  invisible(x)
 }

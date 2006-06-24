@@ -12,29 +12,22 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
  xp<-cos(angles)*(radius)+x
  yp<-sin(angles)*(1-sin(theta))*radius+y
  if(start > 3 * pi/2) {
+  viscurve<-angles <= pi*2
   # end facet
   polygon(c(xp[nv],x,x,xp[nv],xp[nv]),
   c(yp[nv],y,y-height,yp[nv]-height,yp[nv]-height),
   border=border,col=col)
   # outer curve
-  polygon(c(xp,rev(xp)),
-   c(yp,rev(yp)-height),border=border,col=col)
+  polygon(c(xp[viscurve],rev(xp[viscurve])),
+   c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
   # start facet
   polygon(c(xp[1],x,x,xp[1],xp[1]),
   c(yp[1],y,y-height,yp[1]-height,yp[1]),
   border=border,col=col)
  }
  else {
-  if(end > pi && start < pi) {
-   # first start the polygon at pi
-   angles<-c(seq(pi,end,by=angleinc),end)
-   sxp<-cos(angles)*radius+x
-   syp<-sin(angles)*(1-sin(theta))*radius+y
-  }
-  else {
-   sxp<-xp
-   syp<-yp
-  }
+  if(end > pi && start < pi) viscurve<-angles >= pi
+  else viscurve <- rep(TRUE,length(angles))
   if(start > pi/2) {
    # start facet
    polygon(c(xp[1],x,x,xp[1],xp[1]),
@@ -45,13 +38,13 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
    c(yp[nv],y,y-height,yp[nv]-height,yp[nv]-height),
    border=border,col=col)
    # outer curve
-   polygon(c(sxp,rev(sxp)),
-    c(syp,rev(syp)-height),border=border,col=col)
+   polygon(c(xp[viscurve],rev(xp[viscurve])),
+    c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
   }
   else {
    # outer curve
-   polygon(c(sxp,rev(sxp)),
-    c(syp,rev(syp)-height),border=border,col=col)
+   polygon(c(xp[viscurve],rev(xp[viscurve])),
+    c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
    if(end > pi/2 && end < 3 * pi/2) {
     # end facet
     polygon(c(xp[nv],x,x,xp[nv],xp[nv]),
@@ -64,6 +57,7 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
    border=border,col=col)
   }
  }
+ # top sector
  polygon(c(xp,x),c(yp,y),border=border,col=col)
  return(bisector)
 }
@@ -83,7 +77,7 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
  par(cex=oldcex,xpd=FALSE)
 }
 
-pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,
+pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,
  border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),
  labelcex=1.5,explode=0,...) {
  
@@ -95,7 +89,7 @@ pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,
  if(any(is.na(x))) x<-x[!is.na(x)]
  oldmar=par("mar")
  par(mar=c(4,4,4,4),xpd=TRUE)
- x<-c(0,cumsum(x)/sum(x))*2*pi
+ x<-c(0,cumsum(x)/sum(x))*2*pi+start
  nsectors <- length(x)-1
  if (is.null(col)) col<-rainbow(nsectors)
  else if(length(col) < nsectors) col<-rep(col,nsectors)
@@ -112,9 +106,11 @@ pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,
     start=x[i],end=x[i+1],edges=edges,border=border,col=col[i],
     explode=explode)
  }
- if(!is.null(labels))
+ if(!is.null(labels)) {
+  if(!is.null(labelpos)) bc<-labelpos
   pie3D.labels(bc,radius=radius,height=height,theta=theta,
    labels=labels,labelcol=labelcol,labelcex=labelcex)
+ }
  par(mar=oldmar,xpd=FALSE)
  invisible(bc)
 }

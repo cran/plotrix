@@ -13,7 +13,9 @@
  \code{thigmophobe} returns the direction (as 1|2|3|4 - see pos= in 
  \code{text}) away from the nearest point to each of the points 
  described by \code{x} and \code{y}.
- It is typically used to get the offset to automatically place labels
+}
+\note{
+ Typically used to get the offset to automatically place labels
  on a scatterplot or similar using \code{thigmophobe.labels} to avoid 
  overlapping labels. The name means "one who fears being touched".
 }

@@ -41,13 +41,13 @@ get.triprop<-function(use.percentages=FALSE,cnames=c("1st","2nd","3rd")) {
  return(triprop)
 }
 
-triax.abline<-function(l=NULL,r=NULL,b=NULL,col=par("col"),lty=par("lty")) {
+triax.abline<-function(b=NULL,r=NULL,l=NULL,col=par("col"),lty=par("lty")) {
  sin60<-sin(pi/3)
- if(!is.null(l)) {
-  if(any(l>1)) l<-l/100
-  lx1<-l*0.5
-  ly<-l*sin60
-  segments(lx1,ly,1-lx1,ly,col=col,lty=lty)
+ if(!is.null(b)) {
+  if(any(b>1)) l<-b/100
+  bx2<-0.5*(1-b)
+  by2<-sin60*(1-b)
+  segments(1-b,0,bx2,by2,col=col,lty=lty)
  }
  if(!is.null(r)) {
   if(any(r>1)) l<-r/100
@@ -56,11 +56,11 @@ triax.abline<-function(l=NULL,r=NULL,b=NULL,col=par("col"),lty=par("lty")) {
   rx2<-1-r
   segments(rx1,ry1,r,0,col=col,lty=lty)
  }
- if(!is.null(b)) {
-  if(any(b>1)) l<-b/100
-  bx2<-0.5*(1-b)
-  by2<-sin60*(1-b)
-  segments(1-b,0,bx2,by2,col=col,lty=lty)
+ if(!is.null(l)) {
+  if(any(l>1)) l<-l/100
+  lx1<-l*0.5
+  ly<-l*sin60
+  segments(lx1,ly,1-lx1,ly,col=col,lty=lty)
  }
 }
 
@@ -96,24 +96,26 @@ triax.points<-function(x,show.legend=FALSE,label.points=FALSE,
  invisible(list(x=xpos,y=ypos)) 
 }
 
-triax.frame<-function(main="",
- at=list(l=seq(0.1,0.9,by=0.1),r=seq(0.1,0.9,by=0.1),b=seq(0.1,0.9,by=0.1)),
- axis.labels=NULL,tick.labels=NULL,col.axis="black",
- show.grid=FALSE,col.grid="gray",lty.grid=par("lty")) {
+triax.frame<-function(main="",at=seq(0.1,0.9,by=0.1),
+ axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
+ align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty")) {
 
+ par(pty="s",mar=c(5,2,4,2))
+ plot(0.5,type="n",axes=FALSE,xlim=c(0,1),ylim=c(0,1),main=main,
+  xlab="",ylab="")
  sin60<-sin(pi/3)
  # bottom ticks
- bx1<-at$b
+ bx1<-at
  bx2<-bx1+0.01
  by1<-rep(0,9)
  by2<-rep(-0.02*sin60,9)
  # left ticks
- ly1<-at$l*sin60
+ ly1<-at*sin60
  lx1<-bx1*0.5
  lx2<-lx1-0.02
  ly2<-ly1
  # right ticks
- rx1<-at$r*0.5+0.5
+ rx1<-at*0.5+0.5
  rx2<-rx1+0.01
  ry1<-rev(ly1)
  ry2<-rev(ly2)+0.02*sin60
@@ -125,15 +127,18 @@ triax.frame<-function(main="",
  }
  par(fg=col.axis)
  if(is.null(tick.labels)) tick.labels<-at
- text(lx1-0.05,ly1,tick.labels$l)
- par(srt=57)
- text(0.13,0.5,axis.labels[1])
- text(rx2+0.02,ry1+0.04,tick.labels$r)
- par(srt=303)
- text(0.86,0.52,axis.labels[2])
- text(bx1+0.025,by1-0.05,rev(tick.labels$b))
+ text(lx1-0.05,ly1,tick.labels,cex=cex.ticks)
+ label.adj<-0.5
+ if(align.labels) par(srt=57)
+ else label.adj<-1
+ text(0.13,0.5,axis.labels[3],adj=label.adj,cex=cex.axis)
+ text(rx2+0.02,ry1+0.04,tick.labels,cex=cex.ticks)
+ if(align.labels) par(srt=303)
+ else label.adj<-0
+ text(0.86,0.52,axis.labels[2],adj=label.adj,cex=cex.axis)
+ text(bx1+0.025,by1-0.05,rev(tick.labels),cex=cex.ticks)
  par(srt=0)
- text(0.5,-0.14,axis.labels[3])
+ text(0.5,-0.14,axis.labels[1],cex=cex.axis)
  # draw the triangle and ticks
  x1<-c(0,0,0.5)
  x2<-c(1,0.5,1)
@@ -147,29 +152,24 @@ triax.frame<-function(main="",
  segments(lx1,ly1,lx2,ly2)
  # right ticks
  segments(rx1,ry1,rx2,ry2)
- if(nchar(main)) {
-  par(cex=1.5)
-  text(0.5,1.1,main)
-  par(cex=1)
- }
 }
 
-triax.plot<-function(x=NULL,main="",
- at=list(l=seq(0.1,0.9,by=0.1),r=seq(0.1,0.9,by=0.1),b=seq(0.1,0.9,by=0.1)),
- axis.labels=NULL,tick.labels=NULL,col.axis="black",
- show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
+triax.plot<-function(x=NULL,main="",at=seq(0.1,0.9,by=0.1),
+ axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
+ align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
  show.legend=FALSE,label.points=FALSE,point.labels=NULL,
  col.symbols="black",pch=par("pch"),...) {
  
+ oldpar<-par(no.readonly=TRUE)
  par(xpd=TRUE)
- currentfg<-par("fg")
- plot(0.5,type="n",axes=FALSE,xlim=c(0,1.1),ylim=c(0,1),main="",xlab="",ylab="")
  if(is.null(axis.labels)) axis.labels<-colnames(x)[1:3]
  triax.frame(main=main,at=at,axis.labels=axis.labels,tick.labels=tick.labels,
-  col.axis=col.axis,show.grid=show.grid,col.grid=col.grid,lty.grid=lty.grid)
+  col.axis=col.axis,cex.axis=cex.axis,cex.ticks=cex.ticks,
+  align.labels=align.labels,show.grid=show.grid,
+  col.grid=col.grid,lty.grid=lty.grid)
  if(is.null(x)) xypos<-NULL
  else xypos<-triax.points(x,show.legend=show.legend,label.points=label.points,
    point.labels=point.labels,col.symbols=col.symbols,pch=pch,...)
- par(fg=currentfg,xpd=FALSE)
+ par(oldpar)
  invisible(xypos) 
 }

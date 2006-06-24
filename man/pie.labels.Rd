@@ -19,6 +19,11 @@
  \item{...}{Arguments passed to \code{boxed.labels}.}
 }
 \value{nil}
+\note{
+ Remember that \code{x} and \code{y} specify the center of the pie chart and
+ that the label positions are specified by angles and radii from that 
+ center.
+}
 \author{Jim Lemon}
 \seealso{\code{\link{floating.pie}}, \code{\link{boxed.labels}}}
 \examples{

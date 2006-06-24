@@ -7,7 +7,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   else x<-as.vector(x)
   oldpar<-par(no.readonly=TRUE)
   par(xaxs="i",yaxs="i")
-  plot(c(0,xdim[2]),c(0,xdim[1]),type="n",axes=FALSE,...)
+  plot(c(0,xdim[2]),c(0,xdim[1]),xlab=xlab,ylab=ylab,type="n",axes=FALSE,...)
   box()
   axis(1,at=pretty(0:xdim[2])[-1]-0.5,labels=pretty(0:xdim[2])[-1])
   yticks<-pretty(0:xdim[1])[-1]

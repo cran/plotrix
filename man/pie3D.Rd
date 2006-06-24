@@ -5,7 +5,7 @@
  Displays a 3D pie chart with optional labels.
 }
 \usage{
- pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,border=par("fg"),
+ pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,border=par("fg"),
   col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
   explode=0,...)
 }
@@ -15,6 +15,7 @@
  \item{radius}{the radius of the pie in user units}
  \item{height}{the height of the pie in user units}
  \item{theta}{The angle of viewing in radians}
+ \item{start}{The angle at which to start drawing sectors.}
  \item{border}{The color of the sector border lines}
  \item{col}{The colors of the sectors}
  \item{labels}{Optional labels for each sector}
@@ -36,6 +37,17 @@
  positions and sector colors must be at least equal to the number of values 
  in \code{x}. If the labels are long, it may help to reduce the radius of
  the pie.
+}
+\note{
+ Due to the somewhat primitive method used to draw sectors, a sector that
+ extends beyond both pi/2 and 3*pi/2 radians in either direction will not
+ display properly. Setting \code{start} to pi/2 will often fix this, but
+ the user may have to adjust \code{start} and the order of sectors in extreme
+ cases.
+ While \code{pie3D} can be used to display a 2D pie chart by setting
+ height=0 and theta=pi, the labels produced by \code{pie3D.labels} will
+ not be well positioned. It is probably better to use \code{floating.pie}
+ for this, or use \code{pie.labels} for the labels.
 }
 \author{Jim Lemon}
 \seealso{\code{\link{pie3D.labels}}, \code{\link{draw.tilted.sector}}}

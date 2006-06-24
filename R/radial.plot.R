@@ -9,7 +9,7 @@ clock24.plot<-function(lengths,clock.pos,rp.type="r",...) {
  if(missing(clock.pos)) clock.pos<-seq(0,24-24/(npos+1),length=npos)
  # start at "midnight" and go clockwise
  radial.pos<-pi*(450-clock.pos*15)/180
- clock.labels<-as.character(seq(0,2300,by=100))
+ clock.labels<-paste(0:23,"00",sep="")
  clock.label.pos<-seq(5*pi/2,7*pi/12,by=-pi/12)
  radial.plot(lengths,radial.pos,labels=clock.labels,
   label.pos=clock.label.pos,rp.type=rp.type,...)
@@ -34,8 +34,8 @@ polar.plot<-function(lengths,polar.pos,labels,label.pos,rp.type="r",...) {
  radial.plot(lengths,radial.pos,labels,label.pos,rp.type=rp.type,...)
 }
 
-# plots radial lines of length 'lengths' or a polygon with corresponding
-# vertices specified by 'radial.pos' in radians.
+# plots radial lines of length 'lengths', symbols at 'lengths' from the
+# center or a polygon with corresponding vertices at 'radial.pos' in radians.
 # starts at the 'east' position and goes counterclockwise
 # label.prop is the proportion of max(lengths) that gives the
 # radial position of the labels
@@ -43,10 +43,11 @@ polar.plot<-function(lengths,polar.pos,labels,label.pos,rp.type="r",...) {
 radial.plot<-function(lengths,radial.pos,labels,label.pos,
  rp.type="r",label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),
  mar=c(2,2,3,2),show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),
- point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NA,...) {
+ point.symbols=NULL,point.col=NULL,show.centroid=FALSE,
+ radial.lim=NA,...) {
  
  length.dim<-dim(lengths)
- if(is.na(radial.lim)) radial.lim<-max(lengths)
+ if(is.na(radial.lim)) radial.lim<-range(lengths)
  if(is.null(length.dim)) {
   npoints<-length(lengths)
   nsets<-1
@@ -62,17 +63,17 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
  if(is.null(radial.pos.dim))
   radial.pos<-matrix(rep(radial.pos,nsets),nrow=nsets,byrow=TRUE)
  if(show.grid) {
-  grid.pos<-pretty(c(lengths,radial.lim))
+  grid.pos<-pretty(radial.lim)
   if(grid.pos[1] <= 0) grid.pos<-grid.pos[-1]
   maxlength<-max(grid.pos)
   angles<-seq(0,1.96*pi,by=0.04*pi)
  }
  else {
   grid.pos<-NA
-  maxlength<-max(c(lengths,radial.lim))
+  maxlength<-max(radial.lim)
  }
- oldmar<-par("mar")
- par(mar=mar)
+ oldpar<-par(no.readonly=TRUE)
+ par(mar=mar,pty="s")
  plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
   main=main,xlab=xlab,ylab=ylab,...)
  par(xpd=TRUE)
@@ -90,12 +91,8 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
   if(rp.type == "r") segments(0,0,xpos,ypos,col=line.col[i],...)
   if(rp.type == "p") polygon(xpos,ypos,border=line.col[i],col=NA,...)
   if(rp.type == "s") points(xpos,ypos,pch=point.symbols[i],col=point.col[i],...)
-  if(show.centroid) {
-   oldcex<-par("cex")
-   par(cex=2)
-   points(mean(xpos),mean(ypos),col=point.col[i],...)
-   par(cex=oldcex)
-  }
+  if(show.centroid)
+   points(mean(xpos),mean(ypos),col=point.col[i],pch=point.symbols[i],cex=2,...)
  }
  if(missing(labels)) {
   if(length(radial.pos) <= 20) {
@@ -124,5 +121,5 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
   ypos<-rep(-maxlength/15,length(grid.pos))
   boxed.labels(grid.pos,ypos,as.character(grid.pos),border=FALSE)
  }
- par(mar=oldmar,xpd=FALSE)
+ par(oldpar)
 }

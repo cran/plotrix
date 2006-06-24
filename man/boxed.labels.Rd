@@ -16,10 +16,10 @@
   extent of the text within.}
  \item{...}{additional arguments passed to \code{text}.}
 }
-\details{
+\note{
  This function is best for regularly spaced labels where overlapping is
- not a problem. See \code{\link{thigmophobe.labels}} for squeezing labels 
- in tight places.
+ not a problem. See \code{\link{thigmophobe.labels}} for placing labels 
+ where overlap is likely.
 }
 \value{nil}
 \author{Jim Lemon}

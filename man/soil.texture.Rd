@@ -6,9 +6,8 @@
  points.
 }
 \usage{
- soil.texture(soiltexture=NULL,main="",
- at=list(l=seq(0.1,0.9,by=0.1),r=seq(0.1,0.9,by=0.1),b=seq(0.1,0.9,by=0.1)),
- axis.labels=c("percent clay","percent silt","percent sand"),
+ soil.texture(soiltexture=NULL,main="",at=seq(0.1,0.9,by=0.1),
+ axis.labels=c("percent sand","percent silt","percent clay"),
  tick.labels=list(l=seq(10,90,by=10),r=seq(10,90,by=10),b=seq(10,90,by=10)),
  show.names=TRUE,show.lines=TRUE,col.names="gray",bg.names=par("bg"),
  show.grid=FALSE,col.axis="black",col.lines="gray",col.grid="gray",
@@ -23,9 +22,7 @@
  \item{main}{The title of the soil texture plot. Defaults to nothing.}
  \item{at}{Positions on the three axes where ticks will be drawn.}
  \item{axis.labels}{Labels for the axes.}
- \item{tick.labels}{Tick labels - a list with three components, "l", "r"
-  and "b", giving the left, right and bottom tick positions on the three
-  axes.}
+ \item{tick.labels}{The tick labels for the three axes.}
  \item{show.names}{Logical - whether to show the names of different
   soil types within the soil triangle.}
  \item{show.lines}{Logical - whether to show the boundaries of the
@@ -56,7 +53,9 @@
   If a matrix of soil textures is present, these will be plotted.}
 }
 \value{If \code{soiltexture} was included, a list of the \code{x,y} 
- positions of the soil types plotted. If not, nil.}
+ positions of the soil types plotted. If not, nil.
+}
+\note{This is now a special case of \code{triax.plot}.}
 \author{Sander Oom and Jim Lemon}
 \seealso{\code{\link{get.soil.texture}}, \code{\link{triax.plot}}}
 \examples{

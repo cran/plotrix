@@ -16,14 +16,14 @@
   frames with some variation will be accepted. NAs are now preserved - 
   formerly the function would fail.}
 }
-\value{On success, the rescaled object.}
+\value{On success, the rescaled object, otherwise the original object.}
 \author{Jim Lemon}
 \examples{
  # scale one vector into the range of another
  normal.counts<-tabulate(cut(rnorm(100),breaks=seq(-3,3,by=1)))
  normal.density<-rescale(dnorm(seq(-3,3,length=100)),range(normal.counts))
  # now plot them
- plot(c(-2.5,-1.5,-0.5,0.5,1.5,2.5),normal.counts,type="h")
+ plot(c(-2.5,-1.5,-0.5,0.5,1.5,2.5),normal.counts,xlab="X values",type="h")
  lines(seq(-3,3,length=100),normal.density)
 }
 \keyword{misc}
