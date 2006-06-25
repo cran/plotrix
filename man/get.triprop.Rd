@@ -14,17 +14,17 @@
  or percentages of three components such as sand, silt and clay in soils.}
 }
 \details{
- The three proportions of each row must sum to 100 or 1 within 1% or
+ The three proportions of each row must sum to 100 or 1 within 1\% or
  the function will warn the operator.}
 \value{A matrix of the components of one or more observations.}
 \author{Jim Lemon}
 \seealso{\code{\link{triax.plot}}, \code{\link{soil.texture}}}
 \examples{
  if(dev.interactive()) {
-  # get the default proportions for soil textures
+  # get some proportions
   newsp<-get.triprop()
-  # show the soil triangle
-  soil.texture(main="Soil proportions")
+  # show the triangle
+  triax.frame(main="Test triax.plot")
   # now plot the observations
   triax.points(newsp)
  }

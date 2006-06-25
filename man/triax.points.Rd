@@ -1,8 +1,8 @@
 \name{triax.points}
 \alias{triax.points}
-\title{Triangle plot}
+\title{Triangle plot points}
 \description{
- Display a triangle plot with optional grid.
+ Display points on a triangle plot.
 }
 \usage{
  triax.points(x,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
@@ -12,8 +12,8 @@
  \item{x}{Matrix or data frame where each row is three proportions or 
   percentages that must sum to 1 or 100 respectively.}
  \item{show.legend}{Logical - whether to display a legend.}
- \item{label.points}{Logical - whether to call /code{thigmophobe.labels} to
-  label the points.}
+ \item{label.points}{Logical - whether to call \code{thigmophobe.labels}
+  to label the points.}
  \item{point.labels}{Optional labels for the points and/or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}

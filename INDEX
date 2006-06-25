@@ -1,6 +1,7 @@
 axis.break		Put a slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
 barplot.symbol.default	Barplot with bars filled with symbols : height
+bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
 clean.args		Remove arguments that would cause an error
 clock24.plot		Plot values as lines/polygon on a 24 hour "clockface"
@@ -12,6 +13,7 @@ color2D.matplot		Display a numeric matrix as a color matrix
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
+draw.circle		Display a circle on an existing plot
 draw.tilted.sector	Display a single 3D pie sector
 feather.plot		Display vectors along a horizontal line
 floating.pie		Display a flat pie chart at a specified position
@@ -25,12 +27,15 @@ get.triprop		Enter triplets of proportions or percentages
 gradient.rect		Display a rectangle with an arbitrary color gradient
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
+oz.windrose		Display an Australian BOM wind rose
+oz.windrose.legend	Display a wind rose legend in Australian BOM style
 pie3D			Display a 3D pie chart
 pie3D.labels		Display a label on a 3D pie chart
 pie.labels		Place flat pie chart labels at specified radial positions
 plot.freq		Display a horizontal barplot of frequencies
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon on a 0-360 degree scale
+polygon.shadow		Display a shadow effect for a polygon
 print.freq		Display frequency tables
 radial.plot		Plot values as lines/polygon on a 0-2*pi radian scale
 remove.args		Remove specified arguments from argument list

@@ -27,7 +27,7 @@ freq<-function(x,variable.labels=NULL,display.na=TRUE,bin.range=NULL,
   nfreq<-xdim[2]
   if(is.null(variable.labels)) variable.labels<-names(x)
   if(is.null(variable.labels))
-   variable.labels<-paste("V",1:xdim[2],sep="",collapse="")
+   variable.labels<-paste("V",1:xdim[2],sep="")
  }
  freq.list<-rep(list(0),nfreq)
  for(i in 1:nfreq) {

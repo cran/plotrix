@@ -16,12 +16,13 @@
  \item{line.spacing}{Spacing between lines of text labels.} 
  \item{...}{Additional arguments to be passed to \code{mtext}.}
 }
-\details{
+\note{
  This function is mainly useful when either long axis labels or a large
  number of labels are to be placed without overlapping. It places the 
  labels regularly spaced and staggered along the axis specified. The 
  user may wish to increase the space beneath the plot using 
- \code{mar} before calling \code{staxlab}.
+ \code{mar} before calling \code{staxlab}. It is probably only useful on
+ the bottom of the plot.
 }
 \value{nil}
 \author{Jim Lemon}

@@ -5,12 +5,12 @@
  Display lines on a triangle plot.
 }
 \usage{
- triax.abline(l=NULL,r=NULL,b=NULL,col=par("col"),lty=par("lty"))
+ triax.abline(b=NULL,r=NULL,l=NULL,col=par("col"),lty=par("lty"))
 }
 \arguments{
- \item{l}{Lines relating to the left axis.}
+ \item{b}{Lines relating to the bottom axis.}
  \item{r}{Lines relating to the right axis.}
- \item{b}{Lines relating to the botton axis.}
+ \item{l}{Lines relating to the left axis.}
  \item{col}{Color(s) of the lines.}
  \item{lty}{Type(s) of the lines.}
 }
@@ -24,9 +24,9 @@
 \author{Jim Lemon}
 \seealso{\code{\link{triax.plot}}}
 \examples{
- triax.plot(data.frame(l=0.3,r=0.3,b=0.4),main="Triax ablines")
- triax.abline(l=0.2,col="red")
- triax.abline(r=0.4,col="green")
- triax.abline(b=0.6,col="blue")
+ triax.plot(data.frame(bottom=0.4,right=0.3,left=0.3),main="Triax ablines")
+ triax.abline(l=0.3,col="red")
+ triax.abline(r=0.3,col="green")
+ triax.abline(b=0.4,col="blue")
 }
 \keyword{misc}

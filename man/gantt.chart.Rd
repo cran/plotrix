@@ -6,7 +6,8 @@
 }
 \usage{
  gantt.chart(x=NULL,format="\%Y/\%m/\%d",xlim=NULL,taskcolors=NULL,
-  vgridpos=NULL,vgridlab=NULL,half.height=0.25,hgrid=FALSE,main="",ylab="")
+  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,half.height=0.25,
+  hgrid=FALSE,main="",ylab="")
 }
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
@@ -16,6 +17,7 @@
   (see \code{\link{strptime}}).}
  \item{xlim}{the horizontal limits of the plot.}
  \item{taskcolors}{a vector of colors used to illustrate task priority.}
+ \item{priority.legend}{Whether to display a priority color legend.}
  \item{vgridpos}{optional positions of the vertical grid lines}
  \item{vgridlab}{optional labels for the vertical grid lines}
  \item{half.height}{the proportion of the spacing between task bars that
@@ -26,8 +28,13 @@
  \item{ylab}{vertical axis label - usually suppressed.}
 }
 \value{
- The list used to create the chart. This can be saved and reused rather 
- than manually entering the information each time the chart is displayed.
+ The list used to create the chart - see \code{\link{get.gantt.info}} for
+ details. This can be saved and reused rather than manually entering the 
+ information each time the chart is displayed.
+}
+\details{
+ If task priority colors are not wanted, simply mark every task as priority
+ 1 or set \code{taskcolors} to a single value to suppress the coloring.
 }
 \author{Jim Lemon (original by Scott Waichler - features by Ulrike Grömping)}
 \seealso{\code{\link{get.gantt.info}}}
@@ -50,6 +57,6 @@
  vgridlab<-
   c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
  gantt.chart(gantt.info,main="Calendar date Gantt chart (2004)",
-  vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE)
+  priority.legend=TRUE,vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE)
 }
 \keyword{misc}

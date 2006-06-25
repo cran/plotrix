@@ -18,7 +18,7 @@
 }
 }
 \value{nil}
-\details{
+\note{
  There is some controversy about the propriety of using discontinuous
  coordinates for plotting, and thus axis breaks. Discontinuous coordinates
  allow widely separated groups of values or outliers to appear without
@@ -36,7 +36,7 @@
  axis.break(2,2.9,style="zigzag")
  if(dev.interactive()) par(ask=TRUE)
  twogrp<-c(rnorm(10)+4,rnorm(10)+20)
- gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
+ gap.plot(twogrp,gap.bounds=c(8,16),xlab="Index",ylab="Group values",
   main="Plot two separated groups")
  par(ask=FALSE)
 }

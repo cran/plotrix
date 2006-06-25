@@ -25,9 +25,11 @@
  conventional display of a 2D matrix with rows beginning at the top and
  columns at the left. The color scale defaults to black for the minimum
  value and white for the maximum.
+}
+\note{
  The function \code{\link{image}} performs almost the same when passed a
  matrix of values without grid positions, except that it assigns values to
- a finite list of colors rather than calculating a color for each distinct
+ a specified list of colors rather than calculating a color for each distinct
  value.
 }
 \author{Jim Lemon}

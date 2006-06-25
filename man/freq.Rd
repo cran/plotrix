@@ -21,9 +21,10 @@
  \code{freq} calls \code{integer.frequency} if \code{x} is numeric, otherwise
  \code{table} to get the frequency counts and builds a list with one or more 
  components containing the value labels and counts.
- Note that a limit on the number of bins has been removed, so passing a
- numeric vector with many levels may produce a huge, useless "frequency"
- table.
+}
+\note{
+ The limit on the number of bins has been removed, so passing a numeric 
+ vector with many levels may produce a huge, useless "frequency" table.
 }
 \value{A list with one or more components. Each component includes the 
  values of the relevant variable as the names.}

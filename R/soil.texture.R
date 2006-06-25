@@ -2,9 +2,8 @@ get.soil.texture<-function(use.percentages=FALSE,cnames=c("sand","silt","clay"))
  return(get.triprop(use.percentages=use.percentages,cnames=cnames))
 }
 
-soil.texture<-function(soiltexture=NULL,main="",
- at=list(l=seq(0.1,0.9,by=0.1),r=seq(0.1,0.9,by=0.1),b=seq(0.1,0.9,by=0.1)),
- axis.labels=c("percent clay","percent silt","percent sand"),
+soil.texture<-function(soiltexture=NULL,main="",at=seq(0.1,0.9,by=0.1),
+ axis.labels=c("percent sand","percent silt","percent clay"),
  tick.labels=list(l=seq(10,90,by=10),r=seq(10,90,by=10),b=seq(10,90,by=10)),
  show.names=TRUE,show.lines=TRUE,col.names="gray",bg.names=par("bg"),
  show.grid=FALSE,col.axis="black",col.lines="gray",col.grid="gray",

@@ -16,7 +16,7 @@
   offsetting each label in the direction returned by 
   \code{thigmophobe}.}
 }
-\details{
+\note{
  Typically used to automatically place labels on a scatterplot or 
  similar to avoid overlapping labels.
 }

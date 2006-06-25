@@ -16,14 +16,17 @@
   If any length is greater than \code{nslices}, it is truncated to that
   length. If any color values are less than 0 or greater than 1, they 
   are rescaled to that range.
-  The function is mainly useful for defining a set of colors to represent
-  a known number of gradations. Such a set can be used to assign a grade
-  to values (e.g. points on a scatterplot) and display a color bar using
-  \code{gradient.rect} as a legend.}
+}
+\note{
+ The function is mainly useful for defining a set of colors to represent
+ a known number of gradations. Such a set can be used to assign a grade
+ to a small number of values (e.g. points on a scatterplot - but see 
+ \code{color.scale} for large numbers) and display a color bar using
+ \code{gradient.rect} as a legend.}
 }
 \value{A vector of hexadecimal color values as used by \code{col}.}
 \author{Jim Lemon}
-\seealso{\code{\link{rescale}}, \code{\link{color.scale}}}
+\seealso{\code{\link{rescale}},\code{\link{approx}},\code{\link{color.scale}}}
 \examples{
  # try it with red endpoints, green midpoints, and a blue vector longer
  # than 'nslices'

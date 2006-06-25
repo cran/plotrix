@@ -35,8 +35,8 @@
  \item{point.symbols}{the symbols for plotting (as in pch).}
  \item{point.col}{colors for the symbols.}
  \item{show.centroid}{whether to display a centroid.}
- \item{radial.lim}{the value of the outermost grid circle. Defaults
-  to \code{pretty(range((lengths)))}.}
+ \item{radial.lim}{the range of the grid circle. Defaults
+  to \code{range(pretty((lengths)))}.}
  \item{...}{additional arguments are passed to \code{plot}.}
 }
 \description{
@@ -48,10 +48,10 @@
 }
 \value{nil}
 \details{The radial.plot family of plots is useful for illustrating
- cyclic data such as wind direction and velocity, activity at different
- times of the day, and so on. While \code{radial.plot} actually does
- the plotting, another function is usually called for specific types
- of cyclic data.}
+ cyclic data such as wind direction or speed (but see \code{oz.windrose}
+ for both), activity at different times of the day, and so on. While 
+ \code{radial.plot} actually does the plotting, another function is usually 
+ called for specific types of cyclic data.}
 \author{Jim Lemon}
 \keyword{misc}
 \seealso{\code{\link{polar.plot}},\code{\link{clock24.plot}}}
@@ -64,7 +64,7 @@
  testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
  testpos<-seq(0,1.98*pi,length=100)
  radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")
- radial.plot(testlen,testpos,rp.type="s",main="Test Symbols",point.col="green",
-  show.centroid=TRUE)
+ radial.plot(testlen,testpos,rp.type="s",main="Test Symbols",point.symbols=16,
+  point.col="green",show.centroid=TRUE)
  par(ask=FALSE)
 }

@@ -17,7 +17,7 @@
  \item{border}{Whether to draw a border around the labels.}
  \item{...}{additional arguments passed to \code{boxed.labels}.}
 }
-\details{
+\note{
  This function is mainly useful when labeling irregularly spaced data points
  that are "spread out" along one dimension. It places the labels regularly
  spaced and staggered on the long dimension of the data, drawing lines from

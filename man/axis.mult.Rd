@@ -30,6 +30,8 @@
  call should set the relevant label to an empty string in such cases.
  It is simplest to call \code{plot} with \code{axes=FALSE} and then 
  display the box and any standard axes before calling \code{axis.mult}.
+}
+\note{
  While \code{axis.mult} will try to display an axis on any side, the top
  and right margins will require adjustment using \code{par} for
  \code{axis.mult} to display properly.
@@ -40,6 +42,6 @@
  plot(1:10*0.001,1:10*100,axes=FALSE,xlab="",ylab="",main="Axis multipliers")
  box()
  axis.mult(1,mult=0.001)
- axis.mult(2,mult=100,mult.label="Y value/100")
+ axis.mult(2,mult=100)
 }
 \keyword{misc}
