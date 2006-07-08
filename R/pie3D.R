@@ -26,8 +26,12 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
   border=border,col=col)
  }
  else {
-  if(end > pi && start < pi) viscurve<-angles >= pi
-  else viscurve <- rep(TRUE,length(angles))
+  if((end > pi) && (start <= pi))  {
+   viscurve<-(angles >= pi) & (angles <= 2*pi)
+  }
+  else {
+   viscurve <- rep(TRUE,length(angles))
+  }
   if(start > pi/2) {
    # start facet
    polygon(c(xp[1],x,x,xp[1],xp[1]),
@@ -35,16 +39,19 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
    border=border,col=col)
    # end facet
    polygon(c(xp[nv],x,x,xp[nv],xp[nv]),
-   c(yp[nv],y,y-height,yp[nv]-height,yp[nv]-height),
-   border=border,col=col)
+    c(yp[nv],y,y-height,yp[nv]-height,yp[nv]-height),
+    border=border,col=col)
    # outer curve
-   polygon(c(xp[viscurve],rev(xp[viscurve])),
-    c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
+   if(end > pi)
+    polygon(c(xp[viscurve],rev(xp[viscurve])),
+     c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
   }
   else {
+   viscurve<-(angles >= pi) & (angles <= 2*pi)
    # outer curve
-   polygon(c(xp[viscurve],rev(xp[viscurve])),
-    c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
+   if(end > pi || start < 2 * pi)
+    polygon(c(xp[viscurve],rev(xp[viscurve])),
+     c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
    if(end > pi/2 && end < 3 * pi/2) {
     # end facet
     polygon(c(xp[nv],x,x,xp[nv],xp[nv]),
@@ -78,9 +85,9 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
 }
 
 pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,
- border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),
- labelcex=1.5,explode=0,...) {
- 
+ border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,
+ labelcol=par("fg"),labelcex=1.5,explode=0,...) {
+
  if(!is.numeric(x) || any(x<0))
   stop("pie3D: x values must be positive numbers")
  # ignore zeros
