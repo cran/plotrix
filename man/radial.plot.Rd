@@ -4,7 +4,7 @@
  radial.plot(lengths,radial.pos,labels,label.pos,rp.type="r",
  label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),mar=c(2,2,3,2),
  show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),point.symbols=NULL,
- point.col=NULL,show.centroid=FALSE,radial.lim=NA,...)
+ point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...)
 }
 \alias{radial.plot}
 \arguments{
