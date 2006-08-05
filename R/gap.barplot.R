@@ -23,7 +23,7 @@ gap.barplot<-function(y,gap,xaxlab,xtics,yaxlab,ytics,ylab,col,...) {
   labels=c(ytics[littletics],ytics[bigtics]))
  halfwidth<-min(diff(x))/2
  plot.lim<-par("usr")
- rect(x-halfwidth,plot.lim[3],x+halfwidth,
-  c(y[littleones],y[bigones]-gapsize),col=col)
+ y[bigones]<-y[bigones]-gapsize
+ rect(x - halfwidth, plot.lim[3], x + halfwidth, y, col = col)
  axis.break(2,gap[1],style="gap")
 }

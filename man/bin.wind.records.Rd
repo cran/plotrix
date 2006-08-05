@@ -13,7 +13,7 @@
   directions.}
  \item{ndir}{Number of direction bins in a compass circle.}
  \item{radians}{Whether wind directions are in radians.}
- \item{speed.breaks}{Maximum wind speed for each speed bin.}
+ \item{speed.breaks}{Minimum wind speed for each speed bin.}
 }
 \details{
  \code{bin.wind.records} bins a number of wind direction and speed

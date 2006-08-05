@@ -111,5 +111,5 @@ axis.break<-function(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
  # draw the segments
  segments(xbegin,ybegin,xend,yend,col=breakcol,lty=1)
  # restore xpd
- par(xpd=old.xpd)
+ par(xpd=FALSE)
 }

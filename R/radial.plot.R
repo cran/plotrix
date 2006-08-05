@@ -44,10 +44,10 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
  rp.type="r",label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),
  mar=c(2,2,3,2),show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),
  point.symbols=NULL,point.col=NULL,show.centroid=FALSE,
- radial.lim=NA,...) {
+ radial.lim=NULL,...) {
  
  length.dim<-dim(lengths)
- if(is.na(radial.lim)) radial.lim<-range(lengths)
+ if(is.null(radial.lim)) radial.lim<-range(lengths)
  if(is.null(length.dim)) {
   npoints<-length(lengths)
   nsets<-1
@@ -80,7 +80,11 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
  if(length(line.col) < nsets) line.col<-1:nsets
  if(rp.type == "s") {
   if(is.null(point.symbols)) point.symbols<-1:nsets
+  if(length(point.symbols)<nsets)
+   point.symbols<-rep(point.symbols,length.out=nsets)
   if(is.null(point.col)) point.col<-1:nsets
+  if(length(point.col)<nsets)
+   point.col<-rep(point.col,length.out=nsets)
  }
  for(i in 1:nsets) {
   # get the vector of x positions

@@ -3,6 +3,7 @@ axis.mult		Display an axis with a multiplier
 barplot.symbol.default	Barplot with bars filled with symbols : height
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
+centipede.plot		Display a centipede plot (caterpillar plot or league table)
 clean.args		Remove arguments that would cause an error
 clock24.plot		Plot values as lines/polygon on a 24 hour "clockface"
 cluster.overplot	Display overlying points as clusters
@@ -21,7 +22,9 @@ freq			Calculate frequencies
 gantt.chart		Display a Gantt chart with task priority colors
 gap.barplot		Display a barplot with a range of values omitted
 gap.plot		Display a plot with a range of values omitted
+get.breaks		Calculate the breakpoints for weighted.hist
 get.gantt.info		Enter information for a Gantt chart
+get.segs		Calculate the midpoints and limits for centipede.plot
 get.soil.texture	Enter information for soil textures
 get.triprop		Enter triplets of proportions or percentages
 gradient.rect		Display a rectangle with an arbitrary color gradient
@@ -46,6 +49,7 @@ soil.texture		Display a "soil texture triangle"
 soils			Soil texture data from 125 soils
 spread.labels		Spread out labels for irregularly spaced values
 staxlab			Display staggered labels on an axis
+std.error		Calculate the conventional standard error
 symbolbox		Draw a box filled with symbols
 textbox			Display justified text in an optional box
 thigmophobe		Find the direction away from the nearest other point
@@ -54,3 +58,4 @@ triax.abline		Display one or more lines across a triangle plot
 triax.frame		Display a three axis frame with optional grid
 triax.plot		Display a triangle (three axis) plot
 triax.points		Display triplets of values as points on a triangle plot
+weighted.hist		Calculate and optionally display a weighted histogram
