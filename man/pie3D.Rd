@@ -7,7 +7,7 @@
 \usage{
  pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,border=par("fg"),
   col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
-  explode=0,...)
+  explode=0,shade=0.8,...)
 }
 \arguments{
  \item{x}{a numeric vector for which each value will be a sector}
@@ -23,6 +23,8 @@
  \item{labelcol}{The color of the labels}
  \item{labelcex}{The character expansion factor for the labels}
  \item{explode}{The amount to "explode" the pie in user units}
+ \item{shade}{If > 0 and < 1, the proportion to reduce the
+  brightness of the sector color to get a better 3D effect.}
  \item{...}{graphical parameters passed to \code{plot}}
 }
 \value{
