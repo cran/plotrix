@@ -6,7 +6,7 @@
 }
 \usage{
  color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
-  show.legend=FALSE,xlab="Column",ylab="Row",...)
+  show.legend=FALSE,xlab="Column",ylab="Row",do.hex=FALSE,...)
 }
 \arguments{
  \item{x}{data values}
@@ -15,6 +15,7 @@
  \item{show.legend}{whether to display a color range rectangle with the
   extreme numeric values in the lower left corner of the plot}
  \item{xlab,ylab}{axis labels for the plot.}
+ \item{do.hex}{plot packed hexagons instead of rectangles.}
  \item{...}{arguments passed to \code{plot}.}
 }
 \value{nil}
@@ -25,6 +26,10 @@
  conventional display of a 2D matrix with rows beginning at the top and
  columns at the left. The color scale defaults to black for the minimum
  value and white for the maximum.
+ 
+ If hexagonal cells are requested, the user may have to adjust the plot
+ device dimensions to get regular hexagons, especially when the matrix
+ is not square.
 }
 \note{
  The function \code{\link{image}} performs almost the same when passed a
@@ -36,7 +41,12 @@
 \seealso{\code{\link{color.scale}}, \code{\link{image}}}
 \examples{
  x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
+ if(dev.interactive()) par(ask=TRUE)
  color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,
   xlab="Columns",ylab="Rows",main="2D matrix plot")
+ # now do hexagons
+ color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,
+  xlab="Columns",ylab="Rows",do.hex=TRUE,main="2D matrix plot (hexagons)")
+ par(ask=FALSE)
 }
 \keyword{misc}

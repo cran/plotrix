@@ -1,67 +1,65 @@
 draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
- start=0,end=pi*2,border=par("fg"),col=par("bg"),explode=0) {
+ start=0,end=pi*2,border=par("fg"),col=par("bg"),explode=0,shade=0.8) {
 
  angleinc<-2*pi/edges
  angles<-c(seq(start,end,by=angleinc),end)
+ # don't try to draw the circumferential edge beyond these angles
+ viscurve<-(angles >= pi) & (angles <= 2*pi)
  nv<-length(angles)
  bisector<-(start+end)/2
  if(explode) {
   x<-x+cos(bisector)*explode
   y<-y+sin(bisector)*(1-sin(theta))*explode
  }
+ if(shade > 0 && shade < 1) {
+  rgbcol<-col2rgb(col)
+  shadecol<-rgb(shade*rgbcol[1]/255,shade*rgbcol[2]/255,shade*rgbcol[3]/255)
+ }
+ else shadecol<-col
  xp<-cos(angles)*(radius)+x
  yp<-sin(angles)*(1-sin(theta))*radius+y
  if(start > 3 * pi/2) {
-  viscurve<-angles <= pi*2
-  # end facet
   polygon(c(xp[nv],x,x,xp[nv],xp[nv]),
   c(yp[nv],y,y-height,yp[nv]-height,yp[nv]-height),
-  border=border,col=col)
+  border=border,col=shadecol)
   # outer curve
   polygon(c(xp[viscurve],rev(xp[viscurve])),
-   c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
+   c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=shadecol)
   # start facet
   polygon(c(xp[1],x,x,xp[1],xp[1]),
   c(yp[1],y,y-height,yp[1]-height,yp[1]),
-  border=border,col=col)
+  border=border,col=shadecol)
  }
  else {
-  if((end > pi) && (start <= pi))  {
-   viscurve<-(angles >= pi) & (angles <= 2*pi)
-  }
-  else {
-   viscurve <- rep(TRUE,length(angles))
-  }
   if(start > pi/2) {
    # start facet
    polygon(c(xp[1],x,x,xp[1],xp[1]),
    c(yp[1],y,y-height,yp[1]-height,yp[1]),
-   border=border,col=col)
+   border=border,col=shadecol)
    # end facet
    polygon(c(xp[nv],x,x,xp[nv],xp[nv]),
     c(yp[nv],y,y-height,yp[nv]-height,yp[nv]-height),
-    border=border,col=col)
+    border=border,col=shadecol)
    # outer curve
    if(end > pi)
     polygon(c(xp[viscurve],rev(xp[viscurve])),
-     c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
+     c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=shadecol)
   }
   else {
-   viscurve<-(angles >= pi) & (angles <= 2*pi)
    # outer curve
    if(end > pi || start < 2 * pi)
     polygon(c(xp[viscurve],rev(xp[viscurve])),
-     c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=col)
+     c(yp[viscurve],rev(yp[viscurve])-height),border=border,col=shadecol)
    if(end > pi/2 && end < 3 * pi/2) {
     # end facet
     polygon(c(xp[nv],x,x,xp[nv],xp[nv]),
     c(yp[nv],y,y-height,yp[nv]-height,yp[nv]-height),
-    border=border,col=col)
+    border=border,col=shadecol)
    }
    # start facet
    polygon(c(xp[1],x,x,xp[1],xp[1]),
    c(yp[1],y,y-height,yp[1]-height,yp[1]),
-   border=border,col=col)
+   border=border,col=shadecol)
   }
  }
  # top sector
@@ -75,8 +73,8 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
  oldcex<-par("cex")
  par(cex=labelcex,xpd=TRUE)
  for(i in 1:length(labels)) {
-  xpos<-1.2 * cos(radialpos[i])
-  fr<-radialpos[i] > pi
+  xpos<-1.2 * radius * cos(radialpos[i])
+  fr<-radialpos[i] > pi && radialpos[i] < 2*pi
   offset<-(1 - 2 * fr) * 0.4 - fr * height
   ypos<-sin(radialpos[i])*(1-sin(theta)) * 0.75 * radius + offset
   text(xpos,ypos,labels[i],adj=0.5,col=labelcol)
@@ -86,7 +84,7 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
 
 pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,
  border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,
- labelcol=par("fg"),labelcex=1.5,explode=0,...) {
+ labelcol=par("fg"),labelcex=1.5,explode=0,shade=0.8,...) {
 
  if(!is.numeric(x) || any(x<0))
   stop("pie3D: x values must be positive numbers")
@@ -105,8 +103,7 @@ pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,
   order(sin((x[2:(nsectors+1)]+x[1:nsectors])/2),decreasing=TRUE)
  bc<-rep(0,nsectors)
  # set up an empty plot, passing things like title in ...
- plot(0,xlab="",ylab="",xlim=c(-radius,radius),ylim=c(-radius,radius),
-  type="n",axes=FALSE,...)
+ plot(0,xlab="",ylab="",xlim=c(-1,1),ylim=c(-1,1),type="n",axes=FALSE,...)
  for(i in sector.order) {
   bc[i]<-
    draw.tilted.sector(radius=radius,height=height,theta=theta,

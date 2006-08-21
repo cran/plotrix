@@ -1,15 +1,16 @@
-axis.break		Put a slash or zigzag "break" in a plot axis
+axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
 barplot.symbol.default	Barplot with bars filled with symbols : height
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
 centipede.plot		Display a centipede plot (caterpillar plot or league table)
 clean.args		Remove arguments that would cause an error
-clock24.plot		Plot values as lines/polygon on a 24 hour "clockface"
+clock24.plot		Plot values as lines/polygon/symbols on a "clockface"
 cluster.overplot	Display overlying points as clusters
 color.gradient		Calculate values for a color gradient
 color.id		Find the closest named color to a hexadecimal RGB code
 color.scale		Transform numeric values into a series of colors
+color.scale.lines	Display line segments with scaled colors
 color2D.matplot		Display a numeric matrix as a color matrix
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
@@ -30,17 +31,17 @@ get.triprop		Enter triplets of proportions or percentages
 gradient.rect		Display a rectangle with an arbitrary color gradient
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
-oz.windrose		Display an Australian BOM wind rose
+oz.windrose		Display an Australian BoM wind rose
 oz.windrose.legend	Display a wind rose legend in Australian BOM style
 pie3D			Display a 3D pie chart
 pie3D.labels		Display a label on a 3D pie chart
 pie.labels		Place flat pie chart labels at specified radial positions
 plot.freq		Display a horizontal barplot of frequencies
 plotCI			Display confidence intervals/error bars
-polar.plot		Plot values as lines/polygon on a 0-360 degree scale
+polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
 print.freq		Display frequency tables
-radial.plot		Plot values as lines/polygon on a 0-2*pi radian scale
+radial.plot		Plot values as lines/polygon/symbols on radial scale
 remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
 sizeplot		Display overlying points as larger points
