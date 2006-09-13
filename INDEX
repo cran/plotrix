@@ -41,6 +41,7 @@ plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
 print.freq		Display frequency tables
+pyramid.plot		Display a pyramid (opposed horizontal bar) plot
 radial.plot		Plot values as lines/polygon/symbols on radial scale
 remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range

@@ -1,6 +1,6 @@
 hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
  polygon(c(x,x,x+unitcell/2,x+unitcell,x+unitcell,x+unitcell/2),
-  c(y+unitcell*0.125,y+unitcell*0.875,y+unitcell*1.125,,y+unitcell*0.875,
+  c(y+unitcell*0.125,y+unitcell*0.875,y+unitcell*1.125,y+unitcell*0.875,
     y+unitcell*0.125,y-unitcell*0.125),col=col,border=border)
 }
 
