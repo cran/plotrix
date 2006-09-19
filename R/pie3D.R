@@ -73,18 +73,17 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
  oldcex<-par("cex")
  par(cex=labelcex,xpd=TRUE)
  for(i in 1:length(labels)) {
-  xpos<-1.2 * radius * cos(radialpos[i])
-  fr<-radialpos[i] > pi && radialpos[i] < 2*pi
-  offset<-(1 - 2 * fr) * 0.4 - fr * height
-  ypos<-sin(radialpos[i])*(1-sin(theta)) * 0.75 * radius + offset
-  text(xpos,ypos,labels[i],adj=0.5,col=labelcol)
+  xpos<-1.1 * radius * cos(radialpos[i])
+  offset<-(radialpos[i] > pi && radialpos[i] < 2 * pi) * height
+  ypos <- 1.2 * sin(radialpos[i]) * sin(theta) * radius - offset
+  text(xpos,ypos,labels[i],col=labelcol,adj=as.numeric(c(xpos<0,ypos<0)))
  }
  par(cex=oldcex,xpd=FALSE)
 }
 
 pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,
- border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,
- labelcol=par("fg"),labelcex=1.5,explode=0,shade=0.8,...) {
+ border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),
+ labelcex=1.5,sector.order=NULL,explode=0,shade=0.8,...) {
 
  if(!is.numeric(x) || any(x<0))
   stop("pie3D: x values must be positive numbers")
@@ -98,9 +97,10 @@ pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,
  nsectors <- length(x)-1
  if (is.null(col)) col<-rainbow(nsectors)
  else if(length(col) < nsectors) col<-rep(col,nsectors)
- # get the order of drawing sectors
- sector.order<-
-  order(sin((x[2:(nsectors+1)]+x[1:nsectors])/2),decreasing=TRUE)
+ if(is.null(sector.order))
+  # get the order of drawing sectors
+  sector.order<-
+   order(sin((x[2:(nsectors+1)]+x[1:nsectors])/2),decreasing=TRUE)
  bc<-rep(0,nsectors)
  # set up an empty plot, passing things like title in ...
  plot(0,xlab="",ylab="",xlim=c(-1,1),ylim=c(-1,1),type="n",axes=FALSE,...)

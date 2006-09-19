@@ -7,7 +7,7 @@
 \usage{
  pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,border=par("fg"),
   col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
-  explode=0,shade=0.8,...)
+  sector.order=NULL,explode=0,shade=0.8,...)
 }
 \arguments{
  \item{x}{a numeric vector for which each value will be a sector}
@@ -22,6 +22,8 @@
  \item{labelpos}{Optional positions for the labels}
  \item{labelcol}{The color of the labels}
  \item{labelcex}{The character expansion factor for the labels}
+ \item{sector.order}{Allows the operator to specify the order in
+  which the sectors are drawn.}
  \item{explode}{The amount to "explode" the pie in user units}
  \item{shade}{If > 0 and < 1, the proportion to reduce the
   brightness of the sector color to get a better 3D effect.}
@@ -42,10 +44,14 @@
 }
 \note{
  Due to the somewhat primitive method used to draw sectors, a sector that
- extends beyond both pi/2 and 3*pi/2 radians in either direction will not
+ extends beyond both pi/2 and 3*pi/2 radians in either direction may not
  display properly. Setting \code{start} to pi/2 will often fix this, but
  the user may have to adjust \code{start} and the order of sectors in extreme
- cases.
+ cases. The argument \code{sector.order} allows the user to specify a vector
+ of integers that will override the calculation of the order in which the
+ sectors are drawn. This is usually necessary when a very large sector that 
+ extends past 3*pi/2 is overlapped by a smaller sector next to it.
+ 
  While \code{pie3D} can be used to display a 2D pie chart by setting
  height=0 and theta=pi, the labels produced by \code{pie3D.labels} will
  not be well positioned. It is probably better to use \code{floating.pie}

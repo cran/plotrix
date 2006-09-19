@@ -1,4 +1,4 @@
-smoothColors <- function(...,alpha=NA){
+smoothColors<-function(...,alpha=NA){
  args <- list(...)
  r <- g <- b <- NULL
  while(length(args) > 0) {
