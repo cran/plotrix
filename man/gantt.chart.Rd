@@ -6,8 +6,8 @@
 }
 \usage{
  gantt.chart(x=NULL,format="\%Y/\%m/\%d",xlim=NULL,taskcolors=NULL,
-  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,half.height=0.25,
-  hgrid=FALSE,main="",ylab="")
+  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,
+  vgrid.format="\%Y/\%m/\%d",half.height=0.25,hgrid=FALSE,main="",ylab="")
 }
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
@@ -18,11 +18,12 @@
  \item{xlim}{the horizontal limits of the plot.}
  \item{taskcolors}{a vector of colors used to illustrate task priority.}
  \item{priority.legend}{Whether to display a priority color legend.}
- \item{vgridpos}{optional positions of the vertical grid lines}
- \item{vgridlab}{optional labels for the vertical grid lines}
+ \item{vgridpos}{optional positions of the vertical grid lines.}
+ \item{vgridlab}{optional labels for the vertical grid lines.}
+ \item{vgrid.format}{format for the vertical grid labels.}
  \item{half.height}{the proportion of the spacing between task bars that
-  will be filled by the bar on each side - 0.5 will leave no space}
- \item{hgrid}{logical - whether to display grid lines between the bars}
+  will be filled by the bar on each side - 0.5 will leave no space.}
+ \item{hgrid}{logical - whether to display grid lines between the bars.}
  \item{main}{the title of the plot - note that this is actually displayed
   using \code{mtext}.}
  \item{ylab}{vertical axis label - usually suppressed.}

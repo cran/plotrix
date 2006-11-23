@@ -36,8 +36,8 @@ get.gantt.info<-function(format="%Y/%m/%d") {
 }
 
 gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
- priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,half.height=0.25,
- hgrid=FALSE,main="",ylab="") {
+ priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
+ half.height=0.25,hgrid=FALSE,main="",ylab="") {
 
  oldpar<-par(no.readonly=TRUE)
  if(is.null(x)) x<-get.gantt.info(format=format)
@@ -60,13 +60,13 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   main="",xlab="",ylab=ylab,axes=FALSE,type="n")
  box()
  if(nchar(main)) mtext(main,3,2)
- if(is.null(vgridpos)) tickpos<-axis.POSIXct(3,xlim)
+ if(is.null(vgridpos)) tickpos<-axis.POSIXct(3,xlim,format=vgrid.format)
  else tickpos<-vgridpos
- # if no tick labels, use the grid positions if there
+ # if no tick labels, use the grid positions if they exist
  if(is.null(vgridlab) && !is.null(vgridpos))
-  vgridlab<-format.POSIXct(vgridpos,"%y/%m/%d")
+  vgridlab<-format.POSIXct(vgridpos,vgrid.format)
  # if vgridpos wasn't specified, use default axis ticks
- if(is.null(vgridlab)) axis.POSIXct(3,xlim)
+ if(is.null(vgridlab)) axis.POSIXct(3,xlim,format=vgrid.format)
  else axis(3,at=tickpos,labels=vgridlab)
  topdown<-seq(ntasks,1)
  axis(2,at=topdown,labels=x$labels,las=2)

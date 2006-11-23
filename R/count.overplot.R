@@ -7,14 +7,14 @@ count.overplot<-function(x,y,tol=NULL,...) {
   y<-x[,2]
   x<-x[,1]
  }
- xlim<-range(x)
- ylim<-range(y)
  # get rid of any pairs containing NA
  if(any(is.na(x)|is.na(y))) {
   indices<-!is.na(x)&!is.na(y)
   x<-x[indices]
   y<-y[indices]
  }
+ xlim<-range(x)
+ ylim<-range(y)
  xlen<-length(x)
  if(xlen != length(y)) stop("x and y must be the same length.")
  if(is.null(tol)) tol<-c(strwidth("o")/2,strheight("o")/2)

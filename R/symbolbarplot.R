@@ -1,4 +1,4 @@
-barplot.symbol.default<-function(height,width=1,space=NULL,names.arg=NULL,
+symbolbarplot<-function(height,width=1,space=NULL,names.arg=NULL,
  legend.text=NULL,beside=FALSE,horiz=FALSE,col=heat.colors(NR),
  border=par("fg"),main=NULL,sub=NULL,xlab=NULL,ylab=NULL,
  xlim=NULL,ylim=NULL,axes=TRUE,axisnames=TRUE,inside=TRUE,

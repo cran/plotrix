@@ -6,18 +6,21 @@
   graphics device.
 }
 \usage{
- pyramid.plot(xy,xx,labels, top.labels=c("Male","Age","Female"),
-  main="",xycol,xxcol,gap=1)
+ pyramid.plot(xy,xx,labels,top.labels=c("Male","Age","Female"),
+  main="",xycol,xxcol,gap=1,labelcex=1,mark.cat=NA)
 }
 \arguments{
   \item{xy,xx}{Vectors of percentages both of which should total 100.}
   \item{labels}{Labels for the categories represented by each pair of bars.} 
   \item{top.labels}{The two categories represented on the left and right
-   sides of the plot.}
+   sides of the plot and a heading for the labels up the center.}
   \item{main}{Optional title for the plot.}
   \item{xycol,xxcol}{Color(s) for the left and right sets of bars.}
   \item{gap}{One half of the space between the two sets of bars for the
    \code{labels} in user units.}
+  \item{labelcex}{Expansion for the category labels.}
+  \item{mark.cat}{If an integer equal to the index of one of the labels
+   is passed, that label will have a rectangle drawn around it.}
 }
 \details{
  \code{pyramid.plot} is principally intended for population pyramids,

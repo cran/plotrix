@@ -2,7 +2,8 @@
 \alias{color2D.matplot}
 \title{Display a numeric matrix as color matrix}
 \description{
- Display the values of a numeric 2D matrix or data frame as colored rectangles.
+ Display the values of a numeric 2D matrix or data frame as colored
+  rectangles or hexagons.
 }
 \usage{
  color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
