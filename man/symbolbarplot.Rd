@@ -1,12 +1,12 @@
-\name{barplot.symbol.default}
-\alias{barplot.symbol.default}
+\name{symbolbarplot}
+\alias{symbolbarplot}
 \title{barplot filled with symbols}
 \description{
  Produces a barplot where each piece of the barplot is filled with the
  number of symbols equal to the size of the bar
 }
 \usage{
- barplot.symbol.default(height,width=1,space=NULL,names.arg=NULL,
+ symbolbarplot(height,width=1,space=NULL,names.arg=NULL,
   legend.text=NULL,beside=FALSE,horiz=FALSE,col=heat.colors(NR),
   border=par("fg"),main=NULL,sub=NULL,xlab=NULL,ylab=NULL,xlim=NULL,
   ylim=NULL,axes=TRUE,axisnames=TRUE,inside=TRUE,plot=TRUE,rel.width=0.8,
@@ -46,6 +46,6 @@
 \examples{
  set.seed(1001)
  bvals <- matrix(rpois(12,20),nrow=3)
- b <- barplot.symbol.default(bvals)
+ b <- symbolbarplot(bvals)
 }
 \keyword{hplot}

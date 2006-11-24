@@ -18,7 +18,8 @@
  \item{at}{The tick positions on the three axes.}
  \item{axis.labels}{Labels for the three axes in the order left, right,
   bottom. Defaults to the column names.}
- \item{tick.labels}{The tick labels for the three axes.
+ \item{tick.labels}{The tick labels for the three axes as a list with
+  three components l, r and b (left, right and bottom).
   Defaults to argument \code{at} (proportions).}
  \item{col.axis}{Color of the triangular axes, ticks and labels.}
  \item{cex.axis}{Character expansion for axis labels.}

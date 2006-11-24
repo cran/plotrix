@@ -1,5 +1,5 @@
-pyramid.plot<-function(xy,xx,labels,top.labels=c("Male","Age","Female"),
- main="",xycol,xxcol,gap=1) {
+pyramid.plot<-function(xy,xx,labels,top.labels=c("Male","Age","Female"),main="",
+ xycol,xxcol,gap=1,labelcex=1,mark.cat=NA) {
 
  ncats<-length(labels)
  if(length(xy) != ncats || length(xx) != ncats)
@@ -12,10 +12,11 @@ pyramid.plot<-function(xy,xx,labels,top.labels=c("Male","Age","Female"),
  axis(1,at=gap:halfwidth,labels=0:(halfwidth-gap))
  axis(2,at=1:ncats,labels=rep("",ncats),pos=gap)
  axis(4,at=1:ncats,labels=rep("",ncats),pos=-gap)
- text(0,1:ncats,labels)
+ if(!is.na(mark.cat)) boxed.labels(0,mark.cat,labels[mark.cat])
+ text(0,1:ncats,labels,cex=labelcex)
  rect(-(xy+gap),1:ncats-0.4,rep(-gap,ncats),1:ncats+0.4,col=xycol)
  rect(rep(gap,ncats),1:ncats-0.4,(xx+gap),1:ncats+0.4,col=xxcol)
- mtext(top.labels,3,0,at=c(-gap,0,gap),adj=c(1,0.5,0))
+ mtext(top.labels,3,0,at=c(-gap,0,gap),adj=c(1,0.5,0),cex=labelcex)
  mtext(c("%","%"),1,2,at=c(-halfwidth/2,halfwidth/2))
  par(mar=c(5,4,4,2))
 }

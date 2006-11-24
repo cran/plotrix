@@ -1,6 +1,6 @@
 std.error<-function(x,na.rm) {
  stderr<-sd(x,na.rm=TRUE)
- return(stderr/sqrt(length(x)))
+ return(stderr/sqrt(sum(!is.na(x))))
 }
 
 # in general, get.segs expects a list with varying lengths of values

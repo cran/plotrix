@@ -126,17 +126,17 @@ triax.frame<-function(main="",at=seq(0.1,0.9,by=0.1),
   segments(rx1,ry1,bx1,by1,lty=lty.grid)
  }
  par(fg=col.axis)
- if(is.null(tick.labels)) tick.labels<-at
- text(lx1-0.05,ly1,tick.labels,cex=cex.ticks)
+ if(is.null(tick.labels)) tick.labels<-list(l=at,r=at,b=at)
+ text(lx1-0.05,ly1,tick.labels$l,cex=cex.ticks)
  label.adj<-0.5
  if(align.labels) par(srt=57)
  else label.adj<-1
  text(0.13,0.5,axis.labels[3],adj=label.adj,cex=cex.axis)
- text(rx2+0.02,ry1+0.04,tick.labels,cex=cex.ticks)
+ text(rx2+0.02,ry1+0.04,tick.labels$r,cex=cex.ticks)
  if(align.labels) par(srt=303)
  else label.adj<-0
  text(0.86,0.52,axis.labels[2],adj=label.adj,cex=cex.axis)
- text(bx1+0.025,by1-0.05,rev(tick.labels),cex=cex.ticks)
+ text(bx1+0.025,by1-0.05,rev(tick.labels$b),cex=cex.ticks)
  par(srt=0)
  text(0.5,-0.14,axis.labels[1],cex=cex.axis)
  # draw the triangle and ticks

@@ -6,7 +6,7 @@
 }
 \usage{
  pie3D.labels(radialpos,radius=1,height=0.3,theta=pi/6,
-  labels,labelcol=par("fg"),labelcex=1.5)
+  labels,labelcol=par("fg"),labelcex=1.5,minsep=0.3)
 }
 \arguments{
  \item{radialpos}{Position of the label in radians}
@@ -16,6 +16,7 @@
  \item{labels}{The label to display}
  \item{labelcol}{The color of the labels}
  \item{labelcex}{The character expansion factor for the labels}
+ \item{minsep}{The minimum angular separation between label positions.}
 }
 \value{
  nil
@@ -25,6 +26,12 @@
  of the labels are given as angles in radians (usually the bisector of the
  pie sectors). As the labels can be passed directly to \code{\link{pie3D}},
  this function would probably not be called by the user.
+ 
+ \code{pie3D.labels} tries to separate labels that are placed closer than
+ \code{minsep} radians. This simple system will handle minor crowding of
+ labels. If labels are very crowded, capturing the return value of 
+ \code{pie3D} and editing the label positions may allow the user to avoid
+ manually placing labels.
 }
 \author{Jim Lemon}
 \seealso{\code{\link{pie3D}}, \code{\link{draw.tilted.sector}}}

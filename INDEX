@@ -1,6 +1,5 @@
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
-barplot.symbol.default	Barplot with bars filled with symbols : height
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
 centipede.plot		Display a centipede plot (caterpillar plot or league table)
@@ -17,9 +16,9 @@ corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
 draw.circle		Display a circle on an existing plot
 draw.tilted.sector	Display a single 3D pie sector
+fan.plot		Display a fan (superimposed pie sector) plot
 feather.plot		Display vectors along a horizontal line
 floating.pie		Display a flat pie chart at a specified position
-freq			Calculate frequencies
 gantt.chart		Display a Gantt chart with task priority colors
 gap.barplot		Display a barplot with a range of values omitted
 gap.plot		Display a plot with a range of values omitted
@@ -36,11 +35,9 @@ oz.windrose.legend	Display a wind rose legend in Australian BOM style
 pie3D			Display a 3D pie chart
 pie3D.labels		Display a label on a 3D pie chart
 pie.labels		Place flat pie chart labels at specified radial positions
-plot.freq		Display a horizontal barplot of frequencies
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
-print.freq		Display frequency tables
 pyramid.plot		Display a pyramid (opposed horizontal bar) plot
 radial.plot		Plot values as lines/polygon/symbols on radial scale
 remove.args		Remove specified arguments from argument list
@@ -52,6 +49,7 @@ soils			Soil texture data from 125 soils
 spread.labels		Spread out labels for irregularly spaced values
 staxlab			Display staggered labels on an axis
 std.error		Calculate the conventional standard error
+symbolbarplot		Barplot with bars filled with symbols : height
 symbolbox		Draw a box filled with symbols
 textbox			Display justified text in an optional box
 thigmophobe		Find the direction away from the nearest other point
