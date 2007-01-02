@@ -7,7 +7,8 @@
 }
 \usage{
  color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
-  show.legend=FALSE,xlab="Column",ylab="Row",do.hex=FALSE,...)
+  show.legend=FALSE,xlab="Column",ylab="Row",do.hex=FALSE,
+  show.values=FALSE,vcol="white",vcex=1,...)
 }
 \arguments{
  \item{x}{data values}
@@ -17,6 +18,9 @@
   extreme numeric values in the lower left corner of the plot}
  \item{xlab,ylab}{axis labels for the plot.}
  \item{do.hex}{plot packed hexagons instead of rectangles.}
+ \item{show.values}{Whether to display the numeric values of \code{x}.}
+ \item{vcol}{The color for the value display.}
+ \item{vcex}{The character expansion for the value display.}
  \item{...}{arguments passed to \code{plot}.}
 }
 \value{nil}
@@ -28,9 +32,10 @@
  columns at the left. The color scale defaults to black for the minimum
  value and white for the maximum.
  
- If hexagonal cells are requested, the user may have to adjust the plot
- device dimensions to get regular hexagons, especially when the matrix
- is not square.
+ The user will have to adjust the plot device dimensions to get regular
+ squares or hexagons, especially when the matrix is not square. As the
+ margins are not equivalent for all display devices, this is currently
+ a matter of trial and error.
 }
 \note{
  The function \code{\link{image}} performs almost the same when passed a

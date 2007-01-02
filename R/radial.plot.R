@@ -78,7 +78,8 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
   main=main,xlab=xlab,ylab=ylab,...)
  par(xpd=TRUE)
  if(length(line.col) < nsets) line.col<-1:nsets
- if(rp.type == "s") {
+ rp.type<-unlist(strsplit(rp.type,""))
+ if(match("s",rp.type,0)) {
   if(is.null(point.symbols)) point.symbols<-1:nsets
   if(length(point.symbols)<nsets)
    point.symbols<-rep(point.symbols,length.out=nsets)
@@ -86,15 +87,19 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
   if(length(point.col)<nsets)
    point.col<-rep(point.col,length.out=nsets)
  }
+ # split up rp.type if there is a combination of displays
  for(i in 1:nsets) {
   # get the vector of x positions
   xpos<-cos(radial.pos[i,])*lengths[i,]
   # get the vector of y positions
   ypos<-sin(radial.pos[i,])*lengths[i,]
   # plot radial lines if rp.type == "r"    
-  if(rp.type == "r") segments(0,0,xpos,ypos,col=line.col[i],...)
-  if(rp.type == "p") polygon(xpos,ypos,border=line.col[i],col=NA,...)
-  if(rp.type == "s") points(xpos,ypos,pch=point.symbols[i],col=point.col[i],...)
+  if(match("r",rp.type,0))
+   segments(0,0,xpos,ypos,col=line.col[i],...)
+  if(match("p",rp.type,0))
+   polygon(xpos,ypos,border=line.col[i],col=NA,...)
+  if(match("s",rp.type,0))
+   points(xpos,ypos,pch=point.symbols[i],col=point.col[i],...)
   if(show.centroid)
    points(mean(xpos),mean(ypos),col=point.col[i],pch=point.symbols[i],cex=2,...)
  }

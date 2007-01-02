@@ -21,7 +21,8 @@
  \item{label.pos}{the positions of the labels as distance from the
   'center' of the plot. If missing, they will be placed at 1.1
   times the maximum of \code{lengths}.}
- \item{rp.type}{whether to draw (r)adial lines, a (p)olygon or (s)ymbols.}
+ \item{rp.type}{whether to draw (r)adial lines, a (p)olygon, (s)ymbols
+  or some combination of these.}
  \item{label.prop}{the label position radius as a proportion of the 
   maximum line length.}
  \item{main}{The title for the plot.}
@@ -40,18 +41,20 @@
  \item{...}{additional arguments are passed to \code{plot}.}
 }
 \description{
- \code{radial.plot} displays a plot of radial lines, polygon(s) or
-  symbols centered at the midpoint of the plot frame, the lengths,
-  vertices or positions corresponding to the numeric magnitudes of the 
-  data values. If \code{show.centroid} is TRUE, an enlarged point at the
-  centroid of values is displayed.
+ \code{radial.plot} displays a plot of radial lines, polygon(s),
+  symbols or a combination of these centered at the midpoint of
+  the plot frame, the lengths, vertices or positions corresponding
+  to the numeric magnitudes of the data values. If \code{show.centroid}
+  is TRUE, an enlarged point at the centroid of values is displayed.
 }
 \value{nil}
 \details{The radial.plot family of plots is useful for illustrating
  cyclic data such as wind direction or speed (but see \code{oz.windrose}
  for both), activity at different times of the day, and so on. While 
  \code{radial.plot} actually does the plotting, another function is usually 
- called for specific types of cyclic data.}
+ called for specific types of cyclic data. Note that if the observations
+ are not taken at equal intervals around the circle, the centroid may not
+ mean much.}
 \author{Jim Lemon}
 \keyword{misc}
 \seealso{\code{\link{polar.plot}},\code{\link{clock24.plot}}}
