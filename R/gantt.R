@@ -35,25 +35,25 @@ get.gantt.info<-function(format="%Y/%m/%d") {
   priorities=priorities))
 }
 
-gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
- priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
- half.height=0.25,hgrid=FALSE,main="",ylab="") {
+gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL, 
+ priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL, 
+ vgrid.format="%Y/%m/%d",half.height=0.25,hgrid=FALSE,main="",ylab="") {
 
- oldpar<-par(no.readonly=TRUE)
+ oldpar <- par(no.readonly = TRUE)
  if(is.null(x)) x<-get.gantt.info(format=format)
- ntasks<-length(x$labels)
- plot.new()
+ ntasks <- length(x$labels)
+ if(is.null(dev.list())) plot.new()
  charheight<-strheight("M",units="inches")
- maxwidth<-max(strwidth(x$labels,units="inches"))*1.5
- if(is.null(xlim)) xlim=range(c(x$starts,x$ends))
- npriorities<-max(x$priorities)
- if(is.null(taskcolors))
+ maxwidth<-max(strwidth(x$labels,units="inches"))*1.3
+ if (is.null(xlim)) xlim=range(c(x$starts,x$ends))
+ npriorities <- max(x$priorities)
+ if(is.null(taskcolors)) 
   taskcolors<-color.gradient(c(255,0),c(0,0),c(0,255),npriorities)
  else {
-  if(length(taskcolors) < npriorities)
+  if(length(taskcolors)<npriorities) 
    taskcolors<-rep(taskcolors,length.out=npriorities)
  }
- bottom.margin<-ifelse(priority.legend,0.5,0) 
+ bottom.margin<-ifelse(priority.legend,0.7,0)
  par(mai=c(bottom.margin,maxwidth,charheight*5,0.1))
  par(omi=c(0.1,0.1,0.1,0.1),xaxs="i",yaxs="i")
  plot(x$starts,1:ntasks,xlim=xlim,ylim=c(0.5,ntasks+0.5),
@@ -63,28 +63,32 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  if(is.null(vgridpos)) tickpos<-axis.POSIXct(3,xlim,format=vgrid.format)
  else tickpos<-vgridpos
  # if no tick labels, use the grid positions if they exist
- if(is.null(vgridlab) && !is.null(vgridpos))
+ if(is.null(vgridlab) && !is.null(vgridpos)) 
   vgridlab<-format.POSIXct(vgridpos,vgrid.format)
  # if vgridpos wasn't specified, use default axis ticks
- if(is.null(vgridlab)) axis.POSIXct(3,xlim,format=vgrid.format)
+ if (is.null(vgridlab)) axis.POSIXct(3,xlim,format=vgrid.format)
  else axis(3,at=tickpos,labels=vgridlab)
- topdown<-seq(ntasks,1)
+ topdown <- seq(ntasks,1)
  axis(2,at=topdown,labels=x$labels,las=2)
- abline(v=tickpos,col="darkgray",lty=3)
+ abline(v=tickpos,col="darkgray",lty = 3)
  for(i in 1:ntasks) {
   rect(x$starts[i],topdown[i]-half.height,
-  x$ends[i],topdown[i]+half.height,
-  col=taskcolors[x$priorities[i]],
-  border=FALSE)
+   x$ends[i],topdown[i]+half.height,
+   col=taskcolors[x$priorities[i]], 
+   border = FALSE)
  }
- if(hgrid)
+ if(hgrid) 
   abline(h=(topdown[1:(ntasks-1)]+topdown[2:ntasks])/2,col="darkgray",lty=3)
  if(priority.legend) {
   par(xpd=TRUE)
   plim<-par("usr")
-  gradient.rect(plim[1],0,plim[1]+(plim[2]-plim[1])/4,0.3,col=taskcolors)
-  text(plim[1],0.2,"Priorities  ",adj=c(1,0.5))
-  text(c(plim[1],plim[1]+(plim[2]-plim[1])/4),c(0.4,0.4),c("High","Low"))
+  gradient.rect(plim[1],plim[3]-(plim[4]-plim[3])/10,
+                plim[1]+(plim[2]-plim[1])/4, 
+                plim[3]-(plim[4]-plim[3])/20,col=taskcolors)
+  mtext("Priorities",side=1,line=1,at=plim[1]-(plim[2]-plim[1])/20,adj=1)
+  mtext(c("High","Low"),side=1,line=0,
+   at=c(plim[1],plim[1]+(plim[2]-plim[1])/4),
+   c(1-ntasks/10,1-ntasks/10))
  }
  par(oldpar)
  invisible(x)

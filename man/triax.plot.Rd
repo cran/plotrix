@@ -46,9 +46,13 @@
  sets of three proportions that each sum to 1 (or percentages that sum
  to 100). Other values may be scaled to proportions (or percentages), 
  but unless each set of three sums to 1 (or 100), they will not plot
- properly and \code{triax.plot} will complain appropriately. Note also
+ properly and \code{triax.points} will complain appropriately. Note also
  that \code{triax.plot} will only display properly in a square plot,
  which is forced by \code{par(pty="s")}.
+ 
+ In case the user does want to plot values with different sums, the
+ axis tick labels can be set to different ranges to accomodate this.
+ \code{triax.points} will still complain, but it will plot the values.
 }
 \value{A list of the \code{x,y} positions plotted.}
 \author{Jim Lemon}
@@ -59,7 +63,8 @@
  triax.plot(soils[1:10,],main="DEFAULT")
  if(dev.interactive()) par(ask=TRUE)
  triax.plot(soils[1:10,],main="PERCENTAGES",
-  tick.labels=seq(10,90,by=10),pch=3)
+  tick.labels=list(l=seq(10,90,by=10),r=seq(10,90,by=10),b=seq(10,90,by=10)),
+  pch=3)
  main.title<- 
  triax.plot(soils[1:6,],main="GRID AND LEGEND",show.grid=TRUE,
   show.legend=TRUE,col.symbols=1:6,pch=4)

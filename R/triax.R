@@ -79,6 +79,7 @@ triax.points<-function(x,show.legend=FALSE,label.points=FALSE,
    stop("All proportions must be between zero and one.")
   if(any(x > 100))
    stop("All percentages must be between zero and 100.")
+  # convert percentages to proportions
   x<-x/100
  }
  if(any(abs(rowSums(x)-1) > 0.01))

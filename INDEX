@@ -21,6 +21,7 @@ feather.plot		Display vectors along a horizontal line
 floating.pie		Display a flat pie chart at a specified position
 gantt.chart		Display a Gantt chart with task priority colors
 gap.barplot		Display a barplot with a range of values omitted
+gap.boxplot		Display one or more boxplots with ranges omitted
 gap.plot		Display a plot with a range of values omitted
 get.breaks		Calculate the breakpoints for weighted.hist
 get.gantt.info		Enter information for a Gantt chart

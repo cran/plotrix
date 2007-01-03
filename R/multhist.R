@@ -1,6 +1,26 @@
-multhist<-function(x,breaks="Sturges",...) {
- allhist<-hist(unlist(x),breaks=breaks,plot=FALSE)
- combhist<-
-  t(sapply(x,function(z) hist(z,breaks=allhist$breaks,plot=FALSE)$counts))
- barplot(combhist,beside=TRUE,names=signif(allhist$mids,2),...)
+multhist <- function (x, beside=TRUE, freq=NULL, probability=!freq, ...) {
+  ## sort out histogram arguments
+  hist.args <- formals(hist.default)
+  args <- list(...)
+  hargs <- names(args)[names(args) %in% names(hist.args)]
+  hist.args[hargs] <- args[hargs]
+  ## sort out barplot arguments
+  barplot.args <- formals(barplot.default)
+  bargs <- names(args)[names(args) %in% names(barplot.args)]
+  barplot.args[bargs] <- args[bargs]
+  barplot.args$beside <- beside
+  ## prevent warnings
+  barplot.args$"..." <- barplot.args$inside <- NULL
+  allhist <- hist(unlist(x),
+   breaks = hist.args$breaks, plot = FALSE)
+  barplot.args$names.arg <- signif(allhist$mids, 2)
+  if (is.null(freq)) {
+   freq<-if(!missing(probability)) !as.logical(probability)
+    else TRUE
+  }
+  if (freq) comp <- "counts" else comp <- "density"
+  combhist <- t(sapply(x,
+   function(z) hist(z, breaks = allhist$breaks, 
+    plot = FALSE)[[comp]]))
+  do.call("barplot", c(list(combhist),barplot.args))
 }

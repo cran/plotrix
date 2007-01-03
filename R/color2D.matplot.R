@@ -5,7 +5,8 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
 }
 
 color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
- show.legend=FALSE,xlab="Column",ylab="Row",do.hex=FALSE,...) {
+ show.legend=FALSE,xlab="Column",ylab="Row",do.hex=FALSE,
+ show.values=FALSE,vcol="white",vcex=1,...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
@@ -14,6 +15,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   oldpar<-par(no.readonly=TRUE)
   par(xaxs="i",yaxs="i")
   plot(c(0,xdim[2]),c(0,xdim[1]),xlab=xlab,ylab=ylab,type="n",axes=FALSE,...)
+  oldpar$usr<-par("usr")
   if(!do.hex) {
    box()
    pos<-0
@@ -22,31 +24,41 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   axis(1,at=pretty(0:xdim[2])[-1]-0.5,labels=pretty(0:xdim[2])[-1],pos=pos)
   yticks<-pretty(0:xdim[1])[-1]
   axis(2,at=xdim[1]-yticks+0.5,yticks)
-  cellcolors<-color.scale(as.vector(x),redrange,greenrange,bluerange)
+  cellcolors<-color.scale(x,redrange,greenrange,bluerange)
   # start from the top left - isomorphic with the matrix layout
   if(do.hex) {
    par(xpd=TRUE)
    offset<-0
-   for(row in seq(xdim[1],1,by=-1)) {
-    for(column in 0:(xdim[2]-1))
-     hexagon(column+offset,row-1,col=cellcolors[row+column*(xdim[1]-1)])
+   for(row in 1:xdim[1]) {
+    for(column in 0:(xdim[2]-1)) {
+     hexagon(column+offset,xdim[1]-row,col=cellcolors[row+xdim[1]*column])
+     if(show.values)
+      text(column+offset+0.5,xdim[1]-row+0.5,x[row+column*xdim[1]],
+       col=vcol,cex=vcex)
+    }
     offset<-ifelse(offset,0,0.5)
    }
    par(xpd=FALSE)
   }
-  else
+  else {
    rect(sort(rep((1:xdim[2])-1,xdim[1])),rep(seq(xdim[1]-1,0,by=-1),xdim[2]),
     sort(rep(1:xdim[2],xdim[1])),rep(seq(xdim[1],1,by=-1),xdim[2]),
     col=cellcolors,border=FALSE)
-  grx1<--xdim[1]/15
-  gry1<--xdim[2]/5.5
-  grx2<-grx1+xdim[1]/3
-  gry2<-gry1+xdim[2]/20
+   if(show.values)
+    text(sort(rep((1:xdim[2])-0.5,xdim[1])),
+     rep(seq(xdim[1]-0.5,0,by=-1),xdim[2]),x,col=vcol,cex=vcex)
+  }
+  xy<-par("usr")
+  dev.bottom<--xy[4]*(par("din")[2]-par("pin")[2])/xdim[1]
+  grx1<-xy[1]
+  gry1<-dev.bottom
+  grx2<-xy[1]+(xy[2]-xy[1])/4
+  gry2<-dev.bottom*0.75
   if(show.legend) {
    par(xpd=TRUE)
    gradient.rect(grx1,gry1,grx2,gry2,redrange,greenrange,bluerange,nslices=10)
    par(xpd=FALSE)
-   mtext(round(range(x),2),1,2,at=c(grx1,grx2))
+   mtext(round(range(x),2),1,2.5,at=c(grx1,grx2))
   }
   par(oldpar)
  }
