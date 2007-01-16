@@ -29,7 +29,8 @@
  \code{twoord.plot} automates the process of displaying two sets of
  values that have different ranges on the same plot. It is principally
  useful in illustrating some relationship between the values across the
- observations.
+ observations. It is assumed that the \code{lx} and \code{rx} values
+ are at least adjacent, and probably overlapping.
  
  It is best to pass all the arguments \code{lx, ly, rx, ry}, but the
  function will attempt to substitute sensible x values if one or two

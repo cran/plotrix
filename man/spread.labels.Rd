@@ -5,21 +5,21 @@
  Places labels for irregularly spaced values in a regular staggered order
 }
 \usage{
- spread.labels(x,y,labels=NULL,offset,bg="white",border=FALSE,
-  between=FALSE,linecol=par("fg"),...)
+ spread.labels(x,y,labels=NULL,ony=NA,offsets=NA,between=FALSE,
+  linecol=par("fg"),srt=0,...)
 }
 \arguments{
  \item{x,y}{x and y data values}
  \item{labels}{text strings}
- \item{offset}{How far away from the data points to place the labels.
-  Defaults to one quarter of the plot span.}
- \item{bg}{The color of the background rectangles on which to place the
-  labels.}
- \item{border}{Whether to draw a border around the labels.}
- \item{between}{Whether to place the labels outside a single row of points
-  or between two rows of points.}
+ \item{ony}{Whether to force the labels to be spread horizontally
+  (FALSE) or vertically (TRUE). Defaults to whichever way the points are
+  most spread out.}
+ \item{offsets}{How far away from the data points to place the labels.
+  Defaults to one quarter of the plot span for all, staggered on each side.}
+ \item{between}{Whether to place the labels between two sets of points.}
  \item{linecol}{Optional colors for the lines drawn to the points.}
- \item{...}{additional arguments passed to \code{boxed.labels}.}
+ \item{srt}{Rotation of the labels in degrees.}
+ \item{...}{additional arguments passed to \code{text}.}
 }
 \note{
  This function is mainly useful when labeling irregularly spaced data points
@@ -31,6 +31,9 @@
  and will attempt to place the labels between two vertical lines of points.
  Lines will be drawn from the ends of each label to the two corresponding
  points.
+ 
+ If spreading labels horizontally, the user may wish to rotate the labels by
+ 90 degrees (\code{srt=90}).
 }
 \value{nil}
 \author{Jim Lemon}
@@ -38,7 +41,7 @@
  Cooke, L.J. & Wardle, J. (2005) Age and gender differences in
  children's food preferences. British Journal of Nutrition, 93: 741-746.
 }
-\seealso{\code{boxed.labels}}
+\seealso{\code{text}}
 \examples{
  x<-rnorm(10)/10
  y<-sort(rnorm(10))
