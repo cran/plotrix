@@ -20,7 +20,7 @@
   slanting up to the right for the right axis and up to the left for the 
   bottom axis.
 }
-\value{A list of the \code{x,y} positions plotted.}
+\value{nil}
 \author{Jim Lemon}
 \seealso{\code{\link{triax.plot}}}
 \examples{

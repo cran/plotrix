@@ -33,5 +33,5 @@ axis.mult<-function(side=1,at=NULL,labels,mult=1,mult.label,mult.line,
    if(missing(mult.line)) mult.line=ifelse(mult.labelpos == side,3,0)
   }
  }
- mtext(mult.label,side,mult.line,at=at,adj=adj)
+ mtext(mult.label,side,mult.line,at=at,adj=adj,...)
 }

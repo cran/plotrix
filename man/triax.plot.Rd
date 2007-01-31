@@ -9,7 +9,7 @@
  axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
  align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
  show.legend=FALSE,label.points=FALSE,point.labels=NULL,
- col.symbols="black",pch=par("pch"),...)
+ col.symbols="black",pch=par("pch"),no.add=TRUE,...)
 }
 \arguments{
  \item{x}{Matrix where each row is three proportions or percentages
@@ -35,6 +35,8 @@
  \item{point.labels}{Optional labels for the points and/or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}
+ \item{no.add}{Whether to restore the previous plotting parameters
+  (\code{TRUE}) or leave them, allowing more points to be added.}
  \item{...}{Additional arguments passed to \code{points}.}
 }
 \details{
@@ -53,8 +55,15 @@
  In case the user does want to plot values with different sums, the
  axis tick labels can be set to different ranges to accomodate this.
  \code{triax.points} will still complain, but it will plot the values.
+ 
+ If planning to add points with \code{triax.points} call \code{triax.plot}
+ with \code{no.add=FALSE} and restore plotting parameters after the
+ points are added.
 }
-\value{A list of the \code{x,y} positions plotted.}
+\value{
+ A list containing \code{xypos} (the \code{x,y} positions plotted)
+ and \code{oldpar} (the plotting parameters at the time \code{triax.plot}
+ was called).}
 \author{Jim Lemon}
 \seealso{\code{\link{triax.points}},\code{\link{triax.abline}},
  \code{\link{thigmophobe.labels}}}

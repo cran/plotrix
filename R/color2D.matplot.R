@@ -49,14 +49,17 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
      rep(seq(xdim[1]-0.5,0,by=-1),xdim[2]),x,col=vcol,cex=vcex)
   }
   xy<-par("usr")
-  dev.bottom<--xy[4]*(par("din")[2]-par("pin")[2])/xdim[1]
+  plot.din<-par("din")
+  plot.pin<-par("pin")
+  bottom.gap<-(xy[3]-xy[4])*(plot.din[2]-plot.pin[2])/(2*plot.pin[2])
   grx1<-xy[1]
-  gry1<-dev.bottom
+  gry1<-bottom.gap*0.95
   grx2<-xy[1]+(xy[2]-xy[1])/4
-  gry2<-dev.bottom*0.75
+  gry2<-bottom.gap*0.8
   if(show.legend) {
    par(xpd=TRUE)
-   gradient.rect(grx1,gry1,grx2,gry2,redrange,greenrange,bluerange,nslices=10)
+   gradient.rect(grx1,gry1,grx2,gry2,
+    redrange,greenrange,bluerange,nslices=10)
    par(xpd=FALSE)
    mtext(round(range(x),2),1,2.5,at=c(grx1,grx2))
   }

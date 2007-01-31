@@ -155,22 +155,25 @@ triax.frame<-function(main="",at=seq(0.1,0.9,by=0.1),
  segments(rx1,ry1,rx2,ry2)
 }
 
-triax.plot<-function(x=NULL,main="",at=seq(0.1,0.9,by=0.1),
- axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
- align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
- show.legend=FALSE,label.points=FALSE,point.labels=NULL,
- col.symbols="black",pch=par("pch"),...) {
- 
+triax.plot<-function (x=NULL,main="",at=seq(0.1,0.9,by=0.1),
+ axis.labels=NULL,tick.labels=NULL,col.axis="black",
+ cex.axis=1,cex.ticks=1,align.labels=TRUE,show.grid=FALSE,
+ col.grid="gray",lty.grid=par("lty"),show.legend=FALSE,
+ label.points=FALSE,point.labels=NULL,col.symbols="black",
+ pch=par("pch"),no.add=TRUE,...) {
+
  oldpar<-par(no.readonly=TRUE)
  par(xpd=TRUE)
  if(is.null(axis.labels)) axis.labels<-colnames(x)[1:3]
- triax.frame(main=main,at=at,axis.labels=axis.labels,tick.labels=tick.labels,
-  col.axis=col.axis,cex.axis=cex.axis,cex.ticks=cex.ticks,
-  align.labels=align.labels,show.grid=show.grid,
+ triax.frame(main=main,at=at,axis.labels=axis.labels,
+  tick.labels=tick.labels,col.axis=col.axis,cex.axis=cex.axis,
+  cex.ticks=cex.ticks,align.labels=align.labels,show.grid=show.grid,
   col.grid=col.grid,lty.grid=lty.grid)
- if(is.null(x)) xypos<-NULL
- else xypos<-triax.points(x,show.legend=show.legend,label.points=label.points,
-   point.labels=point.labels,col.symbols=col.symbols,pch=pch,...)
- par(oldpar)
- invisible(xypos) 
+ if(is.null(x)) xypos <- NULL
+ else
+  xypos<-triax.points(x,show.legend=show.legend,
+   label.points=label.points,point.labels=point.labels,
+   col.symbols=col.symbols,pch=pch,...)
+ if(no.add) par(oldpar)
+ invisible(list(xypos=xypos,oldpar=oldpar))
 }
