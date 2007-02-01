@@ -40,7 +40,7 @@ thigmophobe<-function(x,y) {
 # are most distant from the nearest other point, where the
 # points are described as x and y coordinates.
 
-thigmophobe.labels<-function(x,y,labels=NULL,...) {
+thigmophobe.labels<-function(x,y,labels=NULL,text.pos=NULL,...) {
  if(missing(x))
   stop("Usage: thigmophobe.labels(x,y,labels=1:length(x))")
  # if x has at least two columns, split it
@@ -49,9 +49,10 @@ thigmophobe.labels<-function(x,y,labels=NULL,...) {
    y<-x[[2]]
    x<-x[[1]]
   }
-  else stop("if y is missing, x must be a list with at least 2 columns")
+  else
+   stop("if y is missing, x must be a list with at least 2 columns")
  }
  if(is.null(labels)) labels<-1:length(x)
- text.pos<-thigmophobe(x,y)
+ if(is.null(text.pos)) text.pos<-thigmophobe(x,y)
  text(x,y,labels,pos=text.pos,...)
 }

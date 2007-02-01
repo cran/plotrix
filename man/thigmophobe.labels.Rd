@@ -1,7 +1,7 @@
 \name{thigmophobe.labels}
 \title{Place labels away from the nearest point}
 \usage{
- thigmophobe.labels(x,y,labels=NULL,...)
+ thigmophobe.labels(x,y,labels=NULL,text.pos=NULL,...)
 }
 \alias{thigmophobe.labels}
 \arguments{
@@ -9,6 +9,8 @@
   Typically the x/y coordinates of plotted points.}
  \item{labels}{A vector of strings that will be placed adjacent to
   each point. Defaults to the indices of the coordinates.}
+ \item{text.pos}{An optional vector of text positions (see 
+ \code{\link{text}}).}
  \item{...}{additional arguments are passed to \code{text}}.
 }
 \description{
@@ -16,16 +18,23 @@
   offsetting each label in the direction returned by 
   \code{thigmophobe}.}
 }
-\note{
+\details{
  Typically used to automatically place labels on a scatterplot or 
- similar to avoid overlapping labels.
+ similar to avoid overlapping labels. \code{thigmophobe.labels}
+ will sometimes place a label off the plot or fail to separate
+ labels in clusters of points. The user can manually adjust the
+ errant labels by running \code{thigmophobe} first and saving
+ the returned vector. Then modify the position values to place
+ the labels properly and pass the edited vector to
+ \code{thigmophobe.labels} as the \code{text.pos} argument. This
+ takes precedence over the positions calculated by \code{thigmophobe}.
 }
 \value{
  A vector of directions away from the point nearest to each point.
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\code{\link{thigmophobe}}}
+\seealso{\code{\link{thigmophobe}}, \code{\link{text}}}
 \examples{
  x<-rnorm(20)
  y<-rnorm(20)
