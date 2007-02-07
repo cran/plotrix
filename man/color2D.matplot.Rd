@@ -52,7 +52,6 @@
 \seealso{\code{\link{color.scale}}, \code{\link{image}}}
 \examples{
  x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
- if(dev.interactive()) par(ask=TRUE)
  color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,
   xlab="Columns",ylab="Rows",main="2D matrix plot")
  # now do hexagons
@@ -66,6 +65,5 @@
  color2D.matplot(x=round(deviates,2),redrange=c(1,0.5,0),
   greenrange=c(0,0.5,0),bluerange=c(0,1),
   show.values=TRUE,main="Association plot")
- par(ask=FALSE)
 }
 \keyword{misc}
