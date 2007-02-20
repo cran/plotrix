@@ -12,7 +12,8 @@ rescale<-function(x,newrange) {
   if(all(xna)) return(x)
   if(any(xna)) xrange<-range(x[!xna])
   else xrange<-range(x)
-  if(xrange[1] == xrange[2]) stop("rescale: can't rescale a constant vector!")
+  # if x is constant, just return it
+  if(xrange[1] == xrange[2]) return(x)
   mfac<-(newrange[2]-newrange[1])/(xrange[2]-xrange[1])
   return(newrange[1]+(x-xrange[1])*mfac)
  }

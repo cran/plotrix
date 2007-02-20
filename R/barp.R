@@ -90,5 +90,5 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
   legend(legend.pos,legend=legend.lab,fill=col,xjust=xjust,yjust=yjust)
  }
  box()
- return(barpinfo)
+ invisible(barpinfo)
 }

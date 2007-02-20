@@ -7,8 +7,8 @@
 }
 \usage{
  gantt.chart(x=NULL,format="\%Y/\%m/\%d",xlim=NULL,taskcolors=NULL,
-  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,
-  vgrid.format="\%Y/\%m/\%d",half.height=0.25,hgrid=FALSE,main="",ylab="")
+  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="\%Y/\%m/\%d",
+  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE)
 }
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
@@ -27,7 +27,8 @@
  \item{hgrid}{logical - whether to display grid lines between the bars.}
  \item{main}{the title of the plot - note that this is actually displayed
   using \code{mtext}.}
- \item{ylab}{vertical axis label - usually suppressed.}
+ \item{xlab}{horizontal axis label - usually suppressed.}
+ \item{cylindrical}{Whether to give the bars a cylindrical appearance.}
 }
 \value{
  The list used to create the chart - see \code{\link{get.gantt.info}} for
@@ -35,8 +36,13 @@
  information each time the chart is displayed.
 }
 \details{
- If task priority colors are not wanted, simply mark every task as priority
- 1 or set \code{taskcolors} to a single value to suppress the coloring.
+ If task priority colors are not wanted, set \code{taskcolors} to a single
+ value to suppress the coloring. If this is not done, \code{rainbow} will
+ be called to generate a different color for each task.
+ 
+ There can now be more than one time interval for each task. If there is,
+ more than one bar will be displayed for each "task", which may not be a
+ task at all, but intervals of some attribute for each entity.
 }
 \author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping)}
 \seealso{\code{\link{get.gantt.info}}}

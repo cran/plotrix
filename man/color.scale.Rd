@@ -3,7 +3,7 @@
 \title{Turn values into colors.}
 \description{Transform numeric values into colors.}
 \usage{
- color.scale(x,redrange=NA,greenrange=NA,bluerange=NA,extremes=NA)
+ color.scale(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),extremes=NA)
 }
 \arguments{
  \item{x}{a numeric vector, matrix or data frame}

@@ -7,8 +7,9 @@
 }
 \usage{
  color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
-  extremes=NA,show.legend=FALSE,nslices=10,xlab="Column",ylab="Row",
-  do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,...)
+  extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
+  ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,
+  ...)
 }
 \arguments{
  \item{x}{data values}
@@ -16,6 +17,10 @@
   that will be scaled to represent the range of numeric values}
  \item{extremes}{The colors for the extreme values of \code{x}. Takes
   precedence over the color ranges.}
+ \item{cellcolors}{A precalculated vector of cell colors. This must have
+  exactly the same number of colors as there are values in the matrix or
+  it will be uninformative. Takes precedence over both \code{extremes}
+  and color ranges.}
  \item{show.legend}{whether to display a color legend with the
   extreme numeric values in the lower left corner of the plot. If the
   default is not suitable, call \code{color.legend} separately.}
@@ -23,7 +28,8 @@
  \item{xlab,ylab}{axis labels for the plot.}
  \item{do.hex}{plot packed hexagons instead of rectangles.}
  \item{axes}{Whether to suppress the default axis labelling.}
- \item{show.values}{Whether to display the numeric values of \code{x}.}
+ \item{show.values}{Whether to display the numeric values of \code{x}.
+  This also controls the number of decimal places displayed.}
  \item{vcol}{The color for the value display.}
  \item{vcex}{The character expansion for the value display.}
  \item{...}{arguments passed to \code{plot}.}
@@ -41,6 +47,10 @@
  squares or hexagons, especially when the matrix is not square. As the
  margins are not equivalent for all display devices, this is currently
  a matter of trial and error.
+ 
+ \code{show.values} is also used to control the number of decimal places
+ displayed if the values are shown. \code{TRUE} will give one decimal
+ place, \code{2} two, and so on.
 }
 \note{
  The function \code{\link{image}} performs almost the same when passed a
@@ -54,16 +64,24 @@
  x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
  color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,
   xlab="Columns",ylab="Rows",main="2D matrix plot")
+ # generate colors that show negative values in red and positive in green
+ cellcol<-matrix(rep("#000000",1024),nrow=32)
+ cellcol[x<0]<-color.scale(x[x<0],c(1,0.8),c(0,0.8),0)
+ cellcol[x>0]<-color.scale(x[x>0],0,c(0.8,1),c(0.8,0))
  # now do hexagons
- color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,
+ color2D.matplot(x,cellcolors=cellcol,show.legend=TRUE,
   xlab="Columns",ylab="Rows",do.hex=TRUE,main="2D matrix plot (hexagons)")
  # do a color only association plot
  xt<-table(sample(1:10,100,TRUE),sample(1:10,100,TRUE))
  observed<-xt[,rev(1:dim(xt)[2])]
  expected<-outer(rowSums(observed),colSums(observed),"*")/sum(xt)
  deviates<-(observed-expected)/sqrt(expected)
- color2D.matplot(x=round(deviates,2),redrange=c(1,0.5,0),
-  greenrange=c(0,0.5,0),bluerange=c(0,1),
+ cellcol<-matrix(rep("#000000",100),nrow=10)
+ cellcol[deviates<0]<-
+  color.scale(deviates[deviates<0],c(1,0.8),c(0,0.5),0)
+ cellcol[deviates>0]<-
+  color.scale(deviates[deviates>0],0,c(0.7,0.8),c(0.5,0))
+ color2D.matplot(x=round(deviates,2),cellcolors=cellcol,
   show.values=TRUE,main="Association plot")
 }
 \keyword{misc}
