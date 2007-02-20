@@ -19,6 +19,7 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  if(is.null(row.names) && display.rownames)
  row.names<-1:tabdim[1]
  mwidth<-strwidth("M")
+ if(par("xlog")) x<-log10(x)
  if(display.colnames) {
   cellwidth<-
    max(strwidth(c(column.names,row.names,as.vector(unlist(table)))))+mwidth
@@ -31,10 +32,16 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  }
  if(display.rownames) nhcells<-tabdim[2]+1
  else nhcells<-tabdim[2]
+ if(par("ylog")) y<-log10(y)
  cellheight<-
   max(strheight(c(column.names,row.names,as.vector(unlist(table)))))*1.5
  xleft<-x-xjust*nhcells*cellwidth
  ytop<-y+yjust*nvcells*cellheight
+ # adjust for logarithmic plotting
+ oldxlog<-par("xlog")
+ par(xlog=FALSE)
+ oldylog<-par("ylog")
+ par(ylog=FALSE)
  # draw the box if wanted
  if(bty=="o")
   rect(xleft,ytop-nvcells*cellheight,xleft+nhcells*cellwidth,ytop,
@@ -49,11 +56,10 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    text(xleft+0.5*cellwidth,
     ytop-(row+display.colnames-0.5)*cellheight,
     row.names[row],cex=cex,col=text.col)
-  for(col in 1:tabdim[2]) {
+  for(col in 1:tabdim[2])
    text(xleft+(col+display.rownames-0.5)*cellwidth,
     ytop-(row+display.colnames-0.5)*cellheight,
     table[row,col],cex=cex,col=text.col)
-  }
  }
  if(display.colnames) {
   for(col in 1:tabdim[2])
@@ -70,4 +76,5 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
   if(bty=="n")
    segments(xleft,ytop,xleft+nhcells*cellwidth,ytop,lwd=lwd,col=box.col)
  }
+ par(xlog=oldxlog,ylog=oldylog)
 }
