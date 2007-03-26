@@ -6,12 +6,13 @@
 }
 \usage{
  centipede.plot(segs,midpoint="mean",lower.limit="std.error",
-  upper.limit="std.err",left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
-  main="",xlab="",vgrid=NA,mar=NA,col=par("fg"),bg="green",...)
+  upper.limit="std.error",left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
+  main="",xlab=NA,vgrid=NA,mar=NA,col=par("fg"),bg="green",...)
 }
 \arguments{
   \item{segs}{a matrix of midpoints and limits calculated by
-   \code{\link{get.segs}}.}
+   \code{\link{get.segs}} OR a \code{dstat} object returned by
+   \code{brkdn}.}
   \item{midpoint}{The function to use in calculating the midpoint of each
    segment.}
   \item{lower.limit}{The functions to use in calculating the
@@ -24,7 +25,8 @@
    at the right margin of the plot.}
   \item{sort.segs}{Whether to sort the segments in ascending order.}
   \item{main}{Optional title for the plot.}
-  \item{xlab}{Optional x axis label for the plot.}
+  \item{xlab}{Optional x axis label for the plot. The default NA
+   displays a text label showing the midpoint and limit functions.}
   \item{vgrid}{Optional vertical line(s) to display on the plot.}
   \item{mar}{Margin widths for the plot. Defaults to c(4,5,1,4) or 
    c(4,5,3,4) if there is a title.}
@@ -46,10 +48,10 @@
   The matrix \code{segs} may be entered manually or read from a file.
   The first row specifies midpoints, the second and third rows the lower
   and upper limits respectively and the fourth row the number of valid
-  observations.
-}
-\note{
- This type of plot is also known as a caterpillar plot or a league table.
+  observations. If a \code{dstat} object is passed as \code{segs}, the
+  function will calculate the lower and upper
+  values according to the relevant arguments. This type of plot is also
+  known as a caterpillar plot or a league table.
 }
 \value{nil.}
 \author{Jim Lemon}

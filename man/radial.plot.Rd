@@ -3,13 +3,12 @@
 \usage{
  radial.plot(lengths,radial.pos,labels,label.pos,rp.type="r",
  label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),mar=c(2,2,3,2),
- show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),point.symbols=NULL,
- point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...)
+ show.grid=TRUE,show.radial.grid=TRUE,grid.col="gray",grid.bg="transparent",
+ point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...)
 }
 \alias{radial.plot}
 \arguments{
- \item{lengths}{A numeric data vector or matrix. Magnitudes will be 
-  represented as line lengths or polygon vertices. If \code{lengths}
+ \item{lengths}{A numeric data vector or matrix. If \code{lengths}
   is a matrix, the rows will be considered separate data vectors.}
  \item{radial.pos}{A numeric vector or matrix of positions in radians. 
   These are interpreted as beginning at the right (0 radians) and moving
@@ -31,6 +30,7 @@
  \item{mar}{Margins for the plot. Allows the user to leave space for
   legends, etc.}
  \item{show.grid}{Logical - whether to draw a circular grid.}
+ \item{show.radial.grid}{Whether to draw radial lines to the plot labels.}
  \item{grid.col}{Color of the circular grid.}
  \item{grid.bg}{Fill color of above.}
  \item{point.symbols}{the symbols for plotting (as in pch).}

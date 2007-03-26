@@ -29,7 +29,8 @@ fan.plot<-function(x,edges=200,radius=1,col=NULL,align.at=NULL,labels=NULL,
   xlab="",ylab="",type="n",axes=FALSE)
  xy<-par("usr")
  ymult<-(xy[4]-xy[3])/(xy[2]-xy[1])
- if(nchar(main)) text(0,(label.radius+0.2)*ymult,main,cex=1.5,adj=c(0.5,1))
+ if(nchar(main))
+  text(0,(max(label.radius)+0.2)*ymult,main,cex=1.5,adj=c(0.5,1))
  for(i in 1:nx) {
   n<-edges*x[xorder[i]]/pi
   if(align=="center")

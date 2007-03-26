@@ -18,7 +18,7 @@ fan.plot(x,edges=200,radius=1,col=NULL,align.at=NULL,labels=NULL,
  \item{labels}{Labels placed around the sector arcs.}
  \item{labelpos}{Optional circumferential positions for the labels.}
  \item{label.radius}{How far away from the sectors the labels will
-  be placed.}
+  be placed. May be a vector with a radius for each label.}
  \item{align}{Position of the alignment of sectors (see Details).}
  \item{shrink}{How much to shrink each successive sector in user units.}
  \item{main}{Optional title for the plot.}
@@ -48,14 +48,29 @@ fan.plot(x,edges=200,radius=1,col=NULL,align.at=NULL,labels=NULL,
  the label positions, the crowded labels can be separated. This new
  vector of positions may then be passed as \code{labelpos}.
 }
-\value{The circumferential positions of the labels in radians.}
+\value{
+ The circumferential positions of the labels in radians. These are
+ returned in order of decreasing size of the values plotted.
+}
 \author{Jim Lemon, Anupam Tyagi}
 \seealso{\code{\link{floating.pie}}}
 \examples{
  # IUCN counts of threatened species by geographical area
  iucn.df<-data.frame(area=c("Africa","Asia","Europe","N&C America",
   "S America","Oceania"),threatened=c(5994,7737,1987,4716,5097,2093))
- fan.plot(iucn.df$threatened,labels=iucn.df$area,main="Test of Fan Plot",
-  ticks=276)
+ labelpos<-fan.plot(iucn.df$threatened,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  main="Threatened species by geographical area",ticks=276)
+ # give the "Africa" label a bit more space with labelpos
+ labelpos[2]<-1.1
+ fan.plot(iucn.df$threatened,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  labelpos=labelpos,
+  main="Threatened species by geographical area",ticks=276)
+ # now do it with label.radius
+ fan.plot(iucn.df$threatened,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  label.radius=c(1.2,1.15,1.2,1.2,1.2,1.2),
+  main="Threatened species by geographical area",ticks=276)
 }
 \keyword{misc}

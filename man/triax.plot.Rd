@@ -8,7 +8,7 @@
  triax.plot(x=NULL,main="",at=seq(0.1,0.9,by=0.1),
  axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
  align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
- show.legend=FALSE,label.points=FALSE,point.labels=NULL,
+ cc.axes=FALSE,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
  col.symbols="black",pch=par("pch"),no.add=TRUE,...)
 }
 \arguments{
@@ -29,6 +29,8 @@
  \item{show.grid}{Whether to display grid lines at the ticks.}
  \item{col.grid}{Color of the grid lines. Defaults to gray.}
  \item{lty.grid}{Type of line for the grid.}
+ \item{cc.axes}{Whether axes and axis ticks should be clockwise or
+  counterclockwise.}
  \item{show.legend}{Logical - whether to display a legend.}
  \item{label.points}{Logical - whether to call \code{thigmophobe.labels} to
   label the points.}
@@ -41,7 +43,7 @@
 }
 \details{
  \code{triax.plot} displays a triangular plot area on which proportions
-  or percentages are displayed. An optional grid may also be displayed.
+  or percentages are displayed. A grid or legend may also be displayed.
 }
 \note{
  A three axis plot can only properly display one or more
@@ -63,17 +65,23 @@
 \value{
  A list containing \code{xypos} (the \code{x,y} positions plotted)
  and \code{oldpar} (the plotting parameters at the time \code{triax.plot}
- was called).}
-\author{Jim Lemon}
-\seealso{\code{\link{triax.points}},\code{\link{triax.abline}},
- \code{\link{thigmophobe.labels}}}
+ was called).
+}
+\author{
+ Jim Lemon - thanks to Ben Daughtry for the info on counterclockwise axes.
+}
+\seealso{
+ \code{\link{triax.points}},
+ \code{\link{triax.abline}},
+ \code{\link{thigmophobe.labels}}
+}
 \examples{
  data(soils)
  triax.plot(soils[1:10,],main="DEFAULT")
  if(dev.interactive()) par(ask=TRUE)
- triax.plot(soils[1:10,],main="PERCENTAGES",
-  tick.labels=list(l=seq(10,90,by=10),r=seq(10,90,by=10),b=seq(10,90,by=10)),
-  pch=3)
+ triax.plot(soils[1:10,],main="PERCENTAGES (Counterclockwise axes)",
+  tick.labels=list(l=seq(90,10,by=-10),r=seq(90,10,by=-10),b=seq(90,10,by=-10)),
+  pch=3,cc.axes=TRUE)
  main.title<- 
  triax.plot(soils[1:6,],main="GRID AND LEGEND",show.grid=TRUE,
   show.legend=TRUE,col.symbols=1:6,pch=4)

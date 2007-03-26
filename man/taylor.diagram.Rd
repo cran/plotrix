@@ -38,7 +38,7 @@
  Two displays are available. One displays the entire range of correlations
  from -1 to 1. Setting \code{pos.cor} to \code{FALSE} will produce this
  display. The -1 to 1 display includes a radial grid for the correlation
- values. When \code{cor.span} is set to \code{TRUE}, only the
+ values. When \code{pos.cor} is set to \code{TRUE}, only the
  range from 0 to 1 will be displayed. The \code{gamma} lines and the arc at
  the reference standard deviation are optional in this display.
 }

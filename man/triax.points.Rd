@@ -6,7 +6,7 @@
 }
 \usage{
  triax.points(x,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
- col.symbols=par("fg"),pch=par("pch"),bg.symbols=par("bg"),...)
+ col.symbols=par("fg"),pch=par("pch"),bg.symbols=par("bg"),cc.axes=FALSE,...)
 }
 \arguments{
  \item{x}{Matrix or data frame where each row is three proportions or 
@@ -18,14 +18,16 @@
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}
  \item{bg.symbols}{Background color for plotting symbols.}
+ \item{cc.axes}{Clockwise or counterclockwise axes and ticks.}
  \item{...}{Additional arguments passed to \code{points}.}
 }
 \details{
  In order for \code{triax.points} to add points to an existing plot,
  the argument \code{no.add} in the initial call to \code{triax.plot} 
- must be set to \code{FALSE}. It is then up to the user to call \code{par}
- as in the example below to restore plotting parameters altered during
- the triangle plot.
+ must be set to \code{FALSE}. Failing to do this will result in the
+ points being plotted in the wrong places. It is then up to the user
+ to call \code{par} as in the example below to restore plotting
+ parameters altered during the triangle plot.
  
  \code{triax.points} displays each triplet of proportions or percentages
   as a symbol on the triangle plot. Unless each triplet sums to 1 

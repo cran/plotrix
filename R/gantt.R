@@ -25,8 +25,13 @@ get.gantt.info<-function(format="%Y/%m/%d") {
     }
    }
    nextpriority<-0
-   while(nextpriority < 1 || nextpriority > 10)
-    nextpriority<-as.numeric(readline("Task priority (1-10) - "))
+   while (nextpriority < 1 || nextpriority > 10) {
+    nextpriority <- as.numeric(readline("Task priority (1-10) - "))
+    if(is.na(nextpriority)) {
+     cat("Task priority must be a number between 1 and 10!\n")
+     next.priority<-0
+    }
+   }
    if(is.na(priorities[1])) priorities<-nextpriority
    else priorities<-c(priorities,nextpriority)
   }

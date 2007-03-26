@@ -16,9 +16,9 @@
  \item{ytics}{position of the y axis ticks}
  \item{ylab}{label for the y axis}
  \item{col}{color(s) in which to plot the values}
- \item{...}{arguments passed to \code{plot}.}
+ \item{...}{arguments passed to \code{barplot}.}
 }
-\value{nil}
+\value{The center positions of the bars.}
 \details{
  Displays a barplot omitting a range of values on the Y axis. Typically 
  used when there is a relatively large gap in the range of values 

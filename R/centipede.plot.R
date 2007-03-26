@@ -5,7 +5,7 @@ std.error<-function(x,na.rm) {
 
 # in general, get.segs expects a list with varying lengths of values
 # it returns a 4xn matrix of midpoints, upper and lower limits and Ns
-# where n is the number of elements in the list or columns in a data frame.
+# where N is the number of elements in the list or columns in a data frame.
 
 get.segs<-function(x,midpoint="mean",lower.limit="std.error",
  upper.limit="std.error") {
@@ -22,35 +22,72 @@ get.segs<-function(x,midpoint="mean",lower.limit="std.error",
  return(segs)
 }
 
-centipede.plot<-function(segs,midpoint="mean",lower.limit="std.error",
- upper.limit="std.err",left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
- main="",xlab="",vgrid=NA,mar=NA,col=par("fg"),bg="green",...) {
+centipede.plot<-function(segs,midpoint="mean",lower.limit="std.error", 
+ upper.limit="std.error",left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
+ main="",xlab=NA,vgrid=NA,mar=NA,col=par("fg"),bg="green",...) {
 
- if(missing(segs))
-  stop("Usage: centipede.plot(segs,...)\n\twhere segs is a matrix of midpoints and limits")
+ if(missing(segs)) {
+  cat("Usage: centipede.plot(segs,...)\n\twhere segs is a dstat object")
+  stop("or a matrix of midpoints and limits")
+ }
+ if(class(segs) == "dstat") {
+  midpoint<-"mean"
+  if(lower.limit == "var") {
+   if(rownames(segs)[2] == "Variance") ll<-segs[1,]-segs[2,]
+   if(rownames(segs)[2] == "SD") ll<-segs[1,]-segs[2,]*segs[2,]
+  }
+  if(upper.limit == "var") {
+   if(rownames(segs)[2] == "Variance") ul<-segs[1,]+segs[2,]
+   if(rownames(segs)[2] == "SD") ul<-segs[1,]+segs[2,]*segs[2,]
+  }
+  if(lower.limit == "sd") {
+   if(rownames(segs)[2] == "Variance") ll<-segs[1,]-sqrt(segs[2,])
+   if(rownames(segs)[2] == "SD") ll<-segs[1,]-segs[2,]
+  }
+  if(upper.limit == "sd") {
+   if(rownames(segs)[2] == "Variance") ul<-segs[1,]+sqrt(segs[2,])
+   if(rownames(segs)[2] == "SD") ul<-segs[1,]+segs[2,]
+  }
+  if(lower.limit == "std.error") {
+   if(rownames(segs)[2] == "Variance") ll<-segs[1,]-sqrt(segs[2,])/sqrt(segs[3,])
+   if(rownames(segs)[2] == "SD") ll<-segs[1,]-segs[2,]/sqrt(segs[3,])
+  }
+  if(upper.limit == "std.error") {
+   if(rownames(segs)[2] == "Variance") ul<-segs[1,]+sqrt(segs[2,])/sqrt(segs[3,])
+   if(rownames(segs)[2] == "SD") ul<-segs[1,]+segs[2,]/sqrt(segs[3,])
+  }
+  segs<-rbind(segs[1,],ll,ul,segs[3,])
+ }
  segdim<-dim(segs)
- if(sort.segs) segs<-segs[,order(segs[1,])]
+ if (sort.segs) {
+  seg.order<-order(segs[1,])
+  segs<-segs[,seg.order]
+ }
+ else seg.order<-1:segdim[1]
  oldpar<-par(no.readonly=TRUE)
- if(is.na(mar)) mar=c(4,6,1+2*(nchar(main)>0),5)
+ if(is.na(mar)) mar<-c(4,6,1+2*(nchar(main)>0),5)
  par(mar=mar)
- plot(x=c(min(segs[2,]),max(segs[3,])),y=c(1,segdim[2]),
+ plot(x=c(min(segs[2,]),max(segs[3,])),y=c(1,segdim[2]), 
   main=main,xlab="",ylab="",type="n",axes=FALSE,...)
  box()
  if(!is.na(vgrid)) abline(v=vgrid,lty=2)
  axis(1)
- arrows(segs[2,],1:segdim[2],segs[3,],1:segdim[2],
-  length=0.05,angle=90,code=3,col=col)
+ arrows(segs[2,],1:segdim[2],segs[3,],1:segdim[2],length=0.05, 
+  angle=90,code=3,col=col)
  points(segs[1,],1:segdim[2],pch=21,col=col,bg=bg)
  if(is.null(left.labels)) {
   left.labels<-colnames(segs)
-  if(is.null(left.labels))
-   left.labels<-paste("V",1:segdim[2],sep="")
+  if(is.null(left.labels)) left.labels<-paste("V",seg.order,sep="")
  }
+ else left.labels<-left.labels[seg.order]
  plot.limits<-par("usr")
  mtext(left.labels,2,line=0.2,at=1:segdim[2],adj=1,las=1)
- if(is.null(right.labels))
-  right.labels<-paste(round(segs[1,],2),segs[4,],sep=";")
+ if(is.null(right.labels)) 
+  right.labels<-paste(round(segs[1,],2),"(",segs[4,],")",sep="")
+ else right.labels<-right.labels[seg.order]
  mtext(right.labels,4,line=0.2,at=1:segdim[2],adj=0,las=1)
- if(nchar(xlab)) mtext(xlab,1,line=2)
+ if(is.na(xlab))
+  xlab<-paste("| -",lower.limit,"-",midpoint,"-",upper.limit,"- |")
+ if (nchar(xlab)) mtext(xlab,1,line = 2)
  par(oldpar)
 }
