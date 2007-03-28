@@ -42,9 +42,9 @@ polar.plot<-function(lengths,polar.pos,labels,label.pos,rp.type="r",...) {
 
 radial.plot<-function(lengths,radial.pos,labels,label.pos,
  rp.type="r",label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),
- mar=c(2,2,3,2),show.grid=TRUE,grid.col="gray",grid.bg=par("bg"),
- point.symbols=NULL,point.col=NULL,show.centroid=FALSE,
- radial.lim=NULL,...) {
+ mar=c(2,2,3,2),show.grid=TRUE,show.radial.grid=TRUE,grid.col="gray",
+ grid.bg="transparent",point.symbols=NULL,point.col=NULL,
+ show.centroid=FALSE,radial.lim=NULL,...) {
  
  length.dim<-dim(lengths)
  if(is.null(radial.lim)) radial.lim<-range(lengths)
@@ -117,7 +117,7 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
   label.pos<-seq(0,pi*(2-2/npoints),length=npoints)
  xpos<-cos(label.pos)*maxlength
  ypos<-sin(label.pos)*maxlength
- segments(0,0,xpos,ypos,col=grid.col)
+ if(show.radial.grid) segments(0,0,xpos,ypos,col=grid.col)
  xpos<-cos(label.pos)*maxlength*label.prop
  ypos<-sin(label.pos)*maxlength*label.prop
  boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE)

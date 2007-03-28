@@ -7,7 +7,8 @@
 \usage{
  triax.frame(main="",at=seq(0.1,0.9,by=0.1),
  axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
- align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"))
+ align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
+ cc.axes=FALSE)
 }
 \arguments{
  \item{main}{The title of the triangle plot. Defaults to nothing.}
@@ -24,17 +25,19 @@
  \item{show.grid}{Whether to display grid lines at the ticks.}
  \item{col.grid}{Color of the grid lines. Defaults to gray.}
  \item{lty.grid}{Type of line for the grid.}
+ \item{cc.axes}{Whether to align the axes clockwise or counterclockwise.}
 }
 \details{
  \code{triax.frame} displays a triangular plot area on which proportions
   or percentages may be displayed. An optional grid may also be displayed.
+  If \code{cc.axes} is TRUE, both the axes and axis ticks will be in
+  reverse order.
 }
 \value{nil}
 \author{Jim Lemon}
 \seealso{\code{\link{triax.points}},\code{\link{triax.abline}}}
 \examples{
- par(xpd=TRUE)
  triax.frame(main="DEFAULT")
- par(xpd=FALSE)
+ triax.frame(main="Clockwise axes",cc.axes=TRUE)
 }
 \keyword{misc}

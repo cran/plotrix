@@ -56,13 +56,9 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   gry1<-bottom.gap*0.95
   grx2<-xy[1]+(xy[2]-xy[1])/4
   gry2<-bottom.gap*0.8
-  if(show.legend) {
-   par(xpd=TRUE)
-   gradient.rect(grx1,gry1,grx2,gry2,
-    redrange,greenrange,bluerange,nslices=10)
-   par(xpd=FALSE)
-   mtext(round(range(x),2),1,2.5,at=c(grx1,grx2))
-  }
+  if(show.legend)
+   color.legend(grx1,gry1,grx2,gry2,round(range(x),2),
+    color.gradient(redrange,greenrange,bluerange,nslices=10))
   par(oldpar)
  }
  else cat("x must be a data frame or matrix\n")

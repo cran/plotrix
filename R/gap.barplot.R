@@ -26,4 +26,5 @@ gap.barplot<-function(y,gap,xaxlab,xtics,yaxlab,ytics,ylab,col,...) {
  y[bigones]<-y[bigones]-gapsize
  rect(x - halfwidth, plot.lim[3], x + halfwidth, y, col = col)
  axis.break(2,gap[1],style="gap")
+ return(x)
 }

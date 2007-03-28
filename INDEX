@@ -8,12 +8,14 @@ clock24.plot		Plot values as lines/polygon/symbols on a "clockface"
 cluster.overplot	Display overlying points as clusters
 color.gradient		Calculate values for a color gradient
 color.id		Find the closest named color to a hexadecimal RGB code
+color.legend		Display a color/value legend
 color.scale		Transform numeric values into a series of colors
 color.scale.lines	Display line segments with scaled colors
 color2D.matplot		Display a numeric matrix as a color matrix
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
+draw.arc		Display a circular arc
 draw.circle		Display a circle on an existing plot
 draw.tilted.sector	Display a single 3D pie sector
 fan.plot		Display a fan (superimposed pie sector) plot
