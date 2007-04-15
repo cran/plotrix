@@ -23,14 +23,20 @@
   bottom axis. If \code{cc.axes} is TRUE, the orientation is up-left for
   the left axis, horizontal for the right axis and up-right for the bottom
   axis.
+  
+  Remember to call \code{triax.plot} with \code{no.add=FALSE} and restore
+  the graphics parameters as in the example or the lines will not be
+  placed properly.
 }
 \value{nil}
 \author{Jim Lemon}
 \seealso{\code{\link{triax.plot}}}
 \examples{
- triax.plot(data.frame(bottom=0.4,right=0.3,left=0.3),main="Triax ablines")
+ triax.return<-triax.plot(data.frame(bottom=0.4,right=0.3,left=0.3),
+  main="Triax ablines",no.add=FALSE)
  triax.abline(l=0.3,col="red")
  triax.abline(r=0.3,col="green")
  triax.abline(b=0.4,col="blue")
+ par(triax.return$oldpar)
 }
 \keyword{misc}

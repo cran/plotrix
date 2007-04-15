@@ -30,7 +30,7 @@ floating.pie<-function(xpos,ypos,x,edges=200,radius=1,col=NULL,
   xc<-cos(t2p)*radius
   yc<-sin(t2p)*radius
  }
- return(bc)
+ invisible(bc)
 }
 
 # place text labels at the specified distance from x,y on the radial lines

@@ -3,12 +3,12 @@ std.error<-function(x,na.rm) {
  return(stderr/sqrt(sum(!is.na(x))))
 }
 
-# in general, get.segs expects a list with varying lengths of values
+# in general, get.segs expects a list with varying lengths of numeric values
 # it returns a 4xn matrix of midpoints, upper and lower limits and Ns
 # where N is the number of elements in the list or columns in a data frame.
 
 get.segs<-function(x,midpoint="mean",lower.limit="std.error",
- upper.limit="std.error") {
+ upper.limit=lower.limit) {
 
  xlen<-length(x)
  segs<-matrix(0,nrow=4,ncol=xlen)
@@ -18,43 +18,50 @@ get.segs<-function(x,midpoint="mean",lower.limit="std.error",
   segs[3,i]<-segs[1,i]+do.call(upper.limit,list(x[[i]],na.rm=TRUE))
   segs[4,i]<-sum(!is.na(x[[i]]))
  }
+ rownames(segs)<-c(midpoint,lower.limit,upper.limit,"valid.n")
  colnames(segs)<-names(x)
  return(segs)
 }
 
 centipede.plot<-function(segs,midpoint="mean",lower.limit="std.error", 
- upper.limit="std.error",left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
+ upper.limit=lower.limit,left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
  main="",xlab=NA,vgrid=NA,mar=NA,col=par("fg"),bg="green",...) {
 
  if(missing(segs)) {
   cat("Usage: centipede.plot(segs,...)\n\twhere segs is a dstat object")
   stop("or a matrix of midpoints and limits")
  }
+ if(is.list(segs)) {
+  if(all(lapply(segs,is.numeric)))
+   segs<-get.segs(segs,midpoint=midpoint,lower.limit=lower.limit,
+    upper.limit=upper.limit)
+  else stop("If segs is a list, all the components must be numeric")
+ }
  if(class(segs) == "dstat") {
   midpoint<-"mean"
   if(lower.limit == "var") {
-   if(rownames(segs)[2] == "Variance") ll<-segs[1,]-segs[2,]
-   if(rownames(segs)[2] == "SD") ll<-segs[1,]-segs[2,]*segs[2,]
+   if(rownames(segs)[2] == "var") ll<-segs[1,]-segs[2,]
+   if(rownames(segs)[2] == "sd") ll<-segs[1,]-segs[2,]*segs[2,]
   }
   if(upper.limit == "var") {
-   if(rownames(segs)[2] == "Variance") ul<-segs[1,]+segs[2,]
-   if(rownames(segs)[2] == "SD") ul<-segs[1,]+segs[2,]*segs[2,]
+   if(rownames(segs)[2] == "var") ul<-segs[1,]+segs[2,]
+   if(rownames(segs)[2] == "sd") ul<-segs[1,]+segs[2,]*segs[2,]
   }
   if(lower.limit == "sd") {
-   if(rownames(segs)[2] == "Variance") ll<-segs[1,]-sqrt(segs[2,])
-   if(rownames(segs)[2] == "SD") ll<-segs[1,]-segs[2,]
+   if(rownames(segs)[2] == "var") ll<-segs[1,]-sqrt(segs[2,])
+   if(rownames(segs)[2] == "sd") ll<-segs[1,]-segs[2,]
   }
   if(upper.limit == "sd") {
-   if(rownames(segs)[2] == "Variance") ul<-segs[1,]+sqrt(segs[2,])
-   if(rownames(segs)[2] == "SD") ul<-segs[1,]+segs[2,]
+   if(rownames(segs)[2] == "var") ul<-segs[1,]+sqrt(segs[2,])
+   if(rownames(segs)[2] == "sd") ul<-segs[1,]+segs[2,]
   }
   if(lower.limit == "std.error") {
-   if(rownames(segs)[2] == "Variance") ll<-segs[1,]-sqrt(segs[2,])/sqrt(segs[3,])
-   if(rownames(segs)[2] == "SD") ll<-segs[1,]-segs[2,]/sqrt(segs[3,])
+   if(rownames(segs)[2] == "var") ll<-segs[1,]-sqrt(segs[2,])/sqrt(segs[3,])
+   if(rownames(segs)[2] == "sd") ll<-segs[1,]-segs[2,]/sqrt(segs[3,])
   }
   if(upper.limit == "std.error") {
-   if(rownames(segs)[2] == "Variance") ul<-segs[1,]+sqrt(segs[2,])/sqrt(segs[3,])
-   if(rownames(segs)[2] == "SD") ul<-segs[1,]+segs[2,]/sqrt(segs[3,])
+   if(rownames(segs)[2] == "var") ul<-segs[1,]+sqrt(segs[2,])/sqrt(segs[3,])
+   if(rownames(segs)[2] == "sd") ul<-segs[1,]+segs[2,]/sqrt(segs[3,])
   }
   segs<-rbind(segs[1,],ll,ul,segs[3,])
  }
@@ -87,7 +94,8 @@ centipede.plot<-function(segs,midpoint="mean",lower.limit="std.error",
  else right.labels<-right.labels[seg.order]
  mtext(right.labels,4,line=0.2,at=1:segdim[2],adj=0,las=1)
  if(is.na(xlab))
-  xlab<-paste("| -",lower.limit,"-",midpoint,"-",upper.limit,"- |")
+  xlab<-paste("| -",rownames(segs)[2],"-",rownames(segs)[1],"-",
+   rownames(segs)[3],"- |")
  if (nchar(xlab)) mtext(xlab,1,line = 2)
  par(oldpar)
 }

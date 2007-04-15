@@ -6,17 +6,19 @@
   centipede.plot.
 }
 \usage{
- get.segs(x,midpoint="mean",lower.limit="std.error",upper.limit="std.error")
+ get.segs(x,midpoint="mean",lower.limit="std.error",upper.limit=lower.limit)
 }
 \arguments{
   \item{x}{a list or data frame.}
   \item{midpoint}{The name of the function to calculate midpoints.}
-  \item{lower.limit,upper.limit}{The names of the function to calculate 
+  \item{lower.limit,upper.limit}{The names of the function(s) to calculate 
    lower and upper limits.}
 }
 \details{
  \code{get.segs} calls the functions whose names are passed to calculate
-  midpoints and limits for each list element or data frame column.
+  midpoints and limits for each list element or data frame column. The
+  user can define special functions for the central and dispersion measures
+  if desired.
 }
 \value{A matrix with four rows and as many columns as were in the object
  \code{x}. The first row contains the midpoint values, the second and third
