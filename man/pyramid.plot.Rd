@@ -2,7 +2,7 @@
 \alias{pyramid.plot}
 \title{Pyramid plot}
 \description{
- Displays a pyramid (opposing horizontal bar) plot on the current
+ Displays a pyramid (opposed horizontal bar) plot on the current
   graphics device.
 }
 \usage{

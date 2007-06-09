@@ -41,9 +41,7 @@
  data(soils)
  triax.return<-triax.plot(soils[1:10,],
   main="Adding points to a triangle plot",no.add=FALSE)
- if(dev.interactive()) par(ask=TRUE)
  triax.points(soils[11:20,],col.symbols="green",pch=3)
  par(triax.return$oldpar)
- if(dev.interactive()) par(ask=FALSE)
 }
 \keyword{misc}

@@ -80,7 +80,7 @@
  triax.plot(soils[1:10,],main="DEFAULT")
  if(dev.interactive()) par(ask=TRUE)
  triax.plot(soils[1:10,],main="PERCENTAGES (Counterclockwise axes)",
-  tick.labels=list(l=seq(90,10,by=-10),r=seq(90,10,by=-10),b=seq(90,10,by=-10)),
+  tick.labels=list(l=seq(10,90,by=10),r=seq(10,90,by=10),b=seq(10,90,by=10)),
   pch=3,cc.axes=TRUE)
  main.title<- 
  triax.plot(soils[1:6,],main="GRID AND LEGEND",show.grid=TRUE,

@@ -6,7 +6,7 @@
 }
 \usage{
  centipede.plot(segs,midpoint="mean",lower.limit="std.error",
-  upper.limit="std.error",left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
+  upper.limit=lower.limit,left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
   main="",xlab=NA,vgrid=NA,mar=NA,col=par("fg"),bg="green",...)
 }
 \arguments{
