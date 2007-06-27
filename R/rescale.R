@@ -9,6 +9,7 @@ rescale<-function(x,newrange) {
  }
  if(is.numeric(x) && is.numeric(newrange)) {
   xna<-is.na(x)
+  if(all(xna)) return(x)
   if(any(xna)) xrange<-range(x[!xna])
   else xrange<-range(x)
   if(xrange[1] == xrange[2]) stop("rescale: can't rescale a constant vector!")

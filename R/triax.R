@@ -90,43 +90,45 @@ triax.abline<-function(b=NULL,r=NULL,l=NULL,col=par("col"),lty=par("lty"),
 }
 
 triax.points<-function(x,show.legend=FALSE,label.points=FALSE,
-  point.labels=NULL,col.symbols=par("fg"),pch=par("pch"),
-  bg.symbols=par("bg"),cc.axes=FALSE,...) {
+ point.labels=NULL,col.symbols=par("fg"),pch=par("pch"),
+ bg.symbols=par("bg"),cc.axes=FALSE,...) {
 
-  if(dev.cur() == 1)
-   stop("Cannot add points unless the triax.frame has been drawn")
-  if(missing(x))
-   stop("Usage: triax.points(x,...)\n\twhere x is a 3 column array of proportions or percentages")
-  if(!is.matrix(x) && !is.data.frame(x))
-   stop("x must be a matrix or data frame with at least 3 columns and one row.")
-  if(any(x > 1) || any(x < 0)) {
-   if(any(x < 0))
-    stop("All proportions must be between zero and one.")
-   if(any(x > 100))
-    stop("All percentages must be between zero and 100.")
-   # convert percentages to proportions
-   x<-x/100
-  }
-  if(any(abs(rowSums(x)-1) > 0.01))
-   warning("At least one set of proportions does not equal one.")
-  sin60<-sin(pi/3)
-  if(cc.axes) {
-   ypos<-x[,3]*sin60
-   xpos<-x[,1]+x[,3]*0.5
-  }
-  else {
-   ypos<-x[,3]*sin60
-   xpos<-1-(x[,1]+x[,3]*0.5)
-  }
-  nobs<-dim(x)[1]
-  points(x=xpos,y=ypos,pch=pch,col=col.symbols,bg=bg.symbols,...)
-  if(is.null(point.labels)) point.labels<-rownames(x)
-  if(label.points) thigmophobe.labels(xpos,ypos,point.labels)
-  if(show.legend) {
-   legend(0.16-0.02*max(nchar(point.labels)),0.75+0.04*length(point.labels),
-    legend=point.labels,pch=pch,col=col.symbols)
-  }
-  invisible(list(x=xpos,y=ypos))
+ if(dev.cur() == 1)
+  stop("Cannot add points unless the triax.frame has been drawn")
+ if(missing(x))
+  stop("Usage: triax.points(x,...)\n\twhere x is a 3 column array of proportions or percentages")
+ if(!is.matrix(x) && !is.data.frame(x))
+  stop("x must be a matrix or data frame with at least 3 columns and one row.")
+ if(any(x > 1) || any(x < 0)) {
+  if(any(x < 0))
+   stop("All proportions must be between zero and one.")
+  if(any(x > 100))
+   stop("All percentages must be between zero and 100.")
+  # convert percentages to proportions
+  x<-x/100
+ }
+ if(any(abs(rowSums(x)-1) > 0.01))
+  warning("At least one set of proportions does not equal one.")
+ sin60<-sin(pi/3)
+ if(cc.axes) {
+  ypos<-x[,3]*sin60
+  xpos<-x[,1]+x[,3]*0.5
+ }
+ else {
+  ypos<-x[,3]*sin60
+  xpos<-1-(x[,1]+x[,3]*0.5)
+ }
+ nobs<-dim(x)[1]
+ points(x=xpos,y=ypos,pch=pch,col=col.symbols,bg=bg.symbols,type="l",...)
+# cat(col.symbols,"\n")
+# lines(x=xpos,y=ypos,col=col.symbols)
+ if(is.null(point.labels)) point.labels<-rownames(x)
+ if(label.points) thigmophobe.labels(xpos,ypos,point.labels)
+ if(show.legend) {
+  legend(0.16-0.02*max(nchar(point.labels)),0.75+0.04*length(point.labels),
+   legend=point.labels,pch=pch,col=col.symbols)
+ }
+ invisible(list(x=xpos,y=ypos))
 }
 
 triax.frame<-function(main="",at=seq(0.1,0.9,by=0.1),

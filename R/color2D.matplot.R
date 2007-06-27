@@ -57,7 +57,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   grx2<-xy[1]+(xy[2]-xy[1])/4
   gry2<-bottom.gap*0.8
   if(show.legend)
-   color.legend(grx1,gry1,grx2,gry2,round(range(x),2),
+   color.legend(grx1,gry1,grx2,gry2,round(range(x[!is.na(x)]),2),
     color.gradient(redrange,greenrange,bluerange,nslices=10))
   par(oldpar)
  }
