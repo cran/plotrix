@@ -3,12 +3,13 @@
 \title{Turn values into colors.}
 \description{Transform numeric values into colors.}
 \usage{
- color.scale(x,redrange,greenrange,bluerange)
+ color.scale(x,redrange=NA,greenrange=NA,bluerange=NA,extremes=NA)
 }
 \arguments{
  \item{x}{a numeric vector, matrix or data frame}
  \item{redrange,greenrange,bluerange}{color ranges into which 
   to scale \code{x}}
+ \item{extremes}{The colors for the extreme values of \code{x}.}
 }
 \details{
  \code{color.scale} calculates a sequence of colors by a linear
@@ -19,6 +20,11 @@
   split into equal ranges (one less than the number of colors) and 
   the transformation carried out on each range. Values for a color
   range must be between 0 and 1.
+  
+  If \code{extremes} is not NA, the ranges will be calculated from
+  its values using \code{col2rgb}, even if ranges are also supplied.
+  \code{extremes} allows the user to just pass the extreme color values
+  in any format that \code{col2rgb} will accept.
 }
 \note{
  The function is useful for highlighting a numeric dimension or adding
@@ -26,7 +32,7 @@
 }
 \value{A vector or matrix of hexadecimal color values.}
 \author{Jim Lemon}
-\seealso{\code{\link{rescale}}}
+\seealso{\code{\link{rescale}}, \code{\link{col2rgb}}}
 \examples{
  # go from green through yellow to red with no blue
  x<-rnorm(20)

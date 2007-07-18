@@ -1,3 +1,4 @@
+\encoding{latin1}
 \name{gantt.chart}
 \alias{gantt.chart}
 \title{Display a Gantt chart}
@@ -37,7 +38,7 @@
  If task priority colors are not wanted, simply mark every task as priority
  1 or set \code{taskcolors} to a single value to suppress the coloring.
 }
-\author{Jim Lemon (original by Scott Waichler - features by Ulrike Grömping)}
+\author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping)}
 \seealso{\code{\link{get.gantt.info}}}
 \examples{
  Ymd.format<-"\%Y/\%m/\%d"

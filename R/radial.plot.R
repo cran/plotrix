@@ -56,12 +56,14 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
  else {
   npoints<-length.dim[2]
   nsets<-length.dim[1]
+  lengths<-as.matrix(lengths)
  }
  if(missing(radial.pos))
   radial.pos<-seq(0,pi*(2-2/npoints),length=npoints)
  radial.pos.dim<-dim(radial.pos)
  if(is.null(radial.pos.dim))
   radial.pos<-matrix(rep(radial.pos,nsets),nrow=nsets,byrow=TRUE)
+ else radial.pos<-as.matrix(radial.pos)
  if(show.grid) {
   grid.pos<-pretty(radial.lim)
   if(grid.pos[1] <= 0) grid.pos<-grid.pos[-1]
@@ -104,17 +106,9 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,
    points(mean(xpos),mean(ypos),col=point.col[i],pch=point.symbols[i],cex=2,...)
  }
  if(missing(labels)) {
-  if(length(radial.pos) <= 20) {
-   labels<-as.character(round(radial.pos,2))
-   label.pos<-radial.pos
-  }
-  else {
-   label.pos<-seq(0,1.8*pi,length=9)
-   labels<-as.character(round(label.pos,2))
-  }
+  label.pos<-seq(0,1.8*pi,length=9)
+  labels<-as.character(round(label.pos,2))
  }
- if(missing(label.pos))
-  label.pos<-seq(0,pi*(2-2/npoints),length=npoints)
  xpos<-cos(label.pos)*maxlength
  ypos<-sin(label.pos)*maxlength
  if(show.radial.grid) segments(0,0,xpos,ypos,col=grid.col)
