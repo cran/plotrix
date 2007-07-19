@@ -1,12 +1,18 @@
 \name{radial.plot}
-\title{Plot values on a circular grid of 0 to 2*pi radians.}
+\alias{radial.plot}
+\title{
+ Plot values on a circular grid of 0 to 2*pi radians.
+}
+\description{
+ Plot numeric values as distances from the center of a circular field in the
+ directions defined by angles in radians.
+}
 \usage{
  radial.plot(lengths,radial.pos,labels,label.pos,rp.type="r",
  label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),mar=c(2,2,3,2),
  show.grid=TRUE,show.radial.grid=TRUE,grid.col="gray",grid.bg="transparent",
  point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...)
 }
-\alias{radial.plot}
 \arguments{
  \item{lengths}{A numeric data vector or matrix. If \code{lengths}
   is a matrix, the rows will be considered separate data vectors.}
@@ -37,26 +43,33 @@
  \item{point.col}{colors for the symbols.}
  \item{show.centroid}{whether to display a centroid.}
  \item{radial.lim}{the range of the grid circle. Defaults
-  to \code{range(pretty((lengths)))}.}
+  to \code{range(pretty(lengths))}.}
  \item{...}{additional arguments are passed to \code{plot}.}
 }
-\description{
- \code{radial.plot} displays a plot of radial lines, polygon(s),
-  symbols or a combination of these centered at the midpoint of
-  the plot frame, the lengths, vertices or positions corresponding
-  to the numeric magnitudes of the data values. If \code{show.centroid}
-  is TRUE, an enlarged point at the centroid of values is displayed.
+\value{
+ nil
 }
-\value{nil}
-\details{The radial.plot family of plots is useful for illustrating
+\details{
+ \code{radial.plot} displays a plot of radial lines, polygon(s),
+ symbols or a combination of these centered at the midpoint of
+ the plot frame, the lengths, vertices or positions corresponding
+ to the numeric magnitudes of the data values. If \code{show.centroid}
+ is TRUE, an enlarged point at the centroid of values is displayed.
+  
+ If the user wants to plot several sets of lines, points or symbols by
+ passing matrices or data frames of \code{lengths} and \code{radial.pos},
+ remember that these will be grouped by row, so transpose if the data are
+ grouped by columns.
+
+ The radial.plot family of plots is useful for illustrating
  cyclic data such as wind direction or speed (but see \code{oz.windrose}
  for both), activity at different times of the day, and so on. While 
  \code{radial.plot} actually does the plotting, another function is usually 
  called for specific types of cyclic data. Note that if the observations
  are not taken at equal intervals around the circle, the centroid may not
- mean much.}
+ mean much.
+}
 \author{Jim Lemon}
-\keyword{misc}
 \seealso{\code{\link{polar.plot}},\code{\link{clock24.plot}}}
 \examples{
  testlen<-rnorm(10)*2+5
@@ -71,3 +84,4 @@
   point.col="green",show.centroid=TRUE)
  par(ask=FALSE)
 }
+\keyword{misc}

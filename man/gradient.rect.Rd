@@ -2,7 +2,7 @@
 \title{Display a rectangle filled with an arbitrary color gradient.}
 \usage{
  gradient.rect(xleft,ybottom,xright,ytop,reds,greens,blues,col=NULL,
-  nslices=50,gradient="x")
+  nslices=50,gradient="x",border=par("fg"))
 }
 \alias{gradient.rect}
 \arguments{
@@ -14,6 +14,7 @@
   \code{reds, greens, blues} and \code{nslices} will be set to its length.}
  \item{nslices}{The number of sub-rectangles that will be drawn.}
  \item{gradient}{whether the gradient should be horizontal (x) or vertical.}
+ \item{border}{The color of the border around the rectangle (NA for none).}
 }
 \description{
  \code{gradient.rect} draws a rectangle consisting of \code{nslices}
@@ -34,7 +35,7 @@
  # now a "danger gradient"
  gradient.rect(4,0,6,6,c(seq(0,1,length=10),rep(1,10)),
   c(rep(1,10),seq(1,0,length=10)),c(0,0),gradient="y")
- # now just send some colors
- gradient.rect(7,0,9,6,col=2:20,gradient="y")
+ # now just a smooth gradient across the bar
+ gradient.rect(7,0,9,6,col=smoothColors("red",38,"blue"),border=NA)
 }
 \keyword{misc}

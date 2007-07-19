@@ -40,7 +40,7 @@
  to place a label for each sector. If supplied, the number of labels, label 
  positions and sector colors must be at least equal to the number of values 
  in \code{x}. If the labels are long, it may help to reduce the radius of
- the pie.
+ the pie as in the example below.
 }
 \note{
  Due to the somewhat primitive method used to draw sectors, a sector that
@@ -63,6 +63,6 @@
  pieval<-c(2,4,6,8)
  pielabels<-
   c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
- pie3D(pieval,labels=pielabels,explode=0.1,main="3D PIE OPINIONS")
+ pie3D(pieval,radius=0.9,labels=pielabels,explode=0.1,main="3D PIE OPINIONS")
 }
 \keyword{misc}

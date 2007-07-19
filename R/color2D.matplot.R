@@ -5,8 +5,8 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
 }
 
 color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
- show.legend=FALSE,xlab="Column",ylab="Row",do.hex=FALSE,
- show.values=FALSE,vcol="white",vcex=1,...) {
+ extremes=NA,show.legend=FALSE,nslices=10,xlab="Column",ylab="Row",
+ do.hex=FALSE,no.axes=FALSE,show.values=FALSE,vcol="white",vcex=1,...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
@@ -14,17 +14,20 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   else x<-as.vector(x)
   oldpar<-par(no.readonly=TRUE)
   par(xaxs="i",yaxs="i")
+  if(do.hex) par(mar=c(5,4,4,4))
   plot(c(0,xdim[2]),c(0,xdim[1]),xlab=xlab,ylab=ylab,type="n",axes=FALSE,...)
   oldpar$usr<-par("usr")
   if(!do.hex) {
    box()
    pos<-0
   }
-  else pos<--0.3
-  axis(1,at=pretty(0:xdim[2])[-1]-0.5,labels=pretty(0:xdim[2])[-1],pos=pos)
-  yticks<-pretty(0:xdim[1])[-1]
-  axis(2,at=xdim[1]-yticks+0.5,yticks)
-  cellcolors<-color.scale(x,redrange,greenrange,bluerange)
+  else pos<- -0.3
+  if(no.axes) {
+   axis(1,at=pretty(0:xdim[2])[-1]-0.5,labels=pretty(0:xdim[2])[-1],pos=pos)
+   yticks<-pretty(0:xdim[1])[-1]
+   axis(2,at=xdim[1]-yticks+0.5,yticks)
+  }
+  cellcolors<-color.scale(x,redrange,greenrange,bluerange,extremes)
   # start from the top left - isomorphic with the matrix layout
   if(do.hex) {
    par(xpd=TRUE)
@@ -58,7 +61,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   gry2<-bottom.gap*0.8
   if(show.legend)
    color.legend(grx1,gry1,grx2,gry2,round(range(x[!is.na(x)]),2),
-    color.gradient(redrange,greenrange,bluerange,nslices=10))
+    color.gradient(redrange,greenrange,bluerange,nslices=nslices))
   par(oldpar)
  }
  else cat("x must be a data frame or matrix\n")

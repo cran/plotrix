@@ -119,9 +119,7 @@ triax.points<-function(x,show.legend=FALSE,label.points=FALSE,
   xpos<-1-(x[,1]+x[,3]*0.5)
  }
  nobs<-dim(x)[1]
- points(x=xpos,y=ypos,pch=pch,col=col.symbols,bg=bg.symbols,type="l",...)
-# cat(col.symbols,"\n")
-# lines(x=xpos,y=ypos,col=col.symbols)
+ points(x=xpos,y=ypos,pch=pch,col=col.symbols,bg=bg.symbols,type="p",...)
  if(is.null(point.labels)) point.labels<-rownames(x)
  if(label.points) thigmophobe.labels(xpos,ypos,point.labels)
  if(show.legend) {

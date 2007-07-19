@@ -1,5 +1,6 @@
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
+barp			A variant of barplot
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
 centipede.plot		Display a centipede plot (caterpillar plot or league table)
@@ -15,6 +16,7 @@ color2D.matplot		Display a numeric matrix as a color matrix
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
+cylindrect		Display a rectangle shaded to look like a cylinder
 draw.arc		Display a circular arc
 draw.circle		Display a circle on an existing plot
 draw.tilted.sector	Display a single 3D pie sector

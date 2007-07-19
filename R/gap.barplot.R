@@ -1,4 +1,4 @@
-gap.barplot<-function(y,gap,xaxlab,xtics,yaxlab,ytics,ylab,col,...) {
+gap.barplot<-function(y,gap,xaxlab,xtics,yaxlab,ytics,ylim=NA,ylab,col,...) {
  if(missing(y)) stop("y values required")
  x<-1:length(y)
  if(missing(gap)) stop("gap must be specified")
@@ -11,7 +11,7 @@ gap.barplot<-function(y,gap,xaxlab,xtics,yaxlab,ytics,ylab,col,...) {
  gapsize<-gap[2]-gap[1]
  if(missing(xaxlab)) xaxlab<-as.character(x)
  xlim<-range(x)
- ylim<-c(min(y),max(y)-gapsize)
+ if(is.na(ylim[1])) ylim<-c(min(y),max(y)-gapsize)
  plot(0,xlim=xlim,ylim=ylim,ylab=ylab,axes=FALSE,type="n",...)
  box()
  axis(1,at=x,labels=xaxlab)
@@ -26,5 +26,5 @@ gap.barplot<-function(y,gap,xaxlab,xtics,yaxlab,ytics,ylab,col,...) {
  y[bigones]<-y[bigones]-gapsize
  rect(x - halfwidth, plot.lim[3], x + halfwidth, y, col = col)
  axis.break(2,gap[1],style="gap")
- return(x)
+ invisible(x)
 }

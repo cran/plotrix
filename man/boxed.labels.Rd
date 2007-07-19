@@ -5,10 +5,11 @@
  Places labels in boxes on an existing plot
 }
 \usage{
- boxed.labels(x,y,labels,bg="white",border=TRUE,xpad=0.6,ypad=0.6,...)
+ boxed.labels(x,y=NA,labels,bg="white",border=TRUE,xpad=0.6,ypad=0.6,...)
 }
 \arguments{
- \item{x,y}{x and y position of the centers of the labels}
+ \item{x,y}{x and y position of the centers of the labels. \code{x} can be an
+  \code{\link{xy.coords}} list.}
  \item{bg}{The fill color of the rectangles on which the labels are displayed.}
  \item{labels}{Text strings}
  \item{border}{Whether to draw borders around the rectangles.}
