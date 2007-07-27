@@ -16,7 +16,7 @@
   color names and integers may be passed, but the last argument must be
   a color name. If more than one integer appears between two color names,
   only the first will be used in the interpolation and the others will be
-  ignored.}
+  ignored.
 }
 \value{A vector of hexadecimal color values as used by \code{col}.}
 \author{Barry Rowlingson}

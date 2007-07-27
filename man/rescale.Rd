@@ -14,7 +14,7 @@
  \code{rescale} performs a simple linear conversion of \code{x} into the
   range specified by \code{newrange}. Only numeric vectors, matrices or data
   frames with some variation will be accepted. NAs are now preserved - 
-  formerly the function would fail.}
+  formerly the function would fail.
 }
 \value{On success, the rescaled object, otherwise the original object.}
 \author{Jim Lemon}

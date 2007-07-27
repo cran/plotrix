@@ -19,7 +19,7 @@
  \code{cluster.overplot} checks for overlying points in the x and y
   coordinates passed. Those points that are overlying are moved to form
   a small cluster of up to nine points. For large numbers of overlying
-  points, see \code{\link{count.overplot}} or \code{\link{sizeplot}}.}
+  points, see \code{\link{count.overplot}} or \code{\link{sizeplot}}.
 }
 \value{
  A list with two components. For unique x-y pairs the elements will be 

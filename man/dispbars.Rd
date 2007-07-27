@@ -6,22 +6,23 @@
  dispersion.
 }
 \usage{
- dispbars(x,y,ulim,llim=ulim,ddir="y",arrow.cap=0.02,arrow.gap=0.02,...)
+ dispbars(x,y,ulim,llim=ulim,arrow.cap=0.02,arrow.gap=NA,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the bars}
  \item{ulim,llim}{The extent of the dispersion measures.}
- \item{ddir}{The direction in which to orient the bars.}
- \item{arrow.cap}{The width of the cap at the outer end of each bar.}
- \item{arrow.gap}{The gap to leave at the inner end of each bar.}
+ \item{arrow.cap}{The width of the cap at the outer end of each bar
+  as a proportion of the width of the plot.}
+ \item{arrow.gap}{The gap to leave at the inner end of each bar.
+  Defaults to two thirds of the height of a capital "O".}
  \item{...}{additional arguments passed to \code{arrows}.}
 }
 \details{
- \code{arrow.cap} and \code{arrow.gap} are both proportions of the width or
-  height of the plot, depending upon whether \code{ddir} is "y" or "x"
-  respectively.
+ If \code{arrow.gap} is greater than or equal to the upper or lower
+ limit for a bar, \code{segments} is used to draw the upper and
+ lower caps with no bars to avoid zero length arrows.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{\link{arrows}}}
+\seealso{\code{\link{arrows}},\code{\link{segments}}}
 \keyword{misc}

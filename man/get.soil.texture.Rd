@@ -12,7 +12,7 @@
 \description{
  \code{get.soil.texture} calls \code{get.triprop} to allow the user to 
  enter soil textures as the proportions or percentages of three 
- components, sand, silt and clay.}
+ components, sand, silt and clay.
 }
 \value{A matrix of the components of one or more soil samples.}
 \author{Sander Oom and Jim Lemon}

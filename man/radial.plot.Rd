@@ -20,15 +20,13 @@
   These are interpreted as beginning at the right (0 radians) and moving
   counterclockwise. If \code{radial.pos} is a matrix, the rows must 
   correspond to rows of \code{lengths}.}
- \item{labels}{character strings to be placed at the outer ends of
+ \item{labels}{Character strings to be placed at the outer ends of
   the lines. If set to NULL, will suppress printing of labels,
   but if missing, the radial positions will be used.}
- \item{label.pos}{the positions of the labels as distance from the
-  'center' of the plot. If missing, they will be placed at 1.1
-  times the maximum of \code{lengths}.}
- \item{rp.type}{whether to draw (r)adial lines, a (p)olygon, (s)ymbols
+ \item{label.pos}{The positions of the labels aroung the plot in radians.}
+ \item{rp.type}{Whether to draw (r)adial lines, a (p)olygon, (s)ymbols
   or some combination of these.}
- \item{label.prop}{the label position radius as a proportion of the 
+ \item{label.prop}{The label position radius as a proportion of the 
   maximum line length.}
  \item{main}{The title for the plot.}
  \item{xlab,ylab}{Normally x and y axis labels are suppressed.}
@@ -39,12 +37,12 @@
  \item{show.radial.grid}{Whether to draw radial lines to the plot labels.}
  \item{grid.col}{Color of the circular grid.}
  \item{grid.bg}{Fill color of above.}
- \item{point.symbols}{the symbols for plotting (as in pch).}
- \item{point.col}{colors for the symbols.}
- \item{show.centroid}{whether to display a centroid.}
- \item{radial.lim}{the range of the grid circle. Defaults
+ \item{point.symbols}{The symbols for plotting (as in pch).}
+ \item{point.col}{Colors for the symbols.}
+ \item{show.centroid}{Whether to display a centroid.}
+ \item{radial.lim}{The range of the grid circle. Defaults
   to \code{range(pretty(lengths))}.}
- \item{...}{additional arguments are passed to \code{plot}.}
+ \item{...}{Additional arguments are passed to \code{plot}.}
 }
 \value{
  nil

@@ -70,7 +70,7 @@ fan.plot(x,edges=200,radius=1,col=NULL,align.at=NULL,labels=NULL,
  # now do it with label.radius
  fan.plot(iucn.df$threatened,
   labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
-  label.radius=c(1.2,1.15,1.2,1.2,1.2,1.2),
+  label.radius=c(1.15,1.2,1.2,1.2,1.2,1.2),
   main="Threatened species by geographical area",ticks=276)
 }
 \keyword{misc}

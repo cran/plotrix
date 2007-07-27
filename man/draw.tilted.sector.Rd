@@ -29,7 +29,7 @@
  \code{draw.tilted.sector} displays a single 3D pie sector. It is probably
  only useful when called from \code{\link{pie3D}}. The \code{shade}
  argument proportionately reduces the brightness of the RGB color of
- the sector to produce a top lighted effect.}
+ the sector to produce a top lighted effect.
 }
 \author{Jim Lemon}
 \seealso{\code{\link{pie3D}}}

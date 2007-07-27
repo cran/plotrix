@@ -12,7 +12,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   xdim<-dim(x)
   if(is.data.frame(x)) x<-unlist(x)
   else x<-as.vector(x)
-  oldpar<-par(no.readonly=TRUE)
+  oldpar<-par("xaxs","yaxs","xpd")
   par(xaxs="i",yaxs="i")
   if(do.hex) par(mar=c(5,4,4,4))
   plot(c(0,xdim[2]),c(0,xdim[1]),xlab=xlab,ylab=ylab,type="n",axes=FALSE,...)

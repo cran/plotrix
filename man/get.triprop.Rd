@@ -11,7 +11,7 @@
 }
 \description{
  \code{get.triprop} allows the user to enter triplets of proportions
- or percentages of three components such as sand, silt and clay in soils.}
+ or percentages of three components such as sand, silt and clay in soils.
 }
 \details{
  The three proportions of each row must sum to 100 or 1 within 1\% or
