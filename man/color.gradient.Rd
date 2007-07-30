@@ -19,7 +19,7 @@
  a known number of gradations. Such a set can be used to assign a grade
  to a small number of values (e.g. points on a scatterplot - but see 
  \code{color.scale} for large numbers) and display a color bar using
- \code{gradient.rect} as a legend.}
+ \code{gradient.rect} as a legend.
 }
 \value{A vector of hexadecimal color values as used by \code{col}.}
 \author{Jim Lemon}

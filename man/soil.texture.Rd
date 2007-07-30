@@ -49,8 +49,8 @@
  \code{soil.texture} displays a triangular plot area on which soil
   textures defined as proportions of sand, silt and clay can be plotted.
   Optional grid, vertex labels, soil type divisions and names may also 
-  be displayed.
-  If a matrix of soil textures is present, these will be plotted.}
+  be displayed. If a matrix of soil textures is present, these will be
+  plotted.
 }
 \value{If \code{soiltexture} was included, a list of the \code{x,y} 
  positions of the soil types plotted. If not, nil.

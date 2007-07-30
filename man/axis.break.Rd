@@ -16,7 +16,6 @@
  \item{style}{Either \code{gap}, \code{slash} or \code{zigzag}}
  \item{brw}{break width relative to plot width}
 }
-}
 \value{nil}
 \note{
  There is some controversy about the propriety of using discontinuous

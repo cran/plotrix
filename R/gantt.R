@@ -44,7 +44,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL, 
  vgrid.format="%Y/%m/%d",half.height=0.25,hgrid=FALSE,main="",ylab="") {
 
- oldpar <- par(no.readonly = TRUE)
+ oldpar <- par("mai","omi","xpd")
  if(is.null(x)) x<-get.gantt.info(format=format)
  ntasks <- length(x$labels)
  if(is.null(dev.list())) plot.new()

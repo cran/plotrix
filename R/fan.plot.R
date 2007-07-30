@@ -9,7 +9,7 @@ fan.plot<-function(x,edges=200,radius=1,col=NULL,align.at=NULL,labels=NULL,
  if(include.sumx) x<-c(x,sum(x))
  # get the order from largest to smallest
  xorder<-order(x,decreasing=TRUE)
- oldpar<-par(no.readonly=TRUE)
+ oldpar<-par("mar","xpd")
  if(align=="center") x<-pi*x/sum(x)
  else x<-2*pi*x/sum(x)
  if(is.null(align.at)) {
@@ -92,13 +92,15 @@ fan.plot<-function(x,edges=200,radius=1,col=NULL,align.at=NULL,labels=NULL,
   }
   innerend<-seq(0.98,by=-shrink,length=nx)
   endpos<-lpos
-  xpos1<-cos(labelpos)*label.radius
-  ypos1<-sin(labelpos)*ymult*label.radius
+  if(length(label.radius) < nx)
+   label.radius<-rep(label.radius,length.out=nx)
+  xpos1<-cos(labelpos)*label.radius[xorder]
+  ypos1<-sin(labelpos)*ymult*label.radius[xorder]
   for(i in 1:nx)
    boxed.labels(xpos1[i],ypos1[i],labels[xorder[i]],border=FALSE,
     xpad=0.1,ypad=0.1,adj=c(0.5-cos(labelpos[i])/2,1))
-  xpos1<-cos(labelpos)*(label.radius+radius)/2
-  ypos1<-sin(labelpos)*ymult*(label.radius+radius)/2
+  xpos1<-cos(labelpos)*(label.radius[xorder]+radius)/2
+  ypos1<-sin(labelpos)*ymult*(label.radius[xorder]+radius)/2
   xpos2<-cos(endpos)*radius*innerend
   ypos2<-sin(endpos)*ymult*radius*innerend
   segments(xpos1,ypos1,xpos2,ypos2)

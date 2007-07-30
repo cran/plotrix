@@ -20,7 +20,7 @@
  \code{gradient.rect} draws a rectangle consisting of \code{nslices}
   subrectangles of the colors in \code{col} or those returned by 
   \code{color.gradient} if \code{col} is NULL. The rectangle is
-  'sliced' in the direction specified by \code{gradient}.}
+  'sliced' in the direction specified by \code{gradient}.
 }
 \value{the vector of hexadecimal color values from \code{color.gradient} or
  \code{col}.}

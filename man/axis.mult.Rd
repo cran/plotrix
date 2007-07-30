@@ -20,7 +20,6 @@
   and outside the axis tick labels}
  \item{...}{additional arguments passed to \code{axis}.}
 }
-}
 \value{nil}
 \details{
  \code{axis.mult} automates the process of displaying an axis with a 

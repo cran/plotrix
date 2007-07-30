@@ -19,7 +19,7 @@
  \code{bin.wind.records} bins a number of wind direction and speed
   records into a matrix of percentages of observations that can be used to
   display a cumulative wind rose with \code{oz.windrose} The defaults are those
-  used by the Australian Bureau of Meteorology.}
+  used by the Australian Bureau of Meteorology.
 }
 \value{
  A matrix of percentages in which the rows represent wind speed categories and 

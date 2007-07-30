@@ -32,7 +32,7 @@
 \note{
  If a title is desired, remember to move the legend to the bottom 
   of the plot. If the function is passed values that do not sum to 100, the
-  resulting plot will at best be misleading.}
+  resulting plot will at best be misleading.
 }
 \value{nil}
 \author{Jim Lemon (thanks to Anna in the Sydney BoM office)}

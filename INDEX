@@ -1,8 +1,10 @@
+arctext			Display text on a circular arc
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
 barp			A variant of barplot
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
+brkdn.plot		Display summary measures broken down by factors
 centipede.plot		Display a centipede plot (caterpillar plot or league table)
 clean.args		Remove arguments that would cause an error
 clock24.plot		Plot values as lines/polygon/symbols on a "clockface"

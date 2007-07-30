@@ -1,7 +1,7 @@
 \name{polar.plot}
 \title{Plot values on a circular grid of 0 to 360 degrees.}
 \usage{
- polar.plot(lengths,polar.pos,labels,label.pos,rp.type="r",...)
+ polar.plot(lengths,polar.pos,labels=NULL,label.pos=NULL,rp.type="r",...)
 }
 \alias{polar.plot}
 \arguments{
@@ -11,7 +11,7 @@
   These will be rescaled to radians.}
  \item{labels}{text labels to place on the periphery of the circle. This 
   defaults to labels every 20 degrees. For no labels, pass an empty string.}
- \item{label.pos}{positions of the labels in degrees}
+ \item{label.pos}{positions of the peripheral labels in degrees}
  \item{rp.type}{Whether to plot radial lines, symbols or a polygon.}
  \item{...}{additional arguments passed to \code{radial.plot} and
   then to \code{plot}.}
@@ -20,7 +20,7 @@
  \code{polar.plot} displays a plot of radial lines, symbols or a polygon 
   centered at the midpoint of the plot frame on a 0:360 circle.
   Positions are interpreted as beginning at the right and
-  moving counterclockwise.}
+  moving counterclockwise.
 }
 \value{nil}
 \author{Jim Lemon}
