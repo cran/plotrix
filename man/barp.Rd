@@ -16,9 +16,8 @@
  \item{legend.lab}{Labels for an optional legend. If NULL, no legend is
   displayed.}
  \item{legend.pos}{Optional position for the legend as a list with \code{x}
-  and \code{y} components. The default is to call \code{emptyspace} to
-  position the legend. If this is equal to anything else, \code{locator}
-  will be called.}
+  and \code{y} components. The default is to call \code{\link{emptyspace}}
+  to position the legend. If this is NA, \code{locator} will be called.}
  \item{col}{The fill colors for the bars. The default is no fill.}
  \item{border}{The border for the bars.}
  \item{main}{The title at the top of the plot.}
@@ -46,7 +45,13 @@
  representing each value will be displayed centered at \code{1:length(height)}.
  If \code{height} is a matrix or data frame, a group of bars will be drawn for
  each column, with the values of the group taken from the rows of that column.
-
+ The values from \code{freq} in the prettyR package can be used as the \code{x}
+ argument like this:
+ 
+ barp(freq(...)[[1]],...)
+ 
+ and the value from \code{table} can also be passed as \code{x}.
+ 
  Bars are empty by default but fill colors can be defined in several ways.
  If a single color is passed, all bars will be the same color. If \code{height}
  is a vector, colors will be treated as usual if the length of \code{col} is

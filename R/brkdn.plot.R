@@ -4,18 +4,20 @@ dispbars<-function(x,y,ulim,llim=ulim,arrow.cap=0.02,arrow.gap=NA,...) {
  npoints<-length(x)
  if(is.na(arrow.gap)) arrow.gap<-strheight("O")/1.5
  for(i in 1:npoints) {
-  if(arrow.gap >= ulim[i] * 0.9 || arrow.gap >= llim[i] * 0.9) {
-   x0<-rep(x[i]-length,2)
-   x1<-rep(x[i]+length,2)
-   y0<-rep(c(y[i]-llim[i],y[i]+ulim[i]),2)
-   y1<-rep(c(y[i]-llim[i],y[i]+ulim[i]),2)
-   segments(x0,y0,x1,y1,...)
-  }
-  else {
-   x0<-x1<-rep(x[i],2)
-   y0<-c(y[i]+arrow.gap,y[i]-arrow.gap)
-   y1<-c(y[i]+ulim[i],y[i]-llim[i])
-   arrows(x0,y0,x1,y1,length=length,angle=90,...)
+  if(!is.na(ulim[i])) {
+   if(arrow.gap >= ulim[i] * 0.9 || arrow.gap >= llim[i] * 0.9) {
+    x0<-rep(x[i]-length,2)
+    x1<-rep(x[i]+length,2)
+    y0<-rep(c(y[i]-llim[i],y[i]+ulim[i]),2)
+    y1<-rep(c(y[i]-llim[i],y[i]+ulim[i]),2)
+    segments(x0,y0,x1,y1,...)
+   }
+   else {
+    x0<-x1<-rep(x[i],2)
+    y0<-c(y[i]+arrow.gap,y[i]-arrow.gap)
+    y1<-c(y[i]+ulim[i],y[i]-llim[i])
+    arrows(x0,y0,x1,y1,length=length,angle=90,...)
+   }
   }
  }
 }

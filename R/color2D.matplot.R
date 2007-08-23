@@ -6,7 +6,7 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
 
 color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
  extremes=NA,show.legend=FALSE,nslices=10,xlab="Column",ylab="Row",
- do.hex=FALSE,no.axes=FALSE,show.values=FALSE,vcol="white",vcex=1,...) {
+ do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
@@ -22,7 +22,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
    pos<-0
   }
   else pos<- -0.3
-  if(no.axes) {
+  if(axes) {
    axis(1,at=pretty(0:xdim[2])[-1]-0.5,labels=pretty(0:xdim[2])[-1],pos=pos)
    yticks<-pretty(0:xdim[1])[-1]
    axis(2,at=xdim[1]-yticks+0.5,yticks)

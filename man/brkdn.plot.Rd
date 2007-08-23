@@ -33,19 +33,19 @@
  \item{...}{additional arguments passed to \code{plot}.}
 }
 \value{
- A list of two matrices of dimension \code{length(levels(b)} by 
- \code{length(levels(c)}. The first contains the measures of central
+ A list of two matrices of dimension \code{length(levels(b))} by 
+ \code{length(levels(c))}. The first contains the measures of central
  tendency calculated and its name is the name of the function passed as
  \code{mct}. The second contains the measures of dispersion and its name
- is the name of the function passed as \code{mc}.
+ is the name of the function passed as \code{md}.
  
  If both \code{groups} and \code{obs} are not NA, the rows of each matrix
  will be the \code{groups} and the columns the \code{obs}. If \code{obs}
  is NA, the rows will be the \code{groups} and the columns the \code{vars}.
  If \code{groups} is NA, the rows will be the \code{vars} and the columns
  the \code{obs}. That is, if \code{vars} has more than one element, if
- \code{obs} is missing, the elements of \code{vars} will be considered to
- represent observations, while if \code{groups} is missing, they will be
+ \code{obs} is NA, the elements of \code{vars} will be considered to
+ represent observations, while if \code{groups} is NA, they will be
  considered to represent groups. At least one of \code{groups} and \code{obs}
  must be not NA or there is no point in using \code{brkdn.plot}.
 }

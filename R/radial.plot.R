@@ -4,19 +4,18 @@
 # example: clock24.plot(rnorm(16)+3,seq(5.5,20.5))
 
 clock24.plot<-function(lengths,clock.pos,labels=NULL,label.pos=NULL,
- rp.type="r",radians=FALSE,...) {
+ rp.type="r",...) {
  
  npos<-length(lengths)
  # if no positions are given, spread the lines out over the circle 
  if(missing(clock.pos)) clock.pos<-seq(0,24-24/(npos+1),length=npos)
  # start at "midnight" and go clockwise
- if(!radians) radial.pos<-pi*(450-clock.pos*15)/180
+ radial.pos<-pi*(450-clock.pos*15)/180
  if(is.null(labels))
   labels<-paste(0:23,"00",sep="")
  if(is.null(label.pos))
   label.pos<-seq(5*pi/2,7*pi/12,by=-pi/12)
- else
-  if(!radians) label.pos<-pi*(450-clock.pos*15)/180
+ else label.pos<-pi*(450-clock.pos*15)/180
  radial.plot(lengths,radial.pos,labels=labels,label.pos=label.pos,
   rp.type=rp.type,...)
 }
@@ -26,18 +25,20 @@ clock24.plot<-function(lengths,clock.pos,labels=NULL,label.pos=NULL,
 # angles should be given in 0-360 values, use radial.plot for radians
 # example: polar.plot(rnorm(20)+3,seq(90,280,by=10))
 
-polar.plot<-function(lengths,polar.pos,labels=NULL,label.pos=NULL,
- rp.type="r",...) {
+polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
+ start=0,clockwise=FALSE,rp.type="r",...) {
  
  npos<-length(lengths)
  # if no positions are given, add the average distance between positions so that
  # the first and last line don't overlap
- if(missing(polar.pos)) radial.pos<-seq(0,(2-2/(npos+1))*pi,length=npos)
+ if(is.null(polar.pos)) radial.pos<-seq(0,(2-2/(npos+1))*pi,length=npos)
  else radial.pos<-pi*polar.pos/180
+ if(start) start<-pi*start/180
  if(is.null(label.pos)) label.pos<-seq(0,1.89*pi,length=18)
  else label.pos<-pi*label.pos/180
- if(is.null(labels)) labels<-as.character(seq(0,340,by=20))
- radial.plot(lengths,radial.pos,labels,label.pos,rp.type=rp.type,...)
+ if(missing(labels)) labels<-as.character(seq(0,340,by=20))
+ radial.plot(lengths,radial.pos,labels,label.pos,start=start,
+  clockwise=clockwise,rp.type=rp.type,...)
 }
 
 # plots radial lines of length 'lengths', symbols at 'lengths' from the
@@ -46,10 +47,11 @@ polar.plot<-function(lengths,polar.pos,labels=NULL,label.pos=NULL,
 # label.prop is the proportion of max(lengths) that gives the
 # radial position of the labels
 
-radial.plot<-function(lengths,radial.pos,labels,label.pos,rp.type="r",
- label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),mar=c(2,2,3,2),
- show.grid=TRUE,show.radial.grid=TRUE,grid.col="gray",grid.bg="transparent",
- point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...) {
+radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
+ start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
+ line.col=par("fg"),mar=c(2,2,3,2),show.grid=TRUE,show.radial.grid=TRUE,
+ grid.col="gray",grid.bg="transparent",grid.left=FALSE,point.symbols=NULL,
+ point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...) {
  
  length.dim<-dim(lengths)
  if(is.null(radial.lim)) radial.lim<-range(lengths)
@@ -63,12 +65,14 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,rp.type="r",
   nsets<-length.dim[1]
   lengths<-as.matrix(lengths)
  }
- if(missing(radial.pos))
+ if(is.null(radial.pos))
   radial.pos<-seq(0,pi*(2-2/npoints),length=npoints)
  radial.pos.dim<-dim(radial.pos)
  if(is.null(radial.pos.dim))
   radial.pos<-matrix(rep(radial.pos,nsets),nrow=nsets,byrow=TRUE)
  else radial.pos<-as.matrix(radial.pos)
+ if(clockwise) radial.pos<--radial.pos
+ if(start) radial.pos<-radial.pos+start
  if(show.grid) {
   grid.pos<-pretty(radial.lim)
   if(grid.pos[1] <= 0) grid.pos<-grid.pos[-1]
@@ -82,7 +86,7 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,rp.type="r",
  oldpar<-par("xpd","mar","pty")
  par(mar=mar,pty="s")
  plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
-  main=main,xlab=xlab,ylab=ylab,...)
+  main=main,xlab=xlab,ylab=ylab)
  par(xpd=TRUE)
  if(length(line.col) < nsets) line.col<-1:nsets
  rp.type<-unlist(strsplit(rp.type,""))
@@ -114,6 +118,8 @@ radial.plot<-function(lengths,radial.pos,labels,label.pos,rp.type="r",
   label.pos<-seq(0,1.8*pi,length=9)
   labels<-as.character(round(label.pos,2))
  }
+ if(clockwise) label.pos<--label.pos
+ if(start) label.pos<-label.pos+start
  xpos<-cos(label.pos)*maxlength
  ypos<-sin(label.pos)*maxlength
  if(show.radial.grid) segments(0,0,xpos,ypos,col=grid.col)

@@ -17,9 +17,13 @@
 \description{
  \code{arctext} displays a string along a circular arc, rotating each
  letter. This may not work on all devices, as not all graphic devices
- can rotate text to arbitrary angles. If the user passes a value for
+ can rotate text to arbitrary angles. The output looks best on a 
+ Postscript or similar device that can rotate text without distortion.
+ Rotated text often looks very ragged on small bitmaps.
+ 
+ If the user passes a value for
  \code{start}, this will override any value passed to \code{middle}.
- If the plot area is not square (see \code{par(pty="s")}, the arc will
+ If the plot area is not square, see \code{par(pty="s")}, the arc will
  be somewhat elliptical.
 }
 \value{nil}

@@ -1,8 +1,7 @@
 \name{clock24.plot}
 \title{Plot values on a 24 hour "clockface".}
 \usage{
- clock24.plot(lengths,clock.pos,labels=NULL,label.pos=NULL,rp.type="r",
-  radians=FALSE,...)
+ clock24.plot(lengths,clock.pos,labels=NULL,label.pos=NULL,rp.type="r",...)
 }
 \alias{clock24.plot}
 \arguments{
@@ -13,20 +12,14 @@
  \item{labels}{Labels to place at the circumference.}
  \item{label.pos}{Radial positions of the labels.}
  \item{rp.type}{Whether to plot radial lines, symbols or a polygon.}
- \item{radians}{Logical - If TRUE, clock.pos is treated as radians.}
  \item{...}{additional arguments are passed to \code{radial.plot} and
   then to \code{plot}.}
 }
 \description{
  \code{clock24.plot} displays a plot of radial lines, symbols or a polygon
   centered at the midpoint of the plot frame on a 24 hour 'clockface'. 
-  In contrast to \code{radial.plot}, the positions are interpreted as 
-  beginning at vertical (000) and moving clockwise.
-  
- The plot can be used for illustrating anything if the user wants to start
- at the top and increase angles clockwise. Simply change the labels and label
- positions and no one will ever know. Do remember to specify the positions in
- decimal hours unless \code{radians} is TRUE.
+  In contrast to the default behavior of \code{radial.plot}, the positions 
+  are interpreted as beginning at vertical (000) and moving clockwise.
 }
 \value{nil}
 \keyword{misc}
