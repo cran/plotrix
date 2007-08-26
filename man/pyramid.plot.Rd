@@ -7,7 +7,7 @@
 }
 \usage{
  pyramid.plot(xy,xx,labels,top.labels=c("Male","Age","Female"),
-  main="",xycol,xxcol,gap=1,labelcex=1,mark.cat=NA)
+  main="",unit="\%",xycol,xxcol,gap=1,labelcex=1,mark.cat=NA,add=FALSE)
 }
 \arguments{
   \item{xy,xx}{Vectors of percentages both of which should total 100.}
@@ -15,22 +15,35 @@
   \item{top.labels}{The two categories represented on the left and right
    sides of the plot and a heading for the labels up the center.}
   \item{main}{Optional title for the plot.}
+  \item{unit}{The label for the units of the plot.}
   \item{xycol,xxcol}{Color(s) for the left and right sets of bars.}
   \item{gap}{One half of the space between the two sets of bars for the
    \code{labels} in user units.}
   \item{labelcex}{Expansion for the category labels.}
   \item{mark.cat}{If an integer equal to the index of one of the labels
    is passed, that label will have a rectangle drawn around it.}
+  \item{add}{Whether to add bars to an existing plot. Usually this
+   involves overplotting a second set of bars, perhaps transparent.}
 }
 \details{
  \code{pyramid.plot} is principally intended for population pyramids,
   although it can display other types of opposed bar charts with suitable
-  modification of the arguments. The percentage display is hardwired into
-  the function, but minor programming would allow one to use proportions
-  or other metrics. The default gap of two units is usually satisfactory
-  for the four to six percent range of most bars on population pyramids.
+  modification of the arguments. If the user wants a different unit for
+  the display, just change \code{unit} accordingly. The default gap of 
+  two units is usually satisfactory for the four to six percent range 
+  of most bars on population pyramids.
+  
+ The \code{add} argument allows one or more sets of bars to be plotted
+  on an existing plot. If these are not transparent, any bar that is
+  shorter than the bar that overplots it will dissapear.
+  
+ In order to add bars, the function cannot reset the initial margin values
+ or the new bars will not plot properly. To automatically reset the plot
+ margins, call the function as in the example.
 }
-\value{nil}
+\value{
+ The return value of \code{par("mar")} when the function was called.
+}
 \author{Jim Lemon}
 \seealso{\code{\link{rect}}}
 \examples{
@@ -43,7 +56,7 @@
   "75-79","80-44","85+")
  xycol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),18)
  xxcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),18)
- pyramid.plot(xy.pop,xx.pop,labels=agelabels,
-  main="Australian population pyramid 2002",xycol=xycol,xxcol=xxcol)
+ par(mar=pyramid.plot(xy.pop,xx.pop,labels=agelabels,
+  main="Australian population pyramid 2002",xycol=xycol,xxcol=xxcol))
 }
 \keyword{misc}

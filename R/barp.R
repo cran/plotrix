@@ -78,14 +78,14 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
   }
  }
  if(!is.null(legend.lab)) {
+  if(is.na(legend.pos[1])) {
+   cat("Click at the lower left corner of the legend\n")
+   legend.pos<-locator(1)
+   xjust<-yjust<-0
+  }
   if(legend.pos[1] == "e") {
    legend.pos<-emptyspace(barpinfo,bars=TRUE)
    xjust<-yjust<-0.5
-  }
-  if(is.na(legend.pos[1])) {
-   cat("Click at the upper left corner of the legend\n")
-   legend.pos<-locator(1)
-   xjust<-yjust<-0
   }
   legend(legend.pos,legend=legend.lab,fill=col,xjust=xjust,yjust=yjust)
  }

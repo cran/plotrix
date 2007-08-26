@@ -37,7 +37,7 @@
  \item{col.grid}{Color of the grid lines. Defaults to gray.}
  \item{lty.grid}{Type of line for the grid. Defaults to dashed.}
  \item{show.legend}{Logical - whether to display a legend.}
- \item{label.points}{Logical - whether to call /code{thigmophobe.labels} to
+ \item{label.points}{Logical - whether to call \code{thigmophobe.labels} to
   label the points.}
  \item{point.labels}{Optional labels for the points or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}

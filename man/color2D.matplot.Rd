@@ -8,7 +8,7 @@
 \usage{
  color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   extremes=NA,show.legend=FALSE,nslices=10,xlab="Column",ylab="Row",
-  do.hex=FALSE,no.axes=FALSE,show.values=FALSE,vcol="white",vcex=1,...)
+  do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,...)
 }
 \arguments{
  \item{x}{data values}
@@ -21,7 +21,7 @@
  \item{nslices}{The number of color "slices" in the legend.}
  \item{xlab,ylab}{axis labels for the plot.}
  \item{do.hex}{plot packed hexagons instead of rectangles.}
- \item{no.axes}{Whether to suppress the default axis labelling.}
+ \item{axes}{Whether to suppress the default axis labelling.}
  \item{show.values}{Whether to display the numeric values of \code{x}.}
  \item{vcol}{The color for the value display.}
  \item{vcex}{The character expansion for the value display.}
@@ -47,7 +47,7 @@
  a specified list of colors rather than calculating a color for each distinct
  value.
 }
-\author{Jim Lemon (thanks to Ashoka Polpitiya for \code{no.axes})}
+\author{Jim Lemon (thanks to Ashoka Polpitiya for \code{axes})}
 \seealso{\code{\link{color.scale}}, \code{\link{image}}}
 \examples{
  x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)

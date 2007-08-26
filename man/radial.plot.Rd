@@ -8,10 +8,11 @@
  directions defined by angles in radians.
 }
 \usage{
- radial.plot(lengths,radial.pos,labels,label.pos,rp.type="r",
- label.prop=1.1,main="",xlab="",ylab="",line.col=par("fg"),mar=c(2,2,3,2),
- show.grid=TRUE,show.radial.grid=TRUE,grid.col="gray",grid.bg="transparent",
- point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...)
+ radial.plot(lengths,radial.pos=NULL,labels,label.pos=NULL,
+ start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
+ line.col=par("fg"),mar=c(2,2,3,2),show.grid=TRUE,show.radial.grid=TRUE,
+ grid.col="gray",grid.bg="transparent",grid.left=FALSE,point.symbols=NULL,
+ point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...)
 }
 \arguments{
  \item{lengths}{A numeric data vector or matrix. If \code{lengths}
@@ -21,9 +22,13 @@
   counterclockwise. If \code{radial.pos} is a matrix, the rows must 
   correspond to rows of \code{lengths}.}
  \item{labels}{Character strings to be placed at the outer ends of
-  the lines. If set to NULL, will suppress printing of labels,
+  the lines. If set to NA, will suppress printing of labels,
   but if missing, the radial positions will be used.}
  \item{label.pos}{The positions of the labels aroung the plot in radians.}
+ \item{start}{Where to place the starting (zero) point. Defaults to the
+  3 o'clock position.}
+ \item{clockwise}{Whether to interpret positive positions as clockwise from
+  the starting point. The default is counterclockwise.}
  \item{rp.type}{Whether to draw (r)adial lines, a (p)olygon, (s)ymbols
   or some combination of these.}
  \item{label.prop}{The label position radius as a proportion of the 
@@ -37,6 +42,7 @@
  \item{show.radial.grid}{Whether to draw radial lines to the plot labels.}
  \item{grid.col}{Color of the circular grid.}
  \item{grid.bg}{Fill color of above.}
+ \item{grid.left}{Whether to place the radial grid labels on the left side.}
  \item{point.symbols}{The symbols for plotting (as in pch).}
  \item{point.col}{Colors for the symbols.}
  \item{show.centroid}{Whether to display a centroid.}
@@ -78,8 +84,10 @@
  testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
  testpos<-seq(0,1.98*pi,length=100)
  radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")
- radial.plot(testlen,testpos,rp.type="s",main="Test Symbols",point.symbols=16,
-  point.col="green",show.centroid=TRUE)
+ # now do a 12 o'clock start with clockwise positive
+ radial.plot(testlen,testpos,start=pi/2,clockwise=TRUE,
+  rp.type="s",main="Test Symbols (clockwise)",
+  point.symbols=16,point.col="green",show.centroid=TRUE)
  par(ask=FALSE)
 }
 \keyword{misc}
