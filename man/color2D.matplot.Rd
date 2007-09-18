@@ -16,8 +16,9 @@
   that will be scaled to represent the range of numeric values}
  \item{extremes}{The colors for the extreme values of \code{x}. Takes
   precedence over the color ranges.}
- \item{show.legend}{whether to display a color range rectangle with the
-  extreme numeric values in the lower left corner of the plot}
+ \item{show.legend}{whether to display a color legend with the
+  extreme numeric values in the lower left corner of the plot. If the
+  default is not suitable, call \code{color.legend} separately.}
  \item{nslices}{The number of color "slices" in the legend.}
  \item{xlab,ylab}{axis labels for the plot.}
  \item{do.hex}{plot packed hexagons instead of rectangles.}

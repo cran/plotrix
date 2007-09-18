@@ -5,7 +5,7 @@
  Displays a centipede plot on the current graphics device.
 }
 \usage{
- centipede.plot(segs,midpoint="mean",lower.limit="std.error",
+ centipede.plot(segs,mct="mean",lower.limit="std.error",
   upper.limit=lower.limit,left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
   main="",xlab=NA,vgrid=NA,mar=NA,col=par("fg"),bg="green",...)
 }
@@ -13,7 +13,7 @@
   \item{segs}{a matrix of midpoints and limits calculated by
    \code{\link{get.segs}} OR a \code{dstat} object returned by
    \code{brkdn}.}
-  \item{midpoint}{The function to use in calculating the midpoint of each
+  \item{mct}{The function to use in calculating the midpoint of each
    segment.}
   \item{lower.limit}{The functions to use in calculating the
    lower limits for each subset of the data.}

@@ -8,7 +8,8 @@
  emptyspace(x,y=NA,bars=FALSE)
 }
 \arguments{
- \item{x,y}{x and y position of the centers of the bars}
+ \item{x,y}{x and y positions of the points or centers and heights
+  of the bars}
  \item{bars}{Whether to add x and y points to represent the bars if the
   plot is a barplot.}
 }

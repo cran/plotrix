@@ -3,8 +3,7 @@
 # even when axes=FALSE
 
 staxlab<-function(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,...) {
- if(missing(labels))
-  stop("Usage: staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,...)")
+ if(missing(labels)) labels<-at
  nlabels<-length(labels)
  if(missing(at)) at<-1:nlabels
  linepos<-rep(top.line,nlines)

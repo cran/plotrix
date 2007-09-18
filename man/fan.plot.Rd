@@ -2,7 +2,7 @@
 \alias{fan.plot}
 \title{ Display a fan plot. }
 \description{
- Displays numerical values as overlapping sectors.
+ Displays numerical values as the arcs of overlapping sectors.
 }
 \usage{
 fan.plot(x,edges=200,radius=1,col=NULL,align.at=NULL,labels=NULL,

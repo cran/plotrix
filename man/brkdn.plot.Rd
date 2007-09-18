@@ -19,14 +19,14 @@
  \item{md}{The measure of dispersion to calculate, NA for none.}
  \item{stagger}{The amount to offset the successive values at each horizontal
   position as a proportion of the width of the plot. The calculated default
-  is usually adequate.}
+  is usually adequate. Pass zero for none.}
  \item{dispbar}{Whether to display the measures of dispersion as bars.}
  \item{main}{The title at the top of the plot.}
  \item{xlab,ylab}{The labels for the X and Y axes respectively. There are
   defaults, but they are basic.}
  \item{xaxlab}{Optional labels for the horizontal axis ticks.}
  \item{ylim}{Optional vertical limits for the plot.}
- \item{type}{Whether to plot symbols, lines or both (as in \code{plot}.}
+ \item{type}{Whether to plot symbols, lines or both (as in \code{plot}).}
  \item{pch}{Symbol(s) to plot.}
  \item{lty}{Line type(s) to plot.}
  \item{col}{Color(s) for the symbols and lines.}

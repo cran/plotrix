@@ -2,10 +2,19 @@ count.overplot<-function(x,y,tol=NULL,...) {
  if(missing(x))
   stop("Usage: count.overplot(x,y,tol=NULL,...)")
  dimx<-dim(x)
- # if x is a data frame or matrix with at least two columns, split it
- if(missing(y) && !is.null(dimx)) {
-  y<-x[,2]
-  x<-x[,1]
+ if(missing(y)) {
+  if(is.list(x) && names(x)[1] == "x") {
+   # looks like xy.coords
+   y<-x[[2]]
+   x<-x[[1]]
+  }
+  else {
+   # if x is a data frame or matrix with at least two columns, split it
+   if(!is.null(dimx)) {
+    y<-x[,2]
+    x<-x[,1]
+   }
+  }
  }
  # get rid of any pairs containing NA
  if(any(is.na(x)|is.na(y))) {
@@ -18,6 +27,7 @@ count.overplot<-function(x,y,tol=NULL,...) {
  xlen<-length(x)
  if(xlen != length(y)) stop("x and y must be the same length.")
  if(is.null(tol)) tol<-c(strwidth("o")/2,strheight("o")/2)
+ else if(length(tol)==1) tol<-rep(tol,2)
  flags<-1:xlen
  xsep<-ysep<-xdup<-ydup<-xydup<-rep(0,xlen)
  nsep<-ndup<-0

@@ -18,11 +18,10 @@
 }
 \note{
  This function is mainly useful when either long axis labels or a large
- number of labels are to be placed without overlapping. It places the 
- labels regularly spaced and staggered along the axis specified. The 
- user may wish to increase the space beneath the plot using 
- \code{mar} before calling \code{staxlab}. It is probably only useful on
- the bottom of the plot.
+ number of labels are to be placed without overlapping. It staggers the 
+ labels along the axis specified. The user may wish to increase the space
+ beneath the plot using \code{mar} before calling \code{staxlab}. It is
+ probably only useful on the bottom or left side of the plot.
 }
 \value{nil}
 \author{Jim Lemon}

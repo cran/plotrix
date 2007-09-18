@@ -2,8 +2,8 @@
 \alias{dispbars}
 \title{ Dispersion bars }
 \description{
- Display bars at specified points on a plot representing measures of
- dispersion.
+ Display line/cap bars at specified points on a plot representing
+  measures of dispersion.
 }
 \usage{
  dispbars(x,y,ulim,llim=ulim,arrow.cap=0.02,arrow.gap=NA,...)

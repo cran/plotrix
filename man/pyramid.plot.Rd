@@ -7,16 +7,22 @@
 }
 \usage{
  pyramid.plot(xy,xx,labels,top.labels=c("Male","Age","Female"),
-  main="",unit="\%",xycol,xxcol,gap=1,labelcex=1,mark.cat=NA,add=FALSE)
+  main="",laxlab=NULL,raxlab=NULL,unit="\%",xycol,xxcol,gap=1,
+  labelcex=1,mark.cat=NA,add=FALSE)
 }
 \arguments{
-  \item{xy,xx}{Vectors of percentages both of which should total 100.}
-  \item{labels}{Labels for the categories represented by each pair of bars.} 
+  \item{xy,xx}{Vectors of percentages (but see Details) both of which
+   should total 100 if this is a population pyramid, and be of equal length.}
+  \item{labels}{Labels for the categories represented by each pair of
+   bars. There should be a label for each xy or xx value, even if empty.} 
   \item{top.labels}{The two categories represented on the left and right
    sides of the plot and a heading for the labels up the center.}
   \item{main}{Optional title for the plot.}
+  \item{laxlab}{Optional labels for the left x axis ticks.}
+  \item{raxlab}{Optional labels for the right x axis ticks.}
   \item{unit}{The label for the units of the plot.}
-  \item{xycol,xxcol}{Color(s) for the left and right sets of bars.}
+  \item{xycol,xxcol}{Color(s) for the left and right sets of bars. Both of
+   these default to 1:length(labels).}
   \item{gap}{One half of the space between the two sets of bars for the
    \code{labels} in user units.}
   \item{labelcex}{Expansion for the category labels.}
@@ -37,8 +43,8 @@
   on an existing plot. If these are not transparent, any bar that is
   shorter than the bar that overplots it will dissapear.
   
- In order to add bars, the function cannot reset the initial margin values
- or the new bars will not plot properly. To automatically reset the plot
+ In order to add bars, the function cannot restore the initial margin values
+ or the new bars will not plot properly. To automatically restore the plot
  margins, call the function as in the example.
 }
 \value{

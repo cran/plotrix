@@ -1,7 +1,7 @@
 \name{cylindrect}
 \alias{cylindrect}
 \title{Display an apparent cylinder}
-\description{Display rectangles shaded to appear like a cylinders.}
+\description{Display rectangles shaded to appear like cylinders.}
 \usage{
  cylindrect(xleft,ybottom,xright,ytop,col,gradient="x",nslices=50)
 }

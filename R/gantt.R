@@ -46,6 +46,8 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
 
  oldpar <- par("mai","omi","xpd")
  if(is.null(x)) x<-get.gantt.info(format=format)
+ if(any(x$starts > x$ends))
+  stop("Can't have a start date after an end date")
  ntasks <- length(x$labels)
  if(is.null(dev.list())) plot.new()
  charheight<-strheight("M",units="inches")
