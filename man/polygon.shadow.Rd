@@ -19,10 +19,12 @@
 \value{nil}
 \details{
  \code{polygon.shadow} is typically called just before drawing a polygon.
- It displays a shadow effect by drawing the polygon ten times, shrinking
- it and incrementing the density of the shadow effect each time. The
- default shadow effect has the light at the upper left. This effect may also
- be used as a text background.
+ It displays a shadow effect by drawing the polygon ten times, beginning 
+ with the first color in \code{col} and stepping through to the second
+ color to create a "shadow" (or a "halo" if you prefer). Each successive
+ polygon is shrunk by 10% of \code{inflate}. The default shadow effect has
+ the light at the upper left. This effect may also be used as a text
+ background.
 }
 \note{
  The background must be a constant color or the shadow effect will not 

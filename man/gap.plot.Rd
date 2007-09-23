@@ -32,7 +32,7 @@
  
  If at least four values are passed in \code{gap}, the first four will be
  used to calculate two "gaps" in the plot instead of one. The function does
- not check whether these values are very sensible, so it is quite easy to
+ not check whether these values are sensible, so it is quite easy to
  ask for a very silly plot.
  
  The default ticks are usually not ideal, and most users will want to pass

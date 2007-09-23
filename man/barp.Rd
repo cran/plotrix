@@ -95,16 +95,19 @@
   xlab="Day of week",ylab="Happiness rating",ylim=c(1,5),staxx=TRUE,staxy=TRUE,
   height.at=1:5,height.lab=happylabels,cex.axis=0.9,cylindrical=TRUE,
   shadow=TRUE)
- # now do a plot with colors scaled to the values
- funrating<-c(3.2,3.5,1.5,5.4,1.5,2.7,6.8,2.9)
- funstudy<-c("Entomology","Philosophy","Economics","Anthropology","Accountancy",
-  "Mathematics","Psychology","Genetics")
+ # now do a plot with colors scaled to the sex ratio (real data!)
+ sexratio<-c(0.24,0.35,0.09,0.59,0.63,0.34,0.7,0.6)
+ funrating<-c(3.2,3.5,1.5,5.4,4.5,2.7,6.8,4.9)
+ funstudy<-c("Astronomy","Chemistry","Economics","Anthropology","Linguistics",
+  "Math/Stats","Psychology","Sociology")
  funlabels<-c("Torture","Agony","Boredom","Neutral","Entertaining","Exhilarating",
   "Maniacal")
  barp(funrating,names.arg=funstudy,main="Fun ratings for various areas of study",
-  col=color.scale(funrating,extremes=c("#3333FF","#eedd00")),xlab="Study",
+  col=color.scale(sexratio,c(0.2,1),c(0.2,0.4),c(1,0.4)),xlab="Study",
   ylab="Rating",height.at=1:7,height.lab=funlabels,ylim=c(1,7),staxx=TRUE,
   staxy=TRUE,cex.axis=0.9)
+ color.legend(2,6,4,6.4,legend=c("100\% guys","100\% girls"),
+  rect.col=color.scale(1:5,c(0.2,1),c(0.2,0.4),c(1,0.4)))
  par(mar=c(5,4,4,2))
 }
 \keyword{misc}

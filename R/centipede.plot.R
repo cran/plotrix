@@ -5,25 +5,26 @@ std.error<-function(x,na.rm) {
 
 # in general, get.segs expects a list with varying lengths of numeric values
 # it returns a 4xn matrix of midpoints, upper and lower limits and Ns
-# where N is the number of elements in the list or columns in a data frame.
+# where N is the number of valid elements in the list or columns in a
+# data frame.
 
-get.segs<-function(x,midpoint="mean",lower.limit="std.error",
+get.segs<-function(x,mct="mean",lower.limit="std.error",
  upper.limit=lower.limit) {
 
  xlen<-length(x)
  segs<-matrix(0,nrow=4,ncol=xlen)
  for(i in 1:xlen) {
-  segs[1,i]<-do.call(midpoint,list(x[[i]],na.rm=TRUE))
+  segs[1,i]<-do.call(mct,list(x[[i]],na.rm=TRUE))
   segs[2,i]<-segs[1,i]-do.call(lower.limit,list(x[[i]],na.rm=TRUE))
   segs[3,i]<-segs[1,i]+do.call(upper.limit,list(x[[i]],na.rm=TRUE))
   segs[4,i]<-sum(!is.na(x[[i]]))
  }
- rownames(segs)<-c(midpoint,lower.limit,upper.limit,"valid.n")
+ rownames(segs)<-c(mct,lower.limit,upper.limit,"valid.n")
  colnames(segs)<-names(x)
  return(segs)
 }
 
-centipede.plot<-function(segs,midpoint="mean",lower.limit="std.error", 
+centipede.plot<-function(segs,mct="mean",lower.limit="std.error", 
  upper.limit=lower.limit,left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
  main="",xlab=NA,vgrid=NA,mar=NA,col=par("fg"),bg="green",...) {
 
@@ -33,7 +34,7 @@ centipede.plot<-function(segs,midpoint="mean",lower.limit="std.error",
  }
  if(is.list(segs)) {
   if(all(lapply(segs,is.numeric)))
-   segs<-get.segs(segs,midpoint=midpoint,lower.limit=lower.limit,
+   segs<-get.segs(segs,mct=mct,lower.limit=lower.limit,
     upper.limit=upper.limit)
   else stop("If segs is a list, all the components must be numeric")
  }

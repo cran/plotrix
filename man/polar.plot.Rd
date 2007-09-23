@@ -7,9 +7,9 @@
 \alias{polar.plot}
 \arguments{
  \item{lengths}{numeric data vector. Magnitudes will be represented as
-  line lengths.}
+  the radial positions of symbols, line ends or polygon vertices.}
  \item{polar.pos}{numeric vector of positions on a 0:360 degree circle.
-  These will be rescaled to radians.}
+  These will be converted to radians when passed to \code{radial.plot}.}
  \item{labels}{text labels to place on the periphery of the circle. This 
   defaults to labels every 20 degrees. For no labels, pass an empty string.}
  \item{label.pos}{positions of the peripheral labels in degrees}

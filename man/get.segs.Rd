@@ -6,11 +6,11 @@
   centipede.plot.
 }
 \usage{
- get.segs(x,midpoint="mean",lower.limit="std.error",upper.limit=lower.limit)
+ get.segs(x,mct="mean",lower.limit="std.error",upper.limit=lower.limit)
 }
 \arguments{
   \item{x}{a list or data frame.}
-  \item{midpoint}{The name of the function to calculate midpoints.}
+  \item{mct}{The name of the function to calculate midpoints.}
   \item{lower.limit,upper.limit}{The names of the function(s) to calculate 
    lower and upper limits.}
 }
