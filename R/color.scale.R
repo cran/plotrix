@@ -1,9 +1,10 @@
 color.scale<-function(x,redrange=NA,greenrange=NA,bluerange=NA,extremes=NA) {
  if(!is.na(extremes[1])){
+  # calculate the color ranges from the extremes
   colmat<-col2rgb(extremes)
-  redrange<-colmat[1,]
-  greenrange<-colmat[2,]
-  bluerange<-colmat[3,]
+  redrange<-colmat[1,]/255
+  greenrange<-colmat[2,]/255
+  bluerange<-colmat[3,]/255
  }
  ncolors<-length(x)
  xrange<-range(x)

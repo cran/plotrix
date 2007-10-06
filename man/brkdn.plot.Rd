@@ -5,7 +5,7 @@
 \usage{
  brkdn.plot(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",stagger=NA,
  dispbar=TRUE,main="Breakdown plot",xlab=NA,ylab=NA,xaxlab=NA,
- ylim=NA,type="b",pch=1,lty=1,col=par("fg"),...)
+ ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,...)
 }
 \arguments{
  \item{vars}{The names or indices of one or more columns in a data frame.
@@ -30,6 +30,8 @@
  \item{pch}{Symbol(s) to plot.}
  \item{lty}{Line type(s) to plot.}
  \item{col}{Color(s) for the symbols and lines.}
+ \item{staxx}{Whether to call \code{\link{staxlab}} to display the X axis
+  labels.}
  \item{...}{additional arguments passed to \code{plot}.}
 }
 \value{
@@ -58,8 +60,9 @@
  different treatments, the \code{groups} factor will display the measures
  of central tendency as points/lines with the same color, symbol and line type,
  while the \code{obs} factor will be represented as horizontal positions on the
- plot. This is a common way of representing changes over time intervals for
- experimental groups.
+ plot. If \code{obs} is numeric, its unique values will be used as the 
+ positions, if not, 1 to the number of unique values. This is a common way of 
+ representing changes over time intervals for experimental groups.
 }
 \author{Jim Lemon}
 \seealso{\code{\link{dispbars}}}

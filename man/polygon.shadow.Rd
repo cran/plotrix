@@ -22,7 +22,7 @@
  It displays a shadow effect by drawing the polygon ten times, beginning 
  with the first color in \code{col} and stepping through to the second
  color to create a "shadow" (or a "halo" if you prefer). Each successive
- polygon is shrunk by 10% of \code{inflate}. The default shadow effect has
+ polygon is shrunk by 10\% of \code{inflate}. The default shadow effect has
  the light at the upper left. This effect may also be used as a text
  background.
 }
