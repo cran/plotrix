@@ -19,6 +19,7 @@ corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
 cylindrect		Display a rectangle shaded to look like a cylinder
+dispbars		Display dispersion (error) bars
 draw.arc		Display a circular arc
 draw.circle		Display a circle on an existing plot
 draw.tilted.sector	Display a single 3D pie sector
@@ -35,13 +36,14 @@ get.segs		Calculate the midpoints and limits for centipede.plot
 get.soil.texture	Enter information for soil textures
 get.triprop		Enter triplets of proportions or percentages
 gradient.rect		Display a rectangle with an arbitrary color gradient
+hexagon			Draw a hexagon
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
 oz.windrose		Display an Australian BoM wind rose
-oz.windrose.legend	Display a wind rose legend in Australian BOM style
+oz.windrose.legend	Display a wind rose legend in Australian BoM style
 pie3D			Display a 3D pie chart
-pie3D.labels		Display a label on a 3D pie chart
-pie.labels		Place flat pie chart labels at specified radial positions
+pie3D.labels		Display labels on a 3D pie chart
+pie.labels		Display flat pie chart labels
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
@@ -66,4 +68,5 @@ triax.abline		Display one or more lines across a triangle plot
 triax.frame		Display a three axis frame with optional grid
 triax.plot		Display a triangle (three axis) plot
 triax.points		Display triplets of values as points on a triangle plot
+twoord.plot		Display a plot with two ordinates of different scales
 weighted.hist		Calculate and optionally display a weighted histogram

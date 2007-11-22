@@ -41,7 +41,7 @@
   
  The \code{add} argument allows one or more sets of bars to be plotted
   on an existing plot. If these are not transparent, any bar that is
-  shorter than the bar that overplots it will dissapear.
+  shorter than the bar that overplots it will disappear.
   
  In order to add bars, the function cannot restore the initial margin values
  or the new bars will not plot properly. To automatically restore the plot

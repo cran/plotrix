@@ -40,17 +40,17 @@
 }
 \value{A list containing:
 
-breaks - The endpoints of the ranges
+breaks - The endpoints of the intervals
 
 counts - The weighted counts
 
 density - The weighted counts divided by their sum.
 
-mids - The midpoints of the ranges and the bars displayed.
+mids - The midpoints of the intervals and the bars displayed.
 
 xname - the name of \code{x}.
 
-equidist - Whether all ranges are equal to less than 1000th of the total range.
+equidist - Whether the intervals differ by less than the total range/1000.
 }
 \author{Jim Lemon and Hadley Wickham}
 \seealso{\code{\link{hist}}}

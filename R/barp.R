@@ -36,7 +36,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
   axis(1,at=1:ngroups,labels=rep("",ngroups),cex.axis=cex.axis)
   staxlab(1,at=1:ngroups,labels=names.arg,cex=cex.axis)
  }
- else axis(1,at=1:ngroups,labels=names.arg)
+ else axis(1,at=1:ngroups,labels=names.arg,cex.axis=cex.axis)
  if(is.null(height.at)) height.at<-pretty(ylim)
  if(is.null(height.lab)) height.lab<-pretty(ylim)
  if(staxy) {
