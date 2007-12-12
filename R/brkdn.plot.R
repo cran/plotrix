@@ -1,4 +1,4 @@
-dispbars<-function(x,y,ulim,llim=ulim,arrow.cap=0.02,arrow.gap=NA,...) {
+dispbars<-function(x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,...) {
 
  length<-arrow.cap*par("pin")[1]
  npoints<-length(x)
@@ -33,6 +33,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
   grouplevels<-levels(bygroup)
   ngroups<-length(grouplevels)
   nobs<-length(vars)
+  obs.pos<-1:nobs
   obslevels<-1:nobs
  }
  else {

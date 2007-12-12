@@ -20,10 +20,12 @@
 \author{Jim Lemon}
 \examples{
  # scale one vector into the range of another
- normal.counts<-tabulate(cut(rnorm(100),breaks=seq(-3,3,by=1)))
- normal.density<-rescale(dnorm(seq(-3,3,length=100)),range(normal.counts))
+ normal.counts<-rnorm(100)
+ normal.tab<-tabulate(cut(normal.counts,breaks=seq(-3,3,by=1)))
+ normal.density<-rescale(dnorm(seq(-3,3,length=100)),range(normal.tab))
  # now plot them
- plot(c(-2.5,-1.5,-0.5,0.5,1.5,2.5),normal.counts,xlab="X values",type="h")
- lines(seq(-3,3,length=100),normal.density)
+ plot(c(-2.5,-1.5,-0.5,0.5,1.5,2.5),normal.tab,xlab="X values",
+  type="h",col="green")
+ lines(seq(-3,3,length=100),normal.density,col="blue")
 }
 \keyword{misc}

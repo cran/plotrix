@@ -18,7 +18,7 @@ soil.texture<-function(soiltexture=NULL,main="",at=seq(0.1,0.9,by=0.1),
  arrows(0.78,0.57,0.88,0.41,length=0.15)
  arrows(0.6,-0.1,0.38,-0.1,length=0.15)
  if(show.lines) {
-  triax.segments <- function(h1,h3,t1,t2,col) {
+  triax.segments <- function(h1,h3,t1,t3,col) {
     segments(1-h1-h3/2,h3*sin(pi/3),1-t1-t3/2,t3*sin(pi/3),col=col)
   }
   # from bottom-left to up
@@ -26,7 +26,7 @@ soil.texture<-function(soiltexture=NULL,main="",at=seq(0.1,0.9,by=0.1),
   h3 <- c( 0,  0, 20, 20,  7,  0,  0, 12, 20, 27, 27, 35, 40, 27, 40)/100
   t1 <- c(90, 85, 52, 52, 43, 23,  8,  0, 45,  0, 45, 45,  0, 20,  0)/100
   t3 <- c(10, 15, 20,  7,  7, 27, 12, 12, 27, 27, 55, 35, 40, 40, 60)/100
-  triax.segments(h1, h3, t1, t2, col.lines)
+  triax.segments(h1, h3, t1, t3, col.lines)
  }
  if(show.names) {
   xpos <- c(0.5, 0.7, 0.7, 0.73, 0.73, 0.5, 0.275, 0.275, 0.27,

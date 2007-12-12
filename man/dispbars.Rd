@@ -6,7 +6,7 @@
   measures of dispersion.
 }
 \usage{
- dispbars(x,y,ulim,llim=ulim,arrow.cap=0.02,arrow.gap=NA,...)
+ dispbars(x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the bars}

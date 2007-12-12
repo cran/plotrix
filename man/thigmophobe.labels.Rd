@@ -16,7 +16,7 @@
 \description{
  \code{thigmophobe.labels} places labels adjacent to each point, 
   offsetting each label in the direction returned by 
-  \code{thigmophobe}.}
+  \code{thigmophobe}.
 }
 \details{
  Typically used to automatically place labels on a scatterplot or 
