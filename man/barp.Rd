@@ -41,12 +41,12 @@
  \code{barp} displays a bar plot similar to \code{barplot} but with axes and
  horizontal bar positions more like \code{plot}. Bars or groups of bars are
  centered on integral X values, and so both the width and spacing of the bars
- is controlled by a single number. If \code{height} is a vector, single bars
+ are controlled by a single number. If \code{height} is a vector, single bars
  representing each value will be displayed centered at \code{1:length(height)}.
  If \code{height} is a matrix or data frame, a group of bars will be drawn for
  each column, with the values of the group taken from the rows of that column.
- The values from \code{freq} in the prettyR package can be used as the \code{x}
- argument like this:
+ The values from \code{freq} in the prettyR package can be used as the
+ \code{height} argument like this:
  
  barp(freq(...)[[1]],...)
  
@@ -54,7 +54,8 @@
  
  Bars are empty by default but fill colors can be defined in several ways.
  If a single color is passed, all bars will be the same color. If \code{height}
- is a vector, colors will be treated as usual if the length of \code{col} is
+ is a vector, colors will be recycled or some will be ignored if the length of
+ \code{col} is
  not equal to that of \code{height}. If \code{height} is a matrix or data frame,
  the user may pass a vector of colors equal to the number of rows in \code{height}
  or a matrix of colors of the same dimensions as \code{height}. Other sequences
@@ -96,18 +97,22 @@
   height.at=1:5,height.lab=happylabels,cex.axis=0.9,cylindrical=TRUE,
   shadow=TRUE)
  # now do a plot with colors scaled to the sex ratio (real data!)
- sexratio<-c(0.24,0.35,0.09,0.59,0.63,0.34,0.7,0.6)
+ # notice how zero and one have been added to get the full proportion range
+ sexratio<-c(0,1,0.24,0.35,0.09,0.59,0.63,0.34,0.7,0.6)
+ # the fun ratings are once again a pack of lies
  funrating<-c(3.2,3.5,1.5,5.4,4.5,2.7,6.8,4.9)
  funstudy<-c("Astronomy","Chemistry","Economics","Anthropology","Linguistics",
   "Math/Stats","Psychology","Sociology")
  funlabels<-c("Torture","Agony","Boredom","Neutral","Entertaining","Exhilarating",
   "Maniacal")
+ # in the call to color.scale, the leading zero and one are dropped
  barp(funrating,names.arg=funstudy,main="Fun ratings for various areas of study",
-  col=color.scale(sexratio,c(0.2,1),c(0.2,0.4),c(1,0.4)),xlab="Study",
+  col=color.scale(sexratio[-c(1,2)],c(0.2,1),c(0.2,0.4),c(1,0.4)),xlab="Study",
   ylab="Rating",height.at=1:7,height.lab=funlabels,ylim=c(1,7),staxx=TRUE,
   staxy=TRUE,cex.axis=0.9)
+ # here we want the full scale from zero to one
  color.legend(2,6,4,6.4,legend=c("100\% guys","100\% girls"),
-  rect.col=color.scale(1:5,c(0.2,1),c(0.2,0.4),c(1,0.4)))
+  rect.col=color.scale(seq(0,1,by=0.25),c(0.2,1),c(0.2,0.4),c(1,0.4)))
  par(mar=c(5,4,4,2))
 }
 \keyword{misc}
