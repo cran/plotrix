@@ -53,8 +53,8 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,point.symbols=NULL,
  point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...) {
  
- length.dim<-dim(lengths)
  if(is.null(radial.lim)) radial.lim<-range(lengths)
+ length.dim<-dim(lengths)
  if(is.null(length.dim)) {
   npoints<-length(lengths)
   nsets<-1
@@ -65,6 +65,8 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   nsets<-length.dim[1]
   lengths<-as.matrix(lengths)
  }
+ lengths<-lengths-radial.lim[1]
+ lengths[lengths<0]<-NA
  if(is.null(radial.pos))
   radial.pos<-seq(0,pi*(2-2/npoints),length=npoints)
  radial.pos.dim<-dim(radial.pos)
@@ -75,13 +77,13 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  if(start) radial.pos<-radial.pos+start
  if(show.grid) {
   grid.pos<-pretty(radial.lim)
-  if(grid.pos[1] <= 0) grid.pos<-grid.pos[-1]
-  maxlength<-max(grid.pos)
+  if(grid.pos[1] <= radial.lim[1]) grid.pos<-grid.pos[-1]
+  maxlength<-max(grid.pos-radial.lim[1])
   angles<-seq(0,1.96*pi,by=0.04*pi)
  }
  else {
   grid.pos<-NA
-  maxlength<-max(radial.lim)
+  maxlength<-diff(radial.lim)
  }
  oldpar<-par("xpd","mar","pty")
  par(mar=mar,pty="s")
@@ -128,12 +130,12 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE)
  if(show.grid) {
   for(i in seq(length(grid.pos),1,by=-1)) {
-   xpos<-cos(angles)*grid.pos[i]
-   ypos<-sin(angles)*grid.pos[i]
+   xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
+   ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
    polygon(xpos,ypos,border=grid.col,col=grid.bg)
   }
   ypos<-rep(-maxlength/15,length(grid.pos))
-  boxed.labels(grid.pos,ypos,as.character(grid.pos),border=FALSE)
+  boxed.labels(grid.pos-radial.lim[1],ypos,as.character(grid.pos),border=FALSE)
  }
  par(oldpar)
 }

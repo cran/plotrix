@@ -5,7 +5,8 @@
  Places labels in boxes on an existing plot
 }
 \usage{
- boxed.labels(x,y=NA,labels,bg="white",border=TRUE,xpad=0.6,ypad=0.6,...)
+ boxed.labels(x,y=NA,labels,bg="white",border=TRUE,xpad=0.6,ypad=0.6,
+  srt=0,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the labels. \code{x} can be an
@@ -15,6 +16,8 @@
  \item{border}{Whether to draw borders around the rectangles.}
  \item{xpad,ypad}{Half the value of the proportion of the rectangles to the
   extent of the text within.}
+ \item{srt}{Rotation of the labels. If 90 or 270 degrees, the box will be
+  rotated 90 degrees.}
  \item{...}{additional arguments passed to \code{text}.}
 }
 \note{

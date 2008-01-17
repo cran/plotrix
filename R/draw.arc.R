@@ -10,12 +10,15 @@ draw.arc <- function(x = 1, y = NULL, radius = 1,
    angle1 = deg1 * pi / 180, angle2 = deg2 * pi / 180, 
    deg1 = 0, deg2 = 45, n = 35, col = 1, ...) {
    draw.arc.0 <- function(x, y, radius, angle1, angle2, n, col = col, ...) {
+      xylim<-par("usr")
+      plotdim<-par("pin")
+      ymult<-(xylim[4]-xylim[3])/(xylim[2]-xylim[1])*plotdim[1]/plotdim[2]
       angle <- angle1 + seq(0, length = n) * (angle2 - angle1) / n
       p1x <- x + radius * cos(angle)
-      p1y <- y + radius * sin(angle)
+      p1y <- y + radius * sin(angle) * ymult
       angle <- angle1 + seq(length = n) * (angle2 - angle1) / n
       p2x <- x + radius * cos(angle)
-      p2y <- y + radius * sin(angle)
+      p2y <- y + radius * sin(angle) * ymult
       segments(p1x, p1y, p2x, p2y, col = col, ...)
    }
    xy <- xy.coords(x, y); x <- xy$x; y <- xy$y
