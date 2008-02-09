@@ -1,4 +1,4 @@
-  get.triprop<-function(use.percentages=FALSE,cnames=c("1st","2nd","3rd")) {
+get.triprop<-function(use.percentages=FALSE,cnames=c("1st","2nd","3rd")) {
   cat("Enter the label and ")
   cat(ifelse(use.percentages,"percentages ","proportions "))
   cat("of",cnames[1],cnames[2],"and",cnames[3],"for each observation.\n")
@@ -123,8 +123,8 @@ triax.points<-function(x,show.legend=FALSE,label.points=FALSE,
  if(is.null(point.labels)) point.labels<-rownames(x)
  if(label.points) thigmophobe.labels(xpos,ypos,point.labels)
  if(show.legend) {
-  legend(0.16-0.02*max(nchar(point.labels)),0.75+0.04*length(point.labels),
-   legend=point.labels,pch=pch,col=col.symbols)
+  legend(0.2,0.7,legend=point.labels,pch=pch,col=col.symbols,
+   xjust=1,yjust=0)
  }
  invisible(list(x=xpos,y=ypos))
 }

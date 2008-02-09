@@ -1,3 +1,4 @@
+addtable2plot		Display a table on an existing plot
 arctext			Display text on a circular arc
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
@@ -23,6 +24,7 @@ dispbars		Display dispersion (error) bars
 draw.arc		Display a circular arc
 draw.circle		Display a circle on an existing plot
 draw.tilted.sector	Display a single 3D pie sector
+emptyspace		Find the largest empty space on a plot
 fan.plot		Display a fan (superimposed pie sector) plot
 feather.plot		Display vectors along a horizontal line
 floating.pie		Display a flat pie chart at a specified position

@@ -33,10 +33,10 @@
  # put a break at the default axis and position
  axis.break()
  axis.break(2,2.9,style="zigzag")
- if(dev.interactive()) par(ask=TRUE)
  twogrp<-c(rnorm(10)+4,rnorm(10)+20)
  gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
-  main="Two separated groups with gap axis break")
- par(ask=FALSE)
+  main="Two separated groups with gap axis break",
+  col=c(rep(2,10),rep(3,10)))
+ legend(12,6,c("Low group","High group"),pch=1,col=2:3)
 }
 \keyword{misc}

@@ -1,3 +1,25 @@
+pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6, 
+ labels,labelcol=par("fg"),labelcex=1.5,minsep=0.3){
+
+ oldcex<-par("cex")
+ nlab<-length(labels)
+ par(cex=labelcex,xpd=TRUE)
+ for (i in 1:nlab) {
+  if(i < nlab) {
+   labelsep<-radialpos[i+1] - radialpos[i]
+   if(labelsep < minsep) {
+    radialpos[i]<-radialpos[i]+(labelsep-minsep)/2
+    radialpos[i+1]<-radialpos[i+1]-(labelsep-minsep)/2
+   }
+  }
+  xpos <- 1.15 * radius * cos(radialpos[i])
+  offset <- (radialpos[i] > pi && radialpos[i] < 2 * pi) * height
+  ypos <- 1.2 * sin(radialpos[i]) * sin(theta) * radius - offset
+  text(xpos,ypos,labels[i],col=labelcol,adj=c(0.5,as.numeric(ypos<0)))
+ }
+ par(cex=oldcex,xpd=FALSE)
+}
+
 draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,
  theta=pi/6,start=0,end=pi*2,border=par("fg"),col=par("bg"),explode=0,
  shade=0.8) {
@@ -61,29 +83,7 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,
  return(bisector)
 }
 
-pie3D.labels<-function (radialpos,radius=1,height=0.3,theta=pi/6, 
- labels,labelcol=par("fg"),labelcex=1.5,minsep=0.3){
-
- nlab<-length(labels)
- oldcex <- par("cex")
- par(cex = labelcex, xpd = TRUE)
- for (i in 1:nlab) {
-  if(i < nlab) {
-   labelsep<-radialpos[i+1] - radialpos[i]
-   if(labelsep < minsep) {
-    radialpos[i]<-radialpos[i]+(labelsep-minsep)/2
-    radialpos[i+1]<-radialpos[i+1]-(labelsep-minsep)/2
-   }
-  }
-  xpos <- 1.15 * radius * cos(radialpos[i])
-  offset <- (radialpos[i] > pi && radialpos[i] < 2 * pi) * height
-  ypos <- 1.2 * sin(radialpos[i]) * sin(theta) * radius - offset
-  text(xpos,ypos,labels[i],col=labelcol,adj=c(0.5,as.numeric(ypos<0)))
- }
- par(cex=oldcex,xpd=FALSE)
-}
-
-pie3D<-function (x,edges=100,radius=1,height=0.3,theta=pi/6, 
+pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6, 
  start=0,border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,
  labelcol=par("fg"),labelcex=1.5,sector.order=NULL,explode=0,
  shade=0.8,...) {
@@ -94,7 +94,7 @@ pie3D<-function (x,edges=100,radius=1,height=0.3,theta=pi/6,
  if(any(x == 0)) x<-x[x>0]
  # drop NAs
  if(any(is.na(x))) x<-x[!is.na(x)]
- oldmar = par("mar")
+ oldmar<-par("mar")
  par(mar=c(4,4,4,4),xpd=TRUE)
  x<-c(0, cumsum(x)/sum(x))*2*pi+start
  nsectors<-length(x)-1
@@ -118,6 +118,6 @@ pie3D<-function (x,edges=100,radius=1,height=0.3,theta=pi/6,
    pie3D.labels(bc,height=height,theta=theta, 
     labels=labels,labelcol=labelcol,labelcex=labelcex)
  }
- par(mar = oldmar, xpd = FALSE)
+ par(mar=oldmar,xpd=FALSE)
  invisible(bc)
 }

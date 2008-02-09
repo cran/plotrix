@@ -34,6 +34,6 @@
  # now do a 'daylight' plot
  clock24.plot(testlen[7:19],testpos[7:19],
   main="Test Clock24 daytime (symbols)",
-  line.col="blue",rp.type="s",lwd=3)
+  point.col="blue",rp.type="s",lwd=3)
  par(ask=FALSE)
 }
