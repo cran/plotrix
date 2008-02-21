@@ -1,4 +1,6 @@
-color.scale<-function(x,redrange=NA,greenrange=NA,bluerange=NA,extremes=NA) {
+color.scale<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
+ extremes=NA) {
+ 
  if(!is.na(extremes[1])){
   # calculate the color ranges from the extremes
   colmat<-col2rgb(extremes)

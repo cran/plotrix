@@ -5,8 +5,8 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
 }
 
 color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
- extremes=NA,show.legend=FALSE,nslices=10,xlab="Column",ylab="Row",
- do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,...) {
+ extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
+ ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
@@ -27,7 +27,8 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
    yticks<-pretty(0:xdim[1])[-1]
    axis(2,at=xdim[1]-yticks+0.5,yticks)
   }
-  cellcolors<-color.scale(x,redrange,greenrange,bluerange,extremes)
+  if(is.na(cellcolors[1]))
+   cellcolors<-color.scale(x,redrange,greenrange,bluerange,extremes)
   # start from the top left - isomorphic with the matrix layout
   if(do.hex) {
    par(xpd=TRUE)
@@ -49,7 +50,8 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
     col=cellcolors,border=FALSE)
    if(show.values)
     text(sort(rep((1:xdim[2])-0.5,xdim[1])),
-     rep(seq(xdim[1]-0.5,0,by=-1),xdim[2]),x,col=vcol,cex=vcex)
+     rep(seq(xdim[1]-0.5,0,by=-1),xdim[2]),
+     round(x,show.values),col=vcol,cex=vcex)
   }
   xy<-par("usr")
   plot.din<-par("din")

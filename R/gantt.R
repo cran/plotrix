@@ -41,32 +41,35 @@ get.gantt.info<-function(format="%Y/%m/%d") {
 }
 
 gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL, 
- priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL, 
- vgrid.format="%Y/%m/%d",half.height=0.25,hgrid=FALSE,main="",ylab="") {
+ priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
+ half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE) {
 
- oldpar <- par("mai","omi","xpd")
+ oldpar <- par("mai","omi","xpd","xaxs","yaxs")
  if(is.null(x)) x<-get.gantt.info(format=format)
  if(any(x$starts > x$ends))
   stop("Can't have a start date after an end date")
- ntasks <- length(x$labels)
+ tasks<-unique(x$labels)
+ ntasks<-length(tasks)
  if(is.null(dev.list())) plot.new()
  charheight<-strheight("M",units="inches")
- maxwidth<-max(strwidth(x$labels,units="inches"))*1.3
+ maxwidth<-max(strwidth(x$labels,units="inches"))+0.3
  if (is.null(xlim)) xlim=range(c(x$starts,x$ends))
  npriorities <- max(x$priorities)
  if(is.null(taskcolors)) 
-  taskcolors<-color.gradient(c(255,0),c(0,0),c(0,255),npriorities)
+  taskcolors<-rainbow(ntasks)
+#   color.scale(as.numeric(x$labels),c(1,0.5,0,0),c(0,0.5,1,0),c(0,0,0,1))
  else {
   if(length(taskcolors)<npriorities) 
    taskcolors<-rep(taskcolors,length.out=npriorities)
  }
- bottom.margin<-ifelse(priority.legend,0.7,0)
+ bottom.margin<-ifelse(priority.legend || nchar(xlab),0.7,0)
  par(mai=c(bottom.margin,maxwidth,charheight*5,0.1))
  par(omi=c(0.1,0.1,0.1,0.1),xaxs="i",yaxs="i")
- plot(x$starts,1:ntasks,xlim=xlim,ylim=c(0.5,ntasks+0.5),
-  main="",xlab="",ylab=ylab,axes=FALSE,type="n")
+ plot(range(x$starts),c(1,ntasks),xlim=xlim,ylim=c(0.5,ntasks+0.5),
+  main="",xlab="",ylab="",axes=FALSE,type="n")
  box()
  if(nchar(main)) mtext(main,3,2)
+ if(nchar(xlab)) mtext(xlab,1,1)
  if(is.null(vgridpos)) tickpos<-axis.POSIXct(3,xlim,format=vgrid.format)
  else tickpos<-vgridpos
  # if no tick labels, use the grid positions if they exist
@@ -76,13 +79,17 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  if (is.null(vgridlab)) axis.POSIXct(3,xlim,format=vgrid.format)
  else axis(3,at=tickpos,labels=vgridlab)
  topdown <- seq(ntasks,1)
- axis(2,at=topdown,labels=x$labels,las=2)
+ axis(2,at=topdown,labels=tasks,las=2)
  abline(v=tickpos,col="darkgray",lty = 3)
  for(i in 1:ntasks) {
-  rect(x$starts[i],topdown[i]-half.height,
-   x$ends[i],topdown[i]+half.height,
-   col=taskcolors[x$priorities[i]], 
-   border = FALSE)
+  if(cylindrical)
+   cylindrect(x$starts[x$labels==tasks[i]],topdown[i]-half.height,
+    x$ends[x$labels==tasks[i]],topdown[i]+half.height,
+    col=taskcolors[i],gradient="y")
+  else
+   rect(x$starts[x$labels==tasks[i]],topdown[i]-half.height,
+    x$ends[x$labels==tasks[i]],topdown[i]+half.height,
+    col=taskcolors[i],border=FALSE)
  }
  if(hgrid) 
   abline(h=(topdown[1:(ntasks-1)]+topdown[2:ntasks])/2,col="darkgray",lty=3)

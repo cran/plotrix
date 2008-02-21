@@ -24,9 +24,9 @@
  \item{align}{Position of the alignment of sectors (see Details).}
  \item{shrink}{How much to shrink each successive sector in user units.}
  \item{main}{Optional title for the plot.}
- \item{ticks}{The number of ticks that would appear on the circumference
-  of the complete circle. Default is no ticks, TRUE gives the number of
-  ticks equal to the integer sum of \code{x}, which is fairly sensible if 
+ \item{ticks}{The number of ticks that would appear if the sectors were on
+  a pie chart. Default is no ticks, TRUE gives the number of ticks equal to
+  the integer sum of \code{x}, which is fairly sensible if 
   \code{x} is a vector of integers.}
  \item{include.sumx}{Whether to include the sum of all \code{x} values
   as the largest sector.}

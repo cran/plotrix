@@ -23,7 +23,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
   sd.r<-1
  }
  maxsd<-1.5*max(sd.f,sd.r)
- oldpar<-par("mar","xpd")
+ oldpar<-par("mar","xpd","xaxs","yaxs")
 
  if(!add) {
   # display the diagram
