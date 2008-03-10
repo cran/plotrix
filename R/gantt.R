@@ -70,14 +70,21 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  box()
  if(nchar(main)) mtext(main,3,2)
  if(nchar(xlab)) mtext(xlab,1,1)
- if(is.null(vgridpos)) tickpos<-axis.POSIXct(3,xlim,format=vgrid.format)
- else tickpos<-vgridpos
- # if no tick labels, use the grid positions if they exist
- if(is.null(vgridlab) && !is.null(vgridpos)) 
-  vgridlab<-format.POSIXct(vgridpos,vgrid.format)
- # if vgridpos wasn't specified, use default axis ticks
- if (is.null(vgridlab)) axis.POSIXct(3,xlim,format=vgrid.format)
- else axis(3,at=tickpos,labels=vgridlab)
+ if(is.na(vgrid.format)) {
+  if(is.null(vgridlab)) vgridlab=vgridpos
+  axis(3,at=vgridpos,labels=vgridlab)
+  tickpos<-vgridpos
+ }
+ else {
+  if(is.null(vgridpos)) tickpos<-axis.POSIXct(3,xlim,format=vgrid.format)
+  else tickpos<-vgridpos
+  # if no tick labels, use the grid positions if they exist
+  if(is.null(vgridlab) && !is.null(vgridpos)) 
+   vgridlab<-format.POSIXct(vgridpos,vgrid.format)
+  # if vgridpos wasn't specified, use default axis ticks
+  if(is.null(vgridlab)) axis.POSIXct(3,xlim,format=vgrid.format)
+  else axis(3,at=tickpos,labels=vgridlab)
+ }
  topdown <- seq(ntasks,1)
  axis(2,at=topdown,labels=tasks,las=2)
  abline(v=tickpos,col="darkgray",lty = 3)

@@ -6,7 +6,7 @@ barp			A variant of barplot
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
 brkdn.plot		Display summary measures broken down by factors
-centipede.plot		Display a centipede plot (caterpillar plot or league table)
+centipede.plot		Display a centipede plot/caterpillar plot/league table
 clean.args		Remove arguments that would cause an error
 clock24.plot		Plot values as lines/polygon/symbols on a "clockface"
 cluster.overplot	Display overlying points as clusters
@@ -58,10 +58,12 @@ smoothColors		Build a vector of interpolated colors
 soil.texture		Display a "soil texture triangle"
 soils			Soil texture data from 125 soils
 spread.labels		Spread out labels for irregularly spaced values
+stackpoly		Plot columns of numbers as overlaid polygons
 staxlab			Display staggered labels on an axis
 std.error		Calculate the conventional standard error
 symbolbarplot		Barplot with bars filled with symbols : height
 symbolbox		Draw a box filled with symbols
+tab.title		Display the plot title in a tab
 taylor.diagram		Display a Taylor diagram
 textbox			Display justified text in an optional box
 thigmophobe		Find the direction away from the nearest other point

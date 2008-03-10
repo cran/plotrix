@@ -2,6 +2,21 @@
 # _away_ from the nearest point where x and y are vectors of 2D coordinates
 
 thigmophobe<-function(x,y) {
+ # if x has at least two columns, split it
+ if(missing(y)) {
+  if(is.list(x) && length(x) >= 2) {
+   y<-x[[2]]
+   x<-x[[1]]
+  }
+  else {
+   if(is.matrix(x) && dim(x)[2] >= 2) {
+    y<-x[,2]
+    x<-x[,1]
+   }
+   else
+    stop("if y is missing, x must be a list with at least 2 columns")
+  }
+ }
  # get the current upper and lower limits of the plot
  plot.span<-par("usr")
  x.span<-plot.span[2] - plot.span[1]
@@ -14,12 +29,16 @@ thigmophobe<-function(x,y) {
  # axis dominating the distance measure
  x<-x/x.span
  y<-y/y.span
+ # trash any names that may be attached to x or y
+ names(x)<-names(y)<-NULL
  # get the distance matrix as a full matrix
  xy.dist<-as.matrix(dist(cbind(x,y)))
+ print(names(xy.dist))
  lenx<-length(x)
  nearest.index<-rep(0,lenx)
  for(index in 1:lenx)
   nearest.index[index]<-as.numeric(names(which.min(xy.dist[-index,index])))
+ print(nearest.index)
  # get the x and y differences for each point to the nearest point
  xdiff<-x - x[nearest.index]
  ydiff<-y - y[nearest.index]

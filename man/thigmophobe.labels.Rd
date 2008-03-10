@@ -28,6 +28,10 @@
  the labels properly and pass the edited vector to
  \code{thigmophobe.labels} as the \code{text.pos} argument. This
  takes precedence over the positions calculated by \code{thigmophobe}.
+ 
+ \code{pointLabel} in the \code{maptools} packages uses a more sophisticated
+ algorithm to place the labels and is worth a try if \code{thigmophobe}
+ just won't get it right.
 }
 \value{
  A vector of directions away from the point nearest to each point.

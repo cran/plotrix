@@ -23,7 +23,7 @@
  A vector of directions away from the point nearest to each point.
 }
 \keyword{misc}
-\author{Jim Lemon}
+\author{Jim Lemon - thanks to Gustaf Rydevik for the "names" bug fix.}
 \seealso{\code{\link{thigmophobe.labels}}}
 \examples{
  x<-rnorm(10)
