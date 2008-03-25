@@ -80,7 +80,6 @@
  testpos<-seq(0,18*pi/10,length=10)
  testlab<-letters[1:10]
  radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",lwd=3)
- if(dev.interactive()) par(ask=TRUE)
  testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
  testpos<-seq(0,1.98*pi,length=100)
  radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")
@@ -88,6 +87,10 @@
  radial.plot(testlen,testpos,start=pi/2,clockwise=TRUE,
   rp.type="s",main="Test Symbols (clockwise)",
   point.symbols=16,point.col="green",show.centroid=TRUE)
- par(ask=FALSE)
+ # one without the circular grid and multiple polygons
+ posmat<-matrix(sample(2:9,30,TRUE),nrow=3)
+ radial.plot(posmat,testpos,paste("X",1:10,sep=""),rp.type="p",
+  label.pos=testpos,main="Spiderweb plot",line.col=2:4,show.grid=FALSE,
+  radial.lim=c(0,10))
 }
 \keyword{misc}

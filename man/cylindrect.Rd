@@ -3,7 +3,7 @@
 \title{Display an apparent cylinder}
 \description{Display rectangles shaded to appear like cylinders.}
 \usage{
- cylindrect(xleft,ybottom,xright,ytop,col,gradient="x",nslices=50)
+ cylindrect(xleft,ybottom,xright,ytop,col,border=NA,gradient="x",nslices=50)
 }
 \arguments{
  \item{xleft}{The position of the left side of the rectangle(s).}
@@ -11,6 +11,7 @@
  \item{xright}{The position of the right side of the rectangle(s).}
  \item{ytop}{The position of the top side of the rectangle(s).}
  \item{col}{The base color(s) of the rectangles.}
+ \item{border}{Whether to draw a border and what color.}
  \item{gradient}{Whether to vary the shading horizontally ("x" - the default)
   or vertically (anything but "x").}
  \item{nslices}{The number of "slices" of color for shading.}

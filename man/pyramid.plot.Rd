@@ -39,9 +39,16 @@
   two units is usually satisfactory for the four to six percent range 
   of most bars on population pyramids.
   
+ If \code{xy} and \code{xx} are matrices or data frames, 
+ \code{pyramid.plot} will produce opposed stacked bars with the first 
+ columns innermost. In this mode, colors are limited to one per column. The 
+ stacked bar mode will in general not work with the \code{add} method. Note 
+ that the stacked bar mode can get very messy very quickly.
+
  The \code{add} argument allows one or more sets of bars to be plotted
   on an existing plot. If these are not transparent, any bar that is
-  shorter than the bar that overplots it will disappear.
+  shorter than the bar that overplots it will disappear. Only some graphic
+  devices (e.g. \code{pdf}) will handle transparency.
   
  In order to add bars, the function cannot restore the initial margin values
  or the new bars will not plot properly. To automatically restore the plot
@@ -64,5 +71,27 @@
  xxcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),18)
  par(mar=pyramid.plot(xy.pop,xx.pop,labels=agelabels,
   main="Australian population pyramid 2002",xycol=xycol,xxcol=xxcol))
+ # three column matrices
+ avtemp<-c(seq(11,2,by=-1),rep(2:6,each=2),seq(11,2,by=-1))
+ malecook<-matrix(avtemp+sample(-2:2,30,TRUE),ncol=3)
+ femalecook<-matrix(avtemp+sample(-2:2,30,TRUE),ncol=3)
+ # use a background color
+ par(bg="#eedd55")
+ # group by age
+ agegrps<-c("0-10","11-20","21-30","31-40","41-50","51-60",
+  "61-70","71-80","81-90","91+")
+ oldmar<-pyramid.plot(malecook,femalecook,labels=agegrps,
+  unit="Bowls per month",xycol=c("#ff0000","#eeee88","#0000ff"),
+  xxcol=c("#ff0000","#eeee88","#0000ff"),
+  top.labels=c("Males","Age","Females"),gap=3)
+ # put a box around it
+ box()
+ # give it a title
+ mtext("Porridge temperature by age and sex of cook",3,2,cex=1.5)
+ # stick in a legend
+ legend(par("usr")[1],11,c("Too hot","Just right","Too cold"),
+  fill=c("#ff0000","#eeee88","#0000ff"))
+ # don't forget to restore the margins and background
+ par(mar=oldmar,bg="transparent")
 }
 \keyword{misc}

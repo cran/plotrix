@@ -1,6 +1,6 @@
 Package: plotrix
-Version: 2.3-3
-Date: 2007-02-20
+Version: 2.4
+Date: 2008-03-25
 Title: Various plotting functions
 Author: Jim Lemon <jim@bitwrit.com.au>,
 	Ben Bolker <bolker@zoo.ufl.edu>,
@@ -16,4 +16,4 @@ Author: Jim Lemon <jim@bitwrit.com.au>,
 Maintainer: Jim Lemon <jim@bitwrit.com.au>
 Description: Lots of plots, various labeling, axis and color scaling functions.
 License: GPL (>=2)
-Packaged: Sun Mar  9 22:44:04 2008; root
+Packaged: Tue Mar 25 21:53:12 2008; root
