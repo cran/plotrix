@@ -1,20 +1,24 @@
-# x,y values are the center of the labels
-boxed.labels<-function(x,y=NA,labels,bg="white",border=TRUE,xpad=0.6,
- ypad=0.6,srt=0,...) {
+boxed.labels<-function(x,y=NA,labels,bg="white",border=TRUE,xpad=1.2,
+ ypad=1.2,srt=0,cex=1,adj=0.5,...) {
 
  if(is.na(y) && is.list(x)) {
   y<-unlist(x[[2]])
   x<-unlist(x[[1]])
  }
+ box.adj<-adj+(xpad-1)*(0.5-adj)
  if(srt==90 || srt==270) {
-  heights<-strwidth(labels)
-  widths<-strheight(labels)
+  bheights<-strwidth(labels)
+  theights<-bheights*(1-box.adj)
+  bheights<-bheights*box.adj
+  lwidths<-rwidths<-strheight(labels)*0.5
  }
  else{
-  widths<-strwidth(labels)
-  heights<-strheight(labels)
+  lwidths<-strwidth(labels)
+  rwidths<-lwidths*(1-box.adj)
+  lwidths<-lwidths*box.adj
+  bheights<-theights<-strheight(labels)*0.5
  }
- rect(x-widths*xpad,y-heights*ypad,x+widths*xpad,y+heights*ypad,
+ rect(x-lwidths*xpad,y-bheights*ypad,x+rwidths*xpad,y+theights*ypad,
   col=bg,border=border)
- text(x,y,labels,srt=srt,...)
+ text(x,y,labels,srt=srt,cex=cex,adj=adj,...)
 }

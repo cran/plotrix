@@ -21,7 +21,7 @@
  \item{srt}{Rotation of the labels in degrees.}
  \item{...}{additional arguments passed to \code{text}.}
 }
-\note{
+\details{
  This function is mainly useful when labeling irregularly spaced data points
  that are "spread out" along one dimension. It places the labels regularly
  spaced and staggered on the long dimension of the data, drawing lines from
@@ -33,7 +33,8 @@
  points.
  
  If spreading labels horizontally, the user may wish to rotate the labels by
- 90 degrees (\code{srt=90}).
+ 90 degrees (\code{srt=90}). If long labels run off the edge of the plot,
+ increase the \code{xlim} for extra room.
 }
 \value{nil}
 \author{Jim Lemon}
@@ -43,11 +44,12 @@
 }
 \seealso{\code{text}}
 \examples{
- x<-rnorm(10)/10
- y<-sort(rnorm(10))
- plot(x,y,xlim=c(-1,1),type="p")
+ # spread labels out in the x dimension using defaults
+ x<-sort(rnorm(10))
+ y<-rnorm(10)/10
+ plot(x,y,ylim=c(-1,1),type="p")
  nums<-c("one","two","three","four","five","six","seven","eight","nine","ten")
- spread.labels(x,y,nums,0.5)
+ spread.labels(x,y,nums)
  # food preferences of children by sex (Cooke & Wardle, 2005)
  fpkids<-data.frame(Food=c("Fatty/sugary","Fruit","Starchy","Meat",
   "Proc.meat","Eggs","Fish","Dairy","Vegetables"),

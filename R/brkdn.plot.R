@@ -37,11 +37,16 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
   obslevels<-1:nobs
  }
  else {
-  byobs<-as.factor(data[[obs]])
-  obslevels<-levels(byobs)
-  nobs<-length(obslevels)
-  if(is.numeric(unlist(data[obs]))) obs.pos<-unique(unlist(data[obs]))
-  else obs.pos<-1:nobs
+  if(is.numeric(data[[obs]])) {
+   obs.pos<-obslevels<-sort(unique(data[[obs]]))
+   nobs<-length(obslevels)
+  }
+  else {
+   byobs<-as.factor(data[[obs]])
+   obslevels<-levels(byobs)
+   nobs<-length(obslevels)
+   obs.pos<-1:nobs
+  }
   if(is.na(groups)) {
    ngroups<-length(vars)
    grouplevels<-1:ngroups
@@ -67,9 +72,12 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
     thisbit<-unlist(subset(data[[vars[group]]],
      data[[obs]] == obslevels[ob],vars[[group]]))
     if(length(thisbit)) {
-     brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
-     if(!is.na(md))
-      brkdn[[2]][group,ob]<-do.call(md,list(thisbit,na.rm=TRUE))
+     if(length(thisbit) > 1) {
+      brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
+      if(!is.na(md))
+       brkdn[[2]][group,ob]<-do.call(md,list(thisbit,na.rm=TRUE))
+     }
+     else brkdn[[1]][group,ob]<-thisbit
     }
    }
   }
@@ -81,13 +89,16 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
    if(is.na(xaxlab[1])) xaxlab<-vars
    for(group in 1:ngroups) {
     for(ob in 1:nobs) {
-     brkdn[[1]][group,ob]<-
-      do.call(mct,list(unlist(subset(data[[vars[ob]]],
-       data[[groups]] == grouplevels[group],vars[ob])),na.rm=TRUE))
-     if(!is.na(md))
-      brkdn[[2]][group,ob]<-
-       do.call(md,list(unlist(subset(data[[vars[ob]]],
-        data[[groups]] == grouplevels[group],vars[ob])),na.rm=TRUE))
+     thisbit<-unlist(subset(data[[vars[ob]]],
+       data[[groups]] == grouplevels[group],vars[ob]))
+     if(length(thisbit)) {
+      if(length(thisbit) > 1) {
+       brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
+       if(!is.na(md))
+       brkdn[[2]][group,ob]<-do.call(md,list(thisbit,na.rm=TRUE))
+      }
+      else brkdn[[1]][group,ob]<-thisbit
+     }
     }
    }
   }
@@ -100,9 +111,12 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
      thisbit<-unlist(subset(data,data[[groups]] == grouplevels[group] &
        data[[obs]] == obslevels[ob],vars))
      if(length(thisbit)) {
-      brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
-      if(!is.na(md))
-       brkdn[[2]][group,ob]<-do.call(md,list(thisbit,na.rm=TRUE))
+      if(length(thisbit) > 1) {
+       brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
+       if(!is.na(md))
+        brkdn[[2]][group,ob]<-do.call(md,list(thisbit,na.rm=TRUE))
+      }
+      else brkdn[[1]][group,ob]<-thisbit
      }
     }
    }

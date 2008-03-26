@@ -41,6 +41,6 @@
  testx<-matrix(cumsum(abs(rnorm(100))),nrow=10)
  stackpoly(testx,main="Test Stackpoly",
   xaxlab=c("One","Two","Three","Four","Five",
-  "Six","Seven","Eight","Nine","Ten"),staxx=TRUE)
+  "Six","Seven","Eight","Nine","Ten"),border="black",staxx=TRUE)
 }
 \keyword{misc}

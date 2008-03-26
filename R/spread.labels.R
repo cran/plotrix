@@ -21,7 +21,7 @@ spread.labels<-function (x,y,labels=NULL,ony=NA,offsets=NA,between=FALSE,
  else {
   if(is.na(ony)) {
    xylim<-par("usr")
-   ony<-diff(range(x))/(xylim[2]-xylim[1])<diff(range(y))(xylim[4]-xylim[3])
+   ony<-diff(range(x))/(xylim[2]-xylim[1])<diff(range(y))/(xylim[4]-xylim[3])
   }
   if(ony) {
    sort.index<-sort.list(y)
@@ -30,7 +30,7 @@ spread.labels<-function (x,y,labels=NULL,ony=NA,offsets=NA,between=FALSE,
    newy<-seq(y[1],y[ny],length=length(labels))
    if(is.na(offsets)) {
     offset<-diff(par("usr")[1:2])/4
-    offsets<-rep(c(offset, -offset), ny/2 + 1)[1:ny]
+    offsets<-rep(c(offset,-offset),ny/2+1)[1:ny]
    }
    segments(x+offsets,newy,x,y)
    text(x+offsets,newy,labels[sort.index],srt=srt,pos=c(4,2),...)
@@ -45,8 +45,10 @@ spread.labels<-function (x,y,labels=NULL,ony=NA,offsets=NA,between=FALSE,
     offset<-diff(par("usr")[3:4])/4
     offsets<-rep(c(offset,-offset),nx/2+1)[1:nx]
    }
-   segments(newx,y+offsets,x,y)
    text(newx,y+offsets,labels[sort.index],srt=srt,...)
+   seggap<-strheight("o")
+   seggaps<-rep(c(seggap,-seggap),length.out=nx)
+   segments(newx,y+offsets-seggaps,x,y)
   }
  }
 }
