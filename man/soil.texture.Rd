@@ -76,7 +76,8 @@ soil.texture(soiltexture=NULL, main="", at=seq(0.1, 0.9, by=0.1),
  soil.texture(soils, main="DEFAULT", pch=2)
  soil.texture(soils, main="LINES AND NAMES", show.lines=TRUE,
   show.names=TRUE, pch=3)
- soil.texture(soils[1:6,], main="GRID AND LEGEND",
+ soiltex.return<-soil.texture(soils[1:6,], main="GRID AND LEGEND",
   show.grid=TRUE, pch=4, col.symbols=1:6, show.legend=TRUE)
+ par(soiltex.return$oldpar)
 }
 \keyword{misc}

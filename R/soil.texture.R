@@ -11,15 +11,15 @@ soil.texture<-function(soiltexture=NULL,main="",at=seq(0.1,0.9,by=0.1),
  col.symbols="black",pch=par("pch"), ...) {
 
  par(xpd=TRUE)
- plot(0.5, type="n", axes=FALSE, xlim=c(0,1.1), ylim=c(0,1), main=NA, xlab=NA, ylab=NA)
- triax.frame(main=main, at=at, axis.labels=axis.labels, tick.labels=tick.labels,
-  col.axis=col.axis, show.grid=show.grid, col.grid=col.grid, lty.grid=lty.grid)
+ plot(0.5,type="n",axes=FALSE,xlim=c(0,1),ylim=c(0,1),main=NA,xlab=NA, ylab=NA)
+ triax.frame(main=main,at=at,axis.labels=axis.labels,tick.labels=tick.labels,
+  col.axis=col.axis,show.grid=show.grid,col.grid=col.grid,lty.grid=lty.grid)
  arrows(0.12,0.41,0.22,0.57,length=0.15)
  arrows(0.78,0.57,0.88,0.41,length=0.15)
  arrows(0.6,-0.1,0.38,-0.1,length=0.15)
  if(show.lines) {
-  triax.segments <- function(h1,h3,t1,t3,col) {
-    segments(1-h1-h3/2,h3*sin(pi/3),1-t1-t3/2,t3*sin(pi/3),col=col)
+  triax.segments<-function(h1,h3,t1,t3,col) {
+   segments(1-h1-h3/2,h3*sin(pi/3),1-t1-t3/2,t3*sin(pi/3),col=col)
   }
   # from bottom-left to up
   h1 <- c(85, 70, 80, 52, 52, 50, 20,  8, 52, 45, 45, 65, 45, 20, 20)/100

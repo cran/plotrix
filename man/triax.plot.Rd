@@ -78,13 +78,12 @@
 \examples{
  data(soils)
  triax.plot(soils[1:10,],main="DEFAULT")
- if(dev.interactive()) par(ask=TRUE)
  triax.plot(soils[1:10,],main="PERCENTAGES (Counterclockwise axes)",
   tick.labels=list(l=seq(10,90,by=10),r=seq(10,90,by=10),b=seq(10,90,by=10)),
   pch=3,cc.axes=TRUE)
- main.title<- 
- triax.plot(soils[1:6,],main="GRID AND LEGEND",show.grid=TRUE,
-  show.legend=TRUE,col.symbols=1:6,pch=4)
- if(dev.interactive()) par(ask=FALSE)
+ triax.return<-triax.plot(soils[1:6,],main="GRID AND LEGEND",
+  show.grid=TRUE,show.legend=TRUE,col.symbols=1:6,pch=4)
+ # triax.plot changes a few parameters
+ par(triax.return$oldpar)
 }
 \keyword{misc}

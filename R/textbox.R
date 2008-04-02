@@ -19,4 +19,5 @@ textbox<-function(x,y,textlist,justify=TRUE,cex=1,leading=0.5,box=TRUE) {
   y.pos<-y.pos-line.height
  }
  if(box) rect(x[1],y+line.height,x[2],y.pos)
+ par(adj=0.5)
 }
