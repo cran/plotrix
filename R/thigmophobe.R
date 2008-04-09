@@ -73,5 +73,7 @@ thigmophobe.labels<-function(x,y,labels=NULL,text.pos=NULL,...) {
  }
  if(is.null(labels)) labels<-1:length(x)
  if(is.null(text.pos)) text.pos<-thigmophobe(x,y)
+ par(xpd=TRUE)
  text(x,y,labels,pos=text.pos,...)
+ par(xpd=FALSE)
 }

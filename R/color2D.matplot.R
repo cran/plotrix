@@ -61,9 +61,16 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   gry1<-bottom.gap*0.95
   grx2<-xy[1]+(xy[2]-xy[1])/4
   gry2<-bottom.gap*0.8
+  if(!is.na(cellcolors[1])) {
+   colmat<-col2rgb(c(cellcolors[which.min(x)],cellcolors[which.max(x)]))
+   redrange<-colmat[1,]/255
+   greenrange<-colmat[2,]/255
+   bluerange<-colmat[3,]/255
+  }
+  rect.col<-color.gradient(redrange,greenrange,bluerange,nslices=nslices)
   if(show.legend)
    color.legend(grx1,gry1,grx2,gry2,round(range(x[!is.na(x)]),2),
-    color.gradient(redrange,greenrange,bluerange,nslices=nslices))
+    rect.col=rect.col)
   par(oldpar)
  }
  else cat("x must be a data frame or matrix\n")

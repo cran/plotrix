@@ -1,44 +1,44 @@
 get.triprop<-function(use.percentages=FALSE,cnames=c("1st","2nd","3rd")) {
-  cat("Enter the label and ")
-  cat(ifelse(use.percentages,"percentages ","proportions "))
-  cat("of",cnames[1],cnames[2],"and",cnames[3],"for each observation.\n")
-  cat("Enter a blank observation label to end.\n")
-  nextlabel<-"dummy"
-  nextprop<-0
-  proplabels<-NA
-  prop1<-NA
-  prop2<-NA
-  prop3<-NA
-  nprop<-0
-  totprop<-ifelse(use.percentages,100,1)
-  tolerance<-ifelse(use.percentages,1,0.01)
-  while(nchar(nextlabel)) {
-   nextlabel<-readline("Observation label - ")
-   if(nchar(nextlabel)) {
-    if(is.na(proplabels[1])) proplabels<-nextlabel
-    else proplabels<-c(proplabels,nextlabel)
-    cat(cnames[1],"- ")
-    nextprop<-as.numeric(readline())
-    if(is.na(prop1[1])) prop1<-nextprop
-    else prop1<-c(prop1,nextprop)
-    cat(cnames[2],"- ")
-    nextprop<-as.numeric(readline())
-    if(is.na(prop2[1])) prop2<-nextprop
-    else prop2<-c(prop2,nextprop)
-    cat(cnames[3],"- ")
-    nextprop<-as.numeric(readline())
-    if(is.na(prop3[1])) prop3<-nextprop
-    else prop3<-c(prop3,nextprop)
-    nprop<-nprop+1
-   }
-   sumprop<-prop1[nprop]+prop2[nprop]+prop3[nprop]
-   if(abs(totprop-sumprop) > tolerance)
-    cat("Warning - sum not equal to",totprop,"\n")
+ cat("Enter the label and ")
+ cat(ifelse(use.percentages,"percentages ","proportions "))
+ cat("of",cnames[1],cnames[2],"and",cnames[3],"for each observation.\n")
+ cat("Enter a blank observation label to end.\n")
+ nextlabel<-"dummy"
+ nextprop<-0
+ proplabels<-NA
+ prop1<-NA
+ prop2<-NA
+ prop3<-NA
+ nprop<-0
+ totprop<-ifelse(use.percentages,100,1)
+ tolerance<-ifelse(use.percentages,1,0.01)
+ while(nchar(nextlabel)) {
+  nextlabel<-readline("Observation label - ")
+  if(nchar(nextlabel)) {
+   if(is.na(proplabels[1])) proplabels<-nextlabel
+   else proplabels<-c(proplabels,nextlabel)
+   cat(cnames[1],"- ")
+   nextprop<-as.numeric(readline())
+   if(is.na(prop1[1])) prop1<-nextprop
+   else prop1<-c(prop1,nextprop)
+   cat(cnames[2],"- ")
+   nextprop<-as.numeric(readline())
+   if(is.na(prop2[1])) prop2<-nextprop
+   else prop2<-c(prop2,nextprop)
+   cat(cnames[3],"- ")
+   nextprop<-as.numeric(readline())
+   if(is.na(prop3[1])) prop3<-nextprop
+   else prop3<-c(prop3,nextprop)
+   nprop<-nprop+1
   }
-  triprop<-cbind(prop1,prop2,prop3)
-  rownames(triprop)<-proplabels
-  colnames(triprop)<-cnames
-  return(triprop)
+  sumprop<-prop1[nprop]+prop2[nprop]+prop3[nprop]
+  if(abs(totprop-sumprop) > tolerance)
+   cat("Warning - sum not equal to",totprop,"\n")
+ }
+ triprop<-cbind(prop1,prop2,prop3)
+ rownames(triprop)<-proplabels
+ colnames(triprop)<-cnames
+ return(triprop)
 }
 
 triax.abline<-function(b=NULL,r=NULL,l=NULL,col=par("col"),lty=par("lty"),

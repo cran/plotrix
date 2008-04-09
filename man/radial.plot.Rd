@@ -24,7 +24,7 @@
  \item{labels}{Character strings to be placed at the outer ends of
   the lines. If set to NA, will suppress printing of labels,
   but if missing, the radial positions will be used.}
- \item{label.pos}{The positions of the labels aroung the plot in radians.}
+ \item{label.pos}{The positions of the labels around the plot in radians.}
  \item{start}{Where to place the starting (zero) point. Defaults to the
   3 o'clock position.}
  \item{clockwise}{Whether to interpret positive positions as clockwise from
@@ -89,8 +89,9 @@
   point.symbols=16,point.col="green",show.centroid=TRUE)
  # one without the circular grid and multiple polygons
  posmat<-matrix(sample(2:9,30,TRUE),nrow=3)
- radial.plot(posmat,testpos,paste("X",1:10,sep=""),rp.type="p",
-  label.pos=testpos,main="Spiderweb plot",line.col=2:4,show.grid=FALSE,
+ oldpar<-radial.plot(posmat,labels=paste("X",1:10,sep=""),rp.type="p",
+  main="Spiderweb plot",line.col=2:4,show.grid=FALSE,
   radial.lim=c(0,10))
+ par(xpd=oldpar$xpd,mar=oldpar$mar,pty=oldpar$pty)
 }
 \keyword{misc}

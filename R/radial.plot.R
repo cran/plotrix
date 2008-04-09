@@ -68,7 +68,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  lengths<-lengths-radial.lim[1]
  lengths[lengths<0]<-NA
  if(is.null(radial.pos))
-  radial.pos<-seq(0,pi*(2-2/npoints),length=npoints)
+  radial.pos<-seq(0,pi*(2-2/npoints),length.out=npoints)
  radial.pos.dim<-dim(radial.pos)
  if(is.null(radial.pos.dim))
   radial.pos<-matrix(rep(radial.pos,nsets),nrow=nsets,byrow=TRUE)
@@ -116,9 +116,13 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   if(show.centroid)
    points(mean(xpos),mean(ypos),col=point.col[i],pch=point.symbols[i],cex=2,...)
  }
- if(missing(labels)) {
+ if(is.na(labels[1])) {
   label.pos<-seq(0,1.8*pi,length=9)
   labels<-as.character(round(label.pos,2))
+ }
+ if(is.null(label.pos[1])) {
+  lablen<-length(labels)
+  label.pos<-seq(0,pi*(2-2/lablen),length.out=lablen)
  }
  if(clockwise) label.pos<--label.pos
  if(start) label.pos<-label.pos+start
