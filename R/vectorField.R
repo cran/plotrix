@@ -1,0 +1,27 @@
+# Arguments:
+# u,v - the x (longitude) and y (latitude) offsets
+# OR orientation and magnitude
+# xpos,ypos - the centers of the vectors
+# scale - the longest arrow as a proportion of the cell size
+# length - the length of the arrowhead lines
+# this function doesn't assume a 1:1 aspect ratio
+
+vectorField<-function(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
+ vecspec=c("lonlat","rad","deg")) {
+ udim<-dim(u)
+ if(is.na(xpos[1])) xpos<-col(u)
+ if(is.na(ypos[1])) ypos<-udim[1]-row(u)+1
+ if(match(vecspec[1],"lonlat",0) == 0) {
+  if(match(vecspec[1],"deg",0)) u<-pi*u/180.
+  mag<-v
+  tempu<-v*cos(u)
+  v<-v*sin(u)
+  u<-tempu
+ }
+ else mag<-sqrt(u*u+v*v)
+ maxmag<-0.5*max(diff(xpos[1,]))/max(mag)
+ u2<-u*scale*maxmag
+ v2<-v*scale*maxmag
+ length<-headspan*par("pin")[1]/udim[2]
+ arrows(xpos-u2,ypos-v2,xpos+u2,ypos+v2,length=length)
+}

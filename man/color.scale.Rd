@@ -25,6 +25,11 @@
   its values using \code{col2rgb}, even if ranges are also supplied.
   \code{extremes} allows the user to just pass the extreme color values
   in any format that \code{col2rgb} will accept.
+  
+  The user may not want the color scheme to be continuous across some
+  critical point, often zero. In this case, color scale can be called
+  separately for the values below and above zero. See the second example
+  for \code{color2D.matplot}.
 }
 \note{
  The function is useful for highlighting a numeric dimension or adding

@@ -67,7 +67,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  }
  lengths<-lengths-radial.lim[1]
  lengths[lengths<0]<-NA
- if(is.null(radial.pos))
+ if(is.null(radial.pos[1]))
   radial.pos<-seq(0,pi*(2-2/npoints),length.out=npoints)
  radial.pos.dim<-dim(radial.pos)
  if(is.null(radial.pos.dim))

@@ -37,6 +37,32 @@
  are missing.
 }
 \note{
+ There are many objections to the use of plots with two different 
+ ordinate scales, and some of them are even sensible and supported by 
+ controlled observation. Many of the objections rest on assertions that the 
+ spatial arrangement of the values plotted will override all other 
+ evidence. Here are two:
+ 
+ The viewer will assume that the vertical position of the data points 
+ indicates a quantitative relationship.
+ 
+ To some extent. It is probably not a good idea to have the spatial 
+ relationship of the points opposed to their numerical relationship. That 
+ is to say, if one set of values is in the range of 0-10 and the other 
+ 20-100, it is best to arrange the plot so that the latter values are 
+ not plotted below the former.
+ 
+ The viewer will assume that an intersection of lines indicates an 
+ intersection of values.
+ 
+ If the visual elements representing values can be arranged to avoid 
+ intersections, so much the better. Many people have no trouble 
+ distinguishing which visual elements are linked to which axis as long as 
+ they are both coded similarly, usually with colors and/or symbols. In the 
+ special case where there is an underlying relationship between the two 
+ such as the probability of that value occurring under some conditions, it 
+ may help to mark the point(s) where this occurs.
+ 
  It may be useful to consider \code{gap.plot} as an alternative.
 }
 \author{Jim Lemon}
