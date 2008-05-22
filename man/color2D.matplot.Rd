@@ -69,8 +69,15 @@
  cellcol[x<0]<-color.scale(x[x<0],c(1,0.8),c(0,0.8),0)
  cellcol[x>0]<-color.scale(x[x>0],0,c(0.8,1),c(0.8,0))
  # now do hexagons
- color2D.matplot(x,cellcolors=cellcol,show.legend=TRUE,
-  xlab="Columns",ylab="Rows",do.hex=TRUE,main="2D matrix plot (hexagons)")
+ color2D.matplot(x,cellcolors=cellcol,xlab="Columns",ylab="Rows",
+  do.hex=TRUE,main="2D matrix plot (hexagons)")
+ # for this one, we have to do the color legend separately
+ # because of the two part color scaling
+ legval<-seq(min(x),max(x),length.out=6)
+ legcol<-rep("#000000",6)
+ legcol[legval<0]<-color.scale(legval[legval<0],c(1,0.8),c(0,0.8),0)
+ legcol[legval>0]<-color.scale(legval[legval>0],0,c(0.8,1),c(0.8,0))
+ color.legend(0,-5,6,-4,round(c(min(x),0,max(x)),1),rect.col=legcol)
  # do a color only association plot
  xt<-table(sample(1:10,100,TRUE),sample(1:10,100,TRUE))
  observed<-xt[,rev(1:dim(xt)[2])]

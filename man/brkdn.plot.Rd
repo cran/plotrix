@@ -35,8 +35,8 @@
  \item{...}{additional arguments passed to \code{plot}.}
 }
 \value{
- A list of two matrices of dimension \code{length(levels(b))} by 
- \code{length(levels(c))}. The first contains the measures of central
+ A list of two matrices of dimension \code{length(levels(groups))} by 
+ \code{length(levels(obs))}. The first contains the measures of central
  tendency calculated and its name is the name of the function passed as
  \code{mct}. The second contains the measures of dispersion and its name
  is the name of the function passed as \code{md}.

@@ -2,6 +2,7 @@ addtable2plot		Display a table on an existing plot
 arctext			Display text on a circular arc
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
+barhier			Display hierarchical categories as stacked rectangles
 barp			A variant of barplot
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
@@ -73,4 +74,5 @@ triax.frame		Display a three axis frame with optional grid
 triax.plot		Display a triangle (three axis) plot
 triax.points		Display triplets of values as points on a triangle plot
 twoord.plot		Display a plot with two ordinates of different scales
+vector.field		Display magnitude/direction arrows on a plot
 weighted.hist		Calculate and optionally display a weighted histogram

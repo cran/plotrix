@@ -15,7 +15,7 @@
  \code{std.error} will accept a numeric vector.
 }
 \value{
- The conventional standard error of the mean.
+ The conventional standard error of the mean = sd(x)/sqrt(sum(!is.na(x)))
 }
 \author{Jim Lemon}
 \seealso{\code{\link{sd}}}
