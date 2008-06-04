@@ -6,7 +6,7 @@
  rectangles.}
 \usage{
  barhier(x,left=0,top,right=1,showval=TRUE,showcount=TRUE,firstcall=TRUE,
-  col=NA,...)
+  col=NA,fade=FALSE,...)
 }
 \arguments{
  \item{x}{A data frame in which each successive column represents
@@ -18,6 +18,8 @@
  \item{showcount}{Whether to display the count for the categories.}
  \item{firstcall}{A flag for the function - do not alter this.}
  \item{col}{Optional fill colors for the rectangles.}
+ \item{fade}{Whether to incrementally decrease the saturation of the bar
+  colors at each level.}
  \item{...}{additional arguments passed to \code{plot}.}
 }
 \value{ nil }
@@ -51,6 +53,6 @@
  cat3<-paste(cat2,sample(letters[1:4],40,TRUE),sep="")
  hcats<-data.frame(cat1,cat2,cat3)
  barhier(hcats,col=c("#ff8080","#dddd80","#80ff80","#8080ff"),
-  main="Hierarchical count chart")
+  main="Hierarchical count chart",fade=TRUE)
 }
 \keyword{misc}

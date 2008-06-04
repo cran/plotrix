@@ -9,7 +9,8 @@
 }
 \usage{
  stackpoly(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
-  xlim=NA,ylim=NA,lty=1,border=NA,col=NA,staxx=FALSE,axis4=TRUE,...)
+  xlim=NA,ylim=NA,lty=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,
+  axis4=TRUE,...)
 }
 \arguments{
  \item{x}{A numeric data frame or matrix with the \code{x} values. If
@@ -26,6 +27,7 @@
  \item{border}{Color for the polygon borders.}
  \item{col}{Color to fill the polygons.}
  \item{staxx}{Whether to call \code{staxlab} to stagger the x axis labels.}
+ \item{stack}{Whether to stack the successive values on top of each other.}
  \item{axis4}{Whether to display the right ordinate on the plot.}
  \item{...}{Additional arguments passed to \code{plot}.}
 }
@@ -36,14 +38,19 @@
  \code{stackpoly} is similar to a line plot with the area under the
  lines filled with color(s). Ideally, each successive set of y values
  is greater than the values in the previous set so that the polygons 
- form a rising series of crests.
+ form a rising series of crests. If \code{stack} is TRUE, this is not a
+ problem unless some values of \code{x} are negative.
 }
 \author{Jim Lemon}
 \seealso{\code{\link{polygon}}}
 \examples{
- testx<-matrix(cumsum(abs(rnorm(100))),nrow=10)
- stackpoly(testx,main="Test Stackpoly",
+ testx<-matrix(abs(rnorm(100)),nrow=10)
+ stackpoly(matrix(cumsum(testx),nrow=10),main="Test Stackpoly I",
   xaxlab=c("One","Two","Three","Four","Five",
   "Six","Seven","Eight","Nine","Ten"),border="black",staxx=TRUE)
+ stackpoly(testx,main="Test Stackpoly II",
+  xaxlab=c("One","Two","Three","Four","Five",
+  "Six","Seven","Eight","Nine","Ten"),border="black",
+  staxx=TRUE,stack=TRUE)
 }
 \keyword{misc}

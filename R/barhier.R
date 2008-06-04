@@ -1,5 +1,5 @@
 barhier<-function(x,left=0,top,right=1,showval=TRUE,showcount=TRUE,
- firstcall=TRUE,col=NA,...) {
+ firstcall=TRUE,col=NA,fade=FALSE,...) {
  
  dimx<-dim(x)
  if(firstcall) {
@@ -35,8 +35,9 @@ barhier<-function(x,left=0,top,right=1,showval=TRUE,showcount=TRUE,
    prevcol<-ifelse(bar>1,col[bar-1],NA)
    nextcol<-ifelse(bar<lenxf,col[bar+1],NA)
    nextx<-subset(x,x[,1]==xvalue,2:dimx[2])
+   barcol<-ifelse(fade,smoothColors(col[bar],1,"#ffffff")[2],col[bar])
    barhier(nextx,right,top,right+1,showval=showval,firstcall=FALSE,
-    col=rep(smoothColors(col[bar],1,"#ffffff")[2],length(nextx[,1])))
+    col=rep(barcol,length(nextx[,1])))
   }
   top<-top-xfreq[bar]
  }
