@@ -57,7 +57,6 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  npriorities <- max(x$priorities)
  if(is.null(taskcolors)) 
   taskcolors<-rainbow(ntasks)
-#   color.scale(as.numeric(x$labels),c(1,0.5,0,0),c(0,0.5,1,0),c(0,0,0,1))
  else {
   if(length(taskcolors)<npriorities) 
    taskcolors<-rep(taskcolors,length.out=npriorities)

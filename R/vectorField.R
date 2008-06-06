@@ -19,9 +19,11 @@ vectorField<-function(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
   u<-tempu
  }
  else mag<-sqrt(u*u+v*v)
- maxmag<-0.5*max(diff(xpos[1,]))/max(mag)
+ if(is.null(dim(xpos))) maxmag<-0.5*max(diff(xpos))/max(mag)
+ else maxmag<-0.5*max(diff(xpos[1,]))/max(mag)
  u2<-u*scale*maxmag
  v2<-v*scale*maxmag
- length<-headspan*par("pin")[1]/udim[2]
+ if(is.null(udim)) length=headspan
+ else length<-headspan*par("pin")[1]/udim[2]
  arrows(xpos-u2,ypos-v2,xpos+u2,ypos+v2,length=length)
 }

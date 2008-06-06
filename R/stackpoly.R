@@ -1,5 +1,5 @@
 stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
- xlim=NA,ylim=NA,lty=1,border=NA,col=NA,staxx=FALSE,axis4=TRUE,...) {
+ xlim=NA,ylim=NA,lty=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,axis4=TRUE,...) {
 
  ydim<-dim(y)
  if(is.null(y[1])) {
@@ -7,6 +7,7 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
   ydim<-dim(y)
   x<-matrix(rep(1:ydim[1],ydim[2]),ncol=ydim[2])
  }
+ if(stack) y<-t(unlist(apply(as.matrix(y),1,cumsum)))
  if(is.matrix(y) || is.list(y)) {
   if(is.na(xlim[1])) xlim<-range(x)
   if(is.na(ylim[1])) ylim<-c(0,max(y))
