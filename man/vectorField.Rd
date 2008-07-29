@@ -32,8 +32,9 @@ vectorField(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
 \author{Jim Lemon (original code by Robin Hankin and Brian Ripley)}
 \seealso{\code{\link{arrows}}}
 \examples{
- # this requires the maps package
- if(suppressPackageStartupMessages(require(maps))) {
+ \dontrun{
+  # this requires the maps package, and just wouldn't pass check
+  require(maps)
   map("world",xlim=c(110,155),ylim=c(-40,-10))
   par(xpd=TRUE)
   text(132,-5,"Approximate magnetic deviation - Australia",cex=1.5)
@@ -50,5 +51,12 @@ vectorField(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
    128,115,107,90,78,66,53,45)
   vectorField(devdeg,mag,long,lat,scale=0.7,vecspec="deg")
  }
+ # do a magnitude/direction plot with radians
+ plot(1:10,type="n",main="Random vectors")
+ mag<-runif(100)+1
+ dir<-runif(100)*2*pi
+ xpos<-rep(1:10,10)
+ ypos<-rep(1:10,each=10)
+ vectorField(dir,mag,xpos,ypos,scale=0.8,vecspec="rad")
 }
 \keyword{misc}

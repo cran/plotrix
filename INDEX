@@ -17,6 +17,7 @@ color.legend		Display a color/value legend
 color.scale		Transform numeric values into a series of colors
 color.scale.lines	Display line segments with scaled colors
 color2D.matplot		Display a numeric matrix as a color matrix
+convert.meq		Convert mg/liter to milliequivalents/liter
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
@@ -29,6 +30,7 @@ emptyspace		Find the largest empty space on a plot
 fan.plot		Display a fan (superimposed pie sector) plot
 feather.plot		Display vectors along a horizontal line
 floating.pie		Display a flat pie chart at a specified position
+furc			Display a 'furcation' (split of a dendrogram)
 gantt.chart		Display a Gantt chart with task priority colors
 gap.barplot		Display a barplot with a range of values omitted
 gap.boxplot		Display boxplots with one or two ranges omitted
@@ -38,15 +40,24 @@ get.gantt.info		Enter information for a Gantt chart
 get.segs		Calculate the midpoints and limits for centipede.plot
 get.soil.texture	Enter information for soil textures
 get.triprop		Enter triplets of proportions or percentages
+getIntersectList	Enter the information for an intersection diagram
 gradient.rect		Display a rectangle with an arbitrary color gradient
 hexagon			Draw a hexagon
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
 oz.windrose		Display an Australian BoM wind rose
 oz.windrose.legend	Display a wind rose legend in Australian BoM style
+p.ions			Produce % anions and cations for Piper diagram
+pasteCols		Paste the columns of a matrix together
 pie3D			Display a 3D pie chart
 pie3D.labels		Display labels on a 3D pie chart
 pie.labels		Display flat pie chart labels
+piper.coords		Set up coordinates for Piper diagram
+piper.diagram		Display a Piper diagram
+piper.points		Display the values on a Piper diagram
+piper.set		Set gaps for Piper diagram
+piper.text		Display text on a Piper diagram
+plot.dendrite		Display a dendrogram for a dendrite object
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
@@ -62,6 +73,7 @@ spread.labels		Spread out labels for irregularly spaced values
 stackpoly		Plot columns of numbers as overlaid polygons
 staxlab			Display staggered labels on an axis
 std.error		Calculate the conventional standard error
+sumDendrite		Sum the first levels of counts in a dendrite list
 symbolbarplot		Barplot with bars filled with symbols : height
 symbolbox		Draw a box filled with symbols
 tab.title		Display the plot title in a tab
@@ -74,5 +86,5 @@ triax.frame		Display a three axis frame with optional grid
 triax.plot		Display a triangle (three axis) plot
 triax.points		Display triplets of values as points on a triangle plot
 twoord.plot		Display a plot with two ordinates of different scales
-vector.field		Display magnitude/direction arrows on a plot
+vectorField		Display magnitude/direction arrows on a plot
 weighted.hist		Calculate and optionally display a weighted histogram

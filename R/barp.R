@@ -21,11 +21,11 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
    y=as.matrix(height))
  }
  if(is.null(xlim)) xlim<-c(0.4,ngroups+0.6)
- negy<-any(height<0)
+ negy<-any(height<0,na.rm=TRUE)
  if(is.null(ylim)) {
-  if(negy) miny<-min(height)*1.05
+  if(negy) miny<-min(height,na.rm=TRUE)*1.05
   else miny<-0
-  ylim<-c(miny,max(height)*1.05)
+  ylim<-c(miny,max(height,na.rm=TRUE)*1.05)
  }
  else miny<-ylim[1]
  plot(0,type="n",main=main,xlab=xlab,ylab=ylab,axes=FALSE,xlim=xlim,ylim=ylim,

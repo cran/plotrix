@@ -14,7 +14,7 @@
 \arguments{
  \item{x}{Matrix where each row is three proportions or percentages
   that must sum to 1 or 100 respectively.}
- \item{main}{The title of the soil texture plot. Defaults to nothing.}
+ \item{main}{The title of the triangle plot. Defaults to nothing.}
  \item{at}{The tick positions on the three axes.}
  \item{axis.labels}{Labels for the three axes in the order left, right,
   bottom. Defaults to the column names.}
