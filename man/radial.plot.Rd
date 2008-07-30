@@ -11,8 +11,9 @@
  radial.plot(lengths,radial.pos=NULL,labels,label.pos=NULL,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
  line.col=par("fg"),mar=c(2,2,3,2),show.grid=TRUE,show.radial.grid=TRUE,
- grid.col="gray",grid.bg="transparent",grid.left=FALSE,point.symbols=NULL,
- point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...)
+ grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
+ point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
+ poly.col=NA,...)
 }
 \arguments{
  \item{lengths}{A numeric data vector or matrix. If \code{lengths}
@@ -37,17 +38,19 @@
  \item{xlab,ylab}{Normally x and y axis labels are suppressed.}
  \item{line.col}{The color of the radial lines or polygons drawn.}
  \item{mar}{Margins for the plot. Allows the user to leave space for
-  legends, etc.}
+  legends, long labels, etc.}
  \item{show.grid}{Logical - whether to draw a circular grid.}
  \item{show.radial.grid}{Whether to draw radial lines to the plot labels.}
  \item{grid.col}{Color of the circular grid.}
  \item{grid.bg}{Fill color of above.}
  \item{grid.left}{Whether to place the radial grid labels on the left side.}
+ \item{grid.unit}{Optional unit description for the grid.}
  \item{point.symbols}{The symbols for plotting (as in pch).}
  \item{point.col}{Colors for the symbols.}
  \item{show.centroid}{Whether to display a centroid.}
  \item{radial.lim}{The range of the grid circle. Defaults
   to \code{range(pretty(lengths))}.}
+ \item{poly.col}{Fill color if polygons are drawn.}
  \item{...}{Additional arguments are passed to \code{plot}.}
 }
 \value{
@@ -79,7 +82,7 @@
  testlen<-rnorm(10)*2+5
  testpos<-seq(0,18*pi/10,length=10)
  testlab<-letters[1:10]
- radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",lwd=3)
+ oldpar<-radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",lwd=3)
  testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
  testpos<-seq(0,1.98*pi,length=100)
  radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")
@@ -89,9 +92,14 @@
   point.symbols=16,point.col="green",show.centroid=TRUE)
  # one without the circular grid and multiple polygons
  posmat<-matrix(sample(2:9,30,TRUE),nrow=3)
- oldpar<-radial.plot(posmat,labels=paste("X",1:10,sep=""),rp.type="p",
+ radial.plot(posmat,labels=paste("X",1:10,sep=""),rp.type="p",
   main="Spiderweb plot",line.col=2:4,show.grid=FALSE,
   radial.lim=c(0,10))
+ # dissolved ions in water
+ ions<-c(3.2,5,1,3.1,2.1,4.5)
+ ion.names<-c("Na","Ca","Mg","Cl","HCO3","SO4")
+ radial.plot(ions,labels=ion.names,rp.type="p",main="Dissolved ions in water",
+  grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow")
  par(xpd=oldpar$xpd,mar=oldpar$mar,pty=oldpar$pty)
 }
 \keyword{misc}

@@ -43,15 +43,17 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
 
 # plots radial lines of length 'lengths', symbols at 'lengths' from the
 # center or a polygon with corresponding vertices at 'radial.pos' in radians.
-# starts at the 'east' position and goes counterclockwise
+# starts at the 'east' position and goes counterclockwise unless
+# the "start" and "clockwise" arguments are changed
 # label.prop is the proportion of max(lengths) that gives the
 # radial position of the labels
 
 radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
  line.col=par("fg"),mar=c(2,2,3,2),show.grid=TRUE,show.radial.grid=TRUE,
- grid.col="gray",grid.bg="transparent",grid.left=FALSE,point.symbols=NULL,
- point.col=NULL,show.centroid=FALSE,radial.lim=NULL,...) {
+ grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
+ point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
+ poly.col=NA,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
  length.dim<-dim(lengths)
@@ -110,7 +112,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   if(match("r",rp.type,0))
    segments(0,0,xpos,ypos,col=line.col[i],...)
   if(match("p",rp.type,0))
-   polygon(xpos,ypos,border=line.col[i],col=NA,...)
+   polygon(xpos,ypos,border=line.col[i],col=poly.col,...)
   if(match("s",rp.type,0))
    points(xpos,ypos,pch=point.symbols[i],col=point.col[i],...)
   if(show.centroid)
@@ -140,6 +142,8 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   }
   ypos<-rep(-maxlength/15,length(grid.pos))
   boxed.labels(grid.pos-radial.lim[1],ypos,as.character(grid.pos),border=FALSE)
+  if(!is.null(grid.unit))
+   text(maxlength*1.05,ypos,grid.unit,adj=0)
  }
  par(oldpar)
 }
