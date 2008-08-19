@@ -42,7 +42,8 @@
   \code{ylim} are set by default to include all of the data points and
   error bars.  \code{xlab} and \code{ylab} are set to the names of
   \code{x} and \code{y}.  If \code{pch==NA}, no points are drawn
-  (e.g. leaving room for text labels instead)}}
+  (e.g. leaving room for text labels instead)}
+}
 \value{
  invisible(x,y); creates a plot on the current device.
 }

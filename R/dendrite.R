@@ -69,4 +69,5 @@ plot.dendrite<-function(x,xlabels=NULL,main="",mar=c(1,0,3,0),cex=1,...) {
  text(seq(0.5,xmax),par("usr")[3],xlabels)
  par(xpd=FALSE)
  furc(x,0.5,c(1,ymax),TRUE,cex=cex)
+ par(mar=oldmar)
 }

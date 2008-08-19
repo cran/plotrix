@@ -13,8 +13,8 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
  yaxl<-par("ylog")
  xgw<-(figxy[2]-figxy[1])*brw
  ygw<-(figxy[4]-figxy[3])*brw
- if(missing(xtics)) xtics<-pretty(x)
- if(missing(ytics)) ytics<-pretty(y)
+ if(is.na(xtics[1])) xtics<-pretty(x)
+ if(is.na(ytics[1])) ytics<-pretty(y)
  if(missing(xticlab)) xticlab<-xtics
  if(missing(yticlab)) yticlab<-ytics
  if(length(col) < length(y)) col<-rep(col,length.out=length(y))
@@ -103,8 +103,8 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
     show.labels<-c(ytics[littletics],yticlab[bigtics])
    }
    axis(2,at=show.at,labels=show.labels)
-   axis.break(2,gap
-   [1]-ygw,style="gap",bgcol=bgcol,breakcol=breakcol,brw=brw)
+   axis.break(2,gap[1]-ygw,style="gap",bgcol=bgcol,
+    breakcol=breakcol,brw=brw)
    if(length(gapsize) > 2) {
     axis.break(2,gap[3]-(gapsize[1]+ygw),style="gap",bgcol=bgcol,
      breakcol=breakcol,brw=brw)
