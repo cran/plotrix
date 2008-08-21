@@ -10,6 +10,7 @@ brkdn.plot		Display summary measures broken down by factors
 centipede.plot		Display a centipede plot/caterpillar plot/league table
 clean.args		Remove arguments that would cause an error
 clock24.plot		Plot values as lines/polygon/symbols on a "clockface"
+clplot			Plot lines with colors corresponding to values
 cluster.overplot	Display overlying points as clusters
 color.gradient		Calculate values for a color gradient
 color.id		Find the closest named color to a hexadecimal RGB code
@@ -62,9 +63,11 @@ plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
 pyramid.plot		Display a pyramid (opposed horizontal bar) plot
+qt.plot			Display counts of numeric values and intervals
 radial.plot		Plot values as lines/polygon/symbols on radial scale
 remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
+revaxis			Plot with the values on the X or Y axis reversed
 sizeplot		Display overlying points as larger points
 smoothColors		Build a vector of interpolated colors
 soil.texture		Display a "soil texture triangle"
