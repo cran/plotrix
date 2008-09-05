@@ -24,7 +24,7 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,ylim=NA,xlab=NULL,ylab=NU
    xlab<-ylab
    ylab<-tmplab
   }
-  plot(0,xlim=ylim,ylim=xlim,ylab=ylab,axes=FALSE,type="n",...)
+  plot(0,xlim=ylim,ylim=xlim,xlab=xlab,ylab=ylab,axes=FALSE,type="n",...)
   plot.lim <- par("usr")
   botgap<-ifelse(gap[1]<0,gap[1],plot.lim[1])
   box()

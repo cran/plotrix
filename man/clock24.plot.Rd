@@ -35,5 +35,6 @@
  clock24.plot(testlen[7:19],testpos[7:19],
   main="Test Clock24 daytime (symbols)",
   point.col="blue",rp.type="s",lwd=3)
- par(ask=FALSE)
+ # reset the margins
+ par(mar=c(5,4,4,2))
 }

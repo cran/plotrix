@@ -26,6 +26,8 @@
  ends of the dispersion bars and then try to find an empty rectangle.
  It will also accept a list of x-y coordinates, looking for the first
  element to have the name \code{x}, and set \code{y} to the second element.
+ 
+ Note that if there are any NAs in \code{x} or \code{y}, emptyspace will fail.
 }
 \value{
  The \code{x} and \code{y} coordinates of the center of the rectangle

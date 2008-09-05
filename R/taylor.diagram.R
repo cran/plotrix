@@ -6,6 +6,10 @@
 # version 1.0
 # progr. Olivier.Eterradossi, 12/2007
 # 2007-01-12 - modifications and Anglicizing - Jim Lemon
+# version 2.0
+# progr. initiale OLE, 8/01/2007
+# rev. OLE 3/09/2008 : remove samples with NA's from mean, sd and cor calculations 
+# 2008-09-04 - integration and more anglicizing - Jim Lemon
 
 taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
  xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ref.sd=FALSE,
@@ -80,65 +84,95 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
     cos(smltickangles)*0.99*maxsd,sin(smltickangles)*0.99*maxsd)
   }
   else {
-   plot(c(-maxsd,maxsd),c(0,maxsd),type="n",asp=1,bty="n",xaxt="n",
-    yaxt="n",xlab=xlab,ylab=ylab,main=main,...)
-   discrete<-seq(180,0,by=-1)
-   point.list<-NULL
-   for(i in discrete)
-    point.list<-cbind(point.list,maxsd*cos(i*pi/180),maxsd*sin(i*pi/180))
-   point.list<-matrix(point.list,2,length(point.list)/2)
-   point.list<-t(point.list)
-   lines(point.list[,1],point.list[,2])
+   x<- ref
+   y<- model
 
-   # axes x,y
-   lines(c(-maxsd,maxsd),c(0,0))
-   lines(c(0,0),c(0,maxsd))
+   grad.corr.full<-c(0,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1)
+   grad.corr.lines<-c(0.2,0.4,0.6,0.8,0.9)
 
-   # radial lines for correlation -0.8 -> 0.8
-   for (i in grad.corr.lines){
-    lines(c(0,maxsd*i),c(0,maxsd*sqrt(1-i^2)),lty=3)
-    lines(c(0,-maxsd*i),c(0,maxsd*sqrt(1-i^2)),lty=3)
-   }
+   R<-cor(x,y,use="pairwise.complete.obs")
 
-   # labels for radial lines
-   for (i in grad.corr.full){
-    text(1.05*maxsd*i,1.05*maxsd*sqrt(1-i^2),i,cex=0.6)
-    text(-1.05*maxsd*i,1.05*maxsd*sqrt(1-i^2),-i,cex=0.6)
-   }
+   E<-mean(x,na.rm=TRUE)-mean(y,na.rm=TRUE) # overall bias
 
-   # concentric lines about the reference standard deviation
+   xprime<-x-mean(x,na.rm=TRUE)
+   yprime<-y-mean(y,na.rm=TRUE)
+   sumofsquares<-(xprime-yprime)^2
+   Eprime<-sqrt(sum(sumofsquares)/length(complete.cases(x))) # centered pattern RMS
+   E2<-E^2+Eprime^2
+   if (add==FALSE) {
+    # pourtour du diagramme (display the diagram)
+    maxray<-1.5*max(sd.f,sd.r)
+    plot(c(-maxray,maxray),c(0,maxray),type="n",asp=1,bty="n",xaxt="n",yaxt="n",
+     xlab=xlab,ylab=ylab,main=main)
+    discrete<-seq(180,0,by=-1)
+    listepoints<-NULL
+    for (i in discrete){
+     listepoints<-cbind(listepoints,maxray*cos(i*pi/180),maxray*sin(i*pi/180))
+    }
+    listepoints<-matrix(listepoints,2,length(listepoints)/2)
+    listepoints<-t(listepoints)
+    lines(listepoints[,1],listepoints[,2])
 
-   seq.sd<-seq.int(0,2*maxsd,by=(maxsd/10))
-   for (i in seq.sd){
-    xcircle<-sd.r+(cos(discrete*pi/180)*i)
-    ycircle<-sin(discrete*pi/180)*i
-    for (j in 1:length(xcircle)){
-     if((xcircle[j]^2+ycircle[j]^2)<(maxsd^2)) {
-      points(xcircle[j],ycircle[j],col="darkgreen",pch=".")
-      if(j==10)
-       text(xcircle[j],ycircle[j],signif(i,2),cex=0.5,col="darkgreen")
+    # axes x,y
+    lines(c(-maxray,maxray),c(0,0))
+    lines(c(0,0),c(0,maxray))
+
+    # lignes radiales jusqu'� R = +/- 0.8
+    for (i in grad.corr.lines){
+     lines(c(0,maxray*i),c(0,maxray*sqrt(1-i^2)),lty=3)
+     lines(c(0,-maxray*i),c(0,maxray*sqrt(1-i^2)),lty=3)
+    }
+
+    # texte radial
+    for (i in grad.corr.full){
+
+     text(1.05*maxray*i,1.05*maxray*sqrt(1-i^2),i,cex=0.6)
+     text(-1.05*maxray*i,1.05*maxray*sqrt(1-i^2),-i,cex=0.6)
+    }
+
+    # sd concentriques autour de la reference
+
+    seq.sd<-seq.int(0,2*maxray,by=(maxray/10))
+    for (i in seq.sd){
+     xcircle<-sd.r+(cos(discrete*pi/180)*i)
+     ycircle<-sin(discrete*pi/180)*i
+     for (j in 1:length(xcircle)){
+      if ((xcircle[j]^2+ycircle[j]^2)<(maxray^2)){
+       points(xcircle[j],ycircle[j], col="darkgreen",pch=".")
+       if (j==10){
+        text(xcircle[j],ycircle[j],signif(i,2),cex=0.5,col="darkgreen")
+       }
+      }
      }
     }
+
+
+    # sd concentriques autour de l'origine
+
+    seq.sd<-seq.int(0,maxray,length.out=5)
+    for (i in seq.sd){
+     xcircle<-(cos(discrete*pi/180)*i)
+     ycircle<-sin(discrete*pi/180)*i
+
+     lines(xcircle,ycircle,lty=3,col="blue")
+     text(min(xcircle),-0.03*maxray,signif(i,2),cex=0.5,col="blue")
+     text(max(xcircle),-0.03*maxray,signif(i,2),cex=0.5,col="blue")
+    }
+
+    text(0,-0.08*maxray,"Standard Deviation",cex=0.7,col="blue")
+    text(0,-0.12*maxray,"Centered RMS Difference",cex=0.7,col="darkgreen")
+    points(sd.r,0,pch=22,bg="darkgreen",cex=1.1)
+
+    text(0,1.1*maxray,"Correlation Coefficient",cex=0.7)
    }
 
-   # concentric lines about the origin
 
-   seq.sd<-seq.int(0,maxsd,length.out=5)
-   for(i in seq.sd) {
-    xcircle<-(cos(discrete*pi/180)*i)
-    ycircle<-sin(discrete*pi/180)*i
-    lines(xcircle,ycircle,lty=3,col="blue")
-    text(min(xcircle),-0.03*maxsd,signif(i,2),cex=0.5,col="blue")
-    text(max(xcircle),-0.03*maxsd,signif(i,2),cex=0.5,col="blue")
-   }
 
-   text(0,-0.08*maxsd,"Standard Deviation",cex=0.7,col="blue")
-   text(0,-0.12*maxsd,"Centered RMS Difference",cex=0.7,col="darkgreen")
-   points(sd.r,0,pch=22,bg="darkgreen",cex=1.1)
-
-   text(0,1.1*maxsd,"Correlation Coefficient",cex=0.7)
+   S<-(2*(1+R))/(sd.f+(1/sd.f))^2
+#   Taylor<-S
   }
  }
+ 
  # display the points
  points(sd.f*R,sd.f*sin(acos(R)),pch=pch,col=col,cex=pcex)
  invisible(oldpar)
