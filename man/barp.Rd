@@ -11,7 +11,7 @@
 \arguments{
  \item{height}{A numeric vector, matrix or data frame that will be represented
   as the heights of bars.}
- \item{width}{Half the width of the bars in X axis units.}
+ \item{width}{Half the width of a single bar or group of bars in X axis units.}
  \item{names.arg}{The labels for the bars or groups of bars.}
  \item{legend.lab}{Labels for an optional legend. If NULL, no legend is
   displayed.}

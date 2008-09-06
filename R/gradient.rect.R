@@ -25,7 +25,7 @@ gradient.rect<-function(xleft,ybottom,xright,ytop,reds,greens,blues,
    yinc <- (ytop - ybottom)/nslices
    ybottoms <- seq(ybottom, ytop - yinc, length = nslices)
    ytops <- ybottoms + yinc
-   rect(xleft,ybottoms,xright,ytops,col=rev(col),lty=0)
+   rect(xleft,ybottoms,xright,ytops,col=col,lty=0)
    rect(xleft,ybottoms[1],xright,ytops[nslices],border=border)
   }
  }

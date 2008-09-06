@@ -37,4 +37,6 @@
  polar.plot(testlen,testpos,main="Test Polar Plot",lwd=3,line.col=4)
  polar.plot(testlen,testpos,main="Test Clockwise Polar Plot",
   start=90,clockwise=TRUE,lwd=3,line.col=4)
+ # reset the margins
+ par(mar=c(5,4,4,2))
 }

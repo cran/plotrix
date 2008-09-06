@@ -32,9 +32,18 @@ axis.break<-function(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
  if(xaxl) br[c(1,3)]<-10^br[c(1,3)]
  if(yaxl) br[c(2,4)]<-10^br[c(2,4)]
  if(style == "gap") {
+  if(xaxl) {
+   figxy[1]<-10^figxy[1]
+   figxy[2]<-10^figxy[2]
+  }
+  if(yaxl) {
+   figxy[3]<-10^figxy[3]
+   figxy[4]<-10^figxy[4]
+  }
   # blank out the gap area and calculate the line segments
   if(axis == 1 || axis == 3) {
-   rect(breakpos,figxy[3],breakpos+xw,figxy[4]+yw,col=bgcol,border=bgcol)
+   cat(breakpos,figxy[3],breakpos+xw,figxy[4],"\n")
+   rect(breakpos,figxy[3],breakpos+xw,figxy[4],col=bgcol,border=bgcol)
    xbegin<-c(breakpos,breakpos+xw)
    ybegin<-c(figxy[3],figxy[3])
    xend<-c(breakpos,breakpos+xw)
@@ -45,7 +54,7 @@ axis.break<-function(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
    }
   }
   else {
-   rect(figxy[1]-xw,breakpos,figxy[2]+xw,breakpos+yw,col=bgcol,border=bgcol)
+   rect(figxy[1],breakpos,figxy[2],breakpos+yw,col=bgcol,border=bgcol)
    xbegin<-c(figxy[1],figxy[1])
    ybegin<-c(breakpos,breakpos+yw)
    xend<-c(figxy[2],figxy[2])

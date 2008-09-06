@@ -116,7 +116,31 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   if(match("s",rp.type,0))
    points(xpos,ypos,pch=point.symbols[i],col=point.col[i],...)
   if(show.centroid)
-   points(mean(xpos),mean(ypos),col=point.col[i],pch=point.symbols[i],cex=2,...)
+   if(match("p",rp.type,0)) {
+    nvertices<-length(xpos)
+    # first get the "last to first" area component
+    polygonarea<-xpos[nvertices]*ypos[1] - xpos[1]*ypos[nvertices]
+    for(vertex in 1:(nvertices-1))
+     polygonarea<-
+      polygonarea+xpos[vertex]*ypos[vertex+1]-xpos[vertex+1]*ypos[vertex]
+    polygonarea<-polygonarea/2
+    centroidx<-
+     (xpos[nvertices]+xpos[1])*(xpos[nvertices]*ypos[1]-xpos[1]*ypos[nvertices])
+    centroidy<-
+     (ypos[nvertices]+ypos[1])*(xpos[nvertices]*ypos[1]-xpos[1]*ypos[nvertices])
+    for(vertex in 1:(nvertices-1)) {
+     centroidx<-centroidx + (xpos[vertex]+xpos[vertex+1])*
+      (xpos[vertex]*ypos[vertex+1]-xpos[vertex+1]*ypos[vertex])
+     centroidy<-centroidy + (ypos[vertex]+ypos[vertex+1])*
+      (xpos[vertex]*ypos[vertex+1]-xpos[vertex+1]*ypos[vertex])
+    }
+    points(centroidx/(6*polygonarea),centroidy/(6*polygonarea),
+     col=point.col[i],pch=point.symbols[i],cex=2,...)
+   
+   }
+   else
+    points(mean(xpos),mean(ypos),col=point.col[i],pch=point.symbols[i],
+     cex=2,...)
  }
  if(is.na(labels[1])) {
   label.pos<-seq(0,1.8*pi,length=9)

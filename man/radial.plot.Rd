@@ -61,7 +61,11 @@
  symbols or a combination of these centered at the midpoint of
  the plot frame, the lengths, vertices or positions corresponding
  to the numeric magnitudes of the data values. If \code{show.centroid}
- is TRUE, an enlarged point at the centroid of values is displayed.
+ is TRUE, an enlarged point at the centroid of values is displayed. The
+ centroid is calculated as the average of x and y values unless 
+ \code{rp.type="p"}. In this case, the barycenter of the polygon is
+ calculated. Make sure that these suit your purpose, otherwise calculate
+ the centroid that you really want and add it with the \code{points} function.
   
  If the user wants to plot several sets of lines, points or symbols by
  passing matrices or data frames of \code{lengths} and \code{radial.pos},
@@ -101,5 +105,7 @@
  radial.plot(ions,labels=ion.names,rp.type="p",main="Dissolved ions in water",
   grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow")
  par(xpd=oldpar$xpd,mar=oldpar$mar,pty=oldpar$pty)
+ # reset the margins
+ par(mar=c(5,4,4,2))
 }
 \keyword{misc}

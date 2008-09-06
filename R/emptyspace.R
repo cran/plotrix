@@ -35,10 +35,12 @@ emptyspace<-function(x,y=NA,bars=FALSE) {
   botpos<-ifelse(any(y < 0),0,ylim[1])
   yinc<-diff(ylim)/10
   for(bar in 1:length(y)) {
-   if(y[bar] < 0) newy<-seq(y[bar],0,by=yinc)
-   else newy<-seq(botpos,y[bar],by=yinc)
-   y<-c(y,newy)
-   x<-c(x,rep(x[bar],length(newy)))
+   if(!is.na(y[bar])) {
+    if(y[bar] < 0) newy<-seq(y[bar],0,by=yinc)
+    else newy<-seq(botpos,y[bar],by=yinc)
+    y<-c(y,newy)
+    x<-c(x,rep(x[bar],length(newy)))
+   }
   }
  }
  # counts the number of points that lie within each subsection of the plot
@@ -67,7 +69,7 @@ emptyspace<-function(x,y=NA,bars=FALSE) {
  }
  xysplits<-splitxy(xlim,ylim,nsplits)
  xycount<-count.xy(x,y,xysplits)
- while(min(xycount) > 0) {
+ while(min(xycount,na.rm=TRUE) > 0) {
   nsplits<-nsplits+1
   xysplits<-splitxy(xlim,ylim,nsplits)
   xycount<-count.xy(x,y,xysplits)

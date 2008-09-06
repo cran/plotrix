@@ -58,7 +58,9 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  }
  else {
   bottoms<-matrix(bottoms,nrow=hdim[1],ncol=hdim[2])
+  barwidth<-2*width/hdim[1]
   for(subgroup in 1:hdim[1]) {
+   barpinfo$x[subgroup,]<-1:ngroups-width+(subgroup-0.5)*barwidth
    if(shadow) {
     for(bar in 1:ngroups) {
      barleft<-bar-width+(subgroup-1)*2*width/hdim[1]
@@ -69,11 +71,11 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
     }
    }
    if(cylindrical)
-    cylindrect(1:ngroups-width+(subgroup-1)*2*width/hdim[1],bottoms[subgroup,],
-     1:ngroups-width+(subgroup)*2*width/hdim[1],height[subgroup,],
+    cylindrect(1:ngroups-width+(subgroup-1)*barwidth,bottoms[subgroup,],
+     1:ngroups-width+(subgroup)*barwidth,height[subgroup,],
      col=barcol[subgroup,])
-   else rect(1:ngroups-width+(subgroup-1)*2*width/hdim[1],bottoms[subgroup,],
-    1:ngroups-width+(subgroup)*2*width/hdim[1],height[subgroup,],
+   else rect(1:ngroups-width+(subgroup-1)*barwidth,bottoms[subgroup,],
+    1:ngroups-width+(subgroup)*barwidth,height[subgroup,],
     col=barcol[subgroup,])
   }
  }
