@@ -9,7 +9,7 @@
  color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
   ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,
-  ...)
+  border="black",na.color=NA,...)
 }
 \arguments{
  \item{x}{data values}
@@ -32,21 +32,24 @@
   This also controls the number of decimal places displayed.}
  \item{vcol}{The color for the value display.}
  \item{vcex}{The character expansion for the value display.}
+ \item{border}{The color(s) for the borders of the cells. Pass NA
+  if no border is  wanted.}
+ \item{na.color}{The color to use for NA values of \code{x}.}
  \item{...}{arguments passed to \code{plot}.}
 }
 \value{nil}
 \details{
- Displays a plot with the same number of rectangular cells as there are 
- numeric values in the matrix or data frame. Each rectangle is colored to
- represent its corresponding value. The rectangles are arranged in the
- conventional display of a 2D matrix with rows beginning at the top and
- columns at the left. The color scale defaults to black for the minimum
+ Displays a plot with the same number of rectangular or hexagonal cells as
+ there are numeric values in the matrix or data frame. Each rectangle is
+ colored to represent its corresponding value. The rectangles are arranged
+ in the conventional display of a 2D matrix with rows beginning at the top
+ and columns at the left. The color scale defaults to black for the minimum
  value and white for the maximum.
  
  The user will have to adjust the plot device dimensions to get regular
  squares or hexagons, especially when the matrix is not square. As the
  margins are not equivalent for all display devices, this is currently
- a matter of trial and error.
+ a matter of trial and error. Drawing hexagons is quite slow.
  
  \code{show.values} is also used to control the number of decimal places
  displayed if the values are shown. \code{TRUE} will give one decimal
@@ -68,9 +71,9 @@
  cellcol<-matrix(rep("#000000",1024),nrow=32)
  cellcol[x<0]<-color.scale(x[x<0],c(1,0.8),c(0,0.8),0)
  cellcol[x>0]<-color.scale(x[x>0],0,c(0.8,1),c(0.8,0))
- # now do hexagons
+ # now do hexagons without borders
  color2D.matplot(x,cellcolors=cellcol,xlab="Columns",ylab="Rows",
-  do.hex=TRUE,main="2D matrix plot (hexagons)")
+  do.hex=TRUE,main="2D matrix plot (hexagons)",border=NA)
  # for this one, we have to do the color legend separately
  # because of the two part color scaling
  legval<-seq(min(x),max(x),length.out=6)

@@ -24,7 +24,7 @@
 \details{
  \code{dispersion} displays a measure of dispersion on an existing plot.
  Currently it will display either vertical lines with caps (error bars) or lines
- that form an "confidence band" around a line of central tendency.
+ that form a "confidence band" around a line of central tendency.
  \code{dispbars} is now a call to \code{dispersion} with \code{type} set to
  \code{a}.
  
@@ -34,5 +34,19 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{\link{arrows}}, \code{\link{segments}}, code{\link{lines}}}
+\seealso{\code{\link{arrows}}, \code{\link{segments}},\code{\link{lines}}}
+\examples{
+ disptest<-matrix(rnorm(200),nrow=20)
+ disptest.means<-rowMeans(disptest)
+ row.order<-order(disptest.means)
+ se.disptest<-unlist(apply(disptest,1,std.error))
+ plot(disptest.means[row.order],main="Dispersion as error bars",
+  ylim=c(min(disptest.means-se.disptest),max(disptest.means+se.disptest)),
+  xlab="Occasion",ylab="Value")
+ dispersion(1:20,disptest.means[row.order],se.disptest[row.order])
+ plot(disptest.means[row.order],main="Dispersion as confidence band",
+  ylim=c(min(disptest.means-se.disptest),max(disptest.means+se.disptest)),
+  xlab="Occasion",ylab="Value")
+ dispersion(1:20,disptest.means[row.order],se.disptest[row.order],type="l",lty=2)
+}
 \keyword{misc}

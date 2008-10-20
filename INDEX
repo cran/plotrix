@@ -24,6 +24,7 @@ corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
 cylindrect		Display a rectangle shaded to look like a cylinder
 dispbars		Display dispersion (error) bars
+dotplot.mtb		Display a dotplot in MATLAB style
 draw.arc		Display a circular arc
 draw.circle		Display a circle on an existing plot
 draw.tilted.sector	Display a single 3D pie sector

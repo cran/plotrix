@@ -7,7 +7,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  else its_ok<-is.numeric(height)
  if(!its_ok) stop("barp can only display bars with numeric heights")
  hdim<-dim(height)
- if(is.null(hdim)) {
+ if(is.null(hdim) || length(hdim) == 1) {
   ngroups<-length(height)
   barcol=col
   barpinfo<-list(x=1:ngroups,y=height)
