@@ -1,8 +1,3 @@
-std.error<-function(x,na.rm) {
- stderr<-sd(x,na.rm=TRUE)
- return(stderr/sqrt(sum(!is.na(x))))
-}
-
 # in general, get.segs expects a list with varying lengths of numeric values
 # it returns a 4xn matrix of midpoints, upper and lower limits and Ns
 # where N is the number of valid elements in the list or columns in a

@@ -1,8 +1,6 @@
-cluster.overplot<-function(x,y,away=NULL,tol=NULL) {
- if(missing(x))
-  stop("Usage: cluster.overplot(x,y,away=NULL,tol=NULL)")
+cluster.overplot<-function(x,y,away=NULL,tol=NULL,...) {
+ if(missing(x)) stop("Usage: cluster.overplot(x,y,away=NULL,tol=NULL)")
  dimx<-dim(x)
- # if x is a data frame or matrix with at least two columns, split it
  if(missing(y) && !is.null(dimx)) {
   y<-x[,2]
   x<-x[,1]
@@ -19,7 +17,7 @@ cluster.overplot<-function(x,y,away=NULL,tol=NULL) {
  flags<-1:xlen
  for(i in 1:xlen) {
   if(!is.na(flags[i])) {
-   overplots<-abs(x - x[i]) <= tol[1] & abs(y - y[i]) <= tol[2]
+   overplots<-abs(x-x[i]) <= tol[1] & abs(y - y[i]) <= tol[2]
    if(sum(overplots) > 1) {
     away.index<-1
     for(j in 1:xlen) {
@@ -32,7 +30,7 @@ cluster.overplot<-function(x,y,away=NULL,tol=NULL) {
     }
    }
   }
-  flags[overplots]<-NA
+  flags[overplots] <- NA
  }
- return(list(x=x,y=y))
+ return(list(x=x,y=y,...))
 }

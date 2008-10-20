@@ -2,13 +2,15 @@
 \alias{count.overplot}
 \title{Show overlying points as counts}
 \usage{
- count.overplot(x,y,tol=NULL,...)
+ count.overplot(x,y,tol=NULL,col=par("fg"),pch=1,...)
 }
 \arguments{
  \item{x,y}{Two numeric data vectors or the first two columns of a matrix
   or data frame. Typically the x/y coordinates of points to be plotted.}
  \item{tol}{The largest distance between points that will be considered
   to be overlying.}
+ \item{col}{Color(s) for the points (not the numbers).}
+ \item{pch}{Symbol(s) to display.}
  \item{...}{additional arguments passed to \code{plot}.}
 }
 \description{

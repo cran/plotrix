@@ -31,7 +31,8 @@
  \code{qt.plot} assumes that the values in \code{qtime} represent interpretable
  intervals like seconds or days. The default is to assume sequential time
  intervals. If \code{qtime} contains dates, they must be translated to
- numeric format. These values will be sorted by the function.
+ numeric format. These values will be sorted by the function. If \code{qtime} is NA,
+ it will be assigned \code{1:length(qnt)}.
 }
 \value{nil}
 \author{Jim Lemon}

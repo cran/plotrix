@@ -1,3 +1,5 @@
+# Try to rewrite this for an arbitrary number of gaps
+
 gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
  brw=0.02,xlim,ylim,xticlab,xtics=NA,yticlab,ytics=NA,lty=rep(1,length(x)),
  col=rep(par("col"),length(x)),pch=rep(1,length(x)),add=FALSE,...) {

@@ -50,7 +50,7 @@
  
  barp(freq(...)[[1]],...)
  
- and the value from \code{table} can also be passed as \code{x}.
+ and the value from \code{table} can also be passed as \code{height}.
  
  Bars are empty by default but fill colors can be defined in several ways.
  If a single color is passed, all bars will be the same color. If \code{height}
@@ -73,7 +73,8 @@
  plots are appreciated. One is to give the bars a cylindrical look by shading the
  color. The other is to place an apparent shadow behind each bar. Both of these
  effects appear as though the light is coming from the upper left, and this is
- hard coded.
+ hard coded. You can add error bars by calling \code{dispbars}, but many advise against
+ this.
 
  If \code{legend.lab} is not NULL, a legend will be displayed. If 
  \code{legend.pos} is NA, \code{locator} is called to place the legend. On 

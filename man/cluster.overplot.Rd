@@ -2,7 +2,7 @@
 \alias{cluster.overplot}
 \title{Shift overlying points into clusters.}
 \usage{
- cluster.overplot(x,y,away=NULL,tol=NULL)
+ cluster.overplot(x,y,away=NULL,tol=NULL,...)
 }
 \arguments{
  \item{x,y}{Numeric data vectors or the first two columns of a matrix
@@ -14,12 +14,16 @@
   to be overlying. Defaults to 1/2 of the width of a lower case "o" in 
   the x direction and 1/2 of the height of a lower case "o" in the y 
   direction.}
+ \item{...}{additional arguments returned as they are passed.}
 }
 \description{
  \code{cluster.overplot} checks for overlying points in the x and y
   coordinates passed. Those points that are overlying are moved to form
   a small cluster of up to nine points. For large numbers of overlying
   points, see \code{\link{count.overplot}} or \code{\link{sizeplot}}.
+  If you are unsure of the number of overplots in your data, run
+  \code{count.overplot} first to see if there are any potential clusters
+  larger than nine.
 }
 \value{
  A list with two components. For unique x-y pairs the elements will be 
@@ -31,5 +35,8 @@
 \seealso{\code{\link{count.overplot}},\code{\link{sizeplot}}}
 \examples{
  xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
- plot(cluster.overplot(xy.mat),main="Cluster overplot test")
+ clusteredpoints<-
+  cluster.overplot(xy.mat,col=rep(c("red","green"),each=100))
+ plot(clusteredpoints,col=clusteredpoints$col,
+  main="Cluster overplot test")
 }

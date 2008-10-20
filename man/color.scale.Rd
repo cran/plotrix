@@ -3,13 +3,15 @@
 \title{Turn values into colors.}
 \description{Transform numeric values into colors.}
 \usage{
- color.scale(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),extremes=NA)
+ color.scale(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
+  extremes=NA,na.color=NA)
 }
 \arguments{
  \item{x}{a numeric vector, matrix or data frame}
  \item{redrange,greenrange,bluerange}{color ranges into which 
   to scale \code{x}}
  \item{extremes}{The colors for the extreme values of \code{x}.}
+ \item{na.color}{The color to use for NA values of \code{x}.}
 }
 \details{
  \code{color.scale} calculates a sequence of colors by a linear

@@ -5,6 +5,10 @@ dispersion<-function (x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,
   y<-x$y
   x<-x$x
  }
+ if(missing(y) && !missing(x)) {
+  y<-x
+  x<-1:length(x)
+ }
  npoints<-length(x)
  if(is.na(arrow.gap)) arrow.gap<-strheight("O")/1.5
  for(i in 1:npoints) {
