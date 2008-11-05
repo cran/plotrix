@@ -40,6 +40,7 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  plot(rx,ry,xlim=xlim,ylim=rylim,xlab="",ylab="",col=rcol,pch=rpch,
   type=type,axes=FALSE,...)
  axat<-axis(4,col=rcol,labels=FALSE)
+ abline(v=par("usr")[2],col=rcol)
  mtext(axat,4,1,at=axat,col=rcol)
  mtext(rylab,4,2,col=rcol)
  par(mar=oldmar)

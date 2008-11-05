@@ -72,6 +72,7 @@ revaxis			Plot with the values on the X or Y axis reversed
 sizeplot		Display overlying points as larger points
 smoothColors		Build a vector of interpolated colors
 soil.texture		Display a "soil texture triangle"
+soil.texture.uk		Soil texture plot using UK conventions
 soils			Soil texture data from 125 soils
 spread.labels		Spread out labels for irregularly spaced values
 stackpoly		Plot columns of numbers as overlaid polygons

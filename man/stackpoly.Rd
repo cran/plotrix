@@ -40,8 +40,11 @@
  is greater than the values in the previous set so that the polygons 
  form a rising series of crests. If \code{stack} is TRUE, this is not a
  problem unless some values of \code{x} are negative.
+ 
+ If \code{x} or \code{y} is a vector, not a matrix or list, the values will
+ be displayed as a "waterfall plot".
 }
-\author{Jim Lemon}
+\author{Jim Lemon and Thomas Petzoldt (waterfall plot option)}
 \seealso{\code{\link{polygon}}}
 \examples{
  testx<-matrix(abs(rnorm(100)),nrow=10)
@@ -52,5 +55,7 @@
   xaxlab=c("One","Two","Three","Four","Five",
   "Six","Seven","Eight","Nine","Ten"),border="black",
   staxx=TRUE,stack=TRUE)
+ stackpoly(rev(sort(testx-mean(testx))),main="Test Waterfall Plot",
+  col="green",border="black")
 }
 \keyword{misc}
