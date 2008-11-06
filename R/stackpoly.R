@@ -5,15 +5,16 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
  if(is.null(y[1])) {
   y<-x
   ydim<-dim(y)
-  x<-matrix(rep(1:ydim[1],ydim[2]),ncol=ydim[2])
+  if(is.null(ydim)) x<-1:length(y)
+  else x<-matrix(rep(1:ydim[1],ydim[2]),ncol=ydim[2])
  }
  if(stack) y<-t(unlist(apply(as.matrix(y),1,cumsum)))
+ if(is.na(xlim[1])) xlim<-range(x)
+ if(is.na(ylim[1])) ylim<-range(y)
+ plot(0,main=main,xlab=xlab,ylab=ylab,xlim=xlim,ylim=ylim,type="n",
+  xaxs="i",yaxs="i",axes=FALSE,...)
+ box()
  if(is.matrix(y) || is.list(y)) {
-  if(is.na(xlim[1])) xlim<-range(x)
-  if(is.na(ylim[1])) ylim<-c(0,max(y))
-  plot(0,main=main,xlab=xlab,ylab=ylab,xlim=xlim,ylim=ylim,type="n",
-   xaxs="i",yaxs="i",axes=FALSE,...)
-  box()
   plotlim<-par("usr")
   if(is.na(xat[1])) {
    xat<-x[,1]
@@ -36,5 +37,16 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
     polygon(c(x[,pline],rev(x[,pline-1])),c(y[,pline],rev(y[,pline-1])),
      border=border,col=col[pline],lty=lty[pline])
   }
+ }
+ else {
+  polygon(c(min(x),x,max(x),0),c(0,y,0,0),border=border,col=col,lty=lty)
+  if(is.na(xat[1])) {
+   xat<-x
+   if(is.na(xaxlab[1])) xaxlab<-xat
+  }
+  if(staxx) staxlab(at=xat,labels=xaxlab)
+  else axis(1,at=xat,labels=xaxlab)
+  axis(2)
+  if(axis4) axis(4)
  }
 }

@@ -3,6 +3,18 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  staxx=FALSE,staxy=FALSE,height.at=NULL,height.lab=NULL,cex.axis=par("cex.axis"),
  cylindrical=FALSE,shadow=FALSE) {
 
+ height.class<-attr(height,"class")
+ if(!is.null(height.class)) {
+  if(match(height.class,"dstat",0)) {
+   md1<-length(height)
+   md2<-dim(height[[1]])[2]
+   meanmat<-matrix(NA,nrow=md1,ncol=md2)
+   colnames(meanmat)<-colnames(height[[1]])
+   for(row in 1:md1) meanmat[row,]<-height[[row]][1,]
+   height<-meanmat
+  }
+  if(match(height.class,"freq",0)) height<-height[[1]] 
+ }
  if(is.data.frame(height)) its_ok<-is.numeric(unlist(height))
  else its_ok<-is.numeric(height)
  if(!its_ok) stop("barp can only display bars with numeric heights")
@@ -80,15 +92,14 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
   }
  }
  if(!is.null(legend.lab)) {
+  xjust<-yjust<-0.5
   if(is.na(legend.pos[1])) {
    cat("Click at the lower left corner of the legend\n")
    legend.pos<-locator(1)
    xjust<-yjust<-0
   }
-  if(legend.pos[1] == "e") {
+  if(legend.pos[1] == "e")
    legend.pos<-emptyspace(barpinfo,bars=TRUE)
-   xjust<-yjust<-0.5
-  }
   legend(legend.pos,legend=legend.lab,fill=col,xjust=xjust,yjust=yjust)
  }
  box()

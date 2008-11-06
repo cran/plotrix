@@ -45,12 +45,9 @@
  representing each value will be displayed centered at \code{1:length(height)}.
  If \code{height} is a matrix or data frame, a group of bars will be drawn for
  each column, with the values of the group taken from the rows of that column.
- The values from \code{freq} in the prettyR package can be used as the
- \code{height} argument like this:
- 
- barp(freq(...)[[1]],...)
- 
- and the value from \code{table} can also be passed as \code{height}.
+ The values from \code{freq} or \code{brkdn} in the prettyR package can be
+ used as the \code{height} argument. The value from \code{table} can also be
+ passed as \code{height}.
  
  Bars are empty by default but fill colors can be defined in several ways.
  If a single color is passed, all bars will be the same color. If \code{height}

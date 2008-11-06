@@ -3,7 +3,7 @@
 \usage{
  clplot(x,y,ylab=deparse(substitute(y)),xlab=deparse(substitute(x)),
   levels=seq(min(y)+(max(y)-min(y))/5,max(y)-(max(y)-min(y))/5,length.out=4),
-  cols=c("black","blue","green","orange","red"),showcuts=FALSE,...)
+  cols=c("black","blue","green","orange","red"),lty=1,showcuts=FALSE,...)
 }
 \alias{clplot}
 \arguments{
@@ -12,6 +12,7 @@
  \item{levels}{Cut points to assign colors to the values of \code{x} and
   \code{y}.}
  \item{cols}{The colors to be assigned.}
+ \item{lty}{The line type.}
  \item{showcuts}{Whether to show the positions of the cut points.}
  \item{...}{additional arguments passed to \code{plot} or \code{lines}.}
 }
