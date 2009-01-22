@@ -3,8 +3,8 @@
 \title{Display set intersections}
 \description{Display set intersections as rows of rectangles.}
 \usage{
- intersectDiagram(x,pct=FALSE,show.nulls=FALSE,mar=c(0,0,3,0),
-  main="Intersection Diagram",col=NULL,minspacing=0.1)
+ intersectDiagram(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,namesep="-",
+  mar=c(0,0,3,0),main="Intersection Diagram",col=NULL,minspacing=0.1)
 }
 \arguments{
  \item{x}{A list containing as many numeric vectors as there are sets. The
@@ -16,6 +16,9 @@
   number of entities.}
  \item{show.nulls}{Whether to display the number of original objects that were
   not members of any set.}
+ \item{xnames}{Optional user supplied names for the set categories (see
+  Details).}
+ \item{namesep}{The separator to use between category names.}
  \item{mar}{The margins for the diagram. The margins that were in effect when
   the function is called are restored.}
  \item{main}{The title for the diagram.}
@@ -35,6 +38,12 @@
  called if \code{col} is NULL, otherwise the colors passed are used. For each
  intersection, the colors representing the sets intersecting are included in
  the rectangle.
+ 
+ The strings displayed on each rectangle are taken from the argument
+ \code{xnames} unless that is NULL, then the \code{names} of the first element
+ of the intersectList object passed as \code{x} or returned from the call to
+ \code{makeIntersectList} and if this is also NULL, capital letters are assigned
+ to each category in \code{x}.
  
  If there were objects in the original data set that were not members of any
  set, any percentages calculated will reflect this. By setting \code{show.nulls}

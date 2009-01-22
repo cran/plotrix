@@ -3,12 +3,13 @@
 \title{Count set intersections}
 \description{Create a list of set intersections from a matrix of indicators.}
 \usage{
- makeIntersectList(x)
+ makeIntersectList(x,xnames=NULL)
 }
 \arguments{
  \item{x}{A data frame or matrix where rows represent objects and columns
   attributes. A \code{1} or \code{TRUE} indicates that the object (row) has
   that attribute or is a member of that set (column).}
+ \item{xnames}{Optional user-supplied names for the categories of x.}
 }
 \details{
  \code{makeIntersectList} reads a matrix (or data frame) containing only
@@ -23,8 +24,7 @@
  makeIntersectList combines the set or attribute names to form
  intersection names. For the intersection of sets A and B, the name will
  be AB and so on. These are the names that will be displayed by
- intersectDiagram. To change these, use the names function.
-
+ intersectDiagram. To change these, use the \code{xnames} argument.
 }
 \value{
  A list of the intersection counts or percentages and the total number of

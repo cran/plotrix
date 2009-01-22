@@ -4,7 +4,8 @@
 \description{ Display a Taylor diagram.}
 \usage{
  taylor.diagram(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
-  xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ref.sd=FALSE,
+  xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,
+  sd.arcs=0,ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),
   pcex=1,normalize=FALSE,...)
 }
 \arguments{
@@ -19,8 +20,13 @@
  \item{main}{title for the plot.}
  \item{show.gamma}{whether to display standard deviation arcs around
   the reference point (only for \code{pos.cor=TRUE}).}
+ \item{ngamma}{the number of gammas to display (default=3).}
+ \item{sd.arcs}{whether to display arcs along the standard deviation axes
+  (see Details).}
  \item{ref.sd}{whether to display the arc representing the reference
   standard deviation.}
+ \item{grad.corr.lines}{the values for the radial lines for correlation
+  values (see Details).}
  \item{pcex}{character expansion for the plotted points.}
  \item{normalize}{whether to normalize the models so that the reference
   has a standard deviation of 1.}
@@ -41,6 +47,12 @@
  values. When \code{pos.cor} is set to \code{TRUE}, only the
  range from 0 to 1 will be displayed. The \code{gamma} lines and the arc at
  the reference standard deviation are optional in this display.
+ 
+ Both the standard deviation arcs and the gamma lines are optional in the
+ \code{pos.cor=TRUE} version. Setting \code{sd.arcs} or \code{grad.corr.lines}
+ to zero or FALSE will cause them not to be displayed. If more than one value is
+ passed for \code{sd.arcs}, the function will try to use the values passed,
+ otherwise it will call \code{pretty} to calculate the values.
 }
 \value{
  The values of \code{par} that preceded the function. This allows the

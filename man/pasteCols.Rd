@@ -4,10 +4,11 @@
 \description{Paste the columns of a matrix together to form as
  many "words" as there are columns.}
 \usage{
- pasteCols(x)
+ pasteCols(x,sep="")
 }
 \arguments{
  \item{x}{A matrix.}
+ \item{sep}{The separator to use in the \code{paste} command.}
 }
 \details{
  \code{pasteCols} pastes the columns of a matrix together to form a vector in
@@ -23,5 +24,5 @@
  # create a matrix of the combinations of the first five letters of the
  # alphabet taken two at a time.
  alpha5<-combn(LETTERS[1:5],2,simplify=TRUE)
- pasteCols(alpha5)
+ pasteCols(alpha5,sep="+")
 }
