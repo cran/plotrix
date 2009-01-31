@@ -10,13 +10,15 @@
 # progr. initiale OLE, 8/01/2007
 # rev. OLE 3/09/2008 : remove samples with NA's from mean, sd and cor calculations 
 # 2008-09-04 - integration and more anglicizing - Jim Lemon
+# 2008-12-09 - added correlation radii, sd arcs to the pos.cor=FALSE routine
+# and stopped the pos.cor=FALSE routine from calculating arcs for zero radius
+# Jim Lemon
 
 taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
- xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ref.sd=FALSE,
- pcex=1,normalize=FALSE,...) {
+ xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,sd.arcs=0,
+ ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),pcex=1,normalize=FALSE,...) {
  
  grad.corr.full<-c(0,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1)
- grad.corr.lines<-c(0.2,0.4,0.6,0.8,0.9)
 
  R<-cor(ref,model,use="pairwise")
 
@@ -36,13 +38,35 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
    par(mar=c(5,4,6,6))
    plot(0,xlim=c(0,maxsd),ylim=c(0,maxsd),xaxs="i",yaxs="i",axes=FALSE,
     main=main,xlab=xlab,ylab=ylab,type="n",...)
-   if(show.gamma) {
-    gamma<-pretty(c(0,maxsd),n=3)[-1]
+   if(grad.corr.lines[1]) {
+    for(gcl in grad.corr.lines)
+     lines(c(0,maxsd*gcl),c(0,maxsd*sqrt(1-gcl^2)),lty=3)
+   }
+   # add the axes
+   segments(c(0,0),c(0,0),c(0,maxsd),c(maxsd,0))
+   axis.ticks<-pretty(c(0,maxsd))
+   axis.ticks<-axis.ticks[axis.ticks<=maxsd]
+   axis(1,at=axis.ticks)
+   axis(2,at=axis.ticks)
+   if(sd.arcs[1]) {
+    if(length(sd.arcs) == 1) sd.arcs<-axis.ticks
+    for(sdarc in sd.arcs) {
+     xcurve<-cos(seq(0,pi/2,by=0.03))*sdarc
+     ycurve<-sin(seq(0,pi/2,by=0.03))*sdarc
+     lines(xcurve,ycurve,col="blue",lty=3)
+    }
+   }
+   if(show.gamma[1]) {
+    # if the user has passed a set of gamma values, use that
+    if(length(show.gamma) > 1) gamma<-show.gamma
+    # otherwise make up a set
+    else gamma<-pretty(c(0,maxsd),n=ngamma)[-1]
     if(gamma[length(gamma)] > maxsd) gamma<-gamma[-length(gamma)]
     labelpos<-seq(45,70,length.out=length(gamma))
     # do the gamma curves
     for(gindex in 1:length(gamma)) {
      xcurve<-cos(seq(0,pi,by=0.03))*gamma[gindex]+sd.r
+     # find where to clip the curves
      endcurve<-which(xcurve<0)
      endcurve<-ifelse(length(endcurve),min(endcurve)-1,105)
      ycurve<-sin(seq(0,pi,by=0.03))*gamma[gindex]
@@ -55,8 +79,6 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
       gamma[gindex],border=FALSE)
     }
    }
-   axis(1,at=pretty(c(0,maxsd)))
-   axis(2,at=pretty(c(0,maxsd)))
    # the outer curve for correlation
    xcurve<-cos(seq(0,pi/2,by=0.01))*maxsd
    ycurve<-sin(seq(0,pi/2,by=0.01))*maxsd
@@ -73,7 +95,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
     ycurve<-sin(seq(0,pi/2,by=0.01))*sd.r
     lines(xcurve,ycurve)
    }
-   else points(sd.r,0)
+   points(sd.r,0)
    text(cos(c(bigtickangles,acos(c(0.95,0.99))))*1.05*maxsd,
     sin(c(bigtickangles,acos(c(0.95,0.99))))*1.05*maxsd,
     c(seq(0.1,0.9,by=0.1),0.95,0.99))
@@ -86,9 +108,6 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
   else {
    x<- ref
    y<- model
-
-   grad.corr.full<-c(0,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1)
-   grad.corr.lines<-c(0.2,0.4,0.6,0.8,0.9)
 
    R<-cor(x,y,use="pairwise.complete.obs")
 
@@ -132,20 +151,18 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
 
     # sd concentriques autour de la reference
 
-    seq.sd<-seq.int(0,2*maxray,by=(maxray/10))
+    seq.sd<-seq.int(0,2*maxray,by=(maxray/10))[-1]
     for (i in seq.sd){
      xcircle<-sd.r+(cos(discrete*pi/180)*i)
      ycircle<-sin(discrete*pi/180)*i
      for (j in 1:length(xcircle)){
       if ((xcircle[j]^2+ycircle[j]^2)<(maxray^2)){
        points(xcircle[j],ycircle[j], col="darkgreen",pch=".")
-       if (j==10){
+       if(j==10)
         text(xcircle[j],ycircle[j],signif(i,2),cex=0.5,col="darkgreen")
-       }
       }
      }
     }
-
 
     # sd concentriques autour de l'origine
 
@@ -153,8 +170,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
     for (i in seq.sd){
      xcircle<-(cos(discrete*pi/180)*i)
      ycircle<-sin(discrete*pi/180)*i
-
-     lines(xcircle,ycircle,lty=3,col="blue")
+     if(i) lines(xcircle,ycircle,lty=3,col="blue")
      text(min(xcircle),-0.03*maxray,signif(i,2),cex=0.5,col="blue")
      text(max(xcircle),-0.03*maxray,signif(i,2),cex=0.5,col="blue")
     }

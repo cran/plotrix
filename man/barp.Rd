@@ -6,7 +6,7 @@
  barp(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE, height.at=NULL,height.lab=NULL,
- cex.axis=par("cex.axis"),cylindrical=FALSE,shadow=FALSE)
+ cex.axis=par("cex.axis"),cylindrical=FALSE,shadow=FALSE,do.first=NULL)
 }
 \arguments{
  \item{height}{A numeric vector, matrix or data frame that will be represented
@@ -31,6 +31,8 @@
  \item{cylindrical}{Whether to give the bars a cylindrical appearance
   by shading them.}
  \item{shadow}{Whether to place a shadow behind the bars.}
+ \item{do.first}{An optional expression that will be evaluated before anything
+  else is displayed on the plot. Useful background colors or lines.}
 }
 \value{
  A list containing two components of the same form as \code{height}:

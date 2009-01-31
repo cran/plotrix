@@ -1,7 +1,7 @@
 barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE,height.at=NULL,height.lab=NULL,cex.axis=par("cex.axis"),
- cylindrical=FALSE,shadow=FALSE) {
+ cylindrical=FALSE,shadow=FALSE,do.first=NULL) {
 
  height.class<-attr(height,"class")
  if(!is.null(height.class)) {
@@ -42,6 +42,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  else miny<-ylim[1]
  plot(0,type="n",main=main,xlab=xlab,ylab=ylab,axes=FALSE,xlim=xlim,ylim=ylim,
   xaxs="i",yaxs="i")
+ if(!is.null(do.first)) eval(do.first)
  if(negy) abline(h=0)
  if(is.null(names.arg)) names.arg<-1:ngroups
  if(staxx) {
@@ -65,8 +66,10 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
      offset=c(0.2*width,0.05*(height[bar]-ylim[2])))
   }
   if(cylindrical)
-   cylindrect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol)
-  else rect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol)
+   cylindrect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol,
+    border=border)
+  else
+   rect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol,border=border)
  }
  else {
   bottoms<-matrix(bottoms,nrow=hdim[1],ncol=hdim[2])
@@ -85,15 +88,15 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
    if(cylindrical)
     cylindrect(1:ngroups-width+(subgroup-1)*barwidth,bottoms[subgroup,],
      1:ngroups-width+(subgroup)*barwidth,height[subgroup,],
-     col=barcol[subgroup,])
+     col=barcol[subgroup,],border=border)
    else rect(1:ngroups-width+(subgroup-1)*barwidth,bottoms[subgroup,],
     1:ngroups-width+(subgroup)*barwidth,height[subgroup,],
-    col=barcol[subgroup,])
+    col=barcol[subgroup,],border=border)
   }
  }
  if(!is.null(legend.lab)) {
   xjust<-yjust<-0.5
-  if(is.na(legend.pos[1])) {
+  if(is.null(legend.pos)) {
    cat("Click at the lower left corner of the legend\n")
    legend.pos<-locator(1)
    xjust<-yjust<-0

@@ -10,10 +10,10 @@
 \usage{
  radial.plot(lengths,radial.pos=NULL,labels,label.pos=NULL,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
- line.col=par("fg"),mar=c(2,2,3,2),show.grid=TRUE,show.radial.grid=TRUE,
- grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
- point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
- poly.col=NA,...)
+ line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
+ show.grid=TRUE,show.radial.grid=TRUE,grid.col="gray",grid.bg="transparent",
+ grid.left=FALSE,grid.unit=NULL,point.symbols=NULL,point.col=NULL,
+ show.centroid=FALSE,radial.lim=NULL,poly.col=NULL,...)
 }
 \arguments{
  \item{lengths}{A numeric data vector or matrix. If \code{lengths}
@@ -31,12 +31,15 @@
  \item{clockwise}{Whether to interpret positive positions as clockwise from
   the starting point. The default is counterclockwise.}
  \item{rp.type}{Whether to draw (r)adial lines, a (p)olygon, (s)ymbols
-  or some combination of these.}
+  or some combination of these. If \code{lengths} is a matrix and rp.type is
+  a vector, each row of \code{lengths} can be displayed differently.}
  \item{label.prop}{The label position radius as a proportion of the 
   maximum line length.}
  \item{main}{The title for the plot.}
  \item{xlab,ylab}{Normally x and y axis labels are suppressed.}
  \item{line.col}{The color of the radial lines or polygons drawn.}
+ \item{lty}{The line type(s) to be used for polygons or radial lines.}
+ \item{lwd}{The line width(s) to be used for polygons or radial lines.}
  \item{mar}{Margins for the plot. Allows the user to leave space for
   legends, long labels, etc.}
  \item{show.grid}{Logical - whether to draw a circular grid.}
@@ -50,7 +53,7 @@
  \item{show.centroid}{Whether to display a centroid.}
  \item{radial.lim}{The range of the grid circle. Defaults
   to \code{range(pretty(lengths))}.}
- \item{poly.col}{Fill color if polygons are drawn.}
+ \item{poly.col}{Fill color if polygons are drawn. Use NA for no fill.}
  \item{...}{Additional arguments are passed to \code{plot}.}
 }
 \value{
@@ -80,7 +83,8 @@
  are not taken at equal intervals around the circle, the centroid may not
  mean much.
 }
-\author{Jim Lemon}
+\author{Jim Lemon - thanks to Jeremy Claisse and Antonio Hernandez Matias
+ for the \code{lty} and \code{rp.type} suggestions respectively.}
 \seealso{\code{\link{polar.plot}},\code{\link{clock24.plot}}}
 \examples{
  testlen<-rnorm(10)*2+5
@@ -97,7 +101,7 @@
  # one without the circular grid and multiple polygons
  posmat<-matrix(sample(2:9,30,TRUE),nrow=3)
  radial.plot(posmat,labels=paste("X",1:10,sep=""),rp.type="p",
-  main="Spiderweb plot",line.col=2:4,show.grid=FALSE,
+  main="Spiderweb plot",line.col=2:4,show.grid=FALSE,lwd=1:3,
   radial.lim=c(0,10))
  # dissolved ions in water
  ions<-c(3.2,5,1,3.1,2.1,4.5)

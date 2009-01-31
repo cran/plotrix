@@ -15,7 +15,7 @@
 \arguments{
  \item{x}{A numeric data frame or matrix with the \code{x} values. If
   \code{y} is NULL, these will become the \code{y} values and the \code{x}
-  positions will be the integers from 1 to dim{x}[1].}
+  positions will be the integers from 1 to dim(x)[1].}
  \item{y}{The \code{y} values.}
  \item{main}{The title for the plot.}
  \item{xlab,ylab}{x and y axis labels for the plot.}

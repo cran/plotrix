@@ -50,10 +50,10 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
 
 radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
- line.col=par("fg"),mar=c(2,2,3,2),show.grid=TRUE,show.radial.grid=TRUE,
- grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
- point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
- poly.col=NA,...) {
+ line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
+ show.grid=TRUE,show.radial.grid=TRUE,grid.col="gray",grid.bg="transparent",
+ grid.left=FALSE,grid.unit=NULL,point.symbols=NULL,point.col=NULL,
+ show.centroid=FALSE,radial.lim=NULL,poly.col=NULL,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
  length.dim<-dim(lengths)
@@ -92,31 +92,36 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
   main=main,xlab=xlab,ylab=ylab)
  par(xpd=TRUE)
+ # stretch everything out to the correct length
  if(length(line.col) < nsets) line.col<-1:nsets
- rp.type<-unlist(strsplit(rp.type,""))
- if(match("s",rp.type,0)) {
-  if(is.null(point.symbols)) point.symbols<-1:nsets
-  if(length(point.symbols)<nsets)
-   point.symbols<-rep(point.symbols,length.out=nsets)
-  if(is.null(point.col)) point.col<-1:nsets
-  if(length(point.col)<nsets)
-   point.col<-rep(point.col,length.out=nsets)
- }
- # split up rp.type if there is a combination of displays
+ if(length(rp.type) < nsets) rp.type<-rep(rp.type,length.out=nsets)
+ if(length(point.symbols) < nsets)
+  point.symbols<-rep(point.symbols,length.out=nsets)
+ if(length(point.col) < nsets) point.col<-rep(point.col,length.out=nsets)
+ if(length(poly.col) < nsets) poly.col<-rep(poly.col,length.out=nsets)
+ if(length(lty) < nsets) lty<-rep(lty,length.out=nsets)
+ if(length(lwd) < nsets) lwd<-rep(lwd,length.out=nsets)
  for(i in 1:nsets) {
+  # split up rp.type if there is a combination of displays
+  rptype<-unlist(strsplit(rp.type[i],""))
+  if(match("s",rptype,0)) {
+   if(is.null(point.symbols[i])) point.symbols[i]<-i
+   if(is.null(point.col[i])) point.col[i]<-i
+  }
   # get the vector of x positions
   xpos<-cos(radial.pos[i,])*lengths[i,]
   # get the vector of y positions
   ypos<-sin(radial.pos[i,])*lengths[i,]
   # plot radial lines if rp.type == "r"    
-  if(match("r",rp.type,0))
-   segments(0,0,xpos,ypos,col=line.col[i],...)
-  if(match("p",rp.type,0))
-   polygon(xpos,ypos,border=line.col[i],col=poly.col,...)
-  if(match("s",rp.type,0))
+  if(match("r",rptype,0))
+   segments(0,0,xpos,ypos,col=line.col[i],lty=lty[i],lwd=lwd[i],...)
+  if(match("p",rptype,0))
+   polygon(xpos,ypos,border=line.col[i],col=poly.col[i],lty=lty[i],
+    lwd=lwd[i],...)
+  if(match("s",rptype,0))
    points(xpos,ypos,pch=point.symbols[i],col=point.col[i],...)
   if(show.centroid)
-   if(match("p",rp.type,0)) {
+   if(match("p",rptype,0)) {
     nvertices<-length(xpos)
     # first get the "last to first" area component
     polygonarea<-xpos[nvertices]*ypos[1] - xpos[1]*ypos[nvertices]
