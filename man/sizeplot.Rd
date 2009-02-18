@@ -16,7 +16,7 @@
  \item{powscale}{(logical) use power scaling for symbol size?}
  \item{size}{(numeric vector) min and max size for scaling, if powscale=FALSE}
  \item{add}{(logical) add to an existing plot?}
- \item{\dots}{other arguments to \code{plot()} or \code{points()}}
+ \item{\dots}{other arguments to \samp{plot()} or \samp{points()}}
 }
 \details{
  Most useful for plotting (e.g.) discrete data, where repeats are
@@ -27,10 +27,10 @@
 }
 \value{
  A plot is produced on the current device, or points are added to the
- current plot if \code{add=TRUE}.
+ current plot if \samp{add=TRUE}.
 }
 \author{Ben Bolker}
-\seealso{\code{\link{symbols}}}
+\seealso{\samp{\link{symbols}}}
 \examples{
  x <- c(0.1,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.3,0.3)
  y <- c( 1,  1,  1,  1,  2,  2,  2,  3,  3,  4,  5 )

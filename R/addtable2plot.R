@@ -4,7 +4,7 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
 
  # make sure that there is a plot device there
  if(dev.cur() == 1)
-  stop("Cannot add table unless a plot has been drawn")
+  stop("Cannot add table unless a graphics device is open")
  # check for an xy.coords structure
  if(is.null(y)) {
   if(is.null(x$y)) stop("both x and y coordinates must be given")

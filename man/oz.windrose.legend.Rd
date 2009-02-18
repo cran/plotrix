@@ -18,7 +18,7 @@
 }
 \value{nil}
 \author{Jim Lemon (thanks to Anna in the Sydney BoM office)}
-\seealso{\code{\link{oz.windrose}}}
+\seealso{\samp{\link{oz.windrose}}}
 \examples{
  plot(0,xlim=c(-20,20),ylim=c(-20,20),type="n",axes=FALSE,xlab="",ylab="")
  par(xpd=TRUE)

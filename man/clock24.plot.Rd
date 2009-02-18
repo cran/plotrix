@@ -12,19 +12,19 @@
  \item{labels}{Labels to place at the circumference.}
  \item{label.pos}{Radial positions of the labels.}
  \item{rp.type}{Whether to plot radial lines, symbols or a polygon.}
- \item{...}{additional arguments are passed to \code{radial.plot} and
-  then to \code{plot}.}
+ \item{...}{additional arguments are passed to \samp{radial.plot} and
+  then to \samp{plot}.}
 }
 \description{
- \code{clock24.plot} displays a plot of radial lines, symbols or a polygon
+ \samp{clock24.plot} displays a plot of radial lines, symbols or a polygon
   centered at the midpoint of the plot frame on a 24 hour 'clockface'. 
-  In contrast to the default behavior of \code{radial.plot}, the positions 
+  In contrast to the default behavior of \samp{radial.plot}, the positions 
   are interpreted as beginning at vertical (000) and moving clockwise.
 }
 \value{nil}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\code{\link{polar.plot}},\code{\link{radial.plot}}}
+\seealso{\samp{\link{polar.plot}},\samp{\link{radial.plot}}}
 \examples{
  testlen<-rnorm(24)*2+5
  testpos<-0:23+rnorm(24)/4

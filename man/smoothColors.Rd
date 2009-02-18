@@ -7,10 +7,10 @@
 \arguments{
  \item{...}{an arbitrary sequence of color names and integers beginning
   and ending with a color name.}
- \item{alpha}{optional \code{alpha} (transparency) value.}
+ \item{alpha}{optional \samp{alpha} (transparency) value.}
 }
 \description{
- \code{smoothColors} calculates a sequence of colors. If two color names 
+ \samp{smoothColors} calculates a sequence of colors. If two color names 
   in the arguments are separated by a number, that number of interpolated
   colors will be inserted between the two color endpoints. Any number of
   color names and integers may be passed, but the last argument must be
@@ -18,9 +18,9 @@
   only the first will be used in the interpolation and the others will be
   ignored.
 }
-\value{A vector of hexadecimal color values as used by \code{col}.}
+\value{A vector of hexadecimal color values as used by \samp{col}.}
 \author{Barry Rowlingson}
-\seealso{\code{\link{color.gradient}},\code{\link{rgb}}}
+\seealso{\samp{\link{color.gradient}},\samp{\link{rgb}}}
 \examples{
  plot(1:10,main="Test opaque colors",type="n",axes=FALSE)
  box()

@@ -1,4 +1,5 @@
-multhist <- function (x, beside=TRUE, freq=NULL, probability=!freq, ...) {
+multhist <- function (x, beside=TRUE, freq=NULL, probability=!freq,
+ plot.it=TRUE, ...) {
   ## sort out histogram arguments
   hist.args <- formals(hist.default)
   args <- list(...)
@@ -22,5 +23,6 @@ multhist <- function (x, beside=TRUE, freq=NULL, probability=!freq, ...) {
   combhist <- t(sapply(x,
    function(z) hist(z, breaks = allhist$breaks, 
     plot = FALSE)[[comp]]))
-  do.call("barplot", c(list(combhist),barplot.args))
+  if(plot.it) do.call("barplot", c(list(combhist),barplot.args))
+  invisible(list(breaks=allhist$breaks,out=combhist))
 }

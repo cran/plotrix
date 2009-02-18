@@ -19,22 +19,22 @@
  \item{fp.type}{whether to use "standard" coordinates (begin at the
   right and move counterclockwise) or "meteorological" coordinates
   (begin at the top and move clockwise) when interpreting the values
-  of \code{theta}}
+  of \samp{theta}}
  \item{main}{the title of the plot}
  \item{xlab}{the label for the reference line}
  \item{ylab}{the label for the vertical axis}
  \item{xlabels}{optional labels for the reference line}
- \item{...}{additional arguments passed to \code{arrows} or \code{segments}}
+ \item{...}{additional arguments passed to \samp{arrows} or \samp{segments}}
 }
 \details{
- This function places vectors of length \code{r} and angle \code{theta} 
+ This function places vectors of length \samp{r} and angle \samp{theta} 
  along a reference line that may represent time or position or some other
  value. The user is responsible for spacing the vectors so that they do
  not overlap if this is desired.
 }
 \value{nil}
 \author{Jim Lemon, Eduardo Klein}
-\seealso{\code{\link{spread.labels}}}
+\seealso{\samp{\link{spread.labels}}}
 \examples{
  feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
   main="Standard Coordinates",xlab="Time",ylab="Value")

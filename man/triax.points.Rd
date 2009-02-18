@@ -12,31 +12,31 @@
  \item{x}{Matrix or data frame where each row is three proportions or 
   percentages that must sum to 1 or 100 respectively.}
  \item{show.legend}{Logical - whether to display a legend.}
- \item{label.points}{Logical - whether to call \code{thigmophobe.labels}
+ \item{label.points}{Logical - whether to call \samp{thigmophobe.labels}
   to label the points.}
  \item{point.labels}{Optional labels for the points and/or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}
  \item{bg.symbols}{Background color for plotting symbols.}
  \item{cc.axes}{Clockwise or counterclockwise axes and ticks.}
- \item{...}{Additional arguments passed to \code{points}.}
+ \item{...}{Additional arguments passed to \samp{points}.}
 }
 \details{
- In order for \code{triax.points} to add points to an existing plot,
- the argument \code{no.add} in the initial call to \code{triax.plot} 
- must be set to \code{FALSE}. Failing to do this will result in the
+ In order for \samp{triax.points} to add points to an existing plot,
+ the argument \samp{no.add} in the initial call to \samp{triax.plot} 
+ must be set to \samp{FALSE}. Failing to do this will result in the
  points being plotted in the wrong places. It is then up to the user
- to call \code{par} as in the example below to restore plotting
+ to call \samp{par} as in the example below to restore plotting
  parameters altered during the triangle plot.
  
- \code{triax.points} displays each triplet of proportions or percentages
+ \samp{triax.points} displays each triplet of proportions or percentages
   as a symbol on the triangle plot. Unless each triplet sums to 1 
-  (or 100), they will not plot properly and \code{triax.points} will 
+  (or 100), they will not plot properly and \samp{triax.points} will 
   complain appropriately.
 }
-\value{A list of the \code{x,y} positions plotted.}
+\value{A list of the \samp{x,y} positions plotted.}
 \author{Jim Lemon}
-\seealso{\code{\link{triax.plot}},\code{\link{thigmophobe.labels}}}
+\seealso{\samp{\link{triax.plot}},\samp{\link{thigmophobe.labels}}}
 \examples{
  data(soils)
  triax.return<-triax.plot(soils[1:10,],

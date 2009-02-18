@@ -1,4 +1,4 @@
-ablinepiece		Display a line like abline but with specified ends
+ablineclip		Display a line like abline but with specified ends
 addtable2plot		Display a table on an existing plot
 arctext			Display text on a circular arc
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
@@ -24,6 +24,7 @@ corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
 cylindrect		Display a rectangle shaded to look like a cylinder
+diamondplot		Display one or more polygons on a radial grid
 dispbars		Display dispersion (error) bars
 dotplot.mtb		Display a dotplot in MATLAB style
 draw.arc		Display a circular arc
@@ -82,6 +83,7 @@ soil.texture.uk		Soil texture plot using UK conventions
 soils			Soil texture data from 125 soils
 spread.labels		Spread out labels for irregularly spaced values
 stackpoly		Plot columns of numbers as overlaid polygons
+staircase.plot		Plot successive values and increments as linked bars
 staxlab			Display staggered labels on an axis
 std.error		Calculate the conventional standard error
 sumDendrite		Sum the first levels of counts in a dendrite list

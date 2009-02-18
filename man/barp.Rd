@@ -15,15 +15,15 @@
  \item{names.arg}{The labels for the bars or groups of bars.}
  \item{legend.lab}{Labels for an optional legend. If NULL, no legend is
   displayed.}
- \item{legend.pos}{Optional position for the legend as a list with \code{x}
-  and \code{y} components. The default is to call \code{\link{emptyspace}}
-  to position the legend. If this is NA, \code{locator} will be called.}
+ \item{legend.pos}{Optional position for the legend as a list with \samp{x}
+  and \samp{y} components. The default is to call \samp{\link{emptyspace}}
+  to position the legend. If this is NA, \samp{locator} will be called.}
  \item{col}{The fill colors for the bars. The default is no fill.}
  \item{border}{The border for the bars.}
  \item{main}{The title at the top of the plot.}
  \item{xlab,ylab}{The labels for the X and Y axes respectively.}
  \item{xlim,ylim}{Optional horizontal and vertical limits for the plot.}
- \item{staxx,staxy}{Whether to use \code{\link{staxlab}} to stagger the 
+ \item{staxx,staxy}{Whether to use \samp{\link{staxlab}} to stagger the 
   X or Y axis tick labels.}
  \item{height.at}{Optional positions of the tick marks on the Y axis.}
  \item{height.lab}{Optional tick labels for the Y axis.}
@@ -35,54 +35,54 @@
   else is displayed on the plot. Useful background colors or lines.}
 }
 \value{
- A list containing two components of the same form as \code{height}:
+ A list containing two components of the same form as \samp{height}:
  \item{x}{The centers of the bars displayed.}
  \item{y}{The heights of the bars.}
 }
 \details{
- \code{barp} displays a bar plot similar to \code{barplot} but with axes and
- horizontal bar positions more like \code{plot}. Bars or groups of bars are
+ \samp{barp} displays a bar plot similar to \samp{barplot} but with axes and
+ horizontal bar positions more like \samp{plot}. Bars or groups of bars are
  centered on integral X values, and so both the width and spacing of the bars
- are controlled by a single number. If \code{height} is a vector, single bars
- representing each value will be displayed centered at \code{1:length(height)}.
- If \code{height} is a matrix or data frame, a group of bars will be drawn for
+ are controlled by a single number. If \samp{height} is a vector, single bars
+ representing each value will be displayed centered at \samp{1:length(height)}.
+ If \samp{height} is a matrix or data frame, a group of bars will be drawn for
  each column, with the values of the group taken from the rows of that column.
- The values from \code{freq} or \code{brkdn} in the prettyR package can be
- used as the \code{height} argument. The value from \code{table} can also be
- passed as \code{height}.
+ The values from \samp{freq} or \samp{brkdn} in the prettyR package can be
+ used as the \samp{height} argument. The value from \samp{table} can also be
+ passed as \samp{height}.
  
  Bars are empty by default but fill colors can be defined in several ways.
- If a single color is passed, all bars will be the same color. If \code{height}
+ If a single color is passed, all bars will be the same color. If \samp{height}
  is a vector, colors will be recycled or some will be ignored if the length of
- \code{col} is
- not equal to that of \code{height}. If \code{height} is a matrix or data frame,
- the user may pass a vector of colors equal to the number of rows in \code{height}
- or a matrix of colors of the same dimensions as \code{height}. Other sequences
+ \samp{col} is
+ not equal to that of \samp{height}. If \samp{height} is a matrix or data frame,
+ the user may pass a vector of colors equal to the number of rows in \samp{height}
+ or a matrix of colors of the same dimensions as \samp{height}. Other sequences
  of color will probably not result in an easy to interpret plot.
 
- \code{barp} is intended to simplify illustrating categorical data for which both
+ \samp{barp} is intended to simplify illustrating categorical data for which both
  the variable designations and the categories are names, as on many multiple
- choice questions.  \code{height.at} and \code{height.lab} allow the user to place
- labels on the vertical axis, usually representing the options. If \code{staxx}
- or \code{staxy} are TRUE, the labels on the horizontal or vertical axes
+ choice questions.  \samp{height.at} and \samp{height.lab} allow the user to place
+ labels on the vertical axis, usually representing the options. If \samp{staxx}
+ or \samp{staxy} are TRUE, the labels on the horizontal or vertical axes
  respectively will be staggered, allowing the user to use many or lengthy variable
  or value labels.
 
- \code{barp} allows two enhancements that may be useful in those areas where fancy
+ \samp{barp} allows two enhancements that may be useful in those areas where fancy
  plots are appreciated. One is to give the bars a cylindrical look by shading the
  color. The other is to place an apparent shadow behind each bar. Both of these
  effects appear as though the light is coming from the upper left, and this is
- hard coded. You can add error bars by calling \code{dispbars}, but many advise against
+ hard coded. You can add error bars by calling \samp{dispbars}, but many advise against
  this.
 
- If \code{legend.lab} is not NULL, a legend will be displayed. If 
- \code{legend.pos} is NA, \code{locator} is called to place the legend. On 
+ If \samp{legend.lab} is not NULL, a legend will be displayed. If 
+ \samp{legend.pos} is NA, \samp{locator} is called to place the legend. On 
  Windows, the alert may not appear on the console, and the function will 
  appear to hang unless the user clicks on the console window or the plot.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{staxlab}}, \code{\link{barplot}}, \code{\link{cylindrect}},
- \code{\link{gradient.rect}}}
+\seealso{\samp{\link{staxlab}}, \samp{\link{barplot}}, \samp{\link{cylindrect}},
+ \samp{\link{gradient.rect}}}
 \examples{
  # get some extra room on the left
  par(mar=c(5,5,4,2))

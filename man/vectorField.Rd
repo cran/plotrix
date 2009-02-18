@@ -19,8 +19,8 @@ vectorField(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
 }
 \value{ nil }
 \details{
- \code{vectorField} displays arrows on an existing plot. Each arrow is specified
- by a position on the plot \code{xpos,ypos} and either x/y offsets or
+ \samp{vectorField} displays arrows on an existing plot. Each arrow is specified
+ by a position on the plot \samp{xpos,ypos} and either x/y offsets or
  orientation and magnitude. The default is x/y offsets, and the user must
  specify whether radians or degrees are used if the orientation/magnitude option
  is used.
@@ -30,7 +30,7 @@ vectorField(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
  and length of the arrowheads may be slightly different.
 }
 \author{Jim Lemon (original code by Robin Hankin and Brian Ripley)}
-\seealso{\code{\link{arrows}}}
+\seealso{\samp{\link{arrows}}}
 \examples{
  \dontrun{
   # this requires the maps package, and just wouldn't pass check

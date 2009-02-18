@@ -8,21 +8,21 @@
  polygon.shadow(x,y=NULL,offset=NA,inflate=NA,col=c("#ffffff","#cccccc"))
 }
 \arguments{
- \item{x,y}{x and y coordinate of the vertices of the polygon. \code{y}
-  can be missing if \code{x} is a list with \code{x} and \code{y} components.}
+ \item{x,y}{x and y coordinate of the vertices of the polygon. \samp{y}
+  can be missing if \samp{x} is a list with \samp{x} and \samp{y} components.}
  \item{offset}{a vector containing the values of the x and y offsets for the
   shadow. Defaults to 1/20 of the maximum x and y dimensions of the polygon.}
  \item{col}{the colors of the shadow from the outer edge to the central part.}
  \item{inflate}{the amount to "inflate" the shadow relative to the polygon 
-  (i.e. the penumbra). Defaults to the values in \code{offset}.}
+  (i.e. the penumbra). Defaults to the values in \samp{offset}.}
 }
 \value{nil}
 \details{
- \code{polygon.shadow} is typically called just before drawing a polygon.
+ \samp{polygon.shadow} is typically called just before drawing a polygon.
  It displays a shadow effect by drawing the polygon ten times, beginning 
- with the first color in \code{col} and stepping through to the second
+ with the first color in \samp{col} and stepping through to the second
  color to create a "shadow" (or a "halo" if you prefer). Each successive
- polygon is shrunk by 10\% of \code{inflate}. The default shadow effect has
+ polygon is shrunk by 10\% of \samp{inflate}. The default shadow effect has
  the light at the upper left. This effect may also be used as a text
  background.
 }
@@ -31,7 +31,7 @@
  look right.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{polygon}}}
+\seealso{\samp{\link{polygon}}}
 \examples{
  par(pty="s")
  plot(1:5,type="n",main="Polygon Shadow test",xlab="",ylab="",axes=FALSE)

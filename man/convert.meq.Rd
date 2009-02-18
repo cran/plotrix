@@ -12,10 +12,10 @@
  \item{parameter}{The names of the ions if necessary.}
 }
 \details{  
- \code{convert.meq} does the conversion with a lookup table of molecular weights
+ \samp{convert.meq} does the conversion with a lookup table of molecular weights
  and valences.
 }
 \value{The concentration of the ions in milliequivalents.}
 \author{Mike Cheetham}
-\seealso{\code{\link{piper.diagram}}}
+\seealso{\samp{\link{piper.diagram}}}
 \keyword{misc}

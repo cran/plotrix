@@ -41,24 +41,24 @@ soil.texture(soiltexture=NULL, main="", at=seq(0.1, 0.9, by=0.1),
  \item{lty.grid}{Type of line for the grid. Defaults to dashed.}
  \item{show.legend}{Logical - whether to display a legend.}
  \item{label.points}{Logical - whether to call
-  \code{\link{thigmophobe.labels}} to label the points.}
+  \samp{\link{thigmophobe.labels}} to label the points.}
  \item{point.labels}{Optional labels for the points or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}
- \item{\dots}{Additional arguments passed to \code{\link{triax.points}}
-  and then \code{points}.}
+ \item{\dots}{Additional arguments passed to \samp{\link{triax.points}}
+  and then \samp{points}.}
 }
 \details{
- \code{soil.texture} displays a triangular plot area on which soil
+ \samp{soil.texture} displays a triangular plot area on which soil
  textures defined as proportions of sand, silt and clay can be plotted.
  Optional grid, vertex labels, soil type divisions and names may also
  be displayed. If a matrix of soil textures is present, these will be
  plotted.
 }
-\value{If \code{soiltexture} was included, a list of the \code{x,y}
+\value{If \samp{soiltexture} was included, a list of the \samp{x,y}
  positions of the soil types plotted. If not, nil.
 }
-\note{This is now a special case of \code{triax.plot}.}
+\note{This is now a special case of \samp{triax.plot}.}
 \author{Sander Oom, Jim Lemon, and Michael Toews}
 \references{
  U.S. Department of Agriculture, Natural Resources Conservation Service,
@@ -69,7 +69,7 @@ soil.texture(soiltexture=NULL, main="", at=seq(0.1, 0.9, by=0.1),
  2007. \emph{Soil Texture Calculator}//
  \url{http://soils.usda.gov/technical/aids/investigations/texture/}
 }
-\seealso{\code{\link{get.soil.texture}}, \code{\link{triax.plot}}}
+\seealso{\samp{\link{get.soil.texture}}, \samp{\link{triax.plot}}}
 \examples{
  data(soils)
  soil.texture(main="NO DATA")

@@ -18,25 +18,25 @@
  \item{main}{The title of the plot.}
  \item{xlab,ylab}{Axis labels.}
  \item{mar}{margins for the plot - defaults to leave space for scale}
- \item{...}{additional arguments passed to \code{plot}.}
+ \item{...}{additional arguments passed to \samp{plot}.}
 }
 \details{
- The intervals calculated from \code{qtime} are the x values and the counts
- of values of \code{qnt} are the y values of the plot displayed as the widths
+ The intervals calculated from \samp{qtime} are the x values and the counts
+ of values of \samp{qnt} are the y values of the plot displayed as the widths
  of sections of polygons running across the time intervals. This plot was
  devised to display the distribution of drinking, but may be useful for any
  situation in which it is desired to display the distribution of numerically
  coded quantities against the intervals between their occurrence.
  
- \code{qt.plot} assumes that the values in \code{qtime} represent interpretable
+ \samp{qt.plot} assumes that the values in \samp{qtime} represent interpretable
  intervals like seconds or days. The default is to assume sequential time
- intervals. If \code{qtime} contains dates, they must be translated to
- numeric format. These values will be sorted by the function. If \code{qtime} is NA,
- it will be assigned \code{1:length(qnt)}.
+ intervals. If \samp{qtime} contains dates, they must be translated to
+ numeric format. These values will be sorted by the function. If \samp{qtime} is NA,
+ it will be assigned \samp{1:length(qnt)}.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{\link{polygon}}}
+\seealso{\samp{\link{polygon}}}
 \examples{
  # first a moderate drinker with infrequent big sessions
  qnt<-rpois(365,2)

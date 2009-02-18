@@ -8,11 +8,11 @@
 \arguments{
  \item{x}{A numeric vector, matrix or data frame.}
  \item{newrange}{The minimum and maximum value of the range into which
-  \code{x} will be scaled.}
+  \samp{x} will be scaled.}
 }
 \details{
- \code{rescale} performs a simple linear conversion of \code{x} into the
-  range specified by \code{newrange}. Only numeric vectors, matrices or data
+ \samp{rescale} performs a simple linear conversion of \samp{x} into the
+  range specified by \samp{newrange}. Only numeric vectors, matrices or data
   frames with some variation will be accepted. NAs are now preserved - 
   formerly the function would fail.
 }

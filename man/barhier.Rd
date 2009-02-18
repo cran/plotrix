@@ -20,11 +20,11 @@
  \item{col}{Optional fill colors for the rectangles.}
  \item{fade}{Whether to incrementally decrease the saturation of the bar
   colors at each level.}
- \item{...}{additional arguments passed to \code{plot}.}
+ \item{...}{additional arguments passed to \samp{plot}.}
 }
 \value{ nil }
 \details{
- \code{barhier} displays hierarchical categories as stacked rectangles.
+ \samp{barhier} displays hierarchical categories as stacked rectangles.
  It accepts a data frame in which the values in the first column represent
  categories, the values in the second column represent subcategories of the
  first column, and so on. The first column will be displayed as a stack of
@@ -34,19 +34,19 @@
  Empty categories are ignored and NAs will produce gaps.
  
  Typically, the user will simply pass the data frame, which should only
- contain columns that are hierarchical categories, set \code{showval} and
- \code{showcount} to the desired values, and pass colors for the top level
+ contain columns that are hierarchical categories, set \samp{showval} and
+ \samp{showcount} to the desired values, and pass colors for the top level
  categories if these are wanted. If colors are passed, it is best to have at
  least as many colors as there are categories in the first column or some will
  be recycled. Currently, these colors will be "faded out" in successive stacks
  of rectangles toward white.
  
- The \code{firstcall} argument is necessary for the function to initialize the
+ The \samp{firstcall} argument is necessary for the function to initialize the
  plot, as each breakdown involves a recursive call. If it is changed, the best
  that can be expected is an uninformative plot.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{plot}},\code{\link{smoothColors}}}
+\seealso{\samp{\link{plot}},\samp{\link{smoothColors}}}
 \examples{
  cat1<-sample(LETTERS[1:4],40,TRUE)
  cat2<-paste(cat1,sample(1:4,40,TRUE),sep="")

@@ -13,11 +13,11 @@
   number of categories or a vector of breakpoints.}
 }
 \details{
- \code{get.breaks} either calls the same functions as \code{hist} to get
-  breakpoints or calculates a given number or just returns \code{breaks}
+ \samp{get.breaks} either calls the same functions as \samp{hist} to get
+  breakpoints or calculates a given number or just returns \samp{breaks}
   if they are already specified.
 }
 \value{A vector of breakpoints.}
 \author{Jim Lemon}
-\seealso{\code{\link{hist}}}
+\seealso{\samp{\link{hist}}}
 \keyword{misc}

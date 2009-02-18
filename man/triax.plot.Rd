@@ -20,7 +20,7 @@
   bottom. Defaults to the column names.}
  \item{tick.labels}{The tick labels for the three axes as a list with
   three components l, r and b (left, right and bottom).
-  Defaults to argument \code{at} (proportions).}
+  Defaults to argument \samp{at} (proportions).}
  \item{col.axis}{Color of the triangular axes, ticks and labels.}
  \item{cex.axis}{Character expansion for axis labels.}
  \item{cex.ticks}{Character expansion for the tick labels.}
@@ -32,17 +32,17 @@
  \item{cc.axes}{Whether axes and axis ticks should be clockwise or
   counterclockwise.}
  \item{show.legend}{Logical - whether to display a legend.}
- \item{label.points}{Logical - whether to call \code{thigmophobe.labels} to
+ \item{label.points}{Logical - whether to call \samp{thigmophobe.labels} to
   label the points.}
  \item{point.labels}{Optional labels for the points and/or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}
  \item{no.add}{Whether to restore the previous plotting parameters
-  (\code{TRUE}) or leave them, allowing more points to be added.}
- \item{...}{Additional arguments passed to \code{points}.}
+  (\samp{TRUE}) or leave them, allowing more points to be added.}
+ \item{...}{Additional arguments passed to \samp{points}.}
 }
 \details{
- \code{triax.plot} displays a triangular plot area on which proportions
+ \samp{triax.plot} displays a triangular plot area on which proportions
   or percentages are displayed. A grid or legend may also be displayed.
 }
 \note{
@@ -50,30 +50,30 @@
  sets of three proportions that each sum to 1 (or percentages that sum
  to 100). Other values may be scaled to proportions (or percentages), 
  but unless each set of three sums to 1 (or 100), they will not plot
- properly and \code{triax.points} will complain appropriately. Note also
- that \code{triax.plot} will only display properly in a square plot,
- which is forced by \code{par(pty="s")}.
+ properly and \samp{triax.points} will complain appropriately. Note also
+ that \samp{triax.plot} will only display properly in a square plot,
+ which is forced by \samp{par(pty="s")}.
  
  In case the user does want to plot values with different sums, the
  axis tick labels can be set to different ranges to accomodate this.
- \code{triax.points} will still complain, but it will plot the values.
+ \samp{triax.points} will still complain, but it will plot the values.
  
- If planning to add points with \code{triax.points} call \code{triax.plot}
- with \code{no.add=FALSE} and restore plotting parameters after the
+ If planning to add points with \samp{triax.points} call \samp{triax.plot}
+ with \samp{no.add=FALSE} and restore plotting parameters after the
  points are added.
 }
 \value{
- A list containing \code{xypos} (the \code{x,y} positions plotted)
- and \code{oldpar} (the plotting parameters at the time \code{triax.plot}
+ A list containing \samp{xypos} (the \samp{x,y} positions plotted)
+ and \samp{oldpar} (the plotting parameters at the time \samp{triax.plot}
  was called).
 }
 \author{
  Jim Lemon - thanks to Ben Daughtry for the info on counterclockwise axes.
 }
 \seealso{
- \code{\link{triax.points}},
- \code{\link{triax.abline}},
- \code{\link{thigmophobe.labels}}
+ \samp{\link{triax.points}},
+ \samp{\link{triax.abline}},
+ \samp{\link{thigmophobe.labels}}
 }
 \examples{
  data(soils)

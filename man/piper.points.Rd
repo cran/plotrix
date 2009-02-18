@@ -22,10 +22,10 @@
  \item{plot.sep}{The offsets for the ions.}
 }
 \details{  
- \code{piper.points} displays the points/polygons in the Piper diagram.
+ \samp{piper.points} displays the points/polygons in the Piper diagram.
 }
 \value{A list containing the coordinates of the points and optionally
  information about the indices and colors.}
 \author{Mike Cheetham}
-\seealso{\code{\link{piper.diagram}}}
+\seealso{\samp{\link{piper.diagram}}}
 \keyword{misc}

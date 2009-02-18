@@ -22,7 +22,7 @@
  \item{ylab}{label for the y axis}
  \item{horiz}{whether to have vertical or horizontal bars}
  \item{col}{color(s) in which to plot the values}
- \item{...}{arguments passed to \code{barplot}.}
+ \item{...}{arguments passed to \samp{barplot}.}
 }
 \value{
  The center positions of the bars.
@@ -30,7 +30,7 @@
 \details{
  Displays a barplot omitting a range of values on the X or Y axis. Typically 
  used when there is a relatively large gap in the range of values 
- represented as bar heights. See \code{\link{axis.break}} for a brief 
+ represented as bar heights. See \samp{\link{axis.break}} for a brief 
  discussion of plotting on discontinuous coordinates.
  
  If the user does not ask for specific y limits, the function will calculate
@@ -38,7 +38,7 @@
  remember to subtract the gap from the upper limit.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{gap.barplot}}}
+\seealso{\samp{\link{gap.barplot}}}
 \examples{
  twogrp<-c(rnorm(10)+4,rnorm(10)+20)
  gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),

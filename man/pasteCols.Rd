@@ -8,18 +8,18 @@
 }
 \arguments{
  \item{x}{A matrix.}
- \item{sep}{The separator to use in the \code{paste} command.}
+ \item{sep}{The separator to use in the \samp{paste} command.}
 }
 \details{
- \code{pasteCols} pastes the columns of a matrix together to form a vector in
+ \samp{pasteCols} pastes the columns of a matrix together to form a vector in
  which each element is the concatenation of the elements in each of the columns
  of the matrix. It is intended for producing identifiers from a matrix returned
- by the \code{combn} function.
+ by the \samp{combn} function.
 }
 \value{A vector of character strings.}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\code{\link{makeIntersectList}}}
+\seealso{\samp{\link{makeIntersectList}}}
 \examples{
  # create a matrix of the combinations of the first five letters of the
  # alphabet taken two at a time.

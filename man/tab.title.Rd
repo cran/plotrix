@@ -24,14 +24,14 @@
  nil
 }
 \details{
- \code{tab.title} displays the plot title in a colored tab. The tab can be
+ \samp{tab.title} displays the plot title in a colored tab. The tab can be
  rounded at the upper corners by specifying the proportion of the tab
  height to be rounded as a number between 0 and 1. If the tab is too high
  to fit on the figure region, a warning will be displayed and the tab will
  still be shown. 
 }
 \author{Jim Lemon}
-\seealso{\code{\link{polygon}}}
+\seealso{\samp{\link{polygon}}}
 \examples{
  testx<-matrix(cumsum(rnorm(30)^2)+1,nrow=10)
  stackpoly(testx,main="",

@@ -14,23 +14,23 @@
   plot is a barplot.}
 }
 \details{
- \code{emptyspace} divides the area defined by \code{par("usr")}
+ \samp{emptyspace} divides the area defined by \samp{par("usr")}
  into smaller and smaller rectangles until at least one rectangle has no
- points defined by \code{x} and \code{y} within it. It then tries to find
+ points defined by \samp{x} and \samp{y} within it. It then tries to find
  the largest such rectangle if more than one exists and calculates its
  center. If the plot is very crowded, the resulting rectangle may be very
  small.
  
- \code{emptyspace} will accept a list of at least two matrices as if it
- was returned from \code{brkdn.plot}, calculate the positions of the
+ \samp{emptyspace} will accept a list of at least two matrices as if it
+ was returned from \samp{brkdn.plot}, calculate the positions of the
  ends of the dispersion bars and then try to find an empty rectangle.
  It will also accept a list of x-y coordinates, looking for the first
- element to have the name \code{x}, and set \code{y} to the second element.
+ element to have the name \samp{x}, and set \samp{y} to the second element.
  
- Note that if there are any NAs in \code{x} or \code{y}, emptyspace will fail.
+ Note that if there are any NAs in \samp{x} or \samp{y}, emptyspace will fail.
 }
 \value{
- The \code{x} and \code{y} coordinates of the center of the rectangle
+ The \samp{x} and \samp{y} coordinates of the center of the rectangle
  found.
 }
 \author{Jim Lemon}

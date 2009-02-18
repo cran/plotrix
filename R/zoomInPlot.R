@@ -44,5 +44,5 @@ zoomInPlot<-function(x,y=NULL,xlim=NULL,ylim=NULL,rxlim=xlim,rylim=ylim,
   c(xend,xend,xend,xend),
   c(xylim[4]-(xylim[4]-y01)*xprop0,xylim[3]+(y02-xylim[3])*xprop0,
   xylim[4]-(xylim[4]-y01)*xprop1,xylim[3]+(y02-xylim[3])*xprop1))
- par(xpd=FALSE)
+ par(xpd=FALSE,mfrow=c(1,1))
 }

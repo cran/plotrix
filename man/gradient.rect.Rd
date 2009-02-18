@@ -7,23 +7,23 @@
 \alias{gradient.rect}
 \arguments{
  \item{xleft,ybottom,xright,ytop}{Positions of the relevant corners
-  of the desired rectangle, as in \code{rect}.}
+  of the desired rectangle, as in \samp{rect}.}
  \item{reds,greens,blues}{vectors of the values of the color components
   either as 0 to 1 or ,if any value is greater than 1, 0 to 255.}
  \item{col}{Vector of colors. If supplied, this takes precedence over
-  \code{reds, greens, blues} and \code{nslices} will be set to its length.}
+  \samp{reds, greens, blues} and \samp{nslices} will be set to its length.}
  \item{nslices}{The number of sub-rectangles that will be drawn.}
  \item{gradient}{whether the gradient should be horizontal (x) or vertical.}
  \item{border}{The color of the border around the rectangle (NA for none).}
 }
 \description{
- \code{gradient.rect} draws a rectangle consisting of \code{nslices}
-  subrectangles of the colors in \code{col} or those returned by 
-  \code{color.gradient} if \code{col} is NULL. The rectangle is
-  'sliced' in the direction specified by \code{gradient}.
+ \samp{gradient.rect} draws a rectangle consisting of \samp{nslices}
+  subrectangles of the colors in \samp{col} or those returned by 
+  \samp{color.gradient} if \samp{col} is NULL. The rectangle is
+  'sliced' in the direction specified by \samp{gradient}.
 }
-\value{the vector of hexadecimal color values from \code{color.gradient} or
- \code{col}.}
+\value{the vector of hexadecimal color values from \samp{color.gradient} or
+ \samp{col}.}
 \author{Jim Lemon}
 \examples{
  # get an empty box

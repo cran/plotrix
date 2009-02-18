@@ -2,7 +2,7 @@
 \alias{ablineclip}
 \title{Add a straight line to a plot}
 \description{
-  As \code{abline}, but has arguments \code{x1,x2,y1,y2} as in \code{clip}.
+  As \samp{abline}, but has arguments \samp{x1,x2,y1,y2} as in \samp{clip}.
 }
 \usage{
  ablineclip(a=NULL,b=NULL,h=NULL,v=NULL,reg=NULL,coef=NULL,untf=FALSE,
@@ -15,22 +15,22 @@
  \item{v}{the y-value(s) for horizontal line(s).}
  \item{reg}{Fitted lm object. }
  \item{coef}{Coefficients, typically intercept and slope.}
- \item{untf}{How to plot on log coordinates, see \code{abline}.}
- \item{x1,x2,y1,y2}{Clipping limits, see \code{clip}.}
- \item{...}{Further arguments passed to \code{abline}.}
+ \item{untf}{How to plot on log coordinates, see \samp{abline}.}
+ \item{x1,x2,y1,y2}{Clipping limits, see \samp{clip}.}
+ \item{...}{Further arguments passed to \samp{abline}.}
 }
 \details{
- \code{ablineclip} sets a new clipping region and then calls \code{abline}.
- If any of the four clipping limits is NULL, the values from \code{par("usr")}
- are substituted. After the call to \code{abline}, the old clipping region
- is restored. In order to make \code{clip} work, there is a call to \code{abline}
+ \samp{ablineclip} sets a new clipping region and then calls \samp{abline}.
+ If any of the four clipping limits is NULL, the values from \samp{par("usr")}
+ are substituted. After the call to \samp{abline}, the old clipping region
+ is restored. In order to make \samp{clip} work, there is a call to \samp{abline}
  that draws a line off the plot.
 }
 \value{
  None. Adds to the current plot.
 }
 \author{ Remko Duursma }
-\seealso{ \code{\link{abline}} }
+\seealso{ \samp{\link{abline}} }
 \examples{
  x <- rnorm(100)
  y <- x + rnorm(100)

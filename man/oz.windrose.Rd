@@ -16,13 +16,13 @@
  \item{legend.pos}{The vertical position of the wind rose legend. The
   Australian Bureau of Meteorology displays the legend at the top of
   the plot}
- \item{...}{additional arguments passed to \code{plot}.}
+ \item{...}{additional arguments passed to \samp{plot}.}
 }
 \details{
- \code{oz.windrose} displays a wind rose in the style used by the Australian
+ \samp{oz.windrose} displays a wind rose in the style used by the Australian
   Bureau of Meteorology. Each limb represents a bin of wind directions, and 
-  there are conventionally eight bins. If \code{windagg} has more than eight
-  columns, more limbs will be displayed. The rows of \code{windagg} represent
+  there are conventionally eight bins. If \samp{windagg} has more than eight
+  columns, more limbs will be displayed. The rows of \samp{windagg} represent
   the speed ranges used by the Australian Bureau of Meteorology (0, 0-10, 
   10-20, 20-30 and over 30 in km/hour). The diameter of the central circle is
   calculated as (percent calm observations)/(number of direction bins). The
@@ -36,8 +36,8 @@
 }
 \value{nil}
 \author{Jim Lemon (thanks to Anna in the Sydney BoM office)}
-\seealso{\code{\link{oz.windrose.legend}}, \code{\link{draw.circle}}, 
- \code{\link{bin.wind.records}}}
+\seealso{\samp{\link{oz.windrose.legend}}, \samp{\link{draw.circle}}, 
+ \samp{\link{bin.wind.records}}}
 \examples{
  windagg<-matrix(c(8,0,0,0,0,0,0,0,4,6,2,1,6,3,0,4,2,8,5,3,5,2,1,1,
   5,5,2,4,1,4,1,2,1,2,4,0,3,1,3,1),nrow=5,byrow=TRUE)

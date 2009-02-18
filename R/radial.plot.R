@@ -51,7 +51,8 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
 radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
- show.grid=TRUE,show.radial.grid=TRUE,grid.col="gray",grid.bg="transparent",
+ show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
+ grid.col="gray",grid.bg="transparent",
  grid.left=FALSE,grid.unit=NULL,point.symbols=NULL,point.col=NULL,
  show.centroid=FALSE,radial.lim=NULL,poly.col=NULL,...) {
  
@@ -169,8 +170,10 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
    ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
    polygon(xpos,ypos,border=grid.col,col=grid.bg)
   }
-  ypos<-rep(-maxlength/15,length(grid.pos))
-  boxed.labels(grid.pos-radial.lim[1],ypos,as.character(grid.pos),border=FALSE)
+  if(show.grid.labels) {
+   ypos<-rep(-maxlength/15,length(grid.pos))
+   boxed.labels(grid.pos-radial.lim[1],ypos,as.character(grid.pos),border=FALSE)
+  }
   if(!is.null(grid.unit))
    text(maxlength*1.05,ypos,grid.unit,adj=0)
  }

@@ -13,7 +13,7 @@
  \item{x}{The x coordinates of points in the plot}
  \item{y}{The y coordinates of points in the plot}
  \item{uiw}{The width of the upper portion of the confidence region,
-  or (if \code{liw} is missing) the width of both halves of
+  or (if \samp{liw} is missing) the width of both halves of
   the confidence region}
  \item{liw}{The width of the lower portion of the confidence region (if
   missing, the function assumes symmetric confidence bounds)}
@@ -30,18 +30,18 @@
  \item{add}{If FALSE (default), create a new plot; if TRUE, add error
   bars to an existing plot.}
  \item{slty}{Line type of error bars}
- \item{scol}{Color of error bars: if \code{col} is specified in the
-  optional arguments, \code{scol} is set the same; otherwise it's set
-  to \code{par(scol)}}
+ \item{scol}{Color of error bars: if \samp{col} is specified in the
+  optional arguments, \samp{scol} is set the same; otherwise it's set
+  to \samp{par(scol)}}
  \item{pt.bg}{Background color of points (use pch=21, pt.bg=par("bg")
   to get open points superimposed on error bars)}
  \item{\dots}{Any other parameters to be passed through to
-  \code{\link{plot.default}}, \code{\link{points}},
-  \code{\link{arrows}}, etc. (e.g. \code{lwd}, \code{col}, \code{pch},
-  \code{axes}, \code{xlim}, \code{ylim}).  \code{xlim} and
-  \code{ylim} are set by default to include all of the data points and
-  error bars.  \code{xlab} and \code{ylab} are set to the names of
-  \code{x} and \code{y}.  If \code{pch==NA}, no points are drawn
+  \samp{\link{plot.default}}, \samp{\link{points}},
+  \samp{\link{arrows}}, etc. (e.g. \samp{lwd}, \samp{col}, \samp{pch},
+  \samp{axes}, \samp{xlim}, \samp{ylim}).  \samp{xlim} and
+  \samp{ylim} are set by default to include all of the data points and
+  error bars.  \samp{xlab} and \samp{ylab} are set to the names of
+  \samp{x} and \samp{y}.  If \samp{pch==NA}, no points are drawn
   (e.g. leaving room for text labels instead)}
 }
 \value{
@@ -49,7 +49,7 @@
 }
 \author{Ben Bolker (documentation and tweaking of a function provided by
   Bill Venables, additional feature ideas from Gregory Warnes)}
-\seealso{\code{\link{boxplot}}}
+\seealso{\samp{\link{boxplot}}}
 \examples{
  y<-runif(10)
  err<-runif(10)

@@ -12,17 +12,16 @@
  remove.args(argstr,fn)
 }
 \arguments{
- \item{argstr}{a named list of arguments, e.g. from
-  \code{\list{\dots}}}
+ \item{argstr}{a named list of arguments, e.g. from \samp{\dots}}
  \item{fn}{a function}
  \item{exclude.repeats}{(logical) remove repeated arguments?}
  \item{exclude.other}{a character vector of names of additional arguments to remove}
  \item{dots.ok}{should "..." be allowed in the argument list?}
 }
 \value{
- \code{clean.args} returns a list which is a copy of \code{argstr} with
- arguments inappropriate for \code{fn} removed; \code{remove.args}
- removes the arguments for \code{fn} from the list.
+ \samp{clean.args} returns a list which is a copy of \samp{argstr} with
+ arguments inappropriate for \samp{fn} removed; \samp{remove.args}
+ removes the arguments for \samp{fn} from the list.
 }
 \author{Ben Bolker}
 \examples{

@@ -12,23 +12,23 @@
  \item{middle}{The middle position of the string in radians.}
  \item{stretch}{How much to stretch the string for appearance.}
  \item{cex}{The character expansion factor.}
- \item{...}{additional arguments passed to \code{text}.}
+ \item{...}{additional arguments passed to \samp{text}.}
 }
 \description{
- \code{arctext} displays a string along a circular arc, rotating each
+ \samp{arctext} displays a string along a circular arc, rotating each
  letter. This may not work on all devices, as not all graphic devices
  can rotate text to arbitrary angles. The output looks best on a 
  Postscript or similar device that can rotate text without distortion.
  Rotated text often looks very ragged on small bitmaps.
  
  If the user passes a value for
- \code{start}, this will override any value passed to \code{middle}.
- If the plot area is not square, see \code{par(pty="s")}, the arc will
+ \samp{start}, this will override any value passed to \samp{middle}.
+ If the plot area is not square, see \samp{par(pty="s")}, the arc will
  be somewhat elliptical.
 }
 \value{nil}
 \author{Jim Lemon - Thanks to Suhas Parandekar for the idea.}
-\seealso{\code{\link{text}}}
+\seealso{\samp{\link{text}}}
 \examples{
  plot(0,xlim=c(1,5),ylim=c(1,5),main="Test of arctext",xlab="",ylab="",
   type="n")

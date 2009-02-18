@@ -12,11 +12,11 @@
   \item{na.rm}{Dummy argument to match other functions.}
 }
 \details{
- \code{std.error} will accept a numeric vector.
+ \samp{std.error} will accept a numeric vector.
 }
 \value{
  The conventional standard error of the mean = sd(x)/sqrt(sum(!is.na(x)))
 }
 \author{Jim Lemon}
-\seealso{\code{\link{sd}}}
+\seealso{\samp{\link{sd}}}
 \keyword{misc}

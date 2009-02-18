@@ -18,7 +18,7 @@
 }
 \value{The base color(s) of the rectangle(s).}
 \details{
- \code{cylindrect} displays a rectangle filled with "slices" of color that
+ \samp{cylindrect} displays a rectangle filled with "slices" of color that
  simulate the appearance of a cylinder. The slices are calculated so that the 
  base color appears at the right or bottom edge of the rectangle, become
  progressively lighter to a "highlight" at two thirds of the width or height
@@ -28,7 +28,7 @@
  The position of the apparent light source is hard coded into the function.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{gradient.rect}}}
+\seealso{\samp{\link{gradient.rect}}}
 \examples{
  plot(0,xlim=c(0,5),ylim=c(0,5),main="Examples of pseudocylindrical rectangles",
   xlab="",ylab="",axes=FALSE,type="n")

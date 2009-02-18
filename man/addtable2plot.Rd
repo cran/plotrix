@@ -10,13 +10,13 @@
 }
 \arguments{
  \item{x,y}{Either x and y coordinates to locate the table or an
-  \code{xy.coords} object.}
+  \samp{xy.coords} object.}
  \item{table}{A data frame, matrix or similar object that will be displayed.}
  \item{lwd}{The line width for the box and horizontal dividers.}
  \item{bty}{Whether to draw a box around the table ("o") or not ("n").}
  \item{bg}{The background color for the table.}
  \item{cex}{Character expansion for the table.}
- \item{xjust,yjust}{Positioning for the table relative to \code{x,y}.}
+ \item{xjust,yjust}{Positioning for the table relative to \samp{x,y}.}
  \item{box.col}{The color for the box and lines.}
  \item{text.col}{The color for the text.}
  \item{display.colnames}{Whether to display the column names in the table.}
@@ -26,15 +26,15 @@
 }
 \value{nil}
 \details{
- \code{addtable2plot} displays the values in \code{table} at a position in user
- coordinates specified by \code{x,y}. The two justification arguments,
- \code{xjust} and \code{yjust} are the same as in the \code{legend} function,
- and \code{addtable2plot} has been programmed to be as similar to \code{legend}
+ \samp{addtable2plot} displays the values in \samp{table} at a position in user
+ coordinates specified by \samp{x,y}. The two justification arguments,
+ \samp{xjust} and \samp{yjust} are the same as in the \samp{legend} function,
+ and \samp{addtable2plot} has been programmed to be as similar to \samp{legend}
  as possible. The defaults are those that were most popular in scientific
  journals at the time of programming.
 }
 \author{Original by John Kane, mods by Jim Lemon}
-\seealso{\code{\link{legend}}}
+\seealso{\samp{\link{legend}}}
 \examples{
  testdf<-data.frame(Before=c(10,7,5),During=c(8,6,2),After=c(5,3,4))
  rownames(testdf)<-c("Red","Green","Blue")

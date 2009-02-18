@@ -26,7 +26,7 @@
  \item{minspacing}{The minimum spacing between the rectangles as a proportion.}
 }
 \details{
- \code{intersectDiagram} displays rows of optionally colored rectangles.
+ \samp{intersectDiagram} displays rows of optionally colored rectangles.
  The topmost row represents the elements that only belong to one set, the
  next row down represents elements belonging to two sets, and so on to the
  bottom row of one rectangle representing the elements that belong to all
@@ -34,29 +34,29 @@
  difficult to interpret Venn diagram, and this provides an alternative way to
  display the intersections between larger numbers of sets. 
  
- Each set is assigned a color if \code{col} is not NA. \code{rainbow} is
- called if \code{col} is NULL, otherwise the colors passed are used. For each
+ Each set is assigned a color if \samp{col} is not NA. \samp{rainbow} is
+ called if \samp{col} is NULL, otherwise the colors passed are used. For each
  intersection, the colors representing the sets intersecting are included in
  the rectangle.
  
  The strings displayed on each rectangle are taken from the argument
- \code{xnames} unless that is NULL, then the \code{names} of the first element
- of the intersectList object passed as \code{x} or returned from the call to
- \code{makeIntersectList} and if this is also NULL, capital letters are assigned
- to each category in \code{x}.
+ \samp{xnames} unless that is NULL, then the \samp{names} of the first element
+ of the intersectList object passed as \samp{x} or returned from the call to
+ \samp{makeIntersectList} and if this is also NULL, capital letters are assigned
+ to each category in \samp{x}.
  
  If there were objects in the original data set that were not members of any
- set, any percentages calculated will reflect this. By setting \code{show.nulls}
+ set, any percentages calculated will reflect this. By setting \samp{show.nulls}
  to TRUE, the counts or percentages of such objects will be displayed below the
  intersections over an empty rectangle scaled to the count or percentage.
  
- If a matrix of set membership indicators is passed as \code{x}, it will be
- passed to \code{\link{makeIntersectList}} for conversion.
+ If a matrix of set membership indicators is passed as \samp{x}, it will be
+ passed to \samp{\link{makeIntersectList}} for conversion.
 }
 \value{nil}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\code{\link{makeIntersectList}}, \code{\link{getIntersectList}}}
+\seealso{\samp{\link{makeIntersectList}}, \samp{\link{getIntersectList}}}
 \examples{
  # create a matrix where each row represents an element and
  # a 1 (or TRUE) in each column indicates that the element is a member

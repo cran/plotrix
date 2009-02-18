@@ -18,23 +18,23 @@
  \item{arrow.gap}{The gap to leave at the inner end of each bar.
   Defaults to two thirds of the height of a capital "O".}
  \item{type}{What type of display to use.}
- \item{...}{additional arguments passed to \code{arrows} or \code{lines}
-  depending upon \code{type}.}
+ \item{...}{additional arguments passed to \samp{arrows} or \samp{lines}
+  depending upon \samp{type}.}
 }
 \details{
- \code{dispersion} displays a measure of dispersion on an existing plot.
+ \samp{dispersion} displays a measure of dispersion on an existing plot.
  Currently it will display either vertical lines with caps (error bars) or lines
  that form a "confidence band" around a line of central tendency.
- \code{dispbars} is now a call to \code{dispersion} with \code{type} set to
- \code{a}.
+ \samp{dispbars} is now a call to \samp{dispersion} with \samp{type} set to
+ \samp{a}.
  
- If \code{arrow.gap} is greater than or equal to the upper or lower
- limit for a bar, \code{segments} is used to draw the upper and
+ If \samp{arrow.gap} is greater than or equal to the upper or lower
+ limit for a bar, \samp{segments} is used to draw the upper and
  lower caps with no bars to avoid zero length arrows.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{\link{arrows}}, \code{\link{segments}},\code{\link{lines}}}
+\seealso{\samp{\link{arrows}}, \samp{\link{segments}},\samp{\link{lines}}}
 \examples{
  disptest<-matrix(rnorm(200),nrow=20)
  disptest.means<-rowMeans(disptest)

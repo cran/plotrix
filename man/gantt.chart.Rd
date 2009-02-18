@@ -12,10 +12,10 @@
 }
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
-  as returned by \code{get.gantt.info}. If this is not present,
-  \code{\link{get.gantt.info}} will be called.}
+  as returned by \samp{get.gantt.info}. If this is not present,
+  \samp{\link{get.gantt.info}} will be called.}
  \item{format}{the format to be used in entering dates/times
-  (see \code{\link{strptime}}).}
+  (see \samp{\link{strptime}}).}
  \item{xlim}{the horizontal limits of the plot.}
  \item{taskcolors}{a vector of colors used to illustrate task priority.}
  \item{priority.legend}{Whether to display a priority color legend.}
@@ -26,18 +26,18 @@
   will be filled by the bar on each side - 0.5 will leave no space.}
  \item{hgrid}{logical - whether to display grid lines between the bars.}
  \item{main}{the title of the plot - note that this is actually displayed
-  using \code{mtext}.}
+  using \samp{mtext}.}
  \item{xlab}{horizontal axis label - usually suppressed.}
  \item{cylindrical}{Whether to give the bars a cylindrical appearance.}
 }
 \value{
- The list used to create the chart - see \code{\link{get.gantt.info}} for
+ The list used to create the chart - see \samp{\link{get.gantt.info}} for
  details. This can be saved and reused rather than manually entering the 
  information each time the chart is displayed.
 }
 \details{
- If task priority colors are not wanted, set \code{taskcolors} to a single
- value to suppress the coloring. If this is not done, \code{rainbow} will
+ If task priority colors are not wanted, set \samp{taskcolors} to a single
+ value to suppress the coloring. If this is not done, \samp{rainbow} will
  be called to generate a different color for each task.
  
  There can now be more than one time interval for each task. If there is,
@@ -45,7 +45,7 @@
  task at all, but intervals of some attribute for each entity.
 }
 \author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping)}
-\seealso{\code{\link{get.gantt.info}}}
+\seealso{\samp{\link{get.gantt.info}}}
 \examples{
  Ymd.format<-"\%Y/\%m/\%d"
  gantt.info<-list(labels=

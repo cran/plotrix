@@ -10,7 +10,7 @@
  \item{cnames}{column names for the resulting three column matrix.}
 }
 \description{
- \code{get.triprop} allows the user to enter triplets of proportions
+ \samp{get.triprop} allows the user to enter triplets of proportions
  or percentages of three components such as sand, silt and clay in soils.
 }
 \details{
@@ -18,7 +18,7 @@
  the function will warn the operator.}
 \value{A matrix of the components of one or more observations.}
 \author{Jim Lemon}
-\seealso{\code{\link{triax.plot}}, \code{\link{soil.texture}}}
+\seealso{\samp{\link{triax.plot}}, \samp{\link{soil.texture}}}
 \examples{
  if(dev.interactive()) {
   # get some proportions
