@@ -17,6 +17,8 @@ thigmophobe<-function(x,y) {
     stop("if y is missing, x must be a list with at least 2 columns")
   }
  }
+ if(is.array(x)) x<-as.numeric(x)
+ if(is.array(y)) y<-as.numeric(y)
  # get the current upper and lower limits of the plot
  plot.span<-par("usr")
  x.span<-plot.span[2] - plot.span[1]

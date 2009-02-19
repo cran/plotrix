@@ -15,27 +15,27 @@
  \item{x}{data values}
  \item{redrange, greenrange, bluerange}{the ranges of red, green and blue
   that will be scaled to represent the range of numeric values}
- \item{extremes}{The colors for the extreme values of \code{x}. Takes
+ \item{extremes}{The colors for the extreme values of \samp{x}. Takes
   precedence over the color ranges.}
  \item{cellcolors}{A precalculated vector of cell colors. This must have
   exactly the same number of colors as there are values in the matrix or
-  it will be uninformative. Takes precedence over both \code{extremes}
+  it will be uninformative. Takes precedence over both \samp{extremes}
   and color ranges.}
  \item{show.legend}{whether to display a color legend with the
   extreme numeric values in the lower left corner of the plot. If the
-  default is not suitable, call \code{color.legend} separately.}
+  default is not suitable, call \samp{color.legend} separately.}
  \item{nslices}{The number of color "slices" in the legend.}
  \item{xlab,ylab}{axis labels for the plot.}
  \item{do.hex}{plot packed hexagons instead of rectangles.}
  \item{axes}{Whether to suppress the default axis labelling.}
- \item{show.values}{Whether to display the numeric values of \code{x}.
+ \item{show.values}{Whether to display the numeric values of \samp{x}.
   This also controls the number of decimal places displayed.}
  \item{vcol}{The color for the value display.}
  \item{vcex}{The character expansion for the value display.}
  \item{border}{The color(s) for the borders of the cells. Pass NA
   if no border is  wanted.}
- \item{na.color}{The color to use for NA values of \code{x}.}
- \item{...}{arguments passed to \code{plot}.}
+ \item{na.color}{The color to use for NA values of \samp{x}.}
+ \item{...}{arguments passed to \samp{plot}.}
 }
 \value{nil}
 \details{
@@ -51,18 +51,18 @@
  margins are not equivalent for all display devices, this is currently
  a matter of trial and error. Drawing hexagons is quite slow.
  
- \code{show.values} is also used to control the number of decimal places
- displayed if the values are shown. \code{TRUE} will give one decimal
- place, \code{2} two, and so on.
+ \samp{show.values} is also used to control the number of decimal places
+ displayed if the values are shown. \samp{TRUE} will give one decimal
+ place, \samp{2} two, and so on.
 }
 \note{
- The function \code{\link{image}} performs almost the same when passed a
+ The function \samp{\link{image}} performs almost the same when passed a
  matrix of values without grid positions, except that it assigns values to
  a specified list of colors rather than calculating a color for each distinct
  value.
 }
-\author{Jim Lemon (thanks to Ashoka Polpitiya for \code{axes})}
-\seealso{\code{\link{color.scale}}, \code{\link{image}}}
+\author{Jim Lemon (thanks to Ashoka Polpitiya for \samp{axes})}
+\seealso{\samp{\link{color.scale}}, \samp{\link{image}}}
 \examples{
  x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
  color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,

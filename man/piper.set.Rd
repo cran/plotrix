@@ -10,9 +10,9 @@
  \item{plot.sep}{The offsets of the ions in user units.}
 }
 \details{  
- \code{piper.set} calculates the ion offsets in the Piper diagram.
+ \samp{piper.set} calculates the ion offsets in the Piper diagram.
 }
 \value{The offsets.}
 \author{Mike Cheetham}
-\seealso{\code{\link{piper.diagram}}}
+\seealso{\samp{\link{piper.diagram}}}
 \keyword{misc}

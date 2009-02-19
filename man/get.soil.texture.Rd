@@ -10,13 +10,13 @@
  \item{cnames}{column names for the resulting three column matrix.}
 }
 \description{
- \code{get.soil.texture} calls \code{get.triprop} to allow the user to 
+ \samp{get.soil.texture} calls \samp{get.triprop} to allow the user to 
  enter soil textures as the proportions or percentages of three 
  components, sand, silt and clay.
 }
 \value{A matrix of the components of one or more soil samples.}
 \author{Sander Oom and Jim Lemon}
-\seealso{\code{\link{soil.texture}},\code{\link{get.triprop}}}
+\seealso{\samp{\link{soil.texture}},\samp{\link{get.triprop}}}
 \examples{
  if(dev.interactive()) {
   newsp<-get.soil.texture()

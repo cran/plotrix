@@ -22,8 +22,8 @@
    is not supported for these. }
 }
 \details{
-  Draws one or more arcs from \code{angle1} to \code{angle2}.
-  If \code{angle1} is numerically greater than \code{angle2},
+  Draws one or more arcs from \samp{angle1} to \samp{angle2}.
+  If \samp{angle1} is numerically greater than \samp{angle2},
   then the angles are swapped.
 }
 \value{

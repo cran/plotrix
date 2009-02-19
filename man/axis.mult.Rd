@@ -11,32 +11,32 @@
 }
 \arguments{
  \item{side}{which side to display}
- \item{at}{where to place the tick marks - defaults to \code{axTicks()}}
+ \item{at}{where to place the tick marks - defaults to \samp{axTicks()}}
  \item{labels}{tick labels - defaults to at/mult}
  \item{mult}{the multiplier factor}
  \item{mult.label}{the label to show the multiplier - defaults to "x mult"}
  \item{mult.line}{the margin line upon which to show the multiplier}
- \item{mult.labelpos}{where to place \code{mult.label} - defaults to centered
+ \item{mult.labelpos}{where to place \samp{mult.label} - defaults to centered
   and outside the axis tick labels}
- \item{...}{additional arguments passed to \code{axis}.}
+ \item{...}{additional arguments passed to \samp{axis}.}
 }
 \value{nil}
 \details{
- \code{axis.mult} automates the process of displaying an axis with a 
+ \samp{axis.mult} automates the process of displaying an axis with a 
  multiplier applied to the tick values. By default it will divide the
- default axis tick labels by \code{mult} and place \code{mult.label}
- where \code{xlab} or \code{ylab} would normally appear. Thus the plot
+ default axis tick labels by \samp{mult} and place \samp{mult.label}
+ where \samp{xlab} or \samp{ylab} would normally appear. Thus the plot
  call should set the relevant label to an empty string in such cases.
- It is simplest to call \code{plot} with \code{axes=FALSE} and then 
- display the box and any standard axes before calling \code{axis.mult}.
+ It is simplest to call \samp{plot} with \samp{axes=FALSE} and then 
+ display the box and any standard axes before calling \samp{axis.mult}.
 }
 \note{
- While \code{axis.mult} will try to display an axis on any side, the top
- and right margins will require adjustment using \code{par} for
- \code{axis.mult} to display properly.
+ While \samp{axis.mult} will try to display an axis on any side, the top
+ and right margins will require adjustment using \samp{par} for
+ \samp{axis.mult} to display properly.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{axis}}, \code{\link{mtext}}}
+\seealso{\samp{\link{axis}}, \samp{\link{mtext}}}
 \examples{
  plot(1:10*0.001,1:10*100,axes=FALSE,xlab="",ylab="",main="Axis multipliers")
  box()

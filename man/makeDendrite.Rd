@@ -11,9 +11,9 @@
   mutually exclusive attributes of a given class.}
 }
 \details{  
- The values in \code{x} indicate which attribute of a particular class is
+ The values in \samp{x} indicate which attribute of a particular class is
   possessed by the object. For instance, the attributes dead and alive are
-  mutually exclusive. \code{makeDendrite} creates a nested list that contains
+  mutually exclusive. \samp{makeDendrite} creates a nested list that contains
   the counts of successive combinations of the attributes. The top level
   attributes are taken from the first column, then those are combined with
   the attributes in the second column and so on.
@@ -24,7 +24,7 @@
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\code{\link{plot.dendrite}}}
+\seealso{\samp{\link{plot.dendrite}}}
 \examples{
  sex<-sample(c("M","F"),100,TRUE)
  hair<-sample(c("Blond","Black","Brown","Red"),100,TRUE)

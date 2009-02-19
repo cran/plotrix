@@ -17,20 +17,20 @@
  \item{cc.axes}{Clockwise/counterclockwise axes and ticks.}
 }
 \details{
- \code{triax.abline} displays one or more lines on a triangle plot. Lines
+ \samp{triax.abline} displays one or more lines on a triangle plot. Lines
   are oriented in the conventional way, horizontal for the left axis, 
   slanting up to the right for the right axis and up to the left for the 
-  bottom axis. If \code{cc.axes} is TRUE, the orientation is up-left for
+  bottom axis. If \samp{cc.axes} is TRUE, the orientation is up-left for
   the left axis, horizontal for the right axis and up-right for the bottom
   axis.
   
-  Remember to call \code{triax.plot} with \code{no.add=FALSE} and restore
+  Remember to call \samp{triax.plot} with \samp{no.add=FALSE} and restore
   the graphics parameters as in the example or the lines will not be
   placed properly.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{\link{triax.plot}}}
+\seealso{\samp{\link{triax.plot}}}
 \examples{
  triax.return<-triax.plot(data.frame(bottom=0.4,right=0.3,left=0.3),
   main="Triax ablines",no.add=FALSE)

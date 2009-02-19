@@ -19,7 +19,7 @@
  \item{between}{Whether to place the labels between two sets of points.}
  \item{linecol}{Optional colors for the lines drawn to the points.}
  \item{srt}{Rotation of the labels in degrees.}
- \item{...}{additional arguments passed to \code{text}.}
+ \item{...}{additional arguments passed to \samp{text}.}
 }
 \details{
  This function is mainly useful when labeling irregularly spaced data points
@@ -27,14 +27,14 @@
  spaced and staggered on the long dimension of the data, drawing lines from
  each label to the point it describes.
  
- If \code{between} is TRUE, the function expects two points for each label
+ If \samp{between} is TRUE, the function expects two points for each label
  and will attempt to place the labels between two vertical lines of points.
  Lines will be drawn from the ends of each label to the two corresponding
  points.
  
  If spreading labels horizontally, the user may wish to rotate the labels by
- 90 degrees (\code{srt=90}). If long labels run off the edge of the plot,
- increase the \code{xlim} for extra room.
+ 90 degrees (\samp{srt=90}). If long labels run off the edge of the plot,
+ increase the \samp{xlim} for extra room.
 }
 \value{nil}
 \author{Jim Lemon}
@@ -42,7 +42,7 @@
  Cooke, L.J. & Wardle, J. (2005) Age and gender differences in
  children's food preferences. British Journal of Nutrition, 93: 741-746.
 }
-\seealso{\code{text}}
+\seealso{\samp{text}}
 \examples{
  # spread labels out in the x dimension using defaults
  x<-sort(rnorm(10))

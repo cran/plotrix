@@ -26,7 +26,7 @@ dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
                    be at the vertical midway point? }
 }
 \details{
-  The result of \code{hist=TRUE} looks less ugly than stacks of
+  The result of \samp{hist=TRUE} looks less ugly than stacks of
   dots for very large data sets.
 }
 \value{
@@ -38,10 +38,10 @@ dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
   \email{r.turner@auckland.ac.nz}
 }
 \section{Warnings}{
-This function does something toadally different from the \code{dotplot()}
-(now \code{\link{dotchart}()}) function in the graphics package.
+This function does something toadally different from the \samp{dotplot()}
+(now \samp{\link{dotchart}()}) function in the graphics package.
 
-The labelling of the \code{y}-axis is device dependent.
+The labelling of the \samp{y}-axis is device dependent.
 }
 
 \examples{

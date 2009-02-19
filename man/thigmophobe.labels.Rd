@@ -10,27 +10,27 @@
  \item{labels}{A vector of strings that will be placed adjacent to
   each point. Defaults to the indices of the coordinates.}
  \item{text.pos}{An optional vector of text positions (see 
- \code{\link{text}}).}
- \item{...}{additional arguments are passed to \code{text}}.
+ \samp{\link{text}}).}
+ \item{...}{additional arguments are passed to \samp{text}}.
 }
 \description{
- \code{thigmophobe.labels} places labels adjacent to each point, 
+ \samp{thigmophobe.labels} places labels adjacent to each point, 
   offsetting each label in the direction returned by 
-  \code{thigmophobe}.
+  \samp{thigmophobe}.
 }
 \details{
  Typically used to automatically place labels on a scatterplot or 
- similar to avoid overlapping labels. \code{thigmophobe.labels}
+ similar to avoid overlapping labels. \samp{thigmophobe.labels}
  will sometimes place a label off the plot or fail to separate
  labels in clusters of points. The user can manually adjust the
- errant labels by running \code{thigmophobe} first and saving
+ errant labels by running \samp{thigmophobe} first and saving
  the returned vector. Then modify the position values to place
  the labels properly and pass the edited vector to
- \code{thigmophobe.labels} as the \code{text.pos} argument. This
- takes precedence over the positions calculated by \code{thigmophobe}.
+ \samp{thigmophobe.labels} as the \samp{text.pos} argument. This
+ takes precedence over the positions calculated by \samp{thigmophobe}.
  
- \code{pointLabel} in the \code{maptools} packages uses a more sophisticated
- algorithm to place the labels and is worth a try if \code{thigmophobe}
+ \samp{pointLabel} in the \samp{maptools} packages uses a more sophisticated
+ algorithm to place the labels and is worth a try if \samp{thigmophobe}
  just won't get it right.
 }
 \value{
@@ -38,7 +38,7 @@
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\code{\link{thigmophobe}}, \code{\link{text}}}
+\seealso{\samp{\link{thigmophobe}}, \samp{\link{text}}}
 \examples{
  x<-rnorm(20)
  y<-rnorm(20)

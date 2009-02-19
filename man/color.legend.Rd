@@ -14,29 +14,29 @@
  \item{align}{How to align the labels relative to the color rectangle.}
  \item{gradient}{Whether to have a horizontal (x) or vertical (y) color
   gradient.}
- \item{...}{Additional arguments passed to \code{text}.}
+ \item{...}{Additional arguments passed to \samp{text}.}
 }
 \value{nil}
 \details{
- \code{color.legend} displays a rectangle defined by the first four arguments
- filled with smaller rectangles of color defined by the \code{rect.col} argument.
- Labels, defined by the \code{legend} argument, are placed next to the color
+ \samp{color.legend} displays a rectangle defined by the first four arguments
+ filled with smaller rectangles of color defined by the \samp{rect.col} argument.
+ Labels, defined by the \samp{legend} argument, are placed next to the color
  rectangle. The position of the labels is determined by whether the color
- rectangle is horizontal or vertical and the \code{align} argument. The default
- value of \code{lt} places the labels at the left of a vertical rectangle or the
- top of a horizontal one. \code{rb} puts them on the other side. To have the
- labels in the same color as the rectangles, include a \code{col} argument that
- will be passed to \code{text} as in the example.
+ rectangle is horizontal or vertical and the \samp{align} argument. The default
+ value of \samp{lt} places the labels at the left of a vertical rectangle or the
+ top of a horizontal one. \samp{rb} puts them on the other side. To have the
+ labels in the same color as the rectangles, include a \samp{col} argument that
+ will be passed to \samp{text} as in the example.
 
  There can be fewer labels than colors. The labels will be evenly spaced along
  the rectangle in this case. It is possible to use empty labels to get uneven
  spacing. The user can pass more labels than colors, but the labels will almost
  certainly be crowded and it is not obvious that this would be of any use. To
- have complete control over the labels, see \code{\link{gradient.rect}} and 
- \code{\link{text}} or \code{\link{mtext}}.
+ have complete control over the labels, see \samp{\link{gradient.rect}} and 
+ \samp{\link{text}} or \samp{\link{mtext}}.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{color.gradient}}, \code{\link{gradient.rect}}}
+\seealso{\samp{\link{color.gradient}}, \samp{\link{gradient.rect}}}
 \examples{
  # get some extra room
  par(mar=c(7,4,4,6))

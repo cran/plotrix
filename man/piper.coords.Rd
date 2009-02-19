@@ -11,5 +11,5 @@
 }
 \value{A data frame containing the coordinates of the points.}
 \author{Mike Cheetham}
-\seealso{\code{\link{piper.diagram}}}
+\seealso{\samp{\link{piper.diagram}}}
 \keyword{misc}

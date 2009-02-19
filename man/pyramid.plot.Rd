@@ -24,7 +24,7 @@
   \item{xycol,xxcol}{Color(s) for the left and right sets of bars. Both of
    these default to 1:length(labels).}
   \item{gap}{One half of the space between the two sets of bars for the
-   \code{labels} in user units.}
+   \samp{labels} in user units.}
   \item{labelcex}{Expansion for the category labels.}
   \item{mark.cat}{If an integer equal to the index of one of the labels
    is passed, that label will have a rectangle drawn around it.}
@@ -32,33 +32,33 @@
    involves overplotting a second set of bars, perhaps transparent.}
 }
 \details{
- \code{pyramid.plot} is principally intended for population pyramids,
+ \samp{pyramid.plot} is principally intended for population pyramids,
   although it can display other types of opposed bar charts with suitable
   modification of the arguments. If the user wants a different unit for
-  the display, just change \code{unit} accordingly. The default gap of 
+  the display, just change \samp{unit} accordingly. The default gap of 
   two units is usually satisfactory for the four to six percent range 
   of most bars on population pyramids.
   
- If \code{xy} and \code{xx} are matrices or data frames, 
- \code{pyramid.plot} will produce opposed stacked bars with the first 
+ If \samp{xy} and \samp{xx} are matrices or data frames, 
+ \samp{pyramid.plot} will produce opposed stacked bars with the first 
  columns innermost. In this mode, colors are limited to one per column. The 
- stacked bar mode will in general not work with the \code{add} method. Note 
+ stacked bar mode will in general not work with the \samp{add} method. Note 
  that the stacked bar mode can get very messy very quickly.
 
- The \code{add} argument allows one or more sets of bars to be plotted
+ The \samp{add} argument allows one or more sets of bars to be plotted
   on an existing plot. If these are not transparent, any bar that is
   shorter than the bar that overplots it will disappear. Only some graphic
-  devices (e.g. \code{pdf}) will handle transparency.
+  devices (e.g. \samp{pdf}) will handle transparency.
   
  In order to add bars, the function cannot restore the initial margin values
  or the new bars will not plot properly. To automatically restore the plot
  margins, call the function as in the example.
 }
 \value{
- The return value of \code{par("mar")} when the function was called.
+ The return value of \samp{par("mar")} when the function was called.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{rect}}}
+\seealso{\samp{\link{rect}}}
 \examples{
  xy.pop<-c(3.2,3.5,3.6,3.6,3.5,3.5,3.9,3.7,3.9,3.5,3.2,2.8,2.2,1.8,
   1.5,1.3,0.7,0.4)

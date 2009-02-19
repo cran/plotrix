@@ -13,21 +13,21 @@
  \item{col}{One or more colors to use for the resultant lines. Will
   be recycled if necessary.}
  \item{colvar}{A numeric vector from which to scale the colors.}
- \item{...}{Additional arguments passed to \code{segments}.}
+ \item{...}{Additional arguments passed to \samp{segments}.}
 }
 \details{
- \code{color.scale.lines} displays line segments that can be individually
+ \samp{color.scale.lines} displays line segments that can be individually
   colored according to a variety of methods. In order of precedence, if
-  \code{col} is not NA, the color values passed will be used. If
-  \code{colvar} is not NA, the function will call \code{color.scale} with
+  \samp{col} is not NA, the color values passed will be used. If
+  \samp{colvar} is not NA, the function will call \samp{color.scale} with
   the three color range arguments to determine the line colors. If
-  \code{colvar} is the same length as \code{length(x)-1}, exactly enough 
+  \samp{colvar} is the same length as \samp{length(x)-1}, exactly enough 
   colors for the number of lines displayed will be calculated. If shorter,
   some colors will be recycled and if longer, some colors will not be used.
-  Finally, the values in \code{y} will be color-scaled if both of the above
+  Finally, the values in \samp{y} will be color-scaled if both of the above
   arguments are NA. Thus the user can pass predetermined colors, use colors
-  scaled from an arbitrary vector of numerical values or use the \code{y}
-  values. See \code{color.scale} for an explanation of specifying color
+  scaled from an arbitrary vector of numerical values or use the \samp{y}
+  values. See \samp{color.scale} for an explanation of specifying color
   ranges.
 }
 \note{
@@ -36,7 +36,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{\link{color.scale}}}
+\seealso{\samp{\link{color.scale}}}
 \examples{
  # color a random walk "hot" (red) to "cold" (blue) on its distance
  # from the starting point

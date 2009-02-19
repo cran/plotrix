@@ -1,0 +1,96 @@
+staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
+ mar=NA,total.col="blue",inc.col=NA,bg.col=NA,direction="e",
+ display.height=TRUE,...) {
+
+ if(is.matrix(heights) | is.data.frame(heights)) {
+  dimheights<-dim(heights)
+  if(dimheights[2] > 1) totals<-heights[,2]
+  heights<-as.vector(heights)
+ }
+ if(!is.numeric(heights))
+  stop("heights must be a numeric vector or matrix/data frame with numeric first column")
+ nbars<-length(heights)
+ # if no marker for increments (FALSE | 0) and totals (TRUE | non-zero)
+ # consider the first and last values to be totals and all others increments 
+ if(is.na(totals[1])) totals<-c(TRUE,rep(FALSE,nbars-2),TRUE)
+ # coerce totals to a logical vector if it isn't
+ if(!is.logical(totals)) totals<-totals != 0
+ oldmar<-par("mar")
+ if(!is.na(bg.col)) {
+  oldbg<-par("bg")
+  par(bg=bg.col)
+ }
+ maxht<-max(heights)
+ currht<-heights[1]
+ for(i in 2:nbars) {
+  if(!totals[i]) {
+   currht<-currht+heights[i]
+   if(currht > maxht) maxht<-currht
+  }
+ }
+ if(direction == "e" || direction == "w") {
+  if(is.na(mar[1])) mar<-c(10,2,3,2)
+  par(mar=mar)
+  plot(0,xlim=c(1,nbars),ylim=c(0,maxht),type="n",axes=FALSE,
+   xlab="",ylab="",...)
+ }
+ else {
+  if(is.na(mar[1])) mar<-c(2,10,3,2)
+  par(mar=mar)
+  plot(0,xlim=c(0,maxht),ylim=c(1,nbars),type="n",axes=FALSE,
+   xlab="",ylab="",...)
+ }
+ par(xpd=TRUE)
+ bar.col<-rep(NA,nbars)
+ if(length(inc.col) < sum(!totals))
+  inc.col=rep(inc.col,length.out=sum(!totals))
+ bar.col[!totals]<-inc.col
+ bar.col[totals]<-total.col
+ label_offset<-ifelse(direction == "e" || direction == "w",
+  strheight("M"),strwidth("M"))
+ if(direction == "s" || direction == "w") {
+  start<-nbars
+  finish<-1
+  dir<- -1
+ }
+ else {
+  start<-1
+  finish<-nbars
+  dir<-1
+ }
+ barend<-0
+ barpos<-start:finish
+ for(bar in 1:nbars) {
+  barstart<-ifelse(totals[bar],0,barend)
+  barend<-barstart+heights[bar]
+  if(direction == "e" || direction == "w") {
+   rect(barpos[bar]-halfwidth,barstart,barpos[bar]+halfwidth,barend,
+    col=bar.col[bar])
+   if(display.height)
+    text(barpos[bar],ifelse(heights[bar]<0,barstart,barend)+label_offset,
+     heights[bar])
+   if(direction == "e" && bar != nbars)
+    segments(barpos[bar]+halfwidth*dir,barend,barpos[bar]+dir-halfwidth*dir,
+     barend,lty=3)
+   if(direction == "w" && bar != nbars)
+    segments(barpos[bar]-halfwidth*dir,barend,barpos[bar]+dir+halfwidth*dir,
+     barend,lty=3)
+  }
+  else {
+   rect(barstart,barpos[bar]-halfwidth,barend,barpos[bar]+halfwidth,
+    col=bar.col[bar])
+   if(display.height)
+    text(ifelse(heights[bar]<0,barstart,barend)+label_offset,
+     barpos[bar],heights[bar],adj=0)
+   if(bar != nbars)
+    segments(barend,barpos[bar]+halfwidth*dir,barend,
+     barpos[bar]+dir-halfwidth*dir,lty=3)
+  }
+ }
+ if(!is.null(labels))
+  mtext(labels,side=1+(direction == "n" || direction == "s"),
+   line=0.5,at=start:finish,adj=1,las=2)
+ if(nchar(main)) mtext(main,line=1,at=1,adj=0,cex=1.5)
+ par(xpd=FALSE,mar=oldmar)
+ if(!is.na(bg.col)) par(bg=oldbg)
+}

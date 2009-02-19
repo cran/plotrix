@@ -10,22 +10,22 @@
 \arguments{
  \item{x,y}{x and y position of the center of the pie chart}
  \item{angles}{A numeric vector representing angles in radians. This is
-  the return value of \code{floating.pie}.}
+  the return value of \samp{floating.pie}.}
  \item{labels}{Text strings to label each sector.}
  \item{radius}{The radius at which to place the labels in user units. The
   default is 1.}
  \item{bg}{The color of the rectangles on which the labels are displayed.}
  \item{border}{Whether to draw borders around the rectangles.}
- \item{...}{Arguments passed to \code{boxed.labels}.}
+ \item{...}{Arguments passed to \samp{boxed.labels}.}
 }
 \value{nil}
 \note{
- Remember that \code{x} and \code{y} specify the center of the pie chart and
+ Remember that \samp{x} and \samp{y} specify the center of the pie chart and
  that the label positions are specified by angles and radii from that 
  center.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{floating.pie}}, \code{\link{boxed.labels}}}
+\seealso{\samp{\link{floating.pie}}, \samp{\link{boxed.labels}}}
 \examples{
  pieval<-c(2,4,6,8)
  plot(1:5,type="n",axes=FALSE)

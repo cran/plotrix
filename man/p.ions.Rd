@@ -13,10 +13,10 @@
   or include carbonate-bicarbonate and sodium-potassium (FALSE).}
 }
 \details{  
- \code{p.ions} calculates the proportions of anions or cations to total anions
+ \samp{p.ions} calculates the proportions of anions or cations to total anions
  or cations for the ions used in the Piper diagram.
 }
 \value{The proportion of the ions.}
 \author{Mike Cheetham}
-\seealso{\code{\link{piper.diagram}}}
+\seealso{\samp{\link{piper.diagram}}}
 \keyword{misc}

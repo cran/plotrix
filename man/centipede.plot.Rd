@@ -11,8 +11,8 @@
 }
 \arguments{
   \item{segs}{a matrix of midpoints and limits calculated by
-   \code{\link{get.segs}} OR a \code{dstat} object returned by
-   \code{brkdn}.}
+   \samp{\link{get.segs}} OR a \samp{dstat} object returned by
+   \samp{brkdn}.}
   \item{mct}{The function to use in calculating the midpoint of each
    segment.}
   \item{lower.limit}{The functions to use in calculating the
@@ -33,29 +33,29 @@
   \item{col}{The color(s) of the limit lines and borders of the midpoint
    markers.}
   \item{bg}{The color(s) to fill the midpoint markers.}
-  \item{...}{additional arguments passed to \code{plot}.}
+  \item{...}{additional arguments passed to \samp{plot}.}
 }
 \details{
- \code{centipede.plot} displays one or more midpoints and limits as 
+ \samp{centipede.plot} displays one or more midpoints and limits as 
   filled circles with horizontal error bars. It places labels on the left and
   right sides of the plot. If these labels are long, it may be necessary to
-  pass explicit values to the \code{mar} argument to leave enough room.
+  pass explicit values to the \samp{mar} argument to leave enough room.
   
   Similarly, centipede plots typically have a large number of subsets, and 
   it may be necessary to start the graphics device with an aspect ratio that
   will prevent crowding of the labels when over 30 segments are displayed.
   
-  The matrix \code{segs} may be entered manually or read from a file.
+  The matrix \samp{segs} may be entered manually or read from a file.
   The first row specifies midpoints, the second and third rows the lower
   and upper limits respectively and the fourth row the number of valid
-  observations. If a \code{dstat} object is passed as \code{segs}, the
+  observations. If a \samp{dstat} object is passed as \samp{segs}, the
   function will calculate the lower and upper
   values according to the relevant arguments. This type of plot is also
   known as a caterpillar plot or a league table.
 }
 \value{nil.}
 \author{Jim Lemon}
-\seealso{\code{\link{get.segs}}}
+\seealso{\samp{\link{get.segs}}}
 \examples{
  testcp<-list("",40)
  for(i in 1:40) testcp[[i]]<-rnorm(sample(1:8,1)*50)

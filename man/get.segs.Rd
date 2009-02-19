@@ -15,15 +15,15 @@
    lower and upper limits.}
 }
 \details{
- \code{get.segs} calls the functions whose names are passed to calculate
+ \samp{get.segs} calls the functions whose names are passed to calculate
   midpoints and limits for each list element or data frame column. The
   user can define special functions for the central and dispersion measures
   if desired.
 }
 \value{A matrix with four rows and as many columns as were in the object
- \code{x}. The first row contains the midpoint values, the second and third
+ \samp{x}. The first row contains the midpoint values, the second and third
  the lower and upper limit values respectively and the fourth row the number
  of valid observations in the columns.}
 \author{Jim Lemon}
-\seealso{\code{\link{centipede.plot}}}
+\seealso{\samp{\link{centipede.plot}}}
 \keyword{misc}

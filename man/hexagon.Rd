@@ -19,9 +19,9 @@
  same dimensions as the hexagon. That is, given a grid of squares with
  alternate rows shifted one half the length of the sides, the hexagons
  drawn would be close packed. Its use in the plotrix package is to provide
- an alternative unit cell for the \code{color2D.matplot} function.
+ an alternative unit cell for the \samp{color2D.matplot} function.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{\link{color2D.matplot}}}
+\seealso{\samp{\link{color2D.matplot}}}
 \keyword{misc}

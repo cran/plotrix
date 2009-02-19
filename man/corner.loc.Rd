@@ -18,7 +18,7 @@
   the top side}
  \item{xoff}{horizontal offset as a proportion of the total plot size}
  \item{yoff}{vertical offset as a proportion of the total plot size}
- \item{...}{further arguments to the \code{text} command for the label}
+ \item{...}{further arguments to the \samp{text} command for the label}
 }
 \value{
  corner.loc returns a list of the x and y positions of the corner

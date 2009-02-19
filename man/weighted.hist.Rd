@@ -21,22 +21,22 @@
  \item{freq}{Whether to plot counts or densities.}
  \item{ylim}{The limits of the plot ordinate.}
  \item{ylab}{Label for the ordinate.}
- \item{...}{Additional arguments passed to \code{\link{barplot}}.}
+ \item{...}{Additional arguments passed to \samp{\link{barplot}}.}
 }
 \details{
- \code{weighted.hist} calculates the weighted counts of values falling 
- into the ranges specified by \code{breaks}. Instead of counting each 
- value as 1, it counts the corresponding value in \code{w} (the weight).
+ \samp{weighted.hist} calculates the weighted counts of values falling 
+ into the ranges specified by \samp{breaks}. Instead of counting each 
+ value as 1, it counts the corresponding value in \samp{w} (the weight).
  
- \code{breaks} may be specified by a monotonically increasing vector 
+ \samp{breaks} may be specified by a monotonically increasing vector 
  of numbers that are interpreted as the endpoints of the ranges, a 
  single number representing the number of ranges desired or the name 
- of the function to calculate the ranges (see \code{\link{hist}}).
+ of the function to calculate the ranges (see \samp{\link{hist}}).
  If a vector of numbers is passed that does not include all values in 
- \code{x}, the user is warned. If the ranges are not equal, a warning 
- will be displayed if \code{freq} is TRUE or the heights of the bars 
+ \samp{x}, the user is warned. If the ranges are not equal, a warning 
+ will be displayed if \samp{freq} is TRUE or the heights of the bars 
  will be adjusted to display areas approximately equal to the counts 
- if \code{freq} is FALSE.
+ if \samp{freq} is FALSE.
 }
 \value{A list containing:
 
@@ -48,12 +48,12 @@ density - The weighted counts divided by their sum.
 
 mids - The midpoints of the intervals and the bars displayed.
 
-xname - the name of \code{x}.
+xname - the name of \samp{x}.
 
 equidist - Whether the intervals differ by less than the total range/1000.
 }
 \author{Jim Lemon and Hadley Wickham}
-\seealso{\code{\link{hist}}}
+\seealso{\samp{\link{hist}}}
 \examples{
  testx<-sample(1:10,300,TRUE)
  testw<-seq(1,4,by=0.01)

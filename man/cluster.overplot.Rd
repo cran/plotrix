@@ -17,12 +17,12 @@
  \item{...}{additional arguments returned as they are passed.}
 }
 \description{
- \code{cluster.overplot} checks for overlying points in the x and y
+ \samp{cluster.overplot} checks for overlying points in the x and y
   coordinates passed. Those points that are overlying are moved to form
   a small cluster of up to nine points. For large numbers of overlying
-  points, see \code{\link{count.overplot}} or \code{\link{sizeplot}}.
+  points, see \samp{\link{count.overplot}} or \samp{\link{sizeplot}}.
   If you are unsure of the number of overplots in your data, run
-  \code{count.overplot} first to see if there are any potential clusters
+  \samp{count.overplot} first to see if there are any potential clusters
   larger than nine.
 }
 \value{
@@ -32,7 +32,7 @@
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\code{\link{count.overplot}},\code{\link{sizeplot}}}
+\seealso{\samp{\link{count.overplot}},\samp{\link{sizeplot}}}
 \examples{
  xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
  clusteredpoints<-

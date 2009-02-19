@@ -16,7 +16,7 @@
  \item{new}{Whether this is a new diagram.}
  \item{ppm}{Whether the concentrations are in milligrams/liter (parts per
  million) or milliequivalents.}
- \item{chull}{Whether to use the \code{chull} function.}
+ \item{chull}{Whether to use the \samp{chull} function.}
  \item{tcsep}{Spacing for tick mark labels.}
  \item{pch}{Symbol to use for ion values.}
  \item{main}{Title for the diagram.}

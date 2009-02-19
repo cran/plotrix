@@ -19,5 +19,5 @@
 }
 \value{nil}
 \author{Mike Cheetham}
-\seealso{\code{\link{piper.diagram}}}
+\seealso{\samp{\link{piper.diagram}}}
 \keyword{misc}

@@ -16,7 +16,7 @@
  \item{axis.labels}{Labels for the three axes in the order bottom, right
   left. Defaults to the column names.}
  \item{tick.labels}{The tick labels for the axes.
-  Defaults to argument \code{at} (proportions).}
+  Defaults to argument \samp{at} (proportions).}
  \item{col.axis}{Color of the triangular axes, ticks and labels.}
  \item{cex.axis}{Character expansion for axis labels.}
  \item{cex.ticks}{Character expansion for the tick labels.}
@@ -28,14 +28,14 @@
  \item{cc.axes}{Whether to align the axes clockwise or counterclockwise.}
 }
 \details{
- \code{triax.frame} displays a triangular plot area on which proportions
+ \samp{triax.frame} displays a triangular plot area on which proportions
   or percentages may be displayed. An optional grid may also be displayed.
-  If \code{cc.axes} is TRUE, both the axes and axis ticks will be in
+  If \samp{cc.axes} is TRUE, both the axes and axis ticks will be in
   reverse order.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\code{\link{triax.points}},\code{\link{triax.abline}}}
+\seealso{\samp{\link{triax.points}},\samp{\link{triax.abline}}}
 \examples{
  triax.frame(main="DEFAULT")
  triax.frame(main="Clockwise axes",cc.axes=TRUE)

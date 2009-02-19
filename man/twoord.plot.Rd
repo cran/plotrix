@@ -13,26 +13,26 @@
 \arguments{
  \item{lx,ly,rx,ry}{y and optional x values for the plot}
  \item{data}{an optional data frame from which to obtain the above values}
- \item{xlim}{optional x limits as in \code{plot}}
+ \item{xlim}{optional x limits as in \samp{plot}}
  \item{lylim,rylim}{optional y limits for the left and right axes
   respectively}
- \item{mar}{optional margin adjustment, defaults to \code{c(5,4,4,4)}}
+ \item{mar}{optional margin adjustment, defaults to \samp{c(5,4,4,4)}}
  \item{lcol,rcol}{colors to distinguish the two sets of values}
- \item{xlab,ylab}{axis labels as in \code{plot}}
+ \item{xlab,ylab}{axis labels as in \samp{plot}}
  \item{rylab}{label for the right axis}
  \item{lpch,rpch}{plot symbols to distinguish the two sets of values}
- \item{type}{as in \code{plot}}
- \item{...}{additional arguments passed to \code{axis}.}
+ \item{type}{as in \samp{plot}}
+ \item{...}{additional arguments passed to \samp{axis}.}
 }
 \value{nil}
 \details{
- \code{twoord.plot} automates the process of displaying two sets of
+ \samp{twoord.plot} automates the process of displaying two sets of
  values that have different ranges on the same plot. It is principally
  useful in illustrating some relationship between the values across the
- observations. It is assumed that the \code{lx} and \code{rx} values
+ observations. It is assumed that the \samp{lx} and \samp{rx} values
  are at least adjacent, and probably overlapping.
  
- It is best to pass all the arguments \code{lx, ly, rx, ry}, but the
+ It is best to pass all the arguments \samp{lx, ly, rx, ry}, but the
  function will attempt to substitute sensible x values if one or two
  are missing.
 }
@@ -63,10 +63,10 @@
  such as the probability of that value occurring under some conditions, it 
  may help to mark the point(s) where this occurs.
  
- It may be useful to consider \code{gap.plot} as an alternative.
+ It may be useful to consider \samp{gap.plot} as an alternative.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{plot}}}
+\seealso{\samp{\link{plot}}}
 \examples{
  twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
   1:15,rev(60:74)+rnorm(15),xlab="Sequence",

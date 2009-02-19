@@ -25,7 +25,7 @@
  \item{col}{color(s) in which to plot the values}
  \item{pch}{symbols to use in plotting.}
  \item{add}{whether to add values to an existing plot.}
- \item{...}{arguments passed to \code{plot} and \code{points}.}
+ \item{...}{arguments passed to \samp{plot} and \samp{points}.}
 }
 \value{nil}
 \details{
@@ -33,13 +33,13 @@
  Typically used when there is a relatively large gap or two in the overall 
  range of one set of values, often because of outliers. The function warns
  the user if any values have been omitted by being in the "gap". See 
- \code{\link{axis.break}} for a brief discussion of plotting on 
+ \samp{\link{axis.break}} for a brief discussion of plotting on 
  discontinuous coordinates.
  
- To add more data series to a gap plot, call \code{gap.plot} with
- \code{add = TRUE}. The same \code{gap} and \code{gap.axis} arguments as
+ To add more data series to a gap plot, call \samp{gap.plot} with
+ \samp{add = TRUE}. The same \samp{gap} and \samp{gap.axis} arguments as
  in the initial call must be passed or the data will not be displayed
- correctly. Remember to pass an explicit \code{xlim} or \code{ylim} to
+ correctly. Remember to pass an explicit \samp{xlim} or \samp{ylim} to
  the initial call if the added data exceed the range of the data
  initially displayed.
  
@@ -47,20 +47,20 @@
  that is just below a gap plotted in the gap. The answer is to make the lower
  gap limit a little higher if this is a problem.
  
- If at least four values are passed in \code{gap}, the first four will be
+ If at least four values are passed in \samp{gap}, the first four will be
  used to calculate two "gaps" in the plot instead of one. The function does
  not check whether these values are sensible, so it is quite easy to
  ask for a very silly plot.
  
  The default ticks are usually not ideal, and most users will want to pass
- their own tick positions and perhaps labels. Note that \code{lines} appears
- to use only the first \code{col} and \code{lty} argument value, so if you
- must have lines with different colors and types, use \code{add=TRUE} and add
+ their own tick positions and perhaps labels. Note that \samp{lines} appears
+ to use only the first \samp{col} and \samp{lty} argument value, so if you
+ must have lines with different colors and types, use \samp{add=TRUE} and add
  them separately (see the third example for the problem and the solution).
 }
 \author{Jim Lemon and Ben Bolker (thanks to Zheng Lu for the "add" idea,
  and Art Roberts for helping to get the gaps right.)}
-\seealso{\code{\link{gap.barplot}}, \code{\link{axis.break}}}
+\seealso{\samp{\link{gap.barplot}}, \samp{\link{axis.break}}}
 \examples{
  twogrp<-c(rnorm(5)+4,rnorm(5)+20,rnorm(5)+5,rnorm(5)+22)
  gpcol<-c(2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5)

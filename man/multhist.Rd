@@ -6,7 +6,7 @@
  of the elements
 }
 \usage{
- multhist(x,beside=TRUE,freq=NULL,probability=!freq, ...)
+ multhist(x,beside=TRUE,freq=NULL,probability=!freq,plot.it=TRUE,...)
 }
 \arguments{
  \item{x}{a list of numeric vectors}
@@ -16,19 +16,20 @@
              'FALSE', probability densities, component 'density', are
              plotted (so that the histogram has a total area of one).
              Defaults to 'TRUE' if 'probability' is not specified
-             (does not consider equidistant breaks as in \code{\link{hist}})}
+             (does not consider equidistant breaks as in \samp{\link{hist}})}
  \item{probability}{an alias for '!freq', for S compatibility}
- \item{...}{additional arguments to \code{\link{hist}} or \code{\link{barplot}}}
+ \item{plot.it}{Whether or not to display the histogram.}
+ \item{...}{additional arguments to \samp{\link{hist}} or \samp{\link{barplot}}}
 }
 \value{
- plots a side-by-side barplot of the histograms
+ the breaks and the values for the histograms.
 }
 \author{Ben Bolker}
-\seealso{\code{\link{hist}},\code{\link{barplot}}}
+\seealso{\samp{\link{hist}},\samp{\link{barplot}}}
 \note{
- The 'inside' argument to \code{\link{barplot}} (which is not currently
+ The 'inside' argument to \samp{\link{barplot}} (which is not currently
   implemented in barplot anyway) is deleted from the argument list. The
-  default value of NULL for \code{freq} is for consistency with \code{hist}
+  default value of NULL for \samp{freq} is for consistency with \samp{hist}
   but is equivalent to TRUE.
 }
 \examples{

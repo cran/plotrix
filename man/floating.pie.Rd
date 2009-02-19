@@ -13,10 +13,10 @@
  \item{x}{a numeric vector for which each value will be a sector}
  \item{edges}{the number of lines forming a circle}
  \item{radius}{the radius of the pie in user units}
- \item{col}{the colors of the sectors - defaults to \code{rainbow}}
+ \item{col}{the colors of the sectors - defaults to \samp{rainbow}}
  \item{startpos}{The starting position for drawing sectors in radians.}
  \item{shadow}{Logical - whether to draw a shadow}
- \item{...}{graphical parameters passed to \code{polygon}}
+ \item{...}{graphical parameters passed to \samp{polygon}}
 }
 \value{
  The bisecting angle of the sectors in radians. Useful for placing
@@ -27,8 +27,8 @@
  complicated breakdown of data rarely succeeds.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{pie.labels}}, \code{\link{boxed.labels}},
- \code{\link{polygon.shadow}}}
+\seealso{\samp{\link{pie.labels}}, \samp{\link{boxed.labels}},
+ \samp{\link{polygon.shadow}}}
 \examples{
  plot(1:5,type="n",main="Floating Pie test",xlab="",ylab="",axes=FALSE)
  box()

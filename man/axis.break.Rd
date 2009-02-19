@@ -13,7 +13,7 @@
  \item{breakpos}{where to place the break in user units}
  \item{bgcol}{the color of the plot background}
  \item{breakcol}{the color of the "break" marker}
- \item{style}{Either \code{gap}, \code{slash} or \code{zigzag}}
+ \item{style}{Either \samp{gap}, \samp{slash} or \samp{zigzag}}
  \item{brw}{break width relative to plot width}
 }
 \value{nil}
@@ -23,11 +23,11 @@
  allow widely separated groups of values or outliers to appear without
  devoting too much of the plot to empty space. The major objection seems 
  to be that the reader will be misled by assuming continuous coordinates.
- The \code{gap} style that clearly separates the two sections of the plot
+ The \samp{gap} style that clearly separates the two sections of the plot
  is probably best for avoiding this.
 }
 \author{Jim Lemon and Ben Bolker}
-\seealso{\code{\link{gap.plot}}}
+\seealso{\samp{\link{gap.plot}}}
 \examples{
  plot(3:10,main="Axis break test")
  # put a break at the default axis and position

@@ -7,7 +7,7 @@
  furc(x,xpos,yrange,toplevel,cex=1)
 }
 \arguments{
- \item{x}{A \code{dendrite} object containing the counts of objects having
+ \item{x}{A \samp{dendrite} object containing the counts of objects having
   combinations of mutually exclusive attributes.}
  \item{xpos}{The horizontal position on the plot to display the current level
   of the dendrogram.}
@@ -18,12 +18,12 @@
  \item{cex}{The character expansion to use in the display.}
 }
 \details{  
- \code{furc} displays one \emph{furc}ation of the dendrogram. A furcation is
+ \samp{furc} displays one \emph{furc}ation of the dendrogram. A furcation is
  a single box displaying its label and count that may split into finer
- divisions. If so, \code{furc} calls itself for each furcation until there are
+ divisions. If so, \samp{furc} calls itself for each furcation until there are
  no more splits.
 }
 \value{nil}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\code{\link{plot.dendrite}}}
+\seealso{\samp{\link{plot.dendrite}}}

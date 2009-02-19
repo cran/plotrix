@@ -9,23 +9,23 @@
 \arguments{
  \item{x,y}{numeric data vectors.}
  \item{ylab,xlab}{Labels for the X and Y axes.}
- \item{levels}{Cut points to assign colors to the values of \code{x} and
-  \code{y}.}
+ \item{levels}{Cut points to assign colors to the values of \samp{x} and
+  \samp{y}.}
  \item{cols}{The colors to be assigned.}
  \item{lty}{The line type.}
  \item{showcuts}{Whether to show the positions of the cut points.}
- \item{...}{additional arguments passed to \code{plot} or \code{lines}.}
+ \item{...}{additional arguments passed to \samp{plot} or \samp{lines}.}
 }
 \description{
- \code{clplot} displays a plot of lines for which the colors are dependent
- upon the x and y values. \code{clplot} is similar to \code{color.scale.lines}
+ \samp{clplot} displays a plot of lines for which the colors are dependent
+ upon the x and y values. \samp{clplot} is similar to \samp{color.scale.lines}
  except that while the latter calculates a color for each unique value,
- \code{clplot} assigns colors to groups of values within the cutpoints defined
- by \code{levels}.
+ \samp{clplot} assigns colors to groups of values within the cutpoints defined
+ by \samp{levels}.
 }
 \value{nil}
 \author{Carl Witthoft}
-\seealso{\code{\link{plot}}}
+\seealso{\samp{\link{plot}}}
 \examples{
  x<-seq(1,100)
  y<-sin(x/5)+x/20

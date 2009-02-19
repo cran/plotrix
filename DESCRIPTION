@@ -1,25 +1,15 @@
 Package: plotrix
-Version: 2.5-1
-Date: 2009-01-22
+Version: 2.5-2
+Date: 2009-02-18
 Title: Various plotting functions
-Author: Jim Lemon <jim@bitwrit.com.au>,
-	Ben Bolker <bolker@zoo.ufl.edu>,
-	Sander Oom <sander@oomvanlieshout.net>,
-	Eduardo Klein <eklein@usb.ve>,
-	Barry Rowlingson <b.rowlingson@lancaster.ac.uk>,
-	Hadley Wickham <h.wickham@gmail.com>,
-	Anupam Tyagi <anupam.tyagi@haim.in>,
-	Olivier Eterradossi <olivier.eterradossi@ema.fr>,
-	Gabor Grothendieck <ggrothendieck@gmail.com>,
-	Michael Toews <mwtoews@sfu.ca>,
-	John Kane <jkrideau@yahoo.ca>,
-	Mike Cheetham <micheetham@googlemail.com>,
-	Rolf Turner <r.turner@auckland.ac.nz>,
-	Carl Witthoft <carl@witthoft.com>,
-	Julian Stander <j.stander@plymouth.ac.uk>,
-	Thomas Petzoldt <thomas.petzoldt@tu-dresden.de>,
-	Remko Duursma <remkoduursma@gmail.com>
+Author: Jim Lemon,Ben Bolker,Sander Oom,
+	Eduardo Klein,Barry Rowlingson,
+	Hadley Wickham,Anupam Tyagi,
+	Olivier Eterradossi,Gabor Grothendieck,
+	Michael Toews,John Kane,Mike Cheetham,
+	Rolf Turner,Carl Witthoft,Julian Stander,
+	Thomas Petzoldt,Remko Duursma,Elisa Biancotto
 Maintainer: Jim Lemon <jim@bitwrit.com.au>
 Description: Lots of plots, various labeling, axis and color scaling functions.
 License: GPL (>=2)
-Packaged: Fri Jan 30 23:50:51 2009; root
+Packaged: Wed Feb 18 20:53:27 2009; root

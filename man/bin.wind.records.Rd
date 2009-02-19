@@ -16,9 +16,9 @@
  \item{speed.breaks}{Minimum wind speed for each speed bin.}
 }
 \details{
- \code{bin.wind.records} bins a number of wind direction and speed
+ \samp{bin.wind.records} bins a number of wind direction and speed
   records into a matrix of percentages of observations that can be used to
-  display a cumulative wind rose with \code{oz.windrose} The defaults are those
+  display a cumulative wind rose with \samp{oz.windrose} The defaults are those
   used by the Australian Bureau of Meteorology.
 }
 \value{
@@ -26,7 +26,7 @@
  the columns represent wind direction categories.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{oz.windrose}}}
+\seealso{\samp{\link{oz.windrose}}}
 \examples{
  winddir<-sample(0:360,100,TRUE)
  windspeed<-sample(0:40,100,TRUE)

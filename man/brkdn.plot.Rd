@@ -11,9 +11,9 @@
  \item{vars}{The names or indices of one or more columns in a data frame.
   The columns must contain numeric data.}
  \item{groups}{The name or index of a column in a data frame that classifies
-  the values in \code{vars} into different, usually fixed effect, levels.}
+  the values in \samp{vars} into different, usually fixed effect, levels.}
  \item{obs}{The name or index of a column in a data frame that classifies
-  the values in \code{vars} into different, usually random effect, levels.}
+  the values in \samp{vars} into different, usually random effect, levels.}
  \item{data}{The data frame.}
  \item{mct}{The measure of central tendency to calculate for each group.}
  \item{md}{The measure of dispersion to calculate, NA for none.}
@@ -26,46 +26,46 @@
   defaults, but they are basic.}
  \item{xaxlab}{Optional labels for the horizontal axis ticks.}
  \item{ylim}{Optional vertical limits for the plot.}
- \item{type}{Whether to plot symbols, lines or both (as in \code{plot}).}
+ \item{type}{Whether to plot symbols, lines or both (as in \samp{plot}).}
  \item{pch}{Symbol(s) to plot.}
  \item{lty}{Line type(s) to plot.}
  \item{col}{Color(s) for the symbols and lines.}
- \item{staxx}{Whether to call \code{\link{staxlab}} to display the X axis
+ \item{staxx}{Whether to call \samp{\link{staxlab}} to display the X axis
   labels.}
- \item{...}{additional arguments passed to \code{plot}.}
+ \item{...}{additional arguments passed to \samp{plot}.}
 }
 \value{
- A list of two matrices of dimension \code{length(levels(groups))} by 
- \code{length(levels(obs))}. The first contains the measures of central
+ A list of two matrices of dimension \samp{length(levels(groups))} by 
+ \samp{length(levels(obs))}. The first contains the measures of central
  tendency calculated and its name is the name of the function passed as
- \code{mct}. The second contains the measures of dispersion and its name
- is the name of the function passed as \code{md}.
+ \samp{mct}. The second contains the measures of dispersion and its name
+ is the name of the function passed as \samp{md}.
  
- If both \code{groups} and \code{obs} are not NA, the rows of each matrix
- will be the \code{groups} and the columns the \code{obs}. If \code{obs}
- is NA, the rows will be the \code{groups} and the columns the \code{vars}.
- If \code{groups} is NA, the rows will be the \code{vars} and the columns
- the \code{obs}. That is, if \code{vars} has more than one element, if
- \code{obs} is NA, the elements of \code{vars} will be considered to
- represent observations, while if \code{groups} is NA, they will be
- considered to represent groups. At least one of \code{groups} and \code{obs}
- must be not NA or there is no point in using \code{brkdn.plot}.
+ If both \samp{groups} and \samp{obs} are not NA, the rows of each matrix
+ will be the \samp{groups} and the columns the \samp{obs}. If \samp{obs}
+ is NA, the rows will be the \samp{groups} and the columns the \samp{vars}.
+ If \samp{groups} is NA, the rows will be the \samp{vars} and the columns
+ the \samp{obs}. That is, if \samp{vars} has more than one element, if
+ \samp{obs} is NA, the elements of \samp{vars} will be considered to
+ represent observations, while if \samp{groups} is NA, they will be
+ considered to represent groups. At least one of \samp{groups} and \samp{obs}
+ must be not NA or there is no point in using \samp{brkdn.plot}.
 }
 \details{
- \code{brkdn.plot} displays a plot useful for visualizing the breakdown of a
+ \samp{brkdn.plot} displays a plot useful for visualizing the breakdown of a
  response measure by two factors, or more than one response measure by either
- a factor representing something like levels of treatment (\code{groups}) or
- something like repeated observations (\code{obs}). For example, if
+ a factor representing something like levels of treatment (\samp{groups}) or
+ something like repeated observations (\samp{obs}). For example, if
  observations are made at different times on data objects that receive
- different treatments, the \code{groups} factor will display the measures
+ different treatments, the \samp{groups} factor will display the measures
  of central tendency as points/lines with the same color, symbol and line type,
- while the \code{obs} factor will be represented as horizontal positions on the
- plot. If \code{obs} is numeric, its unique values will be used as the 
+ while the \samp{obs} factor will be represented as horizontal positions on the
+ plot. If \samp{obs} is numeric, its unique values will be used as the 
  positions, if not, 1 to the number of unique values. This is a common way of 
  representing changes over time intervals for experimental groups.
 }
 \author{Jim Lemon}
-\seealso{\code{\link{dispbars}}}
+\seealso{\samp{\link{dispbars}}}
 \examples{
  test.df<-data.frame(a=rnorm(80)+4,b=rnorm(80)+4,c=rep(LETTERS[1:4],each=20),
   d=rep(rep(letters[1:4],each=4),5))

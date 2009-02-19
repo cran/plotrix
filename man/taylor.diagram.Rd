@@ -14,12 +14,12 @@
  \item{add}{whether to draw the diagram or just add a point.}
  \item{col}{the color for the points displayed.}
  \item{pch}{the type of point to display.}
- \item{pos.cor}{whether to display only positive (\code{TRUE}) or all
-  values of correlation (\code{FALSE}).}
+ \item{pos.cor}{whether to display only positive (\samp{TRUE}) or all
+  values of correlation (\samp{FALSE}).}
  \item{xlab,ylab}{plot axis labels.}
  \item{main}{title for the plot.}
  \item{show.gamma}{whether to display standard deviation arcs around
-  the reference point (only for \code{pos.cor=TRUE}).}
+  the reference point (only for \samp{pos.cor=TRUE}).}
  \item{ngamma}{the number of gammas to display (default=3).}
  \item{sd.arcs}{whether to display arcs along the standard deviation axes
   (see Details).}
@@ -30,32 +30,32 @@
  \item{pcex}{character expansion for the plotted points.}
  \item{normalize}{whether to normalize the models so that the reference
   has a standard deviation of 1.}
- \item{...}{Additional arguments passed to \code{plot}.}
+ \item{...}{Additional arguments passed to \samp{plot}.}
 }
 \details{
  The Taylor diagram is used to display the quality of model predictions
  against the reference values, typically direct observations.
  
  A diagram is built by plotting one model against the reference,
- then adding alternative model points. If \code{normalize=TRUE} 
- when plotting the first model, remember to set it to \code{TRUE}
+ then adding alternative model points. If \samp{normalize=TRUE} 
+ when plotting the first model, remember to set it to \samp{TRUE}
  when plotting additional models.
  
  Two displays are available. One displays the entire range of correlations
- from -1 to 1. Setting \code{pos.cor} to \code{FALSE} will produce this
+ from -1 to 1. Setting \samp{pos.cor} to \samp{FALSE} will produce this
  display. The -1 to 1 display includes a radial grid for the correlation
- values. When \code{pos.cor} is set to \code{TRUE}, only the
- range from 0 to 1 will be displayed. The \code{gamma} lines and the arc at
+ values. When \samp{pos.cor} is set to \samp{TRUE}, only the
+ range from 0 to 1 will be displayed. The \samp{gamma} lines and the arc at
  the reference standard deviation are optional in this display.
  
  Both the standard deviation arcs and the gamma lines are optional in the
- \code{pos.cor=TRUE} version. Setting \code{sd.arcs} or \code{grad.corr.lines}
+ \samp{pos.cor=TRUE} version. Setting \samp{sd.arcs} or \samp{grad.corr.lines}
  to zero or FALSE will cause them not to be displayed. If more than one value is
- passed for \code{sd.arcs}, the function will try to use the values passed,
- otherwise it will call \code{pretty} to calculate the values.
+ passed for \samp{sd.arcs}, the function will try to use the values passed,
+ otherwise it will call \samp{pretty} to calculate the values.
 }
 \value{
- The values of \code{par} that preceded the function. This allows the
+ The values of \samp{par} that preceded the function. This allows the
  user to add points to the diagram, then restore the original values. This
  is only necessary when using the 0 to 1 correlation range.
 }
