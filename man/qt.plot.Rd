@@ -26,7 +26,10 @@
  of sections of polygons running across the time intervals. This plot was
  devised to display the distribution of drinking, but may be useful for any
  situation in which it is desired to display the distribution of numerically
- coded quantities against the intervals between their occurrence.
+ coded quantities against the intervals between their occurrence. Note that if
+ there are many values and many intervals, the resulting plot will be mostly
+ empty. Categorizing the values and intervals so that there are only three or
+ four categories will often produce a more informative plot.
  
  \samp{qt.plot} assumes that the values in \samp{qtime} represent interpretable
  intervals like seconds or days. The default is to assume sequential time

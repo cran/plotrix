@@ -11,6 +11,10 @@ dotplot.mtb <- function (x, xlim = NULL, main = NULL, xlab = NULL, ylab=NULL,
         ylab <- ""
     x <- sort(x)
     w <- table(x)
+    if(hist) {
+        x <- as.numeric(names(w))
+        w <- unname(unclass(w))
+    } else w <- unlist(lapply(w, function(n) { 1:n }))
     mw <- max(w)
     w <- unlist(lapply(w, function(n) { 1:n }))
     Nmax <- floor(par()$pin[2]/strheight("o",units="inches"))

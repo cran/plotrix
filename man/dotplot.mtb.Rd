@@ -3,7 +3,7 @@
 \title{ Minitab style dotplots. }
 \description{
  Create a dotplot of a data vector in the sense of ``dotplot'' as
- used in the Minitab (copyright) package.
+ used in the Minitab\eqn{\mbox{\copyright}}{\ (copyright)} package.
 }
 \usage{
 dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
@@ -15,7 +15,7 @@ dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
   \item{main}{ A title for the plot; defaults to blank.}
   \item{xlab}{ A label for the x axis; defaults to blank.}
   \item{ylab}{ A label for the y axis; defaults to blank.}
-  \item{pch}{ The plotting symbol for the dots in the plot.
+  \item{pch}{ The plotting symbol for the dots in the plot;
               defaults to a solid disc. }
   \item{hist}{ Logical scalar; should the plot be done ``histogram
                style, i.e. using vertical lines rather than stacks
@@ -26,7 +26,7 @@ dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
                    be at the vertical midway point? }
 }
 \details{
-  The result of \samp{hist=TRUE} looks less ugly than stacks of
+  The result of \code{hist=TRUE} looks less ugly than stacks of
   dots for very large data sets.
 }
 \value{
@@ -38,23 +38,23 @@ dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
   \email{r.turner@auckland.ac.nz}
 }
 \section{Warnings}{
-This function does something toadally different from the \samp{dotplot()}
-(now \samp{\link{dotchart}()}) function in the graphics package.
+This function does something toadally different from the \code{dotplot()}
+(now \code{\link{dotchart}()}) function in the graphics package.
 
-The labelling of the \samp{y}-axis is device dependent.
+The labelling of the \code{y}-axis is device dependent.
 }
 
 \examples{
 \dontrun{
 set.seed(42)
 x <- rpois(100,10)
-dotplot.mtb(x,main="No Y axes")
-dotplot.mtb(x,yaxis=TRUE,main="Display Y axis")
-dotplot.mtb(x,hist=TRUE,main="Like the \"h\" style plot")
-dotplot.mtb(x,xlim=c(4,16),main="Limit the X axis")
-dotplot.mtb(x,yaxis=TRUE,mtbstyle=FALSE,main="Non-MATLAB stytle")
+dotplot.mtb(x,main="No y-axis.")
+dotplot.mtb(x,yaxis=TRUE,main="With y-axis displayed.")
+dotplot.mtb(x,hist=TRUE,main="An \"h\" style plot.")
+dotplot.mtb(x,xlim=c(4,16),main="With the x-axis limited.")
+dotplot.mtb(x,yaxis=TRUE,mtbstyle=FALSE,"Non-Minitab style.")
 dotplot.mtb(x,yaxis=TRUE,xlab="x",ylab="count",
- main="X and Y axis labels")
+            main="With x and y axis labels.")
 }
 }
 \keyword{ hplot }

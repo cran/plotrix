@@ -40,7 +40,9 @@ qt.plot<-function(qnt,qtime=NA,col=NULL,border="lightgray",
   if(thismax > maxint) maxint<-thismax
  }
  plot(0,xlim=c(minint,maxint),ylim=c(minqnt-0.5,maxqnt+0.5),type="n",
-  main=main,xlab=xlab,ylab=ylab,...)
+  main=main,xlab=xlab,ylab=ylab,yaxt="n",...)
+ unx<-unique(qnt)
+ axis(2,unx,unx)
  nint<-maxint-minint+1
  qtmat<-matrix(0,nrow=nqnt,ncol=nint)
  # now drop the counts into the matrix

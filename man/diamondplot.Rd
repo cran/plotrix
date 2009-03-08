@@ -9,7 +9,7 @@
   (possibly repeated observations) of data objects. See the example.}
  \item{bg}{The background color for the plot.}
  \item{col}{The colors for the polygons.}
- \item{name}{Labels for each data unit (e.g. car model).}
+ \item{name}{The title for the plot (i.e. \samp{main}).}
  \item{...}{additional arguments passed to \samp{plot}.}
 }
 \description{
@@ -20,7 +20,7 @@
 \value{nil}
 \author{Elisa Biancotto}
 \keyword{misc}
-\seealso{\samp{\link{plot}}, \samp{link{radial.plot}}}
+\seealso{\samp{\link{plot}}, \samp{\link{radial.plot}}}
 \examples{
  data(mtcars)
  mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]

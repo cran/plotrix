@@ -179,6 +179,14 @@ gradient.rect(1,0,3,6,reds=c(1,0),
 gradient.rect(4,0,6,6,c(seq(0,1,length=10),rep(1,10)),
  c(rep(1,10),seq(1,0,length=10)),c(0,0),gradient="y")
 gradient.rect(7,0,9,6,col=smoothColors("red",38,"blue"),border=NA)
+test.df<-data.frame(Age=rnorm(100,25,10),
+ Sex=sample(c("M","F"),100,TRUE),
+ Marital=sample(c("M","X","S","W"),100,TRUE),
+ Employ=sample(c("FT","PT","NO"),100,TRUE))
+test.col<-list(Overall="green",Employ=c("purple","orange","brown"),
+ Marital=c("#1affd8","#caeecc","#f7b3cc","#94ebff"),Sex=c(2,4))
+hierobarp(formula=Age~Sex+Marital+Employ,data=test.df,main="Hierobarp",
+ col=test.col,showall=TRUE)
 druguse<-matrix(c(sample(c(0,1),200,TRUE),
  sample(c(0,1),200,TRUE),
  sample(c(0,1),200,TRUE),
