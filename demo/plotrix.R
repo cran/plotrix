@@ -105,8 +105,6 @@ clplot(x,y,main="Test of clplot")
 data(mtcars)
 mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]
 diamondplot(mysubset,name="Test of diamondplot")
-x <- rpois(100,10)
-dotplot.mtb(x,yaxis=TRUE,main="Test of dotplot.mtb")
 plot(1:10, asp = 1,main="Test draw.arc")
 draw.arc(5, 5, 1:10/10, deg2 = 1:10*10, col = "blue")
 draw.arc(8, 8, 1:10/10, deg2 = 1:10*10, col = 1:10)

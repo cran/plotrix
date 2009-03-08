@@ -52,7 +52,7 @@ dotplot.mtb(x,main="No y-axis.")
 dotplot.mtb(x,yaxis=TRUE,main="With y-axis displayed.")
 dotplot.mtb(x,hist=TRUE,main="An \"h\" style plot.")
 dotplot.mtb(x,xlim=c(4,16),main="With the x-axis limited.")
-dotplot.mtb(x,yaxis=TRUE,mtbstyle=FALSE,"Non-Minitab style.")
+dotplot.mtb(x,yaxis=TRUE,mtbstyle=FALSE,main="Non-Minitab style.")
 dotplot.mtb(x,yaxis=TRUE,xlab="x",ylab="count",
             main="With x and y axis labels.")
 }
