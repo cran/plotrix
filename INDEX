@@ -47,7 +47,9 @@ get.triprop		Enter triplets of proportions or percentages
 getIntersectList	Enter the information for an intersection diagram
 gradient.rect		Display a rectangle with an arbitrary color gradient
 hexagon			Draw a hexagon
-intersectDiagram	Display set intersections
+hierobarp		Graphically display the breakdown of numeric values
+hierobrk		Breakdown numeric values by factors
+intersectDiagram	Graphically display set intersections
 lengthKey		Key for interpreting lengths in a plot
 listDepth		Find the maximum depth of a list
 makeDendrite		Build a list of mutually exclusive attributes
