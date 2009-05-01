@@ -7,7 +7,8 @@
   measures of dispersion.
 }
 \usage{
- dispersion(x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,type="a",...)
+ dispersion(x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,type="a",
+  fill=NA,...)
  dispbars(x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,...)
 }
 \arguments{
@@ -18,13 +19,18 @@
  \item{arrow.gap}{The gap to leave at the inner end of each bar.
   Defaults to two thirds of the height of a capital "O".}
  \item{type}{What type of display to use.}
+ \item{fill}{Color to fill between the lines if \samp{type} is not NULL and
+  \samp{fill} is not NA.}
  \item{...}{additional arguments passed to \samp{arrows} or \samp{lines}
   depending upon \samp{type}.}
 }
 \details{
  \samp{dispersion} displays a measure of dispersion on an existing plot.
  Currently it will display either vertical lines with caps (error bars) or lines
- that form a "confidence band" around a line of central tendency.
+ that form a "confidence band" around a line of central tendency. If \samp{fill}
+ is not NA and \samp{type} is \samp{"l"}, a polygon will be drawn between the
+ confidence lines. Remember that any points or lines within the confidence band
+ will be obscured, so these will have to be redrawn.
  \samp{dispbars} is now a call to \samp{dispersion} with \samp{type} set to
  \samp{a}.
  
@@ -47,6 +53,9 @@
  plot(disptest.means[row.order],main="Dispersion as confidence band",
   ylim=c(min(disptest.means-se.disptest),max(disptest.means+se.disptest)),
   xlab="Occasion",ylab="Value")
- dispersion(1:20,disptest.means[row.order],se.disptest[row.order],type="l",lty=2)
+ dispersion(1:20,disptest.means[row.order],se.disptest[row.order],type="l",
+  fill="#eeccee",lty=2)
+ # remember to redraw the points
+ points(disptest.means[row.order])
 }
 \keyword{misc}

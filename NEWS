@@ -1,0 +1,24 @@
+version 2.5-5
+
+	Changed the default symbol in count.overplot to "1".
+	Added bar plotting to the twoord.plot function.
+	Added fill between the confidence lines to the dispersion function.
+	Added the bumpchart function.
+	 (Thanks to Andreas Christofferson for the idea)
+	Added the spreadout function to spread out cramped labels.
+	Added table cell size correction for the cex argument.
+	 (Thanks to Brian Diggs for the patch)
+
+version 2.5-4
+
+	Fixed the bug in dotplot.mtb function.
+	
+version 2.5-3
+
+	Introduced the hierobarp function.
+	Introduced the zoomInPlot function.
+	New version of dotplot.mtb (with bug)
+	
+previous versions
+
+	You don't expect me to remember all that, do you?

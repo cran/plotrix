@@ -114,5 +114,13 @@
  color.legend(2,6,4,6.4,legend=c("100\% guys","100\% girls"),
   rect.col=color.scale(seq(0,1,by=0.25),c(0.2,1),c(0.2,0.4),c(1,0.4)))
  par(mar=c(5,4,4,2))
+ # use barp to display a multiple histogram
+ h1<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
+ h2<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
+ h3<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
+ hmat<-matrix(c(h1,h2,h3),nrow=3,byrow=TRUE)
+ barp(hmat,names.arg=names(h1),width=0.45,col=2:4,
+  main="Multiple histogram using barp",xlab="Bins",ylab="Frequency")
+ legend(3.8,50,c("h1","h2","h3"),fill=2:4)
 }
 \keyword{misc}

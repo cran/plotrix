@@ -33,7 +33,7 @@
  as possible. The defaults are those that were most popular in scientific
  journals at the time of programming.
 }
-\author{Original by John Kane, mods by Jim Lemon}
+\author{Original by John Kane, mods by Jim Lemon and Brian Diggs}
 \seealso{\samp{\link{legend}}}
 \examples{
  testdf<-data.frame(Before=c(10,7,5),During=c(8,6,2),After=c(5,3,4))
