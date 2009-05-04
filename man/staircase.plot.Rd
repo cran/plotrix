@@ -7,8 +7,8 @@
 }
 \usage{
  staircase.plot(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
- mar=NA,total.col="blue",inc.col=NA,bg.col=NA,direction="e",
- display.height=TRUE,...)
+ mar=NA,total.col="blue",inc.col=NA,bg.col=NA,direction="e",las=1,
+ display.height=TRUE,stagger=FALSE,...)
 }
 \arguments{
  \item{heights}{vector of numeric values or a matrix or data frame with at least
@@ -25,8 +25,10 @@
  \item{inc.col}{Color(s) for the bars representing increments.}
  \item{bg.col}{The background color for the plot.}
  \item{direction}{Direction in which the bars should be presented. See Details.}
+ \item{las}{Orientation for the bar labels. See \samp{par}.}
  \item{display.height}{Whether to display the totals and increments at the upper
   ends of the bars. Defaults to TRUE.}
+ \item{stagger}{Whether to stagger the labels to avoid overlap.}
  \item{...}{arguments passed to \samp{plot}.}
 }
 \value{nil}

@@ -7,8 +7,8 @@
 }
 \usage{
  twoord.plot(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
- mar=NULL,lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,
- type="b",...)
+ mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,
+ type="b",halfwidth=0.4,...)
 }
 \arguments{
  \item{lx,ly,rx,ry}{y and optional x values for the plot}
@@ -22,6 +22,8 @@
  \item{rylab}{label for the right axis}
  \item{lpch,rpch}{plot symbols to distinguish the two sets of values}
  \item{type}{as in \samp{plot}}
+ \item{halfwidth}{Half the width of the bars in user units. The bars are
+  centered on successive integers if no \samp{x} values are supplied.}
  \item{...}{additional arguments passed to \samp{axis}.}
 }
 \value{nil}
@@ -35,6 +37,14 @@
  It is best to pass all the arguments \samp{lx, ly, rx, ry}, but the
  function will attempt to substitute sensible x values if one or two
  are missing.
+
+ If at least one of the \samp{type} arguments is "bar", bars will be plotted instead of
+ points or lines. It is best to plot the bars first (i.e. relative to the left axis)
+ if the other type is points or lines, as the bars will usually obscure at least some
+ of the points or lines. Using NA for the color of the bars will partially correct
+ this. If both types are to be bars, remember to pass somewhat different x values or
+ the bars will be overlaid.
+
 }
 \note{
  There are many objections to the use of plots with two different 
@@ -71,6 +81,16 @@
  twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
   1:15,rev(60:74)+rnorm(15),xlab="Sequence",
   ylab="Ascending values",rylab="Descending values",
-  main="Test of twoord.plot")
+  main="Plot with two ordinates - points and lines")
+ twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
+  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
+  ylab="Ascending values",rylab="Descending values",
+  main="Plot with two ordinates - bars on the left",
+  type=c("bar","l"),lcol=3,rcol=4)
+ twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
+  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
+  ylab="Ascending values",rylab="Descending values",
+  main="Plot with two ordinates - bars on the right",
+  type=c("b","bar"),lcol=2,rcol=NA,halfwidth=0.2)
 }
 \keyword{misc}

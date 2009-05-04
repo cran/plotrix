@@ -23,6 +23,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
   ngroups<-length(height)
   barcol=col
   barpinfo<-list(x=1:ngroups,y=height)
+  hdim<-NULL
  }
  else {
   ngroups<-hdim[2]

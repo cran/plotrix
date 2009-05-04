@@ -2,7 +2,7 @@
 \alias{count.overplot}
 \title{Show overlying points as counts}
 \usage{
- count.overplot(x,y,tol=NULL,col=par("fg"),pch=1,...)
+ count.overplot(x,y,tol=NULL,col=par("fg"),pch="1",...)
 }
 \arguments{
  \item{x,y}{Two numeric data vectors or the first two columns of a matrix
@@ -26,6 +26,6 @@
 \seealso{\samp{\link{cluster.overplot}},\samp{\link{sizeplot}}}
 \examples{
  xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
- count.overplot(xy.mat,main="Count overplot test",
+ count.overplot(xy.mat,main="count.overplot",
   xlab="X values",ylab="Y values")
 }

@@ -1,5 +1,5 @@
 dispersion<-function (x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,
- type="a",...) {
+ type="a",fill=NA,...) {
 
  if(is.list(x) && length(x[[1]]) == length(x[[2]])) {
   y<-x$y
@@ -32,8 +32,9 @@ dispersion<-function (x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,
    }
   }
   if(toupper(type) == "L") {
+  if(!is.na(fill)) polygon(c(x,rev(x)),c(y+ulim,rev(y-llim)),col=fill,border=NA)
    lines(x,y+ulim,...)
-   lines(x,y-ulim,...)
+   lines(x,y-llim,...)
   }
  }
 }

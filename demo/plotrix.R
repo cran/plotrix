@@ -5,7 +5,7 @@ par(ask=TRUE)
 x <- rnorm(100)
 y <- x + rnorm(100)
 lmfit <- lm(y~x)
-plot(x,y,xlim=c(-3.5,3.5),main="Test ablineclip")
+plot(x,y,xlim=c(-3.5,3.5),main="Ablineclip")
 ablineclip(lmfit,x1=-2,x2=2,lty=2)
 ablineclip(h=0,x1=-2,x2=2,lty=3,col="red")
 ablineclip(v=0,y1=-2.5,y2=1.5,lty=4,col="green")
@@ -15,7 +15,7 @@ barp(testdf,main="Test addtable2plot",ylab="Value",
  names.arg=colnames(testdf),col=2:4)
 addtable2plot(2,8,testdf,bty="o",display.rownames=TRUE,hlines=TRUE,
  title="The table")
-plot(0,xlim=c(1,5),ylim=c(1,5),main="Test of arctext",xlab="",ylab="",
+plot(0,xlim=c(1,5),ylim=c(1,5),main="Arctext",xlab="",ylab="",
  type="n")
 arctext("bendy like spaghetti",center=c(3,3),col="blue")
 arctext("bendy like spaghetti",center=c(3,3),radius=1.5,start=pi,cex=2)
@@ -52,9 +52,16 @@ barp(happyday,names.arg=names(happyday),legend.lab=c("Slaves","Unemployed"),
  height.at=1:5,height.lab=happylabels,cex.axis=0.9,cylindrical=TRUE,
  shadow=TRUE)
 par(mar=c(5,4,4,2))
+h1<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
+h2<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
+h3<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
+hmat<-matrix(c(h1,h2,h3),nrow=3,byrow=TRUE)
+barp(hmat,names.arg=names(h1),width=0.45,col=2:4,
+ main="Multiple histogram using barp",xlab="Bins",ylab="Frequency")
+legend(3.8,50,c("h1","h2","h3"),fill=2:4)
 x<-rnorm(10)
 y<-rnorm(10)
-plot(x,y,type="p",main="Test of boxed.labels")
+plot(x,y,type="p",main="Boxed.labels")
 nums<-c("one","two","three","four","five","six","seven","eight","nine","ten")
 boxed.labels(x,y-0.1,nums)
 test.df<-data.frame(a=rnorm(80)+4,b=rnorm(80)+4,c=rep(LETTERS[1:4],each=20),
@@ -68,7 +75,7 @@ legend(es,legend=c("Sydney","Gosford","Karuah","Brisbane"),pch=1:4,
 testcp<-list("",40)
 for(i in 1:40) testcp[[i]]<-rnorm(sample(1:8,1)*50)
 segs<-get.segs(testcp)
-centipede.plot(segs,main="Test centipede plot",vgrid=0)
+centipede.plot(segs,main="Centipede plot",vgrid=0)
 xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
 clusteredpoints<-
  cluster.overplot(xy.mat,col=rep(c("red","green"),each=100))
@@ -101,10 +108,10 @@ clock24.plot(testlen[7:19],testpos[7:19],
 par(mar=c(5,4,4,2))
 x<-seq(1,100)
 y<-sin(x/5)+x/20
-clplot(x,y,main="Test of clplot")
+clplot(x,y,main="Clplot")
 data(mtcars)
 mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]
-diamondplot(mysubset,name="Test of diamondplot")
+diamondplot(mysubset,name="Diamondplot")
 plot(1:10, asp = 1,main="Test draw.arc")
 draw.arc(5, 5, 1:10/10, deg2 = 1:10*10, col = "blue")
 draw.arc(8, 8, 1:10/10, deg2 = 1:10*10, col = 1:10)
@@ -162,7 +169,7 @@ gantt.chart(gantt.info,main="Calendar date Gantt chart (2004)",
  priority.legend=TRUE,vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE)
 twogrp<-c(rnorm(10)+4,rnorm(10)+20)
 gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
- ylab="Group values",main="Test gap.barplot")
+ ylab="Group values",main="gap.barplot")
 twovec<-list(vec1=c(rnorm(30),-6),vec2=c(sample(1:10,40,TRUE),20))
 gap.boxplot(twovec,gap=list(top=c(12,18),bottom=c(-5,-3)),
  main="Test gap.boxplot")
@@ -170,7 +177,7 @@ twogrp<-c(rnorm(5)+4,rnorm(5)+20,rnorm(5)+5,rnorm(5)+22)
 gpcol<-c(2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5)
 gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
  main="Test gap.plot",col=gpcol)
-plot(0:10,type="n",axes=FALSE,main="Test gradient.rect")
+plot(0:10,type="n",axes=FALSE,main="gradient.rect")
 gradient.rect(1,0,3,6,reds=c(1,0),
  greens=c(seq(0,1,length=10),seq(1,0,length=10)),
  blues=c(0,1),gradient="y")
@@ -206,7 +213,8 @@ hair<-sample(c("Blond","Black","Brown","Red"),100,TRUE)
 eye<-sample(c("Blue","Black","Brown","Green"),100,TRUE)
 charac<-data.frame(sex=sex,hair=hair,eye=eye)
 characlist<-makeDendrite(charac)
-plot.dendrite(characlist,names(charac),main="Test dendrogram",cex=0.8)
+plot.dendrite(characlist,names(charac),
+ main="Dendrogram of sex, hair and eye color",cex=0.8)
 qnt<-rpois(365,2)
 qtdates<-seq(as.Date("2007-01-01"),as.Date("2007-12-31"),by=1)
 qnt[c(30,60,90,120,150,180,210,240,270,300,330,360)]<-rep(8,length.out=12)
@@ -222,7 +230,7 @@ revaxis(x,y,yside=4,main="Test revaxis")
 x <- c(0.1,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.3,0.3)
 y <- c( 1,  1,  1,  1,  2,  2,  2,  3,  3,  4,  5 )
 plot(x,y)
-sizeplot(x,y,main="Test sizeplot")
+sizeplot(x,y,main="sizeplot")
 soils.sw.percent<-data.frame(
  Sand=c(67,67,66,67,36,25,24,59,27,9,8,8,20,
  45,50,56,34,29,39,41,94,98,97,93,96,99),
@@ -249,7 +257,7 @@ fpkids<-data.frame(Food=c("Fatty/sugary","Fruit","Starchy","Meat",
  Male=c(4.35,4.13,4.02,3.9,3.81,3.64,3.45,3.27,2.96))
 plot(rep(1,9),fpkids$Female,xlim=c(0.8,2.2),
  ylim=range(c(fpkids$Female,fpkids$Male)),xlab="Sex",xaxt="n",
- ylab="Preference rating",main="Children's food preferences by sex",
+ ylab="Mean preference rating",main="Children's food preferences by sex",
  col="red")
 axis(1,at=1:2,labels=c("Female","Male"))
 points(rep(2,9),fpkids$Male,col="blue",pch=2)

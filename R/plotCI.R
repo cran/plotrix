@@ -68,12 +68,12 @@ function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL,
         gap <- rep(gap, length(x)) * diff(par("usr")[1:2])
         smidge <- par("fin")[2] * sfrac
         arrow.args <- c(list(lty = slty, angle = 90, length = smidge, 
-            code = 1), clean.args(arglist, arrows, exclude.other = c("col", 
-            "lty")))
+            code = 1, col = scol), clean.args(arglist, arrows,
+	    exclude.other = c("col", "lty")))
         nz <- abs(li-pmax(x-gap,li))*x.to.in>1e-3
         do.call("arrows", c(list(li[nz], y[nz], pmax(x - gap, li)[nz], y[nz]), 
             arrow.args))
-        nz <- abs(ui-pmin(x+gap,ui))*y.to.in>1e-3
+        nz <- abs(ui-pmin(x+gap,ui))*x.to.in>1e-3
         do.call("arrows", c(list(ui[nz], y[nz], pmin(x + gap, ui)[nz], y[nz]), 
             arrow.args))
     }

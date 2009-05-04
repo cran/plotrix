@@ -18,23 +18,24 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  row.names<-rownames(table)
  if(is.null(row.names) && display.rownames)
  row.names<-1:tabdim[1]
- mwidth<-strwidth("M")
+ mwidth<-strwidth("M",cex=cex)
  if(par("xlog")) x<-log10(x)
  if(display.colnames) {
-  cellwidth<-
-   max(strwidth(c(column.names,row.names,as.vector(unlist(table)))))+mwidth
+  cellwidth<-max(strwidth(c(column.names,row.names,
+   as.vector(unlist(table))),cex=cex))+mwidth
   nvcells<-tabdim[1]+1
  }
  else {
   nvcells<-tabdim[1]
   cellwidth<-
-   max(strwidth(c(row.names,as.vector(unlist(table)))))+mwidth
+   max(strwidth(c(row.names,as.vector(unlist(table))),cex=cex))+mwidth
  }
  if(display.rownames) nhcells<-tabdim[2]+1
  else nhcells<-tabdim[2]
  if(par("ylog")) y<-log10(y)
  cellheight<-
-  max(strheight(c(column.names,row.names,as.vector(unlist(table)))))*1.5
+  max(strheight(c(column.names,row.names,as.vector(unlist(table))),
+   cex=cex))*1.5
  xleft<-x-xjust*nhcells*cellwidth
  ytop<-y+yjust*nvcells*cellheight
  # adjust for logarithmic plotting
