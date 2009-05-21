@@ -29,7 +29,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
    yticks<-pretty(0:xdim[1])[-1]
    axis(2,at=xdim[1]-yticks+0.5,yticks)
   }
-  if(is.na(cellcolors[1]))
+  if(all(is.na(cellcolors)))
    cellcolors<-color.scale(x,redrange,greenrange,bluerange,extremes,na.color)
   # start from the top left - isomorphic with the matrix layout
   if(do.hex) {

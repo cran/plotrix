@@ -29,9 +29,10 @@
  \samp{thigmophobe.labels} as the \samp{text.pos} argument. This
  takes precedence over the positions calculated by \samp{thigmophobe}.
  
- \samp{pointLabel} in the \samp{maptools} packages uses a more sophisticated
- algorithm to place the labels and is worth a try if \samp{thigmophobe}
- just won't get it right.
+ Both \samp{pointLabel} in the \pkg{maptools} package and \samp{spread.labs}
+ in the \pkg{TeachingDemos} package use more sophisticated algorithms to
+ place the labels and are worth a try if \samp{thigmophobe} just won't get it
+ right.
 }
 \value{
  A vector of directions away from the point nearest to each point.
@@ -53,6 +54,6 @@
   "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen",
   "eighteen","nineteen","twenty")
  plot(x=x,y=y,xlim=xlim,ylim=ylim,main="Test thigmophobe.labels")
- # skip the almost invisible yellow label
- thigmophobe.labels(x,y,plotlabels,col=c(2:6,8:12))
+ # skip the almost invisible yellow label, make them bold and without borders
+ thigmophobe.labels(x,y,plotlabels,col=c(2:6,8:12),border=NA,font=2)
 }

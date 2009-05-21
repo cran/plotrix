@@ -163,7 +163,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  if(show.radial.grid) segments(0,0,xpos,ypos,col=grid.col)
  xpos<-cos(label.pos)*maxlength*label.prop
  ypos<-sin(label.pos)*maxlength*label.prop
- boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE)
+ boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
  if(show.grid) {
   for(i in seq(length(grid.pos),1,by=-1)) {
    xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
@@ -172,7 +172,8 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   }
   if(show.grid.labels) {
    ypos<-rep(-maxlength/15,length(grid.pos))
-   boxed.labels(grid.pos-radial.lim[1],ypos,as.character(grid.pos),border=FALSE)
+   boxed.labels(grid.pos-radial.lim[1],ypos,as.character(grid.pos),border=FALSE,
+    cex=par("cex.lab"))
   }
   if(!is.null(grid.unit))
    text(maxlength*1.05,ypos,grid.unit,adj=0)

@@ -7,7 +7,7 @@
 }
 \usage{
  bumpchart(y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
-  mar=c(2,8,5,8),pch=19,...)
+  mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,...)
 }
 \arguments{
  \item{y}{A numeric matrix or data frame which may contain NAs.}
@@ -18,6 +18,9 @@
  \item{rank}{Whether to rank the values in \samp{y} before plotting.}
  \item{mar}{The margins to use for the bumps chart.}
  \item{pch}{The symbols to use when plotting the points.}
+ \item{col}{The colors to use.}
+ \item{lty}{The line types to use.}
+ \item{lwd}{The line widths to use.}
  \item{...}{Additional arguments passed to \samp{matplot}.}
 }
 \details{
@@ -26,9 +29,14 @@
  right edges of the plot, the labels identifying each row of points are
  displayed. This type of plot is often used to show the changing positions of
  entities over time, like the ranking in surveys in different years.
+
+ Because of the way \samp{matplot} plots the values, the order of everything is
+ reversed. If the user wants to rank in descending order, such as test scores,
+ rank the values in the correct order before sending them to \samp{bumpchart}.
 }
 \value{nil}
 \author{Jim Lemon}
+\seealso{\samp{\link{matplot}}}
 \examples{
  # percentage of those over 25 years having completed high school
  # in 10 cities in the USA in 1990 and 2000

@@ -77,6 +77,10 @@
  remember that these will be grouped by row, so transpose if the data are
  grouped by columns.
 
+ The size of the labels on the outside of the plot can be adjusted by 
+ setting \samp{par(cex.axis=)} and that of the labels inside by setting
+ \samp{par(cex.lab=)}.
+
  The radial.plot family of plots is useful for illustrating
  cyclic data such as wind direction or speed (but see \samp{oz.windrose}
  for both), activity at different times of the day, and so on. While 

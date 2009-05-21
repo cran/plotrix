@@ -19,6 +19,9 @@
  first tries to spread groups of values with intervals less than \samp{mindist}
  out neatly away from the mean of the group. If this doesn't entirely succeed,
  a second pass that forces values away from the middle is performed.
+
+ \samp{spreadout} is currently used to avoid overplotting of axis tick labels
+ where they may be close together.
 }
 \value{
  On success, the spread out values. If there are less than two valid

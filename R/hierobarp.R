@@ -127,9 +127,10 @@ hierobrk<-function(formula,data,maxlevels=10,
  }
 }
 
-hierobarp<-function(formula,data,maxlevels=10,num.desc=c("mean","std.error","valid.n"),
- x=NULL,xinfo=NULL,space=0.1,xlim=NULL,ylim=NULL,main="",xlab="",ylab="",
- errbars=FALSE,col=NA,lineht=NA,showall=FALSE,showbrklab=FALSE,firstcall=TRUE) {
+hierobarp<-function(formula,data,maxlevels=10,
+ num.desc=c("mean","std.error","valid.n"),x=NULL,xinfo=NULL,space=0.1,
+ xlim=NULL,ylim=NULL,main="",xlab="",ylab="",errbars=FALSE,col=NA,lineht=NA,
+ showall=FALSE,showbrklab=FALSE,firstcall=TRUE) {
 
  if(firstcall) {
   x<-hierobrk(formula=formula,data=data,maxlevels=maxlevels,num.desc=num.desc)
