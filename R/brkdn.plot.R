@@ -1,5 +1,7 @@
-dispbars<-function(x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,...) {
- dispersion(x=x,y=y,ulim=ulim,llim=llim,arrow.cap=arrow.cap,
+dispbars<-function(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,
+ arrow.gap=NA,...) {
+
+ dispersion(x=x,y=y,ulim=ulim,llim=llim,intervals=intervals,arrow.cap=arrow.cap,
   arrow.gap=arrow.gap,type="a",...)
 }
 

@@ -28,9 +28,9 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,ylim=NA,xlab=NULL,ylab=NU
   plot.lim <- par("usr")
   botgap<-ifelse(gap[1]<0,gap[1],plot.lim[1])
   box()
-  axis(2,at=x,labels=xaxlab)
+  axis(2,at=x,labels=xaxlab,...)
   axis(1,at=c(ytics[littletics],ytics[bigtics]-gapsize),
-   labels=c(ytics[littletics],ytics[bigtics]))
+   labels=c(ytics[littletics],ytics[bigtics]),...)
   rect(botgap,x[y<gap[1]] - halfwidth,y[y<gap[1]],
    x[y<gap[1]] + halfwidth,col=col[y<gap[1]])
   rect(botgap,x[bigones] - halfwidth,y[bigones]-gapsize,
@@ -38,13 +38,13 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,ylim=NA,xlab=NULL,ylab=NU
   axis.break(1,gap[1],style="gap")
  }
  else {
-  plot(0,xlim=xlim,ylim=ylim,ylab=ylab,axes=FALSE,type="n",...)
+  plot(0,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab,axes=FALSE,type="n",...)
   plot.lim <- par("usr")
   botgap<-ifelse(gap[1]<0,gap[1],plot.lim[3])
   box()
-  axis(1,at=x,labels=xaxlab)
+  axis(1,at=x,labels=xaxlab,...)
   axis(2,at=c(ytics[littletics],ytics[bigtics] - gapsize),
-   labels=c(ytics[littletics],ytics[bigtics]))
+   labels=c(ytics[littletics],ytics[bigtics]),...)
   rect(x[y<gap[1]] - halfwidth,botgap,x[y<gap[1]] + halfwidth,
    y[y<gap[1]],col=col[y<gap[1]])
   rect(x[bigones] - halfwidth,botgap,x[bigones] + halfwidth,

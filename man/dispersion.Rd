@@ -7,9 +7,9 @@
   measures of dispersion.
 }
 \usage{
- dispersion(x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,type="a",
-  fill=NA,...)
- dispbars(x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,...)
+ dispersion(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,
+  type="a",fill=NA,...)
+ dispbars(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the bars}
@@ -18,6 +18,8 @@
   as a proportion of the width of the plot.}
  \item{arrow.gap}{The gap to leave at the inner end of each bar.
   Defaults to two thirds of the height of a capital "O".}
+ \item{intervals}{Whether the limits are intervals (TRUE) or absolute values
+  (FALSE).}
  \item{type}{What type of display to use.}
  \item{fill}{Color to fill between the lines if \samp{type} is not NULL and
   \samp{fill} is not NA.}
@@ -31,6 +33,9 @@
  is not NA and \samp{type} is \samp{"l"}, a polygon will be drawn between the
  confidence lines. Remember that any points or lines within the confidence band
  will be obscured, so these will have to be redrawn.
+
+ The \samp{intervals} argument allows the user to pass the limits as either intervals (the default) or absolute values.
+
  \samp{dispbars} is now a call to \samp{dispersion} with \samp{type} set to
  \samp{a}.
  

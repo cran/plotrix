@@ -1,4 +1,4 @@
-dispersion<-function (x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,
+dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,
  type="a",fill=NA,...) {
 
  if(is.list(x) && length(x[[1]]) == length(x[[2]])) {
@@ -8,6 +8,11 @@ dispersion<-function (x,y,ulim,llim=ulim,arrow.cap=0.01,arrow.gap=NA,
  if(missing(y) && !missing(x)) {
   y<-x
   x<-1:length(x)
+ }
+ # if absolute values are passed, convert them to intervals
+ if(!intervals) {
+  llim<-y-llim
+  ulim<-ulim-y
  }
  npoints<-length(x)
  if(is.na(arrow.gap)) arrow.gap<-strheight("O")/1.5
