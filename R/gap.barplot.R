@@ -16,7 +16,7 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,ylim=NA,xlab=NULL,ylab=NU
  if (missing(ytics)) ytics <- pretty(y)
  if (missing(yaxlab)) yaxlab <- ytics
  littletics <- which(ytics < gap[1])
- bigtics <- which(ytics >= gap[2])
+ bigtics <- which(ytics >= gap[2] + gapsize)
  halfwidth <- min(diff(x))/2
  if(horiz) {
   if(!is.null(xlab)) {

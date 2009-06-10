@@ -75,7 +75,8 @@
  
  It may be useful to consider \samp{gap.plot} as an alternative.
 }
-\author{Jim Lemon}
+\author{Jim Lemon (thanks to Christophe Dutang for the idea of using bars and lines
+ in the same plot)}
 \seealso{\samp{\link{plot}}}
 \examples{
  twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),

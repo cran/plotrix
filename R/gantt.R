@@ -55,12 +55,8 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  maxwidth<-max(strwidth(x$labels,units="inches"))+0.3
  if (is.null(xlim)) xlim=range(c(x$starts,x$ends))
  npriorities <- max(x$priorities)
- if(is.null(taskcolors)) 
-  taskcolors<-rainbow(ntasks)
- else {
-  if(length(taskcolors)<npriorities) 
-   taskcolors<-rep(taskcolors,length.out=npriorities)
- }
+ if(is.null(taskcolors)) taskcolors<-rainbow(npriorities)
+ if(length(taskcolors)<ntasks) taskcolors<-taskcolors[x$priorities]
  bottom.margin<-ifelse(priority.legend || nchar(xlab),0.7,0)
  par(mai=c(bottom.margin,maxwidth,charheight*5,0.1))
  par(omi=c(0.1,0.1,0.1,0.1),xaxs="i",yaxs="i")
