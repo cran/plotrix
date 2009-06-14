@@ -8,7 +8,7 @@
  directions defined by angles in radians.
 }
 \usage{
- radial.plot(lengths,radial.pos=NULL,labels,label.pos=NULL,
+ radial.plot(lengths,radial.pos=NULL,labels,label.pos=NULL,radlab=FALSE,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
@@ -27,6 +27,7 @@
   the lines. If set to NA, will suppress printing of labels,
   but if missing, the radial positions will be used.}
  \item{label.pos}{The positions of the labels around the plot in radians.}
+ \item{radlab}{Whether to rotate the outer labels to a radial orientation.}
  \item{start}{Where to place the starting (zero) point. Defaults to the
   3 o'clock position.}
  \item{clockwise}{Whether to interpret positive positions as clockwise from
@@ -79,7 +80,10 @@
 
  The size of the labels on the outside of the plot can be adjusted by 
  setting \samp{par(cex.axis=)} and that of the labels inside by setting
- \samp{par(cex.lab=)}.
+ \samp{par(cex.lab=)}. If \samp{radlab} is TRUE, the labels will be rotated
+ to a radial alignment. This may help when there are many values and labels.
+ If some labels are still crowded, try running \samp{label.pos} through the
+ \samp{spreadout} function.
 
  The radial.plot family of plots is useful for illustrating
  cyclic data such as wind direction or speed (but see \samp{oz.windrose}
@@ -90,7 +94,8 @@
  mean much.
 }
 \author{Jim Lemon - thanks to Jeremy Claisse and Antonio Hernandez Matias
- for the \samp{lty} and \samp{rp.type} suggestions respectively.}
+ for the \samp{lty} and \samp{rp.type} suggestions respectively and Patrick
+ Baker for the request that led to \samp{radlab}.}
 \seealso{\samp{\link{polar.plot}},\samp{\link{clock24.plot}}}
 \examples{
  testlen<-rnorm(10)*2+5

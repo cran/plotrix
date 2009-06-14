@@ -61,7 +61,7 @@
  test.df<-data.frame(Age=rnorm(100,25,10),
   Sex=sample(c("M","F"),100,TRUE),
   Marital=sample(c("D","M","S","W"),100,TRUE),
-  Employ=sample(c("FT","PT","NO"),100,TRUE))
+  Employ=sample(c("Full Time","Part Time","Unemployed"),100,TRUE))
  test.col<-list(Overall="green",Employ=c("purple","orange","brown"),
   Marital=c("#1affd8","#caeecc","#f7b3cc","#94ebff"),Sex=c(2,4))
  hierobarp(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Mean age (years)",

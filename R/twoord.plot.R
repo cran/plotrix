@@ -38,10 +38,12 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  else
   plot(lx,ly,xlim=xlim,ylim=lylim,xlab=xlab,ylab="",col=lcol,pch=lpch,
    type=type[1],axes=FALSE,...)
+ xylim<-par("usr")
  mtext(ylab,2,2,col=lcol)
  box()
  axis(1)
  axat<-axis(2,col=ifelse(is.na(lcol),1,lcol),labels=FALSE)
+ abline(v=xylim[1],col=rcol)
  mtext(axat,2,1,at=axat,col=lcol)
  par(new=TRUE)
  if(is.null(rylim)) rylim<-range(ry)
@@ -56,7 +58,7 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
   plot(rx,ry,xlim=xlim,ylim=rylim,xlab="",ylab="",col=rcol,pch=rpch,
    type=type[2],axes=FALSE,...)
  axat<-axis(4,col=ifelse(is.na(rcol),1,rcol),labels=FALSE)
- abline(v=par("usr")[2],col=rcol)
+ abline(v=xylim[2],col=rcol)
  mtext(axat,4,1,at=axat,col=rcol)
  mtext(rylab,4,2,col=rcol)
  par(mar=oldmar,new=FALSE)

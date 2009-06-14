@@ -23,16 +23,17 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
  if(gap.axis == "y") {
   littleones<-which(y < gap[1])
   if(length(gapsize) > 2) {
-   middleones<-which(y >= gap[2] & y < gap[3])
-   bigones<-which(y >= gap[4])
-   lostones<-sum(c(y > gap[1] & y < gap[2], y > gap[3] & y < gap[4]))
+   middleones<-which(y >= gap[2] + gapsize[1] & y < gap[3])
+   bigones<-which(y >= gap[4] + gapsize[1] + gapsize[3])
+   lostones<-sum(c(y > gap[1] & y < gap[2] + gapsize[1],
+    y > gap[3] & y < gap[4] + gapsize[3]))
    if(missing(ylim)) ylim<-c(min(y),ygw*2+max(y)-(gapsize[1]+gapsize[3]))
    else ylim[2]<-ygw*2+ylim[2]-(gapsize[1]+gapsize[3])
   }
   else {
    middleones<-NA
-   bigones<-which(y >= gap[2])
-   lostones<-sum(y > gap[1] & y < gap[2])
+   bigones<-which(y >= gap[2] + gapsize[1])
+   lostones<-sum(y > gap[1] & y < gap[2] + gapsize[1])
    if(missing(ylim)) ylim<-c(min(y),max(y)-gapsize[1])
    else ylim[2]<-ygw+ylim[2]-gapsize[1]
   }
@@ -42,16 +43,17 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
  else {
   littleones<-which(x < gap[1])
   if(length(gapsize) > 2) {
-   middleones<-which(x >= gap[2] & x < gap[3])
-   bigones<-which(x >= gap[4])
-   lostones<-sum(c(x > gap[1] & x < gap[2], x > gap[3] & x < gap[4]))
+   middleones<-which(x >= gap[2] + gapsize[1] & x < gap[3])
+   bigones<-which(x >= gap[4] + gapsize[1] + gapsize[3])
+   lostones<-sum(c(x > gap[1] & x < gap[2] + gapsize[1],
+    x > gap[3] & x < gap[4] + gapsize[1] + gapsize[3]))
    if(missing(xlim)) xlim<-c(min(x),xgw*2+max(x)-(gapsize[1]+gapsize[3]))
    else xlim[2]<-xgw*2+xlim[2]-(gapsize[1]+gapsize[3])
   }
   else {
    middleones<-NA
-   bigones<-which(x >= gap[2])
-   lostones<-sum(x > gap[1] & x < gap[2])
+   bigones<-which(x >= gap[2] + gapsize[1])
+   lostones<-sum(x > gap[1] & x < gap[2] - gapsize[1])
    if(missing(xlim)) xlim<-c(min(x),max(x)-gapsize[1])
    else xlim[2]<-xgw+xlim[2]-gapsize[1]
   }
@@ -93,8 +95,8 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
    if(!is.na(xtics[1])) axis(1,at=xtics,labels=xticlab)
    littletics<-which(ytics < gap[1])
    if(length(gapsize) > 2) {
-    middletics<-which(ytics >= gap[2] & ytics <= gap[3])
-    bigtics<-which(ytics >= gap[4])
+    middletics<-which(ytics >= gap[2] + gapsize[1] & ytics <= gap[3])
+    bigtics<-which(ytics >= gap[4] + gapsize[1] + gapsize[3])
     show.at<-c(ytics[littletics],ytics[middletics]-gapsize[1],
      ytics[bigtics]-(gapsize[1]+gapsize[3]))
     show.labels<-c(yticlab[littletics],yticlab[middletics],yticlab[bigtics])
@@ -122,14 +124,14 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
    if(!is.na(ytics[1])) axis(2,at=ytics,labels=yticlab)
    littletics<-which(xtics<gap[1])
    if(length(gapsize) > 2) {
-    middletics<-which(xtics >= gap[2] & xtics <= gap[3])
-    bigtics<-which(xtics >= gap[4])
+    middletics<-which(xtics >= gap[2] + gapsize[1] & xtics <= gap[3])
+    bigtics<-which(xtics >= gap[4] + gapsize[1] + gapsize[3])
     show.at<-c(xtics[littletics],xtics[middletics]-gapsize[1],
      xtics[bigtics]-(gapsize[1]+gapsize[3]))
     show.labels<-c(xticlab[littletics],xticlab[middletics],xticlab[bigtics])
    }
    else {
-    bigtics<-which(xtics >= gap[2])
+    bigtics<-which(xtics >= gap[2] + gapsize[1])
     show.at<-c(xtics[littletics],xtics[bigtics]-gapsize[1])
     show.labels<-c(xticlab[littletics],xticlab[bigtics])
    }

@@ -48,7 +48,7 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
 # label.prop is the proportion of max(lengths) that gives the
 # radial position of the labels
 
-radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
+radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FALSE,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
@@ -103,11 +103,27 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  if(length(lty) < nsets) lty<-rep(lty,length.out=nsets)
  if(length(lwd) < nsets) lwd<-rep(lwd,length.out=nsets)
  for(i in 1:nsets) {
+  if(nsets > 1) {
+   linecol<-line.col[i]
+   polycol<-poly.col[i]
+   pointcol<-point.col[i]
+   pointsymbols<-point.symbols[i]
+   ltype<-lty[i]
+   lwidth<-lwd[i]
+  }
+  else {
+   linecol<-line.col
+   polycol<-poly.col
+   pointcol<-point.col
+   pointsymbols<-point.symbols
+   ltype<-lty
+   lwidth<-lwd
+  }
   # split up rp.type if there is a combination of displays
   rptype<-unlist(strsplit(rp.type[i],""))
   if(match("s",rptype,0)) {
-   if(is.null(point.symbols[i])) point.symbols[i]<-i
-   if(is.null(point.col[i])) point.col[i]<-i
+   if(is.null(pointsymbols)) pointsymbols<-i
+   if(is.null(pointcol)) pointcol<-i
   }
   # get the vector of x positions
   xpos<-cos(radial.pos[i,])*lengths[i,]
@@ -115,12 +131,12 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   ypos<-sin(radial.pos[i,])*lengths[i,]
   # plot radial lines if rp.type == "r"    
   if(match("r",rptype,0))
-   segments(0,0,xpos,ypos,col=line.col[i],lty=lty[i],lwd=lwd[i],...)
+   segments(0,0,xpos,ypos,col=linecol,lty=ltype,lwd=lwidth,...)
   if(match("p",rptype,0))
-   polygon(xpos,ypos,border=line.col[i],col=poly.col[i],lty=lty[i],
-    lwd=lwd[i],...)
+   polygon(xpos,ypos,border=linecol,col=polycol,lty=ltype,
+    lwd=lwidth,...)
   if(match("s",rptype,0))
-   points(xpos,ypos,pch=point.symbols[i],col=point.col[i],...)
+   points(xpos,ypos,pch=pointsymbols,col=pointcol,...)
   if(show.centroid)
    if(match("p",rptype,0)) {
     nvertices<-length(xpos)
@@ -145,7 +161,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
    
    }
    else
-    points(mean(xpos),mean(ypos),col=point.col[i],pch=point.symbols[i],
+    points(mean(xpos),mean(ypos),col=pointcol,pch=pointsymbols,
      cex=2,...)
  }
  if(is.na(labels[1])) {
@@ -163,7 +179,15 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  if(show.radial.grid) segments(0,0,xpos,ypos,col=grid.col)
  xpos<-cos(label.pos)*maxlength*label.prop
  ypos<-sin(label.pos)*maxlength*label.prop
- boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
+ if(radlab) {
+  for(label in 1:length(labels)) {
+   labelsrt<-(180*label.pos[label]/pi)+
+    180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
+   text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),srt=labelsrt)
+  }
+ }
+ else
+  boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
  if(show.grid) {
   for(i in seq(length(grid.pos),1,by=-1)) {
    xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
