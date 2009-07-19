@@ -1,5 +1,5 @@
-barhier<-function(x,left=0,top,right=1,showval=TRUE,showcount=TRUE,
- firstcall=TRUE,col=NA,fade=FALSE,...) {
+sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,showcount=TRUE,
+ firstcall=TRUE,col=NA,colorindex=1,...) {
  
  dimx<-dim(x)
  if(firstcall) {
@@ -12,14 +12,20 @@ barhier<-function(x,left=0,top,right=1,showval=TRUE,showcount=TRUE,
  }
  xfreq<-table(x[,1])
  lenxf<-length(xfreq)
+ if(is.list(col)) {
+  barcol<-col[[colorindex]]
+  colorindex<-colorindex+1
+ }
+ else barcol<-col
  # careful here, as the table may contain empty entries due to levels
- if(length(col) < lenxf) col<-rep(col,length.out=lenxf)
+ if(length(barcol) < lenxf) barcol<-rep(col,length.out=lenxf)
  labels<-names(xfreq)
+ squeeze<-(right-left)/10
  for(bar in 1:lenxf) {
   if(length(xfreq[bar])) {
    if(!is.na(xfreq[bar])) {
     if(xfreq[bar] > 0) {
-     rect(left,top-xfreq[bar],right,top,col=col[bar])
+     rect(left+squeeze,top-xfreq[bar],right-squeeze,top,col=barcol[bar])
      labelheight<-strheight(labels[bar])
      cex<-ifelse((1.5*labelheight) > xfreq[bar],0.75*xfreq[bar]/labelheight,1)
      if(showval) {
@@ -27,6 +33,8 @@ barhier<-function(x,left=0,top,right=1,showval=TRUE,showcount=TRUE,
        labels[bar])
       text((left+right)/2,top-xfreq[bar]/2,bartext,cex=cex)
      }
+     if(!is.na(lastcenter))
+      segments(left+squeeze,top-xfreq[bar]/2,left-squeeze,lastcenter)
     }
    }
   }
@@ -35,9 +43,8 @@ barhier<-function(x,left=0,top,right=1,showval=TRUE,showcount=TRUE,
    prevcol<-ifelse(bar>1,col[bar-1],NA)
    nextcol<-ifelse(bar<lenxf,col[bar+1],NA)
    nextx<-subset(x,x[,1]==xvalue,2:dimx[2])
-   barcol<-ifelse(fade,smoothColors(col[bar],1,"#ffffff")[2],col[bar])
-   barhier(nextx,right,top,right+1,showval=showval,firstcall=FALSE,
-    col=rep(barcol,length(nextx[,1])))
+   sizetree(nextx,right,top,right+1,lastcenter=top-xfreq[bar]/2,
+    showval=showval,firstcall=FALSE,col=col,colorindex=colorindex)
   }
   top<-top-xfreq[bar]
  }

@@ -4,7 +4,7 @@
 \description{Breaks down a numeric element of a data frame by one or more
  categorical elements.}
 \usage{
- hierobrk(formula,data,maxlevels=10,num.desc=c("mean","std.error","valid.n"))
+ hierobrk(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd)
 }
 \arguments{
  \item{formula}{A formula with a numeric element of a data frame on the left and
@@ -12,13 +12,19 @@
  \item{data}{A data frame containing the elements in \samp{formula}.}
  \item{maxlevels}{The maximum number of levels in any categorical element. Mainly to
   prevent the mess caused by breaking down by a huge number of categories.}
- \item{num.desc}{The names of the summary functions to use.}
+ \item{mct}{The measure of central tendency function to use - defaults to the
+  normal standard error.}
+ \item{lmd}{The lower measure of dispersion function to use.}
+ \item{umd}{The upper measure of dispersion function to use.}
 }
 \value{
- A list containing the overall summary results and a matrix (if only one categorical
- element is on the right) with the summary results as rows and the categories as
- columns. With increasing numbers of categories, this will generate deeper levels of
- lists. This function is similar to \samp{brkdn} in the \pkg{prettyR} package, but
+ A list with four elements:
+ \item{mctlist}{The array produced by the function passed as the \samp{mct} argument.}
+ \item{lcllist}{The array produced by the function passed as the \samp{lmd} argument.}
+ \item{ucllist}{The array produced by the function passed as the \samp{umd} argument.}
+ \item{barlabels}{A list containing the unique elements of the variables on the right
+  side of the formula (or the levels if they are factors), in the order in which they appear in the formula. These will be the default labels for the \samp{hierobarp} function.}
+ This function is similar to \samp{brkdn} in the \pkg{prettyR} package, but
  is structured to be used with the \samp{hierobarp} function.
 }
 \details{
@@ -29,7 +35,7 @@
 
  The user should take care when specifying different summary functions.
  \samp{hierobarp} expects a measure of central tendency as the first function and
- a measure of dispersion as the second, if "error bars" are to be displayed.
+ measures of dispersion as the second and third, if "error bars" are to be displayed.
 }
 \author{Jim Lemon}
 \examples{

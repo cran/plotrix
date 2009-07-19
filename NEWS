@@ -1,3 +1,17 @@
+version 2.6-4
+
+	fixed the bug in hierobrk and hierobarp that got the order of
+	  breakdown factors wrong
+
+version 2.6-3
+
+	fixed the bug in gap.plot that lost the high values
+
+version 2.6-2
+
+	complete rewrite of the hierobarp and hierobrk functions
+	rewrite of barhier function and name changed to sizetree
+
 version 2.6-1
 
 	Minor bug fix in the gap.plot function.
