@@ -41,7 +41,8 @@
  in the initial call must be passed or the data will not be displayed
  correctly. Remember to pass an explicit \samp{xlim} or \samp{ylim} to
  the initial call if the added data exceed the range of the data
- initially displayed.
+ initially displayed. Also remember to subtract the width(s) of the gap(s)
+ if you are passing an explicit \samp{xlim} or \samp{ylim}.
  
  Because the gaps take up some space, it is possible to have a data value
  that is just below a gap plotted in the gap. The answer is to make the lower
@@ -71,7 +72,7 @@
  gap.plot(c(seq(3.5,7.5,by=0.5),seq(16.5,22.5,by=0.5)),
   rnorm(22),gap=c(8,16),gap.axis="x",type="l",add=TRUE,col=2,)
  gap.plot(twogrp,gap=c(8,16,25,35),
- xlab="X values",ylab="Y values",xlim=c(1,30),ylim=c(0,43),
+ xlab="X values",ylab="Y values",xlim=c(1,30),ylim=c(0,25),
  main="Test two gap plot with the lot",xtics=seq(0,30,by=5),
  ytics=c(4,6,18,20,22,38,40,42),
  lty=c(rep(1,10),rep(2,10)),

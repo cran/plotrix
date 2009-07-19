@@ -3,7 +3,6 @@ addtable2plot		Display a table on an existing plot
 arctext			Display text on a circular arc
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
-barhier			Display hierarchical categories as stacked rectangles
 barp			A variant of barplot
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
@@ -81,6 +80,7 @@ remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
 revaxis			Plot with the values on the X or Y axis reversed
 sizeplot		Display overlying points as larger points
+sizetree		Display hierarchical categories as stacked rectangles
 smoothColors		Build a vector of interpolated colors
 soil.texture		Display a "soil texture triangle"
 soil.texture.uk		Soil texture plot using UK conventions

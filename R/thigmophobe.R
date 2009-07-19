@@ -35,12 +35,10 @@ thigmophobe<-function(x,y) {
  names(x)<-names(y)<-NULL
  # get the distance matrix as a full matrix
  xy.dist<-as.matrix(dist(cbind(x,y)))
- print(names(xy.dist))
  lenx<-length(x)
  nearest.index<-rep(0,lenx)
  for(index in 1:lenx)
   nearest.index[index]<-as.numeric(names(which.min(xy.dist[-index,index])))
- print(nearest.index)
  # get the x and y differences for each point to the nearest point
  xdiff<-x - x[nearest.index]
  ydiff<-y - y[nearest.index]
@@ -73,11 +71,13 @@ thigmophobe.labels<-function(x,y,labels=NULL,text.pos=NULL,...) {
   else
    stop("if y is missing, x must be a list with at least 2 columns")
  }
+ # check for NA or NaN
+ validxy<-!(is.na(x) | is.na(y))
  if(is.null(labels)) labels<-1:length(x)
- if(is.null(text.pos)) text.pos<-thigmophobe(x,y)
+ if(is.null(text.pos)) text.pos<-thigmophobe(x[validxy],y[validxy])
  # allow labels to extend beyond the plot area
  par(xpd=TRUE)
- text(x,y,labels,pos=text.pos,...)
+ text(x[validxy],y[validxy],labels[validxy],pos=text.pos,...)
  # restore the clipping
  par(xpd=FALSE)
 }

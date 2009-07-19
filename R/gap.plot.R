@@ -9,8 +9,8 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
   x<-1:length(y)
  }
  if(missing(gap)) stop("gap must be specified")
+ figxy <- c(range(x),range(y))
  gapsize<-diff(gap)
- figxy <- par("usr")
  xaxl<-par("xlog")
  yaxl<-par("ylog")
  xgw<-(figxy[2]-figxy[1])*brw
@@ -22,20 +22,17 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
  if(length(col) < length(y)) col<-rep(col,length.out=length(y))
  if(gap.axis == "y") {
   littleones<-which(y < gap[1])
-  if(length(gapsize) > 2) {
-   middleones<-which(y >= gap[2] + gapsize[1] & y < gap[3])
-   bigones<-which(y >= gap[4] + gapsize[1] + gapsize[3])
-   lostones<-sum(c(y > gap[1] & y < gap[2] + gapsize[1],
-    y > gap[3] & y < gap[4] + gapsize[3]))
-   if(missing(ylim)) ylim<-c(min(y),ygw*2+max(y)-(gapsize[1]+gapsize[3]))
-   else ylim[2]<-ygw*2+ylim[2]-(gapsize[1]+gapsize[3])
+  if(length(gap) > 3) {
+   middleones<-which(y >= gap[2] + ygw & y < gap[3])
+   bigones<-which(y >= gap[4])
+   lostones<-sum(c(y > gap[1] & y < gap[2] + ygw,y > gap[3] & y < gap[4] + ygw))
+   if(missing(ylim)) ylim<-c(min(y),max(y) - (gapsize[1] + gapsize[3]))
   }
   else {
    middleones<-NA
-   bigones<-which(y >= gap[2] + gapsize[1])
-   lostones<-sum(y > gap[1] & y < gap[2] + gapsize[1])
+   bigones<-which(y >= gap[2] + ygw)
+   lostones<-sum(y > gap[1] & y < gap[2] + ygw)
    if(missing(ylim)) ylim<-c(min(y),max(y)-gapsize[1])
-   else ylim[2]<-ygw+ylim[2]-gapsize[1]
   }
   if(lostones) warning("some values of y will not be displayed")
   if(missing(xlim)) xlim<-range(x)
@@ -43,19 +40,16 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
  else {
   littleones<-which(x < gap[1])
   if(length(gapsize) > 2) {
-   middleones<-which(x >= gap[2] + gapsize[1] & x < gap[3])
-   bigones<-which(x >= gap[4] + gapsize[1] + gapsize[3])
-   lostones<-sum(c(x > gap[1] & x < gap[2] + gapsize[1],
-    x > gap[3] & x < gap[4] + gapsize[1] + gapsize[3]))
-   if(missing(xlim)) xlim<-c(min(x),xgw*2+max(x)-(gapsize[1]+gapsize[3]))
-   else xlim[2]<-xgw*2+xlim[2]-(gapsize[1]+gapsize[3])
+   middleones<-which(x >= gap[2] + xgw & x < gap[3])
+   bigones<-which(x >= gap[4])
+   lostones<-sum(c(x > gap[1] & x < gap[2] + xgw,x > gap[3] & x < gap[4]+ xgw))
+   if(missing(xlim)) xlim<-c(min(x),max(x) - (gapsize[1] + gapsize[3]))
   }
   else {
    middleones<-NA
-   bigones<-which(x >= gap[2] + gapsize[1])
-   lostones<-sum(x > gap[1] & x < gap[2] - gapsize[1])
-   if(missing(xlim)) xlim<-c(min(x),max(x)-gapsize[1])
-   else xlim[2]<-xgw+xlim[2]-gapsize[1]
+   bigones<-which(x >= gap[2])
+   lostones<-sum(x > gap[1] & x < gap[2] + xgw)
+   if(missing(xlim)) xlim<-c(min(x),max(x) - gapsize[1])
   }
   if(lostones) warning("some values of x will not be displayed")
   if(missing(ylim)) ylim<-range(y)
@@ -70,7 +64,7 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
    if(length(gapsize) > 2) {
     points(x[middleones],y[middleones]-gapsize[1],
      lty=lty[middleones],col=col[middleones],pch=pch[middleones],...)
-    points(x[bigones],y[bigones]-(gapsize[1]+gapsize[3]),
+    points(x[bigones],y[bigones] - (gapsize[1] + gapsize[3]),
      lty=lty[bigones],col=col[bigones],pch=pch[bigones],...)
    }
    else points(x[bigones],y[bigones]-gapsize[1],
@@ -78,12 +72,12 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
   }
   else {
    if(length(gapsize) > 2) {
-    points(xgw+x[middleones]-gapsize[1],y[middleones],
+    points(x[middleones] - gapsize[1],y[middleones],
      lty=lty[middleones],col=col[middleones],pch=pch[middleones],...)
-    points(x[bigones]-(gapsize[1]+gapsize[3]),y[bigones],
+    points(x[bigones] - (gapsize[1] + gapsize[3]),y[bigones],
      lty=lty[bigones],col=col[bigones],pch=pch[bigones],...)
    }
-   else points(x[bigones]-gapsize[1],y[bigones],
+   else points(x[bigones]-xgw,y[bigones],
     lty=lty[bigones],col=col[bigones],pch=pch[bigones],...)
   }
  }
@@ -96,14 +90,14 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
    littletics<-which(ytics < gap[1])
    if(length(gapsize) > 2) {
     middletics<-which(ytics >= gap[2] + gapsize[1] & ytics <= gap[3])
-    bigtics<-which(ytics >= gap[4] + gapsize[1] + gapsize[3])
-    show.at<-c(ytics[littletics],ytics[middletics]-gapsize[1],
-     ytics[bigtics]-(gapsize[1]+gapsize[3]))
+    bigtics<-which(ytics >= gap[4] + 2 * ygw)
+    show.at<-c(ytics[littletics],ytics[middletics] - gapsize[1],
+     ytics[bigtics]-(gapsize[1] + gapsize[3]))
     show.labels<-c(yticlab[littletics],yticlab[middletics],yticlab[bigtics])
    }
    else {
     bigtics<-which(ytics >= gap[2])
-    show.at<-c(ytics[littletics],ytics[bigtics]-gapsize[1])
+    show.at<-c(ytics[littletics],ytics[bigtics] - gapsize[1])
     show.labels<-c(ytics[littletics],yticlab[bigtics])
    }
    axis(2,at=show.at,labels=show.labels)

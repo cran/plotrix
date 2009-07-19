@@ -34,12 +34,6 @@ plot(1:10*0.001,1:10*100,axes=FALSE,xlab="",ylab="",main="Axis multipliers")
 box()
 axis.mult(1,mult=0.001)
 axis.mult(2,mult=100)
-cat1<-sample(LETTERS[1:4],40,TRUE)
-cat2<-paste(cat1,sample(1:4,40,TRUE),sep="")
-cat3<-paste(cat2,sample(letters[1:4],40,TRUE),sep="")
-hcats<-data.frame(cat1,cat2,cat3)
-barhier(hcats,col=c("#ff8080","#dddd80","#80ff80","#8080ff"),
- main="Hierarchical count chart",fade=TRUE)
 par(mar=c(5,5,4,2))
 happyday<-data.frame(Monday=c(2.3,3.4),Tuesday=c(2.8,3.3),Wednesday=c(3.2,3.1),
 Thursday=c(3.6,2.8),Friday=c(4.2,2.6),Saturday=c(4.5,2.9),Sunday=c(4.1,2.8))
@@ -231,6 +225,14 @@ x <- c(0.1,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.3,0.3)
 y <- c( 1,  1,  1,  1,  2,  2,  2,  3,  3,  4,  5 )
 plot(x,y)
 sizeplot(x,y,main="sizeplot")
+cat1<-sample(c("None","Low","Medium","High"),40,TRUE)
+cat2<-sample(c("None","Low","Medium","High"),40,TRUE)
+cat3<-sample(c("None","Low","Medium","High"),40,TRUE)
+hcats<-data.frame(cat1,cat2,cat3)
+bhcol<-list(c("#ff8080","#dddd80","#80ff80","#8080ff"),
+ c("red","green","lightblue","yellow"),
+ c("#ffffff","#bbbbbb","#999999","#666666"))
+sizetree(hcats,col=bhcol,main="Hierarchical count chart")
 soils.sw.percent<-data.frame(
  Sand=c(67,67,66,67,36,25,24,59,27,9,8,8,20,
  45,50,56,34,29,39,41,94,98,97,93,96,99),

@@ -24,7 +24,7 @@
  \item{type}{as in \samp{plot}}
  \item{halfwidth}{Half the width of the bars in user units. The bars are
   centered on successive integers if no \samp{x} values are supplied.}
- \item{...}{additional arguments passed to \samp{axis}.}
+ \item{...}{additional arguments passed to \samp{plot}.}
 }
 \value{nil}
 \details{
