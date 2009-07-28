@@ -63,7 +63,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  plot(range(x$starts),c(1,ntasks),xlim=xlim,ylim=c(0.5,ntasks+0.5),
   main="",xlab="",ylab="",axes=FALSE,type="n")
  box()
- if(nchar(main)) mtext(main,3,2)
+ if(nchar(main)) mtext(main,3,2,at=getFigCtr()[1])
  if(nchar(xlab)) mtext(xlab,1,1)
  if(is.na(vgrid.format)) {
   if(is.null(vgridlab)) vgridlab=vgridpos

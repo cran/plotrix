@@ -54,7 +54,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
  show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
  grid.col="gray",grid.bg="transparent",
  grid.left=FALSE,grid.unit=NULL,point.symbols=NULL,point.col=NULL,
- show.centroid=FALSE,radial.lim=NULL,poly.col=NULL,...) {
+ show.centroid=FALSE,radial.lim=NULL,radial.labels=NULL,poly.col=NULL,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
  length.dim<-dim(lengths)
@@ -79,8 +79,9 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
  if(clockwise) radial.pos<--radial.pos
  if(start) radial.pos<-radial.pos+start
  if(show.grid) {
-  grid.pos<-pretty(radial.lim)
-  if(grid.pos[1] <= radial.lim[1]) grid.pos<-grid.pos[-1]
+  if(length(radial.lim) < 3) grid.pos<-pretty(radial.lim)
+  else grid.pos<-radial.lim
+  if(grid.pos[1] < radial.lim[1]) grid.pos<-grid.pos[-1]
   maxlength<-max(grid.pos-radial.lim[1])
   angles<-seq(0,1.96*pi,by=0.04*pi)
  }
@@ -92,6 +93,13 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
  par(mar=mar,pty="s")
  plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
   main=main,xlab=xlab,ylab=ylab)
+ if(show.grid) {
+  for(i in seq(length(grid.pos),1,by=-1)) {
+   xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
+   ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
+   polygon(xpos,ypos,border=grid.col,col=grid.bg)
+  }
+ }
  par(xpd=TRUE)
  # stretch everything out to the correct length
  if(length(line.col) < nsets) line.col<-1:nsets
@@ -188,19 +196,13 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
  }
  else
   boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
- if(show.grid) {
-  for(i in seq(length(grid.pos),1,by=-1)) {
-   xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
-   ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
-   polygon(xpos,ypos,border=grid.col,col=grid.bg)
-  }
-  if(show.grid.labels) {
-   ypos<-rep(-maxlength/15,length(grid.pos))
-   boxed.labels(grid.pos-radial.lim[1],ypos,as.character(grid.pos),border=FALSE,
-    cex=par("cex.lab"))
-  }
-  if(!is.null(grid.unit))
-   text(maxlength*1.05,ypos,grid.unit,adj=0)
+ if(show.grid.labels) {
+  ypos<-rep(-maxlength/15,length(grid.pos))
+  if(is.null(radial.labels)) radial.labels=as.character(grid.pos)
+  boxed.labels(grid.pos-radial.lim[1],ypos,radial.labels,border=FALSE,
+   cex=par("cex.lab"))
  }
+ if(!is.null(grid.unit))
+  text(maxlength*1.05,ypos,grid.unit,adj=0)
  par(oldpar)
 }

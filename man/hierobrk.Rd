@@ -38,6 +38,7 @@
  measures of dispersion as the second and third, if "error bars" are to be displayed.
 }
 \author{Jim Lemon}
+\seealso{\samp{\link{by}}}
 \examples{
  test.df<-data.frame(Age=rnorm(100,25,10),
   Sex=sample(c("M","F"),100,TRUE),

@@ -1,5 +1,6 @@
-boxed.labels<-function(x,y=NA,labels,bg="white",border=TRUE,xpad=1.2, 
- ypad=1.2,srt=0,cex=1,adj=0.5,...) {
+boxed.labels<-function(x,y=NA,labels,
+ bg=ifelse(match(par("bg"),"transparent",0),"white",par("bg")),
+ border=TRUE,xpad=1.2,ypad=1.2,srt=0,cex=1,adj=0.5,...) {
  
  oldcex<-par("cex")
  par(cex=cex)

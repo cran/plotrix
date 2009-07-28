@@ -5,13 +5,15 @@
  Places labels in boxes on an existing plot
 }
 \usage{
- boxed.labels(x,y=NA,labels,bg="white",border=TRUE,xpad=1.2,ypad=1.2,
-  srt=0,cex=1,adj=0.5,...)
+ boxed.labels(x,y=NA,labels,
+  bg=ifelse(match(par("bg"),"transparent",0),"white",par("bg")),
+  border=TRUE,xpad=1.2,ypad=1.2,srt=0,cex=1,adj=0.5,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the labels. \samp{x} can be an
   \samp{\link{xy.coords}} list.}
- \item{bg}{The fill color of the rectangles on which the labels are displayed.}
+ \item{bg}{The fill color of the rectangles on which the labels are displayed
+  (see Details).}
  \item{labels}{Text strings}
  \item{border}{Whether to draw borders around the rectangles.}
  \item{xpad,ypad}{The proportion of the rectangles to the
@@ -25,8 +27,9 @@
 }
 \details{
  The label(s) are displayed on a rectangular background. This may be useful
- for visibility. Only right angle rotations are allowed in \samp{boxed.labels}.
- Important change: \samp{xpad} and \samp{ypad} are now the full proportion of
+ for visibility and is the reason that "transparent" background is not available.
+ Only right angle rotations are allowed in \samp{boxed.labels}. \emph{Important
+ change}: \samp{xpad} and \samp{ypad} are now the full proportion of
  the box to text, not half. The user can now call \samp{cylindrect} or
  \samp{gradient.rect} for the background rectangle.
 }

@@ -1,5 +1,4 @@
-pyramid.plot<-function(xy,xx,labels=NA,
- top.labels=c("Male","Age","Female"),
+pyramid.plot<-function(xy,xx,labels=NA,top.labels=c("Male","Age","Female"),
  main="",laxlab=NULL,raxlab=NULL,unit="%",xycol,xxcol,gap=1,
  labelcex=1,mark.cat=NA,add=FALSE) {
 

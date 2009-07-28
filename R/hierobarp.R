@@ -13,7 +13,7 @@ hierobrk<-function(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd) {
    }
    else {
     vnx<-unlist(apply(x,2,vn))
-    stderr<-unlist(apply(x,2,sd,na.rm=TRUE))
+    stderr<-unlist(apply(x,2,sd,na.rm = TRUE))
    }
   }
   return(stderr/sqrt(vnx))
@@ -98,12 +98,8 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
    if(errbars)
     dispersion((start+end)/2,x[[1]][lastbar],x[[3]][lastbar],x[[2]][lastbar],
      arrow.gap=arrow.gap)
-   par(xpd=TRUE)
-   segments(c(start+squeeze,end-squeeze),rep(ylim[1],2),
-    c(start+squeeze,end-squeeze),rep(ylim[1],2)-lineht)
    if(showbrklab)
     mtext(barnames[lastbar],side=1,line=0.1,at=(start+end)/2,cex=labelcex)
-   par(xpd=FALSE)
    start<-end
   }
  }

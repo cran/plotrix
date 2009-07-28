@@ -97,7 +97,7 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
    }
   }
  }
- if(nchar(main)) mtext(main,line=1,at=1,adj=0,cex=1.5)
+ if(nchar(main)) mtext(main,line=1,at=getFigCtr()[1],cex=1.5)
  par(xpd=FALSE,mar=oldmar)
  if(!is.na(bg.col)) par(bg=oldbg)
 }
