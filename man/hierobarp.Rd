@@ -43,7 +43,7 @@
 \details{
  \samp{hierobarp} displays a bar plot illustrating the breakdown of a numeric
  element of a data frame by one or more categorical elements. The breakdown is
- performed by \samp{brkdn.num}. Typically, the mean of each category specified
+ performed by \samp{hierobrk}. Typically, the mean of each category specified
  by the formula is displayed as the height of a bar. If \samp{showall} is TRUE,
  the entire nested breakdown will be displayed. This can be useful in
  visualizing the relationship between groups and subgroups in a compact format.
@@ -60,6 +60,7 @@
  quite easy to get this wrong.
 }
 \author{Jim Lemon and Ofir Levy}
+\seealso{\samp{\link{hierobrk}}, \samp{\link{barp}}}
 \examples{
  test.df<-data.frame(Age=rnorm(100,25,10),
   Sex=sample(c("M","F"),100,TRUE),

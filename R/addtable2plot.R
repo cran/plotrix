@@ -38,11 +38,8 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    cex=cex))*1.5
  xleft<-x-xjust*nhcells*cellwidth
  ytop<-y+yjust*nvcells*cellheight
- # adjust for logarithmic plotting
- oldxlog<-par("xlog")
- par(xlog=FALSE)
- oldylog<-par("ylog")
- par(ylog=FALSE)
+ # adjust for logarithmic plotting and allow the table to extend beyond the plot
+ oldpar<-par(ylog=FALSE,ylog=FALSE,xpd=TRUE)
  # draw the box if wanted
  if(bty=="o")
   rect(xleft,ytop-nvcells*cellheight,xleft+nhcells*cellwidth,ytop,
@@ -77,5 +74,5 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
   if(bty=="n")
    segments(xleft,ytop,xleft+nhcells*cellwidth,ytop,lwd=lwd,col=box.col)
  }
- par(xlog=oldxlog,ylog=oldylog)
+ par(oldpar)
 }

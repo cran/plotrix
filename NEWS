@@ -1,3 +1,7 @@
+version 2.7
+
+	added the getFigCtr function
+
 version 2.6-4
 
 	fixed the bug in hierobrk and hierobarp that got the order of

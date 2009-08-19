@@ -22,17 +22,28 @@
    is not supported for these. }
 }
 \details{
-  Draws one or more arcs from \samp{angle1} to \samp{angle2}.
-  If \samp{angle1} is numerically greater than \samp{angle2},
+  Draws one or more arcs from \code{angle1} to \code{angle2}.
+  If \code{angle1} is numerically greater than \code{angle2},
   then the angles are swapped.
+
+  Be sure to use an aspect ratio of 1 as shown in the example to avoid
+  distortion.
 }
 \value{
   Returns a matrix of expanded arguments invisibly.
 }
 \author{Gabor Grothendieck}
 \examples{
-plot(1:10, asp = 1,main="Test draw.arc")
-draw.arc(5, 5, 1:10/10, deg2 = 1:10*10, col = "blue")
-draw.arc(8, 8, 1:10/10, deg2 = 1:10*10, col = 1:10)
+
+   plot(1:10, asp = 1,main="Test draw.arc")
+   draw.arc(5, 5, 1:10/10, deg2 = 1:10*10, col = "blue")
+   draw.arc(8, 8, 1:10/10, deg2 = 1:10*10, col = 1:10)
+
+   # example taken from post by Hans Borcher:
+   # https://stat.ethz.ch/pipermail/r-help/2009-July/205728.html
+   # Note setting of aspect ratio to 1 first.
+   curve(sin(x), 0, pi, col="blue", asp=1)
+   draw.arc(pi/2, 0, 1, deg1=45, deg2=135, col="red")
+
 }
 \keyword{misc}

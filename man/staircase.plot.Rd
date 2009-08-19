@@ -49,9 +49,12 @@
  meaning that the first bar is at the left of the plot and subsequent bars are
  placed to the right. The other three possibilities follow the conventional
  compass layout.
+
+ The \samp{getFigCtr} function is called to center the plot title in the figure
+ region as the plot area is typically off center.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{plot}}}
+\seealso{\samp{\link{plot}}, \samp{\link{getFigCtr}}}
 \examples{
  sample_size<-c(500,-72,428,-94,334,-45,289)
  totals<-c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE)

@@ -14,7 +14,7 @@
  show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
  grid.col="gray",grid.bg="transparent",
  grid.left=FALSE,grid.unit=NULL,point.symbols=NULL,point.col=NULL,
- show.centroid=FALSE,radial.lim=NULL,poly.col=NULL,...)
+ show.centroid=FALSE,radial.lim=NULL,radial.labels=NULL,poly.col=NULL,...)
 }
 \arguments{
  \item{lengths}{A numeric data vector or matrix. If \samp{lengths}
@@ -54,8 +54,11 @@
  \item{point.symbols}{The symbols for plotting (as in pch).}
  \item{point.col}{Colors for the symbols.}
  \item{show.centroid}{Whether to display a centroid.}
- \item{radial.lim}{The range of the grid circle. Defaults
-  to \samp{range(pretty(lengths))}.}
+ \item{radial.lim}{The range of the grid circle. Defaults to
+  \samp{pretty(range(lengths))}, but if more than two values are passed, the
+  exact values will be displayed.}
+ \item{radial.labels}{Optional labels for the radial grid. The default is
+  the values of radial.lim.}
  \item{poly.col}{Fill color if polygons are drawn. Use NA for no fill.}
  \item{...}{Additional arguments are passed to \samp{plot}.}
 }
@@ -94,8 +97,9 @@
  mean much.
 }
 \author{Jim Lemon - thanks to Jeremy Claisse and Antonio Hernandez Matias
- for the \samp{lty} and \samp{rp.type} suggestions respectively and Patrick
- Baker for the request that led to \samp{radlab}.}
+ for the \samp{lty} and \samp{rp.type} suggestions respectively, Patrick
+ Baker for the request that led to \samp{radlab} and Thomas Steiner for
+ the request for the \samp{radial.lim} and \samp{radial.labels} modifications.}
 \seealso{\samp{\link{polar.plot}},\samp{\link{clock24.plot}}}
 \examples{
  testlen<-rnorm(10)*2+5
