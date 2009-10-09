@@ -1,5 +1,6 @@
 stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
- xlim=NA,ylim=NA,lty=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,axis4=TRUE,...) {
+ xlim=NA,ylim=NA,lty=1,lwd=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,
+ axis4=TRUE,...) {
 
  ydim<-dim(y)
  if(is.null(y[1])) {
@@ -27,19 +28,21 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
   if(is.na(col[1])) col=rainbow(ydim[2])
   else if(length(col)<ydim[2]) col<-rep(col,length.out=ydim[2])
   if(length(lty)<ydim[2]) lty<-rep(lty,length.out=ydim[2])
+  if(length(lwd)<ydim[2]) lwd<-rep(lwd,length.out=ydim[2])
   for(pline in seq(ydim[2],1,by=-1)) {
    if(pline==1) {
     polygon(c(x[1],x[,pline],x[ydim[1]]),
      c(plotlim[3],y[,pline],plotlim[3]),
-     border=border,col=col[pline],lty=lty[pline])
+     border=border,col=col[pline],lty=lty[pline],lwd=lwd[pline])
    }
    else
     polygon(c(x[,pline],rev(x[,pline-1])),c(y[,pline],rev(y[,pline-1])),
-     border=border,col=col[pline],lty=lty[pline])
+     border=border,col=col[pline],lty=lty[pline],lwd=lwd[pline])
   }
  }
  else {
-  polygon(c(min(x),x,max(x),0),c(0,y,0,0),border=border,col=col,lty=lty)
+  polygon(c(min(x),x,max(x),0),c(0,y,0,0),border=border,col=col,lty=lty,
+   lwd=lwd)
   if(is.na(xat[1])) {
    xat<-x
    if(is.na(xaxlab[1])) xaxlab<-xat

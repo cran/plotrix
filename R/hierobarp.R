@@ -46,36 +46,42 @@ hierobrk<-function(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd) {
 hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
  mct=mean,lmd=std.error,umd=lmd, x=NULL,xlim=NULL,ylim=NULL,
  main="",xlab="",ylab="",start=0,end=1,shrink=0.02,errbars=FALSE,
- col=NA,barlabels=NULL,labelcex=1,lineht=NA,showall=FALSE,
- showbrklab=FALSE,mar=NULL) {
+ col=NA,labelcex=1,lineht=NA,showall=FALSE,barlabels=NULL,
+ showbrklab=TRUE,mar=NULL,arrow.cap=NA) {
 
  squeeze<-(end-start)*shrink
  if(is.null(x)) {
   x<-hierobrk(formula=formula,data=data,maxlevels=maxlevels,mct=mct,lmd=lmd,umd=umd)
   if(is.null(xlim)) xlim<-c(start,end)
   if(is.null(ylim)) {
-   ymin<-min(c(0,unlist(x[[1]])-unlist(x[[2]])),na.rm=TRUE)
+   ymin<-min(c(0,unlist(x[[1]])-errbars*unlist(x[[2]])),na.rm=TRUE)
    if(ymin < 0) ymin<-ymin*1.02
-   ymax<-max(unlist(x[[1]])+unlist(x[[3]]),na.rm=TRUE)
+   ymax<-max(c(max(unlist(x[[1]]),na.rm=TRUE),
+    max(unlist(x[[1]])+errbars*unlist(x[[3]]),na.rm=TRUE)))
    ylim<-c(ymin,ymax*1.02)
    if(!is.null(mar)) par(mar=mar)
   }
-  if(is.null(barlabels)) barlabels<-x[[4]]
+  if(is.null(barlabels) && length(x) > 3) barlabels<-x[[4]]
+ }
+ else if(!is.list(x)) x<-list(x)
+ if(start == 0) {
   plot(0,xlim=xlim,ylim=ylim,main=main,xlab=xlab,ylab=ylab,xaxt="n",
    xaxs="i",yaxs="i",type="n")
   parusr<-par("usr")
   if(is.na(lineht))
    lineht<-diff(parusr[3:4])*(par("mai")[1]/par("pin")[2])/par("mar")[1]
-  firstcol<-if(is.list(col)) firstcol<-col[[1]]
-  else firstcol<-col
+  firstcol<-if(is.list(col)) barcol<-col[[1]]
+  else barcol<-col
   start<-start+squeeze
   end<-end-squeeze
   if(showall) {
    rect(start,0,end,mean(x[[1]],na.rm=TRUE),col=firstcol)
    par(xpd=TRUE)
-   segments(c(start,end),rep(ylim[1],2),c(start,end),
-    rep(ylim[1],2)-lineht*(length(dim(x[[1]]))+1))
-   mtext("Overall",side=1,line=length(dim(x[[1]])),at=(start+end)/2,cex=labelcex)
+   segments(c(start,end,start),
+    c(rep(ylim[1],2),ylim[1]-lineht*(dim(x[[1]])[2]-0.5)),
+    c(start,end,end),rep(ylim[1],3)-lineht*(dim(x[[1]])[2]-0.5))
+   boxed.labels((start+end)/2,ylim[1]-lineht*(dim(x[[1]])[2]-0.5),"Overall",
+    bg=ifelse(is.na(barcol),"white",barcol),cex=labelcex)
    par(xpd=FALSE)
   }
   if(is.list(col)) {
@@ -89,7 +95,7 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
  ndim<-length(mctdim)
  lastdim<-mctdim[ndim]
  if(is.null(mctdim)) {
-  arrow.gap<-par("usr")[4]/100
+  if(is.na(arrow.cap)) arrow.cap<-par("usr")[4]/100
   newwidth<-(end-start)/length(x[[1]])
   barnames<-barlabels[[1]]
   for(lastbar in 1:length(x[[1]])) {
@@ -97,9 +103,13 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
    rect(start+squeeze,0,end-squeeze,x[[1]][lastbar],col=barcol[lastbar])
    if(errbars)
     dispersion((start+end)/2,x[[1]][lastbar],x[[3]][lastbar],x[[2]][lastbar],
-     arrow.gap=arrow.gap)
-   if(showbrklab)
-    mtext(barnames[lastbar],side=1,line=0.1,at=(start+end)/2,cex=labelcex)
+     arrow.cap=arrow.cap)
+   if(showbrklab) {
+    par(xpd=TRUE)
+    boxed.labels((start+end)/2,ylim[1]-lineht*0.5,barnames[lastbar],
+     bg=ifelse(is.na(barcol),"white",barcol[lastbar]),cex=labelcex)
+    par(xpd=FALSE)
+   }
    start<-end
   }
  }
@@ -131,13 +141,16 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
     rect(start+squeeze,0,end-squeeze,mean(unlist(xslice[[1]]),na.rm=TRUE),
      col=barcol[slice])
     par(xpd=TRUE)
-    segments(c(start+squeeze,end-squeeze),rep(ylim[1],2),
-     c(start+squeeze,end-squeeze),rep(ylim[1],2)-lineht*ndim)
-    mtext(xdn[slice],side=1,line=ndim-1,at=(start+end)/2,cex=labelcex)
+    segments(c(start+squeeze,end-squeeze,start+squeeze),
+     c(rep(ylim[1],2),ylim[1]-lineht*(ndim-0.5)),
+     c(start+squeeze,end-squeeze,end-squeeze),
+     rep(ylim[1],3)-lineht*(ndim-0.5))
+    boxed.labels((start+end)/2,ylim[1]-lineht*(ndim-0.5),xdn[slice],
+     bg=ifelse(is.na(barcol[slice]),"white",barcol[slice]),cex=labelcex)
     par(xpd=FALSE)
    }
    hierobarp(x=xslice,xlim=xlim,ylim=ylim,main=main,xlab=xlab,ylab=ylab,
-    start=start+squeeze,end=end-squeeze,shrink=shrink+0.015,errbars=errbars,
+    start=start+squeeze,end=end-squeeze,shrink=shrink*1.5,errbars=errbars,
     col=newcol,barlabels=newlabels,lineht=lineht,showall=showall,
     showbrklab=showbrklab,labelcex=labelcex)
    start<-end

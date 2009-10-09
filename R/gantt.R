@@ -50,6 +50,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   stop("Can't have a start date after an end date")
  tasks<-unique(x$labels)
  ntasks<-length(tasks)
+ if(is.null(x$priorities)) x$priorities<-rep(1,ntasks)
  if(is.null(dev.list())) plot.new()
  charheight<-strheight("M",units="inches")
  maxwidth<-max(strwidth(x$labels,units="inches"))+0.3

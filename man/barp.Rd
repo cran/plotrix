@@ -17,7 +17,7 @@
   displayed.}
  \item{legend.pos}{Optional position for the legend as a list with \samp{x}
   and \samp{y} components. The default is to call \samp{\link{emptyspace}}
-  to position the legend. If this is NA, \samp{locator} will be called.}
+  to position the legend. If this is NULL, \samp{locator} will be called.}
  \item{col}{The fill colors for the bars. The default is no fill.}
  \item{border}{The border for the bars.}
  \item{main}{The title at the top of the plot.}
@@ -32,7 +32,7 @@
   by shading them.}
  \item{shadow}{Whether to place a shadow behind the bars.}
  \item{do.first}{An optional expression that will be evaluated before anything
-  else is displayed on the plot. Useful background colors or lines.}
+  else is displayed on the plot. Useful for background colors or lines.}
 }
 \value{
  A list containing two components of the same form as \samp{height}:

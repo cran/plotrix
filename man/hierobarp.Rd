@@ -6,8 +6,8 @@
 \usage{
  hierobarp(formula=NULL,data=NULL,maxlevels=10,mct=mean,lmd=std.error,umd=lmd,
  x=NULL,xlim=NULL,ylim=NULL,main="",xlab="",ylab="",start=0,end=1,shrink=0.02,
- errbars=FALSE,col=NA,barlabels=NULL,labelcex=1,lineht=NA,showall=FALSE,
- showbrklab=FALSE,mar=NULL)
+ errbars=FALSE,col=NA,labelcex=1,lineht=NA,showall=FALSE,barlabels=NULL,
+ showbrklab=TRUE,mar=NULL,arrow.cap=NA)
 }
 \arguments{
  \item{formula}{A formula with a numeric element of a data frame on the left and
@@ -38,6 +38,7 @@
  \item{showbrklab}{Whether to display the labels for the lowest level of breakdown.}
  \item{mar}{If not NULL, a four element vector to set the plot margins. If new margins
   are set, the user must reset the margins after the function exits.}
+ \item{arrow.cap}{The width of the "cap" on error bars in user units, defaulting to 0.01.}
 }
 \value{The summary arrays produced by hierobrk.}
 \details{
@@ -66,8 +67,8 @@
   Sex=sample(c("M","F"),100,TRUE),
   Marital=sample(c("D","M","S","W"),100,TRUE),
   Employ=sample(c("Full Time","Part Time","Unemployed"),100,TRUE))
- test.col<-list(Overall="green",Employ=c("purple","orange","brown"),
-  Marital=c("#1affd8","#caeecc","#f7b3cc","#94ebff"),Sex=c(2,4))
+ test.col<-list(Overall="gray",Employ=c("#1affd8","#caeecc","#f7b3cc"),
+  Marital=c("mediumpurple","orange","tan","lightgreen"),Sex=c("pink","lightblue"))
  hierobarp(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Mean age (years)",
   main="Show only the final breakdown",errbars=TRUE,col=test.col$Sex)
  # set up functions for 20 and 80 percentiles - must be offsets, not limits
@@ -85,7 +86,7 @@
    showbrklab=TRUE,mar=c(5,4,4,8))
   # example of a legend that might be included, needs a lot of space
   par(xpd=TRUE)
-  legend(1.02,34,c("Overall","Full time","Part time","No work","Divorced",
+  legend(1.02,27,c("Overall","Full time","Part time","No work","Divorced",
    "Married","Single","Widowed","Female","Male"),
    fill=unlist(test.col))
   par(xpd=FALSE,mar=c(5,4,4,2))

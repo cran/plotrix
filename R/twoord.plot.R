@@ -1,6 +1,6 @@
 twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,type="b",
- halfwidth=0.4,...) {
+ xtickpos=NULL,xticklab=NULL,halfwidth=0.4,...) {
 
  if(!is.null(data)) {
   ly<-data[ly]
@@ -41,9 +41,10 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  xylim<-par("usr")
  mtext(ylab,2,2,col=lcol)
  box()
- axis(1)
+ if(is.null(xticklab)) axis(1)
+ else axis(1,at=xtickpos,labels=xticklab)
  axat<-axis(2,col=ifelse(is.na(lcol),1,lcol),labels=FALSE)
- abline(v=xylim[1],col=rcol)
+ abline(v=xylim[1],col=lcol)
  mtext(axat,2,1,at=axat,col=lcol)
  par(new=TRUE)
  if(is.null(rylim)) rylim<-range(ry)
