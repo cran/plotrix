@@ -8,7 +8,7 @@
 \usage{
  twoord.plot(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,
- type="b",halfwidth=0.4,...)
+ type="b",xtickpos=NULL,xticklab=NULL,halfwidth=0.4,...)
 }
 \arguments{
  \item{lx,ly,rx,ry}{y and optional x values for the plot}
@@ -22,6 +22,8 @@
  \item{rylab}{label for the right axis}
  \item{lpch,rpch}{plot symbols to distinguish the two sets of values}
  \item{type}{as in \samp{plot}}
+ \item{xtickpos}{Optional positions for x-axis tick labels.}
+ \item{xticklab}{Optional labels for x-axis. Useful for things like dates.}
  \item{halfwidth}{Half the width of the bars in user units. The bars are
   centered on successive integers if no \samp{x} values are supplied.}
  \item{...}{additional arguments passed to \samp{plot}.}
@@ -75,8 +77,9 @@
  
  It may be useful to consider \samp{gap.plot} as an alternative.
 }
-\author{Jim Lemon (thanks to Christophe Dutang for the idea of using bars and lines
- in the same plot)}
+\author{Jim Lemon (thanks to Christophe Dutang for the idea of using bars
+ and lines in the same plot and Clair Crossupton for pointing out that
+ dates on the x-axis weren't very good.)}
 \seealso{\samp{\link{plot}}}
 \examples{
  twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
@@ -93,5 +96,12 @@
   ylab="Ascending values",rylab="Descending values",
   main="Plot with two ordinates - bars on the right",
   type=c("b","bar"),lcol=2,rcol=NA,halfwidth=0.2)
+ # histogram with density curve overlaid
+ xhist<-hist(rnorm(100),plot=FALSE)
+ xdens<-dnorm(seq(-2,2,by=0.05))
+ twoord.plot(xhist$mids,xhist$counts,seq(-2,2,by=0.05),
+ xdens,type=c("bar","l"),lcol=4,rcol=2,ylab="Counts",
+ rylab="Density",main="Histogram and density curve",
+ halfwidth=0.2)
 }
 \keyword{misc}

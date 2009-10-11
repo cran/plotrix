@@ -1,6 +1,16 @@
+version 2.7-1
+
+	added the getMarginWidth function
+	added the bracketing lines and labels to hierobarp
+	added the hierobarp.svymean and hierobarp.svyprop functions
+	added the lwd argument to stackpoly (thanks to Vaclav Varvarovsky)
+	included an example to show how to use gantt.chart without dates
+	included an example of histogram + density curve in twoord.plot
+
 version 2.7
 
 	added the getFigCtr function
+	removed the final grouping lines from hierobarp
 
 version 2.6-4
 

@@ -9,7 +9,7 @@
 }
 \usage{
  stackpoly(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
-  xlim=NA,ylim=NA,lty=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,
+  xlim=NA,ylim=NA,lty=1,lwd=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,
   axis4=TRUE,...)
 }
 \arguments{
@@ -24,6 +24,7 @@
  \item{xlim}{Optional x limits.}
  \item{ylim}{Optional y limits.}
  \item{lty}{Line type for the polygon borders.}
+ \item{lwd}{Line width for the polygon borders.}
  \item{border}{Color for the polygon borders.}
  \item{col}{Color to fill the polygons.}
  \item{staxx}{Whether to call \samp{staxlab} to stagger the x axis labels.}
@@ -56,6 +57,6 @@
   "Six","Seven","Eight","Nine","Ten"),border="black",
   staxx=TRUE,stack=TRUE)
  stackpoly(rev(sort(testx-mean(testx))),main="Test Waterfall Plot",
-  col="green",border="black")
+  xsrt=45,lwd=3,col="green",border="black")
 }
 \keyword{misc}

@@ -36,10 +36,11 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap
     }
    }
   }
-  if(toupper(type) == "L") {
-  if(!is.na(fill)) polygon(c(x,rev(x)),c(y+ulim,rev(y-llim)),col=fill,border=NA)
-   lines(x,y+ulim,...)
-   lines(x,y-llim,...)
-  }
+ }
+ if(toupper(type) == "L") {
+ if(!is.na(fill)) polygon(c(x,rev(x)),c(y+ulim,rev(y-llim)),col=fill,border=NA)
+  lines(x,y+ulim,...)
+  lines(x,y-llim,...)
+  points(x,y,...)
  }
 }

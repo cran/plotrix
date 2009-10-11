@@ -48,7 +48,9 @@ get.triprop		Enter triplets of proportions or percentages
 getIntersectList	Enter the information for an intersection diagram
 gradient.rect		Display a rectangle with an arbitrary color gradient
 hexagon			Draw a hexagon
-hierobarp		Graphically display the breakdown of numeric values
+hierobarp		Display a nested breakdown of numeric values
+hierobarp.svymean	Display nested means from the svymean function
+hierobarp.svyprop	Display nested proportions from the svyprop function
 hierobrk		Breakdown numeric values by factors
 intersectDiagram	Graphically display set intersections
 lengthKey		Key for interpreting lengths in a plot
