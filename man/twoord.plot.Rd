@@ -8,7 +8,7 @@
 \usage{
  twoord.plot(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,
- type="b",xtickpos=NULL,xticklab=NULL,halfwidth=0.4,...)
+ type="b",xtickpos=NULL,xticklab=NULL,halfwidth=0.4,axislab.cex=1,...)
 }
 \arguments{
  \item{lx,ly,rx,ry}{y and optional x values for the plot}
@@ -26,6 +26,7 @@
  \item{xticklab}{Optional labels for x-axis. Useful for things like dates.}
  \item{halfwidth}{Half the width of the bars in user units. The bars are
   centered on successive integers if no \samp{x} values are supplied.}
+ \item{axislab.cex}{Character expansion for the axis labels and tick labels.}
  \item{...}{additional arguments passed to \samp{plot}.}
 }
 \value{nil}
@@ -78,8 +79,9 @@
  It may be useful to consider \samp{gap.plot} as an alternative.
 }
 \author{Jim Lemon (thanks to Christophe Dutang for the idea of using bars
- and lines in the same plot and Clair Crossupton for pointing out that
- dates on the x-axis weren't very good.)}
+ and lines in the same plot, Clair Crossupton for pointing out that
+ dates on the x-axis weren't very good and Jacob Kasper for the axis
+ character expansion.)}
 \seealso{\samp{\link{plot}}}
 \examples{
  twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
