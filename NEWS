@@ -1,3 +1,7 @@
+version 2.7-2
+
+	added the axislab.cex argument to the twoord.plot function
+
 version 2.7-1
 
 	added the getMarginWidth function

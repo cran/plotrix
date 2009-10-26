@@ -1,6 +1,6 @@
 twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,type="b",
- xtickpos=NULL,xticklab=NULL,halfwidth=0.4,...) {
+ xtickpos=NULL,xticklab=NULL,halfwidth=0.4,axislab.cex=1,...) {
 
  if(!is.null(data)) {
   ly<-data[ly]
@@ -39,13 +39,13 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
   plot(lx,ly,xlim=xlim,ylim=lylim,xlab=xlab,ylab="",col=lcol,pch=lpch,
    type=type[1],axes=FALSE,...)
  xylim<-par("usr")
- mtext(ylab,2,2,col=lcol)
+ mtext(ylab,2,2,col=lcol,cex=axislab.cex)
  box()
- if(is.null(xticklab)) axis(1)
- else axis(1,at=xtickpos,labels=xticklab)
+ if(is.null(xticklab)) axis(1,cex=axislab.cex)
+ else axis(1,at=xtickpos,labels=xticklab,cex=axislab.cex)
  axat<-axis(2,col=ifelse(is.na(lcol),1,lcol),labels=FALSE)
  abline(v=xylim[1],col=lcol)
- mtext(axat,2,1,at=axat,col=lcol)
+ mtext(axat,2,1,at=axat,col=lcol,cex=axislab.cex)
  par(new=TRUE)
  if(is.null(rylim)) rylim<-range(ry)
  if(match(type[2],"bar",0)) {
@@ -60,7 +60,7 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
    type=type[2],axes=FALSE,...)
  axat<-axis(4,col=ifelse(is.na(rcol),1,rcol),labels=FALSE)
  abline(v=xylim[2],col=rcol)
- mtext(axat,4,1,at=axat,col=rcol)
- mtext(rylab,4,2,col=rcol)
+ mtext(axat,4,1,at=axat,col=rcol,cex=axislab.cex)
+ mtext(rylab,4,2,col=rcol,cex=axislab.cex)
  par(mar=oldmar,new=FALSE)
 }
