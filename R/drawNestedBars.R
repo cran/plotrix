@@ -1,12 +1,14 @@
 drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",
- col=NA,labelcex=1,lineht=NA,showall=TRUE,showlabels=TRUE,arrow.cap=0.01) {
+ col=NA,labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,showlabels=TRUE,
+ arrow.cap=0.01) {
 
  barcol<-ifelse(is.list(col),col[[1]],col)
  # should only be one bar per call
  if(!is.null(x[[1]][[1]][1,2]) && (showall | length(x[[1]]) == 1))
   rect(start,0,end,x[[1]][[1]][1,2],col=barcol)
  if(showlabels && !is.null(x[[1]][[1]][1,2])) {
-  barlabel<-ifelse(names(x[[1]][[1]][1])==label1,label1,as.character(x[[1]][[1]][1,1]))
+  if(!is.null(barlabels)) barlabel<-barlabels[[1]]
+  else barlabel<-ifelse(names(x[[1]][[1]][1])==label1,label1,as.character(x[[1]][[1]][1,1]))
   labely<--lineht*length(x[[1]])
   par(xpd=TRUE)
   segments(c(start,end,start),c(0,0,labely),c(start,end,end),rep(labely,3))
@@ -19,6 +21,8 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",
    intervals=errbars<3,arrow.cap=arrow.cap)
  # now set up each bar in the next level and call
  lenx<-length(x)
+ if(!is.null(barlabels) && length(barlabels) > 1) barlabels[[1]]<-NULL
+ newbarlabels<-barlabels
  # remove the first component of each element of x
  for(xcomp in 1:lenx) x[[xcomp]][[1]]<-NULL
  if(length(x[[1]])) {
@@ -43,10 +47,13 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",
     }
    }
    if(is.list(col)) newcol[[1]]<-col[[1]][xlev]
-   if(length(x[[1]])>0)
+   if(length(x[[1]])>0) {
+    if(!is.null(barlabels)) newbarlabels[[1]]<-barlabels[[1]][xlev]
     drawNestedBars(newx,start,start+barwidth,shrink=shrink,
      errbars=errbars,col=newcol,labelcex=labelcex,lineht=lineht,
-     showall=showall,showlabels=showlabels,arrow.cap=arrow.cap)
+     showall=showall,barlabels=newbarlabels,showlabels=showlabels,
+     arrow.cap=arrow.cap)
+   }
    else print(newx)
    start<-start+barwidth+barspace
   }

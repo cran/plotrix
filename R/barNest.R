@@ -34,7 +34,7 @@ barNest<-function(formula=NULL,data=NULL,FUN=c("mean","sd"),
  nlevels=length(x[[1]])
  drawNestedBars(x,start=0,end=1,shrink=shrink,errbars=errbars,
   col=col,labelcex=labelcex,lineht=lineht,showall=showall,
-  showlabels=showlabels,arrow.cap=arrow.cap)
+  barlabels=barlabels,showlabels=showlabels,arrow.cap=arrow.cap)
  abline(h=0)
  if(FUN[1]=="valid.n") box()
  if(!is.null(mar)) par(mar=oldmar)

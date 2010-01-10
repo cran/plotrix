@@ -57,11 +57,17 @@ deg = TRUE, nv=100, border=NULL, col=NA, lty=1, lwd=1, ...)
         border <- rep(border, n)[1:n]
     if (length(nv) < n)
         nv <- rep(nv, n)[1:n]
-    if (length(segment) < 2*n)
+    if(n==1)
+     draw1ellipse(x,y,a,b,angle=angle,segment=segment,
+      arc.only=arc.only,deg=deg,nv=nv,col=col,border=border,
+      lty=lty,lwd=lwd,...)
+    else {
+     if (length(segment) < 2*n)
         segment <- matrix(segment[1:2], n, 2, byrow=TRUE)
-    lapply(1:n, function(i) draw1ellipse(x[i], y[i], a[i], b[i], 
+     lapply(1:n, function(i) draw1ellipse(x[i], y[i], a[i], b[i], 
       angle=angle[i], segment=segment[i,], arc.only=arc.only, deg=deg, 
       nv=nv[i], col=col[i], border=border[i], lty=lty, lwd=lwd, ...))
+    }
     invisible(NULL)
 }
 

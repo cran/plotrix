@@ -85,7 +85,7 @@
  appear to hang unless the user clicks on the console window or the plot.
 
  The \samp{ylog} argument produces a log scale on the y axis. Currently,
- neither \samp{pretty} or \samp{axTicks} seems to produce a nice set of axis
+ neither \samp{pretty} nor \samp{axTicks} seems to produce a nice set of axis
  ticks, so it is best to pass the positions of these in \samp{height.at}.
 
  If the \samp{pch} argument is not NULL, barp will display white bars filled
