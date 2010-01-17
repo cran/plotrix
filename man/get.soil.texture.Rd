@@ -16,7 +16,7 @@
 }
 \value{A matrix of the components of one or more soil samples.}
 \author{Sander Oom and Jim Lemon}
-\seealso{\samp{\link{soil.texture}},\samp{\link{get.triprop}}}
+\seealso{\link{soil.texture},\link{get.triprop}}
 \examples{
  if(dev.interactive()) {
   newsp<-get.soil.texture()

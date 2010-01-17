@@ -8,6 +8,7 @@ makeDendrite<-function(x) {
    dendrite[[i]]<-list(dend.tab[i],NULL)
  }
  else {
+  if(is.factor(x[,1])) x[,1]<-as.character(x[,1])
   dend.tab<-table(x[,1])
   tablen<-length(dend.tab)
   tabname<-names(dend.tab)
@@ -59,6 +60,7 @@ listDepth<-function(x) {
 }
 
 plot.dendrite<-function(x,xlabels=NULL,main="",mar=c(1,0,3,0),cex=1,...) {
+
  oldmar<-par("mar")
  par(mar=mar)
  xmax<-listDepth(x)/2

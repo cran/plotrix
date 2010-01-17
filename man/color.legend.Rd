@@ -32,11 +32,11 @@
  the rectangle in this case. It is possible to use empty labels to get uneven
  spacing. The user can pass more labels than colors, but the labels will almost
  certainly be crowded and it is not obvious that this would be of any use. To
- have complete control over the labels, see \samp{\link{gradient.rect}} and 
- \samp{\link{text}} or \samp{\link{mtext}}.
+ have complete control over the labels, see \link{gradient.rect} and 
+ \link{text} or \link{mtext}.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{color.gradient}}, \samp{\link{gradient.rect}}}
+\seealso{\link{color.gradient}, \link{gradient.rect}}
 \examples{
  # get some extra room
  par(mar=c(7,4,4,6))

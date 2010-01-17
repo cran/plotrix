@@ -20,7 +20,7 @@
  \samp{cluster.overplot} checks for overlying points in the x and y
   coordinates passed. Those points that are overlying are moved to form
   a small cluster of up to nine points. For large numbers of overlying
-  points, see \samp{\link{count.overplot}} or \samp{\link{sizeplot}}.
+  points, see \link{count.overplot} or \link{sizeplot}.
   If you are unsure of the number of overplots in your data, run
   \samp{count.overplot} first to see if there are any potential clusters
   larger than nine.
@@ -32,7 +32,7 @@
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{count.overplot}},\samp{\link{sizeplot}}}
+\seealso{\link{count.overplot},\link{sizeplot}}
 \examples{
  xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
  clusteredpoints<-

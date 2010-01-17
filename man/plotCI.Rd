@@ -36,8 +36,8 @@
  \item{pt.bg}{Background color of points (use pch=21, pt.bg=par("bg")
   to get open points superimposed on error bars)}
  \item{\dots}{Any other parameters to be passed through to
-  \samp{\link{plot.default}}, \samp{\link{points}},
-  \samp{\link{arrows}}, etc. (e.g. \samp{lwd}, \samp{col}, \samp{pch},
+  \link{plot.default}, \link{points},
+  \link{arrows}, etc. (e.g. \samp{lwd}, \samp{col}, \samp{pch},
   \samp{axes}, \samp{xlim}, \samp{ylim}).  \samp{xlim} and
   \samp{ylim} are set by default to include all of the data points and
   error bars.  \samp{xlab} and \samp{ylab} are set to the names of
@@ -49,16 +49,19 @@
 }
 \author{Ben Bolker (documentation and tweaking of a function provided by
   Bill Venables, additional feature ideas from Gregory Warnes)}
-\seealso{\samp{\link{boxplot}}}
+\seealso{\link{boxplot}}
 \examples{
  y<-runif(10)
  err<-runif(10)
- plotCI(1:10,y,err)
- plotCI(1:10,y,err,2*err,lwd=2,col="red",scol="blue")
+ plotCI(1:10,y,err,main="Basic plotCI")
+ plotCI(1:10,y,err,2*err,lwd=2,col="red",scol="blue",
+  main="Add colors to the points and error bars")
  err.x<-runif(10)
  err.y<-runif(10)
- plotCI(1:10,y,err.y,pt.bg=par("bg"),pch=21)
+ plotCI(1:10,y,err.y,pt.bg=par("bg"),pch=21,xlim=c(0,11),
+  main="plotCI with extra space on the x axis")
  plotCI(1:10,y,err.x,pt.bg=par("bg"),pch=21,err="x",add=TRUE)
+ mtext("for adding horizontal error bars",3,0.5)
  data(warpbreaks)
  attach(warpbreaks)
  wmeans<-by(breaks,tension,mean)
@@ -68,7 +71,7 @@
  plotCI(barplot(wmeans,col="gray",ylim=c(0,max(wmeans+wsd))),wmeans,wsd,add=TRUE)
  ## using labels instead of points
  labs<-sample(LETTERS,replace=TRUE,size=10)
- plotCI(1:10,y,err,pch=NA,gap=0.02)
+ plotCI(1:10,y,err,pch=NA,gap=0.02,main="plotCI with labels at points")
  text(1:10,y,labs)
 }
 \keyword{hplot}

@@ -8,7 +8,7 @@
 \usage{
  staircase.plot(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
  mar=NA,total.col="blue",inc.col=NA,bg.col=NA,direction="e",las=1,
- display.height=TRUE,stagger=FALSE,...)
+ display.height=TRUE,stagger=FALSE,cex=par("cex"),...)
 }
 \arguments{
  \item{heights}{vector of numeric values or a matrix or data frame with at least
@@ -29,6 +29,7 @@
  \item{display.height}{Whether to display the totals and increments at the upper
   ends of the bars. Defaults to TRUE.}
  \item{stagger}{Whether to stagger the labels to avoid overlap.}
+ \item{cex}{The usual character expansion value.}
  \item{...}{arguments passed to \samp{plot}.}
 }
 \value{nil}
@@ -54,7 +55,7 @@
  region as the plot area is typically off center.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{plot}}, \samp{\link{getFigCtr}}}
+\seealso{\link{plot}, \link{getFigCtr}}
 \examples{
  sample_size<-c(500,-72,428,-94,334,-45,289)
  totals<-c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE)

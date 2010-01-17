@@ -10,7 +10,7 @@
  \item{labels}{A vector of strings that will be placed adjacent to
   each point. Defaults to the indices of the coordinates.}
  \item{text.pos}{An optional vector of text positions (see 
- \samp{\link{text}}).}
+ \link{text}).}
  \item{...}{additional arguments are passed to \samp{text}}.
 }
 \description{
@@ -39,7 +39,7 @@
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{thigmophobe}}, \samp{\link{text}}}
+\seealso{\link{thigmophobe}, \link{text}}
 \examples{
  x<-rnorm(20)
  y<-rnorm(20)

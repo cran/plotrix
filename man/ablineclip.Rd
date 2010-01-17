@@ -30,7 +30,7 @@
  None. Adds to the current plot.
 }
 \author{ Remko Duursma }
-\seealso{ \samp{\link{abline}} }
+\seealso{\link{abline}}
 \examples{
  x <- rnorm(100)
  y <- x + rnorm(100)

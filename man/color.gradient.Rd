@@ -23,7 +23,7 @@
 }
 \value{A vector of hexadecimal color values as used by \samp{col}.}
 \author{Jim Lemon}
-\seealso{\samp{\link{rescale}},\samp{\link{approx}},\samp{\link{color.scale}}}
+\seealso{\link{rescale},\link{approx},\link{color.scale}}
 \examples{
  # try it with red and blue endpoints and green midpoints.
  color.gradient(c(0,1),c(1,0.6,0.4,0.3,0),c(0.1,0.6))

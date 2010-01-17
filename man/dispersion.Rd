@@ -45,7 +45,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{arrows}}, \samp{\link{segments}},\samp{\link{lines}}}
+\seealso{\link{arrows}, \link{segments},\link{lines}}
 \examples{
  disptest<-matrix(rnorm(200),nrow=20)
  disptest.means<-rowMeans(disptest)

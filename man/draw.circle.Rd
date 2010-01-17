@@ -22,7 +22,7 @@
  the aspect ratio of the plot.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{polygon}}}
+\seealso{\link{polygon}}
 \examples{
  plot(1:5,seq(1,10,length=5),type="n",xlab="",ylab="",main="Test draw.circle")
  draw.circle(2,2,0.5,border="purple",lty=1,lwd=1)

@@ -36,7 +36,7 @@
  The positions of the tick marks in user units.
 }
 \author{ Jim Lemon }
-\seealso{ \samp{\link{axis}} }
+\seealso{ \link{axis}}
 \examples{
  plot(runif(20,-1,1),runif(20,-1,1),xlim=c(-1,1.5),main="Demo of fullaxis",
   xlab="X",ylab="Y",axes=FALSE)

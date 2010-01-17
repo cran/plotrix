@@ -31,7 +31,7 @@
  still be shown. 
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{polygon}}}
+\seealso{\link{polygon}}
 \examples{
  testx<-matrix(cumsum(rnorm(30)^2)+1,nrow=10)
  stackpoly(testx,main="",

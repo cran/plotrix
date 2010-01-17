@@ -1,3 +1,12 @@
+version 2.8
+
+	added the cex argument to the staircase.plot function
+	added a bit to the plotCI function examples
+	changed \code tags to \samp and removed formatting from \link tags
+	added the ylog argument to the barp function (thanks to Fatima Kreusch)
+	added the legendg function (thanks to Primoz Peterlin)
+	removed the Piper diagram functions until they run correctly
+
 version 2.7-2
 
 	added the axislab.cex argument to the twoord.plot function

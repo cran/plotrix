@@ -26,7 +26,7 @@
  the columns represent wind direction categories.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{oz.windrose}}}
+\seealso{\link{oz.windrose}}
 \examples{
  winddir<-sample(0:360,100,TRUE)
  windspeed<-sample(0:40,100,TRUE)

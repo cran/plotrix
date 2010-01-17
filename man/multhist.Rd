@@ -16,18 +16,18 @@
              'FALSE', probability densities, component 'density', are
              plotted (so that the histogram has a total area of one).
              Defaults to 'TRUE' if 'probability' is not specified
-             (does not consider equidistant breaks as in \samp{\link{hist}})}
+             (does not consider equidistant breaks as in \link{hist})}
  \item{probability}{an alias for '!freq', for S compatibility}
  \item{plot.it}{Whether or not to display the histogram.}
- \item{...}{additional arguments to \samp{\link{hist}} or \samp{\link{barplot}}}
+ \item{...}{additional arguments to \link{hist} or \link{barplot}}
 }
 \value{
  the breaks and the values for the histograms.
 }
 \author{Ben Bolker}
-\seealso{\samp{\link{hist}},\samp{\link{barplot}}}
+\seealso{\link{hist},\link{barplot}}
 \note{
- The 'inside' argument to \samp{\link{barplot}} (which is not currently
+ The 'inside' argument to \link{barplot} (which is not currently
   implemented in barplot anyway) is deleted from the argument list. The
   default value of NULL for \samp{freq} is for consistency with \samp{hist}
   but is equivalent to TRUE.

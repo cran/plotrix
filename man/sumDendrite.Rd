@@ -18,4 +18,4 @@
 \value{The sum of the counts in the top level of lists.}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{plot.dendrite}}}
+\seealso{\link{plot.dendrite}}

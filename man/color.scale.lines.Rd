@@ -36,7 +36,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{color.scale}}}
+\seealso{\link{color.scale}}
 \examples{
  # color a random walk "hot" (red) to "cold" (blue) on its distance
  # from the starting point

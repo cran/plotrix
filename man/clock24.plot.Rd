@@ -24,7 +24,7 @@
 \value{nil}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{polar.plot}},\samp{\link{radial.plot}}}
+\seealso{\link{polar.plot},\link{radial.plot}}
 \examples{
  testlen<-rnorm(24)*2+5
  testpos<-0:23+rnorm(24)/4

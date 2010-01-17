@@ -13,9 +13,9 @@
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
   as returned by \samp{get.gantt.info}. If this is not present,
-  \samp{\link{get.gantt.info}} will be called.}
+  \link{get.gantt.info} will be called.}
  \item{format}{the format to be used in entering dates/times
-  (see \samp{\link{strptime}}).}
+  (see \link{strptime}).}
  \item{xlim}{the horizontal limits of the plot.}
  \item{taskcolors}{a vector of colors used to illustrate task priority.}
  \item{priority.legend}{Whether to display a priority color legend.}
@@ -31,7 +31,7 @@
  \item{cylindrical}{Whether to give the bars a cylindrical appearance.}
 }
 \value{
- The list used to create the chart - see \samp{\link{get.gantt.info}} for
+ The list used to create the chart - see \link{get.gantt.info} for
  details. This can be saved and reused rather than manually entering the 
  information each time the chart is displayed.
 }
@@ -46,7 +46,7 @@
  example.
 }
 \author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping)}
-\seealso{\samp{\link{get.gantt.info}}}
+\seealso{\link{get.gantt.info}}
 \examples{
  Ymd.format<-"\%Y/\%m/\%d"
  gantt.info<-list(labels=

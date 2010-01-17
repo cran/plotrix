@@ -60,7 +60,7 @@
  returned in order of decreasing size of the values plotted.
 }
 \author{Jim Lemon, Anupam Tyagi}
-\seealso{\samp{\link{floating.pie}}}
+\seealso{\link{floating.pie}}
 \examples{
  # IUCN counts of threatened species by geographical area
  iucn.df<-data.frame(area=c("Africa","Asia","Europe","N&C America",

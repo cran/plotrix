@@ -82,7 +82,7 @@
  and lines in the same plot, Clair Crossupton for pointing out that
  dates on the x-axis weren't very good and Jacob Kasper for the axis
  character expansion.)}
-\seealso{\samp{\link{plot}}}
+\seealso{\link{plot}}
 \examples{
  twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
   1:15,rev(60:74)+rnorm(15),xlab="Sequence",

@@ -9,7 +9,7 @@
 }
 \arguments{
  \item{format}{the format to be used in entering dates/times. Defaults to
-  YYYY/mm/dd. See \samp{\link{strptime}} for various date/time formats.}
+  YYYY/mm/dd. See \link{strptime} for various date/time formats.}
 }
 \value{
  The list used to create the chart. Elements are:
@@ -21,7 +21,7 @@
   will be calculated from 1.}
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{gantt.chart}}}
+\seealso{\link{gantt.chart}}
 \examples{
  cat("Enter task times using HH:MM (hour:minute) format\n")
  get.gantt.info("\%H:\%M")

@@ -36,7 +36,7 @@
  \samp{axis.mult} to display properly.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{axis}}, \samp{\link{mtext}}}
+\seealso{\link{axis}, \link{mtext}}
 \examples{
  plot(1:10*0.001,1:10*100,axes=FALSE,xlab="",ylab="",main="Axis multipliers")
  box()

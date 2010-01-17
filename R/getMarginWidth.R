@@ -11,6 +11,8 @@ getMarginWidth<-function(side=4,labels,is.legend=FALSE) {
  plotwidth<-currentusr[2]-currentusr[1]
  marusr<-(marprop/plotprop)*plotwidth
  newmar<-ifelse(side==2,currentmar[2],currentmar[4])*marwidth/marusr
+ cat("plotprop",plotprop,"marprop",marprop,"plotwidth",
+  plotwidth,"marwidth",marwidth,"\n")
  marcenter<-currentusr[2]+marwidth/2
  if(marwidth>plotwidth) {
   warning("figure size too small for new margin!")

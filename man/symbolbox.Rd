@@ -30,7 +30,7 @@
  none; draws on the current figure
 }
 \author{Ben Bolker}
-\seealso{\samp{\link{multsymbolbox}}}
+\seealso{\link{multsymbolbox}}
 \examples{
  plot(1:10,1:10,type="n")
  symbolbox(2,5,3,7,tot=20)

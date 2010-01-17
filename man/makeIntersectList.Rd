@@ -32,7 +32,7 @@
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{intersectDiagram}}, \samp{\link{pasteCols}}}
+\seealso{\link{intersectDiagram}, \link{pasteCols}}
 \examples{
  # create a matrix where each row represents an element and
  # a 1 (or TRUE) in each column indicates that the element is a member

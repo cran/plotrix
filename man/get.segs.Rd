@@ -25,5 +25,5 @@
  the lower and upper limit values respectively and the fourth row the number
  of valid observations in the columns.}
 \author{Jim Lemon}
-\seealso{\samp{\link{centipede.plot}}}
+\seealso{\link{centipede.plot}}
 \keyword{misc}

@@ -30,7 +30,7 @@ vectorField(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
  and length of the arrowheads may be slightly different.
 }
 \author{Jim Lemon (original code by Robin Hankin and Brian Ripley)}
-\seealso{\samp{\link{arrows}}}
+\seealso{\link{arrows}}
 \examples{
  \dontrun{
   # this requires the maps package, and just wouldn't pass check

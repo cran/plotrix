@@ -24,7 +24,7 @@
 \details{
  \samp{pie3D.label} displays labels on a 3D pie chart. The positions
  of the labels are given as angles in radians (usually the bisector of the
- pie sectors). As the labels can be passed directly to \samp{\link{pie3D}},
+ pie sectors). As the labels can be passed directly to \link{pie3D},
  this function would probably not be called by the user.
  
  \samp{pie3D.labels} tries to separate labels that are placed closer than
@@ -34,7 +34,7 @@
  manually placing labels.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{pie3D}}, \samp{\link{draw.tilted.sector}}}
+\seealso{\link{pie3D}, \link{draw.tilted.sector}}
 \examples{
  pieval<-c(2,4,6,8)
  bisectors<-pie3D(pieval,explode=0.1,main="3D PIE OPINIONS")

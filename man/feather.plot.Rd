@@ -34,7 +34,7 @@
 }
 \value{nil}
 \author{Jim Lemon, Eduardo Klein}
-\seealso{\samp{\link{spread.labels}}}
+\seealso{\link{spread.labels}}
 \examples{
  feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
   main="Standard Coordinates",xlab="Time",ylab="Value")

@@ -19,5 +19,5 @@
 }
 \value{A vector of breakpoints.}
 \author{Jim Lemon}
-\seealso{\samp{\link{hist}}}
+\seealso{\link{hist}}
 \keyword{misc}

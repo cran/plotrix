@@ -18,7 +18,7 @@
  the name of the closest match
 }
 \author{Ben Bolker}
-\seealso{\samp{\link{col2rgb}},\samp{\link{colors}}}
+\seealso{\link{col2rgb},\link{colors}}
 \examples{
  color.id("#cc00cc")
 }

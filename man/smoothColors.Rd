@@ -19,8 +19,13 @@
   ignored.
 }
 \value{A vector of hexadecimal color values as used by \samp{col}.}
+\note{
+ For more R functions that transform numeric values into
+ colors or produce colors that can be used to represent values, see the 
+ \pkg{colourschemes} package.
+}
 \author{Barry Rowlingson}
-\seealso{\samp{\link{color.gradient}},\samp{\link{rgb}}}
+\seealso{\link{color.gradient},\link{rgb}}
 \examples{
  plot(1:10,main="Test opaque colors",type="n",axes=FALSE)
  box()

@@ -7,7 +7,7 @@
  hierobarp(formula=NULL,data=NULL,maxlevels=10,mct=mean,lmd=std.error,umd=lmd,
  x=NULL,xlim=NULL,ylim=NULL,main="",xlab="",ylab="",start=0,end=1,shrink=0.02,
  errbars=FALSE,col=NA,labelcex=1,lineht=NA,showall=FALSE,barlabels=NULL,
- showbrklab=TRUE,mar=NULL,arrow.cap=NA)
+ showbrklab=TRUE,mar=NULL,arrow.cap=0.01)
 }
 \arguments{
  \item{formula}{A formula with a numeric element of a data frame on the left and
@@ -18,8 +18,9 @@
  \item{mct}{The measure of central tendency function to use.}
  \item{lmd}{The lower measure of dispersion function to use.}
  \item{umd}{The upper measure of dispersion function to use.}
- \item{x}{This becomes the result of the breakdown after the first call. Currently
-  anything passed as this argument will be ignored.}
+ \item{x}{This becomes the result of the breakdown after the first call. If a list
+  of arrays of values of the same form as that produced by \samp{hierobrk} is
+  passed, it will be used to determine the heights of the nested bars.}
  \item{xlim,ylim}{Optional x and y limits for the plot.}
  \item{main}{Title for the plot.}
  \item{xlab,ylab}{Axis labels for the plot.}
@@ -38,7 +39,8 @@
  \item{showbrklab}{Whether to display the labels for the lowest level of breakdown.}
  \item{mar}{If not NULL, a four element vector to set the plot margins. If new margins
   are set, the user must reset the margins after the function exits.}
- \item{arrow.cap}{The width of the "cap" on error bars in user units, defaulting to 0.01.}
+ \item{arrow.cap}{The width of the "cap" on error bars in user units,
+  defaulting to 0.01.}
 }
 \value{The summary arrays produced by hierobrk.}
 \details{
@@ -61,7 +63,7 @@
  quite easy to get this wrong.
 }
 \author{Jim Lemon and Ofir Levy}
-\seealso{\samp{\link{hierobrk}}, \samp{\link{barp}}}
+\seealso{\link{hierobrk}, \link{barp}}
 \examples{
  test.df<-data.frame(Age=rnorm(100,25,10),
   Sex=sample(c("M","F"),100,TRUE),

@@ -13,4 +13,4 @@
 \value{The maximum number of levels in the list.}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{plot.dendrite}}}
+\seealso{\link{plot.dendrite}}

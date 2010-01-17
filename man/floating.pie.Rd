@@ -27,8 +27,7 @@
  complicated breakdown of data rarely succeeds.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{pie.labels}}, \samp{\link{boxed.labels}},
- \samp{\link{polygon.shadow}}}
+\seealso{\link{pie.labels}, \link{boxed.labels}, \link{polygon.shadow}}
 \examples{
  plot(1:5,type="n",main="Floating Pie test",xlab="",ylab="",axes=FALSE)
  box()

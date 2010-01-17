@@ -21,7 +21,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{furc}}}
+\seealso{\link{furc}}
 \examples{
  sex<-sample(c("M","F"),100,TRUE)
  hair<-sample(c("Blond","Black","Brown","Red"),100,TRUE)

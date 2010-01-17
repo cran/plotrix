@@ -21,7 +21,7 @@
 }
 \value{A list of the counts of elements in the set intersections.}
 \author{Jim Lemon}
-\seealso{\samp{\link{makeIntersectList}}, \samp{\link{intersectDiagram}}}
+\seealso{\link{makeIntersectList}, \link{intersectDiagram}}
 \examples{
  # this example is from a haplotype mapping problem submitted by Mao Jianfeng
  \dontrun{

@@ -23,5 +23,5 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{color2D.matplot}}}
+\seealso{\link{color2D.matplot}}
 \keyword{misc}

@@ -30,7 +30,7 @@
 \value{nil}
 \author{Jim Lemon}
 \keyword{misc}
-\seealso{\samp{\link{radial.plot}}}
+\seealso{\link{radial.plot}}
 \examples{
  testlen<-c(rnorm(36)*2+5)
  testpos<-seq(0,350,by=10)
