@@ -20,7 +20,7 @@
 \value{nil}
 \author{Elisa Biancotto}
 \keyword{misc}
-\seealso{\samp{\link{plot}}, \samp{\link{radial.plot}}}
+\seealso{\link{plot}, \link{radial.plot}}
 \examples{
  data(mtcars)
  mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]

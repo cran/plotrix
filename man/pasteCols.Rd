@@ -19,7 +19,7 @@
 \value{A vector of character strings.}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{makeIntersectList}}}
+\seealso{\link{makeIntersectList}}
 \examples{
  # create a matrix of the combinations of the first five letters of the
  # alphabet taken two at a time.

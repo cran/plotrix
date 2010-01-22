@@ -23,7 +23,7 @@
 \value{nil}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{cluster.overplot}},\samp{\link{sizeplot}}}
+\seealso{\link{cluster.overplot},\link{sizeplot}}
 \examples{
  xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
  count.overplot(xy.mat,main="count.overplot",

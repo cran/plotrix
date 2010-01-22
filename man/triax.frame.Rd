@@ -35,7 +35,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{triax.points}},\samp{\link{triax.abline}}}
+\seealso{\link{triax.points},\link{triax.abline}}
 \examples{
  triax.frame(main="DEFAULT")
  triax.frame(main="Clockwise axes",cc.axes=TRUE)

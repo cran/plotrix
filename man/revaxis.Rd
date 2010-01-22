@@ -23,14 +23,14 @@ revaxis(x, y, xrev=FALSE, yrev=TRUE, xside=if (yrev) 3 else 1,
    \item{xlab}{ Character string for labelling the \samp{x}-axis. }
    \item{ylab}{ Character string for labelling the \samp{y}-axis. }
    \item{bty}{ Single letter indicating the type of box to be drawn
-   around the plot. See \samp{\link{par}()} for the possible letters
+   around the plot. See \link{par} for the possible letters
    and their meaning.}
    \item{\dots}{ Other arguments to be passed to plot.}
 }
 
 \value{ nil }
 \author{Rolf Turner}
-\seealso{ \samp{\link{plot}}, \samp{\link{box}}, \samp{\link{par}}}
+\seealso{ \link{plot}, \link{box}, \link{par}}
 
 \examples{
 x <- runif(20)

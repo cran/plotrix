@@ -47,7 +47,7 @@
  that can be expected is an uninformative plot.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{plot}},\samp{\link{smoothColors}}}
+\seealso{\link{plot},\link{smoothColors}}
 \examples{
  cat1<-sample(c("None","Low","Medium","High"),40,TRUE)
  cat2<-sample(c("None","Low","Medium","High"),40,TRUE)

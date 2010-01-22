@@ -40,7 +40,7 @@
  \item{lty.grid}{Type of line for the grid. Defaults to dashed.}
  \item{show.legend}{Logical - whether to display a legend.}
  \item{label.points}{Logical - whether to call
-  \samp{\link{thigmophobe.labels}} to label the points.}
+  \link{thigmophobe.labels} to label the points.}
  \item{point.labels}{Optional labels for the points or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}
@@ -49,7 +49,7 @@
  \item{xpos,ypos}{Positions for the soil type labels.}
  \item{snames}{Soil type labels.}
  \item{cexuk}{Character expansion for the soil type labels.}
- \item{...}{Additional arguments passed to \samp{\link{triax.points}}
+ \item{...}{Additional arguments passed to \link{triax.points}
   and then \samp{points}.}
 }
 \details{
@@ -62,7 +62,7 @@
  positions of the soil types plotted. If not, nil.
 }
 \author{Julian Stander}
-\seealso{\samp{\link{triax.plot}}}
+\seealso{\link{triax.plot}}
 \examples{
  soils.sw.percent<-data.frame(
   Sand=c(67,67,66,67,36,25,24,59,27,9,8,8,20,

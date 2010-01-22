@@ -30,7 +30,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{plot}}}
+\seealso{\link{plot}}
 \examples{
  zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),
   zoomtitle="Zoom In Plot")

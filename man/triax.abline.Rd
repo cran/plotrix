@@ -30,7 +30,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{triax.plot}}}
+\seealso{\link{triax.plot}}
 \examples{
  triax.return<-triax.plot(data.frame(bottom=0.4,right=0.3,left=0.3),
   main="Triax ablines",no.add=FALSE)

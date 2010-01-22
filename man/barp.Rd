@@ -6,7 +6,8 @@
  barp(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE, height.at=NULL,height.lab=NULL,
- cex.axis=par("cex.axis"),cylindrical=FALSE,shadow=FALSE,do.first=NULL)
+ cex.axis=par("cex.axis"),cylindrical=FALSE,shadow=FALSE,do.first=NULL,
+ ylog=FALSE)
 }
 \arguments{
  \item{height}{A numeric vector, matrix or data frame that will be represented
@@ -16,14 +17,14 @@
  \item{legend.lab}{Labels for an optional legend. If NULL, no legend is
   displayed.}
  \item{legend.pos}{Optional position for the legend as a list with \samp{x}
-  and \samp{y} components. The default is to call \samp{\link{emptyspace}}
+  and \samp{y} components. The default is to call \link{emptyspace}
   to position the legend. If this is NULL, \samp{locator} will be called.}
  \item{col}{The fill colors for the bars. The default is no fill.}
  \item{border}{The border for the bars.}
  \item{main}{The title at the top of the plot.}
  \item{xlab,ylab}{The labels for the X and Y axes respectively.}
  \item{xlim,ylim}{Optional horizontal and vertical limits for the plot.}
- \item{staxx,staxy}{Whether to use \samp{\link{staxlab}} to stagger the 
+ \item{staxx,staxy}{Whether to use \link{staxlab} to stagger the 
   X or Y axis tick labels.}
  \item{height.at}{Optional positions of the tick marks on the Y axis.}
  \item{height.lab}{Optional tick labels for the Y axis.}
@@ -33,6 +34,7 @@
  \item{shadow}{Whether to place a shadow behind the bars.}
  \item{do.first}{An optional expression that will be evaluated before anything
   else is displayed on the plot. Useful for background colors or lines.}
+ \item{ylog}{Logical for whether a log scale is to be used. see details.}
 }
 \value{
  A list containing two components of the same form as \samp{height}:
@@ -72,17 +74,21 @@
  plots are appreciated. One is to give the bars a cylindrical look by shading the
  color. The other is to place an apparent shadow behind each bar. Both of these
  effects appear as though the light is coming from the upper left, and this is
- hard coded. You can add error bars by calling \samp{dispbars}, but many advise against
- this.
+ hard coded. You can add error bars by calling \samp{dispbars}, but many advise
+ against this.
 
  If \samp{legend.lab} is not NULL, a legend will be displayed. If 
  \samp{legend.pos} is NA, \samp{locator} is called to place the legend. On 
  Windows, the alert may not appear on the console, and the function will 
  appear to hang unless the user clicks on the console window or the plot.
+
+ The \samp{ylog} argument produces a log scale on the y axis. Currently,
+ neither \samp{pretty} or \samp{axTicks} seems to produce a nice set of axis
+ ticks, so it is best to pass the positions of these in \samp{height.at}.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{staxlab}}, \samp{\link{barplot}}, \samp{\link{cylindrect}},
- \samp{\link{gradient.rect}}}
+\seealso{\link{staxlab}, \link{barplot}, \link{cylindrect},
+ \link{gradient.rect}}
 \examples{
  # get some extra room on the left
  par(mar=c(5,5,4,2))

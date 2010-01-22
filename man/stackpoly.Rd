@@ -10,7 +10,7 @@
 \usage{
  stackpoly(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
   xlim=NA,ylim=NA,lty=1,lwd=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,
-  axis4=TRUE,...)
+  axis2=TRUE,axis4=TRUE,...)
 }
 \arguments{
  \item{x}{A numeric data frame or matrix with the \samp{x} values. If
@@ -29,6 +29,7 @@
  \item{col}{Color to fill the polygons.}
  \item{staxx}{Whether to call \samp{staxlab} to stagger the x axis labels.}
  \item{stack}{Whether to stack the successive values on top of each other.}
+ \item{axis2}{Whether to display the left ordinate on the plot.}
  \item{axis4}{Whether to display the right ordinate on the plot.}
  \item{...}{Additional arguments passed to \samp{plot}.}
 }
@@ -44,9 +45,12 @@
  
  If \samp{x} or \samp{y} is a vector, not a matrix or list, the values will
  be displayed as a "waterfall plot".
+
+ The options for \samp{axis2} and \samp{axis4} can be used to produce
+ panel plots. See the last example.
 }
 \author{Jim Lemon and Thomas Petzoldt (waterfall plot option)}
-\seealso{\samp{\link{polygon}}}
+\seealso{\link{polygon}}
 \examples{
  testx<-matrix(abs(rnorm(100)),nrow=10)
  stackpoly(matrix(cumsum(testx),nrow=10),main="Test Stackpoly I",
@@ -56,7 +60,17 @@
   xaxlab=c("One","Two","Three","Four","Five",
   "Six","Seven","Eight","Nine","Ten"),border="black",
   staxx=TRUE,stack=TRUE)
- stackpoly(rev(sort(testx-mean(testx))),main="Test Waterfall Plot",
-  xsrt=45,lwd=3,col="green",border="black")
+ layout(matrix(1:2,nrow=1))
+ oldmar<-par(mar=c(5,4,4,0))
+ stackpoly(rev(sort(testx-mean(testx))),
+  main="Waterfall Plot (x-mean)",xat=seq(10,90,by=10),
+  xlab="Index",ylab="Value",lwd=3,col="green",border="black",
+  axis4=FALSE)
+ ylim<-par("usr")[3:4]
+ par(mar=c(5,0,4,4))
+ stackpoly(rev(sort((testx-mean(testx))/sd(testx))),
+  ylim=ylim,main="Waterfall Plot ((x-mean)/sd)",xat=seq(10,90,by=10),
+  xlab="Index",lwd=3,col="lightblue",border="black",axis2=FALSE)
+ par(oldmar)
 }
 \keyword{misc}

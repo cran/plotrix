@@ -39,7 +39,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{polygon}}}
+\seealso{\link{polygon}}
 \examples{
  # first a moderate drinker with frequent bigger sessions
  qnt<-sample(0:5,365,TRUE,prob=c(0.02,0.1,0.4,0.3,0.1,0.08))

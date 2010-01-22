@@ -53,6 +53,7 @@ hierobarp.svymean	Display nested means from the svymean function
 hierobarp.svyprop	Display nested proportions from the svyprop function
 hierobrk		Breakdown numeric values by factors
 intersectDiagram	Graphically display set intersections
+legendg			Display groups of fills or symbols in a legend
 lengthKey		Key for interpreting lengths in a plot
 listDepth		Find the maximum depth of a list
 makeDendrite		Build a list of mutually exclusive attributes
@@ -61,16 +62,10 @@ multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
 oz.windrose		Display an Australian BoM wind rose
 oz.windrose.legend	Display a wind rose legend in Australian BoM style
-p.ions			Produce % anions and cations for Piper diagram
 pasteCols		Paste the columns of a matrix together
 pie3D			Display a 3D pie chart
 pie3D.labels		Display labels on a 3D pie chart
 pie.labels		Display flat pie chart labels
-piper.coords		Set up coordinates for Piper diagram
-piper.diagram		Display a Piper diagram
-piper.points		Display the values on a Piper diagram
-piper.set		Set gaps for Piper diagram
-piper.text		Display text on a Piper diagram
 plot.dendrite		Display a dendrogram for a dendrite object
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale

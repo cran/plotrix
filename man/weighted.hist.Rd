@@ -21,7 +21,7 @@
  \item{freq}{Whether to plot counts or densities.}
  \item{ylim}{The limits of the plot ordinate.}
  \item{ylab}{Label for the ordinate.}
- \item{...}{Additional arguments passed to \samp{\link{barplot}}.}
+ \item{...}{Additional arguments passed to \link{barplot}.}
 }
 \details{
  \samp{weighted.hist} calculates the weighted counts of values falling 
@@ -31,7 +31,7 @@
  \samp{breaks} may be specified by a monotonically increasing vector 
  of numbers that are interpreted as the endpoints of the ranges, a 
  single number representing the number of ranges desired or the name 
- of the function to calculate the ranges (see \samp{\link{hist}}).
+ of the function to calculate the ranges (see \link{hist}).
  If a vector of numbers is passed that does not include all values in 
  \samp{x}, the user is warned. If the ranges are not equal, a warning 
  will be displayed if \samp{freq} is TRUE or the heights of the bars 
@@ -53,7 +53,7 @@ xname - the name of \samp{x}.
 equidist - Whether the intervals differ by less than the total range/1000.
 }
 \author{Jim Lemon and Hadley Wickham}
-\seealso{\samp{\link{hist}}}
+\seealso{\link{hist}}
 \examples{
  testx<-sample(1:10,300,TRUE)
  testw<-seq(1,4,by=0.01)

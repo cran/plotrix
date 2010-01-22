@@ -1,6 +1,6 @@
 stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
  xlim=NA,ylim=NA,lty=1,lwd=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,
- axis4=TRUE,...) {
+ axis2=TRUE,axis4=TRUE,...) {
 
  ydim<-dim(y)
  if(is.null(y[1])) {
@@ -17,13 +17,11 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
  box()
  if(is.matrix(y) || is.list(y)) {
   plotlim<-par("usr")
-  if(is.na(xat[1])) {
-   xat<-x[,1]
-   if(is.na(xaxlab[1])) xaxlab<-xat
-  }
+  if(is.na(xat[1])) xat<-x[,1]
+  if(is.na(xaxlab[1])) xaxlab<-xat
   if(staxx) staxlab(at=xat,labels=xaxlab)
   else axis(1,at=xat,labels=xaxlab)
-  axis(2)
+  if(axis2) axis(2)
   if(axis4) axis(4)
   if(is.na(col[1])) col=rainbow(ydim[2])
   else if(length(col)<ydim[2]) col<-rep(col,length.out=ydim[2])
@@ -43,13 +41,11 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
  else {
   polygon(c(min(x),x,max(x),0),c(0,y,0,0),border=border,col=col,lty=lty,
    lwd=lwd)
-  if(is.na(xat[1])) {
-   xat<-x
-   if(is.na(xaxlab[1])) xaxlab<-xat
-  }
+  if(is.na(xat[1])) xat<-x
+  if(is.na(xaxlab[1])) xaxlab<-xat
   if(staxx) staxlab(at=xat,labels=xaxlab)
   else axis(1,at=xat,labels=xaxlab)
-  axis(2)
+  if(axis2) axis(2)
   if(axis4) axis(4)
  }
 }

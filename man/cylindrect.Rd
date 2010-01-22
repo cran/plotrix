@@ -28,7 +28,7 @@
  The position of the apparent light source is hard coded into the function.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{gradient.rect}}}
+\seealso{\link{gradient.rect}}
 \examples{
  plot(0,xlim=c(0,5),ylim=c(0,5),main="Examples of pseudocylindrical rectangles",
   xlab="",ylab="",axes=FALSE,type="n")

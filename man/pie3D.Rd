@@ -58,7 +58,7 @@
  for this, or use \samp{pie.labels} for the labels.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{pie3D.labels}}, \samp{\link{draw.tilted.sector}}}
+\seealso{\link{pie3D.labels}, \link{draw.tilted.sector}}
 \examples{
  pieval<-c(2,4,6,8)
  pielabels<-

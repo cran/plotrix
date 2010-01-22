@@ -13,11 +13,11 @@
 }
 \arguments{
  \item{x}{numeric vector or a list of vectors}
- \item{...}{arguments passed to \samp{\link{boxplot}}.}
+ \item{...}{arguments passed to \link{boxplot}.}
  \item{gap}{the range(s) to be omitted - a list with two components,
   \samp{top} and \samp{bottom} each specifying a range to omit. The
   default range of \samp{c(NA,NA)} means no omitted range}
- \item{range}{how far to extend the whiskers, (see \samp{\link{boxplot}})}
+ \item{range}{how far to extend the whiskers, (see \link{boxplot})}
  \item{width}{the relative widths of the boxes}
  \item{varwidth}{if TRUE, box widths are proportional to the square roots
   of the number of observations}
@@ -52,18 +52,18 @@
 \details{
  Displays boxplot(s) omitting range(s) of values on the top and/or bottom
  of the plot. Typically used when there are outliers far from the boxes.
- See \samp{\link{boxplot}} for more detailed descriptions of the
+ See \link{boxplot} for more detailed descriptions of the
  arguments. If the gaps specified include any of the values in the \samp{stats}
  matrix returned from \samp{boxplot}, the function will exit with an
  error message. This prevents generation of NAs in indexing operations,
  which would fail anyway. A gap can include part of a box, but it is unlikely 
  that this would be intended by the user.
  
- See \samp{\link{axis.break}} for a brief discussion 
+ See \link{axis.break} for a brief discussion 
  of plotting on discontinuous coordinates.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{gap.barplot}},\samp{\link{gap.plot}}}
+\seealso{\link{gap.barplot},\link{gap.plot}}
 \examples{
  twovec<-list(vec1=c(rnorm(30),-6),vec2=c(sample(1:10,40,TRUE),20))
  gap.boxplot(twovec,gap=list(top=c(12,18),bottom=c(-5,-3)),

@@ -28,7 +28,7 @@
 }
 \value{nil}
 \author{Jim Lemon - Thanks to Suhas Parandekar for the idea.}
-\seealso{\samp{\link{text}}}
+\seealso{\link{text}}
 \examples{
  plot(0,xlim=c(1,5),ylim=c(1,5),main="Test of arctext",xlab="",ylab="",
   type="n")

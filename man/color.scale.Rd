@@ -36,10 +36,15 @@
 \note{
  The function is useful for highlighting a numeric dimension or adding
  an extra "dimension" to a plot.
+
+ There are quite a few R functions that transform numeric values into
+ colors or produce colors that can be used to represent values. Two
+ packages that might be of interest are \pkg{RColorBrewer} and 
+ \pkg{colourschemes}.
 }
 \value{A vector or matrix of hexadecimal color values.}
 \author{Jim Lemon}
-\seealso{\samp{\link{rescale}}, \samp{\link{col2rgb}}}
+\seealso{\link{rescale}, \link{col2rgb}, \link{smoothColors}}
 \examples{
  # go from green through yellow to red with no blue
  x<-rnorm(20)

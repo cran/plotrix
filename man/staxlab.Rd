@@ -25,7 +25,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{mtext}}}
+\seealso{\link{mtext}}
 \examples{
  plot(rnorm(12),axes=FALSE)
  box()

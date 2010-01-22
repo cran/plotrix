@@ -1,6 +1,6 @@
 staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
  mar=NA,total.col="blue",inc.col=NA,bg.col=NA,direction="e",las=1,
- display.height=TRUE,stagger=FALSE,...) {
+ display.height=TRUE,stagger=FALSE,cex=par("cex"),...) {
 
  if(is.matrix(heights) | is.data.frame(heights)) {
   dimheights<-dim(heights)
@@ -68,7 +68,7 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
     col=bar.col[bar])
    if(display.height)
     text(barpos[bar],ifelse(heights[bar]<0,barstart,barend)+label_offset,
-     heights[bar])
+     heights[bar],cex=cex)
    if(direction == "e" && bar != nbars)
     segments(barpos[bar]+halfwidth*dir,barend,barpos[bar]+dir-halfwidth*dir,
      barend,lty=3)
@@ -78,7 +78,7 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
    if(!is.null(labels)) {
     labelline<-0.5
     if(stagger) labelline<-c(labelline,1.5)
-    mtext(labels,side=1,line=labelline,at=start:finish,adj=0.5,las=las)
+    mtext(labels,side=1,line=labelline,at=start:finish,adj=0.5,las=las,cex=cex)
    }
   }
   else {
@@ -86,14 +86,14 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
     col=bar.col[bar])
    if(display.height)
     text(ifelse(heights[bar]<0,barstart,barend)+label_offset,
-     barpos[bar],heights[bar],adj=0)
+     barpos[bar],heights[bar],adj=0,cex=cex)
    if(bar != nbars)
     segments(barend,barpos[bar]+halfwidth*dir,barend,
      barpos[bar]+dir-halfwidth*dir,lty=3)
    if(!is.null(labels)) {
     labelline<-0.5
     if(stagger) labelline<-c(labelline,1.5)
-    mtext(labels,side=2,line=labelline,at=start:finish,adj=1,las=las)
+    mtext(labels,side=2,line=labelline,at=start:finish,adj=1,las=las,cex=cex)
    }
   }
  }

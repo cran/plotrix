@@ -30,7 +30,7 @@
  \item{pch}{Symbol(s) to plot.}
  \item{lty}{Line type(s) to plot.}
  \item{col}{Color(s) for the symbols and lines.}
- \item{staxx}{Whether to call \samp{\link{staxlab}} to display the X axis
+ \item{staxx}{Whether to call \link{staxlab} to display the X axis
   labels.}
  \item{...}{additional arguments passed to \samp{plot}.}
 }
@@ -65,7 +65,7 @@
  representing changes over time intervals for experimental groups.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{dispbars}}}
+\seealso{\link{dispbars}}
 \examples{
  test.df<-data.frame(a=rnorm(80)+4,b=rnorm(80)+4,c=rep(LETTERS[1:4],each=20),
   d=rep(rep(letters[1:4],each=4),5))

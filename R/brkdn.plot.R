@@ -52,8 +52,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
   if(is.na(xaxlab[1])) xaxlab<-obslevels
   for(group in 1:ngroups) {
    for(ob in 1:nobs) {
-    thisbit<-unlist(subset(data[[vars[group]]],
-     data[[obs]] == obslevels[ob],vars[[group]]))
+    thisbit<-data[[vars[group]]][data[[obs]] == obslevels[ob]]
     if(length(thisbit)) {
      if(length(thisbit) > 1) {
       brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
@@ -72,8 +71,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
    if(is.na(xaxlab[1])) xaxlab<-vars
    for(group in 1:ngroups) {
     for(ob in 1:nobs) {
-     thisbit<-unlist(subset(data[[vars[ob]]],
-       data[[groups]] == grouplevels[group],vars[ob]))
+     thisbit<-data[[vars[ob]]][data[[groups]] == grouplevels[group]]
      if(length(thisbit)) {
       if(length(thisbit) > 1) {
        brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
@@ -91,8 +89,8 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
    if(is.na(xaxlab[1])) xaxlab<-obslevels
    for(group in 1:ngroups) {
     for(ob in 1:nobs) {
-     thisbit<-unlist(subset(data,data[[groups]] == grouplevels[group] &
-       data[[obs]] == obslevels[ob],vars))
+     thisbit<-data[[vars]][data[[groups]] == grouplevels[group] &
+       data[[obs]] == obslevels[ob]]
      if(length(thisbit)) {
       if(length(thisbit) > 1) {
        brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))

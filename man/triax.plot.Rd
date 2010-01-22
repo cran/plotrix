@@ -71,9 +71,7 @@
  Jim Lemon - thanks to Ben Daughtry for the info on counterclockwise axes.
 }
 \seealso{
- \samp{\link{triax.points}},
- \samp{\link{triax.abline}},
- \samp{\link{thigmophobe.labels}}
+ \link{triax.points}, \link{triax.abline}, \link{thigmophobe.labels}
 }
 \examples{
  data(soils)

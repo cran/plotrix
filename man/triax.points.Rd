@@ -36,7 +36,7 @@
 }
 \value{A list of the \samp{x,y} positions plotted.}
 \author{Jim Lemon}
-\seealso{\samp{\link{triax.plot}},\samp{\link{thigmophobe.labels}}}
+\seealso{\link{triax.plot},\link{thigmophobe.labels}}
 \examples{
  data(soils)
  triax.return<-triax.plot(soils[1:10,],

@@ -12,9 +12,9 @@
  \item{data}{A data frame containing the elements in \samp{formula}.}
  \item{maxlevels}{The maximum number of levels in any categorical element. Mainly to
   prevent the mess caused by breaking down by a huge number of categories.}
- \item{mct}{The measure of central tendency function to use - defaults to the
-  normal standard error.}
- \item{lmd}{The lower measure of dispersion function to use.}
+ \item{mct}{The measure of central tendency function to use (default is the mean).}
+ \item{lmd}{The lower measure of dispersion function to use (default is standard
+  error).}
  \item{umd}{The upper measure of dispersion function to use.}
 }
 \value{
@@ -38,7 +38,7 @@
  measures of dispersion as the second and third, if "error bars" are to be displayed.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{by}}}
+\seealso{\link{by}}
 \examples{
  test.df<-data.frame(Age=rnorm(100,25,10),
   Sex=sample(c("M","F"),100,TRUE),

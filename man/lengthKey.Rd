@@ -18,7 +18,7 @@
  a 1:1 aspect ratio, a length key is usually misleading.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{segments}}, \samp{\link{arrows}}}
+\seealso{\link{segments}, \link{arrows}}
 \examples{
  # manufacture a matrix of orientations in radians
  o<-matrix(rep(pi*seq(0.1,0.8,by=0.1),7),ncol=8,byrow=TRUE)

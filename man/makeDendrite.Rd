@@ -24,7 +24,7 @@
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{plot.dendrite}}}
+\seealso{\link{plot.dendrite}}
 \examples{
  sex<-sample(c("M","F"),100,TRUE)
  hair<-sample(c("Blond","Black","Brown","Red"),100,TRUE)

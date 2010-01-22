@@ -26,7 +26,7 @@
 \keyword{misc}
 \author{Jim Lemon - thanks to Gustaf Rydevik for the "names" bug fix
  and to Steve Ellison for the suggestion about arrays.}
-\seealso{\samp{\link{thigmophobe.labels}}}
+\seealso{\link{thigmophobe.labels}}
 \examples{
  x<-rnorm(10)
  y<-rnorm(10)

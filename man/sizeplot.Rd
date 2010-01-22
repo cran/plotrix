@@ -30,7 +30,7 @@
  current plot if \samp{add=TRUE}.
 }
 \author{Ben Bolker}
-\seealso{\samp{\link{symbols}}}
+\seealso{\link{symbols}}
 \examples{
  x <- c(0.1,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.3,0.3)
  y <- c( 1,  1,  1,  1,  2,  2,  2,  3,  3,  4,  5 )

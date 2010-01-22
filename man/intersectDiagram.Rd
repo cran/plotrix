@@ -51,12 +51,12 @@
  intersections over an empty rectangle scaled to the count or percentage.
  
  If a matrix of set membership indicators is passed as \samp{x}, it will be
- passed to \samp{\link{makeIntersectList}} for conversion.
+ passed to \link{makeIntersectList} for conversion.
 }
 \value{nil}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{makeIntersectList}}, \samp{\link{getIntersectList}}}
+\seealso{\link{makeIntersectList}, \link{getIntersectList}}
 \examples{
  # create a matrix where each row represents an element and
  # a 1 (or TRUE) in each column indicates that the element is a member

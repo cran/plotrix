@@ -47,7 +47,7 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
  mct=mean,lmd=std.error,umd=lmd, x=NULL,xlim=NULL,ylim=NULL,
  main="",xlab="",ylab="",start=0,end=1,shrink=0.02,errbars=FALSE,
  col=NA,labelcex=1,lineht=NA,showall=FALSE,barlabels=NULL,
- showbrklab=TRUE,mar=NULL,arrow.cap=NA) {
+ showbrklab=TRUE,mar=NULL,arrow.cap=0.01) {
 
  squeeze<-(end-start)*shrink
  if(is.null(x)) {
@@ -64,6 +64,8 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
   if(is.null(barlabels) && length(x) > 3) barlabels<-x[[4]]
  }
  else if(!is.list(x)) x<-list(x)
+ mctdim<-dim(x[[1]])
+ ndim<-length(mctdim)
  if(start == 0) {
   plot(0,xlim=xlim,ylim=ylim,main=main,xlab=xlab,ylab=ylab,xaxt="n",
    xaxs="i",yaxs="i",type="n")
@@ -78,9 +80,9 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
    rect(start,0,end,mean(x[[1]],na.rm=TRUE),col=firstcol)
    par(xpd=TRUE)
    segments(c(start,end,start),
-    c(rep(ylim[1],2),ylim[1]-lineht*(dim(x[[1]])[2]-0.5)),
-    c(start,end,end),rep(ylim[1],3)-lineht*(dim(x[[1]])[2]-0.5))
-   boxed.labels((start+end)/2,ylim[1]-lineht*(dim(x[[1]])[2]-0.5),"Overall",
+    c(rep(ylim[1],2),ylim[1]-lineht*(ndim+0.5)),
+    c(start,end,end),rep(ylim[1],3)-lineht*(ndim+0.5))
+   boxed.labels((start+end)/2,ylim[1]-lineht*(ndim+0.5),"Overall",
     bg=ifelse(is.na(barcol),"white",barcol),cex=labelcex)
    par(xpd=FALSE)
   }
@@ -91,8 +93,6 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
  }
  if(is.list(col)) barcol<-col[[1]]
  else barcol<-col
- mctdim<-dim(x[[1]])
- ndim<-length(mctdim)
  lastdim<-mctdim[ndim]
  if(is.null(mctdim)) {
   if(is.na(arrow.cap)) arrow.cap<-par("usr")[4]/100

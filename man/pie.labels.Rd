@@ -25,7 +25,7 @@
  center.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{floating.pie}}, \samp{\link{boxed.labels}}}
+\seealso{\link{floating.pie}, \link{boxed.labels}}
 \examples{
  pieval<-c(2,4,6,8)
  plot(1:5,type="n",axes=FALSE)

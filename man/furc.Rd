@@ -26,4 +26,4 @@
 \value{nil}
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\samp{\link{plot.dendrite}}}
+\seealso{\link{plot.dendrite}}

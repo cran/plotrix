@@ -1,7 +1,7 @@
 barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE,height.at=NULL,height.lab=NULL,cex.axis=par("cex.axis"),
- cylindrical=FALSE,shadow=FALSE,do.first=NULL) {
+ cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE) {
 
  height.class<-attr(height,"class")
  if(!is.null(height.class)) {
@@ -37,12 +37,12 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
  negy<-any(height<0,na.rm=TRUE)
  if(is.null(ylim)) {
   if(negy) miny<-min(height,na.rm=TRUE)*1.05
-  else miny<-0
+  else miny<-ifelse(ylog,min(height)/10,0)
   ylim<-c(miny,max(height,na.rm=TRUE)*1.05)
  }
  else miny<-ylim[1]
- plot(0,type="n",main=main,xlab=xlab,ylab=ylab,axes=FALSE,xlim=xlim,ylim=ylim,
-  xaxs="i",yaxs="i")
+ plot(ylim[1],type="n",main=main,xlab=xlab,ylab=ylab,axes=FALSE,xlim=xlim,
+  ylim=ylim,xaxs="i",yaxs="i",log=ifelse(ylog,"y",""))
  if(!is.null(do.first)) eval(do.first)
  if(negy) abline(h=0)
  if(is.null(names.arg)) names.arg<-1:ngroups
@@ -51,8 +51,9 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
   staxlab(1,at=1:ngroups,labels=names.arg,cex=cex.axis)
  }
  else axis(1,at=1:ngroups,labels=names.arg,cex.axis=cex.axis)
- if(is.null(height.at)) height.at<-pretty(ylim)
- if(is.null(height.lab)) height.lab<-pretty(ylim)
+ if(is.null(height.at))
+  height.at<-ifelse(ylog,axTicks(2,log=TRUE),pretty(ylim))
+ if(is.null(height.lab)) height.lab<-height.at
  if(staxy) {
   axis(2,at=height.at,labels=rep("",length(height.lab)),cex.axis=cex.axis)
   staxlab(2,at=height.at,labels=height.lab,cex=cex.axis)

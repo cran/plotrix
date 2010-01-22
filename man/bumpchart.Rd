@@ -36,7 +36,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{matplot}}}
+\seealso{\link{matplot}}
 \examples{
  # percentage of those over 25 years having completed high school
  # in 10 cities in the USA in 1990 and 2000

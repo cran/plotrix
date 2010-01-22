@@ -50,5 +50,5 @@
  quite easy to get this wrong.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{hierobarp}}, \samp{\link{barp}}}
+\seealso{\link{hierobarp}, \link{barp}}
 \keyword{misc}

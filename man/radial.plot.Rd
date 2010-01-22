@@ -100,7 +100,7 @@
  for the \samp{lty} and \samp{rp.type} suggestions respectively, Patrick
  Baker for the request that led to \samp{radlab} and Thomas Steiner for
  the request for the \samp{radial.lim} and \samp{radial.labels} modifications.}
-\seealso{\samp{\link{polar.plot}},\samp{\link{clock24.plot}}}
+\seealso{\link{polar.plot},\link{clock24.plot}}
 \examples{
  testlen<-rnorm(10)*2+5
  testpos<-seq(0,18*pi/10,length=10)

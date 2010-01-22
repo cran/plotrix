@@ -18,7 +18,7 @@
  the function will warn the operator.}
 \value{A matrix of the components of one or more observations.}
 \author{Jim Lemon}
-\seealso{\samp{\link{triax.plot}}, \samp{\link{soil.texture}}}
+\seealso{\link{triax.plot}, \link{soil.texture}}
 \examples{
  if(dev.interactive()) {
   # get some proportions

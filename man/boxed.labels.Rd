@@ -11,7 +11,7 @@
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the labels. \samp{x} can be an
-  \samp{\link{xy.coords}} list.}
+  \link{xy.coords} list.}
  \item{bg}{The fill color of the rectangles on which the labels are displayed
   (see Details).}
  \item{labels}{Text strings}
@@ -35,12 +35,12 @@
 }
 \note{
  This function is best for regularly spaced labels where overlapping is
- not a problem. See \samp{\link{thigmophobe.labels}} for placing labels 
+ not a problem. See \link{thigmophobe.labels} for placing labels 
  where overlap is likely.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\samp{\link{spread.labels}}, \samp{\link{thigmophobe.labels}}}
+\seealso{\link{spread.labels}, \link{thigmophobe.labels}}
 \examples{
  x<-rnorm(10)
  y<-rnorm(10)

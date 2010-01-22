@@ -31,7 +31,7 @@
  look right.
 }
 \author{Jim Lemon}
-\seealso{\samp{\link{polygon}}}
+\seealso{\link{polygon}}
 \examples{
  par(pty="s")
  plot(1:5,type="n",main="Polygon Shadow test",xlab="",ylab="",axes=FALSE)

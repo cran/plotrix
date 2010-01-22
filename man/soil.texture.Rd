@@ -41,11 +41,11 @@ soil.texture(soiltexture=NULL, main="", at=seq(0.1, 0.9, by=0.1),
  \item{lty.grid}{Type of line for the grid. Defaults to dashed.}
  \item{show.legend}{Logical - whether to display a legend.}
  \item{label.points}{Logical - whether to call
-  \samp{\link{thigmophobe.labels}} to label the points.}
+  \link{thigmophobe.labels} to label the points.}
  \item{point.labels}{Optional labels for the points or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}
- \item{\dots}{Additional arguments passed to \samp{\link{triax.points}}
+ \item{\dots}{Additional arguments passed to \link{triax.points}
   and then \samp{points}.}
 }
 \details{
@@ -69,7 +69,7 @@ soil.texture(soiltexture=NULL, main="", at=seq(0.1, 0.9, by=0.1),
  2007. \emph{Soil Texture Calculator}//
  \url{http://soils.usda.gov/technical/aids/investigations/texture/}
 }
-\seealso{\samp{\link{get.soil.texture}}, \samp{\link{triax.plot}}}
+\seealso{\link{get.soil.texture}, \link{triax.plot}}
 \examples{
  data(soils)
  soil.texture(main="NO DATA")

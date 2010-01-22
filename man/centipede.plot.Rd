@@ -11,7 +11,7 @@
 }
 \arguments{
   \item{segs}{a matrix of midpoints and limits calculated by
-   \samp{\link{get.segs}} OR a \samp{dstat} object returned by
+   \link{get.segs} OR a \samp{dstat} object returned by
    \samp{brkdn}.}
   \item{mct}{The function to use in calculating the midpoint of each
    segment.}
@@ -55,7 +55,7 @@
 }
 \value{nil.}
 \author{Jim Lemon}
-\seealso{\samp{\link{get.segs}}}
+\seealso{\link{get.segs}}
 \examples{
  testcp<-list("",40)
  for(i in 1:40) testcp[[i]]<-rnorm(sample(1:8,1)*50)

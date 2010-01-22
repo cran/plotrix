@@ -33,7 +33,7 @@
  Typically used when there is a relatively large gap or two in the overall 
  range of one set of values, often because of outliers. The function warns
  the user if any values have been omitted by being in the "gap". See 
- \samp{\link{axis.break}} for a brief discussion of plotting on 
+ \link{axis.break} for a brief discussion of plotting on 
  discontinuous coordinates.
  
  To add more data series to a gap plot, call \samp{gap.plot} with
@@ -61,7 +61,7 @@
 }
 \author{Jim Lemon and Ben Bolker (thanks to Zheng Lu for the "add" idea,
  and Art Roberts for helping to get the gaps right.)}
-\seealso{\samp{\link{gap.barplot}}, \samp{\link{axis.break}}}
+\seealso{\link{gap.barplot}, \link{axis.break}}
 \examples{
  twogrp<-c(rnorm(5)+4,rnorm(5)+20,rnorm(5)+5,rnorm(5)+22)
  gpcol<-c(2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5)

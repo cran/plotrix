@@ -56,13 +56,13 @@
  place, \samp{2} two, and so on.
 }
 \note{
- The function \samp{\link{image}} performs almost the same when passed a
+ The function \link{image} performs almost the same when passed a
  matrix of values without grid positions, except that it assigns values to
  a specified list of colors rather than calculating a color for each distinct
  value.
 }
 \author{Jim Lemon (thanks to Ashoka Polpitiya for \samp{axes})}
-\seealso{\samp{\link{color.scale}}, \samp{\link{image}}}
+\seealso{\link{color.scale}, \link{image}}
 \examples{
  x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
  color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,

@@ -25,7 +25,7 @@
 }
 \value{nil}
 \author{Carl Witthoft}
-\seealso{\samp{\link{plot}}}
+\seealso{\link{plot}}
 \examples{
  x<-seq(1,100)
  y<-sin(x/5)+x/20
