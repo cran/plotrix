@@ -31,8 +31,10 @@
  There can be fewer labels than colors. The labels will be evenly spaced along
  the rectangle in this case. It is possible to use empty labels to get uneven
  spacing. The user can pass more labels than colors, but the labels will almost
- certainly be crowded and it is not obvious that this would be of any use. To
- have complete control over the labels, see \link{gradient.rect} and 
+ certainly be crowded and I have only found one use for this. If the user wants
+ the labels at the intersection of the boxes rather than in the center, see the
+ alternative specification for the labels in the example (thanks Claudia Tebaldi).
+ To have complete control over the labels, see \link{gradient.rect} and 
  \link{text} or \link{mtext}.
 
  samp{colorlegend} in the \pkg{shape} package offers a different approach,
@@ -47,6 +49,8 @@
  par(mar=c(7,4,4,6))
  testcol<-color.gradient(c(0,1),0,c(1,0),nslices=5)
  col.labels<-c("Cold","Warm","Hot")
+ # this will put the labels at the intersections
+ # col.labels<-c("","Cold","","Warm","","Warmer","","Hot","")
  color2D.matplot(matrix(rnorm(100),nrow=10),c(1,0),0,c(0,1),
   main="Test color legends")
  color.legend(11,6,11.8,9,col.labels,testcol,gradient="y")

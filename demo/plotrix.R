@@ -41,7 +41,7 @@ test.df<-data.frame(Age=rnorm(100,25,10),
  Employ=sample(c("FT","PT","NO"),100,TRUE))
 test.col<-list(Overall="green",Employ=c("purple","orange","brown"),
  Marital=c("#1affd8","#caeecc","#f7b3cc","#94ebff"),Sex=c(2,4))
-barNest(formula=Age~Sex+Marital+Employ,data=test.df,main="barNest",
+barNest(formula=Age~Employ+Marital+Sex,data=test.df,main="barNest",
  col=test.col,showall=TRUE)
 happyday<-data.frame(Monday=c(2.3,3.4),Tuesday=c(2.8,3.3),Wednesday=c(3.2,3.1),
 Thursday=c(3.6,2.8),Friday=c(4.2,2.6),Saturday=c(4.5,2.9),Sunday=c(4.1,2.8))
@@ -70,9 +70,8 @@ test.df<-data.frame(a=rnorm(80)+4,b=rnorm(80)+4,c=rep(LETTERS[1:4],each=20),
  d=rep(rep(letters[1:4],each=4),5))
 bp<-brkdn.plot("a","c","d",test.df,main="Test of brkdn.plot",
  mct="median",md="mad",xlab="Temperature range", ylab="Cognition",
- xaxlab=c("10-15","16-20","21-25","25-30"),pch=1:4,lty=1:4,col=1:4)
-es<-emptyspace(bp)
-legend(es,legend=c("Sydney","Gosford","Karuah","Brisbane"),pch=1:4,
+ xaxlab=c("10-15","16-20","21-25","25-30"),pch=1:4,lty=1:4,col=1:4,ylim=c(0,6))
+legend(1,2.5,legend=c("Sydney","Gosford","Karuah","Brisbane"),pch=1:4,
  col=1:4,lty=1:4,xjust=0.5,yjust=0.5)
 educattn<-matrix(c(90.4,90.3,75.7,78.9,66,71.8,70.5,70.4,68.4,67.9,
  67.2,76.1,68.1,74.7,68.5,72.4,64.3,71.2,73.1,77.8),ncol=2,byrow=TRUE)
@@ -325,9 +324,9 @@ plotlabels<-
 plot(x=x,y=y,xlim=xlim,ylim=ylim,main="Test thigmophobe.labels")
 thigmophobe.labels(x,y,plotlabels,col=c(2:6,8:12))
 data(soils)
-triax.return<-triax.plot(soils[1:6,],main="Test triax.plot",
+triax.retval<-triax.plot(soils[1:6,],main="Test triax.plot",
  show.grid=TRUE,show.legend=TRUE,col.symbols=1:6,pch=4)
-par(triax.return$oldpar)
+par(triax.retval$oldpar)
 twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
  ylab="Ascending values",rylab="Descending values")

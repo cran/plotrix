@@ -36,7 +36,7 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
    col=lcol)
  }
  else
-  plot(lx,ly,xlim=xlim,ylim=lylim,xlab=xlab,ylab="",col=lcol,pch=lpch,
+  plot(lx,ly,xlim=xlim,ylim=lylim,xlab=xlab,ylab="",yaxs="i",col=lcol,pch=lpch,
    type=type[1],axes=FALSE,...)
  xylim<-par("usr")
  mtext(ylab,2,2,col=lcol,cex=axislab.cex)
@@ -52,14 +52,14 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  par(new=TRUE)
  if(is.null(rylim)) rylim<-range(ry,na.rm=TRUE)
  if(match(type[2],"bar",0)) {
-  plot(0,type="n",xlab=xlab,ylab="",axes=FALSE,xlim=xlim,ylim=rylim,...)
+  plot(0,type="n",xlab=xlab,ylab="",yaxs="i",axes=FALSE,xlim=xlim,ylim=rylim,...)
   ybottom<-par("usr")[3]
   if(rylim[1] < 0) abline("h",0)
   rect(rx-halfwidth,ifelse(ry < 0,ry,ybottom),rx+halfwidth,ifelse(ry > 0,ry,0),
    col=rcol)
  }
  else
-  plot(rx,ry,xlim=xlim,ylim=rylim,xlab="",ylab="",col=rcol,pch=rpch,
+  plot(rx,ry,xlim=xlim,ylim=rylim,xlab="",ylab="",yaxs="i",col=rcol,pch=rpch,
    type=type[2],axes=FALSE,...)
  axat<-axis(4,col=ifelse(is.na(rcol),1,rcol),labels=FALSE)
  abline(v=xylim[2],col=rcol)

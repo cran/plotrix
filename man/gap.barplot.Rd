@@ -7,7 +7,7 @@
  Displays a barplot with a missing range.
 }
 \usage{
- gap.barplot(y,gap,xaxlab,xtics,yaxlab,ytics,ylim=NA,xlab=NULL,
+ gap.barplot(y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,xlab=NULL,
   ylab=NULL,horiz=FALSE,col,...)
 }
 \arguments{
@@ -17,6 +17,7 @@
  \item{xtics}{position of the x axis ticks}
  \item{yaxlab}{labels for the y axis ticks}
  \item{ytics}{position of the y axis ticks}
+ \item{xlim}{Optional x limits for the plot}
  \item{ylim}{optional y limits for the plot}
  \item{xlab}{label for the x axis}
  \item{ylab}{label for the y axis}
