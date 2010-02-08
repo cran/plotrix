@@ -8,7 +8,7 @@
 \usage{
  color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
-  ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,
+  ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,
   border="black",na.color=NA,...)
 }
 \arguments{
@@ -30,7 +30,8 @@
  \item{axes}{Whether to suppress the default axis labelling.}
  \item{show.values}{Whether to display the numeric values of \samp{x}.
   This also controls the number of decimal places displayed.}
- \item{vcol}{The color for the value display.}
+ \item{vcol}{The color for the value display. If NA, the values are displayed
+  in black or white depending upon the darkness of the cell color.}
  \item{vcex}{The character expansion for the value display.}
  \item{border}{The color(s) for the borders of the cells. Pass NA
   if no border is  wanted.}

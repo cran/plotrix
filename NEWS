@@ -1,3 +1,7 @@
+version 3.0-8
+
+	Added semi-intelligent cell labelling to the color2D.matplot function
+
 version 3.0-7
 
 	Fixed the right ordinate alignment in twoord.plot
@@ -5,7 +9,7 @@ version 3.0-7
 version 3.0-6
 
 	Added the "barlabels" argument to drawNestedBars
-	big fix for the makrDendrite, furc and plot.dendrite functions
+	big fix for the makeDendrite, furc and plot.dendrite functions
 
 version 3.0-5
 
