@@ -1,6 +1,6 @@
 \name{feather.plot}
 \alias{feather.plot}
-\title{ Display vectors along a horizontal reference line. }
+\title{ Display vectors along a horizontal reference line }
 \description{
  Displays vectors along a line usually representing time or position.
 }

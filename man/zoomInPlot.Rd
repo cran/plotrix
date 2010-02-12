@@ -1,7 +1,7 @@
 \name{zoomInPlot}
 \alias{zoomInPlot}
 \title{
- Display a plot with a rectangular section expanded in an adjacent plot.
+ Display a plot with a rectangular section expanded in an adjacent plot
 }
 \description{
  Display one plot on the left half of a device and an expanded section of that
@@ -9,7 +9,7 @@
 }
 \usage{
  zoomInPlot(x,y=NULL,xlim=NULL,ylim=NULL,rxlim=xlim,rylim=ylim,xend=NA,
-  zoomtitle=NULL,...)
+  zoomtitle=NULL,titlepos=NA,...)
 }
 \arguments{
  \item{x,y}{numeric data vectors. If \samp{y} is not specified, it is set equal
@@ -19,6 +19,8 @@
  \item{xend}{Where to end the segments that indicate the expansion. Defaults to
   just left of the tick labels on the left ordinate.}
  \item{zoomtitle}{The title of the plot, display in the top center.}
+ \item{titlepos}{The horizontal position of the title in user units of the
+  zoomed plot.}
  \item{...}{additional arguments passed to \samp{plot}.}
 }
 \details{
@@ -33,6 +35,6 @@
 \seealso{\link{plot}}
 \examples{
  zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),
-  zoomtitle="Zoom In Plot")
+  zoomtitle="Zoom In Plot",titlepos=-1.5)
 }
 \keyword{misc}

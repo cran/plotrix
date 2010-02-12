@@ -1,6 +1,6 @@
 \name{diamondplot}
 \alias{diamondplot}
-\title{Plot multiple variables as polygons on a radial grid.}
+\title{Plot multiple variables as polygons on a radial grid}
 \usage{
  diamondplot(x, bg=gray(0.6), col=rainbow,name="", ...)
 }

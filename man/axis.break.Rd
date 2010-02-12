@@ -2,7 +2,7 @@
 \alias{axis.break}
 \title{ Place a "break" mark on an axis }
 \description{
- Places a "break" mark on an axis on an existing plot
+ Places a "break" mark on an axis on an existing plot.
 }
 \usage{
  axis.break(axis=1,breakpos=NULL,bgcol="white",breakcol="black",

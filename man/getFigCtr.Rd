@@ -1,5 +1,5 @@
 \name{getFigCtr}
-\title{Find the center of the figure region.}
+\title{Find the center of the figure region}
 \description{Calculates the center of the figure region.}
 \usage{
  getFigCtr()

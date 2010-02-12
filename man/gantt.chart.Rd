@@ -8,7 +8,7 @@
 \usage{
  gantt.chart(x=NULL,format="\%Y/\%m/\%d",xlim=NULL,taskcolors=NULL,
   priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="\%Y/\%m/\%d",
-  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE)
+  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1)
 }
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
@@ -29,6 +29,7 @@
   using \samp{mtext}.}
  \item{xlab}{horizontal axis label - usually suppressed.}
  \item{cylindrical}{Whether to give the bars a cylindrical appearance.}
+ \item{label.cex}{Relative size for the task labels at the left side.}
 }
 \value{
  The list used to create the chart - see \link{get.gantt.info} for

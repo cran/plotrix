@@ -1,6 +1,6 @@
 \name{bin.wind.records}
 \alias{bin.wind.records}
-\title{Classify wind direction and speed records.}
+\title{Classify wind direction and speed records}
 \description{Classifies wind direction and speed records into a matrix of
  percentages of observations in speed and direction bins.}
 \usage{

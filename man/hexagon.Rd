@@ -2,7 +2,7 @@
 \alias{hexagon}
 \title{Draw a hexagon}
 \description{
- Draws a hexagon on the current graphic device.
+ Draws a hexagon on the current graphic device
 }
 \usage{
  hexagon(x,y,unitcell=1,col=NA,border="black")

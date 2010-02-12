@@ -1,6 +1,6 @@
 \name{smoothColors}
 \alias{smoothColors}
-\title{Build a vector of color values.}
+\title{Build a vector of color values}
 \usage{
  smoothColors(...,alpha=NA)
 }

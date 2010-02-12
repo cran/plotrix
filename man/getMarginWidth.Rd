@@ -1,6 +1,6 @@
 \name{getMarginWidth}
 \alias{getMarginWidth}
-\title{Find the margin width necessary to fit text or a legend next to a plot.}
+\title{Find the margin width necessary to fit text or a legend next to a plot}
 \description{
  Calculates the margin width necessary to fit text or a legend next to a plot.
 }

@@ -1,5 +1,5 @@
 \name{rescale}
-\title{Scale numbers into a new range.}
+\title{Scale numbers into a new range}
 \description{Scale a vector or matrix of numbers into a new range.}
 \usage{
  rescale(x,newrange)

@@ -1,7 +1,7 @@
 \name{legendg}
 \alias{legendg}
-\title{Key for interpreting lengths in a plot}
-\description{Key for interpreting lengths in a plot}
+\title{Legend with grouped bars, lines or symbols}
+\description{Displays a legend with more than one rectangle, symbol or line.}
 \usage{
  legendg(x,y=NULL,legend,fill=NULL,col=par("col"),          
  border="black",lty,lwd,pch=NULL,angle=45,density=NULL,       

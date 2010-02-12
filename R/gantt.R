@@ -42,7 +42,7 @@ get.gantt.info<-function(format="%Y/%m/%d") {
 
 gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL, 
  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
- half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE) {
+ half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1) {
 
  oldpar <- par("mai","omi","xpd","xaxs","yaxs")
  if(is.null(x)) x<-get.gantt.info(format=format)
@@ -53,7 +53,9 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  if(is.null(x$priorities)) x$priorities<-rep(1,ntasks)
  if(is.null(dev.list())) plot.new()
  charheight<-strheight("M",units="inches")
+ oldcex<-par(cex=label.cex)
  maxwidth<-max(strwidth(x$labels,units="inches"))+0.3
+ par(oldcex)
  if (is.null(xlim)) xlim=range(c(x$starts,x$ends))
  npriorities <- max(x$priorities)
  if(is.null(taskcolors)) taskcolors<-rainbow(npriorities)
@@ -82,7 +84,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   else axis(3,at=tickpos,labels=vgridlab)
  }
  topdown <- seq(ntasks,1)
- axis(2,at=topdown,labels=tasks,las=2)
+ axis(2,at=topdown,labels=tasks,las=2,cex.axis=label.cex)
  abline(v=tickpos,col="darkgray",lty = 3)
  for(i in 1:ntasks) {
   if(cylindrical)

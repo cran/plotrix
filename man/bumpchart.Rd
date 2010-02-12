@@ -1,6 +1,6 @@
 \name{bumpchart}
 \alias{bumpchart}
-\title{Display a "bumps" chart.}
+\title{Display a "bumps" chart}
 \description{
  Display a chart with two of more columns of points in order of ascending values
  with lines connecting the points in a row.

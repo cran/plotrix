@@ -1,6 +1,6 @@
 \name{dotplot.mtb}
 \alias{dotplot.mtb}
-\title{ Minitab style dotplots. }
+\title{ Minitab style dotplots }
 \description{
  Create a dotplot of a data vector in the sense of ``dotplot'' as
  used in the Minitab\eqn{\mbox{\copyright}}{\ (copyright)} package.

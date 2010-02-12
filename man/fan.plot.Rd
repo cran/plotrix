@@ -1,6 +1,6 @@
 \name{fan.plot}
 \alias{fan.plot}
-\title{ Display a fan plot. }
+\title{ Display a fan plot }
 \description{
  Displays numerical values as the arcs of overlapping sectors.
 }

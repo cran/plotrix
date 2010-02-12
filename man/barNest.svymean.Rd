@@ -1,10 +1,10 @@
-\name{hierobarp.svymean}
-\alias{hierobarp.svymean}
-\title{Display a nested breakdown of means.}
+\name{barNest.svymean}
+\alias{barNest.svymean}
+\title{Display a nested breakdown of means}
 \description{Displays a nested breakdown as a bar plot of means from
  the output of svyby (survey package) using svymean as the function.}
 \usage{
- hierobarp.svymean(x,meanvar,dispvar,xlim=NULL,ylim=NULL,
+ barNest.svymean(x,meanvar,dispvar,xlim=NULL,ylim=NULL,
   main="",xlab="",ylab="",yticks=NULL,start=0,end=1,shrink=0.02,
   errbars=FALSE,col=NA,labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,
   showbrklab=TRUE,mar=NULL)
@@ -35,7 +35,7 @@
 }
 \value{nil}
 \details{
- \samp{hierobarp.svymean} displays a bar plot illustrating the breakdown of
+ \samp{barNest.svymean} displays a bar plot illustrating the breakdown of
  a numeric variable as group means. This can be useful in visualizing the relationship
  between groups and subgroups in a compact format. While the function can be used
  with just the output of the \samp{svyby} and \samp{svymean} functions, the user will
@@ -50,5 +50,5 @@
  quite easy to get this wrong.
 }
 \author{Jim Lemon}
-\seealso{\link{hierobarp}, \link{barp}}
+\seealso{\link{barNest}, \link{barp}}
 \keyword{misc}

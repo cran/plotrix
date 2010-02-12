@@ -1,4 +1,4 @@
-hierobarp.svymean<-function (x,meanvar,dispvar=NULL,xlim=NULL,ylim=NULL,
+barNest.svymean<-function (x,meanvar,dispvar=NULL,xlim=NULL,ylim=NULL,
  main="",xlab="",ylab="",yticks=NULL,start=0,end=1,shrink=0.02,errbars=FALSE,
  col=NA,labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,showbrklab=TRUE,mar=NULL) {
 
@@ -67,7 +67,7 @@ hierobarp.svymean<-function (x,meanvar,dispvar=NULL,xlim=NULL,ylim=NULL,
    bg=col[[1]][block],cex=labelcex)
   par(xpd=FALSE)
   if(dimx[2] > 3)
-   hierobarp.svymean(x=xblock,meanvar=meanvar,dispvar=dispvar,xlim=xlim,ylim=ylim,
+   barNest.svymean(x=xblock,meanvar=meanvar,dispvar=dispvar,xlim=xlim,ylim=ylim,
     main = main,xlab=xlab,ylab=ylab,start=start+squeeze,end=end-squeeze,
     shrink = shrink*1.5,errbars=errbars,col=newcol,labelcex=labelcex,
     lineht=lineht,showall=showall,barlabels=barlabels,showbrklab=showbrklab)

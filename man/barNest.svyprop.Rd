@@ -1,10 +1,10 @@
-\name{hierobarp.svyprop}
-\alias{hierobarp.svyprop}
-\title{Display a nested breakdown of numeric proportions.}
+\name{barNest.svyprop}
+\alias{barNest.svyprop}
+\title{Display a nested breakdown of numeric proportions}
 \description{Displays a nested breakdown as a bar plot of proportions from
  the output of svyby (survey package) using svytotal as the function.}
 \usage{
- hierobarp.svyprop(x,truevar,falsevar,xlim=NULL,ylim=NULL,
+ barNest.svyprop(x,truevar,falsevar,xlim=NULL,ylim=NULL,
   main="",xlab="",ylab="",yticks=NULL,start=0,end=1,shrink=0.02,
   errbars=FALSE,col=NA,labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,
   showbrklab=TRUE,mar=NULL)
@@ -36,7 +36,7 @@
 }
 \value{nil}
 \details{
- \samp{hierobarp.svyprop} displays a bar plot illustrating the breakdown of
+ \samp{barNest.svyprop} displays a bar plot illustrating the breakdown of
  a binary outcome as proportions. This can be useful in visualizing the relationship
  between groups and subgroups in a compact format. While the function can be used
  with just the output of the \samp{svyby} and \samp{svytotal} functions, the user
@@ -51,5 +51,5 @@
  quite easy to get this wrong.
 }
 \author{Jim Lemon}
-\seealso{\link{hierobarp}, \link{barp}}
+\seealso{\link{barNest}, \link{barp}}
 \keyword{misc}

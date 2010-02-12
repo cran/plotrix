@@ -1,6 +1,6 @@
 \name{color.scale.lines}
 \alias{color.scale.lines}
-\title{Line segments with scaled colors.}
+\title{Line segments with scaled colors}
 \description{Display line segments with colors scaled to numeric values.}
 \usage{
  color.scale.lines(x,y,reds,greens,blues,col=NA,colvar=NA,...)

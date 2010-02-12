@@ -1,6 +1,6 @@
 \name{revaxis}
 \alias{revaxis}
-\title{ Plot with axis direction(s) reversed. }
+\title{ Plot with axis direction(s) reversed }
 \description{
    Reverses the sense of either or both the \samp{x} and \samp{y} axes.
 }

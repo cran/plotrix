@@ -1,7 +1,7 @@
 \name{stackpoly}
 \alias{stackpoly}
 \title{
- Display the columns of a matrix or data frame as stacked polygons.
+ Display the columns of a matrix or data frame as stacked polygons
 }
 \description{
  Plot one or more columns of numeric values as the top edges of polygons
@@ -9,7 +9,7 @@
 }
 \usage{
  stackpoly(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
-  xlim=NA,ylim=NA,lty=1,lwd=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,
+  xlim=NA,ylim=NA,lty=1,lwd=1,border=NA,col=NULL,staxx=FALSE,stack=FALSE,
   axis2=TRUE,axis4=TRUE,...)
 }
 \arguments{
@@ -26,7 +26,8 @@
  \item{lty}{Line type for the polygon borders.}
  \item{lwd}{Line width for the polygon borders.}
  \item{border}{Color for the polygon borders.}
- \item{col}{Color to fill the polygons.}
+ \item{col}{Color to fill the polygons. If NULL, \samp{rainbow} will be
+  called to generate the colors. If NA, the polygons will not be filled.}
  \item{staxx}{Whether to call \samp{staxlab} to stagger the x axis labels.}
  \item{stack}{Whether to stack the successive values on top of each other.}
  \item{axis2}{Whether to display the left ordinate on the plot.}
