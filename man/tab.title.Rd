@@ -1,7 +1,7 @@
 \name{tab.title}
 \alias{tab.title}
 \title{
- Display the title of a plot as a colored tab.
+ Display the title of a plot as a colored tab
 }
 \description{
  Display the title of a plot as a colored tab.

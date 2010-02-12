@@ -35,6 +35,14 @@ box()
 axis.mult(1,mult=0.001)
 axis.mult(2,mult=100)
 par(mar=c(5,5,4,2))
+test.df<-data.frame(Age=rnorm(100,25,10),
+ Sex=sample(c("M","F"),100,TRUE),
+ Marital=sample(c("M","X","S","W"),100,TRUE),
+ Employ=sample(c("FT","PT","NO"),100,TRUE))
+test.col<-list(Overall="green",Employ=c("purple","orange","brown"),
+ Marital=c("#1affd8","#caeecc","#f7b3cc","#94ebff"),Sex=c(2,4))
+barNest(formula=Age~Sex+Marital+Employ,data=test.df,main="barNest",
+ col=test.col,showall=TRUE)
 happyday<-data.frame(Monday=c(2.3,3.4),Tuesday=c(2.8,3.3),Wednesday=c(3.2,3.1),
 Thursday=c(3.6,2.8),Friday=c(4.2,2.6),Saturday=c(4.5,2.9),Sunday=c(4.1,2.8))
 happylabels<-c("Utterly dashed","Rather mopey","Indifferent","Somewhat elated",
@@ -66,6 +74,18 @@ bp<-brkdn.plot("a","c","d",test.df,main="Test of brkdn.plot",
 es<-emptyspace(bp)
 legend(es,legend=c("Sydney","Gosford","Karuah","Brisbane"),pch=1:4,
  col=1:4,lty=1:4,xjust=0.5,yjust=0.5)
+educattn<-matrix(c(90.4,90.3,75.7,78.9,66,71.8,70.5,70.4,68.4,67.9,
+ 67.2,76.1,68.1,74.7,68.5,72.4,64.3,71.2,73.1,77.8),ncol=2,byrow=TRUE)
+rownames(educattn)<-c("Anchorage AK","Boston MA","Chicago IL",
+ "Houston TX","Los Angeles CA","Louisville KY","New Orleans LA",
+ "New York NY","Philadelphia PA","Washington DC")
+colnames(educattn)<-c(1990,2000)
+bumpchart(educattn,rank=FALSE,
+ main="Percentage high school completion by over 25s",col=rainbow(10))
+# margins have been reset, so use
+par(xpd=TRUE)
+boxed.labels(1.5,seq(65,90,by=5),seq(65,90,by=5))
+par(xpd=FALSE)
 testcp<-list("",40)
 for(i in 1:40) testcp[[i]]<-rnorm(sample(1:8,1)*50)
 segs<-get.segs(testcp)
@@ -110,7 +130,8 @@ plot(1:10, asp = 1,main="Test draw.arc")
 draw.arc(5, 5, 1:10/10, deg2 = 1:10*10, col = "blue")
 draw.arc(8, 8, 1:10/10, deg2 = 1:10*10, col = 1:10)
 plot(1:5,seq(1,10,length=5),type="n",xlab="",ylab="",main="Test draw.circle")
-draw.circle(2,2,0.5,border="purple",lty=1,lwd=1)
+draw.circle(2,4,c(1,0.66,0.33),border="purple",
+ col=c("#ff00ff","#ff77ff","#ffccff"),lty=1,lwd=1)
 draw.circle(2.5,8,0.6,border="red",lty=3,lwd=3)
 draw.circle(4,3,0.7,border="green",lty=1,lwd=1)
 draw.circle(3.5,7,0.8,border="blue",lty=2,lwd=2)
@@ -178,14 +199,6 @@ gradient.rect(1,0,3,6,reds=c(1,0),
 gradient.rect(4,0,6,6,c(seq(0,1,length=10),rep(1,10)),
  c(rep(1,10),seq(1,0,length=10)),c(0,0),gradient="y")
 gradient.rect(7,0,9,6,col=smoothColors("red",38,"blue"),border=NA)
-test.df<-data.frame(Age=rnorm(100,25,10),
- Sex=sample(c("M","F"),100,TRUE),
- Marital=sample(c("M","X","S","W"),100,TRUE),
- Employ=sample(c("FT","PT","NO"),100,TRUE))
-test.col<-list(Overall="green",Employ=c("purple","orange","brown"),
- Marital=c("#1affd8","#caeecc","#f7b3cc","#94ebff"),Sex=c(2,4))
-hierobarp(formula=Age~Sex+Marital+Employ,data=test.df,main="Hierobarp",
- col=test.col,showall=TRUE)
 druguse<-matrix(c(sample(c(0,1),200,TRUE),
  sample(c(0,1),200,TRUE),
  sample(c(0,1),200,TRUE),
@@ -232,7 +245,7 @@ hcats<-data.frame(cat1,cat2,cat3)
 bhcol<-list(c("#ff8080","#dddd80","#80ff80","#8080ff"),
  c("red","green","lightblue","yellow"),
  c("#ffffff","#bbbbbb","#999999","#666666"))
-sizetree(hcats,col=bhcol,main="Hierarchical count chart")
+sizetree(hcats,col=bhcol,main="sizetree (hierarchical count chart)")
 soils.sw.percent<-data.frame(
  Sand=c(67,67,66,67,36,25,24,59,27,9,8,8,20,
  45,50,56,34,29,39,41,94,98,97,93,96,99),
@@ -305,5 +318,5 @@ plot(0,xlim=c(0.7,8.3),ylim=c(0.7,7.3),type="n",
 vectorField(o,m,vecspec="rad")
 lengthKey(0.3,-0.5,c(0,5,10),0.24)
 zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),
- zoomtitle="Zoom In Plot")
+ zoomtitle="Zoom In Plot",titlepos=-1.5)
 par(ask=FALSE)

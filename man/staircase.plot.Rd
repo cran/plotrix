@@ -1,6 +1,6 @@
 \name{staircase.plot}
 \alias{staircase.plot}
-\title{Display a staircase plot.}
+\title{Display a staircase plot}
 \description{
  Displays a plot showing a sequence of changing totals and increments as
  successive linked bars.

@@ -1,6 +1,6 @@
 \name{get.triprop}
 \alias{get.triprop}
-\title{Enter three proportion data - usually soil textures.}
+\title{Enter three proportion data - usually soil textures}
 \usage{
  get.triprop(use.percentages=FALSE,cnames=c("1st","2nd","3rd"))
 }

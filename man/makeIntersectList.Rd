@@ -1,7 +1,7 @@
 \name{makeIntersectList}
 \alias{makeIntersectList}
 \title{Count set intersections}
-\description{Create a list of set intersections from a matrix of indicators.}
+\description{Create a list of set intersections from a matrix of indicators}
 \usage{
  makeIntersectList(x,xnames=NULL)
 }

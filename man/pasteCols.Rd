@@ -1,6 +1,6 @@
 \name{pasteCols}
 \alias{pasteCols}
-\title{Paste the columns of a matrix together.}
+\title{Paste the columns of a matrix together}
 \description{Paste the columns of a matrix together to form as
  many "words" as there are columns.}
 \usage{

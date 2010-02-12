@@ -1,5 +1,5 @@
 zoomInPlot<-function(x,y=NULL,xlim=NULL,ylim=NULL,rxlim=xlim,rylim=ylim,
- xend=NA,zoomtitle=NULL,...) {
+ xend=NA,zoomtitle=NULL,titlepos=NA,...) {
  par(mfrow=c(1,2))
  if(is.null(y)) {
   y<-x
@@ -33,7 +33,11 @@ zoomInPlot<-function(x,y=NULL,xlim=NULL,ylim=NULL,rxlim=xlim,rylim=ylim,
  x1<-xylim[1]-diff(xylim[1:2])*(xymai[2]+xymai[4]+rxi1)/xypin[1]
  y01<-xylim[4]-diff(xylim[3:4])*y01i/xypin[2]
  y02<-xylim[3]+diff(xylim[3:4])*y02i/xypin[2]
- if(!is.null(zoomtitle)) mtext(zoomtitle,at=getFigCtr(),cex=1.5,line=1.5)
+ par(xpd=TRUE)
+ if(!is.null(zoomtitle)) {
+  if(is.na(titlepos)) titlepos<-getFigCtr()[1]
+  mtext(zoomtitle,at=titlepos,cex=1.5,line=1.5)
+ }
  if(is.na(xend)) xend<-xylim[1]-diff(xylim[1:2])*xymai[2]/(2*xypin[1])
  xprop0<-(xylim[1]-xend)/(xylim[1]-x0)
  xprop1<-(xylim[2]-xend)/(xylim[2]-x1)

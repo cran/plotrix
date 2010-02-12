@@ -1,5 +1,5 @@
 \name{polar.plot}
-\title{Plot values on a circular grid of 0 to 360 degrees.}
+\title{Plot values on a circular grid of 0 to 360 degrees}
 \usage{
  polar.plot(lengths,polar.pos=NULL,labels,label.pos=NULL,
   start=0,clockwise=FALSE,rp.type="r",...)

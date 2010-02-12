@@ -20,9 +20,9 @@
 \details{
  \samp{cylindrect} displays a rectangle filled with "slices" of color that
  simulate the appearance of a cylinder. The slices are calculated so that the 
- base color appears at the right or bottom edge of the rectangle, become
+ base color appears at the right or bottom edge of the rectangle, becomes
  progressively lighter to a "highlight" at two thirds of the width or height
- and then darken toward the base color again.
+ and then darkens toward the base color again.
 
  The appearance is of a cylinder lit from above and to the left of the viewer.
  The position of the apparent light source is hard coded into the function.

@@ -1,7 +1,7 @@
 \name{radial.plot}
 \alias{radial.plot}
 \title{
- Plot values on a circular grid of 0 to 2*pi radians.
+ Plot values on a circular grid of 0 to 2*pi radians
 }
 \description{
  Plot numeric values as distances from the center of a circular field in the

@@ -1,6 +1,6 @@
 \name{oz.windrose}
 \alias{oz.windrose}
-\title{Display an Australian wind rose.}
+\title{Display an Australian wind rose}
 \description{Displays a wind rose in the style used by the Australian
  Bureau of Meteorology.}
 \usage{

@@ -1,6 +1,6 @@
 \name{spreadout}
 \alias{spreadout}
-\title{Spread out a vector of numbers to a minimum interval.}
+\title{Spread out a vector of numbers to a minimum interval}
 \description{
  Spread out a vector of numbers so that there is a minimum interval
  between any two numbers when in ascending or descending order.

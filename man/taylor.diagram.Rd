@@ -1,7 +1,7 @@
 \name{taylor.diagram}
 \alias{taylor.diagram}
 \title{ Taylor diagram }
-\description{ Display a Taylor diagram.}
+\description{ Display a Taylor diagram}
 \usage{
  taylor.diagram(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
   xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,

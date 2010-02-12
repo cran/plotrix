@@ -25,18 +25,6 @@ bin.wind.records<-function(winddir,windspeed,ndir=8,radians=FALSE,
  return(windagg)
 }
 
-draw.circle<-function(x,y,radius,nv=100,border=NULL,col=NA,lty=1,lwd=1) {
- xylim<-par("usr")
- plotdim<-par("pin")
- ymult<-(xylim[4]-xylim[3])/(xylim[2]-xylim[1])*plotdim[1]/plotdim[2]
- angle.inc<-2*pi/nv
- angles<-seq(0,2*pi-angle.inc,by=angle.inc)
- xv<-cos(angles)*radius+x
- yv<-sin(angles)*radius*ymult+y
- polygon(xv,yv,border=border,col=col,lty=lty,lwd=lwd)
- invisible(list(x=xv,y=yv))
-}
-
 oz.windrose.legend<-function(
  speed.col=c("#dab286","#fe9a66","#ce6733","#986434"),
  speed.width=c(0.2,0.4,0.6,0.8),legend.pos=27) {

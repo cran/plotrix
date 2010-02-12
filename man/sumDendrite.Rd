@@ -1,6 +1,6 @@
 \name{sumDendrite}
 \alias{sumDendrite}
-\title{Sum the counts in the top level of a dendrite object.}
+\title{Sum the counts in the top level of a dendrite object}
 \description{Find the sum of the counts that are the first elements of each
  list in the top level of a dendrite object.}
 \usage{ sumDendrite(x) }

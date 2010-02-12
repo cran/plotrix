@@ -1,6 +1,6 @@
 \name{furc}
 \alias{furc}
-\title{Plot a dendrite.}
+\title{Plot a dendrite}
 \description{Plot one level of a dendrogram displaying two or more mutually 
  exclusive attributes.}
 \usage{

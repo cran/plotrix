@@ -1,6 +1,6 @@
 \name{plot.dendrite}
 \alias{plot.dendrite}
-\title{Plot a dendrogram of a dendrite object.}
+\title{Plot a dendrogram of a dendrite object}
 \description{Plot a dendrogram for two or more mutually exclusive attributes.}
 \usage{
  \method{plot}{dendrite}(x,xlabels=NULL,main="",mar=c(1,0,3,0),cex=1,...)

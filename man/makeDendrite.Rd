@@ -1,6 +1,6 @@
 \name{makeDendrite}
 \alias{makeDendrite}
-\title{Build a list of the mutually exclusive attributes of objects.}
+\title{Build a list of the mutually exclusive attributes of objects}
 \description{Build a list of mutually exclusive attributes from a matrix of 
  category indicators.}
 \usage{

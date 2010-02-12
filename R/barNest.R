@@ -1,4 +1,4 @@
-hierobrk<-function(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd) {
+hierobrk<-function(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd,trueval=NA) {
  std.error<-function (x,na.rm) {
   vn<-function(x) return(sum(!is.na(x)))
   dimx<-dim(x)
@@ -18,6 +18,11 @@ hierobrk<-function(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd) {
   }
   return(stderr/sqrt(vnx))
  }
+ propbrk<-function(x,trueval=TRUE) {
+  proptab<-table(x)
+  prop<-proptab[which(names(proptab)==trueval)]/sum(proptab)
+  return(prop)
+ }
  bn<-as.character(attr(terms(formula),"variables")[-1])
  nbn<-length(bn)
  # this gets the order of factors for breakdown right
@@ -31,7 +36,10 @@ hierobrk<-function(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd) {
    barlabels[[varname-1]]<-levels(data[[thisindex]])
   else barlabels[[varname-1]]<-sort(unique(data[[thisindex]]))
  }
- mctlist<-by(data[[bn[1]]],data[,findex],mct,na.rm=TRUE)
+ if(is.na(trueval))
+  mctlist<-by(data[[bn[1]]],data[,findex],mct,na.rm=TRUE)
+ else
+  mctlist<-by(data[[bn[1]]],data[,findex],propbrk,trueval=trueval)
  if(is.null(lmd)) {
   lcllist<-by(data[[bn[1]]],data[,findex],std.error,na.rm=TRUE)
   ucllist<-lcllist
@@ -43,15 +51,17 @@ hierobrk<-function(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd) {
  return(list(mctlist,lcllist,ucllist,barlabels))
 }
 
-hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
+barNest<-function(formula=NULL,data=NULL,maxlevels=10,
  mct=mean,lmd=std.error,umd=lmd, x=NULL,xlim=NULL,ylim=NULL,
  main="",xlab="",ylab="",start=0,end=1,shrink=0.02,errbars=FALSE,
  col=NA,labelcex=1,lineht=NA,showall=FALSE,barlabels=NULL,
- showbrklab=TRUE,mar=NULL,arrow.cap=0.01) {
+ showbrklab=TRUE,mar=NULL,arrow.cap=0.01,trueval=NA) {
 
  squeeze<-(end-start)*shrink
  if(is.null(x)) {
-  x<-hierobrk(formula=formula,data=data,maxlevels=maxlevels,mct=mct,lmd=lmd,umd=umd)
+  x<-hierobrk(formula=formula,data=data,maxlevels=maxlevels,mct=mct,lmd=lmd,umd=umd,
+   trueval=trueval)
+  if(!is.na(trueval)) errbars=FALSE
   if(is.null(xlim)) xlim<-c(start,end)
   if(is.null(ylim)) {
    ymin<-min(c(0,unlist(x[[1]])-errbars*unlist(x[[2]])),na.rm=TRUE)
@@ -149,7 +159,7 @@ hierobarp<-function(formula=NULL,data=NULL,maxlevels=10,
      bg=ifelse(is.na(barcol[slice]),"white",barcol[slice]),cex=labelcex)
     par(xpd=FALSE)
    }
-   hierobarp(x=xslice,xlim=xlim,ylim=ylim,main=main,xlab=xlab,ylab=ylab,
+   barNest(x=xslice,xlim=xlim,ylim=ylim,main=main,xlab=xlab,ylab=ylab,
     start=start+squeeze,end=end-squeeze,shrink=shrink*1.5,errbars=errbars,
     col=newcol,barlabels=newlabels,lineht=lineht,showall=showall,
     showbrklab=showbrklab,labelcex=labelcex)

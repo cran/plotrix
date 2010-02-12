@@ -1,6 +1,6 @@
 \name{cluster.overplot}
 \alias{cluster.overplot}
-\title{Shift overlying points into clusters.}
+\title{Shift overlying points into clusters}
 \usage{
  cluster.overplot(x,y,away=NULL,tol=NULL,...)
 }

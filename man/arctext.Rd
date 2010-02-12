@@ -1,5 +1,5 @@
 \name{arctext}
-\title{Display text on a circular arc.}
+\title{Display text on a circular arc}
 \usage{
  arctext(x,center=c(0,0),radius=1,start=NA,middle=pi/2,stretch=1,cex=1,...)
 }

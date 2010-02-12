@@ -1,6 +1,6 @@
 \name{emptyspace}
 \alias{emptyspace}
-\title{ Find an empty space on a plot. }
+\title{ Find an empty space on a plot }
 \description{
  Try to find the largest empty rectangle on a plot.
 }

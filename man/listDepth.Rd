@@ -1,6 +1,6 @@
 \name{listDepth}
 \alias{listDepth}
-\title{Find the maximum depth of a list.}
+\title{Find the maximum depth of a list}
 \description{Descend a list and find the maximum number of levels.}
 \usage{ listDepth(x) }
 \arguments{

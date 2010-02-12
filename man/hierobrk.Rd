@@ -1,10 +1,10 @@
 \name{hierobrk}
 \alias{hierobrk}
-\title{Perform a nested breakdown of numeric values.}
-\description{Breaks down a numeric element of a data frame by one or more
- categorical elements.}
+\title{Perform a nested breakdown of numeric values}
+\description{Breaks down a numeric or categorical element of a data frame
+ by one or more categorical elements.}
 \usage{
- hierobrk(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd)
+ hierobrk(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd,trueval=NA)
 }
 \arguments{
  \item{formula}{A formula with a numeric element of a data frame on the left and
@@ -16,6 +16,8 @@
  \item{lmd}{The lower measure of dispersion function to use (default is standard
   error).}
  \item{umd}{The upper measure of dispersion function to use.}
+ \item{trueval}{The value to use in calculating proportions of a categorical
+  response variable. See Details.}
 }
 \value{
  A list with four elements:
@@ -31,7 +33,10 @@
  \samp{hierobrk} performs the breakdown of a numeric element of a data frame by one
  or more categorical elements. For each category and optionally subcategories, the
  variable on the left of the formula is summarized as specified by the functions
- named in \samp{num.desc}.
+ named in \samp{num.desc}. If \samp{trueval} is not NA, hierobrk will calculate the
+ proportion of \samp{trueval} values in the response variable out of the total
+ valid responses. Remember that \samp{lcllist} and \samp{ucllist} will be
+ meaningless in this case.
 
  The user should take care when specifying different summary functions.
  \samp{hierobarp} expects a measure of central tendency as the first function and

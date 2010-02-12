@@ -36,7 +36,8 @@ legendg<-function(x,y=NULL,legend,fill=NULL,col=par("col"),
     rep(0.8*rectspace/nrect,nrect-1)))
    rights<-lefts+0.7*rectspace/nrect
    bottoms<-rep(legend.info$text$y[nel]-yadj*rectheight,nrect)
-   rect(lefts,bottoms,rights,bottoms+rectheight,col=fill[[nel]])
+   rect(lefts,bottoms,rights,bottoms+rectheight,col=fill[[nel]],
+    border=ifelse(is.na(fill[[nel]]),par("bg"),par("fg")))
   }
  }
  if(!is.null(pch)) {
