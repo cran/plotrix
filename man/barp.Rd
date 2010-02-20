@@ -111,9 +111,9 @@
   "Math/Stats","Psychology","Sociology")
  funlabels<-c("Torture","Agony","Boredom","Neutral","Entertaining","Exhilarating",
   "Maniacal")
- # in the call to color.scale, the leading zero and one are dropped
+ # the leading zero and one are dropped from the result of color.scale
  barp(funrating,names.arg=funstudy,main="Fun ratings for various areas of study",
-  col=color.scale(sexratio[-c(1,2)],c(0.2,1),c(0.2,0.4),c(1,0.4)),xlab="Study",
+  col=color.scale(sexratio,c(0.2,1),c(0.2,0.4),c(1,0.4))[-(1:2)],xlab="Study",
   ylab="Rating",height.at=1:7,height.lab=funlabels,ylim=c(1,7),staxx=TRUE,
   staxy=TRUE,cex.axis=0.9)
  # here we want the full scale from zero to one
