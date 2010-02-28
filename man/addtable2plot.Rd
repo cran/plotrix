@@ -6,7 +6,8 @@
 \usage{
  addtable2plot(x,y=NULL,table,lwd=par("lwd"),bty="n",bg=par("bg"),
   cex=1,xjust=0,yjust=1,box.col=par("fg"),text.col=par("fg"),
-  display.colnames=TRUE,display.rownames=FALSE,hlines=FALSE,title=NULL)
+  display.colnames=TRUE,display.rownames=FALSE,hlines=FALSE,vlines=FALSE,
+  title=NULL)
 }
 \arguments{
  \item{x,y}{Either x and y coordinates to locate the table or an
@@ -22,6 +23,7 @@
  \item{display.colnames}{Whether to display the column names in the table.}
  \item{display.rownames}{Whether to display the row names in the table.}
  \item{hlines}{Whether to draw horizontal lines between each row of the table.}
+ \item{vlines}{Whether to draw vertical lines between each column of the table.}
  \item{title}{Optional title placed over the table.}
 }
 \value{nil}
@@ -42,6 +44,6 @@
   names.arg=colnames(testdf),col=2:4)
  # show most of the options
  addtable2plot(2,8,testdf,bty="o",display.rownames=TRUE,hlines=TRUE,
-  title="The table")
+  vlines=TRUE,title="The table")
 }
 \keyword{misc}

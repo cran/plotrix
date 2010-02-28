@@ -42,31 +42,27 @@ get.gantt.info<-function(format="%Y/%m/%d") {
 
 gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL, 
  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
- half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1) {
+ half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex = 1) {
 
- oldpar <- par("mai","omi","xpd","xaxs","yaxs")
+ oldpar<-par("mai","omi","xpd","xaxs","yaxs")
  if(is.null(x)) x<-get.gantt.info(format=format)
- if(any(x$starts > x$ends))
-  stop("Can't have a start date after an end date")
+ if(any(x$starts > x$ends)) stop("Can't have a start date after an end date")
  tasks<-unique(x$labels)
  ntasks<-length(tasks)
- # if no priorities are given, set all to 1
- if(is.null(x$priorities)) x$priorities<-rep(1,ntasks)
+ if(is.null(x$priorities)) x$priorities <- rep(1, ntasks)
  if(is.null(dev.list())) plot.new()
  charheight<-strheight("M",units="inches")
  oldcex<-par(cex=label.cex)
- maxwidth<-max(strwidth(x$labels,units="inches"))+0.3
+ maxwidth<-max(strwidth(x$labels,units="inches")) + 0.3
  par(oldcex)
- if (is.null(xlim)) xlim=range(c(x$starts,x$ends))
+ if(is.null(xlim)) xlim = range(c(x$starts, x$ends))
  npriorities<-max(x$priorities)
- if(is.null(taskcolors)) taskcolors<-rainbow(npriorities)
- if(length(taskcolors) < ntasks) taskcolors<-taskcolors[x$priorities]
+ if(is.null(taskcolors)) taskcolors<-barcolors<-rainbow(npriorities)
+ else barcolors<-taskcolors
+ if(length(barcolors) < ntasks) barcolors <- barcolors[x$priorities]
  nlabels<-length(x$labels)
- # if the number of taskcolors is less than the number of labels,
- # assign the first ntasks colors to the unique labels
- if(length(taskcolors) < nlabels)
-  taskcolors<-taskcolors[as.numeric(factor(x$labels))]
- # otherwise, the taskcolors will be assigned by order to the labels
+ if(length(barcolors) < nlabels) 
+  barcolors<-barcolors[as.numeric(factor(x$labels))]
  bottom.margin<-ifelse(priority.legend || nchar(xlab),0.7,0)
  par(mai=c(bottom.margin,maxwidth,charheight*5,0.1))
  par(omi=c(0.1,0.1,0.1,0.1),xaxs="i",yaxs="i")
@@ -76,45 +72,41 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  if(nchar(main)) mtext(main,3,2,at=getFigCtr()[1])
  if(nchar(xlab)) mtext(xlab,1,1)
  if(is.na(vgrid.format)) {
-  if(is.null(vgridlab)) vgridlab=vgridpos
+  if(is.null(vgridlab)) vgridlab<-vgridpos
   axis(3,at=vgridpos,labels=vgridlab)
   tickpos<-vgridpos
  }
  else {
   if(is.null(vgridpos)) tickpos<-axis.POSIXct(3,xlim,format=vgrid.format)
   else tickpos<-vgridpos
-  # if no tick labels, use the grid positions if they exist
   if(is.null(vgridlab) && !is.null(vgridpos)) 
    vgridlab<-format.POSIXct(vgridpos,vgrid.format)
-  # if vgridpos wasn't specified, use default axis ticks
   if(is.null(vgridlab)) axis.POSIXct(3,xlim,format=vgrid.format)
   else axis(3,at=tickpos,labels=vgridlab)
  }
- topdown <- seq(ntasks,1)
+ topdown<-seq(ntasks,1)
  axis(2,at=topdown,labels=tasks,las=2,cex.axis=label.cex)
- abline(v=tickpos,col="darkgray",lty = 3)
+ abline(v=tickpos,col="darkgray",lty=3)
  for(i in 1:ntasks) {
-  if(cylindrical)
-   cylindrect(x$starts[x$labels==tasks[i]],topdown[i]-half.height,
-    x$ends[x$labels==tasks[i]],topdown[i]+half.height,
-    col=taskcolors[i],gradient="y")
+  if(cylindrical) 
+   cylindrect(x$starts[x$labels == tasks[i]],topdown[i]-half.height,
+    x$ends[x$labels == tasks[i]],topdown[i]+half.height,col=barcolors[i],
+    gradient="y")
   else
-   rect(x$starts[x$labels==tasks[i]],topdown[i]-half.height,
-    x$ends[x$labels==tasks[i]],topdown[i]+half.height,
-    col=taskcolors[x$labels==tasks[i]],border=FALSE)
+   rect(x$starts[x$labels == tasks[i]],topdown[i]-half.height,
+    x$ends[x$labels == tasks[i]],topdown[i]+half.height,
+    col=barcolors[x$labels == tasks[i]],border=FALSE)
  }
  if(hgrid) 
   abline(h=(topdown[1:(ntasks-1)]+topdown[2:ntasks])/2,col="darkgray",lty=3)
  if(priority.legend) {
   par(xpd=TRUE)
   plim<-par("usr")
-  gradient.rect(plim[1],plim[3]-(plim[4]-plim[3])/10,
-                plim[1]+(plim[2]-plim[1])/4, 
-                plim[3]-(plim[4]-plim[3])/20,col=taskcolors)
+  gradient.rect(plim[1],plim[3]-(plim[4]-plim[3])/10, 
+   plim[1]+(plim[2]-plim[1])/4,plim[3]-(plim[4]-plim[3])/20,col=taskcolors)
   mtext("Priorities",side=1,line=1,at=plim[1]-(plim[2]-plim[1])/20,adj=1)
-  mtext(c("High","Low"),side=1,line=0,
-   at=c(plim[1],plim[1]+(plim[2]-plim[1])/4),
-   c(1-ntasks/10,1-ntasks/10))
+  mtext(c("High","Low"),side=1,line=0,at=c(plim[1],plim[1]+(plim[2]-plim[1])/4),
+   c(1-ntasks/10,1-ntasks/10),cex=0.8)
  }
  par(oldpar)
  invisible(x)
