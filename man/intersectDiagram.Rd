@@ -30,10 +30,19 @@
  \samp{intersectDiagram} displays rows of optionally colored rectangles.
  The topmost row represents the elements that only belong to one set, the
  next row down represents elements belonging to two sets, and so on to the
- bottom row of one rectangle representing the elements that belong to all
- the sets. More than three intersecting sets generally produce a complex and
- difficult to interpret Venn diagram, and this provides an alternative way to
- display the intersections between larger numbers of sets. 
+ bottom row of rectangles representing the elements that belong to the greatest
+ number of sets. If there were objects in the original data set that were not
+ members of any set, any percentages calculated will reflect this. By setting
+ \samp{show.nulls} to TRUE, the counts or percentages of such objects will be
+ displayed below the intersections over an empty rectangle scaled to the count
+ or percentage.
+
+ \samp{intersectDiagram} does not attempt to display the set intersections as
+ a pattern of overlapping geometric figures, but rather the relative sizes of
+ the intersections. More than three intersecting sets generally produce a
+ complex and difficult to interpret Venn diagram, and this provides an
+ alternative way to display the size of intersections between larger numbers
+ of sets. 
  
  Each set is assigned a color if \samp{col} is not NA. \samp{rainbow} is
  called if \samp{col} is NULL, otherwise the colors passed are used. For each
@@ -46,15 +55,13 @@
  \samp{makeIntersectList} and if this is also NULL, capital letters are assigned
  to each category in \samp{x}.
  
- If there were objects in the original data set that were not members of any
- set, any percentages calculated will reflect this. By setting \samp{show.nulls}
- to TRUE, the counts or percentages of such objects will be displayed below the
- intersections over an empty rectangle scaled to the count or percentage.
- 
- If a matrix of set membership indicators is passed as \samp{x}, it will be
- passed to \link{makeIntersectList} for conversion.
+ If a matrix or data frame of set membership indicators is passed as \samp{x},
+ it will be passed to \link{makeIntersectList} for conversion. Each column must
+ represent a set, and the 
 }
-\value{nil}
+\value{
+ Returns the intersection list invisibly.
+}
 \keyword{misc}
 \author{Jim Lemon}
 \seealso{\link{makeIntersectList}, \link{getIntersectList}}

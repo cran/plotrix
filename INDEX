@@ -29,6 +29,7 @@ corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
 cylindrect		Display a rectangle shaded to look like a cylinder
+dendroPlot		Display the distributions of values as branched clusters
 diamondplot		Display one or more polygons on a radial grid
 dispbars		Display dispersion (error) bars
 dotplot.mtb		Display a dotplot in MATLAB style
