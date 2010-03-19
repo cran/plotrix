@@ -1,7 +1,19 @@
+version 2-8-4
+
+	added the triax.fill function
+	changed the initial plot call from triax.frame to triax.plot
+	removed the "main" argument from triax.frame
+	added brkdnNest to replace hierobrk
+	rewrote barNest to suit brkdnNest
+	added drawNestedBars for the display of barNest
+	changed all remaining hierobarp functions to barNest
+
 version 2.8-3
 
 	radical rewrite of the pyramid.plot function
 	fixed up barp example mistake
+	fixed the title position in zoomInPlot
+	rewrote the hierobarp function as barNest
 
 version 2.8-2
 

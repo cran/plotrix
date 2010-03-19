@@ -1,5 +1,5 @@
 color.scale<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
- extremes=NA,na.color=NA) {
+ extremes=NA,na.color=NA,xrange=NULL) {
  
  naxs<-is.na(x)
  if(!is.na(extremes[1])){
@@ -10,7 +10,11 @@ color.scale<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   bluerange<-colmat[3,]/255
  }
  ncolors<-length(x)
- xrange<-range(x,na.rm=TRUE)
+ if(is.null(xrange)) xrange<-range(x,na.rm=TRUE)
+ else {
+  if(xrange[1] > min(x,na.rm=TRUE) || xrange[2] < max(x,na.rm=TRUE))
+   stop("An explicit range for x must include the range of x values.")
+ }
  nreds<-length(redrange)
  if(nreds>1) {
   reds<-rep(redrange[nreds],ncolors)

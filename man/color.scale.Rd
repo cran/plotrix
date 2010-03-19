@@ -4,7 +4,7 @@
 \description{Transform numeric values into colors}
 \usage{
  color.scale(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
-  extremes=NA,na.color=NA)
+  extremes=NA,na.color=NA,xrange=NULL)
 }
 \arguments{
  \item{x}{a numeric vector, matrix or data frame}
@@ -12,6 +12,7 @@
   to scale \samp{x}}
  \item{extremes}{The colors for the extreme values of \samp{x}.}
  \item{na.color}{The color to use for NA values of \samp{x}.}
+ \item{xrange}{An explicit range to use in the transformation.}
 }
 \details{
  \samp{color.scale} calculates a sequence of colors by a linear
@@ -27,7 +28,13 @@
   its values using \samp{col2rgb}, even if ranges are also supplied.
   \samp{extremes} allows the user to just pass the extreme color values
   in any format that \samp{col2rgb} will accept.
-  
+
+  If the user wants to specify a range of values with \samp{xrange},
+  it must at least include the range of x values. This can be useful
+  when there is a notional range like 0-100% that the values do not
+  cover, or when several series of values with different ranges are
+  to be assigned the same color scale.
+
   The user may not want the color scheme to be continuous across some
   critical point, often zero. In this case, color scale can be called
   separately for the values below and above zero. See the second example

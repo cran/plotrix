@@ -41,6 +41,7 @@ zoomInPlot<-function(x,y=NULL,xlim=NULL,ylim=NULL,rxlim=xlim,rylim=ylim,
  if(is.na(xend)) xend<-xylim[1]-diff(xylim[1:2])*xymai[2]/(2*xypin[1])
  xprop0<-(xylim[1]-xend)/(xylim[1]-x0)
  xprop1<-(xylim[2]-xend)/(xylim[2]-x1)
+ par(xpd=NA)
  segments(c(x0,x0,x1,x1),c(y01,y02,y01,y02),
   c(xend,xend,xend,xend),
   c(xylim[4]-(xylim[4]-y01)*xprop0,xylim[3]+(y02-xylim[3])*xprop0,

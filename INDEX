@@ -3,10 +3,14 @@ addtable2plot		Display a table on an existing plot
 arctext			Display text on a circular arc
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
+barNest			Nested bar plot
+barNest.svymean		Nested bar plot for a svyby result
+barNest.svyprop		Nested bar plot for a svyby result
 barp			A variant of barplot
 bin.wind.records	Classify wind direction and speed records
 boxed.labels		Display text strings in boxes at specified positions
 brkdn.plot		Display summary measures broken down by factors
+brkdnNest		Calculate nested breakdowns of summary measures
 bumpchart		Display a "bumps" chart
 centipede.plot		Display a centipede plot/caterpillar plot/league table
 clean.args		Remove arguments that would cause an error
@@ -19,7 +23,6 @@ color.legend		Display a color/value legend
 color.scale		Transform numeric values into a series of colors
 color.scale.lines	Display line segments with scaled colors
 color2D.matplot		Display a numeric matrix as a color matrix
-convert.meq		Convert mg/liter to milliequivalents/liter
 corner.label		Display a label in one corner of a plot
 corner.loc		Find the location of a corner in a plot
 count.overplot		Display overlying points as the number of points
@@ -30,6 +33,7 @@ dotplot.mtb		Display a dotplot in MATLAB style
 draw.arc		Display a circular arc
 draw.circle		Display a circle on an existing plot
 draw.tilted.sector	Display a single 3D pie sector
+drawNestedBars		Display the nested bars for barNest
 emptyspace		Find the largest empty space on a plot
 fan.plot		Display a fan (superimposed pie sector) plot
 feather.plot		Display vectors along a horizontal line
@@ -45,13 +49,11 @@ get.gantt.info		Enter information for a Gantt chart
 get.segs		Calculate the midpoints and limits for centipede.plot
 get.soil.texture	Enter information for soil textures
 get.triprop		Enter triplets of proportions or percentages
+getFigCtr		Get the center of the current figure region in user units
 getIntersectList	Enter the information for an intersection diagram
+getMarginWidth		Calculate the margin width necessary to fit something
 gradient.rect		Display a rectangle with an arbitrary color gradient
 hexagon			Draw a hexagon
-hierobarp		Display a nested breakdown of numeric values
-hierobarp.svymean	Display nested means from the svymean function
-hierobarp.svyprop	Display nested proportions from the svyprop function
-hierobrk		Breakdown numeric values by factors
 intersectDiagram	Graphically display set intersections
 legendg			Display groups of fills or symbols in a legend
 lengthKey		Key for interpreting lengths in a plot
@@ -63,9 +65,9 @@ multsymbolbox		Draw boxes filled with symbols representing counts
 oz.windrose		Display an Australian BoM wind rose
 oz.windrose.legend	Display a wind rose legend in Australian BoM style
 pasteCols		Paste the columns of a matrix together
+pie.labels		Display flat pie chart labels
 pie3D			Display a 3D pie chart
 pie3D.labels		Display labels on a 3D pie chart
-pie.labels		Display flat pie chart labels
 plot.dendrite		Display a dendrogram for a dendrite object
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
