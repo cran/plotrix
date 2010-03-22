@@ -129,14 +129,11 @@ triax.points<-function(x,show.legend=FALSE,label.points=FALSE,
  invisible(list(x=xpos,y=ypos))
 }
 
-triax.frame<-function(main="",at=seq(0.1,0.9,by=0.1),
-  axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
-  align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
-  cc.axes=FALSE) {
+triax.frame<-function(at=seq(0.1,0.9,by=0.1),axis.labels=NULL,
+ tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
+ align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
+ cc.axes=FALSE) {
 
-  par(pty="s",mar=c(5,2,4,2))
-  plot(0.5,type="n",axes=FALSE,xlim=c(0,1),ylim=c(0,1),main=main,
-   xlab="",ylab="")
   sin60<-sin(pi/3)
   # bottom ticks
   bx1<-at
@@ -239,6 +236,28 @@ triax.frame<-function(main="",at=seq(0.1,0.9,by=0.1),
   segments(rx1,ry1,rx2,ry2)
 }
 
+triax.fill<-function(col) {
+ nrows<-length(col)
+ sin60<-sin(pi/3)
+ rowlen<-1
+ xinc<-0.5/nrows
+ yinc<-sin60/nrows
+ for(trirow in 1:nrows) {
+  startx<-0.5-xinc*(trirow-1)
+  starty<-sin60-trirow*yinc
+  dir<-1
+  for(triangle in 1:rowlen) {
+   polygon(c(startx-xinc,startx,startx+xinc),
+    c(starty,starty+yinc*dir,starty),border=NA,
+    col=col[[trirow]][triangle])
+   startx<-startx+xinc
+   starty<-starty+yinc*dir
+   dir<--dir
+  }
+  rowlen<-rowlen+2
+ }
+}
+
 triax.plot<-function (x=NULL,main="",at=seq(0.1,0.9,by=0.1),
   axis.labels=NULL,tick.labels=NULL,col.axis="black",
   cex.axis=1,cex.ticks=1,align.labels=TRUE,show.grid=FALSE,
@@ -246,10 +265,13 @@ triax.plot<-function (x=NULL,main="",at=seq(0.1,0.9,by=0.1),
   show.legend=FALSE,label.points=FALSE,point.labels=NULL,
   col.symbols="black",pch=par("pch"),no.add=TRUE,...) {
 
-  oldpar<-par(no.readonly=TRUE)
+  oldpar<-par("fg","pty","mar","srt","xpd")
   par(xpd=TRUE)
   if(is.null(axis.labels)) axis.labels<-colnames(x)[1:3]
-  triax.frame(main=main,at=at,axis.labels=axis.labels,
+  par(pty="s",mar=c(5,2,4,2))
+  plot(0.5,type="n",axes=FALSE,xlim=c(0,1),ylim=c(0,1),main=main,
+   xlab="",ylab="")
+  triax.frame(at=at,axis.labels=axis.labels,
    tick.labels=tick.labels,col.axis=col.axis,cex.axis=cex.axis,
    cex.ticks=cex.ticks,align.labels=align.labels,show.grid=show.grid,
    col.grid=col.grid,lty.grid=lty.grid,cc.axes=cc.axes)

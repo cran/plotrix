@@ -5,13 +5,12 @@
  Display a three axis frame with optional grid.
 }
 \usage{
- triax.frame(main="",at=seq(0.1,0.9,by=0.1),
- axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
+ triax.frame(at=seq(0.1,0.9,by=0.1),axis.labels=NULL,
+ tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
  align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
  cc.axes=FALSE)
 }
 \arguments{
- \item{main}{The title of the triangle plot. Defaults to nothing.}
  \item{at}{The tick positions on the three axes.}
  \item{axis.labels}{Labels for the three axes in the order bottom, right
   left. Defaults to the column names.}
@@ -35,9 +34,9 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\link{triax.points},\link{triax.abline}}
+\seealso{\link{triax.points},\link{triax.abline},\link{triax.fill}}
 \examples{
- triax.frame(main="DEFAULT")
- triax.frame(main="Clockwise axes",cc.axes=TRUE)
+ triax.plot(x=NULL,main="DEFAULT")
+ triax.plot(main="Clockwise axes",cc.axes=TRUE)
 }
 \keyword{misc}

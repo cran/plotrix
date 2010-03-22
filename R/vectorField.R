@@ -3,7 +3,7 @@
 # OR orientation and magnitude
 # xpos,ypos - the centers of the vectors
 # scale - the longest arrow as a proportion of the cell size
-# length - the length of the arrowhead lines
+# headspan - the extent of the arrowhead as a proportion of cell size
 # this function doesn't assume a 1:1 aspect ratio
 
 vectorField<-function(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,

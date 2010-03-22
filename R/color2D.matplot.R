@@ -75,7 +75,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   }
   rect.col<-color.scale(1:nslices,redrange,greenrange,bluerange)
   if(show.legend)
-   color.legend(grx1,gry1,grx2,gry2,round(range(x,na.rm=TRUE),2),
+   color.legend(grx1,gry1,grx2,gry2,round(range(x,na.rm=TRUE),show.legend),
     rect.col=rect.col)
   par(oldpar)
  }

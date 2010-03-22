@@ -51,9 +51,9 @@
  margins are not equivalent for all display devices, this is currently
  a matter of trial and error. Drawing hexagons is quite slow.
  
- \samp{show.values} is also used to control the number of decimal places
- displayed if the values are shown. \samp{TRUE} will give one decimal
- place, \samp{2} two, and so on.
+ \samp{show.values} and \samp{show.legend} are also used to control the
+ number of decimal places displayed if the values or legend are shown.
+ \samp{TRUE} will give one decimal place, \samp{2} two, and so on.
 }
 \note{
  The function \link{image} performs almost the same when passed a
