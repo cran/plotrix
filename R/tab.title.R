@@ -10,8 +10,6 @@ tab.title<-function(label,text.col=par("fg"),tab.col=par("bg"),
  oldcex<-par("cex")
  par(cex=cex)
  tabtop<-plim[3]+strheight(label)*pad.mult
- if(tabtop > plim[4])
-  warning("Title tab extends beyond device dimensions")
  oldxlog<-par("xlog")
  oldylog<-par("ylog")
  par(xlog=FALSE,ylog=FALSE)

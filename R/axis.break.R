@@ -42,7 +42,6 @@ axis.break<-function(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
   }
   # blank out the gap area and calculate the line segments
   if(axis == 1 || axis == 3) {
-   cat(breakpos,figxy[3],breakpos+xw,figxy[4],"\n")
    rect(breakpos,figxy[3],breakpos+xw,figxy[4],col=bgcol,border=bgcol)
    xbegin<-c(breakpos,breakpos+xw)
    ybegin<-c(figxy[3],figxy[3])
