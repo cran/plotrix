@@ -52,7 +52,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   else {
    rect(sort(rep((1:xdim[2])-1,xdim[1])),rep(seq(xdim[1]-1,0,by=-1),xdim[2]),
     sort(rep(1:xdim[2],xdim[1])),rep(seq(xdim[1],1,by=-1),xdim[2]),
-    col=cellcolors,border=FALSE)
+    col=cellcolors,border=border)
    if(show.values)
     text(sort(rep((1:xdim[2])-0.5,xdim[1])),
      rep(seq(xdim[1]-0.5,0,by=-1),xdim[2]),

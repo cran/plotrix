@@ -64,6 +64,7 @@ multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
 oz.windrose		Display an Australian BoM wind rose
 oz.windrose.legend	Display a wind rose legend in Australian BoM style
+panes			Divide the graphics device in a "panel" layout
 pasteCols		Paste the columns of a matrix together
 pie.labels		Display flat pie chart labels
 pie3D			Display a 3D pie chart

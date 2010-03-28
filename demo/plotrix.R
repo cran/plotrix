@@ -48,7 +48,7 @@ Thursday=c(3.6,2.8),Friday=c(4.2,2.6),Saturday=c(4.5,2.9),Sunday=c(4.1,2.8))
 happylabels<-c("Utterly dashed","Rather mopey","Indifferent","Somewhat elated",
  "Euphoric")
 barp(happyday,names.arg=names(happyday),legend.lab=c("Slaves","Unemployed"),
- legend.pos="e",col=c("#ee7700","#3333ff"),
+ legend.pos=list(x=2,y=4.5),col=c("#ee7700","#3333ff"),
  main="Test of barp, staxlab and color.legend",
  xlab="Day of week",ylab="Happiness rating",ylim=c(1,5),staxx=TRUE,staxy=TRUE,
  height.at=1:5,height.lab=happylabels,cex.axis=0.9,cylindrical=TRUE,
@@ -211,6 +211,23 @@ multhist(l,main="Test of multhist")
 windagg<-matrix(c(8,0,0,0,0,0,0,0,4,6,2,1,6,3,0,4,2,8,5,3,5,2,1,1,
  5,5,2,4,1,4,1,2,1,2,4,0,3,1,3,1),nrow=5,byrow=TRUE)
 oz.windrose(windagg,legend.pos=-27,main="Australian BoM wind rose")
+y<-runif(8)
+oldpar<-panes()
+boxplot(y,axes=FALSE)
+box()
+tab.title("Boxplot of y",tab.col="#88dd88")
+barplot(y,axes=FALSE,col=2:9)
+box()
+tab.title("Barplot of y",tab.col="#88dd88")
+pie(y,col=2:9)
+tab.title("Pie chart of y",tab.col="#88dd88")
+box()
+plot(y,xaxs="i",xlim=c(0,9),axes=FALSE,col=2:9)
+box()
+tab.title("Scatterplot of y",tab.col="#88dd88")
+# center the title at the left edge of the last plot
+mtext("Test of panes function",at=0,side=1,line=0.8,cex=1.5)
+par(oldpar)
 pieval<-c(2,4,6,8)
 pielabels<-
  c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
