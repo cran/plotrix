@@ -4,25 +4,25 @@ barNest<-function(formula=NULL,data=NULL,maxlevels=10,
  col=NA,labelcex=1,lineht=NA,showall=FALSE,barlabels=NULL,
  showlabels=TRUE,mar=NULL,arrow.cap=0.01,trueval=NA) {
 
- if(is.null(x)) {
-  x<-brkdnNest(formula=formula,data=data,maxlevels=maxlevels,mct=mct,lmd=lmd,umd=umd,
-   trueval=trueval)
-  if(!is.na(trueval)) errbars=FALSE
-  if(is.null(ylim)) {
-   ymin<-min(c(0,unlist(x[[1]])-errbars*unlist(x[[2]])),na.rm=TRUE)
-   if(ymin < 0) ymin<-ymin*1.02
-   if(all(is.na(unlist(x[[3]]))))
-    ymax<-max(unlist(x[[1]]),na.rm=TRUE)
-   else
-    ymax<-max(c(max(unlist(x[[1]]),na.rm=TRUE),
-     max(unlist(x[[1]])+errbars*unlist(x[[3]]),na.rm=TRUE)))
-   ylim<-c(ymin,ymax*1.02)
-   if(!is.null(mar)) par(mar=mar)
-  }
-  if(!is.null(barlabels)) x[[4]]<-barlabels
+ if(is.null(x))
+  x<-brkdnNest(formula=formula,data=data,maxlevels=maxlevels,
+   mct=mct,lmd=lmd,umd=umd,trueval=trueval)
+ else
+  if(!is.list(x)) warning("x is not a list, and this is very unlikely to work")
+ if(!is.na(trueval)) errbars=FALSE
+ if(!is.null(barlabels)) x[[4]]<-barlabels
+ if(is.null(ylim)) {
+  ymin<-min(c(0,unlist(x[[1]])-errbars*unlist(x[[2]])),na.rm=TRUE)
+  if(ymin < 0) ymin<-ymin*1.02
+  if(all(is.na(unlist(x[[3]]))))
+   ymax<-max(unlist(x[[1]]),na.rm=TRUE)
+  else
+   ymax<-max(c(max(unlist(x[[1]]),na.rm=TRUE),
+    max(unlist(x[[1]])+errbars*unlist(x[[3]]),na.rm=TRUE)))
+  ylim<-c(ymin,ymax*1.02)
+  if(!is.null(mar)) par(mar=mar)
  }
- else warning("x is not a list, and this is very unlikely to work")
- nlevels<-length(x)
+ nlevels<-length(x[[1]])
  plot(0,xlim=c(0,1),ylim=ylim,main=main,xlab=xlab,ylab=ylab,xaxt="n",
    yaxs="i",type="n")
  parusr<-par("usr")

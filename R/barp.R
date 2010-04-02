@@ -1,4 +1,4 @@
-barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
+barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE,height.at=NULL,height.lab=NULL,cex.axis=par("cex.axis"),
  cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE) {
@@ -103,8 +103,6 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
    legend.pos<-locator(1)
    xjust<-yjust<-0
   }
-  if(legend.pos[1] == "e")
-   legend.pos<-emptyspace(barpinfo,bars=TRUE)
   legend(legend.pos,legend=legend.lab,fill=col,xjust=xjust,yjust=yjust)
  }
  box()

@@ -3,7 +3,7 @@
 \title{A bar plotting routine}
 \description{Display a bar plot}
 \usage{
- barp(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos="e",
+ barp(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE, height.at=NULL,height.lab=NULL,
  cex.axis=par("cex.axis"),cylindrical=FALSE,shadow=FALSE,do.first=NULL,
@@ -17,8 +17,7 @@
  \item{legend.lab}{Labels for an optional legend. If NULL, no legend is
   displayed.}
  \item{legend.pos}{Optional position for the legend as a list with \samp{x}
-  and \samp{y} components. The default is to call \link{emptyspace}
-  to position the legend. If this is NULL, \samp{locator} will be called.}
+  and \samp{y} components. If this is NULL, \samp{locator} will be called.}
  \item{col}{The fill colors for the bars. The default is no fill.}
  \item{border}{The border for the bars.}
  \item{main}{The title at the top of the plot.}
@@ -98,7 +97,7 @@
  happylabels<-c("Utterly dashed","Rather mopey","Indifferent","Somewhat elated",
   "Euphoric")
  barp(happyday,names.arg=names(happyday),legend.lab=c("Slaves","Unemployed"),
-  legend.pos="e",col=c("#ee7700","#3333ff"),main="9AM happiness by weekday",
+  legend.pos=list(x=2,y=4.5),col=c("#ee7700","#3333ff"),main="9AM happiness by weekday",
   xlab="Day of week",ylab="Happiness rating",ylim=c(1,5),staxx=TRUE,staxy=TRUE,
   height.at=1:5,height.lab=happylabels,cex.axis=0.9,cylindrical=TRUE,
   shadow=TRUE)

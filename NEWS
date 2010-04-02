@@ -1,6 +1,12 @@
-version 2-8-4
+version 2.9
 
-	added the triax.fill function
+	added the panes function
+	fixed the border bug in color2D.matplot
+	fixed the indexing bug in drawNestedBars
+
+version 2.8-4
+
+	added the triax.fill function which necessitated...
 	changed the initial plot call from triax.frame to triax.plot
 	removed the "main" argument from triax.frame
 	added brkdnNest to replace hierobrk
