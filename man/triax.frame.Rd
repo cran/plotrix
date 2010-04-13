@@ -36,7 +36,7 @@
 \author{Jim Lemon}
 \seealso{\link{triax.points},\link{triax.abline},\link{triax.fill}}
 \examples{
- triax.plot(x=NULL,main="DEFAULT")
+ triax.plot(main="DEFAULT")
  triax.plot(main="Clockwise axes",cc.axes=TRUE)
 }
 \keyword{misc}
