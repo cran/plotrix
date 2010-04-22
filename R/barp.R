@@ -51,8 +51,10 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
   staxlab(1,at=1:ngroups,labels=names.arg,cex=cex.axis)
  }
  else axis(1,at=1:ngroups,labels=names.arg,cex.axis=cex.axis)
- if(is.null(height.at))
-  height.at<-ifelse(ylog,axTicks(2,log=TRUE),pretty(ylim))
+ if(is.null(height.at)) {
+  if(ylog) height.at<-axTicks(2,log=TRUE)
+  else height.at<-pretty(ylim)
+ }
  if(is.null(height.lab)) height.lab<-height.at
  if(staxy) {
   axis(2,at=height.at,labels=rep("",length(height.lab)),cex.axis=cex.axis)

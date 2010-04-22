@@ -30,14 +30,14 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
  }
  if(direction == "e" || direction == "w") {
   if(is.na(mar[1])) mar<-c(10,2,3,2)
-  par(mar=mar)
-  plot(0,xlim=c(1,nbars),ylim=c(0,maxht),type="n",axes=FALSE,
+  par(mar=mar,xaxs="i")
+  plot(0,xlim=c(0.5,nbars+0.5),ylim=c(0,maxht),type="n",axes=FALSE,
    xlab="",ylab="",...)
  }
  else {
   if(is.na(mar[1])) mar<-c(2,10,3,2)
-  par(mar=mar)
-  plot(0,xlim=c(0,maxht),ylim=c(1,nbars),type="n",axes=FALSE,
+  par(mar=mar,yaxs="i")
+  plot(0,xlim=c(0,maxht),ylim=c(0.5,nbars+0.5),type="n",axes=FALSE,
    xlab="",ylab="",...)
  }
  par(xpd=TRUE)
@@ -97,7 +97,7 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
    }
   }
  }
- if(nchar(main)) mtext(main,line=1,at=getFigCtr()[1],cex=1.5)
+ if(nchar(main)) mtext(main,line=mar[3]/2,at=getFigCtr()[1],cex=1.5)
  par(xpd=FALSE,mar=oldmar)
  if(!is.na(bg.col)) par(bg=oldbg)
 }
