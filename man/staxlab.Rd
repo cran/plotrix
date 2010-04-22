@@ -1,11 +1,12 @@
 \name{staxlab}
 \alias{staxlab}
-\title{ Place staggered labels on an axis }
+\title{ Place staggered or angled labels on an axis }
 \description{
- Places labels on an axis in a regular staggered order
+ Places labels on an axis in a regular staggered order or at an angle
 }
 \usage{
- staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,...)
+ staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,
+  srt=NA,ticklen=0.05,...)
 }
 \arguments{
  \item{side}{axis on which to place the labels, as in \samp{axis}}
@@ -14,7 +15,10 @@
  \item{nlines}{How many lines to use to stagger the labels.}
  \item{top.line}{Distance from the axis to place the first line of text.}
  \item{line.spacing}{Spacing between lines of text labels.} 
- \item{...}{Additional arguments to be passed to \samp{mtext}.}
+ \item{srt}{Text rotation.}
+ \item{ticklen}{Proportion of plot height in user units to place text
+  below the plot.}
+ \item{...}{Additional arguments to be passed to \samp{mtext} or \samp{text}.}
 }
 \note{
  This function is mainly useful when either long axis labels or a large
@@ -22,6 +26,10 @@
  labels along the axis specified. The user may wish to increase the space
  beneath the plot using \samp{mar} before calling \samp{staxlab}. It is
  probably only useful on the bottom or left side of the plot.
+
+ If \samp{srt} is not NA, the labels will be rotated \samp{srt} degrees
+ and placed below the plot. This method will only place labels at the
+ bottom.
 }
 \value{nil}
 \author{Jim Lemon}

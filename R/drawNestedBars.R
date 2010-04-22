@@ -1,8 +1,9 @@
 drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
- col=NA,labelcex=1,labely=NA,showlabels=TRUE,arrow.cap=0.01) {
+ col=NA,labelcex=1,labely=NA,showbars=TRUE,showlabels=TRUE,arrow.cap=0.01) {
 
  dimx<-dim(x[[1]])
  if(is.null(dimx) || length(dimx) == 1) {
+  # this is the final level
   lenx<-length(x[[1]])
   # assume start and end are the edges of the bar within which
   # the new bars must fit. First calculate the total space
@@ -18,7 +19,7 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
   if(length(col) < lenx) col<-rep(col,length.out=lenx)
   for(xbar in 1:lenx) {
    barcenter<-start+barwidth/2
-   if(!is.null(x[[1]][[xbar]]))
+   if(!is.null(x[[1]][[xbar]]) && showbars)
     rect(start,0,start+barwidth,x[[1]][[xbar]],col=col[xbar])
    if(errbars) {
     if(!is.null(x[[2]][[xbar]]) && !is.null(x[[3]][[xbar]]) &&
@@ -72,7 +73,7 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
    # send the sliced list as x to drawNestedBars
    drawNestedBars(xslice,start=start,end=start+barwidth,
     shrink=shrink,errbars=errbars,col=col,labelcex=labelcex,labely=labely,
-    showlabels=showlabels,arrow.cap=arrow.cap)
+    showbars=showbars,showlabels=showlabels,arrow.cap=arrow.cap)
    start<-start+barwidth+barspace
   }
  }

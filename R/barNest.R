@@ -28,22 +28,22 @@ barNest<-function(formula=NULL,data=NULL,maxlevels=10,
  parusr<-par("usr")
  if(is.na(lineht))
   lineht<-diff(parusr[3:4])*(par("mai")[1]/par("pin")[2])/par("mar")[1]
- if(showall) {
-  if(is.list(col)) nextcol<-col[[1]]
-  else nextcol<-col
-  nextx<-list(x[[1]][[1]],x[[2]][[1]],x[[3]][[1]],"Overall")
-  drawNestedBars(nextx,start=0,end=1,shrink=0,labely=-lineht*nlevels,
-   col=nextcol,labelcex=labelcex,showlabels=showlabels,arrow.cap=arrow.cap)
- }
+ if(is.list(col)) nextcol<-col[[1]]
+ else nextcol<-col
+ nextx<-list(x[[1]][[1]],x[[2]][[1]],x[[3]][[1]],"Overall")
+ drawNestedBars(nextx,start=0,end=1,shrink=0,labely=-lineht*nlevels,
+  col=nextcol,labelcex=labelcex,showbars=showall,showlabels=showlabels,
+  arrow.cap=arrow.cap)
  for(brklevel in 2:nlevels) {
-  if(showall || brklevel == nlevels) {
+  if(showall || showlabels || brklevel == nlevels) {
+   showbars<-showall || brklevel == nlevels
    if(is.list(col)) nextcol<-col[[brklevel]]
    else nextcol<-col
    nextx<-list(x[[1]][[brklevel]],x[[2]][[brklevel]],x[[3]][[brklevel]],
     x[[4]][[brklevel]])
    drawNestedBars(nextx,start=0,end=1,shrink=shrink,
     labely=-lineht*(nlevels+1-brklevel),errbars=errbars && brklevel == nlevels,
-    col=nextcol,labelcex=labelcex,showlabels=showlabels,
+    col=nextcol,labelcex=labelcex,showbars=showbars,showlabels=showlabels,
     arrow.cap=arrow.cap)
   }
  }  

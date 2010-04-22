@@ -1,6 +1,7 @@
+
 twoord.stackplot <- function(lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, 
 	border, rylab, lylab, xlab, ..., incrylim=NULL,
-	halfwidth=0.4, mar = c(5, 4, 4, 4))
+	halfwidth=0.4, leftfront=FALSE, mar = c(5, 4, 4, 4))
 {
 	ltype <- sapply(ltype, function(x) match.arg(x, c("p","l","b","c","o","bar")))
 	rtype <- sapply(rtype, function(x) match.arg(x, c("p","l","b","c","o","bar")))
@@ -13,6 +14,14 @@ twoord.stackplot <- function(lx, rx, ldata, rdata, lcol, rcol, ltype, rtype,
 	#assume line plot for the left data, and barplot for the right data
     oldmar <- par("mar")
     par(mar = mar)
+    	
+	if(leftfront)
+	{
+		twoord.stackplot(rx, lx, rdata, ldata, rcol, lcol, rtype, ltype, 
+			border, lylab, rylab, xlab, ..., incrylim=NULL,
+			halfwidth=0.4, leftfront=FALSE, mar = c(5, 4, 4, 4))
+		return(invisible())
+	}
 	
 	#------------------------------------------------------------------------
 	#left y-axis plot
