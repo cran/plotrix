@@ -5,8 +5,8 @@
 \usage{
  taylor.diagram(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
   xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,
-  sd.arcs=0,ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),
-  pcex=1,normalize=FALSE,...)
+  gamma.col=8,sd.arcs=0,ref.sd=FALSE,
+  grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),pcex=1,normalize=FALSE,...)
 }
 \arguments{
  \item{ref}{numeric vector - the reference values.}
@@ -21,6 +21,7 @@
  \item{show.gamma}{whether to display standard deviation arcs around
   the reference point (only for \samp{pos.cor=TRUE}).}
  \item{ngamma}{the number of gammas to display (default=3).}
+ \item{gamma.col}{color to use for the gamma arcs (only with pos.cor=TRUE).}
  \item{sd.arcs}{whether to display arcs along the standard deviation axes
   (see Details).}
  \item{ref.sd}{whether to display the arc representing the reference

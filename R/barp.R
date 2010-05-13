@@ -1,7 +1,7 @@
 barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE,height.at=NULL,height.lab=NULL,cex.axis=par("cex.axis"),
- cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE) {
+ pch=NULL,cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE) {
 
  height.class<-attr(height,"class")
  if(!is.null(height.class)) {
@@ -72,8 +72,13 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
   if(cylindrical)
    cylindrect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol,
     border=border)
-  else
-   rect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol,border=border)
+  else {
+   if(is.null(pch))
+    rect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol,border=border)
+   else
+    rectFill(1:ngroups-width,bottoms,1:ngroups+width,height,bg="white",fg="black",
+     pch=pch)
+  }
  }
  else {
   bottoms<-matrix(bottoms,nrow=hdim[1],ncol=hdim[2])
@@ -93,9 +98,16 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
     cylindrect(1:ngroups-width+(subgroup-1)*barwidth,bottoms[subgroup,],
      1:ngroups-width+(subgroup)*barwidth,height[subgroup,],
      col=barcol[subgroup,],border=border)
-   else rect(1:ngroups-width+(subgroup-1)*barwidth,bottoms[subgroup,],
-    1:ngroups-width+(subgroup)*barwidth,height[subgroup,],
-    col=barcol[subgroup,],border=border)
+   else {
+    if(is.null(pch))
+     rect(1:ngroups-width+(subgroup-1)*barwidth,bottoms[subgroup,],
+      1:ngroups-width+(subgroup)*barwidth,height[subgroup,],
+      col=barcol[subgroup,],border=border)
+    else
+     rectFill(1:ngroups-width+(subgroup-1)*barwidth,bottoms[subgroup,],
+      1:ngroups-width+(subgroup)*barwidth,height[subgroup,],
+      bg="white",fg="black",pch=pch[subgroup,])
+   }
   }
  }
  if(!is.null(legend.lab)) {

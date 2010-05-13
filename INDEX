@@ -76,6 +76,8 @@ polygon.shadow		Display a shadow effect for a polygon
 pyramid.plot		Display a pyramid (opposed horizontal bar) plot
 qt.plot			Display counts of numeric values and intervals
 radial.plot		Plot values as lines/polygon/symbols on radial scale
+radial.plot.labels	Display labels at specified points on a radial plot
+rectFill		Display a rectangle filled with symbols
 remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
 revaxis			Plot with the values on the X or Y axis reversed

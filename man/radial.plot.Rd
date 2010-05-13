@@ -63,7 +63,8 @@
  \item{...}{Additional arguments are passed to \samp{plot}.}
 }
 \value{
- nil
+ The \samp{par} values that are changed in the function
+ as they were at the time \samp{radial.plot} was called.
 }
 \details{
  \samp{radial.plot} displays a plot of radial lines, polygon(s),

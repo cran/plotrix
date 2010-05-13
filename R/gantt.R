@@ -50,6 +50,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   stop("Can't have a start date after an end date")
  tasks<-unique(x$labels)
  ntasks<-length(tasks)
+ # if no priorities are given, set all to 1
  if(is.null(x$priorities)) x$priorities<-rep(1,ntasks)
  if(is.null(dev.list())) plot.new()
  charheight<-strheight("M",units="inches")
@@ -57,9 +58,15 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  maxwidth<-max(strwidth(x$labels,units="inches"))+0.3
  par(oldcex)
  if (is.null(xlim)) xlim=range(c(x$starts,x$ends))
- npriorities <- max(x$priorities)
+ npriorities<-max(x$priorities)
  if(is.null(taskcolors)) taskcolors<-rainbow(npriorities)
- if(length(taskcolors)<ntasks) taskcolors<-taskcolors[x$priorities]
+ if(length(taskcolors) < ntasks) taskcolors<-taskcolors[x$priorities]
+ nlabels<-length(x$labels)
+ # if the number of taskcolors is less than the number of labels,
+ # assign the first ntasks colors to the unique labels
+ if(length(taskcolors) < nlabels)
+  taskcolors<-taskcolors[as.numeric(factor(x$labels))]
+ # otherwise, the taskcolors will be assigned by order to the labels
  bottom.margin<-ifelse(priority.legend || nchar(xlab),0.7,0)
  par(mai=c(bottom.margin,maxwidth,charheight*5,0.1))
  par(omi=c(0.1,0.1,0.1,0.1),xaxs="i",yaxs="i")
@@ -94,7 +101,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   else
    rect(x$starts[x$labels==tasks[i]],topdown[i]-half.height,
     x$ends[x$labels==tasks[i]],topdown[i]+half.height,
-    col=taskcolors[i],border=FALSE)
+    col=taskcolors[x$labels==tasks[i]],border=FALSE)
  }
  if(hgrid) 
   abline(h=(topdown[1:(ntasks-1)]+topdown[2:ntasks])/2,col="darkgray",lty=3)

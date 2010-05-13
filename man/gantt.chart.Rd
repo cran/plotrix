@@ -42,11 +42,18 @@
  be called to generate a different color for each task.
  
  There can now be more than one time interval for each task. If there is,
- more than one bar will be displayed for each "task", which may not be a
- task at all, but intervals of some attribute for each entity. See the last
- example.
+ more than one bar will be displayed for each interval, which may not be a
+ task at all, but rather intervals related to the labels. Colors can be
+ specified for labels or intervals and if there are not as many colors as
+ intervals, the first "number of unique labels" colors will be assigned to
+ each unique label. This should make every bar for each label the
+ same color, but be aware that the colors will be distributed in alphabetical
+ order of the entity labels. If there are at least as many taskcolors as intervals,
+ they will be assigned to intervals in the order of the \samp{taskcolors} vector.
+ The examples should make this clearer.
 }
-\author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping)}
+\author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping
+ and added label colors by Nicolas Immelman)}
 \seealso{\link{get.gantt.info}}
 \examples{
  Ymd.format<-"\%Y/\%m/\%d"
@@ -74,6 +81,10 @@
   starts=c(8.1,8.7,13.0,9.1,11.6,9.0,13.6,9.3,14.2),
   ends=c(12.5,12.7,16.5,10.3,15.6,11.7,18.1,18.2,19.0))
  gantt.chart(info2,vgridlab=8:19,vgridpos=8:19,
-  main="Sitting at desk",taskcolors="lightgray")
+  main="All bars the same color",taskcolors="lightgray")
+ gantt.chart(info2,vgridlab=8:19,vgridpos=8:19,
+  main="A color for each label",taskcolors=c(2,3,7,4,8))
+ gantt.chart(info2,vgridlab=8:19,vgridpos=8:19,
+  main="A color for each interval",taskcolors=c(2,3,7,4,8,5,3,6,"purple"))
 }
 \keyword{misc}

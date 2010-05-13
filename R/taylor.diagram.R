@@ -13,10 +13,12 @@
 # 2008-12-09 - added correlation radii, sd arcs to the pos.cor=FALSE routine
 # and stopped the pos.cor=FALSE routine from calculating arcs for zero radius
 # Jim Lemon
+# 2010-4-30 - added the gamma.col argument for pos.cor=TRUE plots - Jim Lemon
 
 taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
- xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,sd.arcs=0,
- ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),pcex=1,normalize=FALSE,...) {
+ xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,gamma.col=8,
+ sd.arcs=0,ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),pcex=1,
+ normalize=FALSE,...) {
  
  grad.corr.full<-c(0,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1)
 
@@ -74,7 +76,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
      startcurve<-which(maxcurve>maxsd*maxsd)
      startcurve<-ifelse(length(startcurve),max(startcurve)+1,0)
      lines(xcurve[startcurve:endcurve],ycurve[startcurve:endcurve],
-      col="lightgray")
+      col=gamma.col)
      boxed.labels(xcurve[labelpos[gindex]],ycurve[labelpos[gindex]],
       gamma[gindex],border=FALSE)
     }

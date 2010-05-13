@@ -1,3 +1,11 @@
+version 2.9-3
+
+	added the gamma.col argument to taylor.diagram (thanks to Julian Arnold)
+	added the radial.labels function (thanks to Tali Vardi)
+	added the multiple colors per labels to gantt.chart (thanks to Nicolas Immelman)
+	added the rectFill function
+	added an option to the barp function to use rectFill
+
 version 2.9-2
 
 	fixed the margin problem in staircase.plot

@@ -6,8 +6,8 @@
  barp(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE, height.at=NULL,height.lab=NULL,
- cex.axis=par("cex.axis"),cylindrical=FALSE,shadow=FALSE,do.first=NULL,
- ylog=FALSE)
+ cex.axis=par("cex.axis"),pch=NULL,cylindrical=FALSE,shadow=FALSE,
+ do.first=NULL,ylog=FALSE)
 }
 \arguments{
  \item{height}{A numeric vector, matrix or data frame that will be represented
@@ -28,6 +28,7 @@
  \item{height.at}{Optional positions of the tick marks on the Y axis.}
  \item{height.lab}{Optional tick labels for the Y axis.}
  \item{cex.axis}{Character expansion for the axis labels.}
+ \item{pch}{Symbol(s) to fill the bars. See Details.}
  \item{cylindrical}{Whether to give the bars a cylindrical appearance
   by shading them.}
  \item{shadow}{Whether to place a shadow behind the bars.}
@@ -84,6 +85,11 @@
  The \samp{ylog} argument produces a log scale on the y axis. Currently,
  neither \samp{pretty} or \samp{axTicks} seems to produce a nice set of axis
  ticks, so it is best to pass the positions of these in \samp{height.at}.
+
+ If the \samp{pch} argument is not NULL, barp will display white bars filled
+ with the symbols specified in \samp{pch}. With grouped bars, this must be a
+ matrix with the same form as the \samp{col} argument. This option allows a
+ black and white bar plot to be produced.
 }
 \author{Jim Lemon}
 \seealso{\link{staxlab}, \link{barplot}, \link{cylindrect},
