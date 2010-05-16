@@ -68,5 +68,9 @@
  legendg(0.5,0.8,c("one","two","three"),pch=list(1,2:3,4:6),
   col=list(2,3:4,5:7))
  legendg(0.5,0.5,c("one","two","three"),fill=list(2,3:4,5:7))
+ # fake a line/point with text points
+ legendg(0.2,0.25,c("letter","number"),
+  pch=list(c("-","A","-"),c("-","1","-")),
+  col=list(rep(2,3),rep(3,3)))
 }
 \keyword{misc}

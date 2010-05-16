@@ -16,8 +16,8 @@ clock24.plot<-function(lengths,clock.pos,labels=NULL,label.pos=NULL,
  if(is.null(label.pos))
   label.pos<-seq(5*pi/2,7*pi/12,by=-pi/12)
  else label.pos<-pi*(450-clock.pos*15)/180
- radial.plot(lengths,radial.pos,labels=labels,label.pos=label.pos,
-  rp.type=rp.type,...)
+ return(radial.plot(lengths,radial.pos,labels=labels,label.pos=label.pos,
+  rp.type=rp.type,...))
 }
 
 # plots data as radial lines or a polygon starting at the right and going
@@ -37,8 +37,8 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
  if(is.null(label.pos)) label.pos<-seq(0,1.89*pi,length=18)
  else label.pos<-pi*label.pos/180
  if(missing(labels)) labels<-as.character(seq(0,340,by=20))
- radial.plot(lengths,radial.pos,labels,label.pos,start=start,
-  clockwise=clockwise,rp.type=rp.type,...)
+ return(radial.plot(lengths,radial.pos,labels,label.pos,start=start,
+  clockwise=clockwise,rp.type=rp.type,...))
 }
 
 # plots radial lines of length 'lengths', symbols at 'lengths' from the
@@ -204,5 +204,5 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
  }
  if(!is.null(grid.unit))
   text(maxlength*1.05,ypos,grid.unit,adj=0)
- par(oldpar)
+ return(oldpar)
 }
