@@ -40,7 +40,10 @@
  categories if these are wanted. If colors are passed, it is best to have at
  least as many colors as there are categories in the first column or some will
  be recycled. If different colors are desired for different levels, as in the
- example, pass a list of colors.
+ example, pass a list of colors. If colors are to be matched across columns
+ the number of levels is different (e.g. some levels are missing in the
+ sub-categories), the color list must reflect this \emph{and} the levels
+ of the factors must be consistent with the colors - see the example.
  
  The \samp{firstcall} argument is necessary for the function to initialize the
  plot, as each breakdown involves a recursive call. If it is changed, the best
@@ -49,13 +52,16 @@
 \author{Jim Lemon}
 \seealso{\link{plot},\link{smoothColors}}
 \examples{
- cat1<-sample(c("None","Low","Medium","High"),40,TRUE)
- cat2<-sample(c("None","Low","Medium","High"),40,TRUE)
- cat3<-sample(c("None","Low","Medium","High"),40,TRUE)
+ cat1<-factor(sample(c("None","Low","Medium","High","Extreme"),40,TRUE),
+  levels=c("None","Low","Medium","High","Extreme"))
+ cat2<-factor(sample(c("None","Low","Medium","High"),40,TRUE),
+  levels=c("None","Low","Medium","High"))
+ cat3<-factor(sample(c("None","Low","High"),40,TRUE),
+  levels=c("None","Low","High"))
  hcats<-data.frame(cat1,cat2,cat3)
- bhcol<-list(c("#ff8080","#dddd80","#80ff80","#8080ff"),
-  c("red","green","lightblue","yellow"),
-  c("#ffffff","#bbbbbb","#999999","#666666"))
- sizetree(hcats,col=bhcol,main="Hierarchical count chart")
+ bhcol<-list(c("#ff8080","#dddd80","#80ff80","#8080ff","#80dddd"),
+  c("#ff8080","#dddd80","#80ff80","#8080ff"),
+  c("#ff8080","#dddd80","#8080ff"))
+ sizetree(hcats,col=bhcol,main="Hierarchical count chart (sizetree)")
 }
 \keyword{misc}

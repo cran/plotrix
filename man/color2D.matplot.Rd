@@ -64,11 +64,20 @@
 \author{Jim Lemon (thanks to Ashoka Polpitiya for \samp{axes})}
 \seealso{\link{color.scale}, \link{image}}
 \examples{
- x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
- color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,
-  xlab="Columns",ylab="Rows",main="2D matrix plot")
- # generate colors that show negative values in red and positive in green
- cellcol<-matrix(rep("#000000",1024),nrow=32)
+ x<-matrix(rnorm(1024),nrow=32)
+ # simulate a correlation matrix with values -0.5 to 0.5
+ x<-rescale(x,c(-0.5,0.5))
+ # add a column with the extreme values (-1,1) to calculate
+ # the colors, then drop the extra column in the result
+ cellcol<-color.scale(cbind(x,c(-1,rep(1,31))),c(0,1),0,c(1,0))[,1:32]
+ color2D.matplot(x,cellcolors=cellcol,main="Blue to red correlations")
+ # do the legend call separately to get the full range
+ color.legend(0,-5,6.5,-3,legend=c(-1,-0.5,0,0.5,1),
+  rect.col=color.scale(c(-1,-0.5,0,0.5,1),c(0,1),0,c(1,0)),align="rb")
+ x<-matrix(rnorm(100),nrow=10)
+ # generate colors that show negative values in red to brown
+ # and positive in blue-green to green
+ cellcol<-matrix(rep("#000000",100),nrow=10)
  cellcol[x<0]<-color.scale(x[x<0],c(1,0.8),c(0,0.8),0)
  cellcol[x>0]<-color.scale(x[x>0],0,c(0.8,1),c(0.8,0))
  # now do hexagons without borders
@@ -80,7 +89,7 @@
  legcol<-rep("#000000",6)
  legcol[legval<0]<-color.scale(legval[legval<0],c(1,0.8),c(0,0.8),0)
  legcol[legval>0]<-color.scale(legval[legval>0],0,c(0.8,1),c(0.8,0))
- color.legend(0,-5,6,-4,round(c(min(x),0,max(x)),1),rect.col=legcol)
+ color.legend(0,-1.8,3,-1.4,round(c(min(x),0,max(x)),1),rect.col=legcol)
  # do a color only association plot
  xt<-table(sample(1:10,100,TRUE),sample(1:10,100,TRUE))
  observed<-xt[,rev(1:dim(xt)[2])]

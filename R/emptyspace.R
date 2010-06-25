@@ -15,7 +15,7 @@ emptyspace<-function(x,y=NULL) {
   x<-x[-xyna]
   y<-y[-xyna]
  }
- # check for negative values
+ # check for negative values and offset them out
  xoffset<-yoffset<-0
  if(any(x < 0)) {
   xoffset<-min(x)
@@ -42,12 +42,14 @@ emptyspace<-function(x,y=NULL) {
    x1<-x[i]
    x2<-x[j]
    XX<-x2 - x1
-   if(XX > halfxspan) break
+   # if(XX > halfxspan) break
    yy<-c(ylim[1],y[(i+1):(j-1)],ylim[2])
    oyy<-order(yy)
    yy<-yy[oyy]
    dyy<-diff(yy)
-   whichdyy<-(dyy <= halfyspan) & (dyy >= 0.5*XX) & (dyy <= 2*XX)
+   # whichdyy<-(dyy <= halfyspan) & (dyy >= 0.5*XX) & (dyy <= 2*XX)
+   # the next line fixes the problem with very large empty spaces
+   whichdyy<-(dyy >= 0.5*XX) & (dyy <= 2*XX)
    wy1<-yy[whichdyy]
    if(length(wy1) > 0) {
     wy2<-yy[(1:length(dyy))[whichdyy]+1]
@@ -72,5 +74,6 @@ emptyspace<-function(x,y=NULL) {
   my1<-my1+yoffset
   my2<-my2+yoffset
  }
+ # return the center of the rectangle
  return(list(x=(mx1+mx2)/2,y=(my1+my2)/2))
 }

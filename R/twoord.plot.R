@@ -42,7 +42,10 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  mtext(ylab,2,2,col=lcol,cex=axislab.cex)
  box()
  if(is.null(xticklab)) axis(1,cex=axislab.cex)
- else axis(1,at=xtickpos,labels=xticklab,cex=axislab.cex)
+ else {
+  if(is.null(xtickpos)) xtickpos<-1:length(xticklab)
+  axis(1,at=xtickpos,labels=xticklab,cex=axislab.cex)
+ }
  axat<-axis(2,col=ifelse(is.na(lcol),1,lcol),labels=FALSE)
  abline(v=xylim[1],col=lcol)
  mtext(axat,2,1,at=axat,col=lcol,cex=axislab.cex)

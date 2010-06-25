@@ -1,3 +1,8 @@
+version 2.9-4
+
+	added a calculated default vector of axis tick positions to twoord.plot
+	added a "mar" argument to the taylor.diagram function
+
 version 2.9-3
 
 	added the gamma.col argument to taylor.diagram (thanks to Julian Arnold)
