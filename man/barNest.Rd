@@ -19,7 +19,7 @@
  \item{lmd}{The lower measure of dispersion function to use.}
  \item{umd}{The upper measure of dispersion function to use.}
  \item{x}{This becomes the result of the breakdown after the first call. If a list
-  of arrays of values of the same form as that produced by \samp{hierobrk} is
+  of arrays of values of the same form as that produced by \samp{brkdnNest} is
   passed, it will be used to determine the heights of the nested bars.}
  \item{ylim}{Optional y limits for the plot.}
  \item{main}{Title for the plot.}
@@ -38,8 +38,9 @@
   margins are set, the user must reset the margins after the function exits.}
  \item{arrow.cap}{The width of the "cap" on error bars in user units,
   defaulting to 0.01 of the width of the plot.}
- \item{trueval}{If this is not NA, the call to hierobrk will return the proportions
-  of the response variable that are equal to \samp{trueval}. See Details.}
+ \item{trueval}{If this is not NA, the call to \samp{brkdnNest} will return the
+  proportions of the response variable that are equal to \samp{trueval}.
+  See Details.}
 }
 \value{The summary arrays produced by brkdnNest.}
 \details{

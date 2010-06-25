@@ -1,7 +1,7 @@
 # axis.break places a break marker at the position "breakpos" 
 # in user coordinates on the axis nominated - see axis().
 
-axis.break<-function(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
+axis.break<-function(axis=1,breakpos=NULL,pos=NA,bgcol="white",breakcol="black",
  style="slash",brw=0.02) {
  
  # get the coordinates of the outside of the plot
@@ -12,6 +12,7 @@ axis.break<-function(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
  # calculate the x and y offsets for the break
  xw<-(figxy[2]-figxy[1])*brw
  yw<-(figxy[4]-figxy[3])*brw
+ if(!is.na(pos)) figxy<-rep(pos,4)
  # if no break position was given, put it just off the plot origin
  if(is.null(breakpos))
   breakpos<-ifelse(axis%%2,figxy[1]+xw*2,figxy[3]+yw*2)

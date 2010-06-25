@@ -14,11 +14,12 @@
 # and stopped the pos.cor=FALSE routine from calculating arcs for zero radius
 # Jim Lemon
 # 2010-4-30 - added the gamma.col argument for pos.cor=TRUE plots - Jim Lemon
+# 2010-6-24 - added mar argument to pos.cor=TRUE plots - Jim Lemon
 
 taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
  xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,gamma.col=8,
  sd.arcs=0,ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),pcex=1,
- normalize=FALSE,...) {
+ normalize=FALSE,mar=c(5,4,6,6),...) {
  
  grad.corr.full<-c(0,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1)
 
@@ -37,7 +38,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
   # display the diagram
   if(pos.cor) {
    if(nchar(ylab) == 0) ylab="Standard deviation"
-   par(mar=c(5,4,6,6))
+   par(mar=mar)
    plot(0,xlim=c(0,maxsd),ylim=c(0,maxsd),xaxs="i",yaxs="i",axes=FALSE,
     main=main,xlab=xlab,ylab=ylab,type="n",...)
    if(grad.corr.lines[1]) {
