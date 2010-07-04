@@ -8,7 +8,7 @@
 }
 \usage{
  dispersion(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,
-  type="a",fill=NA,...)
+  type="a",fill=NA,lty=NA,pch=NA,border=NA,...)
  dispbars(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,...)
 }
 \arguments{
@@ -23,6 +23,9 @@
  \item{type}{What type of display to use.}
  \item{fill}{Color to fill between the lines if \samp{type} is not NULL and
   \samp{fill} is not NA.}
+ \item{lty}{Line type for redrawing the lines if necessary.}
+ \item{pch}{Symbol for redrawing the points if necessary.}
+ \item{border}{Line type for drawing a border on the confidence band.}
  \item{...}{additional arguments passed to \samp{arrows} or \samp{lines}
   depending upon \samp{type}.}
 }
