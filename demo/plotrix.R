@@ -206,6 +206,10 @@ druguse<-matrix(c(sample(c(0,1),200,TRUE),
 colnames(druguse)<-c("Alc","Tob","THC","Amp")
 druglist<-makeIntersectList(druguse)
 intersectDiagram(druglist)
+testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
+ sin(1:50)),ncol=50,byrow=TRUE)
+kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
+ timepos=seq(1:50,by=5))
 l <- list(runif(10)*10,1:10,c(1,1,1,1,4,8))
 multhist(l,main="Test of multhist")
 windagg<-matrix(c(8,0,0,0,0,0,0,0,4,6,2,1,6,3,0,4,2,8,5,3,5,2,1,1,

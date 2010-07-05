@@ -47,7 +47,8 @@ spread.labels<-function (x,y,labels=NULL,ony=NA,offsets=NA,between=FALSE,
    }
    text(newx,y+offsets,labels[sort.index],srt=srt,...)
    seggap<-strheight("o")
-   seggaps<-rep(c(seggap,-seggap),length.out=nx)
+   if(all(offsets > 0) || all(offsets < 0)) seggaps<-rep(seggap,length.out=nx)
+   else seggaps<-rep(c(seggap,-seggap),length.out=nx)
    segments(newx,y+offsets-seggaps,x,y)
   }
  }

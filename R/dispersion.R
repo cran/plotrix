@@ -1,5 +1,5 @@
 dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
- arrow.cap=0.01,arrow.gap=NA,type="a",fill=NA,...) {
+ arrow.cap=0.01,arrow.gap=NA,type="a",fill=NA,lty=NA,pch=NA,border=NA,...) {
 
  if(is.list(x) && length(x[[1]]) == length(x[[2]])) {
   y<-x$y
@@ -55,10 +55,19 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
   }
  }
  if(toupper(type) == "L") {
-  if(!is.na(fill))
+  if(!is.na(fill)) {
    polygon(c(x,rev(x)),c(y+ulim,rev(y-llim)),col=fill,border=NA)
-  lines(x,y+ulim,...)
-  lines(x,y-llim,...)
-  points(x,y,...)
+   if(is.na(pch)) {
+    if(is.na(lty)) points(x,y,pch=pch,...)
+    else lines(x,y,lty=lty,pch=pch,type="b",...)
+   }
+   else {
+    if(!is.na(lty)) lines(x,y,lty=lty,...)
+   }
+  }
+  if(!is.na(border)) {
+   lines(x,y+ulim,lty=border,...)
+   lines(x,y-llim,lty=border,...)
+  }
  }
 }
