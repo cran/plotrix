@@ -6,7 +6,7 @@
 }
 \usage{
  staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,
-  srt=NA,ticklen=0.05,...)
+  srt=NA,ticklen=0.03,...)
 }
 \arguments{
  \item{side}{axis on which to place the labels, as in \samp{axis}}
@@ -29,16 +29,24 @@
 
  If \samp{srt} is not NA, the labels will be rotated \samp{srt} degrees
  and placed below the plot. This method will only place labels at the
- bottom.
+ bottom. Note that this option only works on the lower and left axes.
 }
 \value{nil}
-\author{Jim Lemon}
+\author{Jim Lemon (thanks to Tim Elwell-Sutton for the log axis fix)}
 \seealso{\link{mtext}}
 \examples{
- plot(rnorm(12),axes=FALSE)
+ x<-rnorm(12)
+ plot(x,axes=FALSE)
  box()
  months<-c("January","February","March","April","May","June",
   "July","August","September","October","November","December")
  staxlab(1,1:12,months)
+ plot(x,axes=FALSE)
+ box()
+ months<-c("January","February","March","April","May","June",
+  "July","August","September","October","November","December")
+ staxlab(1,1:12,months,srt=45)
+ ylabels<-round(seq(min(x),max(x),length.out=10),3)
+ staxlab(2,ylabels,ylabels,srt=45)
 }
 \keyword{misc}

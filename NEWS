@@ -1,3 +1,12 @@
+version 3.0
+
+	fixed some minor problems with oz.windrose (thanks to Brad Evans)
+	added a 'locator' option to zoomInPlot (thanks to Greg Snow)
+	added the 'padj' argument to stackpoly for more tick label control
+	made the 'srt' argument work for both x and y axes in staxlab
+	fixed two little bugs in thigmophobe (thanks to Stephen Milborrow)
+	added the 'add' argument to radial.plot (thanks to Evan Daugharthy)
+
 version 2.9-5
 
 	added the kiteChart function

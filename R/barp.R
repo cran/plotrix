@@ -1,7 +1,7 @@
 barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE,height.at=NULL,height.lab=NULL,cex.axis=par("cex.axis"),
- pch=NULL,cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE) {
+ pch=NULL,cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE,srt=NA) {
 
  height.class<-attr(height,"class")
  if(!is.null(height.class)) {
@@ -48,7 +48,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  if(is.null(names.arg)) names.arg<-1:ngroups
  if(staxx) {
   axis(1,at=1:ngroups,labels=rep("",ngroups),cex.axis=cex.axis)
-  staxlab(1,at=1:ngroups,labels=names.arg,cex=cex.axis)
+  staxlab(1,at=1:ngroups,labels=names.arg,cex=cex.axis,srt=srt)
  }
  else axis(1,at=1:ngroups,labels=names.arg,cex.axis=cex.axis)
  if(is.null(height.at)) {
@@ -58,7 +58,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  if(is.null(height.lab)) height.lab<-height.at
  if(staxy) {
   axis(2,at=height.at,labels=rep("",length(height.lab)),cex.axis=cex.axis)
-  staxlab(2,at=height.at,labels=height.lab,cex=cex.axis)
+  staxlab(2,at=height.at,labels=height.lab,cex=cex.axis,srt=srt)
  }
  else axis(2,at=height.at,labels=height.lab,cex.axis=cex.axis)
  bottoms<-ifelse(negy,0,miny)

@@ -12,9 +12,9 @@
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
- grid.col="gray",grid.bg="transparent",
- grid.left=FALSE,grid.unit=NULL,point.symbols=NULL,point.col=NULL,
- show.centroid=FALSE,radial.lim=NULL,radial.labels=NULL,poly.col=NULL,...)
+ grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
+ point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
+ radial.labels=NULL,poly.col=NULL,add=FALSE,...)
 }
 \arguments{
  \item{lengths}{A numeric data vector or matrix. If \samp{lengths}
@@ -60,6 +60,7 @@
  \item{radial.labels}{Optional labels for the radial grid. The default is
   the values of radial.lim.}
  \item{poly.col}{Fill color if polygons are drawn. Use NA for no fill.}
+ \item{add}{Whether to add one or more series to an existing plot.}
  \item{...}{Additional arguments are passed to \samp{plot}.}
 }
 \value{
@@ -82,6 +83,15 @@
  remember that these will be grouped by row, so transpose if the data are
  grouped by columns.
 
+ If more series are added to an existing plot,
+ \samp{radial.plot} will try to maintain the current plot parameters.
+ Resetting the parameters after doing the initial plot will almost certainly
+ mess up any series that are added. Series that are added will be plotted
+ "on top" of the existing plot, possibly overplotting other things. If the
+ added series have a larger range than the initial series, set \samp{radial.lim}
+ to account for this in the initial plot, and if \samp{radial.lim} is specified
+ in the initial plot, remember to repeat it for added series as in the example.
+
  The size of the labels on the outside of the plot can be adjusted by 
  setting \samp{par(cex.axis=)} and that of the labels inside by setting
  \samp{par(cex.lab=)}. If \samp{radlab} is TRUE, the labels will be rotated
@@ -99,8 +109,9 @@
 }
 \author{Jim Lemon - thanks to Jeremy Claisse and Antonio Hernandez Matias
  for the \samp{lty} and \samp{rp.type} suggestions respectively, Patrick
- Baker for the request that led to \samp{radlab} and Thomas Steiner for
- the request for the \samp{radial.lim} and \samp{radial.labels} modifications.}
+ Baker for the request that led to \samp{radlab}, Thomas Steiner for
+ the request for the \samp{radial.lim} and \samp{radial.labels} modifications,
+ and Evan Daugharty for requesting the \samp{add} argument.}
 \seealso{\link{polar.plot},\link{clock24.plot}}
 \examples{
  testlen<-rnorm(10)*2+5
@@ -125,6 +136,9 @@
  ion.names<-c("Na","Ca","Mg","Cl","HCO3","SO4")
  radial.plot(ions,labels=ion.names,rp.type="p",main="Dissolved ions in water",
   grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow")
+ # add points inside the polygon
+ radial.plot(ions-0.4,rp.type="s",radial.lim=c(0,5),
+  point.symbols=4,point.col="red",add=TRUE)
  par(xpd=oldpar$xpd,mar=oldpar$mar,pty=oldpar$pty)
  # reset the margins
  par(mar=c(5,4,4,2))

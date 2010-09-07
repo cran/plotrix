@@ -38,7 +38,7 @@
  A vector of directions away from the point nearest to each point.
 }
 \keyword{misc}
-\author{Jim Lemon}
+\author{Jim Lemon (thanks to Stephen Milborrow for finding the single point bug)}
 \seealso{\link{thigmophobe}, \link{text}}
 \examples{
  x<-rnorm(20)
@@ -54,6 +54,6 @@
   "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen",
   "eighteen","nineteen","twenty")
  plot(x=x,y=y,xlim=xlim,ylim=ylim,main="Test thigmophobe.labels")
- # skip the almost invisible yellow label, make them bold and without borders
- thigmophobe.labels(x,y,plotlabels,col=c(2:6,8:12),border=NA,font=2)
+ # skip the almost invisible yellow label, make them bold
+ thigmophobe.labels(x,y,plotlabels,col=c(2:6,8:12),font=2)
 }

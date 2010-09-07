@@ -67,6 +67,7 @@ oz.windrose		Display an Australian BoM wind rose
 oz.windrose.legend	Display a wind rose legend in Australian BoM style
 panes			Divide the graphics device in a "panel" layout
 pasteCols		Paste the columns of a matrix together
+paxis3d			Display enhanced axes on a 3D plot
 pie.labels		Display flat pie chart labels
 pie3D			Display a 3D pie chart
 pie3D.labels		Display labels on a 3D pie chart
@@ -75,7 +76,6 @@ plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
 pyramid.plot		Display a pyramid (opposed horizontal bar) plot
-qt.plot			Display counts of numeric values and intervals
 radial.plot		Plot values as lines/polygon/symbols on radial scale
 radial.plot.labels	Display labels at specified points on a radial plot
 rectFill		Display a rectangle filled with symbols

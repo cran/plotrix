@@ -38,7 +38,7 @@ oz.windrose.legend<-function(
   segments(x[1],y[1],x[2],y[2])
   text(x[3],y[3],wdnames[i],cex=0.7)
  }
- wsnames<-c("0-10","10-20","20-30","30+")
+ wsnames<-c("1-10","10-20","20-30","30+")
  draw.circle(-5,legend.pos,1)
  for(i in 1:length(speed.col)) {
   x<-c(i*7.5-11.5,i*7.5-4)
@@ -86,7 +86,7 @@ oz.windrose<-function(windagg,
     col=speed.col[j-1])
   }
  }
- text(-25,5,paste("Calm ",sum(windagg[1,]),"%",sep="",collapse=""),col="blue")
+ text(-25,5,paste("Calm ",round(sum(windagg[1,]),1),"%",sep=""),col="blue")
  if(show.legend)
   oz.windrose.legend(speed.col=speed.col,speed.width=speed.width,
    legend.pos=legend.pos)

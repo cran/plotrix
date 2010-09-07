@@ -52,9 +52,9 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
- grid.col="gray",grid.bg="transparent",
- grid.left=FALSE,grid.unit=NULL,point.symbols=NULL,point.col=NULL,
- show.centroid=FALSE,radial.lim=NULL,radial.labels=NULL,poly.col=NULL,...) {
+ grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
+ point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
+ radial.labels=NULL,poly.col=NULL,add=FALSE,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
  length.dim<-dim(lengths)
@@ -90,14 +90,16 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
   maxlength<-diff(radial.lim)
  }
  oldpar<-par("xpd","mar","pty")
- par(mar=mar,pty="s")
- plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
-  main=main,xlab=xlab,ylab=ylab)
- if(show.grid) {
-  for(i in seq(length(grid.pos),1,by=-1)) {
-   xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
-   ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
-   polygon(xpos,ypos,border=grid.col,col=grid.bg)
+ if(!add) {
+  par(mar=mar,pty="s")
+  plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
+   main=main,xlab=xlab,ylab=ylab)
+  if(show.grid) {
+   for(i in seq(length(grid.pos),1,by=-1)) {
+    xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
+    ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
+    polygon(xpos,ypos,border=grid.col,col=grid.bg)
+   }
   }
  }
  par(xpd=TRUE)
@@ -172,37 +174,39 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
     points(mean(xpos),mean(ypos),col=pointcol,pch=pointsymbols,
      cex=2,...)
  }
- if(is.na(labels[1])) {
-  label.pos<-seq(0,1.8*pi,length=9)
-  labels<-as.character(round(label.pos,2))
- }
- if(is.null(label.pos[1])) {
-  lablen<-length(labels)
-  label.pos<-seq(0,pi*(2-2/lablen),length.out=lablen)
- }
- if(clockwise) label.pos<--label.pos
- if(start) label.pos<-label.pos+start
- xpos<-cos(label.pos)*maxlength
- ypos<-sin(label.pos)*maxlength
- if(show.radial.grid) segments(0,0,xpos,ypos,col=grid.col)
- xpos<-cos(label.pos)*maxlength*label.prop
- ypos<-sin(label.pos)*maxlength*label.prop
- if(radlab) {
-  for(label in 1:length(labels)) {
-   labelsrt<-(180*label.pos[label]/pi)+
-    180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
-   text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),srt=labelsrt)
+ if(!add) {
+  if(is.na(labels[1])) {
+   label.pos<-seq(0,1.8*pi,length=9)
+   labels<-as.character(round(label.pos,2))
   }
+  if(is.null(label.pos[1])) {
+   lablen<-length(labels)
+   label.pos<-seq(0,pi*(2-2/lablen),length.out=lablen)
+  }
+  if(clockwise) label.pos<--label.pos
+  if(start) label.pos<-label.pos+start
+  xpos<-cos(label.pos)*maxlength
+  ypos<-sin(label.pos)*maxlength
+  if(show.radial.grid) segments(0,0,xpos,ypos,col=grid.col)
+  xpos<-cos(label.pos)*maxlength*label.prop
+  ypos<-sin(label.pos)*maxlength*label.prop
+  if(radlab) {
+   for(label in 1:length(labels)) {
+    labelsrt<-(180*label.pos[label]/pi)+
+     180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
+    text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),srt=labelsrt)
+   }
+  }
+  else
+   boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
+  if(show.grid.labels) {
+   ypos<-rep(-maxlength/15,length(grid.pos))
+   if(is.null(radial.labels)) radial.labels=as.character(grid.pos)
+   boxed.labels(grid.pos-radial.lim[1],ypos,radial.labels,border=FALSE,
+    cex=par("cex.lab"))
+  }
+  if(!is.null(grid.unit))
+   text(maxlength*1.05,ypos,grid.unit,adj=0)
  }
- else
-  boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
- if(show.grid.labels) {
-  ypos<-rep(-maxlength/15,length(grid.pos))
-  if(is.null(radial.labels)) radial.labels=as.character(grid.pos)
-  boxed.labels(grid.pos-radial.lim[1],ypos,radial.labels,border=FALSE,
-   cex=par("cex.lab"))
- }
- if(!is.null(grid.unit))
-  text(maxlength*1.05,ypos,grid.unit,adj=0)
  return(oldpar)
 }

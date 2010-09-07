@@ -10,7 +10,7 @@
 \usage{
  stackpoly(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
   xlim=NA,ylim=NA,lty=1,lwd=1,border=NA,col=NULL,staxx=FALSE,stack=FALSE,
-  axis2=TRUE,axis4=TRUE,...)
+  axis2=TRUE,axis4=TRUE,padj=0,...)
 }
 \arguments{
  \item{x}{A numeric data frame or matrix with the \samp{x} values. If
@@ -32,6 +32,8 @@
  \item{stack}{Whether to stack the successive values on top of each other.}
  \item{axis2}{Whether to display the left ordinate on the plot.}
  \item{axis4}{Whether to display the right ordinate on the plot.}
+ \item{padj}{Vertical justfication of the x axis labels, defaulting to "top".
+  Can be a vector with an element for each label.}
  \item{...}{Additional arguments passed to \samp{plot}.}
 }
 \value{

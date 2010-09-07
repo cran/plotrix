@@ -7,7 +7,7 @@
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  staxx=FALSE,staxy=FALSE, height.at=NULL,height.lab=NULL,
  cex.axis=par("cex.axis"),pch=NULL,cylindrical=FALSE,shadow=FALSE,
- do.first=NULL,ylog=FALSE)
+ do.first=NULL,ylog=FALSE,srt=NA)
 }
 \arguments{
  \item{height}{A numeric vector, matrix or data frame that will be represented
@@ -35,6 +35,7 @@
  \item{do.first}{An optional expression that will be evaluated before anything
   else is displayed on the plot. Useful for background colors or lines.}
  \item{ylog}{Logical for whether a log scale is to be used. see details.}
+ \item{srt}{Rotation of axis labels if staxx or staxy is TRUE (see \samp{staxlab}.}
 }
 \value{
  A list containing two components of the same form as \samp{height}:
@@ -68,7 +69,8 @@
  labels on the vertical axis, usually representing the options. If \samp{staxx}
  or \samp{staxy} are TRUE, the labels on the horizontal or vertical axes
  respectively will be staggered, allowing the user to use many or lengthy variable
- or value labels.
+ or value labels. If \samp{srt} is not NA, these labels will be rotated by that
+ value as angles in degrees instead of staggered.
 
  \samp{barp} allows two enhancements that may be useful in those areas where fancy
  plots are appreciated. One is to give the bars a cylindrical look by shading the

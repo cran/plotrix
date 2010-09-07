@@ -29,8 +29,8 @@
  \samp{fullaxis} draws a line to the edges of the plot and then calls
  \samp{axis} to draw an axis. \samp{fullaxis} is mainly useful for drawing a
  colored axis on a boxed plot. In order to get the tick labels the same color as
- the axis and ticks, pass the \samp{col.axis} argument as well as \samp{col}.
- See the example for some useful tips.
+ the axis and ticks, pass the \samp{col.axis} argument (as part of ...) as well
+ as \samp{col}. See the example for some useful tips.
 }
 \value{
  The positions of the tick marks in user units.
@@ -40,7 +40,7 @@
 \examples{
  plot(runif(20,-1,1),runif(20,-1,1),xlim=c(-1,1.5),main="Demo of fullaxis",
   xlab="X",ylab="Y",axes=FALSE)
- fullaxis(1,col="red")
+ fullaxis(1,col="red",col.axis="red")
  fullaxis(2,col="blue",col.axis="blue")
  fullaxis(4,at=c(-0.5,0,0.5),labels=c("Negative","Zero","Positive"),pos=1.2,
   col="green",las=1)

@@ -1,6 +1,6 @@
 stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
  xlim=NA,ylim=NA,lty=1,lwd=1,border=NA,col=NULL,staxx=FALSE,stack=FALSE,
- axis2=TRUE,axis4=TRUE,...) {
+ axis2=TRUE,axis4=TRUE,padj=0,...) {
 
  ydim<-dim(y)
  if(is.null(y[1])) {
@@ -14,13 +14,12 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
  if(is.na(ylim[1])) ylim<-range(y)
  plot(0,main=main,xlab=xlab,ylab=ylab,xlim=xlim,ylim=ylim,type="n",
   xaxs="i",yaxs="i",axes=FALSE,...)
- box()
  if(is.matrix(y) || is.list(y)) {
   plotlim<-par("usr")
   if(is.na(xat[1])) xat<-x[,1]
   if(is.na(xaxlab[1])) xaxlab<-xat
   if(staxx) staxlab(at=xat,labels=xaxlab)
-  else axis(1,at=xat,labels=xaxlab)
+  else axis(1,at=xat,labels=xaxlab,padj=padj)
   if(axis2) axis(2)
   if(axis4) axis(4)
   if(is.null(col[1])) col=rainbow(ydim[2])
@@ -49,4 +48,5 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
   if(axis2) axis(2)
   if(axis4) axis(4)
  }
+ box()
 }
