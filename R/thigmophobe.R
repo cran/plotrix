@@ -62,9 +62,10 @@ thigmophobe<-function(x,y) {
 thigmophobe.labels<-function(x,y,labels=NULL,text.pos=NULL,...) {
  if(missing(x))
   stop("Usage: thigmophobe.labels(x,y,labels=1:length(x))")
+ lenx<-length(x)
  # if x has at least two columns, split it
  if(missing(y)) {
-  if(is.list(x) && length(x) >= 2) {
+  if(is.list(x) && lenx >= 2) {
    y<-x[[2]]
    x<-x[[1]]
   }
@@ -73,8 +74,11 @@ thigmophobe.labels<-function(x,y,labels=NULL,text.pos=NULL,...) {
  }
  # check for NA or NaN
  validxy<-!(is.na(x) | is.na(y))
- if(is.null(labels)) labels<-1:length(x)
- if(is.null(text.pos)) text.pos<-thigmophobe(x[validxy],y[validxy])
+ if(is.null(labels)) labels<-1:lenx
+ if(is.null(text.pos)) {
+  if(lenx > 1) text.pos<-thigmophobe(x[validxy],y[validxy])
+  else text.pos<-3
+ }
  # allow labels to extend beyond the plot area
  par(xpd=TRUE)
  text(x[validxy],y[validxy],labels[validxy],pos=text.pos,...)

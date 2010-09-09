@@ -29,6 +29,10 @@
  corresponding to the \samp{rxlim} and \samp{rylim} arguments and displays a
  second plot of that rectangle in the right column. It is currently very simple
  and will probably become more flexible in future versions.
+
+ It just has. If \samp{rxlim} is set to NA, \samp{locator} will be called and
+ the user can define the zoomed rectangle by clicking on each corner. This is a
+ shameless ripoff of a suggestion by Greg Snow on the help list. Thanks, Greg.
 }
 \value{nil}
 \author{Jim Lemon}

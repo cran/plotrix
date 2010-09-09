@@ -70,7 +70,7 @@
  quite easy to get this wrong.
 }
 \author{Jim Lemon and Ofir Levy}
-\seealso{\link{brkdnNest}, \link{drawNestedBars}}
+\seealso{\link{brkdnNest}, \link{drawNestedBars}, superbarplot(UsingR)}
 \examples{
  # start a wide plot window
  x11(width=10)
@@ -101,5 +101,6 @@
    fill=unlist(test.col))
   par(xpd=FALSE,mar=c(5,4,4,2))
  }
+ dev.off()
 }
 \keyword{misc}

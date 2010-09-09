@@ -48,6 +48,10 @@
  this. If both types are to be bars, remember to pass somewhat different x values or
  the bars will be overlaid.
 
+ Note that more values can be added to the plot using \samp{points} or \samp{lines},
+ but remember that these will be plotted relative to the right ordinate, and the
+ \samp{rylim} argument may need to be set so that more extreme points in subsequent
+ series will be within the plot area.
 }
 \note{
  There are many objections to the use of plots with two different 

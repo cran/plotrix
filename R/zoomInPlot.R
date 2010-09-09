@@ -17,6 +17,11 @@ zoomInPlot<-function(x,y=NULL,xlim=NULL,ylim=NULL,rxlim=xlim,rylim=ylim,
   yext<-diff(ylim)*0.04
   ryext<-diff(rylim)*0.04
  }
+ if(is.na(rxlim[1])) {
+  newbox<-locator(2)
+  rxlim<-sort(newbox$x)
+  rylim<-sort(newbox$y)
+ }
  rect(rxlim[1]-rxext,rylim[1]-ryext,rxlim[2]+rxext,rylim[2]+ryext)
  xylim<-par("usr")
  xypin<-par("pin")
