@@ -12,8 +12,6 @@ feather.plot<-function(r,theta,xpos,yref=0,use.arrows=TRUE,
  oldpin<-par("pin")
  xdiff<-xlim[2]-xlim[1]
  ydiff<-ylim[2]-ylim[1]
- if(xdiff>ydiff) par(pin=c(oldpin[1],oldpin[2]*ydiff/xdiff))
- else par(pin=c(oldpin[1]*xdiff/ydiff,oldpin[2]))
  plot(0,xlim=xlim,ylim=ylim,type="n",main=main,xlab=xlab,ylab=ylab,axes=FALSE)
  box()
  if(is.null(xlabels)) axis(1)

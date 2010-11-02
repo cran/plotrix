@@ -1,3 +1,8 @@
+version 3.0-1
+
+	competely rewrote the barNest family of functions
+	removed labels for empty sets in intersectDiagram
+
 version 3.0
 
 	fixed some minor problems with oz.windrose (thanks to Brad Evans)

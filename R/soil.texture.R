@@ -36,7 +36,7 @@ soil.texture<-function(soiltexture=NULL,main="",at=seq(0.1,0.9,by=0.1),
   snames <- c("clay", "silty", "clay", "silty clay", "loam",
    "clay loam", "sandy", "clay", "sandy clay", "loam", "sandy loam",
    "loamy", "sand", "sand", "loam", "silt loam", "silt")
-  boxed.labels(xpos, ypos, snames, border=FALSE, col=col.names, xpad=0.5)
+  boxed.labels(xpos, ypos, snames, border=FALSE, xpad=0.5)
  }
  par(xpd=FALSE)
  # now call triax.points

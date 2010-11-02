@@ -1,27 +1,23 @@
 \name{barNest}
 \alias{barNest}
 \title{Display a nested breakdown of numeric values}
-\description{Breaks down a numeric element of a data frame by one or more
+\description{Breaks down the elements of a data frame by one or more
  categorical elements and displays the breakdown as a bar plot.}
 \usage{
- barNest(formula=NULL,data=NULL,maxlevels=10,mct=mean,lmd=std.error,umd=lmd,
- x=NULL,ylim=NULL,main="",xlab="",ylab="",shrink=0.1,errbars=FALSE,col=NA,
- labelcex=1,lineht=NA,showall=FALSE,barlabels=NULL,showlabels=TRUE,mar=NULL,
+ barNest(formula=NULL,data=NULL,FUN=c("mean","sd"),x=NULL,ylim=NULL,
+ main="",xlab="",ylab="",shrink=0.1,errbars=FALSE,col=NA,
+ labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,showlabels=TRUE,mar=NULL,
  arrow.cap=0.01,trueval=NA)
 }
 \arguments{
  \item{formula}{A formula with a numeric element of a data frame on the left and
   one or more categorical elements on the right.}
  \item{data}{A data frame containing the elements in \samp{formula}.}
- \item{maxlevels}{The maximum number of levels in any categorical element. Mainly to
-  prevent the mess caused by breaking down by a huge number of categories.}
- \item{mct}{The measure of central tendency function to use.}
- \item{lmd}{The lower measure of dispersion function to use.}
- \item{umd}{The upper measure of dispersion function to use.}
+ \item{FUN}{The functions to apply to x.}
  \item{x}{This becomes the result of the breakdown after the first call. If a list
   of arrays of values of the same form as that produced by \samp{brkdnNest} is
   passed, it will be used to determine the heights of the nested bars.}
- \item{ylim}{Optional y limits for the plot.}
+ \item{ylim}{Optional y limits for the plot, usually necessary for counts.}
  \item{main}{Title for the plot.}
  \item{xlab,ylab}{Axis labels for the plot. The x axis label is typically blank}
  \item{shrink}{The proportion to shrink the width of the bars at each level.}
@@ -44,19 +40,22 @@
 }
 \value{The summary arrays produced by brkdnNest.}
 \details{
- \samp{barNest} displays a bar plot illustrating the breakdown of a numeric
- element of a data frame by one or more categorical elements. The breakdown is
- performed by \samp{brkdnNest} and the actual display is performed by
- \samp{drawNestedBars}. Typically, the mean of each category specified
- by the formula is displayed as the height of a bar. If \samp{showall} is TRUE,
- the entire nested breakdown will be displayed. This can be useful in
- visualizing the relationship between groups and subgroups in a compact format.
+ \samp{barNest} displays a bar plot illustrating the hierarchic breakdown of
+ the elements of a data frame. The breakdown is performed by \samp{brkdnNest}
+ and the actual display is performed by \samp{drawNestedBars}. The heights of
+ the bars will be proportional to the values returned by the first function in
+ \samp{FUN}. If \samp{showall} is TRUE, the entire nested breakdown will be
+ displayed. This can be useful in visualizing the relationship between groups
+ and subgroups in a compact format.
 
  If \samp{trueval} is not NA and brkdnNest is called to calculate the values for
  the heights of the bars, the proportions of the response variable that are
  equal to \samp{trueval} will be returned. Currently the value of \samp{errbars}
- will be forced to FALSE in this case, as the confidence limits are meaningless.
- This may change if a suitable method of calculating CIs becomes available.
+ will be forced to FALSE in this case. This will probably change when a suitable
+ method of calculating binomial CIs is programmed.
+
+ A number of functions can be passed in the \samp{FUN} argument. Two functions,
+ \samp{propbrk} and \samp{valid.n} are provided 
 
  The colors of the bars are determined by \samp{col}. If \samp{showall} is FALSE,
  the user only need pass a vector of colors, usually the same length as the number
@@ -72,6 +71,26 @@
 \author{Jim Lemon and Ofir Levy}
 \seealso{\link{brkdnNest}, \link{drawNestedBars}, superbarplot(UsingR)}
 \examples{
+ # recreate the Titanic data frame and show the three way breakdown
+ titanic<-data.frame(
+  class=c(rep("1st",325),rep("2nd",285),rep("3rd",706),rep("Crew",885)),
+  age=c(rep("Adult",319),rep("Child",6),rep("Adult",261),rep("Child",24),
+  rep("Adult",627),rep("Child",79),rep("Adult",885)),
+  sex=c(rep("M",175),rep("F",144),rep("M",5),rep("F",1),
+  rep("M",168),rep("F",93),rep("M",11),rep("F",13),
+  rep("M",462),rep("F",165),rep("M",48),rep("F",31),
+  rep("M",862),rep("F",23)),
+  survived=c(rep("Yes",57),rep("No",118),rep("Yes",140),rep("No",4),rep("Yes",6),
+  rep("Yes",14),rep("No",154),rep("Yes",80),rep("No",13),rep("Yes",24),
+  rep("Yes",75),rep("No",387),rep("Yes",76),rep("No",89),
+  rep("Yes",13),rep("No",35),rep("Yes",14),rep("No",17),
+  rep("Yes",192),rep("No",670),rep("Yes",20),rep("No",3)))
+ require(plotrix)
+ titanic.colors<-list("lightgray",c("#0000ff","#7700ee","#aa00cc","#dd00aa"),
+  c("#ddcc00","#ee9900"),c("pink","lightblue"))
+ barNest(survived~class+age+sex,titanic,col=titanic.colors,showall=TRUE,
+  main="Titanic survival by class, age and sex",ylab="Proportion surviving",
+  FUN="propbrk",shrink=0.15,trueval="Yes")
  # start a wide plot window
  x11(width=10)
  test.df<-data.frame(Age=rnorm(100,25,10),
@@ -82,25 +101,19 @@
   Marital=c("mediumpurple","orange","tan","lightgreen"),
   Employ=c("#1affd8","#caeecc","#ff90d0"))
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Mean age (years)",
-  main="Show only the final breakdown",errbars=TRUE,col=test.col$Employ)
+  main="Mean age by subgroups",errbars=TRUE,col=test.col)
  # set up functions for 20 and 80 percentiles - must be offsets, not limits
  q20<-function(x,na.rm=TRUE) return(-quantile(x,probs=0.2,na.rm=TRUE)+median(x))
  q80<-function(x,na.rm=TRUE) return(quantile(x,probs=0.8,na.rm=TRUE)-median(x))
  # show the asymmetric dispersion measures
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Mean age (years)",
-  main="Use median and quantiles for dispersion",mct=median,lmd=q20,umd=q80,
-  errbars=TRUE,col=test.col$Employ)
- \dontrun{
-  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Mean age (years)",
-   main="Show the entire hierarchical breakdown",col=test.col,showall=TRUE,
-   showlabels=TRUE,mar=c(5,4,4,8))
-  # example of a legend that might be included, needs a lot of space
-  par(xpd=TRUE)
-  legend(1.05,27,c("Overall","Female","Male","Divorced",
-   "Married","Single","Widowed","Full time","Part time","No work"),
-   fill=unlist(test.col))
-  par(xpd=FALSE,mar=c(5,4,4,2))
- }
- dev.off()
+  main="Use median and quantiles for dispersion",FUN=c("median","q80","q20"),
+  errbars=TRUE,col=test.col)
+ barNest(formula=Employ~Sex+Marital,data=test.df,ylab="Proportion unemployed",
+  main="Show the proportion unemployed",FUN="propbrk",
+  col=test.col,trueval="Un")
+ barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Counts",
+  main="Show the counts in subgroups",FUN="valid.n",
+  col=test.col,showall=FALSE,ylim=c(0,10))
 }
 \keyword{misc}

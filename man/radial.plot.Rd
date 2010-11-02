@@ -9,12 +9,12 @@
 }
 \usage{
  radial.plot(lengths,radial.pos=NULL,labels,label.pos=NULL,radlab=FALSE,
- start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
+ start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
- show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
+ show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
  point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
- radial.labels=NULL,poly.col=NULL,add=FALSE,...)
+ radial.labels=NULL,boxed.radial=TRUE,poly.col=NULL,add=FALSE,...)
 }
 \arguments{
  \item{lengths}{A numeric data vector or matrix. If \samp{lengths}
@@ -45,7 +45,8 @@
  \item{mar}{Margins for the plot. Allows the user to leave space for
   legends, long labels, etc.}
  \item{show.grid}{Logical - whether to draw a circular grid.}
- \item{show.grid.labels}{Logical - whether to display labels for the grid.}
+ \item{show.grid.labels}{Whether and where to display labels for the grid
+  - see Details.}
  \item{show.radial.grid}{Whether to draw radial lines to the plot labels.}
  \item{grid.col}{Color of the circular grid.}
  \item{grid.bg}{Fill color of above.}
@@ -59,6 +60,7 @@
   exact values will be displayed.}
  \item{radial.labels}{Optional labels for the radial grid. The default is
   the values of radial.lim.}
+ \item{boxed.radial}{Whether to use boxed.labels or text for radial labels.}
  \item{poly.col}{Fill color if polygons are drawn. Use NA for no fill.}
  \item{add}{Whether to add one or more series to an existing plot.}
  \item{...}{Additional arguments are passed to \samp{plot}.}
@@ -77,6 +79,8 @@
  \samp{rp.type="p"}. In this case, the barycenter of the polygon is
  calculated. Make sure that these suit your purpose, otherwise calculate
  the centroid that you really want and add it with the \samp{points} function.
+ Note that if the observations are not taken at equal intervals around the
+ circle, the centroid may not mean much.
   
  If the user wants to plot several sets of lines, points or symbols by
  passing matrices or data frames of \samp{lengths} and \samp{radial.pos},
@@ -97,21 +101,23 @@
  \samp{par(cex.lab=)}. If \samp{radlab} is TRUE, the labels will be rotated
  to a radial alignment. This may help when there are many values and labels.
  If some labels are still crowded, try running \samp{label.pos} through the
- \samp{spreadout} function.
+ \samp{spreadout} function. If the \samp{show.grid.labels} argument is a number
+ from 1 to 4, the labels will be placed along a horizontal or vertical radius.
+ The numbers represent the same positions as in \samp{axis}, with the default
+ (4) on the right.
 
  The radial.plot family of plots is useful for illustrating
  cyclic data such as wind direction or speed (but see \samp{oz.windrose}
  for both), activity at different times of the day, and so on. While 
  \samp{radial.plot} actually does the plotting, another function is usually 
- called for specific types of cyclic data. Note that if the observations
- are not taken at equal intervals around the circle, the centroid may not
- mean much.
+ called for specific types of cyclic data.
 }
 \author{Jim Lemon - thanks to Jeremy Claisse and Antonio Hernandez Matias
  for the \samp{lty} and \samp{rp.type} suggestions respectively, Patrick
  Baker for the request that led to \samp{radlab}, Thomas Steiner for
  the request for the \samp{radial.lim} and \samp{radial.labels} modifications,
- and Evan Daugharty for requesting the \samp{add} argument.}
+ Evan Daugharty for requesting the \samp{add} argument and James MacCarthy
+ for requesting better radial labels.}
 \seealso{\link{polar.plot},\link{clock24.plot}}
 \examples{
  testlen<-rnorm(10)*2+5

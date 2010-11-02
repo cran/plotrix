@@ -30,9 +30,9 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  if(length(type) < 2) type<-rep(type,2)
  if(match(type[1],"bar",0)) {
   plot(0,type="n",xlab=xlab,ylab="",axes=FALSE,xlim=xlim,ylim=lylim,...)
-  xbottom<-par("usr")[1]
+  ybottom<-par("usr")[3]
   if(lylim[1] < 0) abline(h=0,lty=2)
-  rect(lx-halfwidth,ifelse(ly<0,ly,xbottom),lx+halfwidth,ifelse(ly>0,ly,0),
+  rect(lx-halfwidth,ifelse(ly<0,ly,ybottom),lx+halfwidth,ifelse(ly>0,ly,0),
    col=lcol)
  }
  else
@@ -53,9 +53,9 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  if(is.null(rylim)) rylim<-range(ry)
  if(match(type[2],"bar",0)) {
   plot(0,type="n",xlab=xlab,ylab="",axes=FALSE,xlim=xlim,ylim=rylim,...)
-  xbottom<-par("usr")[1]
+  ybottom<-par("usr")[3]
   if(rylim[1] < 0) abline("h",0)
-  rect(rx-halfwidth,ifelse(ry < 0,ry,xbottom),rx+halfwidth,ifelse(ry > 0,ry,0),
+  rect(rx-halfwidth,ifelse(ry < 0,ry,ybottom),rx+halfwidth,ifelse(ry > 0,ry,0),
    col=rcol)
  }
  else

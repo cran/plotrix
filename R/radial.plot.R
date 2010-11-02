@@ -49,12 +49,12 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
 # radial position of the labels
 
 radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FALSE,
- start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
+ start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
- show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
+ show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
  point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
- radial.labels=NULL,poly.col=NULL,add=FALSE,...) {
+ radial.labels=NULL,boxed.radial=TRUE,poly.col=NULL,add=FALSE,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
  length.dim<-dim(lengths)
@@ -200,13 +200,25 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
   else
    boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
   if(show.grid.labels) {
-   ypos<-rep(-maxlength/15,length(grid.pos))
+   if(show.grid.labels%%2) {
+    ypos<-grid.pos-radial.lim[1]
+    xpos<-rep(0,length(grid.pos))
+    if(show.grid.labels==1) ypos<--ypos
+   }
+   else {
+    xpos<-grid.pos-radial.lim[1]
+    ypos<-rep(0,length(grid.pos))
+    if(show.grid.labels==2) xpos<--xpos
+   }
    if(is.null(radial.labels)) radial.labels=as.character(grid.pos)
-   boxed.labels(grid.pos-radial.lim[1],ypos,radial.labels,border=FALSE,
-    cex=par("cex.lab"))
+   if(!is.null(grid.unit))
+    radial.labels[length(grid.pos)]<-
+     paste(radial.labels[length(grid.pos)],grid.unit)
+   if(boxed.radial)
+    boxed.labels(xpos,ypos,radial.labels,border=FALSE,
+     cex=par("cex.lab"))
+   else text(xpos,ypos,radial.labels,cex=par("cex.lab"))
   }
-  if(!is.null(grid.unit))
-   text(maxlength*1.05,ypos,grid.unit,adj=0)
  }
  return(oldpar)
 }

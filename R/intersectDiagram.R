@@ -49,8 +49,9 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
     rect(startx,lenx+show.nulls-comb+0.1,startx+x[[comb]][intersect],
      lenx+show.nulls-comb+0.9)
    }
-   boxed.labels(startx+x[[comb]][intersect]/2,lenx+show.nulls-comb+0.5,
-   paste(blocknames[intersect],cellqnt,sep="\n"))
+   if(x[[comb]][intersect])
+    boxed.labels(startx+x[[comb]][intersect]/2,lenx+show.nulls-comb+0.5,
+    paste(blocknames[intersect],cellqnt,sep="\n"))
    startx<-startx+x[[comb]][intersect]+gap
   }
  }
@@ -59,8 +60,7 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
   leftx<-sum(par("usr")[1:2])/2-nonset/2
   polygon(c(leftx,leftx,leftx+nonset,leftx+nonset),c(0.1,0.9,0.9,0.1),col=NA)
   if(pct) nonsetpc<-paste(round(100*nonset/xtotal,1),"%",sep="")
-  boxed.labels(leftx+nonset/2,0.5,paste("Non-members",nonsetpc,sep="\n"),
-   col=col[length(col)])
+  boxed.labels(leftx+nonset/2,0.5,paste("Non-members",nonsetpc,sep="\n"))
  }
  par(mar=oldmar)
 }

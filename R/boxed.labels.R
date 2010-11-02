@@ -21,8 +21,9 @@ boxed.labels<-function(x,y=NA,labels,
   lwidths<-lwidths*box.adj
   bheights<-theights<-strheight(labels)*0.5
  }
+ textcol<-ifelse(colSums(col2rgb(bg)*c(1,1.4,0.6))<350,"white","black")
  rect(x-lwidths*xpad,y-bheights*ypad,x+rwidths*xpad,
   y+theights*ypad,col=bg,border=border)
- text(x,y,labels,srt=srt,cex=cex,adj=adj,...)
+ text(x,y,labels,srt=srt,cex=cex,adj=adj,col=textcol,...)
  par(cex=oldcex)
 }

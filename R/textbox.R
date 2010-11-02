@@ -7,11 +7,12 @@ textbox<-function(x,y,textlist,justify=TRUE,cex=1,leading=0.5,box=TRUE) {
  y.pos <- y
  x.pos <- x[1]
  curword <- 1
- while (curword < length(words)) {
+ while (curword <= length(words)) {
   curline <- ""
   curline <- paste(curline, words[curword])
   curword <- curword + 1
-  while (x.pos+strwidth(paste(curline,words[curword]),cex=cex) < x[2]) {
+  while (x.pos+strwidth(paste(curline,words[curword]),cex=cex) < x[2] &&
+   !is.na(words[curword])) {
    curline<-paste(curline,words[curword])
    curword<-curword+1
   }
