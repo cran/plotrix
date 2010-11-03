@@ -31,15 +31,21 @@
  along a reference line that may represent time or position or some other
  value. The user is responsible for spacing the vectors so that they do
  not overlap if this is desired.
+
+ Feather plots are typically wider than high. The user will probably want
+ to specify a graphics device that doesn't leave lots of blank space above
+ and below the plot.
 }
 \value{nil}
 \author{Jim Lemon, Eduardo Klein}
 \seealso{\link{spread.labels}}
 \examples{
+ x11(width=8,height=3)
  feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
   main="Standard Coordinates",xlab="Time",ylab="Value")
  feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
   main="Meteorological Coordinates",xlab="Time",ylab="Value",
   fp.type="m",xlabels=TRUE)
+ dev.off()
 }
 \keyword{misc}

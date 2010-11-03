@@ -1,4 +1,5 @@
-twoord.stackplot<-function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, border, 
+
+twoord.stackplot <- function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, border, 
     rylab, lylab, xlab, ..., incrylim = NULL, halfwidth = 0.4, 
     leftfront = FALSE, mar = c(5, 4, 4, 4)) 
 {
@@ -6,10 +7,8 @@ twoord.stackplot<-function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, bord
         "b", "c", "o", "bar")))
     rtype <- sapply(rtype, function(x) match.arg(x, c("p", "l", 
         "b", "c", "o", "bar")))
-    # print(rtype)
     incrylim <- ifelse(is.null(incrylim), 0, as.numeric(incrylim))
     xlimits <- range(lx, rx)
-    #assume line plot for the left data, and barplot for the right data
     oldmar <- par("mar")
     par(mar = mar)
     if (leftfront) {
@@ -19,7 +18,6 @@ twoord.stackplot<-function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, bord
                 4, 4))
         return(invisible())
     }
-    #left y-axis plot
     if (NCOL(ldata) > 1) {
         lcol <- rep(lcol, length = NCOL(ldata))
         ltype <- rep(ltype, length = NCOL(ldata))
@@ -55,7 +53,7 @@ twoord.stackplot<-function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, bord
             col = lcol[1], type = ltype[1], axes = FALSE, ylab = "", 
             xlab = xlab, ...)
         for (i in 2:NCOL(ldata)) lines(lx, ldata[, i], col = lcol[i], 
-            type = ltype[i])
+            type = ltype[i], ...)
     }
     xylim <- par("usr")
     mtext(lylab, 2, 2, col = lcol[1])
@@ -64,7 +62,6 @@ twoord.stackplot<-function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, bord
     abline(v = xylim[1], col = lcol[1])
     mtext(axat, 2, 1, at = axat, col = lcol[1])
     box()
-    #right y-axis plot
     par(new = TRUE)
     if (NCOL(rdata) > 1) {
         rcol <- rep(rcol, length = NCOL(rdata))
@@ -101,7 +98,7 @@ twoord.stackplot<-function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, bord
             col = rcol[1], type = rtype[1], axes = FALSE, ylab = "", 
             xlab = "", ...)
         for (i in 2:NCOL(rdata)) lines(rx, rdata[, i], col = rcol[i], 
-            type = rtype[i])
+            type = rtype[i], ...)
     }
     axat <- axis(4, col = rcol[1], labels = FALSE)
     abline(v = xylim[1], col = rcol[1])

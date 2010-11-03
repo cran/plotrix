@@ -38,7 +38,7 @@ soil.texture.uk <- function (soiltexture = NULL, main = "",
  }
  if (show.names) {
   boxed.labels(xpos, ypos* sin(pi/3), snames, border = FALSE,
-  col = col.names,  xpad = 0.5, cex = cexuk)
+  xpad = 0.5, cex = cexuk)
  }
  par(xpd = FALSE)
  if (is.null(soiltexture)) return(NULL)

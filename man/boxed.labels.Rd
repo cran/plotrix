@@ -28,6 +28,9 @@
 \details{
  The label(s) are displayed on a rectangular background. This may be useful
  for visibility and is the reason that "transparent" background is not available.
+ The function tries to work out whether white or black text will be more easily
+ read based on the background color and displays the text accordingly.
+
  Only right angle rotations are allowed in \samp{boxed.labels}. \emph{Important
  change}: \samp{xpad} and \samp{ypad} are now the full proportion of
  the box to text, not half. The user can now call \samp{cylindrect} or
@@ -56,7 +59,6 @@
  plot(swiss.pca$rotation[,1:2],xlim=c(-1,0.2),main="PCA of swiss dataset",
   type="n")
  boxed.labels(swiss.pca$rotation[1:6],swiss.pca$rotation[7:12],ypad=1.5,
-  colnames(swiss),bg=c("red","purple","blue","blue","darkgreen","red"),
-  col="white")
+  colnames(swiss),bg=c("red","purple","blue","blue","darkgreen","red"))
 }
 \keyword{misc}

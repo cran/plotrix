@@ -1,79 +1,54 @@
 drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
- col=NA,labelcex=1,labely=NA,showbars=TRUE,showlabels=TRUE,arrow.cap=0.01) {
+ col=NA,labelcex=1,lineht=NA,showall=TRUE,showlabels=TRUE,arrow.cap=0.01) {
 
- dimx<-dim(x[[1]])
- if(is.null(dimx) || length(dimx) == 1) {
-  # this is the final level
-  lenx<-length(x[[1]])
-  # assume start and end are the edges of the bar within which
-  # the new bars must fit. First calculate the total space
+ barcol<-ifelse(is.list(col),col[[1]],col)
+ # should only be one bar per call
+ if(!is.null(x[[1]][[1]][1,2]) && (showall | length(x[[1]]) == 1))
+  rect(start,0,end,x[[1]][[1]][1,2],col=barcol)
+ if(showlabels && !is.null(x[[1]][[1]][1,2])) {
+  barlabel<-ifelse(names(x[[1]][[1]])[1]=="Overall","Overall",
+   as.character(x[[1]][[1]][1,1]))
+  labely<--lineht*length(x[[1]])
+  par(xpd=TRUE)
+  segments(c(start,end,start),c(0,0,labely),c(start,end,end),rep(labely,3))
+  boxed.labels((start+end)/2,labely,barlabel,ypad=1.4,
+   bg=ifelse(is.na(barcol),"white",barcol),cex=labelcex)
+  par(xpd=FALSE)
+ }
+ if(errbars && length(x[[1]])==1)
+  dispersion((start+end)/2,x[[1]][[1]][1,2],x[[2]][[1]][1,2],x[[3]][[1]][1,2],
+   arrow.cap=arrow.cap)
+ # now set up each bar in the next level and call
+ lenx<-length(x)
+ # remove the first component of each element of x
+ for(xcomp in 1:lenx) x[[xcomp]][[1]]<-NULL
+ if(length(x[[1]])) {
+  if(is.list(col)) col[[1]]<-NULL
+  xlevels<-unlist(x[[1]][[1]][1])
+  nlevels<-length(xlevels)
   barspace<-(end-start)*shrink
-  # then calculate the width of each bar
-  barwidth<-((end-start)-barspace)/lenx
-  # calculate the space between bars and at the edges
-  barspace<-barspace/(lenx+1)
+  barwidth<-((end-start)-barspace)/nlevels
+  barspace<-barspace/(nlevels+1)
   start<-start+barspace
-  arrow.gap<-strheight("O")/2
-  caplen<-arrow.cap*par("pin")[1]
-  barlabels<-x[[4]]
-  if(length(col) < lenx) col<-rep(col,length.out=lenx)
-  for(xbar in 1:lenx) {
-   barcenter<-start+barwidth/2
-   if(!is.null(x[[1]][[xbar]]) && showbars)
-    rect(start,0,start+barwidth,x[[1]][[xbar]],col=col[xbar])
-   if(errbars) {
-    if(!is.null(x[[2]][[xbar]]) && !is.null(x[[3]][[xbar]]) &&
-       !is.na(x[[2]][[xbar]]) && !is.na(x[[3]][[xbar]])) {
-     if(arrow.gap >= x[[2]][[xbar]] * 0.9 || arrow.gap >= x[[3]][[xbar]] * 0.9) {
-      x0<-rep(barcenter-arrow.cap, 2)
-      x1<-rep(barcenter+arrow.cap, 2)
-      y0<-rep(c(x[[1]][[xbar]]-x[[2]][[xbar]],x[[1]][[xbar]]+x[[3]][[xbar]]),2)
-      y1<-rep(c(x[[1]][[xbar]]-x[[2]][[xbar]],x[[1]][[xbar]]+x[[3]][[xbar]]),2)
-      segments(x0,y0,x1,y1)
-     }
-     else {
-      x0<-x1<-rep(barcenter,2)
-      y0<-c(x[[1]][[xbar]]+arrow.gap,x[[1]][[xbar]]-arrow.gap)
-      y1<-c(x[[1]][[xbar]]+x[[3]][[xbar]],x[[1]][[xbar]]-x[[2]][[xbar]])
-      arrows(x0,y0,x1,y1,length=caplen,angle=90)
+  for(xlev in 1:nlevels) {
+   newx<-vector("list",lenx)
+   newcol<-col
+   for(xcomp in 1:lenx) {
+    newx[[xcomp]][[1]]<-x[[xcomp]][[1]][xlev,]
+    lenxcomp<-length(x[[xcomp]])
+    if(lenxcomp > 1) {
+     for(xsub in 2:lenxcomp) {
+      newx[[xcomp]][[xsub]]<-x[[xcomp]][[xsub]][x[[xcomp]][[xsub]][,1]==xlevels[xlev],]
+      newx[[xcomp]][[xsub]]<-newx[[xcomp]][[xsub]][,-1]
      }
     }
    }
-   if(showlabels) {
-    par(xpd=TRUE)
-    segments(c(start,start+barwidth,start),c(0,0,labely),
-     c(start,start+barwidth,start+barwidth),rep(labely,3))
-    boxed.labels(barcenter,labely,barlabels[xbar],
-     bg=ifelse(is.na(col[xbar]),"white",col[xbar]),cex=labelcex)
-    par(xpd=FALSE)
-   }
-   start<-start+barwidth+barspace
-  }
- }
- else {
-  ndim<-length(dimx)
-  # assume start and end are the edges of the bar within which
-  # the new bars must fit. First calculate the total space
-  barspace<-(end-start)*shrink
-  # then calculate the width of each bar
-  barwidth<-((end-start)-barspace)/dimx[1]
-  # calculate the space between bars and at the edges
-  barspace<-barspace/(dimx[1]+1)
-  sliceargs<-vector("list",ndim+1)
-  xslice<-vector("list",4)
-  start<-start+barspace
-  for(slice in 1:dimx[1]) {
-   for(stat in 1:3) {
-    sliceargs[[1]]<-x[[stat]]
-    sliceargs[[2]]<-slice
-    for(arg in 3:(ndim+1)) sliceargs[[arg]]<-TRUE
-    xslice[[stat]]<-do.call('[',sliceargs)
-   }
-   xslice[[4]]<-x[[4]]
-   # send the sliced list as x to drawNestedBars
-   drawNestedBars(xslice,start=start,end=start+barwidth,
-    shrink=shrink,errbars=errbars,col=col,labelcex=labelcex,labely=labely,
-    showbars=showbars,showlabels=showlabels,arrow.cap=arrow.cap)
+   if(is.list(col)) newcol[[1]]<-col[[1]][xlev]
+   if(length(x[[1]])>0)
+    drawNestedBars(newx,start,start+barwidth,shrink=shrink,
+     errbars=errbars,col=newcol,labelcex=labelcex,lineht=lineht,
+     showall=showall,showlabels=showlabels,arrow.cap=arrow.cap)
+   else print(newx)
    start<-start+barwidth+barspace
   }
  }
