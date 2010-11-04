@@ -4,7 +4,7 @@
 \description{Display set intersections as rows of rectangles.}
 \usage{
  intersectDiagram(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,namesep="-",
-  mar=c(0,0,3,0),main="Intersection Diagram",col=NULL,minspacing=0.1)
+  mar=c(0,0,3,0),main="Intersection Diagram",cex=1,col=NULL,minspacing=0.1)
 }
 \arguments{
  \item{x}{A list containing as many numeric vectors as there are sets. The
@@ -23,6 +23,7 @@
   the function is called are restored.}
  \item{main}{The title for the diagram.}
  \item{col}{Colors for the sets (see Details).}
+ \item{cex}{Character expansion for the intersection labels.}
  \item{minspacing}{The minimum spacing between the rectangles as a proportion.}
 }
 \details{
@@ -71,4 +72,9 @@
  intersectDiagram(druglist)
  # then as percent with non.members, passing the initial matrix
  intersectDiagram(druguse,pct=TRUE,show.nulls=TRUE)
+ # alter the data to have more multiple intersections
+ druguse[which(as.logical(druguse[,1]))[1:40],2]<-1
+ druguse[which(as.logical(druguse[,1]))[31:70],3]<-1
+ druguse[,4]<-sample(c(0,1),200,TRUE,prob=c(0.9,0.1))
+ intersectDiagram(druguse,col=c("gray20","gray40","gray60","gray80"))
 }

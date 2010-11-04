@@ -8,7 +8,7 @@ boxed.labels<-function(x,y=NA,labels,
   y<-unlist(x[[2]])
   x<-unlist(x[[1]])
  }
- box.adj<-adj+(xpad-1)*(0.5-adj)
+ box.adj<-adj+(xpad-1)*cex*(0.5-adj)
  if(srt == 90 || srt == 270) {
   bheights<-strwidth(labels)
   theights<-bheights*(1-box.adj)
