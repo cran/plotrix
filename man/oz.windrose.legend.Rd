@@ -6,10 +6,13 @@
  of Meteorology.
 }
 \usage{
- oz.windrose.legend(speed.col=c("#dab286","#fe9a66","#ce6733","#986434"),
-  speed.width=c(0.2,0.4,0.6,0.8),legend.pos=27)
+ oz.windrose.legend(maxpct=20,scale.factor=30,
+  speed.col=c("#dab286","#fe9a66","#ce6733","#986434"),
+  speed.width=NA,legend.pos=NA)
 }
 \arguments{
+ \item{maxpct}{The maximum percentage to display on the radial grid.}
+ \item{scale.factor}{The scale factor for the plot.}
  \item{speed.col}{Colors representing speed ranges.}
  \item{speed.width}{Half widths of the bars representing speed ranges.}
  \item{legend.pos}{The vertical position of the wind rose legend. The

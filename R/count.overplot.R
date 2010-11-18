@@ -56,5 +56,5 @@ count.overplot<-function(x,y,tol=NULL,col=par("fg"),pch="1",...) {
  }
  plot(xsep[1:nsep],ysep[1:nsep],xlim=xlim,ylim=ylim,
   col=sepcol[1:nsep],pch=seppch[1:nsep],...)
- text(xdup[1:ndup],ydup[1:ndup],xydup[1:ndup])
+ text(xdup[1:ndup],ydup[1:ndup],xydup[1:ndup],...)
 }

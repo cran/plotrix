@@ -1,4 +1,4 @@
-drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
+drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",
  col=NA,labelcex=1,lineht=NA,showall=TRUE,showlabels=TRUE,arrow.cap=0.01) {
 
  barcol<-ifelse(is.list(col),col[[1]],col)
@@ -6,8 +6,7 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
  if(!is.null(x[[1]][[1]][1,2]) && (showall | length(x[[1]]) == 1))
   rect(start,0,end,x[[1]][[1]][1,2],col=barcol)
  if(showlabels && !is.null(x[[1]][[1]][1,2])) {
-  barlabel<-ifelse(names(x[[1]][[1]])[1]=="Overall","Overall",
-   as.character(x[[1]][[1]][1,1]))
+  barlabel<-ifelse(names(x[[1]][[1]][1])==label1,label1,as.character(x[[1]][[1]][1,1]))
   labely<--lineht*length(x[[1]])
   par(xpd=TRUE)
   segments(c(start,end,start),c(0,0,labely),c(start,end,end),rep(labely,3))

@@ -1,7 +1,12 @@
+version 3.0-3
+
+	added the ladderplot function (thanks to Peter Solymos)
+
 version 3.0-2
 
 	rewrote intersectDiagram to better display missing intersections
 	added a correction for character expansion to boxed.labels
+	fixed the count method for barNest
 
 version 3.0-1
 

@@ -16,7 +16,7 @@
  \item{labels}{The strings that will appear next to the outer columns of
   points.}
  \item{rank}{Whether to rank the values in \samp{y} before plotting.}
- \item{mar}{The margins to use for the bumps chart.}
+ \item{mar}{The margins to use for the bumps chart. Alter to your taste.}
  \item{pch}{The symbols to use when plotting the points.}
  \item{col}{The colors to use.}
  \item{lty}{The line types to use.}
@@ -28,7 +28,8 @@
  \samp{y} matrix or data frame, joining the points with lines. At the left and
  right edges of the plot, the labels identifying each row of points are
  displayed. This type of plot is often used to show the changing positions of
- entities over time, like the ranking in surveys in different years.
+ entities over time, like the ranking in surveys in different years. For a
+ similar, but more flexible plot, see \link{ladderplot}.
 
  Because of the way \samp{matplot} plots the values, the order of everything is
  reversed. If the user wants to rank in descending order, such as test scores,
@@ -36,7 +37,7 @@
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\link{matplot}}
+\seealso{\link{matplot}, \link{ladderplot}}
 \examples{
  # percentage of those over 25 years having completed high school
  # in 10 cities in the USA in 1990 and 2000

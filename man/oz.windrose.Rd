@@ -4,12 +4,16 @@
 \description{Displays a wind rose in the style used by the Australian
  Bureau of Meteorology.}
 \usage{
- oz.windrose(windagg,speed.col=c("#dab286","#fe9a66","#ce6733","#986434"),
-  speed.width=c(0.2,0.4,0.6,0.8),show.legend=TRUE,legend.pos=27,...)
+ oz.windrose(windagg,maxpct=20,wrmar=c(4,5,6,5),scale.factor=30,
+  speed.col=c("#dab286","#fe9a66","#ce6733","#986434"),
+  speed.width=NA,show.legend=TRUE,legend.pos=NA,...)
 }
 \arguments{
  \item{windagg}{A matrix of percentages with the rows representing
   speed ranges and the columns indicating wind directions.}
+ \item{maxpct}{The maximum percentage displayed on the radial grid.}
+ \item{wrmar}{Plot margins for the diagram.}
+ \item{scale.factor}{The scale factor for the diagram.}
  \item{speed.col}{Colors representing speed ranges.}
  \item{speed.width}{Half widths of the bars representing speed ranges.}
  \item{show.legend}{Logical indicating whether to display a legend.}
@@ -35,7 +39,8 @@
   resulting plot will at best be misleading.
 }
 \value{nil}
-\author{Jim Lemon (thanks to Anna in the Sydney BoM office)}
+\author{Jim Lemon (thanks to Anna in the Sydney BoM office and Alejo for
+ finding the problem with heavily prevailing winds.)}
 \seealso{\link{oz.windrose.legend}, \link{draw.circle}, \link{bin.wind.records}}
 \examples{
  windagg<-matrix(c(8,0,0,0,0,0,0,0,4,6,2,1,6,3,0,4,2,8,5,3,5,2,1,1,
