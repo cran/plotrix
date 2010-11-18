@@ -3,7 +3,7 @@
 \title{Display nested bars}
 \description{Displays the nested bars for barNest.}
 \usage{
- drawNestedBars(x,start,end,shrink=0.1,errbars=FALSE,col=NA,
+ drawNestedBars(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",col=NA,
  labelcex=1,lineht=NA,showall=TRUE,showlabels=TRUE,arrow.cap=0.01)
 }
 \arguments{
@@ -12,6 +12,7 @@
   to be displayed.}
  \item{shrink}{The proportion to shrink the width of the bars at each level.}
  \item{errbars}{Whether to display error bars on the bars.}
+ \item{label1}{The top level label for the summary stats for the entire dataset.}
  \item{col}{The colors to use to fill the bars. See Details.}
  \item{labelcex}{Character size for the group labels.}
  \item{lineht}{The height of a margin line in user units.}

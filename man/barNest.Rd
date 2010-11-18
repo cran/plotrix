@@ -91,6 +91,10 @@
  barNest(survived~class+age+sex,titanic,col=titanic.colors,showall=TRUE,
   main="Titanic survival by class, age and sex",ylab="Proportion surviving",
   FUN="propbrk",shrink=0.15,trueval="Yes")
+ # now show the actual numbers of passengers
+ barNest(survived~class+age+sex,titanic,col=titanic.colors,showall=TRUE,
+  main="Titanic passengers and crew by class, age and sex",ylab="Number",
+  FUN="valid.n",shrink=0.15,ylim=c(0,900))
  # start a wide plot window
  x11(width=10)
  test.df<-data.frame(Age=rnorm(100,25,10),

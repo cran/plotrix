@@ -12,7 +12,7 @@ brkdnNest<-function(formula,data,FUN=c("mean","sd"),label1="Overall",trueval=NA)
  nFUN<-length(FUN)
  brklist<-vector("list",nFUN)
  for(brkfun in 1:nFUN) {
-  brklist[[brkfun]]<-vector("list",nbn-1)
+  brklist[[brkfun]]<-vector("list",nbn)
   if(is.na(trueval))
    brklist[[brkfun]][[1]]<-data.frame(bn[1],
     do.call(FUN[brkfun],list(data[[bn[1]]],na.rm=TRUE)))
