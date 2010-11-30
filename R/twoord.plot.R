@@ -29,7 +29,7 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  if(is.null(lylim)) lylim<-range(ly)
  if(length(type) < 2) type<-rep(type,2)
  if(match(type[1],"bar",0)) {
-  plot(0,type="n",xlab=xlab,ylab="",axes=FALSE,xlim=xlim,ylim=lylim,...)
+  plot(0,type="n",xlab=xlab,ylab="",yaxs="i",axes=FALSE,xlim=xlim,ylim=lylim,...)
   ybottom<-par("usr")[3]
   if(lylim[1] < 0) abline(h=0,lty=2)
   rect(lx-halfwidth,ifelse(ly<0,ly,ybottom),lx+halfwidth,ifelse(ly>0,ly,0),

@@ -37,8 +37,9 @@
  The user should take care when specifying different summary functions.
  \samp{barNest} expects a measure of central tendency as the first function
  and measures of dispersion as the second and optionally third, if "error bars"
- are to be displayed. The user must also decide whether the "error bars" have any
- useful meaning.
+ are to be displayed. If two confidence interval functions are passed, the first
+ must calculate the upper and the second the lower CI. The user must also decide
+ whether the "error bars" have any useful meaning.
 }
 \author{Jim Lemon}
 \seealso{\link{by}}
@@ -48,7 +49,8 @@
   Marital=sample(c("M","X","S","W"),100,TRUE),
   Employ=sample(c("FT","PT","NO"),100,TRUE))
  brkdnNest(formula=Age~Sex+Marital+Employ,data=brkdntest)
- # show the proportion of unemployed
- brkdnNest(formula=Employ~Sex+Marital,data=brkdntest,FUN="propbrk",trueval="NO")
+ # show the proportion of unemployed with binomial confidence intervals
+ brkdnNest(formula=Employ~Sex+Marital,data=brkdntest,
+  FUN=c("propbrk","binciWu","binciWl"),trueval="NO")
 }
 \keyword{misc}

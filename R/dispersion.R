@@ -14,6 +14,7 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
   llim<-y-llim
   ulim<-ulim-y
  }
+ plotlim<-par("usr")
  npoints<-length(x)
  if(is.na(arrow.gap)) arrow.gap<-strheight("O")/1.5
  for(i in 1:npoints) {
@@ -35,6 +36,12 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
      arrows(x0,y0,x1,y1,length=caplen,angle=90,...)
     }
    }
+   else {
+    x0<-x1<-rep(x[i],2)
+    y0<-y[i]-arrow.gap
+    y1<-plotlim[3]
+    segments(x0,y0,x1,y1,...)
+   }
    if(!is.na(ulim[i])) {
     if(arrow.gap >= ulim[i] * 0.9) {
      caplen<-arrow.cap * diff(par("usr")[1:2])
@@ -51,6 +58,12 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
      y1<-y[i]+ulim[i]
      arrows(x0,y0,x1,y1,length=caplen,angle=90,...)
     }
+   }
+   else {
+    x0<-x1<-rep(x[i],2)
+    y0<-y[i]-arrow.gap
+    y1<-plotlim[4]
+    segments(x0,y0,x1,y1,...)
    }
   }
  }

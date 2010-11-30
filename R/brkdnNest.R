@@ -4,6 +4,32 @@ propbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
  return(sum(x==trueval,na.rm=TRUE)/length(x))
 }
 
+binciWu<-function(x,n,alpha=0.05,trueval=NA,na.rm=TRUE) {
+ if(!is.na(trueval)) {
+  n<-length(x)
+  x<-sum(x==trueval,na.rm=TRUE)
+ }
+ z<-pnorm(1-alpha/2)
+ zsq<-z*z
+ phat<-ifelse(x<1,x,x/n)
+ pest<-phat+zsq/(2*n)
+ ci<-(pest+z*sqrt((phat*(1-phat))/n+zsq/(4*n*n)))/(1+zsq/n)
+ return(ci)
+}
+
+binciWl<-function(x,n,alpha=0.05,trueval=NA,na.rm=TRUE) {
+ if(!is.na(trueval)) {
+  n<-length(x)
+  x<-sum(x==trueval,na.rm=TRUE)
+ }
+ z<-pnorm(1-alpha/2)
+ zsq<-z*z
+ phat<-ifelse(x<1,x,x/n)
+ pest<-phat+zsq/(2*n)
+ ci<-(pest-z*sqrt((phat*(1-phat))/n+zsq/(4*n*n)))/(1+zsq/n)
+ return(ci)
+}
+
 brkdnNest<-function(formula,data,FUN=c("mean","sd"),label1="Overall",trueval=NA) {
  if(missing(data) || missing(formula))
   stop("brkdnNest must be called with a formula for breakdown and a data frame.")
@@ -26,7 +52,7 @@ brkdnNest<-function(formula,data,FUN=c("mean","sd"),label1="Overall",trueval=NA)
      aggregate(data[[bn[1]]],data[bn[2:brk]],FUN=FUN[brkfun],na.rm=TRUE)
    else
     brklist[[brkfun]][[brk]]<-
-     aggregate(data[[bn[1]]],data[bn[2:brk]],FUN=FUN[brkfun],trueval=trueval,na.rm=TRUE)
+     aggregate(data[[bn[1]]],data[bn[2:brk]],FUN=FUN[brkfun],trueval=trueval)
    names(brklist[[brkfun]][[brk]])<-c(bn[2:brk],FUN[brkfun])  
   }
  }
