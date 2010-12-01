@@ -38,7 +38,7 @@
   proportions of the response variable that are equal to \samp{trueval}.
   See Details.}
 }
-\value{The summary arrays produced by brkdnNest.}
+\value{The summary list produced by brkdnNest.}
 \details{
  \samp{barNest} displays a bar plot illustrating the hierarchic breakdown of
  the elements of a data frame. The breakdown is performed by \samp{brkdnNest}

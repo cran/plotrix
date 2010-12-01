@@ -32,6 +32,7 @@ dispbars		Display dispersion (error) bars
 dotplot.mtb		Display a dotplot in MATLAB style
 draw.arc		Display a circular arc
 draw.circle		Display a circle on an existing plot
+draw.ellipse		Display an ellipse on an existing plot
 draw.tilted.sector	Display a single 3D pie sector
 drawNestedBars		Display the nested bars for barNest
 emptyspace		Find the largest empty space on a plot

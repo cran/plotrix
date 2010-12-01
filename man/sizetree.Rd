@@ -32,7 +32,8 @@
  rectangles, the height of each proportional to the count for each category.
  Each substack of rectangles in the second stack will represent the breakdown
  of counts for its superordinate category and so on through the columns.
- Empty categories are ignored and NAs will produce gaps.
+ Empty categories are ignored and NAs will produce gaps, which will propagate
+ across subsequent stacks.
  
  Typically, the user will simply pass the data frame, which should only
  contain columns that are hierarchical categories, set \samp{showval} and
@@ -41,7 +42,7 @@
  least as many colors as there are categories in the first column or some will
  be recycled. If different colors are desired for different levels, as in the
  example, pass a list of colors. If colors are to be matched across columns
- the number of levels is different (e.g. some levels are missing in the
+ in which the number of levels is different (e.g. some levels are missing in the
  sub-categories), the color list must reflect this \emph{and} the levels
  of the factors must be consistent with the colors - see the example.
  
@@ -50,7 +51,7 @@
  that can be expected is an uninformative plot.
 }
 \author{Jim Lemon}
-\seealso{\link{plot},\link{smoothColors}}
+\seealso{\link{plot}}
 \examples{
  cat1<-factor(sample(c("None","Low","Medium","High","Extreme"),40,TRUE),
   levels=c("None","Low","Medium","High","Extreme"))
@@ -59,9 +60,13 @@
  cat3<-factor(sample(c("None","Low","High"),40,TRUE),
   levels=c("None","Low","High"))
  hcats<-data.frame(cat1,cat2,cat3)
- bhcol<-list(c("#ff8080","#dddd80","#80ff80","#8080ff","#80dddd"),
-  c("#ff8080","#dddd80","#80ff80","#8080ff"),
-  c("#ff8080","#dddd80","#8080ff"))
+ # throw in a few NAs
+ hcats$cat1[10]<-NA
+ hcats$cat2[c(15,20)]<-NA
+ hcats$cat3[c(11,14,25)]<-NA
+ bhcol<-list(c("#ff8080","#dddd80","#80ff80","#0000ff","#80dddd"),
+  c("#ff8080","#dddd80","#80ff80","#0000ff"),
+  c("#ff8080","#dddd80","#0000ff"))
  sizetree(hcats,col=bhcol,main="Hierarchical count chart (sizetree)")
 }
 \keyword{misc}

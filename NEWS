@@ -1,3 +1,8 @@
+version 3.0-4
+
+	added semi-intelligent bar labelling to the sizetree function
+	added yaxs="i" to the empty plot in twoord.plot (thanks to Giles Crane)
+
 version 3.0-3
 
 	added the ladderplot function (thanks to Peter Solymos)
