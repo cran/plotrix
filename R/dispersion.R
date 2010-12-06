@@ -61,7 +61,7 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
    }
    else {
     x0<-x1<-rep(x[i],2)
-    y0<-y[i]-arrow.gap
+    y0<-y[i]+arrow.gap
     y1<-plotlim[4]
     segments(x0,y0,x1,y1,...)
    }

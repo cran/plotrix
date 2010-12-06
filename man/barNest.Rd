@@ -4,7 +4,7 @@
 \description{Breaks down the elements of a data frame by one or more
  categorical elements and displays the breakdown as a bar plot.}
 \usage{
- barNest(formula=NULL,data=NULL,FUN=c("mean","sd"),x=NULL,ylim=NULL,
+ barNest(formula=NULL,data=NULL,FUN=c("mean","sd"),ylim=NULL,
  main="",xlab="",ylab="",shrink=0.1,errbars=FALSE,col=NA,
  labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,showlabels=TRUE,mar=NULL,
  arrow.cap=0.01,trueval=NA)
@@ -14,9 +14,6 @@
   one or more categorical elements on the right.}
  \item{data}{A data frame containing the elements in \samp{formula}.}
  \item{FUN}{The functions to apply to x.}
- \item{x}{This becomes the result of the breakdown after the first call. If a list
-  of arrays of values of the same form as that produced by \samp{brkdnNest} is
-  passed, it will be used to determine the heights of the nested bars.}
  \item{ylim}{Optional y limits for the plot, usually necessary for counts.}
  \item{main}{Title for the plot.}
  \item{xlab,ylab}{Axis labels for the plot. The x axis label is typically blank}
@@ -55,7 +52,9 @@
  method of calculating binomial CIs is programmed.
 
  A number of functions can be passed in the \samp{FUN} argument. Two functions,
- \samp{propbrk} and \samp{valid.n} are provided 
+ \samp{propbrk} and \samp{valid.n} that are provided can be used as bar heights.
+ Binomial confidence limits can be added to the proportions returned by
+ \samp{propbrk} with \samp{binciWl} and \samp{binciWu}.
 
  The colors of the bars are determined by \samp{col}. If \samp{showall} is FALSE,
  the user only need pass a vector of colors, usually the same length as the number
@@ -107,15 +106,15 @@
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Mean age (years)",
   main="Mean age by subgroups",errbars=TRUE,col=test.col)
  # set up functions for 20 and 80 percentiles - must be offsets, not limits
- q20<-function(x,na.rm=TRUE) return(-quantile(x,probs=0.2,na.rm=TRUE)+median(x))
- q80<-function(x,na.rm=TRUE) return(quantile(x,probs=0.8,na.rm=TRUE)-median(x))
+ q20<-function(x,na.rm=TRUE) return(quantile(x,probs=0.2,na.rm=TRUE))
+ q80<-function(x,na.rm=TRUE) return(quantile(x,probs=0.8,na.rm=TRUE))
  # show the asymmetric dispersion measures
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Mean age (years)",
   main="Use median and quantiles for dispersion",FUN=c("median","q80","q20"),
   errbars=TRUE,col=test.col)
  barNest(formula=Employ~Sex+Marital,data=test.df,ylab="Proportion unemployed",
-  main="Show the proportion unemployed",FUN="propbrk",
-  col=test.col,trueval="Un")
+  main="Show the proportion unemployed",FUN=c("propbrk","binciWu","binciWl"),
+ errbars=TRUE,col=test.col,trueval="Un")
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Counts",
   main="Show the counts in subgroups",FUN="valid.n",
   col=test.col,showall=FALSE,ylim=c(0,10))

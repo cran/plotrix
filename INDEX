@@ -8,6 +8,8 @@ barNest.svymean		Nested bar plot for a svyby result
 barNest.svyprop		Nested bar plot for a svyby result
 barp			A variant of barplot
 bin.wind.records	Classify wind direction and speed records
+binciWl			Calculate a lower binomial confidence interval
+binciWu			Calculate an upper binomial confidence interval
 boxed.labels		Display text strings in boxes at specified positions
 brkdn.plot		Display summary measures broken down by factors
 brkdnNest		Calculate nested breakdowns of summary measures
@@ -77,6 +79,7 @@ plot.dendrite		Display a dendrogram for a dendrite object
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
+propbrk			Calculate the proportion of a specified value in a vector
 pyramid.plot		Display a pyramid (opposed horizontal bar) plot
 radial.plot		Plot values as lines/polygon/symbols on radial scale
 radial.plot.labels	Display labels at specified points on a radial plot
