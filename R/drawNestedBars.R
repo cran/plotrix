@@ -16,7 +16,7 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",
  }
  if(errbars && length(x[[1]])==1)
   dispersion((start+end)/2,x[[1]][[1]][1,2],x[[2]][[1]][1,2],x[[3]][[1]][1,2],
-   arrow.cap=arrow.cap)
+   intervals=errbars<3,arrow.cap=arrow.cap)
  # now set up each bar in the next level and call
  lenx<-length(x)
  # remove the first component of each element of x

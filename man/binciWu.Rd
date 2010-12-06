@@ -1,8 +1,8 @@
 \name{binciWu}
 \alias{binciWu}
-\title{Upper binomial confidence interval}
+\title{Upper binomial confidence limit}
 \description{
- Calculates an upper binomial confidence interval using the Wilson approximation.
+ Calculates an upper binomial confidence limit using the Wilson approximation.
 }
 \usage{
  binciWu(x,n,alpha=0.05,trueval=NA,na.rm=TRUE)
@@ -15,12 +15,12 @@
  \item{na.rm}{Argument needed to make this work}
 }
 \details{
- \samp{binciWu} calculates the upper binomial confidence interval for the
+ \samp{binciWu} calculates the upper binomial confidence limit for the
  given number of successes and trials. It is mainly to allow binomial confidence
- intervals to be calculated in the \samp{brkdnNest} function, which is why
+ limits to be calculated in the \samp{brkdnNest} function, which is why
  the upper and lower CIs areg calculated separately.
 }
-\value{nil}
+\value{The upper binomial confidence interval}
 \author{Jim Lemon}
 \seealso{\link{binciWl}}
 \examples{

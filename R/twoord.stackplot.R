@@ -28,20 +28,24 @@ twoord.stackplot <- function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, bo
             (1 - incrylim), lylimits[1] * (1 + incrylim))
         lylimits[2] <- ifelse(lylimits[2] > 0, lylimits[2] * 
             (1 + incrylim), lylimits[2] * (1 - incrylim))
+            
         plot(0, type = "n", axes = FALSE, xlim = xlimits, ylim = lylimits, 
             ylab = "", xlab = xlab, ...)
         xbottom <- par("usr")[1]
         xylim <- par("usr")
-        ly <- ldata[, 1]
+
+		ldata_cumsum <- t(apply(ldata, 1, cumsum))
+        ly <- ldata_cumsum[, 1]
+		
         rect(lx - halfwidth, ifelse(ly < 0, ly, xbottom), lx + 
-            halfwidth, ifelse(ly > 0, ly, 0), col = lcol[1], 
+            halfwidth, ifelse(ly < 0, 0, ly), col = lcol[1], 
             border = border)
-        for (i in 2:NCOL(ldata)) {
-            ly <- ldata[, i]
-            rect(lx - halfwidth, ifelse(ly < 0, ly, xbottom) + 
-                ldata[, i - 1], lx + halfwidth, ifelse(ly > 0, 
-                ly, 0) + ldata[, i - 1], col = lcol[i], border = border)
-        }
+            
+        for (i in 2:NCOL(ldata))
+			rect(lx - halfwidth, ldata_cumsum[, i-1], 
+				 lx + halfwidth, ldata_cumsum[, i], 
+				 col = lcol[i], border = border)
+		
     }
     else {
         lylimits <- range(ldata)
@@ -73,20 +77,23 @@ twoord.stackplot <- function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, bo
             (1 - incrylim), rylimits[1] * (1 + incrylim))
         rylimits[2] <- ifelse(rylimits[2] > 0, rylimits[2] * 
             (1 + incrylim), rylimits[2] * (1 - incrylim))
-        ry <- rdata[, 1]
+
         plot(0, type = "n", axes = FALSE, xlim = xlimits, ylim = rylimits, 
             ylab = "", xlab = "", ...)
         xbottom <- par("usr")[1]
         xylim <- par("usr")
+		
+		rdata_cumsum <- t(apply(rdata, 1, cumsum))
+        ry <- rdata_cumsum[, 1]
+		
         rect(rx - halfwidth, ifelse(ry < 0, ry, xbottom), rx + 
             halfwidth, ifelse(ry > 0, ry, 0), col = rcol[1], 
             border = border)
-        for (i in 2:NCOL(rdata)) {
-            ry <- rdata[, i]
-            rect(rx - halfwidth, ifelse(ry < 0, ry, xbottom) + 
-                rdata[, i - 1], rx + halfwidth, ifelse(ry > 0, 
-                ry, 0) + rdata[, i - 1], col = rcol[i], border = border)
-        }
+		
+        for (i in 2:NCOL(rdata))
+			rect(lx - halfwidth, rdata_cumsum[, i-1], 
+				 lx + halfwidth, rdata_cumsum[, i], 
+				 col = rcol[i], border = border)
     }
     else {
         rylimits <- range(rdata)
@@ -106,3 +113,30 @@ twoord.stackplot <- function (lx, rx, ldata, rdata, lcol, rcol, ltype, rtype, bo
     mtext(rylab, 4, 2, col = rcol[1])
     par(mar = oldmar)
 }
+
+
+# 
+# 
+# time <- 0:25
+# 
+# A <- 1+1/2*sin(time/2)
+# B <- A + rnorm(length(A), sd=1/10)
+# B <- B + rnorm(length(A), sd=1/10)
+# 
+# sizeA <- floor(450*(1 + 1/4*sin(time/2+2))*(1+.1))
+# sizeB <- 10*rpois(time, 100)
+# sizeC <- 1000-sizeA
+# 
+# 
+# C <- (A*sizeA + B*sizeB)/(sizeA+sizeB)
+# D <- C + rnorm(time, sd=1/10)
+# 
+# #many things plotted. we change the line width with lwd for rdata
+# #
+# 
+# twoord.stackplot(lx=time, rx=time, ldata=cbind(sizeA, sizeB, sizeC), 
+# 	rdata=cbind(A, B, C, D),  lcol=c("grey80", "grey90", "white"), 
+# 	rcol=c("blue", "red", "black", "green"), ltype="bar", 
+# 	rtype=c("l","p","o","b"), border="grey80", lylab="Size", 
+# 	rylab="A, B, C, D", xlab="Time", main="a plot", lwd=0.8)
+	

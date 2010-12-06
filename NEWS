@@ -1,7 +1,13 @@
+version 3.0-5
+
+	added Christophe Dutang's fix for the twoord.stackpoly function
+	fixed the confidence limit problem in barNest (I sincerely hope)
+
 version 3.0-4
 
 	added semi-intelligent bar labelling to the sizetree function
 	added yaxs="i" to the empty plot in twoord.plot (thanks to Giles Crane)
+	added the Wilson binomial CI functions for brkdnNest
 
 version 3.0-3
 

@@ -32,7 +32,7 @@
  \item{slty}{Line type of error bars}
  \item{scol}{Color of error bars: if \samp{col} is specified in the
   optional arguments, \samp{scol} is set the same; otherwise it's set
-  to \samp{par(scol)}}
+  to \samp{par(col)}}
  \item{pt.bg}{Background color of points (use pch=21, pt.bg=par("bg")
   to get open points superimposed on error bars)}
  \item{\dots}{Any other parameters to be passed through to
