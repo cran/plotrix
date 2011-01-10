@@ -9,7 +9,7 @@
  axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
  align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
  cc.axes=FALSE,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
- col.symbols="black",pch=par("pch"),no.add=TRUE,...)
+ col.symbols="black",pch=par("pch"),mar=c(5,2,4,2),no.add=TRUE,...)
 }
 \arguments{
  \item{x}{Matrix where each row is three proportions or percentages
@@ -37,6 +37,7 @@
  \item{point.labels}{Optional labels for the points and/or legend.}
  \item{col.symbols}{Color of the symbols representing each value.}
  \item{pch}{Symbols to use in plotting values.}
+ \item{mar}{Margins for the triangle plot.}
  \item{no.add}{Whether to restore the previous plotting parameters
   (\samp{TRUE}) or leave them, allowing more points to be added.}
  \item{...}{Additional arguments passed to \samp{points}.}

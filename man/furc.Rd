@@ -20,8 +20,8 @@
 \details{  
  \samp{furc} displays one \emph{furc}ation of the dendrogram. A furcation is
  a single box displaying its label and count that may split into finer
- divisions. If so, \samp{furc} calls itself for each furcation until there are
- no more splits.
+ divisions. If so, \samp{furc} calls itself for each furcation until there
+ are no more splits.
 }
 \value{nil}
 \keyword{misc}

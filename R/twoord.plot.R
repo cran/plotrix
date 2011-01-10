@@ -26,7 +26,7 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  par(mar=mar)
  if(is.null(xlim)) xlim<-range(c(lx, rx))
  if(missing(lx)) lx<-1:length(ly)
- if(is.null(lylim)) lylim<-range(ly)
+ if(is.null(lylim)) lylim<-range(ly,na.rm=TRUE)
  if(length(type) < 2) type<-rep(type,2)
  if(match(type[1],"bar",0)) {
   plot(0,type="n",xlab=xlab,ylab="",yaxs="i",axes=FALSE,xlim=xlim,ylim=lylim,...)
@@ -50,7 +50,7 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  abline(v=xylim[1],col=lcol)
  mtext(axat,2,1,at=axat,col=lcol,cex=axislab.cex)
  par(new=TRUE)
- if(is.null(rylim)) rylim<-range(ry)
+ if(is.null(rylim)) rylim<-range(ry,na.rm=TRUE)
  if(match(type[2],"bar",0)) {
   plot(0,type="n",xlab=xlab,ylab="",axes=FALSE,xlim=xlim,ylim=rylim,...)
   ybottom<-par("usr")[3]

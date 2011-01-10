@@ -4,7 +4,8 @@
 \description{Displays the nested bars for barNest.}
 \usage{
  drawNestedBars(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",col=NA,
- labelcex=1,lineht=NA,showall=TRUE,showlabels=TRUE,arrow.cap=0.01)
+ labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,showlabels=TRUE,
+ arrow.cap=0.01)
 }
 \arguments{
  \item{x}{One level of the breakdown produced by \samp{brkdnNest}.}
@@ -17,6 +18,7 @@
  \item{labelcex}{Character size for the group labels.}
  \item{lineht}{The height of a margin line in user units.}
  \item{showall}{Whether to display the bars at any levels above the last.}
+ \item{barlabels}{Optional labels to display below the bars.}
  \item{showlabels}{Whether to display the labels below the bars.}
  \item{arrow.cap}{The width of the "cap" on error bars in user units,
   defaulting to 0.01 of the width of the plot.}

@@ -263,12 +263,12 @@ triax.plot<-function (x=NULL,main="",at=seq(0.1,0.9,by=0.1),
   cex.axis=1,cex.ticks=1,align.labels=TRUE,show.grid=FALSE,
   col.grid="gray",lty.grid=par("lty"),cc.axes=FALSE,
   show.legend=FALSE,label.points=FALSE,point.labels=NULL,
-  col.symbols="black",pch=par("pch"),no.add=TRUE,...) {
+  col.symbols="black",pch=par("pch"),mar=c(5,2,4,2),no.add=TRUE,...) {
 
   oldpar<-par("fg","pty","mar","srt","xpd")
   par(xpd=TRUE)
   if(is.null(axis.labels)) axis.labels<-colnames(x)[1:3]
-  par(pty="s",mar=c(5,2,4,2))
+  par(pty="s",mar=mar)
   plot(0.5,type="n",axes=FALSE,xlim=c(0,1),ylim=c(0,1),main=main,
    xlab="",ylab="")
   triax.frame(at=at,axis.labels=axis.labels,
