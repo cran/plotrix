@@ -57,7 +57,7 @@ oz.windrose<-function(windagg,maxpct=20,wrmar=c(4,5,6,5),
  scale.factor=30,speed.col=c("#dab286","#fe9a66","#ce6733","#986434"),
  speed.width=NA,show.legend=TRUE,legend.pos=NA,...) {
  
- if(is.na(speed.width)) speed.width<-maxpct*1:4/100
+ if(is.na(speed.width[1])) speed.width<-maxpct*1:4/100
  if(is.na(legend.pos)) legend.pos<-maxpct*1.25
  oldmar<-par("mar")
  par(mar=wrmar,xpd=TRUE)

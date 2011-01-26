@@ -1,3 +1,7 @@
+version 3.0-7
+
+	Fixed the right ordinate alignment in twoord.plot
+
 version 3.0-6
 
 	Added the "barlabels" argument to drawNestedBars
