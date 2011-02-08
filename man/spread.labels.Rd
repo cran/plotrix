@@ -42,7 +42,7 @@
  Cooke, L.J. & Wardle, J. (2005) Age and gender differences in
  children's food preferences. British Journal of Nutrition, 93: 741-746.
 }
-\seealso{\samp{text}}
+\seealso{\samp{text}, \samp{spread.lab (TeachingDemos)}}
 \examples{
  # spread labels out in the x dimension using defaults
  x<-sort(rnorm(10))

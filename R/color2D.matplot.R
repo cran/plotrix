@@ -6,7 +6,7 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
 
 color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
  extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
- ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,
+ ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,
  border="black",na.color=NA,...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
@@ -31,6 +31,8 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   }
   if(all(is.na(cellcolors)))
    cellcolors<-color.scale(x,redrange,greenrange,bluerange,extremes,na.color)
+  if(is.na(vcol))
+   vcol<-ifelse(colSums(col2rgb(cellcolors)*c(1,1.4,0.6))<350,"white","black")
   # start from the top left - isomorphic with the matrix layout
   if(do.hex) {
    par(xpd=TRUE)
@@ -43,7 +45,7 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
       border=border[row+xdim[1]*column])
      if(show.values)
       text(column+offset+0.5,xdim[1]-row+0.5,x[row+column*xdim[1]],
-       col=vcol,cex=vcex)
+       col=vcol[row+xdim[1]*column],cex=vcex)
     }
     offset<-ifelse(offset,0,0.5)
    }
@@ -53,10 +55,11 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
    rect(sort(rep((1:xdim[2])-1,xdim[1])),rep(seq(xdim[1]-1,0,by=-1),xdim[2]),
     sort(rep(1:xdim[2],xdim[1])),rep(seq(xdim[1],1,by=-1),xdim[2]),
     col=cellcolors,border=border)
-   if(show.values)
+   if(show.values) {
     text(sort(rep((1:xdim[2])-0.5,xdim[1])),
      rep(seq(xdim[1]-0.5,0,by=-1),xdim[2]),
      round(x,show.values),col=vcol,cex=vcex)
+   }
   }
   naxs<-which(is.na(x))
   xy<-par("usr")
