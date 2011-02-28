@@ -1,6 +1,7 @@
 addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  bg=par("bg"),cex=1,xjust=0,yjust=1,box.col=par("fg"),text.col=par("fg"),
- display.colnames=TRUE,display.rownames=FALSE,hlines=FALSE,title=NULL) {
+ display.colnames=TRUE,display.rownames=FALSE,hlines=FALSE,vlines=FALSE,
+ title=NULL) {
 
  # make sure that there is a plot device there
  if(dev.cur() == 1)
@@ -54,13 +55,18 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    text(xleft+0.5*cellwidth,
     ytop-(row+display.colnames-0.5)*cellheight,
     row.names[row],cex=cex,col=text.col)
-  for(col in 1:tabdim[2])
+  for(col in 1:tabdim[2]) {
    text(xleft+(col+display.rownames-0.5)*cellwidth,
     ytop-(row+display.colnames-0.5)*cellheight,
     table[row,col],cex=cex,col=text.col)
+   if(vlines) segments(xleft+(col+display.rownames-1)*cellwidth,
+    ytop-(row+display.colnames)*cellheight,
+    xleft+(col+display.rownames-1)*cellwidth,
+    ytop-row*cellheight)
+  }
  }
- if(display.colnames) {
-  for(col in 1:tabdim[2])
+ if(display.colnames)
+  for(col in 1:tabdim[2]) {
    text(xleft+(col+display.rownames-0.5)*cellwidth,
     ytop-0.5*cellheight,column.names[col],cex=cex,col=text.col)
   if(!hlines)

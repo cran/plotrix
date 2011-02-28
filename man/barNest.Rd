@@ -68,6 +68,11 @@
  quite easy to get this wrong.
 }
 \author{Jim Lemon and Ofir Levy}
+\references{
+ Lemon, J. & Levy, O. (2011) barNest: Illustrating nested summary measures.
+ Statistical Computing and Graphics Newsletter of the American Statistical
+ Association, 21(2): 5-10.
+}
 \seealso{\link{brkdnNest}, \link{drawNestedBars}, superbarplot(UsingR)}
 \examples{
  # recreate the Titanic data frame and show the three way breakdown
