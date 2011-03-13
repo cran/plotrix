@@ -1,7 +1,7 @@
 boxed.labels<-function(x,y=NA,labels,
  bg=ifelse(match(par("bg"),"transparent",0),"white",par("bg")),
  border=TRUE,xpad=1.2,ypad=1.2,srt=0,cex=1,adj=0.5,...) {
- 
+
  oldcex<-par("cex")
  par(cex=cex)
  if(is.na(y) && is.list(x)) {
@@ -9,7 +9,7 @@ boxed.labels<-function(x,y=NA,labels,
   x<-unlist(x[[1]])
  }
  box.adj<-adj+(xpad-1)*cex*(0.5-adj)
- if(srt == 90 || srt == 270) {
+ if(srt==90 || srt==270) {
   bheights<-strwidth(labels)
   theights<-bheights*(1-box.adj)
   bheights<-bheights*box.adj
@@ -21,9 +21,10 @@ boxed.labels<-function(x,y=NA,labels,
   lwidths<-lwidths*box.adj
   bheights<-theights<-strheight(labels)*0.5
  }
- textcol<-ifelse(colSums(col2rgb(bg)*c(1,1.4,0.6))<350,"white","black")
+ textcol<-ifelse(colSums(col2rgb(bg)*c(1,1.4,0.6))<350,
+  "white","black")
  rect(x-lwidths*xpad,y-bheights*ypad,x+rwidths*xpad,
   y+theights*ypad,col=bg,border=border)
- text(x,y,labels,srt=srt,cex=cex,adj=adj,col=textcol,...)
+ text(x,y,labels,srt=srt,adj=adj,col=textcol,...)
  par(cex=oldcex)
 }

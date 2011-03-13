@@ -23,6 +23,12 @@
   split into equal ranges (one less than the number of colors) and 
   the transformation carried out on each range. Values for a color
   range must be between 0 and 1.
+
+  IMPORTANT: If \samp{x} has fewer values than the number of values
+  in the red, green and blue ranges, it will usually return incorrect
+  colors. This is usually only a problem when using \samp{color.legend}
+  with a small number of rectangles in the legend as \samp{color.legend}
+  calls \samp{color.scale} to calculate the color rectangles.
   
   If \samp{extremes} is not NA, the ranges will be calculated from
   its values using \samp{col2rgb}, even if ranges are also supplied.
