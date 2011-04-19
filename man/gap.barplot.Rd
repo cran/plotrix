@@ -11,7 +11,7 @@
   ylab=NULL,horiz=FALSE,col,...)
 }
 \arguments{
- \item{y}{data values}
+ \item{y}{a vector of data values}
  \item{gap}{the range of values to be left out}
  \item{xaxlab}{labels for the x axis ticks}
  \item{xtics}{position of the x axis ticks}

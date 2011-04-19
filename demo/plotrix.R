@@ -122,6 +122,10 @@ par(mar=c(5,4,4,2))
 x<-seq(1,100)
 y<-sin(x/5)+x/20
 clplot(x,y,main="Clplot")
+x11(height=4)
+x<-list(runif(90,1,2),factor(sample(LETTERS,100,TRUE)),rnorm(80,mean=5))
+dendroPlot(x,breaks=list(seq(1,2,by=0.1),0,0:10),nudge=c(0.03,0.3),
+ xlab="Groups",ylab="Counts",main="Test dendroPlot")
 data(mtcars)
 mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]
 diamondplot(mysubset,name="Diamondplot")
@@ -213,7 +217,7 @@ l <- list(runif(10)*10,1:10,c(1,1,1,1,4,8))
 multhist(l,main="Test of multhist")
 windagg<-matrix(c(8,0,0,0,0,0,0,0,4,6,2,1,6,3,0,4,2,8,5,3,5,2,1,1,
  5,5,2,4,1,4,1,2,1,2,4,0,3,1,3,1),nrow=5,byrow=TRUE)
-oz.windrose(windagg,legend.pos=-27,main="Australian BoM wind rose")
+oz.windrose(windagg,legend.pos=-26,main="Australian BoM wind rose")
 y<-runif(8)
 oldpar<-panes()
 boxplot(y,axes=FALSE)

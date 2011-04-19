@@ -1,10 +1,34 @@
-makeIntersectList<-function(x,xnames=NULL) {
+pasteCols<-function(x,sep="") {
+ pastestring<-paste("list(",paste("x","[",1:dim(x)[1],",]",
+  sep="",collapse=","),")",sep="")
+ return(do.call(paste,c(eval(parse(text = pastestring)),sep=sep)))
+}
+
+categoryReshape<-function(x) {
+ dimx<-dim(x)
+ if(is.null(dimx) || dimx[2]==1)
+  stop("Can only reshape a matrix or data frame with at least two columns")
+ row_values<-sort(unique(x[,1]))
+ column_values<-sort(unique(x[,2]))
+ newx<-
+  as.data.frame(matrix(0,nrow=length(row_values),ncol=length(column_values)))
+ for(row in 1:dimx[1]) {
+  row_index<-which(row_values %in% x[row,1])
+  column_index<-which(column_values %in% x[row,2])
+  newx[row_index,column_index]<-1
+ }
+ names(newx)<-column_values
+ return(newx)
+}
+
+makeIntersectList<-function(x,xnames=NULL,sep="+") {
+ if(any(!(x %in% c(TRUE,FALSE)))) x<-categoryReshape(x)
  if(is.null(xnames)) xnames <- names(x)
  if(!is.matrix(x)) x <- as.matrix(x)
  if(is.null(xnames)) xnames <- colnames(x)
  dimx<-dim(x)
  if(is.null(xnames)) xnames<-LETTERS[1:dimx[2]]
- intersectList<-vector("list",dimx[2]+1)
+ intersectList<-vector("list",dimx[2]+2)
  for(intersect in 1:dimx[2])
   intersectList[[1]][intersect]<-sum(rowSums(x)==1 & x[,intersect])
  names(intersectList[[1]])<-xnames
@@ -12,7 +36,7 @@ makeIntersectList<-function(x,xnames=NULL) {
   nn<-choose(dimx[2],comb)
   intersectList[[comb]]<-rep(0,nn)
   currentnames<-
-   names(intersectList[[comb]])<-pasteCols(combn(xnames,comb))
+   names(intersectList[[comb]])<-pasteCols(combn(xnames,comb),sep)
   currentcombs<-combn(1:dimx[2],comb,simplify=TRUE)
   for(intersect in 1:nn) {
    combvec<-rep(0,dimx[2])
@@ -23,6 +47,8 @@ makeIntersectList<-function(x,xnames=NULL) {
  }
  intersectList[[dimx[2]+1]]<-dimx[1]
  names(intersectList[[dimx[2] + 1]])<-"Total"
+ intersectList[[dimx[2]+2]]<-xnames
+ names(intersectList[[dimx[2] + 2]])<-"attributes"
  # drop any empty intersection levels
  for(comb in dimx[2]:1)
   if(sum(intersectList[[comb]])==0) intersectList[[comb]]<-NULL

@@ -8,7 +8,8 @@
 \usage{
  gantt.chart(x=NULL,format="\%Y/\%m/\%d",xlim=NULL,taskcolors=NULL,
   priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="\%Y/\%m/\%d",
-  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1)
+  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1,
+  border.col=NA)
 }
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
@@ -30,6 +31,7 @@
  \item{xlab}{horizontal axis label - usually suppressed.}
  \item{cylindrical}{Whether to give the bars a cylindrical appearance.}
  \item{label.cex}{Relative size for the task labels at the left side.}
+ \item{border.col}{The color for an optional border for the bars (NA=none).}
 }
 \value{
  The list used to create the chart - see \link{get.gantt.info} for
@@ -52,8 +54,8 @@
  they will be assigned to intervals in the order of the \samp{taskcolors} vector.
  The examples should make this clearer.
 }
-\author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping
- and added label colors by Nicolas Immelman)}
+\author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping -
+ added label colors by Nicolas Immelman)}
 \seealso{\link{get.gantt.info}}
 \examples{
  Ymd.format<-"\%Y/\%m/\%d"
@@ -85,6 +87,7 @@
  gantt.chart(info2,vgridlab=8:19,vgridpos=8:19,
   main="A color for each label",taskcolors=c(2,3,7,4,8))
  gantt.chart(info2,vgridlab=8:19,vgridpos=8:19,
-  main="A color for each interval",taskcolors=c(2,3,7,4,8,5,3,6,"purple"))
+  main="A color for each interval - with borders",
+  taskcolors=c(2,3,7,4,8,5,3,6,"purple"),border.col="black")
 }
 \keyword{misc}
