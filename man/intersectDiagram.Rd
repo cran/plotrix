@@ -3,15 +3,17 @@
 \title{Display set intersections}
 \description{Display set intersections as rows of rectangles.}
 \usage{
- intersectDiagram(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,namesep="-",
-  mar=c(0,0,3,0),main="Intersection Diagram",cex=1,col=NULL,minspacing=0.1)
+ intersectDiagram(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,namesep="+",
+  mar=c(0,0,3,0),main="Intersection Diagram",cex=1,col=NULL,
+  minspacing=NA,space_transform=NA)
 }
 \arguments{
  \item{x}{A list containing as many numeric vectors as there are sets. The
   first vector contains the counts or percentages of the elements that are
   only in one set, the next vector contains the counts or percentages of 
   elements that are in two sets and so on. A matrix of set membership
-  indicators can be passed - see Details.}
+  indicators or a two column matrix of object identifiers and attribute
+  identifiers can be passed - see Details.}
  \item{pct}{Whether to display counts (FALSE) or percentages (TRUE) of the
   number of entities.}
  \item{show.nulls}{Whether to display the number of original objects that were
@@ -24,43 +26,55 @@
  \item{main}{The title for the diagram.}
  \item{col}{Colors for the sets (see Details).}
  \item{cex}{Character expansion for the intersection labels.}
- \item{minspacing}{The minimum spacing between the rectangles as a proportion.}
+ \item{minspacing}{The minimum spacing between the rectangles (see Details).}
+ \item{space_transform}{Name of an optional transformation to apply for
+  spacing (see Details).}
 }
 \details{
- \samp{intersectDiagram} displays rows of optionally colored rectangles.
- The topmost row represents the elements that only belong to one set, the
- next row down represents elements belonging to two sets, and so on to the
- bottom row of rectangles representing the elements that belong to the greatest
- number of sets. If there were objects in the original data set that were not
- members of any set, any percentages calculated will reflect this. By setting
+ \samp{intersectDiagram} displays rows of optionally colored rectangles that
+ represent the intersections of set memberships (attributes) of a set of objects.
+ The topmost row represents the intersections of the fewest sets, and
+ succeeding rows represent the intersections of more sets. If there were objects
+ in the original data set that were not members of any set, any percentages calculated will reflect this. By setting
  \samp{show.nulls} to TRUE, the counts or percentages of such objects will be
  displayed below the intersections over an empty rectangle scaled to the count
  or percentage.
 
  \samp{intersectDiagram} does not attempt to display the set intersections as
- a pattern of overlapping geometric figures, but rather the relative sizes of
- the intersections. More than three intersecting sets generally produce a
- complex and difficult to interpret Venn diagram, and this provides an
+ a pattern of overlapping geometric figures, but rather the relative numbers of
+ objects sharing each intersection. More than three intersecting sets generally
+ produce a complex and difficult to interpret Venn diagram, and this provides an
  alternative way to display the size of intersections between larger numbers
  of sets. 
  
- Each set is assigned a color if \samp{col} is not NA. \samp{rainbow} is
- called if \samp{col} is NULL, otherwise the colors passed are used. For each
+ Each set (attribute) is assigned a color if \samp{col} is not NA. \samp{rainbow}
+ is called if \samp{col} is NULL, otherwise the colors passed are used. For each
  intersection, the colors representing the sets intersecting are included in
  the rectangle.
  
  The strings displayed on each rectangle are taken from the argument
- \samp{xnames} unless that is NULL, then the \samp{names} of the first element
- of the intersectList object passed as \samp{x} or returned from the call to
- \samp{makeIntersectList} and if this is also NULL, capital letters are assigned
- to each category in \samp{x}.
+ \samp{xnames} unless that is NULL, then the \samp{names} of the intersectList
+ object passed as \samp{x} or returned from the call to \samp{makeIntersectList}.
  
  If a matrix or data frame of set membership indicators is passed as \samp{x},
  it will be passed to \link{makeIntersectList} for conversion. Each column must
- represent a set, and the 
+ represent a set, and the values in the columns must be 0 or 1, or FALSE or TRUE.
+ Similarly, if a matrix or data frame in which the first column is object
+ identifiers and the second column is attributes, this will be passed to
+ \samp{makeIntersectList}.
+
+ The spacing between the largest rectangles is controlled by \samp{minspacing}.
+ \samp{minspacing} is in units of object counts and defaults to 0.1 times the
+ largest number of objects in an intersection. When the number of objects in
+ different intersections at a given level varies widely, too much space will
+ be given to the intersections with the largest memberships. This can be corrected
+ with the \samp{space_transform} argument. By passing the name of a function such
+ as "sqrt", the relative space given to rectangles will be proportional
+ to the transformed value rather than the actual number. Remember that a function
+ that returns any negative values will make a mess of the plot.
 }
 \value{
- Returns the intersection list invisibly.
+ Returns the intersectionList object invisibly.
 }
 \keyword{misc}
 \author{Jim Lemon}
@@ -83,5 +97,7 @@
  druguse[which(as.logical(druguse[,1]))[1:40],2]<-1
  druguse[which(as.logical(druguse[,1]))[31:70],3]<-1
  druguse[,4]<-sample(c(0,1),200,TRUE,prob=c(0.9,0.1))
- intersectDiagram(druguse,col=c("gray20","gray40","gray60","gray80"))
+ intersectDiagram(druguse,col=c("gray20","gray40","gray60","gray80"),cex=0.8)
+ # transform the spacing - usually makes it too close
+ intersectDiagram(druguse,col="gray",space_transform="sqrt",cex=0.8)
 }

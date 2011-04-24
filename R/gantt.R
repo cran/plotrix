@@ -42,7 +42,8 @@ get.gantt.info<-function(format="%Y/%m/%d") {
 
 gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL, 
  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
- half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex = 1) {
+ half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1,
+ border.col=NA) {
 
  oldpar<-par("mai","omi","xpd","xaxs","yaxs")
  if(is.null(x)) x<-get.gantt.info(format=format)
@@ -95,7 +96,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   else
    rect(x$starts[x$labels == tasks[i]],topdown[i]-half.height,
     x$ends[x$labels == tasks[i]],topdown[i]+half.height,
-    col=barcolors[x$labels == tasks[i]],border=FALSE)
+    col=barcolors[x$labels == tasks[i]],border=border.col)
  }
  if(hgrid) 
   abline(h=(topdown[1:(ntasks-1)]+topdown[2:ntasks])/2,col="darkgray",lty=3)

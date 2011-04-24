@@ -1,3 +1,14 @@
+version 3.1-2
+
+	Fixed a minor bug in intersectDiagram
+
+version 3.1-1
+
+	Border colors added to gantt.chart (thanks to Brandon Fessler)
+	Extensive rewrite of the intersectDiagram function and helpers
+	Rewrite of the dendroPlot function
+	categoryReshape function added
+
 version 3.1
 
 	intersectDiagram zero instance levels fixed

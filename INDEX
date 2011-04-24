@@ -14,6 +14,7 @@ boxed.labels		Display text strings in boxes at specified positions
 brkdn.plot		Display summary measures broken down by factors
 brkdnNest		Calculate nested breakdowns of summary measures
 bumpchart		Display a "bumps" chart
+categoryReshape		Convert object/attribute pairs to a matrix
 centipede.plot		Display a centipede plot/caterpillar plot/league table
 clean.args		Remove arguments that would cause an error
 clock24.plot		Plot values as lines/polygon/symbols on a "clockface"
