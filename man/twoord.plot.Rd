@@ -108,6 +108,6 @@
  twoord.plot(xhist$mids,xhist$counts,seq(-2,2,by=0.05),
  xdens,type=c("bar","l"),lcol=4,rcol=2,ylab="Counts",
  rylab="Density",main="Histogram and density curve",
- halfwidth=0.2)
+ halfwidth=0.2,lylim=c(0,25),rylim=c(0,0.45))
 }
 \keyword{misc}

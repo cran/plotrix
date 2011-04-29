@@ -4,10 +4,10 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
     y+unitcell*0.125,y-unitcell*0.125),col=col,border=border)
 }
 
-color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
+color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
  extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
  ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,
- border="black",na.color=NA,...) {
+ border="black",na.color=NA,color.spec="rgb",...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
@@ -30,7 +30,8 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
    axis(2,at=xdim[1]-yticks+0.5,yticks)
   }
   if(all(is.na(cellcolors)))
-   cellcolors<-color.scale(x,redrange,greenrange,bluerange,extremes,na.color)
+   cellcolors<-color.scale(x,cs1,cs2,cs3,extremes=extremes,na.color=na.color,
+    color.spec=color.spec)
   if(is.na(vcol))
    vcol<-ifelse(colSums(col2rgb(cellcolors)*c(1,1.4,0.6))<350,"white","black")
   # start from the top left - isomorphic with the matrix layout
@@ -72,11 +73,12 @@ color2D.matplot<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
   gry2<-bottom.gap*0.8
   if(length(cellcolors) > 1) {
    colmat<-col2rgb(c(cellcolors[which.min(x)],cellcolors[which.max(x)]))
-   redrange<-colmat[1,]/255
-   greenrange<-colmat[2,]/255
-   bluerange<-colmat[3,]/255
+   cs1<-colmat[1,]/255
+   cs2<-colmat[2,]/255
+   cs3<-colmat[3,]/255
+   color.spec<-"rgb"
   }
-  rect.col<-color.scale(1:nslices,redrange,greenrange,bluerange)
+  rect.col<-color.scale(1:nslices,cs1,cs2,cs3,color.spec=color.spec)
   if(show.legend)
    color.legend(grx1,gry1,grx2,gry2,round(range(x,na.rm=TRUE),show.legend),
     rect.col=rect.col)

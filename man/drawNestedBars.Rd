@@ -5,7 +5,7 @@
 \usage{
  drawNestedBars(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",col=NA,
  labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,showlabels=TRUE,
- arrow.cap=0.01)
+ arrow.cap=NA)
 }
 \arguments{
  \item{x}{One level of the breakdown produced by \samp{brkdnNest}.}

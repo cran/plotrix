@@ -5,7 +5,7 @@
 \usage{
  intersectDiagram(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,namesep="+",
   mar=c(0,0,3,0),main="Intersection Diagram",cex=1,col=NULL,
-  minspacing=NA,space_transform=NA)
+  minspacing=NA)
 }
 \arguments{
  \item{x}{A list containing as many numeric vectors as there are sets. The
@@ -27,8 +27,6 @@
  \item{col}{Colors for the sets (see Details).}
  \item{cex}{Character expansion for the intersection labels.}
  \item{minspacing}{The minimum spacing between the rectangles (see Details).}
- \item{space_transform}{Name of an optional transformation to apply for
-  spacing (see Details).}
 }
 \details{
  \samp{intersectDiagram} displays rows of optionally colored rectangles that
@@ -66,12 +64,11 @@
  The spacing between the largest rectangles is controlled by \samp{minspacing}.
  \samp{minspacing} is in units of object counts and defaults to 0.1 times the
  largest number of objects in an intersection. When the number of objects in
- different intersections at a given level varies widely, too much space will
- be given to the intersections with the largest memberships. This can be corrected
- with the \samp{space_transform} argument. By passing the name of a function such
- as "sqrt", the relative space given to rectangles will be proportional
- to the transformed value rather than the actual number. Remember that a function
- that returns any negative values will make a mess of the plot.
+ different intersections at a given level varies widely, the labels of
+ intersections with few objects may overlap if they are wide relative to the
+ rectangle representing the number of objects. This can be corrected by
+ passing a \samp{minspacing} argument that will increase the space between
+ rectangles and/or decreasing the character size of the labels.
 }
 \value{
  Returns the intersectionList object invisibly.
@@ -98,6 +95,8 @@
  druguse[which(as.logical(druguse[,1]))[31:70],3]<-1
  druguse[,4]<-sample(c(0,1),200,TRUE,prob=c(0.9,0.1))
  intersectDiagram(druguse,col=c("gray20","gray40","gray60","gray80"),cex=0.8)
- # transform the spacing - usually makes it too close
- intersectDiagram(druguse,col="gray",space_transform="sqrt",cex=0.8)
+ # transform the spacing - usually makes it too close, first try minspacing
+ intersectDiagram(druguse,col="gray",minspacing=30)
+ # then try cex - may need both for large differences
+ intersectDiagram(druguse,col="gray",cex=0.8)
 }

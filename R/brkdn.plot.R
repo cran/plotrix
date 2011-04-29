@@ -10,7 +10,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,...) {
 
  if(is.na(obs)) {
-  if(is.na(groups))
+  if(is.na(groups[1]))
    stop("Must have at least one factor to subset data")
   bygroup<-as.factor(data[[groups]])
   grouplevels<-levels(bygroup)

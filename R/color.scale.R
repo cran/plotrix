@@ -1,64 +1,66 @@
-color.scale<-function(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
- extremes=NA,na.color=NA,xrange=NULL) {
+color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
+ extremes=NA,na.color=NA,xrange=NULL,color.spec="rgb") {
  
  naxs<-is.na(x)
  if(!is.na(extremes[1])){
-  # calculate the color ranges from the extremes
+  # calculate the color ranges from the extremes - only for rgb
   colmat<-col2rgb(extremes)
-  redrange<-colmat[1,]/255
-  greenrange<-colmat[2,]/255
-  bluerange<-colmat[3,]/255
+  cs1<-colmat[1,]/255
+  cs2<-colmat[2,]/255
+  cs3<-colmat[3,]/255
+  color_spec<-"rgb"
  }
+ maxcs1<-ifelse(color.spec=="hcl",360,1)
+ maxcs2<-ifelse(color.spec=="hcl",100,1)
+ maxcs3<-ifelse(color.spec=="hcl",100,1)
  ncolors<-length(x)
  if(is.null(xrange)) xrange<-range(x,na.rm=TRUE)
  else {
   if(xrange[1] > min(x,na.rm=TRUE) || xrange[2] < max(x,na.rm=TRUE))
    stop("An explicit range for x must include the range of x values.")
  }
- nreds<-length(redrange)
- if(nreds>1) {
-  reds<-rep(redrange[nreds],ncolors)
+ ncs1<-length(cs1)
+ if(ncs1>1) {
+  cs1s<-rep(cs1[ncs1],ncolors)
   xstart<-xrange[1]
-  xinc<-diff(xrange)/(nreds-1)
-  for(seg in 1:(nreds-1)){
+  xinc<-diff(xrange)/(ncs1-1)
+  for(seg in 1:(ncs1-1)){
    segindex<-which((x >= xstart) & (x <= (xstart+xinc)))
-   reds[segindex]<-rescale(x[segindex],redrange[c(seg,seg+1)])
+   cs1s[segindex]<-rescale(x[segindex],cs1[c(seg,seg+1)])
    xstart<-xstart+xinc
   }
-  if(min(reds) < 0 || max(reds) > 1) reds<-rescale(reds,c(0,1))
+  if(min(cs1s) < 0 || max(cs1s) > maxcs1) cs1s<-rescale(cs1s,c(0,maxcs1))
  }
- else reds<-rep(redrange,ncolors)
- ngreens<-length(greenrange)
- if(ngreens>1) {
-  greens<-rep(greenrange[ngreens],ncolors)
+ else cs1s<-rep(cs1,ncolors)
+ ncs2<-length(cs2)
+ if(ncs2>1) {
+  cs2s<-rep(cs2[ncs2],ncolors)
   xstart<-xrange[1]
-  xinc<-diff(xrange)/(ngreens-1)
-  for(seg in 1:(ngreens-1)){
+  xinc<-diff(xrange)/(ncs2-1)
+  for(seg in 1:(ncs2-1)){
    segindex<-which((x >= xstart) & (x <= (xstart+xinc)))
-   greens[segindex]<-rescale(x[segindex],greenrange[c(seg,seg+1)])
+   cs2s[segindex]<-rescale(x[segindex],cs2[c(seg,seg+1)])
    xstart<-xstart+xinc
   }
-  if(min(greens) < 0 || max(greens) > 1)
-   greens<-rescale(greens,c(0,1))
+  if(min(cs2s) < 0 || max(cs2s) > maxcs2) cs2s<-rescale(cs2s,c(0,maxcs2))
  }
- else greens<-rep(greenrange,ncolors)
- nblues<-length(bluerange)
- if(length(bluerange)>1) {
-  blues<-rep(bluerange[nblues],ncolors)
+ else cs2s<-rep(cs2,ncolors)
+ ncs3<-length(cs3)
+ if(ncs3>1) {
+  cs3s<-rep(cs3[ncs3],ncolors)
   xstart<-xrange[1]
-  xinc<-diff(xrange)/(nblues-1)
-  for(seg in 1:(nblues-1)){
+  xinc<-diff(xrange)/(ncs3-1)
+  for(seg in 1:(ncs3-1)){
    segindex<-which((x >= xstart) & (x <= (xstart+xinc)))
-   blues[segindex]<-rescale(x[segindex],bluerange[c(seg,seg+1)])
+   cs3s[segindex]<-rescale(x[segindex],cs3[c(seg,seg+1)])
    xstart<-xstart+xinc
   }
-  if(min(blues) < 0 || max(blues) > 1)
-  blues<-rescale(blues,c(0,1))
+  if(min(cs3s) < 0 || max(cs3s) > maxcs3) cs3s<-rescale(cs3s,c(0,maxcs3))
  }
- else blues<-rep(bluerange,ncolors)
+ else cs3s<-rep(cs3,ncolors)
  xdim<-dim(x)
- if(is.null(xdim)) colors<-rgb(reds,greens,blues)
- else colors<-matrix(rgb(reds,greens,blues),nrow=xdim[1])
+ colors<-do.call(color.spec,list(cs1s,cs2s,cs3s,alpha=alpha))
+ if(!is.null(xdim)) colors<-matrix(colors,nrow=xdim[1])
  if(length(naxs)) colors[naxs]<-na.color
  return(colors)
 }

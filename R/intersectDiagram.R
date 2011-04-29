@@ -1,6 +1,6 @@
 intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL, 
  namesep="+",mar=c(0,0,3,0),main="Intersection Diagram",cex=1,
- col=NULL,minspacing=NA,space_transform=NA) {
+ col=NULL,minspacing=NA) {
 
  if(is.matrix(x) || is.data.frame(x))
   x<-makeIntersectList(x,xnames=xnames,sep=namesep)
@@ -25,13 +25,22 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
  else if(length(col) < nattributes) col<-rep(col,length.out=nattributes)
  # total number of objects for each intersection level
  objectsums<-sapply(x,sum)
- # level with the most objects
+ # index of level with the most objects
  maxlevel<-which.max(objectsums)
  nNonZero<-function(x) return(sum(x>0))
- maxintersections<-max(sapply(x,nNonZero))
+ # number of intersections with at least one member for each intersection level
+ nintersects<-sapply(x,nNonZero)
+ # maximum number of intersections in a given level
+ maxintersections<-max(nintersects)
+ # largest intersection set in x
  maxn<-max(unlist(x))
+ # default to a minimum spacing of one tenth of the largest intersection set 
  if(is.na(minspacing)) minspacing<-0.1*maxn
- maxx<-objectsums[maxlevel]+minspacing*maxintersections+1
+ # x limit that will hold the maximum number of objects and allow
+ # spacing for the maximum number of intersections in units of objects 
+ maxx<-objectsums[maxlevel]+minspacing*maxintersections
+ # have to escape the separator in case it is "+" (default) or
+ # some other character that means something to some function
  attsep<-paste("[",namesep,"]",sep="")
  plot(0,xlim=c(0,maxx),ylim=c(0,nlevels+show.nulls),
   main=main,xlab="",ylab="",type="n",axes=FALSE)
@@ -42,25 +51,17 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
   # indices of intersections with at least one object in this level
   intersections<-which(x[[level]] > 0)
   # get all the names in this level with at least one object
-  blocknames<-names(x[[level]][intersections])
-  # proportions of the row for each intersection rectangle
-  if(is.na(space_transform))
-   centers<-c(0,x[[level]][intersections])/objectsums[level]
-  else {
-   centers<-c(0,do.call(space_transform,list(x[[level]][intersections])))/
-    sum(do.call(space_transform,list(x[[level]][intersections])))
-  }
-  # centers of the rectangles in x positions
-  centers<-
-   maxx*cumsum((centers[1:length(intersections)]+centers[2:length(centers)])/2)
+  blocknames<-names(x[[level]])[intersections]
+  # spacing between intersection sets in object units
+  spacing<-(maxx-objectsums[level])/nintersects[level]
+  # left edges of the rectangles in x positions
+  leftx<-c(0,cumsum(x[[level]][intersections]+spacing))+spacing/2
   for(intersect in 1:length(intersections)) {
    # make the label for the intersection
    cellqnt<-ifelse(pct,
     paste(round(100*x[[level]][intersections[intersect]]/nobjects,1),
      "%",sep=""),
     x[[level]][intersections[intersect]]) 
-   # start halfway back from the center
-   leftx<-centers[intersect]-x[[level]][intersections[intersect]]/2
    # indices of the colors to use
    colindex<-
     which(attributes %in% unlist(strsplit(blocknames[intersect],attsep)))
@@ -70,22 +71,23 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
    xinc<-x[[level]][intersections[intersect]]/ncol
    # colors for the slices
    slicecol<-col[colindex]
+   # offset for each successive slice
+   offset<-0
    # step through the slices
    for(slice in 1:ncol) {
     # draw a rectangle with no border
-    rect(leftx,nlevels-level+show.nulls+0.1,
-     leftx+xinc,nlevels-level+show.nulls+0.9,
+    rect(leftx[intersect]+offset,nlevels-level+show.nulls+0.1,
+     leftx[intersect]+offset+xinc,nlevels-level+show.nulls+0.9,
      col=slicecol[slice],border=NA)
     # move to the next slice
-    leftx<-leftx+xinc
+    offset<-offset+xinc
    }
-   # restore the initial left edge
-   leftx<-centers[intersect]-x[[level]][intersections[intersect]]/2
    # draw a box around the intersection rectangle
-   rect(leftx,nlevels-level+show.nulls+0.1,
-    leftx+x[[level]][intersections[intersect]],nlevels-level+show.nulls+0.9)
+   rect(leftx[intersect],nlevels-level+show.nulls+0.1,
+    leftx[intersect]+x[[level]][intersections[intersect]],
+    nlevels-level+show.nulls+0.9)
    # display the label
-   boxed.labels(leftx+x[[level]][intersections[intersect]]/2, 
+   boxed.labels(leftx[intersect]+x[[level]][intersections[intersect]]/2, 
     nlevels-level+show.nulls+0.5,paste(blocknames[intersect], 
     cellqnt,sep="\n"),cex=cex)
   }
@@ -94,15 +96,17 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
   # number of objects with no set membership
   nonset<-as.numeric(nobjects-sum(objectsums))
   # left edge of the rectangle
-  leftx<-sum(par("usr")[1:2])/2-nonset/2
+  leftnulls<-sum(par("usr")[1:2])/2-nonset/2
   # draw the rectangle
-  if(nonset) rect(leftx,0.1,leftx+nonset,0.9)
+  if(nonset) rect(leftnulls,0.1,leftnulls+nonset,0.9)
   # center of the rectangle
-  xpos<-leftx+nonset/2
+  xpos<-leftnulls+nonset/2
   # display the label
   if(pct) nonset<-paste(round(100*nonset/nobjects,1),"%",sep="")
   boxed.labels(xpos,0.5,paste("Non-members",nonset,sep="\n"),cex=cex)
  }
  par(mar = oldmar)
+ x[[length(x)+1]]<-nobjects
+ x[[length(x)+1]]<-nattributes
  invisible(x)
 }

@@ -6,15 +6,15 @@
   rectangles or hexagons.
 }
 \usage{
- color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
+ color2D.matplot(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
   extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
   ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,
-  border="black",na.color=NA,...)
+  border="black",na.color=NA,color.spec="rgb",...)
 }
 \arguments{
  \item{x}{data values}
- \item{redrange, greenrange, bluerange}{the ranges of red, green and blue
-  that will be scaled to represent the range of numeric values}
+ \item{cs1,cs2,cs3}{the color parameters that will be scaled to represent
+  the range of numeric values. (see \samp{color.scale})}
  \item{extremes}{The colors for the extreme values of \samp{x}. Takes
   precedence over the color ranges.}
  \item{cellcolors}{A precalculated vector of cell colors. This must have
@@ -22,8 +22,9 @@
   it will be uninformative. Takes precedence over both \samp{extremes}
   and color ranges.}
  \item{show.legend}{whether to display a color legend with the
-  extreme numeric values in the lower left corner of the plot. If the
-  default is not suitable, call \samp{color.legend} separately.}
+  extreme numeric values in the lower left corner of the plot. This will
+  force the color specification to "rgb", so if this is different from
+  the color specification requested, call \samp{color.legend} separately.}
  \item{nslices}{The number of color "slices" in the legend.}
  \item{xlab,ylab}{axis labels for the plot.}
  \item{do.hex}{plot packed hexagons instead of rectangles.}
@@ -36,6 +37,7 @@
  \item{border}{The color(s) for the borders of the cells. Pass NA
   if no border is  wanted.}
  \item{na.color}{The color to use for NA values of \samp{x}.}
+ \item{color.spec}{The color specification system to use.}
  \item{...}{arguments passed to \samp{plot}.}
 }
 \value{nil}

@@ -94,4 +94,5 @@ centipede.plot<-function(segs,mct="mean",lower.limit="std.error",
    rownames(segs)[3],"- |")
  if (nchar(xlab)) mtext(xlab,1,line = 2)
  par(oldpar)
+ invisible(segs)
 }
