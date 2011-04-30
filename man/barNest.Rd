@@ -7,7 +7,7 @@
  barNest(formula=NULL,data=NULL,FUN=c("mean","sd"),ylim=NULL,
  main="",xlab="",ylab="",shrink=0.1,errbars=FALSE,col=NA,
  labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,showlabels=TRUE,mar=NULL,
- arrow.cap=0.01,trueval=NA)
+ arrow.cap=NA,trueval=NA)
 }
 \arguments{
  \item{formula}{A formula with a numeric element of a data frame on the left and
@@ -30,7 +30,7 @@
  \item{mar}{If not NULL, a four element vector to set the plot margins. If new
   margins are set, the user must reset the margins after the function exits.}
  \item{arrow.cap}{The width of the "cap" on error bars in user units,
-  defaulting to 0.01 of the width of the plot.}
+  calculated on the basis of the number of bars in the final breakdown if NA.}
  \item{trueval}{If this is not NA, the call to \samp{brkdnNest} will return the
   proportions of the response variable that are equal to \samp{trueval}.
   See Details.}
@@ -46,26 +46,28 @@
  and subgroups in a compact format.
 
  If \samp{trueval} is not NA and brkdnNest is called to calculate the values for
- the heights of the bars, the proportions of the response variable that are
- equal to \samp{trueval} will be returned. Currently the value of \samp{errbars}
- will be forced to FALSE in this case. This will probably change when a suitable
- method of calculating binomial CIs is programmed.
+ the heights of the bars, the proportions of the dichotomous response variable
+ that are equal to \samp{trueval} will be returned.
 
  A number of functions can be passed in the \samp{FUN} argument. Two functions,
- \samp{propbrk} and \samp{valid.n} that are provided can be used as bar heights.
+ \samp{propbrk} and \samp{valid.n} that are provided can be used as bar heights,
+ giving proportions and counts in each group and subgroup respectively.
  Binomial confidence limits can be added to the proportions returned by
- \samp{propbrk} with \samp{binciWl} and \samp{binciWu}.
+ \samp{propbrk} with \samp{binciWl} and \samp{binciWu} as in the second last
+ example.
 
  The colors of the bars are determined by \samp{col}. If \samp{showall} is FALSE,
  the user only need pass a vector of colors, usually the same length as the number
- of categories in the final (first on the right side) element in the formula. If
+ of categories in the final (last on the right side) element in the formula. If
  \samp{showall} is TRUE and the user wants to color all of the bars, a list with
  as many elements as there are levels in the breakdown should be passed. Each
  element should be a vector of colors, again usually the same length as the number
  of categories. As the categorical variables are likely to be factors, it is
  important to remember that the colors must be in the correct order for the levels
  of the factors. When the levels are not in the default alphanumeric order, it is
- quite easy to get this wrong.
+ quite easy to get this wrong. As a \samp{barNest} plot with more than a few
+ factors and levels in each factor is quite dense, easily distinguished colors
+ for each level of the breakdown may be preferable. 
 }
 \author{Jim Lemon and Ofir Levy}
 \references{
@@ -90,7 +92,7 @@
   rep("Yes",13),rep("No",35),rep("Yes",14),rep("No",17),
   rep("Yes",192),rep("No",670),rep("Yes",20),rep("No",3)))
  require(plotrix)
- titanic.colors<-list("lightgray",c("#0000ff","#7700ee","#aa00cc","#dd00aa"),
+ titanic.colors<-list("gray90",c("#0000ff","#7700ee","#aa00cc","#dd00aa"),
   c("#ddcc00","#ee9900"),c("pink","lightblue"))
  barNest(survived~class+age+sex,titanic,col=titanic.colors,showall=TRUE,
   main="Titanic survival by class, age and sex",ylab="Proportion surviving",
@@ -98,7 +100,7 @@
  # now show the actual numbers of passengers
  barNest(survived~class+age+sex,titanic,col=titanic.colors,showall=TRUE,
   main="Titanic passengers and crew by class, age and sex",ylab="Number",
-  FUN="valid.n",shrink=0.15,ylim=c(0,900))
+  FUN="valid.n",shrink=0.15)
  # start a wide plot window
  x11(width=10)
  test.df<-data.frame(Age=rnorm(100,25,10),
@@ -110,7 +112,7 @@
   Employ=c("#1affd8","#caeecc","#ff90d0"))
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Mean age (years)",
   main="Mean age by subgroups",errbars=TRUE,col=test.col)
- # set up functions for 20 and 80 percentiles - must be offsets, not limits
+ # set up functions for 20th and 80th percentiles
  q20<-function(x,na.rm=TRUE) return(quantile(x,probs=0.2,na.rm=TRUE))
  q80<-function(x,na.rm=TRUE) return(quantile(x,probs=0.8,na.rm=TRUE))
  # show the asymmetric dispersion measures

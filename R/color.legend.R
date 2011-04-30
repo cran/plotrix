@@ -3,7 +3,8 @@ color.legend<-function (xl,yb,xr,yt,legend,rect.col,cex=1,align="lt",
 
  oldcex<-par("cex")
  par(xpd=TRUE,cex=cex)
- gradient.rect(xl,yb,xr,yt,col=rect.col,nslices=length(rect.col),gradient=gradient)
+ gradient.rect(xl,yb,xr,yt,col=rect.col,nslices=length(rect.col),
+  gradient=gradient)
  if(gradient == "x") {
   xsqueeze<-(xr-xl)/(2*length(rect.col))
   textx<-seq(xl+xsqueeze,xr-xsqueeze,length.out=length(legend))

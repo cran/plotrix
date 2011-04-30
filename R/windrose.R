@@ -30,8 +30,8 @@ oz.windrose.legend<-function(maxpct=20,scale.factor=30,
  speed.width=NA,legend.pos=NA) {
   
  wdnames<-c("E","NE","N","NW","W","SW","S","SE")
- if(is.na(speed.width)) speed.width<-maxpct*1:4/100
- if(is.na(legend.pos)) legend.pos<-maxpct*1.25
+ if(is.na(speed.width[1])) speed.width<-maxpct*1:4/100
+ if(is.na(legend.pos[1])) legend.pos<-maxpct*1.25
  draw.circle(-maxpct/2,legend.pos,maxpct/20)
  angles<-seq(0,7*pi/4,by=pi/4)
  for(i in 1:8) {
@@ -58,7 +58,7 @@ oz.windrose<-function(windagg,maxpct=20,wrmar=c(4,5,6,5),
  speed.width=NA,show.legend=TRUE,legend.pos=NA,...) {
  
  if(is.na(speed.width[1])) speed.width<-maxpct*1:4/100
- if(is.na(legend.pos)) legend.pos<-maxpct*1.25
+ if(is.na(legend.pos[1])) legend.pos<-maxpct*1.25
  oldmar<-par("mar")
  par(mar=wrmar,xpd=TRUE)
  plot(0,xlim=c(-maxpct,maxpct),ylim=c(-maxpct,maxpct),type="n",

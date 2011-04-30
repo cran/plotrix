@@ -122,7 +122,6 @@ par(mar=c(5,4,4,2))
 x<-seq(1,100)
 y<-sin(x/5)+x/20
 clplot(x,y,main="Clplot")
-x11(height=4)
 x<-list(runif(90,1,2),factor(sample(LETTERS,100,TRUE)),rnorm(80,mean=5))
 dendroPlot(x,breaks=list(seq(1,2,by=0.1),0,0:10),nudge=c(0.03,0.3),
  xlab="Groups",ylab="Counts",main="Test dendroPlot")
@@ -246,11 +245,18 @@ charac<-data.frame(sex=sex,hair=hair,eye=eye)
 characlist<-makeDendrite(charac)
 plot.dendrite(characlist,names(charac),
  main="Dendrogram of sex, hair and eye color",cex=0.8)
-qnt<-rpois(365,2)
-qtdates<-seq(as.Date("2007-01-01"),as.Date("2007-12-31"),by=1)
-qnt[c(30,60,90,120,150,180,210,240,270,300,330,360)]<-rep(8,length.out=12)
-qt.plot(qnt,as.numeric(qtdates),xlab="Number of days interval",
-ylab="Standard drinks per session",main="Test qt.plot")
+xy.pop<-c(3.2,3.5,3.6,3.6,3.5,3.5,3.9,3.7,3.9,3.5,3.2,2.8,2.2,1.8,
+ 1.5,1.3,0.7,0.4)
+xx.pop<-c(3.2,3.4,3.5,3.5,3.5,3.7,4,3.8,3.9,3.6,3.2,2.5,2,1.7,1.5,
+ 1.3,1,0.8)
+agelabels<-c("0-4","5-9","10-14","15-19","20-24","25-29","30-34",
+ "35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74",
+ "75-79","80-44","85+")
+mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),18)
+fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),18)
+par(mar=pyramid.plot(xy.pop,xx.pop,labels=agelabels,
+ main="Australian population pyramid 2002",lxcol=mcol,rxcol=fcol,
+ gap=0.5,show.values=TRUE))
 posmat<-matrix(sample(2:9,30,TRUE),nrow=3)
 radial.plot(posmat,labels=paste("X",1:10,sep=""),rp.type="p",
  main="Spiderweb plot (radial.plot)",line.col=2:4,show.grid=FALSE,lwd=1:3,
@@ -343,4 +349,7 @@ vectorField(o,m,vecspec="rad")
 lengthKey(0.3,-0.5,c(0,5,10),0.24)
 zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),
  zoomtitle="Zoom In Plot",titlepos=-1.5)
+readline("End of demo, press <Enter>")
 par(ask=FALSE)
+dev.off()
+
