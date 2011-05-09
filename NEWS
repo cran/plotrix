@@ -1,3 +1,10 @@
+version 3.2-1
+
+	Added the sumbrk function to brkdnNest (thanks to Kevin Burnham)
+	The dispbars function (just a call to dispersion) is now gone
+	Added user specified text colors to boxed.labels (thanks to Thorn Thaler)
+	Added the ehplot function (thanks to Robby, Michael & Felix)
+
 version 3.2
 
 	Rewrote intersectDiagram to use equidistant spacing
@@ -5,6 +12,7 @@ version 3.2
 	Fixed default ordinate scaling in twoord.plot
 	Major rewrite of brkdnNest, barNest and drawNestedBars functions
 	Major rewrite of color.scale function
+	Added sliceArray function for barNest due to the above rewrite
 
 version 3.1-2
 

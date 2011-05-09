@@ -18,7 +18,7 @@
  \samp{binciWu} calculates the upper binomial confidence limit for the
  given number of successes and trials. It is mainly to allow binomial confidence
  limits to be calculated in the \samp{brkdnNest} function, which is why
- the upper and lower CIs areg calculated separately.
+ the upper and lower CIs are calculated separately.
 }
 \value{The upper binomial confidence interval}
 \author{Jim Lemon}

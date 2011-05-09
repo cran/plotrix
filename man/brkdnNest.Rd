@@ -12,8 +12,8 @@
  \item{data}{A data frame containing the elements in \samp{formula}.}
  \item{FUN}{The functions to be applied to successive breakdowns.}
  \item{label1}{The label to use for the overall value of the first function.}
- \item{trueval}{The value to use in calculating proportions of a categorical
-  response variable. See Details.}
+ \item{trueval}{The value to use in calculating proportions or sums of a
+  categorical response variable. See Details.}
 }
 \value{
  A list with as many elements as there are functions in \samp{FUN}.
@@ -34,12 +34,17 @@
  responses. If the function \samp{valid.n} is the first function in \samp{FUN},
  the counts of the groups and subgroups will be returned.
 
+ Two specialized summary functions are defined within \samp{brkdnNest} for use
+ when the \samp{trueval} argument is not NA. \samp{sumbrk} returns the count of 
+ values in a factor equal to \samp{trueval}, while \samp{propbrk} returns the
+ proportion of values equal to \samp{trueval}.
+
  The user should take care when specifying different summary functions.
- \samp{barNest} expects a measure of central tendency as the first function
- and measures of dispersion as the second and optionally third, if "error bars"
- are to be displayed. If two confidence interval functions are passed, the first
- must calculate the upper and the second the lower CI. The user must also decide
- whether the "error bars" have any useful meaning.
+ \samp{barNest} expects a measure of central tendency or counting function as 
+ the first function and measures of dispersion as the second and optionally third,
+ if "error bars" are to be displayed. If two confidence interval functions are
+ passed, the first must calculate the upper and the second the lower CI. The user
+ must also decide whether the "error bars" have any useful meaning.
 }
 \author{Jim Lemon}
 \seealso{\link{by}}

@@ -9,6 +9,7 @@ boxed.labels<-function(x,y=NA,labels,
   x<-unlist(x[[1]])
  }
  box.adj<-adj+(xpad-1)*cex*(0.5-adj)
+ # boxes can only be rotated 90 degrees either way
  if(srt==90 || srt==270) {
   bheights<-strwidth(labels)
   theights<-bheights*(1-box.adj)
@@ -21,10 +22,13 @@ boxed.labels<-function(x,y=NA,labels,
   lwidths<-lwidths*box.adj
   bheights<-theights<-strheight(labels)*0.5
  }
- textcol<-ifelse(colSums(col2rgb(bg)*c(1,1.4,0.6))<350,
-  "white","black")
- rect(x-lwidths*xpad,y-bheights*ypad,x+rwidths*xpad,
-  y+theights*ypad,col=bg,border=border)
- text(x,y,labels,srt=srt,adj=adj,col=textcol,...)
+ # fix for adding a col argument to ... by Thorn Thaler
+ args <- list(x = x, y = y, labels = labels, srt = srt, adj = adj, 
+             col = ifelse(colSums(col2rgb(bg) * c(1, 1.4, 0.6)) < 
+                          350, "white", "black"))
+ args <- modifyList(args, list(...))
+ rect(x - lwidths * xpad, y - bheights * ypad, x + rwidths * 
+     xpad, y + theights * ypad, col = bg, border = border)
+ do.call(text, args)
  par(cex=oldcex)
 }

@@ -5,7 +5,7 @@
 \usage{
  intersectDiagram(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,namesep="+",
   mar=c(0,0,3,0),main="Intersection Diagram",cex=1,col=NULL,
-  minspacing=NA)
+  minspacing=NA,all.intersections=FALSE)
 }
 \arguments{
  \item{x}{A list containing as many numeric vectors as there are sets. The
@@ -27,16 +27,27 @@
  \item{col}{Colors for the sets (see Details).}
  \item{cex}{Character expansion for the intersection labels.}
  \item{minspacing}{The minimum spacing between the rectangles (see Details).}
+ \item{all.intersections}{Whether to display all intersections, even if empty
+  (Dangerous - see Detail).}
 }
 \details{
  \samp{intersectDiagram} displays rows of optionally colored rectangles that
  represent the intersections of set memberships (attributes) of a set of objects.
  The topmost row represents the intersections of the fewest sets, and
  succeeding rows represent the intersections of more sets. If there were objects
- in the original data set that were not members of any set, any percentages calculated will reflect this. By setting
- \samp{show.nulls} to TRUE, the counts or percentages of such objects will be
- displayed below the intersections over an empty rectangle scaled to the count
- or percentage.
+ in the original data set that were not members of any set, any percentages
+ calculated will reflect this. By setting \samp{show.nulls} to TRUE, the counts
+ or percentages of such objects will be displayed below the intersections over
+ an empty rectangle scaled to the count or percentage.
+
+ Important - If the \samp{all.intersections} argument is TRUE, all intersections
+ will be displayed, whether empty or not (see the example). This is mostly for
+ demonstration purposes, and if the number of sets is large, is likely to produce
+ a very messy diagram. Similarly, sets with large numbers of
+ intersections that are populated will require very large displays to be readable,
+ even if there are small numbers in the intersections. If you would like to see
+ this in action, pass the data frame \samp{setdf} in the \link{categoryReshape}
+ example to \samp{intersectDiagram} with \samp{all.intersections} TRUE.
 
  \samp{intersectDiagram} does not attempt to display the set intersections as
  a pattern of overlapping geometric figures, but rather the relative numbers of
@@ -75,7 +86,7 @@
 }
 \keyword{misc}
 \author{Jim Lemon}
-\seealso{\link{makeIntersectList}, \link{getIntersectList}}
+\seealso{\link{makeIntersectList}, \link{getIntersectList} \link{categoryReshape}}
 \examples{
  # create a matrix where each row represents an element and
  # a 1 (or TRUE) in each column indicates that the element is a member
@@ -99,4 +110,13 @@
  intersectDiagram(druguse,col="gray",minspacing=30)
  # then try cex - may need both for large differences
  intersectDiagram(druguse,col="gray",cex=0.8)
+ # create a matrix with empty intersections
+ druguse<-matrix(c(sample(c(0,1),20,TRUE),
+  sample(c(0,1),20,TRUE),
+  sample(c(0,1),20,TRUE),
+  sample(c(0,1),20,TRUE)),ncol=4)
+ # show only the populated intersections
+ intersectDiagram(druguse)
+ # show all intersections
+ intersectDiagram(druguse,all.intersections=TRUE)
 }

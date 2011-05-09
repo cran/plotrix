@@ -3,7 +3,7 @@
 \title{Calculate the proportion of specified values in a vector}
 \description{
  Calculates the proportion of values in a vector that are equal to a specified
- values.
+ value.
 }
 \usage{
  propbrk(x,trueval=TRUE,na.rm=TRUE)

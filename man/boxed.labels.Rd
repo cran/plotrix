@@ -28,8 +28,11 @@
 \details{
  The label(s) are displayed on a rectangular background. This may be useful
  for visibility and is the reason that "transparent" background is not available.
- The function tries to work out whether white or black text will be more easily
- read based on the background color and displays the text accordingly.
+ With the default \samp{textcol=NA}, the function tries to work out whether white
+ or black text will be more easily read based on the background color and displays
+ the text accordingly. If the user specifies text colors in the additional
+ arguments, these colors will override the automatic white/black above - see the
+ last example.
 
  Only right angle rotations are allowed in \samp{boxed.labels}. \emph{Important
  change}: \samp{xpad} and \samp{ypad} are now the full proportion of
@@ -42,7 +45,8 @@
  where overlap is likely.
 }
 \value{nil}
-\author{Jim Lemon}
+\author{Jim Lemon - thanks to Thorn Thaler for the code allowing user-specified
+ text colors}
 \seealso{\link{spread.labels}, \link{thigmophobe.labels}}
 \examples{
  x<-rnorm(10)
@@ -59,6 +63,7 @@
  plot(swiss.pca$rotation[,1:2],xlim=c(-1,0.2),main="PCA of swiss dataset",
   type="n")
  boxed.labels(swiss.pca$rotation[1:6],swiss.pca$rotation[7:12],ypad=1.5,
-  colnames(swiss),bg=c("red","purple","blue","blue","darkgreen","red"))
+  colnames(swiss),bg=c("red","purple","blue","blue","darkgreen","red"),
+  col="yellow")
 }
 \keyword{misc}

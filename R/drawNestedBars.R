@@ -29,7 +29,7 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
   # drop the color of the last bar
   if(is.list(col)) col[[1]]<-NULL
   # drop the top level barlabels if present
-  # if(!is.null(barlabels) && length(barlabels) > 1) barlabels[[1]]<-NULL
+  if(!is.null(barlabels) && length(barlabels) > 1) barlabels[[1]]<-NULL
   # width of all the spaces between the next group of bars
   barspace<-(end-start)*shrink
   # width of each bar
