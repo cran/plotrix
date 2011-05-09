@@ -39,6 +39,7 @@ draw.circle		Display a circle on an existing plot
 draw.ellipse		Display an ellipse on an existing plot
 draw.tilted.sector	Display a single 3D pie sector
 drawNestedBars		Display the nested bars for barNest
+ehplot			Engelmann-Hecker plot
 emptyspace		Find the largest empty space on a plot
 fan.plot		Display a fan (superimposed pie sector) plot
 feather.plot		Display vectors along a horizontal line
@@ -102,6 +103,7 @@ staircase.plot		Plot successive values and increments as linked bars
 staxlab			Display staggered labels on an axis
 std.error		Calculate the conventional standard error
 sumDendrite		Sum the first levels of counts in a dendrite list
+sumbrk			Count the number of values equal to a specified value
 symbolbarplot		Barplot with bars filled with symbols : height
 symbolbox		Draw a box filled with symbols
 tab.title		Display the plot title in a tab

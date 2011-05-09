@@ -1,10 +1,3 @@
-dispbars<-function(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,
- arrow.gap=NA,...) {
-
- dispersion(x=x,y=y,ulim=ulim,llim=llim,intervals=intervals,arrow.cap=arrow.cap,
-  arrow.gap=arrow.gap,type="a",...)
-}
-
 brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  stagger=NA,dispbar=TRUE,main="Breakdown plot",xlab=NA,ylab=NA,xaxlab=NA,
  ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,...) {
@@ -133,7 +126,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
   points(obs.pos+offset,brkdn[[1]][group,],type=type,col=col[group],
    pch=pch[group],lty=lty[group])
   if(dispbar)
-   dispbars(obs.pos+offset,brkdn[[1]][group,],brkdn[[2]][group,],
+   dispersion(obs.pos+offset,brkdn[[1]][group,],brkdn[[2]][group,],
     arrow.cap=arrow.cap,col=col[group])
   offset<-ifelse(offset<0,-offset,-offset-offinc)
  }

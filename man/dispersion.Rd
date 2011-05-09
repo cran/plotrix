@@ -9,7 +9,6 @@
 \usage{
  dispersion(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,
   type="a",fill=NA,lty=NA,pch=NA,border=NA,...)
- dispbars(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the bars}
@@ -37,11 +36,9 @@
  confidence lines. Remember that any points or lines within the confidence band
  will be obscured, so these will have to be redrawn.
 
- The \samp{intervals} argument allows the user to pass the limits as either intervals (the default) or absolute values.
+ The \samp{intervals} argument allows the user to pass the limits as either
+ intervals (the default) or absolute values.
 
- \samp{dispbars} is now a call to \samp{dispersion} with \samp{type} set to
- \samp{a}.
- 
  If \samp{arrow.gap} is greater than or equal to the upper or lower
  limit for a bar, \samp{segments} is used to draw the upper and
  lower caps with no bars to avoid zero length arrows.

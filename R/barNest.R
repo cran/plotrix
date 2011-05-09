@@ -6,7 +6,8 @@ barNest<-function(formula=NULL,data=NULL,FUN=c("mean","sd"),
  x<-brkdnNest(formula=formula,data=data,FUN=FUN,trueval=trueval)
  nbn<-length(as.character(attr(terms(formula),"variables")[-1]))
  if(is.null(ylim)) {
-  if(FUN[1]=="valid.n")
+  # don't use overall value to calculate ylim when counts are displayed
+  if(FUN[1]=="valid.n" || FUN[1]=="sumbrk")
    ylim<-c(0,1.04*max(unlist(x[[1]][[2]]),na.rm=TRUE))
   else {
    lenx<-length(x)
@@ -32,6 +33,7 @@ barNest<-function(formula=NULL,data=NULL,FUN=c("mean","sd"),
    }
    # add the bit of space at the top
    ylim<-ylim+c(ifelse(ylim[1]<0,-0.04,0),0.04)*diff(ylim)
+   # don't display negative values
    if(ylim[1] > 0) ylim[1]<-0
   }
  }

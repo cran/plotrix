@@ -4,6 +4,10 @@ propbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
  return(sum(x==trueval,na.rm=TRUE)/length(x))
 }
 
+sumbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
+ return(sum(x==trueval,na.rm=TRUE))
+}
+
 binciWu<-function(x,n,alpha=0.05,trueval=NA,na.rm=TRUE) {
  if(!is.na(trueval)) {
   n<-length(x)
@@ -44,11 +48,9 @@ brkdnNest<-function(formula,data,FUN=c("mean","sd"),label1="Overall",
   # get the overall values
   if(is.na(trueval))
    brklist[[brkfun]][[1]]<-
-    #data.frame(bn[1],
     do.call(FUN[brkfun],list(data[[bn[1]]],na.rm=TRUE))
   else
    brklist[[brkfun]][[1]]<-
-    #data.frame(bn[1],
     do.call(FUN[brkfun],list(data[[bn[1]]],trueval=trueval,na.rm=TRUE))
   names(brklist[[brkfun]][[1]])<-label1
   for(brk in 2:nbn) {

@@ -1,6 +1,6 @@
 intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL, 
  namesep="+",mar=c(0,0,3,0),main="Intersection Diagram",cex=1,
- col=NULL,minspacing=NA) {
+ col=NULL,minspacing=NA,all.intersections=FALSE) {
 
  if(is.matrix(x) || is.data.frame(x))
   x<-makeIntersectList(x,xnames=xnames,sep=namesep)
@@ -29,7 +29,9 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
  maxlevel<-which.max(objectsums)
  nNonZero<-function(x) return(sum(x>0))
  # number of intersections with at least one member for each intersection level
- nintersects<-sapply(x,nNonZero)
+ # or all intersections if the somewhat dangerous "show everything" option is TRUE
+ if(all.intersections) nintersects<-sapply(x,length)
+ else nintersects<-sapply(x,nNonZero)
  # maximum number of intersections in a given level
  maxintersections<-max(nintersects)
  # largest intersection set in x
@@ -49,7 +51,9 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
   # determine the intersect level by the number of elements in the first name
   intersectLevel<-length(unlist(strsplit(names(x[[level]][1]),attsep)))
   # indices of intersections with at least one object in this level
-  intersections<-which(x[[level]] > 0)
+  # or just all of the intersections
+  if(all.intersections) intersections<-1:nintersects[[level]]
+  else intersections<-which(x[[level]] > 0)
   # get all the names in this level with at least one object
   blocknames<-names(x[[level]])[intersections]
   # spacing between intersection sets in object units

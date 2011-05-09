@@ -18,7 +18,7 @@
  \samp{binciWl} calculates the lower binomial confidence limit for the
  given number of successes and trials. It is mainly to allow binomial confidence
  limits to be calculated in the \samp{brkdnNest} function, which is why
- the upper and lower CIs areg calculated separately.
+ the upper and lower CIs are calculated separately.
 }
 \value{The lower binomial confidence limit}
 \author{Jim Lemon}

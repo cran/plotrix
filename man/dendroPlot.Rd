@@ -47,8 +47,14 @@
  ratio of the plot, the character expansion and the nudging will have to be
  adjusted to give the best point spacing for most dendroPlots.
 }
+\note{The \samp{ehplot} function is a much more versatile instantiation of this
+ type of plot. \samp{dendroPlot} has been retained as there are currently a few
+ differences that some users may find valuable. However, it is not impossible
+ that \samp{dendroPlot} will disappear in the future.
+}
 \value{nil}
 \author{Jim Lemon}
+\seealso{\link{ehplot}}
 \examples{
  x11(height=4)
  x<-list(runif(90,1,3),factor(sample(LETTERS[1:10],100,TRUE)),rnorm(80,mean=5))
