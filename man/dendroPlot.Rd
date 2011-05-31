@@ -56,7 +56,6 @@
 \author{Jim Lemon}
 \seealso{\link{ehplot}}
 \examples{
- x11(height=4)
  x<-list(runif(90,1,3),factor(sample(LETTERS[1:10],100,TRUE)),rnorm(80,mean=5))
  dendroPlot(x,xlab="Groups",ylab="Value of x",main="Test dendroPlot I")
  # now apply a nudge factor and different breaks

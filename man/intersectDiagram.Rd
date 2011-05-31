@@ -79,7 +79,8 @@
  intersections with few objects may overlap if they are wide relative to the
  rectangle representing the number of objects. This can be corrected by
  passing a \samp{minspacing} argument that will increase the space between
- rectangles and/or decreasing the character size of the labels.
+ rectangles and/or decreasing the character size of the labels. If the labels
+ for each set are relatively long, setting \samp{namesep="+\\n"} may help.
 }
 \value{
  Returns the intersectionList object invisibly.

@@ -62,6 +62,7 @@ gradient.rect		Display a rectangle with an arbitrary color gradient
 hexagon			Draw a hexagon
 intersectDiagram	Graphically display set intersections
 kiteChart		Display the rows of a matrix of values as polygon widths
+labbePlot		Display a L'Abbe plot
 ladderplot		Display a ladder plot
 legendg			Display groups of fills or symbols in a legend
 lengthKey		Key for interpreting lengths in a plot

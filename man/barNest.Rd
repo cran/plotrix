@@ -101,8 +101,8 @@
  barNest(survived~class+age+sex,titanic,col=titanic.colors,showall=TRUE,
   main="Titanic passengers and crew by class, age and sex",ylab="Number",
   FUN="valid.n",shrink=0.15)
- # start a wide plot window
- x11(width=10)
+ # to see this properly displayed, start a wide plot window
+ # x11(width=10)
  test.df<-data.frame(Age=rnorm(100,25,10),
   Sex=sample(c("Male","Female"),100,TRUE),
   Marital=sample(c("Div","Mar","Sing","Wid"),100,TRUE),
@@ -123,7 +123,7 @@
   main="Show the proportion unemployed",FUN=c("propbrk","binciWu","binciWl"),
  errbars=TRUE,col=test.col,trueval="Un")
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Counts",
-  main="Show the counts in subgroups",FUN="valid.n",
+  main="Show the counts in subgroups (final level only)",FUN="valid.n",
   col=test.col,showall=FALSE,ylim=c(0,10))
 }
 \keyword{misc}
