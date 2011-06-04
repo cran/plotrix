@@ -15,8 +15,9 @@
  \item{sep}{A character to use as a separator for attribute labels.}
 }
 \details{
- \samp{makeIntersectList} reads a matrix (or data frame) containing only
- dichotomous values (either 0/1 or FALSE/TRUE). Each row represents an object
+ \samp{makeIntersectList} reads a matrix (or data frame where all values are the
+ same type) containing dichotomous values (either 0/1 or FALSE/TRUE) or labels
+ (see next paragraph). In the first type of input, each row represents an object
  and each column represents a set. A value of 1 or TRUE indicates that that
  object is a member of that set. The function creates a list of vectors that
  correspond to all combinations of the sets (set intersections) and inserts the
@@ -24,14 +25,16 @@
  it will not be counted, but the second last element of the list returned
  contains the count of rows in \samp{x} and thus non-members can be calculated.
 
- If a data frame or matrix containing values other than 0/1 or TRUE/FALSE, it
- will be passed to \samp{categoryReshape} for conversion to a data frame as
- described above. See \samp{categoryReshape} for details of this.
+ If a matrix (or data frame where all values are the same type) containing values 
+ other than 0/1 or TRUE/FALSE, it will be passed to \samp{categoryReshape} for
+ conversion to a data frame as described above. See \samp{categoryReshape} for
+ details of this.
  
  makeIntersectList combines the set or attribute names to form
  intersection names. For the intersection of sets A and B, the name will
  be A+B (unless \samp{sep} is changed) and so on. These are the names that will
- be displayed by intersectDiagram. To change these, use the \samp{xnames} argument.
+ be displayed by \samp{intersectDiagram}. To change these, use the \samp{xnames}
+ argument.
 }
 \value{
  A list of the intersection counts or percentages, the total number of

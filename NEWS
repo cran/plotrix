@@ -1,3 +1,9 @@
+version 3.2-2
+
+	Added the labbePlot function (thanks to Whitney Melroy)
+	Fixed the showall argument problem in the barNest function
+	Fixed the problem with data frame input in the intersectDiagram function
+
 version 3.2-1
 
 	Added the sumbrk function to brkdnNest (thanks to Kevin Burnham)

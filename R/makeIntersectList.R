@@ -23,8 +23,6 @@ categoryReshape<-function(x) {
 
 makeIntersectList<-function(x,xnames=NULL,sep="+") {
  if(any(!(x %in% c(TRUE,FALSE)))) x<-categoryReshape(x)
- if(is.null(xnames)) xnames <- names(x)
- if(!is.matrix(x)) x <- as.matrix(x)
  if(is.null(xnames)) xnames <- colnames(x)
  dimx<-dim(x)
  if(is.null(xnames)) xnames<-LETTERS[1:dimx[2]]

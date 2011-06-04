@@ -212,6 +212,17 @@ testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
  sin(1:50)),ncol=50,byrow=TRUE)
 kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
  timepos=seq(1:50,by=5))
+didf<-data.frame(subject=1:50,interv=rep(c("therapist","ex-drinker"),each=25),
+ outcome=sample(c("more","less"),50,TRUE))
+didf.tab<-table(didf$interv,didf$outcome)
+didf2<-c(74,46,200)
+didf3<-c(33,87,500)
+x<-list(didf.tab,didf2,didf3)
+labbecol<-list("red","green","blue")
+labbePlot(x,main="Ex-drinkers vs therapists",
+ xlab="Percent reduced drinking (ex-drinkers)",
+ ylab="Percent reduced drinking (therapists)",
+ labels=list("A","B52","X117"),col=labbecol)
 l <- list(runif(10)*10,1:10,c(1,1,1,1,4,8))
 multhist(l,main="Test of multhist")
 windagg<-matrix(c(8,0,0,0,0,0,0,0,4,6,2,1,6,3,0,4,2,8,5,3,5,2,1,1,
