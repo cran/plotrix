@@ -45,7 +45,7 @@ symbolbarplot<-function(height,width=1,space=NULL,names.arg=NULL,
     if(missing(xlim)) xlim <- c(min(w.l), max(w.r))
     if(missing(ylim)) ylim <- range(-0.01 * height, height)
    }
-   if(beside) w.m <- matrix(w.m, nc = NC)
+   if(beside) w.m <- matrix(w.m, ncol = NC)
    if(plot) {
     opar<-
      if (horiz) par(xaxs = "i", xpd = TRUE)

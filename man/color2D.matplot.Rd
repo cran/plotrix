@@ -9,7 +9,7 @@
  color2D.matplot(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
   extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
   ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,
-  border="black",na.color=NA,color.spec="rgb",...)
+  border="black",na.color=NA,xrange=NULL,color.spec="rgb",yrev=TRUE,...)
 }
 \arguments{
  \item{x}{data values}
@@ -37,7 +37,13 @@
  \item{border}{The color(s) for the borders of the cells. Pass NA
   if no border is  wanted.}
  \item{na.color}{The color to use for NA values of \samp{x}.}
+ \item{xrange}{An explicit range for the transformation of colors.
+  see \samp{color.scale}}
  \item{color.spec}{The color specification system to use.}
+ \item{yrev}{Whether to reverse the order of the y-axis to display the
+  cells in "reading" order (left to right and top to bottom) if TRUE,
+  or in the order of a typical plot (left to right and bottom to top) if
+  FALSE.}
  \item{...}{arguments passed to \samp{plot}.}
 }
 \value{nil}
@@ -46,7 +52,8 @@
  there are numeric values in the matrix or data frame. Each rectangle is
  colored to represent its corresponding value. The rectangles are arranged
  in the conventional display of a 2D matrix with rows beginning at the top
- and columns at the left. The color scale defaults to black for the minimum
+ and columns at the left. To get the rows beginning at the bottom, use
+ \samp{yrev=FALSE}. The color scale defaults to black for the minimum
  value and white for the maximum.
  
  The user will have to adjust the plot device dimensions to get regular

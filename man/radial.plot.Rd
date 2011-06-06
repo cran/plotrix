@@ -116,8 +116,9 @@
  for the \samp{lty} and \samp{rp.type} suggestions respectively, Patrick
  Baker for the request that led to \samp{radlab}, Thomas Steiner for
  the request for the \samp{radial.lim} and \samp{radial.labels} modifications,
- Evan Daugharty for requesting the \samp{add} argument and James MacCarthy
- for requesting better radial labels.}
+ Evan Daugharty for requesting the \samp{add} argument, James MacCarthy
+ for requesting better radial labels and Steve Ellison for noticing that
+ the return values of the functions had changed.}
 \seealso{\link{polar.plot},\link{clock24.plot}}
 \examples{
  testlen<-rnorm(10)*2+5

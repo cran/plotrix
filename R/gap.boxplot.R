@@ -91,7 +91,7 @@ gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  else topadjust<-0
  if(!is.na(gap$bottom[1])) bottomadjust<-diff(gap$bottom)
  else bottomadjust<-0
- if(!is.null(axis.labels)) axis(2,label=axis.labels,
+ if(!is.null(axis.labels)) axis(2,labels=axis.labels,
   at=c(axis.labels[1]+bottomadjust,axis.labels[2]-topadjust))
  if(!is.na(gap$top[1])) axis.break(2,gap$top[1],style="gap")
  if(!is.na(gap$bottom[1]))

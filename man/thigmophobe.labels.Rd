@@ -29,6 +29,12 @@
  \samp{thigmophobe.labels} as the \samp{text.pos} argument. This
  takes precedence over the positions calculated by \samp{thigmophobe}.
  
+ \samp{thigmophobe} will fail with only two labels, as it can't figure out
+ the nearest neighbors. If you really want to use this with two labels, just
+ eyeball the plot and work out in which direction the labels will go. Then
+ pass the directions to \samp{thigmophobe.labels} as the \samp{text.pos}
+ argument.
+
  Both \samp{pointLabel} in the \pkg{maptools} package and \samp{spread.labs}
  in the \pkg{TeachingDemos} package use more sophisticated algorithms to
  place the labels and are worth a try if \samp{thigmophobe} just won't get it
@@ -38,7 +44,8 @@
  A vector of directions away from the point nearest to each point.
 }
 \keyword{misc}
-\author{Jim Lemon (thanks to Stephen Milborrow for finding the single point bug)}
+\author{Jim Lemon (thanks to Stephen Milborrow for finding the single point bug
+ and Erik Aronesty for finding the two point problem.)}
 \seealso{\link{thigmophobe}, \link{text}}
 \examples{
  x<-rnorm(20)

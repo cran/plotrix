@@ -26,8 +26,8 @@ dotplot.mtb <- function (x, xlim = NULL, main = NULL, xlab = NULL, ylab=NULL,
     	y <- strheight("o") * w
     	points(x, y, pch = pch)
     	axis(side = 1, pos = 0)
-	if(xlab!="") axis(side=1,at=0.5*sum(xlim),pos=-2,label=xlab,tick=FALSE)
-	if(ylab!="") axis(side=2,at=0.5*yr[2],line=2,label=ylab,tick=FALSE)
+	if(xlab!="") axis(side=1,at=0.5*sum(xlim),pos=-2,labels=xlab,tick=FALSE)
+	if(ylab!="") axis(side=2,at=0.5*yr[2],line=2,labels=ylab,tick=FALSE)
 	if(yaxis) {
 		b  <- max(1,ceiling(top/10))
 		ll <- 1+floor(top/b)
@@ -44,8 +44,8 @@ dotplot.mtb <- function (x, xlim = NULL, main = NULL, xlab = NULL, ylab=NULL,
 	pos <- if(mtbstyle) -0.02*mw else 0
 	axis(side = 1,pos = pos)
 	if(mtbstyle) {
-		if(xlab!="") axis(side=1,at=0.5*sum(xlim),pos=-2,label=xlab,tick=FALSE)
-		if(ylab!="") axis(side=2,at=0.5*yr[2],line=2,label=ylab,tick=FALSE)
+		if(xlab!="") axis(side=1,at=0.5*sum(xlim),pos=-2,labels=xlab,tick=FALSE)
+		if(ylab!="") axis(side=2,at=0.5*yr[2],line=2,labels=ylab,tick=FALSE)
 	} else {
 		if(xlab!="") title(xlab=xlab)
 		if(ylab!="") title(ylab=ylab)

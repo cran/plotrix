@@ -70,7 +70,7 @@ thigmophobe.labels<-function(x,y,labels=NULL,text.pos=NULL,...) {
    x<-x[[1]]
   }
   else
-   stop("if y is missing, x must be a list with at least 2 columns")
+   stop("if y is missing, x must be a list with at least 2 elements")
  }
  # check for NA or NaN
  validxy<-!(is.na(x) | is.na(y))

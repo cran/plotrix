@@ -20,8 +20,13 @@
   centered at the midpoint of the plot frame on a 24 hour 'clockface'. 
   In contrast to the default behavior of \samp{radial.plot}, the positions 
   are interpreted as beginning at vertical (000) and moving clockwise.
+
+ If \samp{add=TRUE} is passed as one of the additional arguments, the values
+ will be added to the current plot. If a \samp{radial.lim} argument was
+ passed on the initial plot, it must be passed again to add values or the
+ values will be displayed incorrectly.
 }
-\value{nil}
+\value{A list of the parameters altered by \link{radial.plot}.}
 \keyword{misc}
 \author{Jim Lemon}
 \seealso{\link{polar.plot},\link{radial.plot}}
@@ -32,9 +37,9 @@
   line.col="green",lwd=3)
  if(dev.interactive()) par(ask=TRUE)
  # now do a 'daylight' plot
- clock24.plot(testlen[7:19],testpos[7:19],
+ oldpar<-clock24.plot(testlen[7:19],testpos[7:19],
   main="Test Clock24 daytime (symbols)",
   point.col="blue",rp.type="s",lwd=3)
- # reset the margins
- par(mar=c(5,4,4,2))
+ # reset everything
+ par(oldpar)
 }

@@ -16,9 +16,9 @@
  described by \samp{x} and \samp{y}.
 }
 \note{
- Typically used to get the offset to automatically place labels
- on a scatterplot or similar using \samp{thigmophobe.labels} to avoid 
- overlapping labels. The name means "one who fears being touched".
+ \samp{thigmophobe} is typically used to get the offset to automatically
+  place labels on a scatterplot or similar using \samp{thigmophobe.labels}
+ to avoid overlapping labels. The name means "one who fears being touched".
 }
 \value{
  A vector of directions away from the point nearest to each point.
