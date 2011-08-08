@@ -16,7 +16,7 @@ clock24.plot<-function(lengths,clock.pos,labels=NULL,label.pos=NULL,
  if(is.null(label.pos))
   label.pos<-seq(5*pi/2,7*pi/12,by=-pi/12)
  else label.pos<-pi*(450-clock.pos*15)/180
- return(radial.plot(lengths,radial.pos,labels=labels,label.pos=label.pos,
+ invisible(radial.plot(lengths,radial.pos,labels=labels,label.pos=label.pos,
   rp.type=rp.type,...))
 }
 
@@ -37,7 +37,7 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
  if(is.null(label.pos)) label.pos<-seq(0,1.89*pi,length=18)
  else label.pos<-pi*label.pos/180
  if(missing(labels)) labels<-as.character(seq(0,340,by=20))
- return(radial.plot(lengths,radial.pos,labels,label.pos,start=start,
+ invisible(radial.plot(lengths,radial.pos,labels,label.pos,start=start,
   clockwise=clockwise,rp.type=rp.type,...))
 }
 
@@ -220,5 +220,5 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
    else text(xpos,ypos,radial.labels,cex=par("cex.lab"))
   }
  }
- return(oldpar)
+ invisible(oldpar)
 }

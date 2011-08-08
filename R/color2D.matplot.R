@@ -7,7 +7,7 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
 color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
  extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
  ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,
- border="black",na.color=NA,color.spec="rgb",...) {
+ border="black",na.color=NA,xrange=NULL,color.spec="rgb",yrev=TRUE,...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
@@ -32,6 +32,8 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
   if(all(is.na(cellcolors)))
    cellcolors<-color.scale(x,cs1,cs2,cs3,extremes=extremes,na.color=na.color,
     color.spec=color.spec)
+  # this sets the color for overprinted text to black or white
+  # depending upon what color will be the background for the text
   if(is.na(vcol))
    vcol<-ifelse(colSums(col2rgb(cellcolors)*c(1,1.4,0.6))<350,"white","black")
   # start from the top left - isomorphic with the matrix layout
@@ -53,12 +55,20 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
    par(xpd=FALSE)
   }
   else {
-   rect(sort(rep((1:xdim[2])-1,xdim[1])),rep(seq(xdim[1]-1,0,by=-1),xdim[2]),
-    sort(rep(1:xdim[2],xdim[1])),rep(seq(xdim[1],1,by=-1),xdim[2]),
+   if(yrev) {
+    y0<-rep(seq(xdim[1]-1,0,by=-1),xdim[2])
+    y1<-rep(seq(xdim[1],1,by=-1),xdim[2])
+   }
+   else {
+    y0<-rep(0:(xdim[1]-1),xdim[2])
+    y1<-rep(1:xdim[1],xdim[2])
+   }
+   rect(sort(rep((1:xdim[2])-1,xdim[1])),y0,sort(rep(1:xdim[2],xdim[1])),y1,
     col=cellcolors,border=border)
    if(show.values) {
-    text(sort(rep((1:xdim[2])-0.5,xdim[1])),
-     rep(seq(xdim[1]-0.5,0,by=-1),xdim[2]),
+    if(yrev) texty<-rep(seq(xdim[1]-0.5,0,by=-1),xdim[2])
+    else texty<-rep(seq(0.5,xdim[1]-0.5,by=1),xdim[2])
+    text(sort(rep((1:xdim[2])-0.5,xdim[1])),texty,
      round(x,show.values),col=vcol,cex=vcex)
    }
   }

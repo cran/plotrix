@@ -48,11 +48,11 @@
  centered on integral X values, and so both the width and spacing of the bars
  are controlled by a single number. If \samp{height} is a vector, single bars
  representing each value will be displayed centered at \samp{1:length(height)}.
- If \samp{height} is a matrix or data frame, a group of bars will be drawn for
- each column, with the values of the group taken from the rows of that column.
- The values from \samp{freq} or \samp{brkdn} in the prettyR package can be
- used as the \samp{height} argument. The value from \samp{table} can also be
- passed as \samp{height}.
+ If \samp{height} is a matrix, 2D array, or data frame, a group of bars will be
+ drawn for each column, with the values of the group taken from the rows of that
+ column. The values from \samp{freq} or \samp{brkdn} in the prettyR package can
+ be used as the \samp{height} argument. The value from \samp{table} can also be
+ passed as \samp{height}, as can a 2D array returned from the \samp{by} function.
  
  Bars are empty by default but fill colors can be defined in several ways.
  If a single color is passed, all bars will be the same color. If \samp{height}

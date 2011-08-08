@@ -56,7 +56,7 @@ function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL,
         smidge <- par("fin")[1] * sfrac
         arrow.args <- c(list(lty = slty, angle = 90, length = smidge, 
             code = 1, col = scol), clean.args(arglist, arrows, 
-            exclude.other = c("col", "lty")))
+            exclude.other = c("col", "lty", "axes")))
         nz <- abs(li-pmax(y-gap,li))*y.to.in>1e-3
         do.call("arrows", c(list(x[nz], li[nz], x[nz], pmax(y - gap, li)[nz]), 
             arrow.args))
@@ -69,7 +69,7 @@ function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL,
         smidge <- par("fin")[2] * sfrac
         arrow.args <- c(list(lty = slty, angle = 90, length = smidge, 
             code = 1, col = scol), clean.args(arglist, arrows,
-	    exclude.other = c("col", "lty")))
+	    exclude.other = c("col", "lty", "axes")))
         nz <- abs(li-pmax(x-gap,li))*x.to.in>1e-3
         do.call("arrows", c(list(li[nz], y[nz], pmax(x - gap, li)[nz], y[nz]), 
             arrow.args))

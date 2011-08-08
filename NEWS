@@ -1,3 +1,8 @@
+version 3.2-3
+
+	Fixed a few warnings from CRAN check (dotplot.mtb, gap.boxplot, symbolbarplot)
+	Added the ruginv function (thanks to Peter Solymos)
+
 version 3.2-2
 
 	Added the labbePlot function (thanks to Whitney Melroy)

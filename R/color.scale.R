@@ -14,10 +14,15 @@ color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
  maxcs2<-ifelse(color.spec=="hcl",100,1)
  maxcs3<-ifelse(color.spec=="hcl",100,1)
  ncolors<-length(x)
- if(is.null(xrange)) xrange<-range(x,na.rm=TRUE)
+ if(is.null(xrange)) {
+  xrange<-range(x,na.rm=TRUE)
+  drop.extremes<-FALSE
+ }
  else {
   if(xrange[1] > min(x,na.rm=TRUE) || xrange[2] < max(x,na.rm=TRUE))
    stop("An explicit range for x must include the range of x values.")
+  x<-c(xrange,x)
+  drop.extremes=TRUE
  }
  ncs1<-length(cs1)
  if(ncs1>1) {
@@ -58,6 +63,11 @@ color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
   if(min(cs3s) < 0 || max(cs3s) > maxcs3) cs3s<-rescale(cs3s,c(0,maxcs3))
  }
  else cs3s<-rep(cs3,ncolors)
+ if(drop.extremes) {
+  cs1s<-cs1s[-(1:2)]
+  cs2s<-cs2s[-(1:2)]
+  cs3s<-cs3s[-(1:2)]
+ }
  xdim<-dim(x)
  colors<-do.call(color.spec,list(cs1s,cs2s,cs3s,alpha=alpha))
  if(!is.null(xdim)) colors<-matrix(colors,nrow=xdim[1])
