@@ -43,7 +43,7 @@ get.gantt.info<-function(format="%Y/%m/%d") {
 gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL, 
  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1,
- border.col=NA) {
+ border.col=NA,priority.label="Priorities",priority.extremes=c("High","Low")) {
 
  oldpar<-par("mai","omi","xpd","xaxs","yaxs")
  if(is.null(x)) x<-get.gantt.info(format=format)
@@ -105,8 +105,11 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   plim<-par("usr")
   gradient.rect(plim[1],plim[3]-(plim[4]-plim[3])/10, 
    plim[1]+(plim[2]-plim[1])/4,plim[3]-(plim[4]-plim[3])/20,col=taskcolors)
-  mtext("Priorities",side=1,line=1,at=plim[1]-(plim[2]-plim[1])/20,adj=1)
-  mtext(c("High","Low"),side=1,line=0,at=c(plim[1],plim[1]+(plim[2]-plim[1])/4),
+  par(xpd=NA)
+  text(plim[1]+(plim[2]-plim[1])/8,plim[3]-(plim[4]-plim[3])/9,
+   priority.label,adj=c(0.5,1))
+  par(xpd=FALSE)
+  mtext(priority.extremes,side=1,line=0,at=c(plim[1],plim[1]+(plim[2]-plim[1])/4),
    c(1-ntasks/10,1-ntasks/10),cex=0.8)
  }
  par(oldpar)

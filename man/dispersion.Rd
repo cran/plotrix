@@ -34,7 +34,7 @@
  that form a "confidence band" around a line of central tendency. If \samp{fill}
  is not NA and \samp{type} is \samp{"l"}, a polygon will be drawn between the
  confidence lines. Remember that any points or lines within the confidence band
- will be obscured, so these will have to be redrawn.
+ will be obscured, so pass point and/or line types as in the second example.
 
  The \samp{intervals} argument allows the user to pass the limits as either
  intervals (the default) or absolute values.
@@ -59,8 +59,6 @@
   ylim=c(min(disptest.means-se.disptest),max(disptest.means+se.disptest)),
   xlab="Occasion",ylab="Value")
  dispersion(1:20,disptest.means[row.order],se.disptest[row.order],type="l",
-  fill="#eeccee",lty=2)
- # remember to redraw the points
- points(disptest.means[row.order])
+  fill="#eeccee",lty=2,pch=1)
 }
 \keyword{misc}

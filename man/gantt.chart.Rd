@@ -9,7 +9,7 @@
  gantt.chart(x=NULL,format="\%Y/\%m/\%d",xlim=NULL,taskcolors=NULL,
   priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="\%Y/\%m/\%d",
   half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1,
-  border.col=NA)
+  border.col=NA,priority.label="Priorities",priority.extremes=c("High","Low"))
 }
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
@@ -32,6 +32,8 @@
  \item{cylindrical}{Whether to give the bars a cylindrical appearance.}
  \item{label.cex}{Relative size for the task labels at the left side.}
  \item{border.col}{The color for an optional border for the bars (NA=none).}
+ \item{priority.label}{Label for the priority color legend.}
+ \item{priority.extremes}{Labels for each end of the priority color legend.}
 }
 \value{
  The list used to create the chart - see \link{get.gantt.info} for
@@ -41,7 +43,9 @@
 \details{
  If task priority colors are not wanted, set \samp{taskcolors} to a single
  value to suppress the coloring. If this is not done, \samp{rainbow} will
- be called to generate a different color for each task.
+ be called to generate a different color for each task. If colors other than
+ \samp{rainbow} are wanted, remember to pass enough colors for one to the
+ lowest (highest numerically) priority.
  
  There can now be more than one time interval for each task. If there is,
  more than one bar will be displayed for each interval, which may not be a
@@ -53,6 +57,9 @@
  order of the entity labels. If there are at least as many taskcolors as intervals,
  they will be assigned to intervals in the order of the \samp{taskcolors} vector.
  The examples should make this clearer.
+
+ Since \samp{gantt.chart} can be used to display things other than prioritized
+ tasks, the labels for the priority legend can now be specified.
 }
 \author{Jim Lemon (original by Scott Waichler - features by Ulrike Gromping -
  added label colors by Nicolas Immelman)}

@@ -1,8 +1,8 @@
 dotplot.mtb <- function (x, xlim = NULL, main = NULL, xlab = NULL, ylab=NULL,
                      pch = 19, hist=FALSE, yaxis=FALSE, mtbstyle=TRUE)
 {
-    if (is.null(xlim)) 
-        xlim <- range(pretty(range(x)))
+    if (is.null(xlim))
+        xlim <- range(pretty(range(x,na.rm=TRUE))) 
     if (is.null(main)) 
         main <- ""
     if (is.null(xlab)) 

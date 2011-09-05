@@ -56,6 +56,9 @@
  height=0 and theta=pi, the labels produced by \samp{pie3D.labels} will
  not be well positioned. It is probably better to use \samp{floating.pie}
  for this, or use \samp{pie.labels} for the labels.
+
+ Contributed fixes and improvements:
+ thanks to Jesse Brown for the "shade" fix
 }
 \author{Jim Lemon}
 \seealso{\link{pie3D.labels}, \link{draw.tilted.sector}}

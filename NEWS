@@ -1,3 +1,10 @@
+version 3.2-4
+
+	Fixed the missing "shade" argument in pie3D (thanks to Jesse Brown)
+	Added specifiable priority legend label and extreme descriptors
+		(thanks to Pedro Reis)
+	Added the (experimental) radial.pie function
+
 version 3.2-3
 
 	Fixed a few warnings from CRAN check (dotplot.mtb, gap.boxplot, symbolbarplot)
