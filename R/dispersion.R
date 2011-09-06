@@ -70,12 +70,12 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
  if(toupper(type) == "L") {
   if(!is.na(fill)) {
    polygon(c(x,rev(x)),c(y+ulim,rev(y-llim)),col=fill,border=NA)
-   if(is.na(pch)) {
-    if(is.na(lty)) points(x,y,pch=pch,...)
-    else lines(x,y,lty=lty,pch=pch,type="b",...)
+   if(!is.na(pch)) {
+    if(is.na(lty)) points(x,y,pch=pch)
+    else lines(x,y,lty=lty,pch=pch,type="b")
    }
    else {
-    if(!is.na(lty)) lines(x,y,lty=lty,...)
+    if(!is.na(lty)) lines(x,y,lty=lty)
    }
   }
   if(!is.na(border)) {

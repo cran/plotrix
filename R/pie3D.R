@@ -110,7 +110,7 @@ pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,
  for(i in sector.order) {
   bc[i]<-draw.tilted.sector(radius=radius,height=height, 
    theta=theta,start=x[i],end=x[i+1],edges=edges, 
-   border=border,col=col[i],explode=explode)
+   border=border,col=col[i],explode=explode,shade=shade)
  }
  if(!is.null(labels)) {
   if(!is.null(labelpos)) 
