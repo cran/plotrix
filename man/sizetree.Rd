@@ -6,7 +6,7 @@
  rectangles.}
 \usage{
  sizetree(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,showcount=TRUE,
-  firstcall=TRUE,col=NA,colorindex=1,...)
+  firstcall=TRUE,col=NA,colorindex=1,base.cex=1,...)
 }
 \arguments{
  \item{x}{A data frame in which each successive column represents
@@ -21,6 +21,7 @@
  \item{firstcall}{A flag for the function - do not alter this.}
  \item{col}{Optional fill colors for the rectangles. See Details}
  \item{colorindex}{The index for \samp{col} if it is a list of color vectors.}
+ \item{base.cex}{The base character expansion for the labels.}
  \item{...}{additional arguments passed to \samp{plot}.}
 }
 \value{ nil }
@@ -41,10 +42,17 @@
  categories if these are wanted. If colors are passed, it is best to have at
  least as many colors as there are categories in the first column or some will
  be recycled. If different colors are desired for different levels, as in the
- example, pass a list of colors. If colors are to be matched across columns
- in which the number of levels is different (e.g. some levels are missing in the
- sub-categories), the color list must reflect this \emph{and} the levels
- of the factors must be consistent with the colors - see the example.
+ example, pass a list of colors. \samp{sizetree} will now match colors to 
+ categories when the number of categories is different (e.g. some levels are
+ missing in the sub-categories), if \samp{col} is a vector. If \samp{col} is
+ a list, this is not done, and the user will have to work out the correct
+ colors for each level.
+
+ The labels are sized to fit the vertical extent of the bars. However, it is
+ possible to have labels that extend horizontally beyond the bar(s). The
+ \samp{base.cex} argument can be used to shrink the labels if this happens.
+ Remember that \samp{base.cex} will shrink all the labels, not just the ones
+ that are too wide.
  
  The \samp{firstcall} argument is necessary for the function to initialize the
  plot, as each breakdown involves a recursive call. If it is changed, the best
@@ -64,9 +72,7 @@
  hcats$cat1[10]<-NA
  hcats$cat2[c(15,20)]<-NA
  hcats$cat3[c(11,14,25)]<-NA
- bhcol<-list(c("#ff8080","#dddd80","#80ff80","#0000ff","#80dddd"),
-  c("#ff8080","#dddd80","#80ff80","#0000ff"),
-  c("#ff8080","#dddd80","#0000ff"))
+ bhcol<-c("#ff8080","#dddd80","#80ff80","#0000ff","#80dddd")
  sizetree(hcats,col=bhcol,main="Hierarchical count chart (sizetree)")
 }
 \keyword{misc}
