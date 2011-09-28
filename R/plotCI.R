@@ -54,10 +54,11 @@ function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL,
     if (err == "y") {
         gap <- rep(gap, length(x)) * diff(par("usr")[3:4])
         smidge <- par("fin")[1] * sfrac
+        nz <- abs(li - pmax(y - gap, li)) * y.to.in > 0.001
+        scols <- rep(scol, length.out = length(x))[nz]
         arrow.args <- c(list(lty = slty, angle = 90, length = smidge, 
-            code = 1, col = scol), clean.args(arglist, arrows, 
+            code = 1, col = scols), clean.args(arglist, arrows, 
             exclude.other = c("col", "lty", "axes")))
-        nz <- abs(li-pmax(y-gap,li))*y.to.in>1e-3
         do.call("arrows", c(list(x[nz], li[nz], x[nz], pmax(y - gap, li)[nz]), 
             arrow.args))
         nz <- abs(ui-pmin(y+gap,ui))*y.to.in>1e-3
@@ -67,13 +68,16 @@ function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL,
     else if (err == "x") {
         gap <- rep(gap, length(x)) * diff(par("usr")[1:2])
         smidge <- par("fin")[2] * sfrac
+        nz <- abs(li - pmax(x - gap, li)) * x.to.in > 0.001
+        scols <- rep(scol, length.out = length(x))[nz]
         arrow.args <- c(list(lty = slty, angle = 90, length = smidge, 
-            code = 1, col = scol), clean.args(arglist, arrows,
+            code = 1, col = scols), clean.args(arglist, arrows,
 	    exclude.other = c("col", "lty", "axes")))
-        nz <- abs(li-pmax(x-gap,li))*x.to.in>1e-3
         do.call("arrows", c(list(li[nz], y[nz], pmax(x - gap, li)[nz], y[nz]), 
             arrow.args))
         nz <- abs(ui-pmin(x+gap,ui))*x.to.in>1e-3
+        scols <- rep(scol, length.out = length(x))[nz]
+        arrow.args$col <- scols
         do.call("arrows", c(list(ui[nz], y[nz], pmin(x + gap, ui)[nz], y[nz]), 
             arrow.args))
     }

@@ -1,3 +1,8 @@
+version 3.2-5
+
+	fixed a color assignment problem in plotCI
+	added automatic color assignment in sizetree where all levels use the same colors
+
 version 3.2-4
 
 	Fixed the missing "shade" argument in pie3D (thanks to Jesse Brown)
