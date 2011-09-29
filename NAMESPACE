@@ -99,6 +99,7 @@ export(
  remove.args,
  rescale,
  revaxis,
+ ruginv,
  sizeplot,
  sizetree,
  sliceArray,

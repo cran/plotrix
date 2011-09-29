@@ -91,6 +91,7 @@ rectFill		Display a rectangle filled with symbols
 remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
 revaxis			Plot with the values on the X or Y axis reversed
+ruginv			Rug plot with inverse coloring
 sizeplot		Display overlying points as larger points
 sizetree		Display hierarchical categories as stacked rectangles
 smoothColors		Build a vector of interpolated colors

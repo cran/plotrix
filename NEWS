@@ -1,3 +1,7 @@
+version 3.2-6
+
+	added the ruginv function after fixing some encoding problems
+
 version 3.2-5
 
 	fixed a color assignment problem in plotCI
