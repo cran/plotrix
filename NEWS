@@ -1,3 +1,11 @@
+version 3.2-8
+
+	added partitioning of intersections to intersectDiagram
+
+version 3.2-7
+
+	bug fix for the examples in ladderplot
+
 version 3.2-6
 
 	added the ruginv function after fixing some encoding problems

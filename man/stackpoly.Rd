@@ -71,7 +71,7 @@
   axis4=FALSE)
  ylim<-par("usr")[3:4]
  par(mar=c(5,0,4,4))
- stackpoly(rev(sort((testx-mean(testx))/sd(testx))),
+ stackpoly(rev(sort((testx-mean(testx))/sd(as.vector(testx)))),
   ylim=ylim,main="Waterfall Plot ((x-mean)/sd)",xat=seq(10,90,by=10),
   xlab="Index",lwd=3,col="lightblue",border="black",axis2=FALSE)
  par(oldmar)
