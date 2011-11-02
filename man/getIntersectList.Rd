@@ -1,9 +1,9 @@
 \name{getIntersectList}
 \alias{getIntersectList}
-\title{Enter the information for a set intersection display}
+\title{Enter a set intersection list}
 \description{Enter the information for a set intersection display.}
 \usage{
- getIntersectList(nelem,xnames=NULL,sep="-")
+ getIntersectList(nelem,xnames=NULL,sep="+")
 }
 \arguments{
  \item{nelem}{The number of sets for which the intersections will be displayed.}
@@ -18,6 +18,9 @@
  It is probably most useful for producing an intersection diagram when the
  counts of the intersections are already known, or when the values are
  proportions rather than counts as in the example.
+
+ It is very helpful when there are large numbers of elements, as the
+ \samp{makeIntersectList} function runs very slowly.
 }
 \value{A list of the counts of elements in the set intersections.}
 \author{Jim Lemon}

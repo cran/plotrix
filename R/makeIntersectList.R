@@ -4,6 +4,10 @@ pasteCols<-function(x,sep="") {
  return(do.call(paste,c(eval(parse(text = pastestring)),sep=sep)))
 }
 
+# converts a two column matrix of object identifiers [,1] and attributes [,2]
+# into a data frame of TRUE/FALSE values where each row is an object and
+# each column is an attribute
+
 categoryReshape<-function(x) {
  dimx<-dim(x)
  if(is.null(dimx) || dimx[2]==1)
@@ -21,7 +25,14 @@ categoryReshape<-function(x) {
  return(newx)
 }
 
+# makes an intersectList object from a matrix or data frame of TRUE/FALSE
+# values where each row represents an object and each column an attribute
+# TRUE indicates that the object has that attribute, FALSE that it does not
+# add a "weight" vector that allows a count of objects to be read directly
+
 makeIntersectList<-function(x,xnames=NULL,sep="+") {
+ # If any entries in x are not 1/0 OR TRUE/FALSE, assume that x
+ # is a two column matrix of object identifiers [,1] and attributes [,2]
  if(any(!(x %in% c(TRUE,FALSE)))) x<-categoryReshape(x)
  if(is.null(xnames)) xnames <- colnames(x)
  dimx<-dim(x)

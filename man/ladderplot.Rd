@@ -6,7 +6,7 @@
 Ladder Plot
 }
 \description{
-Makes a ladder plot, similar to \code{\link[MASS]{parcoord}} but with more
+Makes a ladder plot, similar to \link[MASS]{parcoord} but with more
 flexibility and graphical options.
 }
 \usage{
@@ -22,7 +22,7 @@ A matrix or data frame with at least 2 columns.
 Logical, if the original data columns should be scaled to the unit (0-1) interval.
 }
   \item{col}{
-Color values to use for rows of \code{x}. If longer than 1, its value is recycled.
+Color values to use for rows of \samp{x}. If longer than 1, its value is recycled.
 }
   \item{pch}{
 Point type to use. If longer than 1, its value is recycled.
@@ -37,27 +37,27 @@ Limits for axes.
 Logical, if the orientation of the ladderplot should be vertical or horizontal.
 }
   \item{ordered}{
-Logical, if the columns in \code{x} should be ordered.
+Logical, if the columns in \samp{x} should be ordered.
 }
   \item{\dots}{
-Other arguments passed to the function \code{\link{stripchart}}.
+Other arguments passed to the function \link{stripchart}.
 }
 }
 \details{
-The function uses \code{\link{stripchart}} to plot 1-D scatter plots for each column in \code{x}.
-Then points are joined by lines for each rows of \code{x}.
+The function uses \link{stripchart} to plot 1-D scatter plots for each column
+ in \samp{x}. Then points are joined by lines for each rows of \samp{x}.
 }
 \value{
 Makes a plot as a side effect.
-Returns \code{NULL} invisibly.
+Returns \samp{NULL} invisibly.
 }
 \author{
 Peter Solymos <solymos@ualberta.ca>
 }
 \seealso{
-\code{\link{lines}}, \code{\link{points}}, \code{\link{stripchart}}
+\link{lines}, \link{points}, \link{stripchart}
 
-Almost identical function: \code{\link[MASS]{parcoord}}
+Almost identical function: \link[MASS]{parcoord}
 }
 \examples{
 x<-data.frame(A=c(1:10), B=c(2:11)+rnorm(10))
@@ -78,10 +78,10 @@ ladderplot(z1, pch=NA, scale=TRUE, main="ladderplot state.x77 original")
 ladderplot(z1, main="ladderplot state.x77 original")
 ir <- rbind(iris3[,,1], iris3[,,2], iris3[,,3])
 z2 <- log(ir)[, c(3, 4, 2, 1)]
-parcoord(z2, col = 1 + (0:149)%/%50, main="parcoord iris")
-ladderplot(z2, scale=TRUE, col = 1 + (0:149)%/%50, 
+parcoord(z2, col = 1 + (0:149))
+ladderplot(z2, scale=TRUE, col = 1 + (0:149),
     main="ladderplot iris original")
-ladderplot(z2, col = 1 + (0:149)%/%50, main="ladderplot iris original")
+ladderplot(z2, col = 1 + (0:149))
 par(opar)
 }
 }
