@@ -34,10 +34,8 @@ weighted.hist<-function(x,w,breaks="Sturges",col=NULL,plot=TRUE,
  if(diff(range(breaks)) < diffx)
    warning("Not all values will be included in the histogram")
  counts<-rep(0,nbreaks)
- for(bin in 1:nbreaks) {
-  indices<-which(x >= breaks[bin] & x < breaks[bin+1])
-  if(length(indices)) counts[bin]<-sum(w[indices])
- }
+ for(bin in 1:nbreaks)
+  counts[bin]<-sum(x >= breaks[bin] & x < breaks[bin+1])
  density<-counts/sum(counts)
  if(freq) {
   if(is.null(ylab)) ylab<-"Frequency"
@@ -58,7 +56,7 @@ weighted.hist<-function(x,w,breaks="Sturges",col=NULL,plot=TRUE,
   if(is.na(ylim)) ylim<-c(0,1.1*max(heights,na.rm=TRUE))
   mids<-barplot(heights,width=width,col=col,space=0,ylim=ylim,ylab=ylab,...)
   tickpos<-c(mids-width/2,mids[length(mids)]+width[length(width)]/2)
-  axis(1,at=tickpos,labels=c(breaks[1:nbreaks],lastbreak))
+  axis(1,at=tickpos,labels=signif(c(breaks[1:nbreaks],lastbreak),3))
  }
  else mids<-breaks[-length(breaks)]+width/2
  invisible(list(breaks=breaks,counts=counts,density=density,

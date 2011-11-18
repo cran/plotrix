@@ -62,7 +62,7 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    if(vlines) segments(xleft+(col+display.rownames-1)*cellwidth,
     ytop-(row+display.colnames)*cellheight,
     xleft+(col+display.rownames-1)*cellwidth,
-    ytop-row*cellheight)
+    ytop-row*cellheight,col=box.col)
   }
  }
  if(display.colnames)

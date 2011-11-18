@@ -1,9 +1,9 @@
-d108605d11c1b71ef21ee5a26b00933e *DESCRIPTION
-3c37640a9a41a578442f8bc7c222d41d *INDEX
-f1828741dda31618253873998e57ed5d *NAMESPACE
-f9141b4e84a2eb93b5e11b091804e1c9 *NEWS
+14dc5af63c4816cc5366a6224730f162 *DESCRIPTION
+4b0a1b30ec1fddd868eefa7a97c77ecc *INDEX
+7dbab4e693a5a24e35047f1a9417fd00 *NAMESPACE
+d4d78b7985fada2bc71a11b736ee0cd6 *NEWS
 f0fdaf267a08fc0740ff7ffad4776b58 *R/ablineclip.R
-2aac843e38ba350ba1baa0ea7ec62180 *R/addtable2plot.R
+17824cd2a230be55fb9d02108ed6f4c1 *R/addtable2plot.R
 2ed5c43219990f1d2a464646d78a6cef *R/arctext.R
 fab32acaa7362918ba978d5ea0df6180 *R/axis.break.R
 93b3e6deb1c3e93f5eef5d2d251c5f38 *R/axis.mult.R
@@ -74,6 +74,7 @@ ace0bc5530665de9e7314b8428272e0b *R/pyramid.plot.R
 da39dde9cdb82f81e5f3373588756c59 *R/rescale.R
 0325ce82523cd877ba82c2d72c664ddc *R/revaxis.R
 e761953480126b28a14326faa3cb680c *R/ruginv.R
+37e54e3378537a24290926fa6b6c9e98 *R/size_n_color.R
 37823c945ea9eae7dfcd8d9f321b3da4 *R/sizeplot.R
 17a97ce4f0a07a281003382c242e70f1 *R/sizetree.R
 de129c7ed4e840767bbc911fb5256708 *R/smoothColors.R
@@ -95,10 +96,11 @@ ed20aff50590ba744f276b1b4da0d3b8 *R/triax.R
 5f69ab97b8f0284bf8c98c753737ed47 *R/twoord.plot.R
 580be3c65f98df81f92dff1eff5e671c *R/twoord.stackplot.R
 1dedd96b7c359f41507a75f124b13dc8 *R/vectorField.R
-c1e3831522a69652814c396137b4dc5e *R/weighted.hist.R
+dcf0c9ed2042d6d8ccca0c88de77f591 *R/weighted.hist.R
 ea4694c55dc698d7c0edafa9cc6f9bd1 *R/windrose.R
 52d0de3c89b6d90fe1e9157b0c76f291 *R/zoomInPlot.R
-a4b17f74e038ae789e9e9b20295140d0 *data/soils.rda
+6c5b0047d50b0d071c9a8162c81ccb31 *data/death_reg.rda
+d6d94a3e49b74e17769b1362cff4b8fc *data/soils.rda
 afe626471214438383c01dfcc2a12e10 *demo/00Index
 033fe244dd67b8b54a0f7e7dcb4fd80f *demo/plotrix.R
 b35ca73e819dbad59881960986301ef3 *inst/CITATION
@@ -133,6 +135,7 @@ f103916c3141c63d4230a3c928bf7e51 *man/color2D.matplot.Rd
 51cd6dbe551abddadcf23f297b3fcef9 *man/corner.label.Rd
 35453606f45c916c9b5f77020c3c3b0c *man/count.overplot.Rd
 b6bc308f4d4d62c4302afddb22666411 *man/cylindrect.Rd
+403fec7cba6c01095a718a8503001bac *man/death_reg.Rd
 8ba90fa072871c4e865097cee03f681f *man/dendroPlot.Rd
 470583ce423fd9c05502a784d10114eb *man/diamondplot.Rd
 111ec7631c3005f803d13394d9259046 *man/dispersion.Rd
@@ -203,6 +206,7 @@ f4f614e09a3dab3c75f4a9e4fa02c0c9 *man/rectFill.Rd
 c4f2c015fcd5a98581ef7859a1640e5a *man/rescale.Rd
 806b61300d1880bdd26a85011d845714 *man/revaxis.Rd
 e707694b2762db46d4e938f3383b5577 *man/ruginv.Rd
+cde3510071f243f3d0bc97a8c6f012e3 *man/size_n_color.Rd
 f2586a13028c3884bdc4335610c67dc9 *man/sizeplot.Rd
 293e888c9a0f82ce66a01263dac00909 *man/sizetree.Rd
 554e180d9da267bedc3ad04b2bd6f4aa *man/sliceArray.Rd
