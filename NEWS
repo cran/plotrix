@@ -1,3 +1,7 @@
+version 3.3-1
+
+	expanded the color options and added top labels in sizetree
+
 version 3.3
 
 	fixed the vertical lines color in addtable2plot

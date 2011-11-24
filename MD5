@@ -1,7 +1,7 @@
-14dc5af63c4816cc5366a6224730f162 *DESCRIPTION
+6327a610599b0b18970035601626b1e8 *DESCRIPTION
 4b0a1b30ec1fddd868eefa7a97c77ecc *INDEX
 7dbab4e693a5a24e35047f1a9417fd00 *NAMESPACE
-d4d78b7985fada2bc71a11b736ee0cd6 *NEWS
+c1529a704fdc88861e037c6a4b92d678 *NEWS
 f0fdaf267a08fc0740ff7ffad4776b58 *R/ablineclip.R
 17824cd2a230be55fb9d02108ed6f4c1 *R/addtable2plot.R
 2ed5c43219990f1d2a464646d78a6cef *R/arctext.R
@@ -76,7 +76,7 @@ da39dde9cdb82f81e5f3373588756c59 *R/rescale.R
 e761953480126b28a14326faa3cb680c *R/ruginv.R
 37e54e3378537a24290926fa6b6c9e98 *R/size_n_color.R
 37823c945ea9eae7dfcd8d9f321b3da4 *R/sizeplot.R
-17a97ce4f0a07a281003382c242e70f1 *R/sizetree.R
+ce515f689a4330c888391b4c8812d134 *R/sizetree.R
 de129c7ed4e840767bbc911fb5256708 *R/smoothColors.R
 f1cf3329798b8c9a63871d5a6817ed2b *R/soil.texture.R
 3da214e101fe17bebd16fb4649a666a8 *R/soil.texture.uk.R
@@ -208,7 +208,7 @@ c4f2c015fcd5a98581ef7859a1640e5a *man/rescale.Rd
 e707694b2762db46d4e938f3383b5577 *man/ruginv.Rd
 cde3510071f243f3d0bc97a8c6f012e3 *man/size_n_color.Rd
 f2586a13028c3884bdc4335610c67dc9 *man/sizeplot.Rd
-293e888c9a0f82ce66a01263dac00909 *man/sizetree.Rd
+371a762177f9579f4bd7d6e870321b22 *man/sizetree.Rd
 554e180d9da267bedc3ad04b2bd6f4aa *man/sliceArray.Rd
 1b6f61faec620b2a1cc2b4c1b95fcc7e *man/smoothColors.Rd
 22fb9a2d6c8680cabf57f8d0caf203a5 *man/soil.texture.Rd
