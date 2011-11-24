@@ -1,5 +1,5 @@
-sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,showcount=TRUE,
- firstcall=TRUE,col=NA,colorindex=1,base.cex=1,...) {
+sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,
+ showcount=TRUE,firstcall=TRUE,col=NULL,toplab=NULL,base.cex=1,...) {
 
  dimx<-dim(x)
  if(firstcall) {
@@ -13,16 +13,22 @@ sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,showcount=TRU
    axes=FALSE,xlab="",ylab="",...)
  }
  xfreq<-table(x[,1])
- if(firstcall) names(col)<-names(xfreq)
  lenxf<-length(xfreq)
+ if(firstcall) {
+  if(is.null(col)) {
+   col<-list()
+   for(index in 1:dimx[2])
+    col[[index]]<-rainbow(length(table(x[,index])))
+  }
+  for(index in 1:dimx[2])
+   names(col[[index]])<-names(table(x[,index]))
+ }
  if(lenxf) {
   if(is.list(col)) {
-   barcol<-col[[colorindex]]
-   colorindex<-colorindex+1
+   barcol<-col[[1]]
+   barcol<-barcol[names(col[[1]]) %in% names(xfreq)]
   }
   else barcol<-col[names(col) %in% names(xfreq)]
-  if(length(barcol) < lenxf) 
-  barcol<-rep(col,length.out=lenxf)
   labels<-names(xfreq)
   squeeze<-(right-left)/10
   for(bar in 1:lenxf) {
@@ -50,15 +56,22 @@ sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,showcount=TRU
    }
    xvalue<-ifelse(is.numeric(x[, 1]),as.numeric(labels[bar]),labels[bar])
    if(dimx[2] > 1) {
-    prevcol<-ifelse(bar > 1,col[bar-1],NA)
-    nextcol<-ifelse(bar < lenxf,col[bar+1],NA)
+    newcol<-col
+    newcol[[1]]<-NULL
     nextx<-subset(x,x[,1]==xvalue,2:dimx[2])
     sizetree(nextx,right,top,right+1,lastcenter=top-xfreq[bar]/2,
-     showval=showval,firstcall=FALSE,col=col,colorindex=colorindex,
-     base.cex=base.cex)
+     showval=showval,firstcall=FALSE,col=newcol,base.cex=base.cex)
    }
    top<-top-xfreq[bar]
   }
  }
- if(firstcall) par(mar=oldmar)
+ if(firstcall) {
+  if(!is.null(toplab)) {
+   par(xpd=TRUE)
+   top<-sum(!is.na(x[,1]))
+   text(0.5:(dimx[2]+0.5),1.01*top,toplab,adj=c(0.5,0))
+   par(xpd=FALSE)
+  }
+  par(mar=oldmar)
+ }
 }
