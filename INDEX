@@ -69,6 +69,7 @@ lengthKey		Key for interpreting lengths in a plot
 listDepth		Find the maximum depth of a list
 makeDendrite		Build a list of mutually exclusive attributes
 makeIntersectList	Count set intersections
+maxEmptyRect		Find the largest rectangle not containing specified points
 multhist		Plot a multiple histogram as a barplot
 multsymbolbox		Draw boxes filled with symbols representing counts
 oz.windrose		Display an Australian BoM wind rose

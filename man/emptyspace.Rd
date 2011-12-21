@@ -16,8 +16,11 @@
  It does not guarantee that the space will be large enough to fit a
  legend or text.
  
- An alternative is to use the \samp{largest.empty} function in the 
- \pkg{Hmisc} package.
+ Two alternatives are the \samp{largest.empty} function in the 
+ \pkg{Hmisc} package and the \samp{maxEmptyRect} function. While
+ \samp{maxEmptyRect} will generally outperform \samp{emptyspace},
+ \samp{emptyspace} will sometimes find a slightly smaller, but
+ "squarer" rectangle.
 }
 \value{
  The \samp{x} and \samp{y} coordinates of the center of the rectangle

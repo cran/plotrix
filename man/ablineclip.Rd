@@ -25,12 +25,16 @@
  are substituted. After the call to \samp{abline}, the old clipping region
  is restored. In order to make \samp{clip} work, there is a call to \samp{abline}
  that draws a line off the plot.
+
+ Multiple lines of the same type can be drawn in a single call, but the clipping
+ region must be the same for each group of lines. Thanks to Berry Boessenkool
+ for pointing this out.
 }
 \value{
  None. Adds to the current plot.
 }
 \author{ Remko Duursma }
-\seealso{\link{abline}}
+\seealso{\link{abline}, \link{clip}}
 \examples{
  x <- rnorm(100)
  y <- x + rnorm(100)

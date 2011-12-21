@@ -1,6 +1,13 @@
+version 3.3-2
+
+	color2D.matplot will now display a Hinton diagram
+	added padding for negative values in twoord.plot (thanks to Hans Borcher)
+	added the maxEmptyRect function (thanks again to Hans Borchers)
+
 version 3.3-1
 
 	expanded the color options and added top labels in sizetree
+	returned the frequency calculation in weighted.hist to what it used to be
 
 version 3.3
 

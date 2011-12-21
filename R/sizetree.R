@@ -21,7 +21,8 @@ sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,
     col[[index]]<-rainbow(length(table(x[,index])))
   }
   for(index in 1:dimx[2])
-   names(col[[index]])<-names(table(x[,index]))
+   if(is.null(names(col[[index]])))
+    names(col[[index]])<-names(table(x[,index]))
  }
  if(lenxf) {
   if(is.list(col)) {

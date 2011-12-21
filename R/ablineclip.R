@@ -3,6 +3,7 @@ ablineclip<-function(a=NULL,b=NULL,h=NULL,v=NULL,reg=NULL,
 
  if(!is.null(c(x1,x2,y1,y2))) {
   oldclip<-par("usr")
+  # if any clipping perimeters are not supplied, use the existing plot edges
   if(is.null(x1)) x1<-oldclip[1]
   if(is.null(x2)) x2<-oldclip[2]
   if(is.null(y1)) y1<-oldclip[3]

@@ -72,6 +72,7 @@ export(
  listDepth,
  makeDendrite,
  makeIntersectList,
+ maxEmptyRect,
  mtext3d,
  multhist,
  multsymbolbox,

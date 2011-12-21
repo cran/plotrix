@@ -7,7 +7,8 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
 color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
  extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
  ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,
- border="black",na.color=NA,xrange=NULL,color.spec="rgb",yrev=TRUE,...) {
+ border="black",na.color=NA,xrange=NULL,color.spec="rgb",yrev=TRUE,
+ xat=NULL,yat=NULL,Hinton=FALSE,...) {
  
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
@@ -24,18 +25,28 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
   }
   else pos<- -0.3
   if(axes) {
-   xticks<-pretty(0:xdim[2])[-1]
-   axis(1,at=xticks-0.5,labels=xticks,pos=pos)
-   yticks<-pretty(0:xdim[1])[-1]
-   axis(2,at=xdim[1]-yticks+0.5,yticks)
+   if(is.null(xat)) xat<-pretty(0:xdim[2])[-1]
+   axis(1,at=xat-0.5,labels=xat,pos=pos)
+   if(is.null(yat)) yat<-pretty(0:xdim[1])[-1]
+   axis(2,at=xdim[1]-yat+0.5,labels=yat)
   }
-  if(all(is.na(cellcolors)))
-   cellcolors<-color.scale(x,cs1,cs2,cs3,extremes=extremes,na.color=na.color,
-    color.spec=color.spec)
+  if(all(is.na(cellcolors))) {
+   if(Hinton) {
+    if(is.na(extremes[1])) extremes<-c("black","white")
+    cellcolors<-extremes[(x > 0) + 1]
+   }
+   else cellcolors<-color.scale(x,cs1,cs2,cs3,extremes=extremes,
+    na.color=na.color,color.spec=color.spec)
+  }
   # this sets the color for overprinted text to black or white
   # depending upon what color will be the background for the text
   if(is.na(vcol))
    vcol<-ifelse(colSums(col2rgb(cellcolors)*c(1,1.4,0.6))<350,"white","black")
+  # if it's a Hinton diagram,cellsize = x, rescaling to 0,1 if necessary
+  if(Hinton) {
+   if(any(x < 0 | x > 1)) cellsize<-matrix(rescale(abs(x),c(0,1)),nrow=10)
+  }
+  else cellsize<-matrix(1,nrow=xdim[1],ncol=xdim[2])
   # start from the top left - isomorphic with the matrix layout
   if(do.hex) {
    par(xpd=TRUE)
@@ -44,7 +55,8 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
     border<-rep(border,length.out=xdim[1]*xdim[2])
    for(row in 1:xdim[1]) {
     for(column in 0:(xdim[2]-1)) {
-     hexagon(column+offset,xdim[1]-row,col=cellcolors[row+xdim[1]*column],
+     hexagon(column+offset,xdim[1]-row,unitcell=cellsize[row,column+1],
+      col=cellcolors[row+xdim[1]*column],
       border=border[row+xdim[1]*column])
      if(show.values)
       text(column+offset+0.5,xdim[1]-row+0.5,x[row+column*xdim[1]],
@@ -55,15 +67,18 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
    par(xpd=FALSE)
   }
   else {
+   if(Hinton) inset<-(1-cellsize)/2
+   else inset<-0
    if(yrev) {
-    y0<-rep(seq(xdim[1]-1,0,by=-1),xdim[2])
-    y1<-rep(seq(xdim[1],1,by=-1),xdim[2])
+    y0<-rep(seq(xdim[1]-1,0,by=-1),xdim[2])+inset
+    y1<-rep(seq(xdim[1],1,by=-1),xdim[2])-inset
    }
    else {
-    y0<-rep(0:(xdim[1]-1),xdim[2])
-    y1<-rep(1:xdim[1],xdim[2])
+    y0<-rep(0:(xdim[1]-1),xdim[2])+inset
+    y1<-rep(1:xdim[1],xdim[2])-inset
    }
-   rect(sort(rep((1:xdim[2])-1,xdim[1])),y0,sort(rep(1:xdim[2],xdim[1])),y1,
+   rect(sort(rep((1:xdim[2])-1,xdim[1]))+inset,y0,
+    sort(rep(1:xdim[2],xdim[1]))-inset,y1,
     col=cellcolors,border=border)
    if(show.values) {
     if(yrev) texty<-rep(seq(xdim[1]-0.5,0,by=-1),xdim[2])

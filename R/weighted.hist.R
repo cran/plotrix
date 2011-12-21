@@ -35,7 +35,7 @@ weighted.hist<-function(x,w,breaks="Sturges",col=NULL,plot=TRUE,
    warning("Not all values will be included in the histogram")
  counts<-rep(0,nbreaks)
  for(bin in 1:nbreaks)
-  counts[bin]<-sum(x >= breaks[bin] & x < breaks[bin+1])
+  counts[bin]<-sum(w[x >= breaks[bin] & x < breaks[bin+1]])
  density<-counts/sum(counts)
  if(freq) {
   if(is.null(ylab)) ylab<-"Frequency"
