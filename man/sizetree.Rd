@@ -41,8 +41,9 @@
  The user can pass the same colors for the all levels (example 2). If this is
  done, \samp{sizetree} will try to match colors to categories when
  the number of categories is diminishing (e.g. some levels are missing in the
- sub-categories). This may work if the category labels are
- the same in each level. It will not work if there are more categories
+ sub-categories). This will work if the category labels are the same in each level,
+ but remember to add the names to the colors before passing them to the function.
+ This will not work if there are more categories
  in the lower levels. If \samp{col} is a list, this is not done, and the user
  will have to work out the correct colors for each level. This is particularly
  important when the category labels and the number of categories is different in
@@ -83,7 +84,7 @@
   hair=sample(c("Blond","Red","Brown","Black"),50,TRUE),
   eye=sample(c("Gold","Green","Blue"),50,TRUE))
  sizetree(sexhaireye,main="Sex, hair and eye color",
-  col=list(c("pink","lightblue"),c("black","yellow","brown","orange"),
+  col=list(c("pink","lightblue"),c("#000000","#dddd00","#886600","#ee8800"),
   c("blue","gold","green")),toplab=c("Sex","Hair color","Eye color"))
 }
 \keyword{misc}

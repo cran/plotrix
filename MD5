@@ -1,8 +1,8 @@
-6327a610599b0b18970035601626b1e8 *DESCRIPTION
-4b0a1b30ec1fddd868eefa7a97c77ecc *INDEX
-7dbab4e693a5a24e35047f1a9417fd00 *NAMESPACE
-c1529a704fdc88861e037c6a4b92d678 *NEWS
-f0fdaf267a08fc0740ff7ffad4776b58 *R/ablineclip.R
+55c4ccb7e4e21514eec8515ab791a63e *DESCRIPTION
+466109ac39cb406c264da425ba8354d4 *INDEX
+77af1edb59d58934a39530eb4c91cca4 *NAMESPACE
+6138c429ff89a5636d744958c2ab7026 *NEWS
+2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 17824cd2a230be55fb9d02108ed6f4c1 *R/addtable2plot.R
 2ed5c43219990f1d2a464646d78a6cef *R/arctext.R
 fab32acaa7362918ba978d5ea0df6180 *R/axis.break.R
@@ -24,7 +24,7 @@ f1dcc78b243e40ccd379fff2a1ca0590 *R/color.id.R
 7c1e83994ce386af77d3da48b84e1f8d *R/color.legend.R
 58d9be1d9b7bf8c7e3736df2b8afa109 *R/color.scale.R
 07941d0c301f5cde9ca2da59e2600cdf *R/color.scale.lines.R
-64b079fe1052e555319f0f9178f5a59d *R/color2D.matplot.R
+e060764114d807a4694804449b681f6f *R/color2D.matplot.R
 b1a4683fbe6a0bd1859453c13b29b264 *R/corner.label.R
 08b767b2cda37e28a744316c19bbea37 *R/count.overplot.R
 aa20dff9cb6508240f5ffe0b0f62e4d2 *R/cylindrect.R
@@ -59,6 +59,7 @@ d4f22f0d1204a8436c58bef182abbeb4 *R/labbePlot.R
 b6b442151b22a4cd80d1956c24b091fc *R/legendg.R
 f88facb736d50a863537818e29e9098f *R/lengthKey.R
 18a4b16260b37c922a70a6c439909b59 *R/makeIntersectList.R
+83032771e287d63ea164fed14d1977f1 *R/maxEmptyRect.R
 62afc55588b85cd71eb2acd8e0303f72 *R/multhist.R
 0922537b9c49e3cc345347e46e7087b4 *R/multsymbolbox.R
 53fc688fbe92d2f624a881d24a2745a0 *R/panes.R
@@ -76,7 +77,7 @@ da39dde9cdb82f81e5f3373588756c59 *R/rescale.R
 e761953480126b28a14326faa3cb680c *R/ruginv.R
 37e54e3378537a24290926fa6b6c9e98 *R/size_n_color.R
 37823c945ea9eae7dfcd8d9f321b3da4 *R/sizeplot.R
-ce515f689a4330c888391b4c8812d134 *R/sizetree.R
+5ac3a5d0bc3defd20bbd3a6a5afb57b5 *R/sizetree.R
 de129c7ed4e840767bbc911fb5256708 *R/smoothColors.R
 f1cf3329798b8c9a63871d5a6817ed2b *R/soil.texture.R
 3da214e101fe17bebd16fb4649a666a8 *R/soil.texture.uk.R
@@ -93,10 +94,10 @@ baa253c7a54bcde2837f305ef2b492b4 *R/symbolbox.R
 c894797890a8755021f8be56205ab830 *R/textbox.R
 0e19d932405569d60b97d7fcca655786 *R/thigmophobe.R
 ed20aff50590ba744f276b1b4da0d3b8 *R/triax.R
-5f69ab97b8f0284bf8c98c753737ed47 *R/twoord.plot.R
+2de4857cb9640475ebf293f5fc611c0b *R/twoord.plot.R
 580be3c65f98df81f92dff1eff5e671c *R/twoord.stackplot.R
 1dedd96b7c359f41507a75f124b13dc8 *R/vectorField.R
-dcf0c9ed2042d6d8ccca0c88de77f591 *R/weighted.hist.R
+17cee613f691ee8f2ce24aad63691e7f *R/weighted.hist.R
 ea4694c55dc698d7c0edafa9cc6f9bd1 *R/windrose.R
 52d0de3c89b6d90fe1e9157b0c76f291 *R/zoomInPlot.R
 6c5b0047d50b0d071c9a8162c81ccb31 *data/death_reg.rda
@@ -104,7 +105,7 @@ d6d94a3e49b74e17769b1362cff4b8fc *data/soils.rda
 afe626471214438383c01dfcc2a12e10 *demo/00Index
 033fe244dd67b8b54a0f7e7dcb4fd80f *demo/plotrix.R
 b35ca73e819dbad59881960986301ef3 *inst/CITATION
-6accd22d7d54a529325000b8167f45ea *man/ablineclip.Rd
+2eeb957ab8eaca0916953227b019f794 *man/ablineclip.Rd
 fe83ac91e585e1c8dd9c083a74ae7edb *man/addtable2plot.Rd
 2ad4977ed26919f4f25a69b2ac2551c2 *man/arctext.Rd
 be789402f5ae38868967b633a4eb3e32 *man/axis.break.Rd
@@ -131,7 +132,7 @@ dc4c200cb331f0490d5ce7ee0975534d *man/clplot.Rd
 b495073f04302bfd9ab7ddea8acca6e8 *man/color.legend.Rd
 f698f988d79f75fe558cfae14c53c305 *man/color.scale.Rd
 bdc1c5cd99853f9b9a2d9aef8f212067 *man/color.scale.lines.Rd
-f103916c3141c63d4230a3c928bf7e51 *man/color2D.matplot.Rd
+30a327712a461da0821813370a4669b2 *man/color2D.matplot.Rd
 51cd6dbe551abddadcf23f297b3fcef9 *man/corner.label.Rd
 35453606f45c916c9b5f77020c3c3b0c *man/count.overplot.Rd
 b6bc308f4d4d62c4302afddb22666411 *man/cylindrect.Rd
@@ -147,7 +148,7 @@ b69d1a18f086c0125a25eb08ff85b778 *man/draw.tilted.sector.Rd
 80800365544caa806877b3f79ffc51af *man/drawNestedBars.Rd
 e0cf4b49c5d11ec218ef091e3766443c *man/drawSectorAnnulus.Rd
 ff9c5395618869a65b04d6400b0cf2c4 *man/ehplot.Rd
-d1718c63460a5095a142ddba9ff2e2c2 *man/emptyspace.Rd
+4eb5b9648e8de073082c4d98fbb108af *man/emptyspace.Rd
 c614b6f0aeb3ba37dab02006986b1575 *man/fan.plot.Rd
 b1b35945e200ba4b307b7234cff5a1ba *man/feather.plot.Rd
 d0cda9c4097f7add671a3c289c28fc15 *man/floating.pie.Rd
@@ -177,6 +178,7 @@ ea06b6e8b663a57af433a17c15721e2f *man/ladderplot.Rd
 918f9ec4e06c9d8796e26c5fe0b2d39e *man/listDepth.Rd
 e108e4437e6471fa37c1ca95e96e3965 *man/makeDendrite.Rd
 9d914bed93776844a53767ab40525a6f *man/makeIntersectList.Rd
+4bf0a63a5ee0f446c2dd210ebd97b726 *man/maxEmptyRect.Rd
 4bb726d76edd975db9258cd700783dcc *man/mtext3d.Rd
 a22d129170817d0885b8397f85b13ad9 *man/multhist.Rd
 a6b1e2596340a535c74848aeffe98833 *man/multsymbolbox.Rd
@@ -208,7 +210,7 @@ c4f2c015fcd5a98581ef7859a1640e5a *man/rescale.Rd
 e707694b2762db46d4e938f3383b5577 *man/ruginv.Rd
 cde3510071f243f3d0bc97a8c6f012e3 *man/size_n_color.Rd
 f2586a13028c3884bdc4335610c67dc9 *man/sizeplot.Rd
-371a762177f9579f4bd7d6e870321b22 *man/sizetree.Rd
+91a63eee9e7f7b70270e01db9410add4 *man/sizetree.Rd
 554e180d9da267bedc3ad04b2bd6f4aa *man/sliceArray.Rd
 1b6f61faec620b2a1cc2b4c1b95fcc7e *man/smoothColors.Rd
 22fb9a2d6c8680cabf57f8d0caf203a5 *man/soil.texture.Rd

@@ -9,7 +9,8 @@
  color2D.matplot(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
   extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
   ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,
-  border="black",na.color=NA,xrange=NULL,color.spec="rgb",yrev=TRUE,...)
+  border="black",na.color=NA,xrange=NULL,color.spec="rgb",yrev=TRUE,
+  xat=NULL,yat=NULL,Hinton=FALSE,...)
 }
 \arguments{
  \item{x}{data values}
@@ -17,9 +18,9 @@
   the range of numeric values. (see \samp{color.scale})}
  \item{extremes}{The colors for the extreme values of \samp{x}. Takes
   precedence over the color ranges.}
- \item{cellcolors}{A precalculated vector of cell colors. This must have
-  exactly the same number of colors as there are values in the matrix or
-  it will be uninformative. Takes precedence over both \samp{extremes}
+ \item{cellcolors}{A precalculated matrix of cell colors. This must have
+  the same number of rows and columns as the matrix or it will be
+  uninformative. It can be a vector, but be careTakes precedence over both \samp{extremes}
   and color ranges.}
  \item{show.legend}{whether to display a color legend with the
   extreme numeric values in the lower left corner of the plot. This will
@@ -44,6 +45,10 @@
   cells in "reading" order (left to right and top to bottom) if TRUE,
   or in the order of a typical plot (left to right and bottom to top) if
   FALSE.}
+ \item{xat,yat}{Values at which to place tick marks to override \samp{pretty}.}
+ \item{Hinton}{Whether to display a Hinton diagram in which the magnitude of
+  cell values is proportional to the size of the squares and the sign is
+  indicated by the color of the squares.}
  \item{...}{arguments passed to \samp{plot}.}
 }
 \value{nil}
@@ -64,6 +69,11 @@
  \samp{show.values} and \samp{show.legend} are also used to control the
  number of decimal places displayed if the values or legend are shown.
  \samp{TRUE} will give one decimal place, \samp{2} two, and so on.
+
+ if \samp{Hinton} is TRUE, a Hinton diagram in which the sizes of the
+ squares are proportional to the absolute value of \samp{x} and the colors
+ of the squares indicate the sign of the \samp{x} values will be displayed.
+ This only works with squares.
 }
 \note{
  The function \link{image} performs almost the same when passed a
@@ -112,5 +122,7 @@
   color.scale(deviates[deviates>0],0,c(0.7,0.8),c(0.5,0))
  color2D.matplot(x=round(deviates,2),cellcolors=cellcol,
   show.values=TRUE,main="Association plot")
+ color2D.matplot(x,extremes=c(2,3),main="Hinton diagram (green +, red -)",
+  Hinton=TRUE)
 }
 \keyword{misc}

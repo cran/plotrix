@@ -28,7 +28,9 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,
  if(missing(lx)) lx<-1:length(ly)
  if(is.null(lylim)) {
   lylim<-range(ly,na.rm=TRUE)
-  lylim[2]<-lylim[2]+diff(lylim)*0.04
+  lyspan<-diff(lylim)
+  lylim[2]<-lylim[2]+lyspan*0.04
+  if(lylim[1] < 0) lylim[1]<-lylim[1]-lyspan*0.04
  }
  if(length(type) < 2) type<-rep(type,2)
  if(match(type[1],"bar",0)) {
@@ -55,7 +57,9 @@ twoord.plot<-function (lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,
  par(new=TRUE)
  if(is.null(rylim)) {
   rylim<-range(ry,na.rm=TRUE)
-  rylim[2]<-rylim[2]+diff(rylim)*0.04
+  ryspan<-diff(rylim)
+  rylim[2]<-rylim[2]+ryspan*0.04
+  if(rylim[1] < 0) rylim[1]<-rylim[1]-ryspan*0.04
  }
  if(match(type[2],"bar",0)) {
   plot(0,type="n",xlab=xlab,ylab="",yaxs="i",axes=FALSE,xlim=xlim,ylim=rylim,...)
