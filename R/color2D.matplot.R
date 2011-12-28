@@ -44,7 +44,7 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
    vcol<-ifelse(colSums(col2rgb(cellcolors)*c(1,1.4,0.6))<350,"white","black")
   # if it's a Hinton diagram,cellsize = x, rescaling to 0,1 if necessary
   if(Hinton) {
-   if(any(x < 0 | x > 1)) cellsize<-matrix(rescale(abs(x),c(0,1)),nrow=10)
+   if(any(x < 0 | x > 1)) cellsize<-matrix(rescale(abs(x),c(0,1)),nrow=xdim[1])
   }
   else cellsize<-matrix(1,nrow=xdim[1],ncol=xdim[2])
   # start from the top left - isomorphic with the matrix layout

@@ -1,3 +1,7 @@
+version 3.3-3
+
+	Fixed a bug in the Hinton diagram option (thanks to Xavier Fernández i Marín)
+
 version 3.3-2
 
 	color2D.matplot will now display a Hinton diagram
