@@ -1,7 +1,7 @@
-55c4ccb7e4e21514eec8515ab791a63e *DESCRIPTION
+225f96972bebd407f07e56eccbdaa78e *DESCRIPTION
 466109ac39cb406c264da425ba8354d4 *INDEX
 77af1edb59d58934a39530eb4c91cca4 *NAMESPACE
-6138c429ff89a5636d744958c2ab7026 *NEWS
+f2c2e0f27b60408060507f971b2dd49c *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 17824cd2a230be55fb9d02108ed6f4c1 *R/addtable2plot.R
 2ed5c43219990f1d2a464646d78a6cef *R/arctext.R
@@ -24,7 +24,7 @@ f1dcc78b243e40ccd379fff2a1ca0590 *R/color.id.R
 7c1e83994ce386af77d3da48b84e1f8d *R/color.legend.R
 58d9be1d9b7bf8c7e3736df2b8afa109 *R/color.scale.R
 07941d0c301f5cde9ca2da59e2600cdf *R/color.scale.lines.R
-e060764114d807a4694804449b681f6f *R/color2D.matplot.R
+f9e59f04b82e44e3d75e4d5ccf834197 *R/color2D.matplot.R
 b1a4683fbe6a0bd1859453c13b29b264 *R/corner.label.R
 08b767b2cda37e28a744316c19bbea37 *R/count.overplot.R
 aa20dff9cb6508240f5ffe0b0f62e4d2 *R/cylindrect.R
