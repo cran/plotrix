@@ -54,7 +54,8 @@
  giving proportions and counts in each group and subgroup respectively.
  Binomial confidence limits can be added to the proportions returned by
  \samp{propbrk} with \samp{binciWl} and \samp{binciWu} as in the second last
- example.
+ example. If \samp{valid.n} is the first element of \samp{FUN}, the "overall"
+ bar and label will be suppressed, as they are not informative.
 
  The colors of the bars are determined by \samp{col}. If \samp{showall} is FALSE,
  the user only need pass a vector of colors, usually the same length as the number

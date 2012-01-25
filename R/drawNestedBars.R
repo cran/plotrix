@@ -4,18 +4,21 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
 
  barcol<-ifelse(is.list(col),col[[1]],col)
  # may be only one bar per call
- if(!is.null(x[[1]][[1]]) && (showall | length(x[[1]]) == 1))
+ if(!is.null(x[[1]][[1]]) && (showall | length(x[[1]]) == 1) && nchar(barlabels[[1]]))
   rect(start,0,end,unlist(x[[1]][[1]]),col=barcol)
  if(showlabels && !is.null(x[[1]][[1]])) {
   if(!is.null(barlabels)) barlabel<-barlabels[[1]]
   else
    barlabel<-names(x[[1]][[1]])
   labely<--lineht*length(x[[1]])
-  par(xpd=TRUE)
-  segments(c(start,end,start),c(0,0,labely),c(start,end,end),rep(labely,3))
-  boxed.labels((start+end)/2,labely,barlabel,ypad=1.4,
-   bg=ifelse(is.na(barcol),"white",barcol),cex=labelcex)
-  par(xpd=FALSE)
+  # zero length bar label suppresses this
+  if(nchar(barlabels[[1]])) {
+   par(xpd=TRUE)
+   segments(c(start,end,start),c(0,0,labely),c(start,end,end),rep(labely,3))
+   boxed.labels((start+end)/2,labely,barlabel,ypad=1.4,
+    bg=ifelse(is.na(barcol),"white",barcol),cex=labelcex)
+   par(xpd=FALSE)
+  }
  }
  if(errbars && length(x[[1]])==1)
   dispersion((start+end)/2,x[[1]][[1]],x[[2]][[1]],x[[3]][[1]],

@@ -1,3 +1,8 @@
+version 3.3-4
+
+	Added the display.na argument to the dispersion function (thanks to Lasse Jacobsen)
+	Removed the "Overall" bar in barNest when counts are being displayed
+
 version 3.3-3
 
 	Fixed a bug in the Hinton diagram option (thanks to Xavier Fernández i Marín)
