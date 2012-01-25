@@ -4,11 +4,20 @@ barNest<-function(formula=NULL,data=NULL,FUN=c("mean","sd"),
  showlabels=TRUE,mar=NULL,arrow.cap=NA,trueval=NA) {
 
  x<-brkdnNest(formula=formula,data=data,FUN=FUN,trueval=trueval)
+ getBreakListNames<-function(x) {
+  blnames<-list(names(x[[1]][[1]]))
+  for(level in 2:length(x[[1]]))
+   blnames[[level]]<-dimnames(x[[1]][[level]])[[level-1]]
+  return(blnames)
+ }
+ if(is.null(barlabels)) barlabels<-getBreakListNames(x)
  nbn<-length(as.character(attr(terms(formula),"variables")[-1]))
  if(is.null(ylim)) {
   # don't use overall value to calculate ylim when counts are displayed
-  if(FUN[1]=="valid.n" || FUN[1]=="sumbrk")
+  if(FUN[1]=="valid.n" || FUN[1]=="sumbrk") {
    ylim<-c(0,1.04*max(unlist(x[[1]][[2]]),na.rm=TRUE))
+   if(FUN[1]=="valid.n") barlabels[[1]]<-""
+  }
   else {
    lenx<-length(x)
    if(errbars) {

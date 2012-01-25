@@ -8,7 +8,7 @@
 }
 \usage{
  dispersion(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,
-  type="a",fill=NA,lty=NA,pch=NA,border=NA,...)
+  type="a",fill=NA,lty=NA,pch=NA,border=NA,display.na=TRUE,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the bars}
@@ -25,6 +25,7 @@
  \item{lty}{Line type for redrawing the lines if necessary.}
  \item{pch}{Symbol for redrawing the points if necessary.}
  \item{border}{Line type for drawing a border on the confidence band.}
+ \item{display.na}{Whether to display NA values as lines going off the plot.}
  \item{...}{additional arguments passed to \samp{arrows} or \samp{lines}
   depending upon \samp{type}.}
 }
@@ -35,6 +36,11 @@
  is not NA and \samp{type} is \samp{"l"}, a polygon will be drawn between the
  confidence lines. Remember that any points or lines within the confidence band
  will be obscured, so pass point and/or line types as in the second example.
+
+ The default behavior is to display an undefined dispersion (e.g. a variance with
+ only one observation) as a line going off the plot. If \samp{display.na} is FALSE,
+ NA values will not be displayed, allowing the user to show only upper or lower
+ dispersion limits.
 
  The \samp{intervals} argument allows the user to pass the limits as either
  intervals (the default) or absolute values.
