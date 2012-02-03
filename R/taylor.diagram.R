@@ -15,11 +15,12 @@
 # Jim Lemon
 # 2010-4-30 - added the gamma.col argument for pos.cor=TRUE plots - Jim Lemon
 # 2010-6-24 - added mar argument to pos.cor=TRUE plots - Jim Lemon
+# 2012-1-31 - added the cex.axis argument - Jim Lemon
 
 taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
  xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,gamma.col=8,
  sd.arcs=0,ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),pcex=1,
- normalize=FALSE,mar=c(5,4,6,6),...) {
+ cex.axis=1,normalize=FALSE,mar=c(5,4,6,6),...) {
  
  grad.corr.full<-c(0,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1)
 
@@ -40,7 +41,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
    if(nchar(ylab) == 0) ylab="Standard deviation"
    par(mar=mar)
    plot(0,xlim=c(0,maxsd),ylim=c(0,maxsd),xaxs="i",yaxs="i",axes=FALSE,
-    main=main,xlab=xlab,ylab=ylab,type="n",...)
+    main=main,xlab=xlab,ylab=ylab,type="n",cex=cex.axis,...)
    if(grad.corr.lines[1]) {
     for(gcl in grad.corr.lines)
      lines(c(0,maxsd*gcl),c(0,maxsd*sqrt(1-gcl^2)),lty=3)
@@ -49,8 +50,8 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
    segments(c(0,0),c(0,0),c(0,maxsd),c(maxsd,0))
    axis.ticks<-pretty(c(0,maxsd))
    axis.ticks<-axis.ticks[axis.ticks<=maxsd]
-   axis(1,at=axis.ticks)
-   axis(2,at=axis.ticks)
+   axis(1,at=axis.ticks,cex.axis=cex.axis)
+   axis(2,at=axis.ticks,cex.axis=cex.axis)
    if(sd.arcs[1]) {
     if(length(sd.arcs) == 1) sd.arcs<-axis.ticks
     for(sdarc in sd.arcs) {
@@ -78,8 +79,9 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
      startcurve<-ifelse(length(startcurve),max(startcurve)+1,0)
      lines(xcurve[startcurve:endcurve],ycurve[startcurve:endcurve],
       col=gamma.col)
-     boxed.labels(xcurve[labelpos[gindex]],ycurve[labelpos[gindex]],
-      gamma[gindex],border=FALSE)
+     if(xcurve[labelpos[gindex]] > 0)
+      boxed.labels(xcurve[labelpos[gindex]],ycurve[labelpos[gindex]],
+       gamma[gindex],border=FALSE)
     }
    }
    # the outer curve for correlation
@@ -98,11 +100,11 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
     ycurve<-sin(seq(0,pi/2,by=0.01))*sd.r
     lines(xcurve,ycurve)
    }
-   points(sd.r,0)
+   points(sd.r,0,cex=pcex)
    text(cos(c(bigtickangles,acos(c(0.95,0.99))))*1.05*maxsd,
     sin(c(bigtickangles,acos(c(0.95,0.99))))*1.05*maxsd,
     c(seq(0.1,0.9,by=0.1),0.95,0.99))
-   text(maxsd*0.75,maxsd*0.8,"Correlation")
+   text(maxsd*0.8,maxsd*0.8,"Correlation",srt=315)
    segments(cos(medtickangles)*maxsd,sin(medtickangles)*maxsd,
     cos(medtickangles)*0.98*maxsd,sin(medtickangles)*0.98*maxsd)
    segments(cos(smltickangles)*maxsd,sin(smltickangles)*maxsd,
@@ -125,7 +127,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
     # pourtour du diagramme (display the diagram)
     maxray<-1.5*max(sd.f,sd.r)
     plot(c(-maxray,maxray),c(0,maxray),type="n",asp=1,bty="n",xaxt="n",yaxt="n",
-     xlab=xlab,ylab=ylab,main=main)
+     xlab=xlab,ylab=ylab,main=main,cex=cex.axis)
     discrete<-seq(180,0,by=-1)
     listepoints<-NULL
     for (i in discrete){

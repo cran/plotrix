@@ -6,7 +6,7 @@
  taylor.diagram(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
   xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,
   gamma.col=8,sd.arcs=0,ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),
-  pcex=1,normalize=FALSE,mar=c(5,4,6,6),...)
+  pcex=1,cex.axis=1,normalize=FALSE,mar=c(5,4,6,6),...)
 }
 \arguments{
  \item{ref}{numeric vector - the reference values.}
@@ -29,6 +29,7 @@
  \item{grad.corr.lines}{the values for the radial lines for correlation
   values (see Details).}
  \item{pcex}{character expansion for the plotted points.}
+ \item{cex.axis}{character expansion for the axis text.}
  \item{normalize}{whether to normalize the models so that the reference
   has a standard deviation of 1.}
  \item{mar}{margins - only applies to the \samp{pos.cor=TRUE} plot.}

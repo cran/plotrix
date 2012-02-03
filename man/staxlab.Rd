@@ -6,7 +6,7 @@
 }
 \usage{
  staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,
-  srt=NA,ticklen=0.03,...)
+  srt=NA,ticklen=0.03,adj=1,...)
 }
 \arguments{
  \item{side}{axis on which to place the labels, as in \samp{axis}}
@@ -18,6 +18,7 @@
  \item{srt}{Text rotation.}
  \item{ticklen}{Proportion of plot height in user units to place text
   below the plot.}
+ \item{adj}{horizontal adjustment of the labels.}
  \item{...}{Additional arguments to be passed to \samp{mtext} or \samp{text}.}
 }
 \note{

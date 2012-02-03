@@ -3,7 +3,7 @@
 # even when axes=FALSE
 
 staxlab<-function(side=1,at,labels,nlines=2,top.line=0.5,
- line.spacing=0.8,srt=NA,ticklen=0.03,...) {
+ line.spacing=0.8,srt=NA,ticklen=0.03,adj=1,...) {
 
  if(missing(labels)) labels<-at
  nlabels<-length(labels)
@@ -22,13 +22,23 @@ staxlab<-function(side=1,at,labels,nlines=2,top.line=0.5,
    if(par("ylog")) ypos<-10^(xylim[3]-ticklen*(xylim[4]-xylim[3]))
    else ypos<-xylim[3]-ticklen*(xylim[4]-xylim[3])
   }
-  else {
+  if(side == 3) {
+   xpos<-at
+   if(par("ylog")) ypos<-10^(xylim[4]+ticklen*(xylim[4]-xylim[3]))
+   else ypos<-xylim[4]+ticklen*(xylim[4]-xylim[3])
+  }
+  if(side == 2) {
    ypos<-at
    if(par("xlog")) xpos<-10^(xylim[1]-ticklen*(xylim[2]-xylim[1]))
    else xpos<-xylim[1]-ticklen*(xylim[2]-xylim[1])
   }
+  if(side == 4) {
+   ypos<-at
+   if(par("xlog")) xpos<-10^(xylim[2]+ticklen*(xylim[2]-xylim[1]))
+   else xpos<-xylim[2]+ticklen*(xylim[2]-xylim[1])
+  }
   par(xpd=TRUE)
-  text(xpos,ypos,labels,srt=srt,adj=1,...)
+  text(xpos,ypos,labels,srt=srt,adj=adj,...)
   par(xpd=FALSE)
  }
 }

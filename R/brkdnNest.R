@@ -35,7 +35,7 @@ binciWl<-function(x,n,alpha=0.05,trueval=NA,na.rm=TRUE) {
 }
 
 brkdnNest<-function(formula,data,FUN=c("mean","sd"),label1="Overall", 
- trueval = NA) {
+ trueval=NA) {
 
  if(missing(data) || missing(formula)) 
   stop("brkdnNest must be called with a formula for breakdown and a data frame.")
