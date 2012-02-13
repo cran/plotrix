@@ -1,5 +1,4 @@
-`plotCI` <-
-function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL, 
+plotCI <- function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL, 
     err = "y", sfrac = 0.01, gap = 0, slty = par("lty"), add = FALSE, 
     scol = NULL, pt.bg = par("bg"), ...) 
 {
@@ -59,11 +58,13 @@ function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL,
         arrow.args <- c(list(lty = slty, angle = 90, length = smidge, 
             code = 1, col = scols), clean.args(arglist, arrows, 
             exclude.other = c("col", "lty", "axes")))
-        do.call("arrows", c(list(x[nz], li[nz], x[nz], pmax(y - gap, li)[nz]), 
-            arrow.args))
-        nz <- abs(ui-pmin(y+gap,ui))*y.to.in>1e-3
-        do.call("arrows", c(list(x[nz], ui[nz], x[nz], pmin(y + gap, ui)[nz]), 
-            arrow.args))
+        do.call("arrows", c(list(x[nz], li[nz], x[nz], pmax(y - 
+            gap, li)[nz]), arrow.args))
+        nz <- abs(ui - pmin(y + gap, ui)) * y.to.in > 0.001
+        scols <- rep(scol, length.out = length(x))[nz]
+        arrow.args$col <- scols
+        do.call("arrows", c(list(x[nz], ui[nz], x[nz], pmin(y + 
+            gap, ui)[nz]), arrow.args))
     }
     else if (err == "x") {
         gap <- rep(gap, length(x)) * diff(par("usr")[1:2])
@@ -71,15 +72,15 @@ function (x, y = NULL, uiw, liw = uiw, ui = NULL, li = NULL,
         nz <- abs(li - pmax(x - gap, li)) * x.to.in > 0.001
         scols <- rep(scol, length.out = length(x))[nz]
         arrow.args <- c(list(lty = slty, angle = 90, length = smidge, 
-            code = 1, col = scols), clean.args(arglist, arrows,
-	    exclude.other = c("col", "lty", "axes")))
-        do.call("arrows", c(list(li[nz], y[nz], pmax(x - gap, li)[nz], y[nz]), 
-            arrow.args))
-        nz <- abs(ui-pmin(x+gap,ui))*x.to.in>1e-3
+            code = 1, col = scols), clean.args(arglist, arrows, 
+            exclude.other = c("col", "lty", "axes")))
+        do.call("arrows", c(list(li[nz], y[nz], pmax(x - gap, 
+            li)[nz], y[nz]), arrow.args))
+        nz <- abs(ui - pmin(x + gap, ui)) * x.to.in > 0.001
         scols <- rep(scol, length.out = length(x))[nz]
         arrow.args$col <- scols
-        do.call("arrows", c(list(ui[nz], y[nz], pmin(x + gap, ui)[nz], y[nz]), 
-            arrow.args))
+        do.call("arrows", c(list(ui[nz], y[nz], pmin(x + gap, 
+            ui)[nz], y[nz]), arrow.args))
     }
     if (plotpoints) 
         do.call("points", c(list(x, y, bg = pt.bg), clean.args(arglist, 

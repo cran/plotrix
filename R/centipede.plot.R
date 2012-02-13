@@ -21,7 +21,8 @@ get.segs<-function(x,mct="mean",lower.limit="std.error",
 
 centipede.plot<-function(segs,mct="mean",lower.limit="std.error", 
  upper.limit=lower.limit,left.labels=NULL,right.labels=NULL,sort.segs=TRUE,
- main="",xlab=NA,vgrid=NA,mar=NA,col=par("fg"),bg="green",...) {
+ main="",xlab=NA,pch=21,vgrid=NA,hgrid=NA,gridcol="lightgray",mar=NA,col=par("fg"),
+ bg="green",...) {
 
  if(missing(segs)) {
   cat("Usage: centipede.plot(segs,...)\n\twhere segs is a dstat object")
@@ -73,11 +74,13 @@ centipede.plot<-function(segs,mct="mean",lower.limit="std.error",
  plot(x=c(min(segs[2,]),max(segs[3,])),y=c(1,segdim[2]), 
   main=main,xlab="",ylab="",type="n",axes=FALSE,...)
  box()
- if(!is.na(vgrid)) abline(v=vgrid,lty=2)
+ if(!is.na(vgrid[1])) abline(v=vgrid,lty=1,col=gridcol)
+ if(is.null(hgrid)) abline(h=1:segdim[2],lty=2,col=gridcol)
+ else if(!is.na(hgrid[1])) abline(h=hgrid,lty=2,col=gridcol)
  axis(1)
  arrows(segs[2,],1:segdim[2],segs[3,],1:segdim[2],length=0.05, 
   angle=90,code=3,col=col)
- points(segs[1,],1:segdim[2],pch=21,col=col,bg=bg)
+ points(segs[1,],1:segdim[2],pch=pch,col=col,bg=bg)
  if(is.null(left.labels)) {
   left.labels<-colnames(segs)
   if(is.null(left.labels)) left.labels<-paste("V",seg.order,sep="")

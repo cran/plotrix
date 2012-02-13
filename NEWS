@@ -1,3 +1,16 @@
+version 3.3-8
+
+	added the horizontal grid argument to centipede plot (thanks to Colin Wahl)
+
+version 3.3-7
+
+	Fixed a color bug in plotCI (thanks to Daniel Wollschlaeger)
+
+version 3.3-6
+
+	Added the battleship plot (or Ford curve) thanks to Adam Maltese
+	Added the box.heresy function - thanks to Gianni Lavaredo
+
 version 3.3-4
 
 	Added the display.na argument to the dispersion function (thanks to Lasse Jacobsen)

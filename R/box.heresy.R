@@ -10,12 +10,10 @@ box.heresy<-function(x,y,uinner,linner=uinner,ulim,llim=ulim,intervals=FALSE,
   ulim<-y+ulim
   llim<-y-llim
  }
- cat("ulim =",ulim,"llim =",llim,"\n")
  if(length(x) > 1) xrange<-range(x)
  else xrange<-c(0.5,1.5)
  xspace<-diff(xrange)/10
  boxwidth<-diff(xrange)/(4*length(x))
- cat("boxwidth",boxwidth,"\n")
  plot(x,y,xlim=c(xrange[1]-xspace,xrange[2]+xspace),ylim=range(c(llim,ulim)),
   main=main,xlab=xlab,ylab=ylab,type="n",xaxt="n")
  axis(1,at=x,labels=xaxlab)
@@ -25,7 +23,6 @@ box.heresy<-function(x,y,uinner,linner=uinner,ulim,llim=ulim,intervals=FALSE,
   uinner<-y+uinner
   linner<-y-linner
  }
- cat("uinner =",uinner,"linner =",linner,"\n")
  rect(x-boxwidth,linner,x+boxwidth,uinner,col=col)
  points(x,y,pch=pch)
 }

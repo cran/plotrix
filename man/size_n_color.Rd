@@ -64,13 +64,13 @@
  # occurred in the year prior to registration or earlier
  data(death_reg)
  size_n_color(rep(1996:2010,each=22),rep(1:22,15),
-  size=log(t(death_reg[[1]])),
+  size=sqrt(t(death_reg[[1]])/10),
   col=color.scale(t(death_reg[[2]]),c(0,0.8,1),c(1,0.2,0),0),
   main="Delayed registrations by ICD chapter",
   xlab="Year",xaxlab=1996:2010,xat=1996:2010,xcex=0.8,
   yaxlab=colnames(death_reg[[1]]),ycex=0.8,ygrid=TRUE,mar=c(5,6,4,2))
- color.legend(1993,-4,1999,-3,seq(0,50,by=10),cex=0.8,
+ color.legend(1994,-3.5,2000,-2.5,seq(0,50,by=10),cex=0.8,
   rect.col=color.scale(seq(0,50,by=10),c(0,0.8,1),c(1,0.2,0),0))
  par(xpd=TRUE)
- text(1992.4,-3.5,"Pct.\nslow",cex=0.8)
+ text(1993.4,-3,"Pct.\nslow",cex=0.8)
 }
