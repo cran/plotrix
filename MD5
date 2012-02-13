@@ -1,7 +1,7 @@
-88834d48b0bf5e2573d81f3f10115049 *DESCRIPTION
+6d4a681413045107f046fae28e7fb183 *DESCRIPTION
 8c520c0ef0ae624a83d11270c1a71d6b *INDEX
 43fcf1a3783f727a853e4a01921251cb *NAMESPACE
-a270030abd96420960361e28d917ea76 *NEWS
+ba0005611d4a3785a5759c67025f3145 *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 17824cd2a230be55fb9d02108ed6f4c1 *R/addtable2plot.R
 2ed5c43219990f1d2a464646d78a6cef *R/arctext.R
@@ -12,12 +12,12 @@ b034b5794e5bf48ecdc3a69345d2a7e0 *R/barNest.R
 7e47b6a3154105cce8e68e3a5fb681fe *R/barNest.svyprop.R
 020d9978ff0de4e21acf59b970be46e2 *R/barp.R
 f33ab44a010f9c4ea06b6ff38fa5b30c *R/battleship.plot.R
-30194c84a7e75bc92f106449d5cd6b1f *R/box.heresy.R
+693ff126264720c024bd64df5786c20c *R/box.heresy.R
 c5ffa3ae37e01c6b6516bfa554963379 *R/boxed.labels.R
 49aed74b2115a5e2d1e684abb9280f15 *R/brkdn.plot.R
 4e76be1219e0939e18612a7826703122 *R/brkdnNest.R
 9475c574cda34c05dbf8dbd98ef66c2c *R/bumpchart.R
-147ed1ee0e0161b321cf4b82740c898b *R/centipede.plot.R
+33e2cf76ce70f01a2323499682811e1c *R/centipede.plot.R
 11f91483daa47b2d17ede65741fe6863 *R/clean.args.R
 f0103b3abf6e8faab8fd5812ba5f75ab *R/clplot.R
 0d2a63fd54c0a7d77a5eb01353a180be *R/cluster.overplot.R
@@ -67,7 +67,7 @@ f88facb736d50a863537818e29e9098f *R/lengthKey.R
 53fc688fbe92d2f624a881d24a2745a0 *R/panes.R
 52304cbd2133a98368562034e500fa70 *R/paxis3d.R
 963165bb5351f362117196defcdab8e6 *R/pie3D.R
-eb407f7638cd561367171efdde3ae369 *R/plotCI.R
+b9a64d1b0d4f890dbc817c1172fec476 *R/plotCI.R
 f10e1defb3c27cbd4459f322752389f0 *R/polygon.shadow.R
 ace0bc5530665de9e7314b8428272e0b *R/pyramid.plot.R
 7b5986e15b87d5f08667adbd85a67069 *R/radial.pie.R
@@ -126,7 +126,7 @@ a530b61037aa34161cd51fc2f4845071 *man/boxed.labels.Rd
 32a704671d1bcf783fc87d1fa6b7f638 *man/brkdnNest.Rd
 19fddb6d0ae317aee58378ca4ad9c0d4 *man/bumpchart.Rd
 fdd959e735ce69d626bc683c7142a487 *man/categoryReshape.Rd
-dd77931b1695dbf178d1cf2162b99c20 *man/centipede.plot.Rd
+e57177261b61c4ef3b8caf59dbda3091 *man/centipede.plot.Rd
 d6019ca90bd3aaaff4e63d9b55aff24c *man/clean.args.Rd
 afebae09379a8fd45edc6d21e5b37601 *man/clock24.plot.Rd
 dc4c200cb331f0490d5ce7ee0975534d *man/clplot.Rd
@@ -212,7 +212,7 @@ f4f614e09a3dab3c75f4a9e4fa02c0c9 *man/rectFill.Rd
 c4f2c015fcd5a98581ef7859a1640e5a *man/rescale.Rd
 806b61300d1880bdd26a85011d845714 *man/revaxis.Rd
 e707694b2762db46d4e938f3383b5577 *man/ruginv.Rd
-cde3510071f243f3d0bc97a8c6f012e3 *man/size_n_color.Rd
+e44d7bae2f152300f2f8ca6b61c9f283 *man/size_n_color.Rd
 f2586a13028c3884bdc4335610c67dc9 *man/sizeplot.Rd
 91a63eee9e7f7b70270e01db9410add4 *man/sizetree.Rd
 554e180d9da267bedc3ad04b2bd6f4aa *man/sliceArray.Rd
