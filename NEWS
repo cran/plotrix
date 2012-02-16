@@ -1,3 +1,7 @@
+version 3.3-9
+
+	Fixed the bug in centipede.plot that I introduced in v3.3-8
+
 version 3.3-8
 
 	added the horizontal grid argument to centipede plot (thanks to Colin Wahl)

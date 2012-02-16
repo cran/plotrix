@@ -1,7 +1,7 @@
-6d4a681413045107f046fae28e7fb183 *DESCRIPTION
+ecdc8f3ea7f0aff7755dac5d10c75588 *DESCRIPTION
 8c520c0ef0ae624a83d11270c1a71d6b *INDEX
 43fcf1a3783f727a853e4a01921251cb *NAMESPACE
-ba0005611d4a3785a5759c67025f3145 *NEWS
+994e3901a2df56de3e8c5e6cac478fc2 *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 17824cd2a230be55fb9d02108ed6f4c1 *R/addtable2plot.R
 2ed5c43219990f1d2a464646d78a6cef *R/arctext.R
@@ -17,7 +17,7 @@ c5ffa3ae37e01c6b6516bfa554963379 *R/boxed.labels.R
 49aed74b2115a5e2d1e684abb9280f15 *R/brkdn.plot.R
 4e76be1219e0939e18612a7826703122 *R/brkdnNest.R
 9475c574cda34c05dbf8dbd98ef66c2c *R/bumpchart.R
-33e2cf76ce70f01a2323499682811e1c *R/centipede.plot.R
+f34b066424d85a26ff27d52dc0d9849a *R/centipede.plot.R
 11f91483daa47b2d17ede65741fe6863 *R/clean.args.R
 f0103b3abf6e8faab8fd5812ba5f75ab *R/clplot.R
 0d2a63fd54c0a7d77a5eb01353a180be *R/cluster.overplot.R

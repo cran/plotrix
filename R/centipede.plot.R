@@ -67,7 +67,7 @@ centipede.plot<-function(segs,mct="mean",lower.limit="std.error",
   seg.order<-order(segs[1,])
   segs<-segs[,seg.order]
  }
- else seg.order<-1:segdim[1]
+ else seg.order<-1:segdim[2]
  oldpar<-par("mar")
  if(is.na(mar[1])) mar<-c(4,6,1+2*(nchar(main)>0),5)
  par(mar=mar)
