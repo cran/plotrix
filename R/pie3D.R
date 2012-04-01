@@ -14,7 +14,7 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
   }
   xpos <- 1.15 * radius * cos(radialpos[i])
   offset <- (radialpos[i] > pi && radialpos[i] < 2 * pi) * height
-  ypos <- 1.2 * sin(radialpos[i]) * sin(theta) * radius - offset
+  ypos <- 1.2 * sin(radialpos[i]) * cos(theta) * radius - offset
   text(xpos,ypos,labels[i],col=labelcol,adj=c(0.5,as.numeric(ypos<0)))
  }
  par(cex=oldcex,xpd=FALSE)
@@ -40,25 +40,30 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,
  }
  else shadecol<-col
  xp<-cos(angles)*(radius)+x
- yp<-sin(angles)*(1-sin(theta))*radius+y
+# yp<-sin(angles)*(1-sin(theta))*radius+y
+ yp<-(sin(angles) * sin(theta))*radius+y
  if(start > 3*pi/2){
-  polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv],y,
-   y-height,yp[nv]-height,yp[nv]-height),border=border,
-   col=shadecol)
+  if(explode > 0)
+   polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv],y,
+    y-height,yp[nv]-height,yp[nv]-height),border=border,
+    col=shadecol)
   polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve],
    rev(yp[viscurve])-height),border=border,col=shadecol)
-  polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1],y,
-   y-height,yp[1]-height,yp[1]),border=border,
-   col=shadecol)
- }
- else {
-  if(start > pi/2) {
+  if(explode > 0)
    polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1],y,
     y-height,yp[1]-height,yp[1]),border=border,
     col=shadecol)
-   polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv],
-    y,y-height,yp[nv]-height,yp[nv]-height),
-    border=border,col=shadecol)
+ }
+ else {
+  if(start > pi/2) {
+   if(explode > 0) {
+    polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1],y,
+     y-height,yp[1]-height,yp[1]),border=border,
+     col=shadecol)
+    polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv],
+     y,y-height,yp[nv]-height,yp[nv]-height),
+     border=border,col=shadecol)
+   }
    if(end > pi)
     polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve],
      rev(yp[viscurve])-height),border=border,
@@ -69,14 +74,15 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,
     polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve],
      rev(yp[viscurve])-height),border=border,
      col=shadecol)
-   if(end > pi/2 && end < 3*pi/2){
+   if(end > pi/2 && end < 3*pi/2 && explode > 0){
     polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv],
      y,y-height,yp[nv]-height,yp[nv]-height),
      border=border,col=shadecol)
    }
-   polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1],y,
-    y-height,yp[1]-height,yp[1]),border=border,
-    col=shadecol)
+   if(explode > 0)
+    polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1],y,
+     y-height,yp[1]-height,yp[1]),border=border,
+     col=shadecol)
   }
  }
  polygon(c(xp,x),c(yp,y),border=border,col=col)
@@ -86,7 +92,7 @@ draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,
 pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6, 
  start=0,border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,
  labelcol=par("fg"),labelcex=1.5,sector.order=NULL,explode=0,
- shade=0.8,...) {
+ shade=0.8,mar=c(4,4,4,4),...) {
 
  if(!is.numeric(x) || any(x < 0)) 
   stop("pie3D: x values must be positive numbers")
@@ -95,7 +101,7 @@ pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,
  # drop NAs
  if(any(is.na(x))) x<-x[!is.na(x)]
  oldmar<-par("mar")
- par(mar=c(4,4,4,4),xpd=TRUE)
+ par(pty="s",mar=mar,xpd=TRUE)
  x<-c(0, cumsum(x)/sum(x))*2*pi+start
  nsectors<-length(x)-1
  if(is.null(col)) col <- rainbow(nsectors)
@@ -118,6 +124,6 @@ pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,
    pie3D.labels(bc,height=height,theta=theta, 
     labels=labels,labelcol=labelcol,labelcex=labelcex)
  }
- par(mar=oldmar,xpd=FALSE)
+ par(mar=oldmar,xpd=FALSE,pty="m")
  invisible(bc)
 }

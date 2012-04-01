@@ -7,7 +7,7 @@
 \usage{
  pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,border=par("fg"),
   col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
-  sector.order=NULL,explode=0,shade=0.8,...)
+  sector.order=NULL,explode=0,shade=0.8,mar=c(4,4,4,4),...)
 }
 \arguments{
  \item{x}{a numeric vector for which each value will be a sector}
@@ -27,6 +27,7 @@
  \item{explode}{The amount to "explode" the pie in user units}
  \item{shade}{If > 0 and < 1, the proportion to reduce the
   brightness of the sector color to get a better 3D effect.}
+ \item{mar}{Margins around the pie.}
  \item{...}{graphical parameters passed to \samp{plot}}
 }
 \value{
@@ -50,10 +51,12 @@
  cases. The argument \samp{sector.order} allows the user to specify a vector
  of integers that will override the calculation of the order in which the
  sectors are drawn. This is usually necessary when a very large sector that 
- extends past 3*pi/2 is overlapped by a smaller sector next to it.
+ extends past 3*pi/2 is overlapped by a smaller sector next to it. As a last
+ resort, the user can try setting \samp{explode} to zero. This only draws
+ the top and outer sides of each sector.
  
  While \samp{pie3D} can be used to display a 2D pie chart by setting
- height=0 and theta=pi, the labels produced by \samp{pie3D.labels} will
+ height=0 and theta=pi/2, the labels produced by \samp{pie3D.labels} will
  not be well positioned. It is probably better to use \samp{floating.pie}
  for this, or use \samp{pie.labels} for the labels.
 

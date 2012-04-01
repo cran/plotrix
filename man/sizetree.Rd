@@ -6,7 +6,7 @@
  rectangles.}
 \usage{
  sizetree(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,showcount=TRUE,
-  firstcall=TRUE,col=NULL,toplab=NULL,base.cex=1,...)
+  firstcall=TRUE,col=NULL,border=NA,toplab=NULL,base.cex=1,...)
 }
 \arguments{
  \item{x}{A data frame in which each successive column represents
@@ -20,6 +20,7 @@
  \item{showcount}{Whether to display the count for the categories.}
  \item{firstcall}{A flag for the function - do not alter this.}
  \item{col}{Optional fill colors for the rectangles. See Details}
+ \item{border}{Color for border around the rectangles. See details}
  \item{toplab}{Optional labels to display a the top of each stack.}
  \item{base.cex}{The base character expansion for the labels.}
  \item{...}{additional arguments passed to \samp{plot}.}
@@ -41,13 +42,20 @@
  The user can pass the same colors for the all levels (example 2). If this is
  done, \samp{sizetree} will try to match colors to categories when
  the number of categories is diminishing (e.g. some levels are missing in the
- sub-categories). This will work if the category labels are the same in each level,
+ sub-categories) and the columns of \samp{x} are factors with the same levels in
+ the same order. This will work if the category labels are the same in each level,
  but remember to add the names to the colors before passing them to the function.
- This will not work if there are more categories
- in the lower levels. If \samp{col} is a list, this is not done, and the user
- will have to work out the correct colors for each level. This is particularly
- important when the category labels and the number of categories is different in
- different levels (example 3).
+ This will not work if there are more categories in the lower levels. If \samp{col}
+ is a list, this is not done, and the user will have to work out the correct colors
+ for each level. This is particularly important when the category labels and the
+ number of categories is different in different levels (example 3).
+
+ In some sizetrees, the subcategory counts are very low compared to the overall
+ number of data objects. This results in rectangles that are very thin vertically.
+ One way to get better legibility of the labels is to use dark colors for the
+ rectangles, so that the labels are white, and no borders (set \samp{border} to NA).
+ The user can also select only part of the data frame \samp{x} to expand sections
+ of the sizetree as in the last example.
 
  The labels are sized to fit the vertical extent of the bars. However, it is
  possible that the labels may extend horizontally beyond the bar(s). The
@@ -80,11 +88,16 @@
  sizetree(hcats,col=list(bhcol,bhcol,bhcol),
   main="Sizetree with the same colors each level")
  # finally, specify different colors for categories with different labels
- sexhaireye<-data.frame(sex=sample(c("Male","Female"),50,TRUE),
-  hair=sample(c("Blond","Red","Brown","Black"),50,TRUE),
-  eye=sample(c("Gold","Green","Blue"),50,TRUE))
+ sexhaireye<-data.frame(sex=factor(sample(c("Male","Female"),50,TRUE)),
+  hair=factor(sample(c("Blond","Red","Brown","Black"),50,TRUE)),
+  eye=factor(sample(c("Gold","Green","Blue"),50,TRUE)))
+ shecol<-list(c("pink","lightblue"),c("#000000","#dddd00","#886600","#ee8800"),
+  c("blue","gold","green"))
  sizetree(sexhaireye,main="Sex, hair and eye color",
-  col=list(c("pink","lightblue"),c("#000000","#dddd00","#886600","#ee8800"),
-  c("blue","gold","green")),toplab=c("Sex","Hair color","Eye color"))
+  col=shecol,toplab=c("Sex","Hair color","Eye color"))
+ # now expand the female part of the sizetree
+ sizetree(sexhaireye[sexhaireye[,1]=="Female",],
+  main="Sex, hair and eye color (Females only)",
+  col=shecol,toplab=c("Sex","Hair color","Eye color"))
 }
 \keyword{misc}

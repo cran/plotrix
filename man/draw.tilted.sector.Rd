@@ -30,6 +30,10 @@
  only useful when called from \link{pie3D}. The \samp{shade}
  argument proportionately reduces the brightness of the RGB color of
  the sector to produce a top lighted effect.
+
+ If \samp{explode} is zero, only the top and outer side of each
+ sector will be displayed. This will sometimes fix the problem of a pie with
+ one huge sector greater than 3*pi/2 that cannot otherwise be drawn.
 }
 \author{Jim Lemon}
 \seealso{\link{pie3D}}

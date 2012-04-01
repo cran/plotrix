@@ -40,7 +40,7 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  xleft<-x-xjust*nhcells*cellwidth
  ytop<-y+yjust*nvcells*cellheight
  # adjust for logarithmic plotting and allow the table to extend beyond the plot
- oldpar<-par(ylog=FALSE,ylog=FALSE,xpd=TRUE)
+ oldpar<-par(xlog=FALSE,ylog=FALSE,xpd=TRUE)
  # draw the box if wanted
  if(bty=="o")
   rect(xleft,ytop-nvcells*cellheight,xleft+nhcells*cellwidth,ytop,

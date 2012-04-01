@@ -56,7 +56,7 @@
  testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
   sin(1:50)),ncol=50,byrow=TRUE)
  kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
-  timepos=seq(1:50,by=5),timex=FALSE)
+  timepos=seq(1,50,by=5),timex=FALSE)
  musicmat<-matrix(c(c(0.5,0.4,0.3,0.25,0.2,0.15,0.1,rep(0.05,44))+runif(51,0,0.05),
   c(0.1,0.2,0.3,0.35,0.4,0.5,0.4,rep(0.5,14),rep(0.4,15),rep(0.3,15))+runif(51,0,0.1),
   rep(0.15,51)+runif(51,0,0.1),

@@ -26,5 +26,5 @@ multhist <- function (x, beside=TRUE, freq=NULL, probability=!freq,
    function(z) hist(z, breaks = allhist$breaks,
     plot = FALSE)[[comp]]))
   if(plot.it) do.call("barplot", c(list(combhist),barplot.args))
-  invisible(list(breaks=allhist$breaks,out=combhist))
+  invisible(list(allhist,combhist))
 }

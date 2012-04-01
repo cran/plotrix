@@ -26,13 +26,13 @@ kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
  }
  axis(ifelse(timex,axlab[1],axlab[2]),at=timepos,labels=timelabels)
  box()
- if(is.null(fill[1])) fill<-rainbow(dimx[1])
+ if(is.null(fill)) fill<-rainbow(dimx[1])
  if(length(fill) < dimx[1]) fill<-rep(fill,length.out=dimx[1])
  for(krow in 1:dimx[1]) {
   if(normalize) {
    if(shownorm)
-    mtext(paste("*",signif(1/max(x[krow,]),digits=3)),ifelse(timex,axlab[4],axlab[3]),
-     at=krow,las=1)
+    mtext(paste("*",signif(1/max(x[krow,]),digits=3)),
+     ifelse(timex,axlab[4],axlab[3]),at=krow,las=1)
    x[krow,]<-x[krow,]/(max(x[krow,])*2)
   }
   xpos<-1:length(x[krow,])

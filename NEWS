@@ -1,3 +1,11 @@
+version 3.4
+
+	added the border argument to the sizetree function
+	multhist now returns all values from hist - thanks to John Muccigrosso
+	fixed a bug in addtable2plot that appeared on plots with a log x axis
+	fixed an almost invisible bug in drawSectorAnnulus - thanks to Denes
+	added the "mar" argument to pie3D - thanks to Qinghua Zhao
+
 version 3.3-9
 
 	Fixed the bug in centipede.plot that I introduced in v3.3-8
