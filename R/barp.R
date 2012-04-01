@@ -21,7 +21,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  hdim<-dim(height)
  if(is.null(hdim) || length(hdim) == 1) {
   ngroups<-length(height)
-  barcol=col
+  barcol<-col
   barpinfo<-list(x=1:ngroups,y=height)
   hdim<-NULL
  }
@@ -30,6 +30,8 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
   if(!is.matrix(col) && length(col)==hdim[1])
    barcol<-matrix(rep(col,each=ngroups),nrow=hdim[1],byrow=TRUE)
   else barcol<-col
+  if(!is.matrix(pch) && length(pch)==hdim[1])
+   pch<-matrix(rep(pch,ngroups),nrow=hdim[1])
   barpinfo<-list(x=matrix(rep(1:ngroups,each=hdim[1]),ncol=hdim[2]),
    y=as.matrix(height))
  }

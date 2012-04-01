@@ -5,7 +5,7 @@ drawSectorAnnulus<-function(angle1,angle2,radius1,radius2,col,angleinc=0.03) {
   angle2<-temp
  }
  if(radius1 > radius2) {
-  tempangle<-radius1
+  temp<-radius1
   radius1<-radius2
   radius2<-temp
  }

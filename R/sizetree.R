@@ -1,5 +1,5 @@
 sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,
- showcount=TRUE,firstcall=TRUE,col=NULL,toplab=NULL,base.cex=1,...) {
+ showcount=TRUE,firstcall=TRUE,col=NULL,border=NA,toplab=NULL,base.cex=1,...) {
 
  dimx<-dim(x)
  if(firstcall) {
@@ -37,7 +37,7 @@ sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,
     if(!is.na(xfreq[bar])) {
      if(xfreq[bar] > 0) {
       rect(left+squeeze,top-xfreq[bar],right-squeeze,top,
-       col=barcol[bar])
+       col=barcol[bar],border=border)
       labelheight<-strheight(labels[bar])
       cex<-ifelse((1.5*labelheight) > xfreq[bar], 
        base.cex*0.75*xfreq[bar]/labelheight,base.cex)
@@ -61,7 +61,7 @@ sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,
     newcol[[1]]<-NULL
     nextx<-subset(x,x[,1]==xvalue,2:dimx[2])
     sizetree(nextx,right,top,right+1,lastcenter=top-xfreq[bar]/2,
-     showval=showval,firstcall=FALSE,col=newcol,base.cex=base.cex)
+     showval=showval,firstcall=FALSE,col=newcol,border=border,base.cex=base.cex)
    }
    top<-top-xfreq[bar]
   }

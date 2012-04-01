@@ -13,9 +13,9 @@ rectFill<-function(x1,y1,x2,y2,fg=par("fg"),bg=par("bg"),xinc=NA,yinc=NA,
  if(length(pch.col) < nrect) pch.col<-rep(pch.col,nrect)
  for(frect in 1:nrect) {
   rect(x1[frect],y1[frect],x2[frect],y2[frect],col=bg[frect],border=fg[frect])
-  xpos<-seq(x1[frect]+xinc[frect]/2,x2[frect],by=xinc[frect])
+  xpos<-seq(x1[frect]+xinc[frect]/2,x2[frect]-xinc[frect]/2,by=xinc[frect])
   lenxpos<-length(xpos)
-  ypos<-seq(y1[frect]+yinc[frect]/2,y2[frect],by=yinc[frect])
+  ypos<-seq(y1[frect]+yinc[frect]/2,y2[frect]-yinc[frect]/2,by=yinc[frect])
   lenypos<-length(ypos)
   xpos<-rep(xpos,each=lenypos)
   ypos<-rep(ypos,lenxpos)

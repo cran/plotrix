@@ -22,7 +22,8 @@
  \item{...}{additional arguments to \link{hist} or \link{barplot}}
 }
 \value{
- the breaks and the values for the histograms.
+ A list including the return value for the first call to \samp{hist} (itself a list)
+ and the values for the bar heights.
 }
 \author{Ben Bolker}
 \seealso{\link{hist},\link{barplot}}

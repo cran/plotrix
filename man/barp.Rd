@@ -69,8 +69,8 @@
  labels on the vertical axis, usually representing the options. If \samp{staxx}
  or \samp{staxy} are TRUE, the labels on the horizontal or vertical axes
  respectively will be staggered, allowing the user to use many or lengthy variable
- or value labels. If \samp{srt} is not NA, these labels will be rotated by that
- value as angles in degrees instead of staggered.
+ or value labels. If \samp{srt} is not NA, these labels will be rotated 
+ counterclockwise by that value as angles in degrees instead of staggered.
 
  \samp{barp} allows two enhancements that may be useful in those areas where fancy
  plots are appreciated. One is to give the bars a cylindrical look by shading the
