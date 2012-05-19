@@ -1,5 +1,5 @@
-pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6, 
- labels,labelcol=par("fg"),labelcex=1.5,minsep=0.3){
+pie3D.labels<-function(radialpos,radius=1,height=0.1,theta=pi/6, 
+ labels,labelcol=par("fg"),labelcex=1.5,labelrad=1.25,minsep=0.3){
 
  oldcex<-par("cex")
  nlab<-length(labels)
@@ -12,87 +12,97 @@ pie3D.labels<-function(radialpos,radius=1,height=0.3,theta=pi/6,
     radialpos[i+1]<-radialpos[i+1]-(labelsep-minsep)/2
    }
   }
-  xpos <- 1.15 * radius * cos(radialpos[i])
-  offset <- (radialpos[i] > pi && radialpos[i] < 2 * pi) * height
-  ypos <- 1.2 * sin(radialpos[i]) * cos(theta) * radius - offset
-  text(xpos,ypos,labels[i],col=labelcol,adj=c(0.5,as.numeric(ypos<0)))
+  xpos<-labelrad * radius * cos(radialpos[i])
+  offset<-(radialpos[i] > pi && radialpos[i] < 2 * pi) * height
+  ypos<-labelrad * radius * sin(radialpos[i]) * 2 * theta/pi +
+   sin(radialpos[i]) * height 
+  text(xpos,ypos,labels[i],col=labelcol,
+   adj=c(0.5,abs(0.5-sin(radialpos[i])/2)))
  }
  par(cex=oldcex,xpd=FALSE)
 }
 
-draw.tilted.sector<-function(x=0,y=0,edges=100,radius=1,height=0.3,
+draw.tilted.sector<-function(x=0,y=0,edges=NA,radius=1,height=0.1,
  theta=pi/6,start=0,end=pi*2,border=par("fg"),col=par("bg"),explode=0,
  shade=0.8) {
 
- angleinc<-2*pi/edges
+ if(is.na(edges)) edges<-trunc(20*(end-start))
+ angleinc<-(end-start)/edges
  angles<-c(seq(start,end,by=angleinc),end)
  viscurve<-(angles>=pi)&(angles<=2*pi)
  nv<-length(angles)
  bisector<-(start+end)/2
  if(explode){
+  # calculate the x and y offsets for the explode
   x<-x+cos(bisector)*explode
   y<-y+sin(bisector)*(1-sin(theta))*explode
  }
  if(shade>0 && shade<1){
+  # calculate the shade color for the sides of the sector
   rgbcol<-col2rgb(col)
   shadecol<-rgb(shade*rgbcol[1]/255,shade*rgbcol[2]/255,
   shade*rgbcol[3]/255)
  }
  else shadecol<-col
- xp<-cos(angles)*(radius)+x
-# yp<-sin(angles)*(1-sin(theta))*radius+y
- yp<-(sin(angles) * sin(theta))*radius+y
- if(start > 3*pi/2){
+ xp<-cos(angles) * radius + x
+ # this is the top of the sector
+ yp<-sin(angles) * 2 * theta/pi * radius + y
+ if(start > 3*pi/2) {
+  # the 'left' side will be visible in this quadrant
   if(explode > 0)
-   polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv],y,
-    y-height,yp[nv]-height,yp[nv]-height),border=border,
+   # display the 'right' side just in case it goes beyond pi/2
+   polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv]-height,y-height,
+    y+height,yp[nv]+height,yp[nv]+height),border=border,
     col=shadecol)
-  polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve],
-   rev(yp[viscurve])-height),border=border,col=shadecol)
+  # display the 'outside' of the sector
+  polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve]-height,
+   rev(yp[viscurve])+height),border=border,col=shadecol)
   if(explode > 0)
-   polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1],y,
-    y-height,yp[1]-height,yp[1]),border=border,
+   # display the 'left' (front) side
+   polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1]-height,y-height,
+    y+height,yp[1]+height,yp[1]),border=border,
     col=shadecol)
  }
  else {
   if(start > pi/2) {
    if(explode > 0) {
-    polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1],y,
-     y-height,yp[1]-height,yp[1]),border=border,
+    polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1]-height,y-height,
+     y+height,yp[1]+height,yp[1]),border=border,
      col=shadecol)
-    polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv],
-     y,y-height,yp[nv]-height,yp[nv]-height),
+    polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv]-height,
+     y-height,y+height,yp[nv]+height,yp[nv]+height),
      border=border,col=shadecol)
    }
    if(end > pi)
-    polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve],
-     rev(yp[viscurve])-height),border=border,
+    polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve]-height,
+     rev(yp[viscurve])+height),border=border,
      col=shadecol)
   }
   else {
    if(end > pi || start<2*pi)
-    polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve],
-     rev(yp[viscurve])-height),border=border,
+    polygon(c(xp[viscurve],rev(xp[viscurve])),c(yp[viscurve]-height,
+     rev(yp[viscurve])+height),border=border,
      col=shadecol)
    if(end > pi/2 && end < 3*pi/2 && explode > 0){
-    polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv],
-     y,y-height,yp[nv]-height,yp[nv]-height),
+    polygon(c(xp[nv],x,x,xp[nv],xp[nv]),c(yp[nv]-height,
+     y-height,y+height,yp[nv]+height,yp[nv]+height),
      border=border,col=shadecol)
    }
    if(explode > 0)
-    polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1],y,
-     y-height,yp[1]-height,yp[1]),border=border,
+    polygon(c(xp[1],x,x,xp[1],xp[1]),c(yp[1]-height,y-height,
+     y+height,yp[1]+height,yp[1]+height),border=border,
      col=shadecol)
   }
  }
- polygon(c(xp,x),c(yp,y),border=border,col=col)
+ #display the top
+ polygon(c(xp,x),c(yp+height,y+height),border=border,col=col)
  return(bisector)
 }
 
-pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6, 
+pie3D<-function(x,edges=NA,radius=1,height=0.1,theta=pi/6, 
  start=0,border=par("fg"),col=NULL,labels=NULL,labelpos=NULL,
  labelcol=par("fg"),labelcex=1.5,sector.order=NULL,explode=0,
- shade=0.8,mar=c(4,4,4,4),...) {
+ shade=0.8,mar=c(4,4,4,4),pty="s",...) {
 
  if(!is.numeric(x) || any(x < 0)) 
   stop("pie3D: x values must be positive numbers")
@@ -101,7 +111,7 @@ pie3D<-function(x,edges=100,radius=1,height=0.3,theta=pi/6,
  # drop NAs
  if(any(is.na(x))) x<-x[!is.na(x)]
  oldmar<-par("mar")
- par(pty="s",mar=mar,xpd=TRUE)
+ par(pty=pty,mar=mar,xpd=TRUE)
  x<-c(0, cumsum(x)/sum(x))*2*pi+start
  nsectors<-length(x)-1
  if(is.null(col)) col <- rainbow(nsectors)

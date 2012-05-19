@@ -20,7 +20,7 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
  if(!is.null(raxlab) && xlim[2] < max(raxlab)) xlim[2]<-max(raxlab)
  oldmar<-par("mar")
  if(!add) {
-  par(mar=ppmar)
+  par(mar=ppmar,cex.axis=labelcex)
   # create an empty plot
   plot(0,xlim=c(-(xlim[1]+gap),xlim[2]+gap),ylim=c(0,ncats+1),
    type="n",axes=FALSE,xlab="",ylab="",xaxs="i",yaxs="i",main=main)

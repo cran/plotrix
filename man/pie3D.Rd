@@ -5,9 +5,9 @@
  Displays a 3D pie chart with optional labels.
 }
 \usage{
- pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,border=par("fg"),
+ pie3D(x,edges=NA,radius=1,height=0.1,theta=pi/6,start=0,border=par("fg"),
   col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
-  sector.order=NULL,explode=0,shade=0.8,mar=c(4,4,4,4),...)
+  sector.order=NULL,explode=0,shade=0.8,mar=c(4,4,4,4),pty="s",...)
 }
 \arguments{
  \item{x}{a numeric vector for which each value will be a sector}
@@ -28,6 +28,7 @@
  \item{shade}{If > 0 and < 1, the proportion to reduce the
   brightness of the sector color to get a better 3D effect.}
  \item{mar}{Margins around the pie.}
+ \item{pty}{Whether to force a square plot region or not. (see Details)}
  \item{...}{graphical parameters passed to \samp{plot}}
 }
 \value{
@@ -42,6 +43,11 @@
  positions and sector colors must be at least equal to the number of values 
  in \samp{x}. If the labels are long, it may help to reduce the radius of
  the pie or change the position as in the example below.
+
+ In order to make the dimensions of the pie reasonably accurate, a square plot
+ region (\samp{pty="s"}) is the default. If \samp{pty} is set to "m", the user
+ can change the margins, usually resulting in a non-square plot area. This will
+ probably distort the pie somewhat.
 }
 \note{
  Due to the somewhat primitive method used to draw sectors, a sector that
@@ -55,13 +61,13 @@
  resort, the user can try setting \samp{explode} to zero. This only draws
  the top and outer sides of each sector.
  
- While \samp{pie3D} can be used to display a 2D pie chart by setting
- height=0 and theta=pi/2, the labels produced by \samp{pie3D.labels} will
- not be well positioned. It is probably better to use \samp{floating.pie}
- for this, or use \samp{pie.labels} for the labels.
+ Also due to the sector drawing method, setting \samp{theta} to values smaller
+ than about pi/8 or larger than about pi/4 will produce obviously misaligned
+ sectors.
 
  Contributed fixes and improvements:
- thanks to Jesse Brown for the "shade" fix
+ thanks to Jesse Brown for the "shade" fix and Qinghua Zhao for alerting me to
+ the problem with labels and margins
 }
 \author{Jim Lemon}
 \seealso{\link{pie3D.labels}, \link{draw.tilted.sector}}
@@ -74,7 +80,8 @@
  # lengthen the last label and move it to the left
  pielabels[4]<-"We cannot survive without our pies"
  lp[4]<-4.8
+ # specify some new colors
  pie3D(pieval,radius=0.9,labels=pielabels,explode=0.1,main="3D PIE OPINIONS",
-  labelpos=lp)
+  col=c("brown","#ddaa00","pink","#dd00dd"),labelpos=lp)
 }
 \keyword{misc}

@@ -7,6 +7,8 @@ feather.plot<-function(r,theta,xpos,yref=0,use.arrows=TRUE,
  if(fp.type == "m") theta<-5*pi/2-theta
  x<-r*cos(theta)
  y<-r*sin(theta)
+ xmult<-diff(range(xpos))/(diff(range(y))*2)
+ x<-x*xmult
  xlim<-range(c(xpos,x+xpos))
  ylim<-range(c(y,yref))
  oldpin<-par("pin")

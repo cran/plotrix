@@ -1,7 +1,7 @@
 # plots data as radial lines or a polygon on a 24 hour "clockface" going 
 # clockwise. clock.pos should be in decimal hours between 0 and 24.
 # Remember to convert hour/minute values to hour/decimal values.
-# example: clock24.plot(rnorm(16)+3,seq(5.5,20.5))
+# example: clock24.plot(rnorm(16)+3,seq(5.5,20.5,length.out=16))
 
 clock24.plot<-function(lengths,clock.pos,labels=NULL,label.pos=NULL,
  rp.type="r",...) {

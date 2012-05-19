@@ -14,9 +14,10 @@ barNest<-function(formula=NULL,data=NULL,FUN=c("mean","sd"),
  nbn<-length(as.character(attr(terms(formula),"variables")[-1]))
  if(is.null(ylim)) {
   # don't use overall value to calculate ylim when counts are displayed
-  if(FUN[1]=="valid.n" || FUN[1]=="sumbrk") {
+  # or when the "sum" function is used to combine pre-calculated values
+  if(FUN[1]=="valid.n" || FUN[1]=="sumbrk" || FUN[1]=="sum") {
    ylim<-c(0,1.04*max(unlist(x[[1]][[2]]),na.rm=TRUE))
-   if(FUN[1]=="valid.n") barlabels[[1]]<-""
+   if(FUN[1]=="valid.n" || FUN[1]=="sum") barlabels[[1]]<-""
   }
   else {
    lenx<-length(x)

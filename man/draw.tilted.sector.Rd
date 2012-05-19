@@ -5,7 +5,7 @@
  Displays a 3D pie sector.
 }
 \usage{
- draw.tilted.sector(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
+ draw.tilted.sector(x=0,y=0,edges=NA,radius=1,height=0.1,theta=pi/6,
   start=0,end=pi*2,border=par("fg"),col=par("bg"),explode=0,shade=0.8)
 }
 \arguments{

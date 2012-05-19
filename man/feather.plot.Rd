@@ -41,11 +41,14 @@
 \seealso{\link{spread.labels}}
 \examples{
  x11(width=8,height=3)
- feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
+ r<-0.6+rnorm(24)/5
+ theta<-c(seq(15*pi/16,pi/16,length.out=12),
+  seq(17*pi/16,31*pi/16,length.out=12))
+ feather.plot(r,theta,xlabels=1:24,
   main="Standard Coordinates",xlab="Time",ylab="Value")
- feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
-  main="Meteorological Coordinates",xlab="Time",ylab="Value",
-  fp.type="m",xlabels=TRUE)
+ # rearrange theta for meteorological coordinates
+ feather.plot(r,c(theta[19:24],rev(theta[7:18]),theta[1:6]),xlabels=1:24,fp.type="m",
+  main="Meteorological Coordinates",xlab="Time",ylab="Value")
  dev.off()
 }
 \keyword{misc}

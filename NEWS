@@ -1,3 +1,10 @@
+version 3.4-1
+
+	Fixed the alignment problem in pie3D and rationalized angle increments
+	Added the raw.means.plot functions contributed by Henrik Singmann
+	vastly improved the speed of the sizetree function
+	added the "varpos" argument to the kiteChart function - thanks to Nikolaus Lampardariou)
+
 version 3.4
 
 	added the border argument to the sizetree function
