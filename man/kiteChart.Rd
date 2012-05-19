@@ -7,8 +7,9 @@
 \usage{
  kiteChart(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
  xlab=ifelse(timex,"Time","Groups"),ylab=ifelse(timex,"Groups","Time"),
- fill=NULL,border=par("fg"),varlabels=NA,timepos=NA,timelabels=NA,
- mar=c(5,4,4,4),axlab=c(1,2,3,4),normalize=TRUE,shownorm=TRUE,...)
+ fill=NULL,border=par("fg"),varpos=NA,varlabels=NA,varscale=FALSE,
+ timepos=NA,timelabels=NA,mar=c(5,4,4,4),axlab=c(1,2,3,4),
+ normalize=is.na(varpos[1]),shownorm=TRUE,...)
 }
 \arguments{
  \item{x}{Numeric matrix or data frame}
@@ -19,8 +20,11 @@
  \item{fill}{The color(s) with which to fill the polygons. Defaults to
   \samp{rainbow(1:dim(x)[1])}.}
  \item{border}{The color of the borders of the polygons.}
+ \item{varpos}{Optional positions for the "kite lines". Defaults to 1:dimx[1].
+  (see Details)}
  \item{varlabels}{Labels for the rows of values - defaults to the rownames,
-  or if these are missing, 1:dim(x)[1].}
+  or if these are missing, varpos[1:dim(x)[1]].}
+ \item{varscale}{Whether to show the maximum extent of each "kite line".}
  \item{timepos}{The positions of the values along the x axis, usually times,
   defaulting to 1:dim(x)[2].}
  \item{timelabels}{Labels for the positions, defaulting to \samp{timepos}.}
@@ -48,15 +52,27 @@
  on the bottom and left sides of the plot and the multipliers on the right or top.
  Using \samp{axlab=c(3,4,1,2)} places the tick labels on the top and right and the 
  multipliers on the left or bottom. The \samp{mar} argument may have to be adjusted.
+
+ The user can display raw values by default, or by setting \samp{varpos} to TRUE.
+ Setting \samp{varpos} to a vector of positions will place the "kite lines" on those
+ values. If there are no row names and the \samp{varlabels} argument is NA, the values
+ of \samp{varpos} will be used as labels for each "kite line". The maximum extent of
+ each "kite line" can be displayed by setting \samp{varscale} to TRUE. If
+ \samp{varscale} is TRUE, one extra line will be added to the top margin. If
+ \samp{varpos[1]} is not NA, \samp{normalize} is FALSE by default.
 }
 \value{The values of \samp{mar} that were current when \samp{kiteChart} was called.}
-\author{Jim Lemon (Thanks to Michael Bedward for suggestions on the arguments)}
+\author{Jim Lemon (Thanks to Michael Bedward for suggestions on the arguments and
+ Nikolaus Lampadariou for the suggestions on displaying raw values)}
 \seealso{\link{polygon}}
 \examples{
  testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
   sin(1:50)),ncol=50,byrow=TRUE)
  kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
   timepos=seq(1,50,by=5),timex=FALSE)
+ # now show it with kite line maxima
+ kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
+  timepos=seq(1,50,by=5),timex=FALSE,varscale=TRUE)
  musicmat<-matrix(c(c(0.5,0.4,0.3,0.25,0.2,0.15,0.1,rep(0.05,44))+runif(51,0,0.05),
   c(0.1,0.2,0.3,0.35,0.4,0.5,0.4,rep(0.5,14),rep(0.4,15),rep(0.3,15))+runif(51,0,0.1),
   rep(0.15,51)+runif(51,0,0.1),

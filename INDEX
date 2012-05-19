@@ -1,4 +1,5 @@
 ablineclip		Display a line like abline but with specified ends
+add.ps			Add p values to a raw means plot
 addtable2plot		Display a table on an existing plot
 arctext			Display text on a circular arc
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
@@ -90,10 +91,12 @@ propbrk			Calculate the proportion of a specified value in a vector
 pyramid.plot		Display a pyramid (opposed horizontal bar) plot
 radial.plot		Plot values as lines/polygon/symbols on radial scale
 radial.plot.labels	Display labels at specified points on a radial plot
+raw,means.plot		Display means on a background of raw values
 rectFill		Display a rectangle filled with symbols
 remove.args		Remove specified arguments from argument list
 rescale			Linearly scale a vector of numbers to a new range
 revaxis			Plot with the values on the X or Y axis reversed
+raw.means.plot2		Wrapper for raw.means.plot to allow more than two factors
 ruginv			Rug plot with inverse coloring
 size_n_color		Display symbols of specified size, color and location
 sizeplot		Display overlying points as larger points

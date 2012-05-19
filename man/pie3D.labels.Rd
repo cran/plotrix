@@ -5,8 +5,8 @@
  Displays labels on a 3D pie chart.
 }
 \usage{
- pie3D.labels(radialpos,radius=1,height=0.3,theta=pi/6,
-  labels,labelcol=par("fg"),labelcex=1.5,minsep=0.3)
+ pie3D.labels(radialpos,radius=1,height=0.1,theta=pi/6,
+  labels,labelcol=par("fg"),labelcex=1.5,labelrad=1.25,minsep=0.3)
 }
 \arguments{
  \item{radialpos}{Position of the label in radians}
@@ -16,6 +16,7 @@
  \item{labels}{The label to display}
  \item{labelcol}{The color of the labels}
  \item{labelcex}{The character expansion factor for the labels}
+ \item{labelrad}{The expansion for the labels around the pie.}
  \item{minsep}{The minimum angular separation between label positions.}
 }
 \value{

@@ -50,7 +50,8 @@
 \note{The \samp{ehplot} function is a much more versatile instantiation of this
  type of plot. \samp{dendroPlot} has been retained as there are currently a few
  differences that some users may find valuable. However, it is not impossible
- that \samp{dendroPlot} will disappear in the future.
+ that \samp{dendroPlot} will disappear in the future. Another very useful version
+ of this type of plot is \samp{beeswarm} in the \pkg{beeswarm} package.
 }
 \value{nil}
 \author{Jim Lemon}

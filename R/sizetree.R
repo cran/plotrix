@@ -52,16 +52,16 @@ sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,
       if(!is.na(lastcenter)) 
        segments(left+squeeze,top-xfreq[bar]/2,left-squeeze,
         lastcenter)
+      xvalue<-ifelse(is.numeric(x[, 1]),as.numeric(labels[bar]),labels[bar])
+      if(dimx[2] > 1) {
+       newcol<-col
+       newcol[[1]]<-NULL
+       nextx<-subset(x,x[,1]==xvalue,2:dimx[2])
+       sizetree(nextx,right,top,right+1,lastcenter=top-xfreq[bar]/2,
+        showval=showval,firstcall=FALSE,col=newcol,border=border,base.cex=base.cex)
+      }
      }
     }
-   }
-   xvalue<-ifelse(is.numeric(x[, 1]),as.numeric(labels[bar]),labels[bar])
-   if(dimx[2] > 1) {
-    newcol<-col
-    newcol[[1]]<-NULL
-    nextx<-subset(x,x[,1]==xvalue,2:dimx[2])
-    sizetree(nextx,right,top,right+1,lastcenter=top-xfreq[bar]/2,
-     showval=showval,firstcall=FALSE,col=newcol,border=border,base.cex=base.cex)
    }
    top<-top-xfreq[bar]
   }

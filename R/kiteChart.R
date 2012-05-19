@@ -1,30 +1,59 @@
 kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
  xlab=ifelse(timex,"Time","Groups"),ylab=ifelse(timex,"Groups","Time"),
- fill=NULL,border=par("fg"),varlabels=NA,timepos=NA,timelabels=NA,
- mar=c(5,4,4,4),axlab=c(1,2,3,4),normalize=TRUE,shownorm=TRUE,...) {
+ fill=NULL,border=par("fg"),varpos=NA,varlabels=NA,varscale=FALSE,
+ timepos=NA,timelabels=NA,mar=c(5,4,4,4),axlab=c(1,2,3,4),
+ normalize=is.na(varpos[1]),shownorm=TRUE,...) {
 
- oldmar<-par(mar=mar)
+ # leave a bit more space on top if there is an axis
+ if(varscale) mar<-mar+c(0,0,1,0)
  dimx<-dim(x)
+ if(is.na(varpos[1])) varpos<-1:dimx[2]
+ if(normalize) {
+  kitewidths<-rep(1,dimx[2])
+  kitemax<-1
+ }
+ else {
+  kitewidths<-apply(as.matrix(x),1,max,na.rm=TRUE)
+  varpos<-rep(0,length(kitewidths)-1)
+  varpos[1]<-1.1*kitewidths[1]/2
+  for(kite in 2:length(kitewidths))
+   varpos[kite]<-varpos[kite-1]+1.1*(kitewidths[kite-1]+kitewidths[kite])/2
+  kitemax<-1.1*sum(kitewidths)
+ }
+ oldmar<-par(mar=mar)
  if(is.na(xlim[1])) {
   if(timex) xlim<-c(1,dimx[2])
-  else xlim<-c(0.5,dimx[1]+0.5)
+  else {
+   if(normalize) xlim<-c(0.5,dimx[1]+0.5)
+   else xlim<-c(0,kitemax)
+  }
  }
  if(is.na(ylim[1])) {
-  if(timex) ylim<-c(0.5,dimx[1]+0.5)
+  if(timex) {
+   if(normalize) ylim<-c(0.5,dimx[1]+0.5)
+   else ylim<-c(0,kitemax)
+  }
   else ylim<-c(1,dimx[2])
  }
  plot(0,xlim=xlim,ylim=ylim,main=main,xlab=xlab,ylab=ylab,type="n",axes=FALSE,...)
+ if(is.na(varpos[1])) varpos<-1:dimx[1]
  if(is.na(varlabels[1])) {
-  if(is.null(rownames(x))) varlabels<-1:dimx[1]
+  if(is.null(rownames(x))) varlabels<-varpos[1:dimx[1]]
   else varlabels<-rownames(x)
  }
- axis(ifelse(timex,axlab[2],axlab[1]),at=1:dimx[1],labels=varlabels)
+ axis(ifelse(timex,axlab[2],axlab[1]),at=varpos[1:dimx[1]],labels=varlabels)
  if(is.na(timepos[1])) timepos<-1:dimx[2]
  if(is.na(timelabels[1])) {
   if(is.null(colnames(x))) timelabels<-timepos
   else timelabels<-colnames(x)
  }
  axis(ifelse(timex,axlab[1],axlab[2]),at=timepos,labels=timelabels)
+ if(varscale && !normalize) {
+  plotlim<-par("usr")
+  mtext(round(kitewidths,1),side=3+timex,at=varpos)
+  axis(3+timex,at=c(varpos-kitewidths/2,varpos+kitewidths/2),
+   labels=rep("",2*length(varpos)))
+ }
  box()
  if(is.null(fill)) fill<-rainbow(dimx[1])
  if(length(fill) < dimx[1]) fill<-rep(fill,length.out=dimx[1])
@@ -32,14 +61,20 @@ kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
   if(normalize) {
    if(shownorm)
     mtext(paste("*",signif(1/max(x[krow,]),digits=3)),
-     ifelse(timex,axlab[4],axlab[3]),at=krow,las=1)
-   x[krow,]<-x[krow,]/(max(x[krow,])*2)
+     ifelse(timex,axlab[4],axlab[3]),at=varpos[krow],las=1)
+   x[krow,]<-x[krow,]/(max(x[krow,]))
   }
   xpos<-1:length(x[krow,])
-  if(timex) polygon(c(xpos,rev(xpos)),c(krow+x[krow,],krow-rev(x[krow,])),
-   col=fill[krow],border=border)
-  else polygon(c(krow+x[krow,],krow-rev(x[krow,])),c(xpos,rev(xpos)),
-   col=fill[krow],border=border)
+  if(timex)
+   polygon(c(xpos,rev(xpos)),
+    c(varpos[krow]+x[krow,]/2,
+    varpos[krow]-rev(x[krow,])/2),
+    col=fill[krow],border=border)
+  else
+   polygon(c(varpos[krow]+x[krow,]/2,
+    varpos[krow]-rev(x[krow,])/2),
+    c(xpos,rev(xpos)),
+    col=fill[krow],border=border)
  }
  invisible(oldmar)
 }

@@ -126,5 +126,8 @@
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Counts",
   main="Show the counts in subgroups (final level only)",FUN="valid.n",
   col=test.col,showall=FALSE,ylim=c(0,10))
-}
+ barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Counts",
+  main="Show all the counts in subgroups",FUN="valid.n",mar=c(5,5,4,2),
+  col=test.col)
+ }
 \keyword{misc}
