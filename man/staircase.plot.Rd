@@ -8,7 +8,7 @@
 \usage{
  staircase.plot(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
  mar=NA,total.col="blue",inc.col=NA,bg.col=NA,direction="e",las=1,
- display.height=TRUE,stagger=FALSE,cex=par("cex"),...)
+ display.height=TRUE,stagger=FALSE,cex=par("cex"),prefix="",suffix="",...)
 }
 \arguments{
  \item{heights}{vector of numeric values or a matrix or data frame with at least
@@ -30,6 +30,8 @@
   ends of the bars. Defaults to TRUE.}
  \item{stagger}{Whether to stagger the labels to avoid overlap.}
  \item{cex}{The usual character expansion value.}
+ \item{prefix}{A prefix to the numbers displayed next to the bars (e.g. $).}
+ \item{suffix}{A suffix as for prefix (e.g. \%).}
  \item{...}{arguments passed to \samp{plot}.}
 }
 \value{nil}
@@ -51,6 +53,11 @@
  placed to the right. The other three possibilities follow the conventional
  compass layout.
 
+ The \samp{prefix} and \samp{suffix} arguments allow the user to specify units
+ for the numbers displayed next to the bars. If a single value is passed, all
+ numbers will get the same prefix or suffix. Different prefixes or suffixes for 
+ each number can be passed as vectors.
+
  The \samp{getFigCtr} function is called to center the plot title in the figure
  region as the plot area is typically off center.
 }
@@ -62,6 +69,6 @@
  labels<-c("Contact list","Uncontactable","","Declined","","Ineligible",
   "Final sample")
  staircase.plot(sample_size,totals,labels,main="Acquisition of the sample",
-  total.col="gray",inc.col=2:4,bg.col="#eeeebb",direction="s")
+  total.col=gray(0.4),inc.col=2:4,bg.col="#eeeebb",direction="s")
 }
 \keyword{misc}

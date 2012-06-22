@@ -1,3 +1,8 @@
+version 3.4-2
+
+	Character spacing and placement improved in draw.arc and arctext (thanks to Ted Toal)
+	radialtext and draw.radial.line functions added (also thanks to Ted Toal 
+
 version 3.4-1
 
 	Fixed the alignment problem in pie3D and rationalized angle increments
