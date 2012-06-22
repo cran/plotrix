@@ -1,5 +1,5 @@
 barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
- col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
+ col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,x=NULL,
  staxx=FALSE,staxy=FALSE,height.at=NULL,height.lab=NULL,cex.axis=par("cex.axis"),
  pch=NULL,cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE,srt=NA) {
 
@@ -19,14 +19,16 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  else its_ok<-is.numeric(height)
  if(!its_ok) stop("barp can only display bars with numeric heights")
  hdim<-dim(height)
+ if(is.null(x)) x<-1:length(height)
  if(is.null(hdim) || length(hdim) == 1) {
   ngroups<-length(height)
   barcol<-col
-  barpinfo<-list(x=1:ngroups,y=height)
+  barpinfo<-list(x=x,y=height)
   hdim<-NULL
  }
  else {
   ngroups<-hdim[2]
+  x<-1:ngroups
   if(!is.matrix(col) && length(col)==hdim[1])
    barcol<-matrix(rep(col,each=ngroups),nrow=hdim[1],byrow=TRUE)
   else barcol<-col
@@ -35,7 +37,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
   barpinfo<-list(x=matrix(rep(1:ngroups,each=hdim[1]),ncol=hdim[2]),
    y=as.matrix(height))
  }
- if(is.null(xlim)) xlim<-c(0.4,ngroups+0.6)
+ if(is.null(xlim)) xlim<-range(x)+c(-0.6,0.6)
  negy<-any(height<0,na.rm=TRUE)
  if(is.null(ylim)) {
   if(negy) miny<-min(height,na.rm=TRUE)*1.05
@@ -47,12 +49,12 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
   ylim=ylim,xaxs="i",yaxs="i",log=ifelse(ylog,"y",""))
  if(!is.null(do.first)) eval(do.first)
  if(negy) abline(h=0)
- if(is.null(names.arg)) names.arg<-1:ngroups
+ if(is.null(names.arg)) names.arg<-x
  if(staxx) {
-  axis(1,at=1:ngroups,labels=rep("",ngroups),cex.axis=cex.axis)
-  staxlab(1,at=1:ngroups,labels=names.arg,cex=cex.axis,srt=srt)
+  axis(1,at=x,labels=rep("",ngroups),cex.axis=cex.axis)
+  staxlab(1,at=x,labels=names.arg,cex=cex.axis,srt=srt)
  }
- else axis(1,at=1:ngroups,labels=names.arg,cex.axis=cex.axis)
+ else axis(1,at=x,labels=names.arg,cex.axis=cex.axis)
  if(is.null(height.at)) {
   if(ylog) height.at<-axTicks(2,log=TRUE)
   else height.at<-pretty(ylim)
@@ -69,18 +71,18 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  if(is.null(hdim)) {
   if(shadow) {
    for(bar in 1:ngroups)
-    polygon.shadow(c(bar-width,bar-width,bar+width,bar+width),
+    polygon.shadow(c(x[bar]-width,x[bar]-width,x[bar]+width,x[bar]+width),
      c(bottoms,height[bar],height[bar],bottoms),
      offset=c(0.2*width,0.05*(height[bar]-ylim[2])))
   }
   if(cylindrical)
-   cylindrect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol,
+   cylindrect(x-width,bottoms,x+width,height,col=barcol,
     border=border)
   else {
    if(is.null(pch))
-    rect(1:ngroups-width,bottoms,1:ngroups+width,height,col=barcol,border=border)
+    rect(x-width,bottoms,x+width,height,col=barcol,border=border)
    else
-    rectFill(1:ngroups-width,bottoms,1:ngroups+width,height,bg="white",fg="black",
+    rectFill(x-width,bottoms,x+width,height,bg="white",fg="black",
      pch=pch)
   }
  }

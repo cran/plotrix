@@ -4,6 +4,7 @@ addtable2plot		Display a table on an existing plot
 arctext			Display text on a circular arc
 axis.break		Put a gap, slash or zigzag "break" in a plot axis
 axis.mult		Display an axis with a multiplier
+barlabels		Display labels on a plot, usually on bars
 barNest			Nested bar plot
 barNest.svymean		Nested bar plot for a svyby result
 barNest.svyprop		Nested bar plot for a svyby result
@@ -40,6 +41,7 @@ dotplot.mtb		Display a dotplot in MATLAB style
 draw.arc		Display a circular arc
 draw.circle		Display a circle on an existing plot
 draw.ellipse		Display an ellipse on an existing plot
+draw.radial.line	Display a line or wedge with radial parameters
 draw.tilted.sector	Display a single 3D pie sector
 drawNestedBars		Display the nested bars for barNest
 ehplot			Engelmann-Hecker plot
@@ -91,6 +93,7 @@ propbrk			Calculate the proportion of a specified value in a vector
 pyramid.plot		Display a pyramid (opposed horizontal bar) plot
 radial.plot		Plot values as lines/polygon/symbols on radial scale
 radial.plot.labels	Display labels at specified points on a radial plot
+radialtext		Display text in a radial orientation
 raw,means.plot		Display means on a background of raw values
 rectFill		Display a rectangle filled with symbols
 remove.args		Remove specified arguments from argument list

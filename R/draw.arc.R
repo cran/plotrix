@@ -1,32 +1,48 @@
-# center and radius are x, y, radius
-# specify either angle1 and angle2 in radians or deg1 and deg2 in degrees
-# n is number of pieces arc is divided into for the approximation
-# ... is passed to segments
-# e.g.
-# plot(1:10)
-# draw.arc(5, 6, deg1 = 45, deg2 = 90, col = "red")
-#	
-draw.arc <- function(x = 1, y = NULL, radius = 1, 
-   angle1 = deg1 * pi / 180, angle2 = deg2 * pi / 180, 
-   deg1 = 0, deg2 = 45, n = 35, col = 1, ...) {
-   draw.arc.0 <- function(x, y, radius, angle1, angle2, n, col = col, ...) {
-      xylim<-par("usr")
-      plotdim<-par("pin")
-      ymult<-(xylim[4]-xylim[3])/(xylim[2]-xylim[1])*plotdim[1]/plotdim[2]
-      angle <- angle1 + seq(0, length = n) * (angle2 - angle1) / n
-      p1x <- x + radius * cos(angle)
-      p1y <- y + radius * sin(angle) * ymult
-      angle <- angle1 + seq(length = n) * (angle2 - angle1) / n
-      p2x <- x + radius * cos(angle)
-      p2y <- y + radius * sin(angle) * ymult
-      segments(p1x, p1y, p2x, p2y, col = col, ...)
-   }
-   xy <- xy.coords(x, y); x <- xy$x; y <- xy$y
-   a1 <- pmin(angle1, angle2); a2 <- pmax(angle1, angle2)
-   angle1 <- a1; angle2 <- a2
-   args <-
-    data.frame(x,y,radius,angle1,angle2,n,col,stringsAsFactors=FALSE)
-   for(i in 1:nrow(args)) do.call("draw.arc.0", c(args[i, ], ...))
-   invisible(args)
-}
-
+draw.arc <- function(x=1, y=NULL, radius=1, angle1=deg1*pi/180, angle2=deg2*pi/180,
+    deg1=0, deg2=45, n=0.05, col=NA, lwd=NA, ...) 
+    {
+    if (all(is.na(col)))
+        col <- par("col")
+    if (all(is.na(lwd)))
+        lwd <- par("lwd")
+    xylim <- par("usr")
+    plotdim <- par("pin")
+    ymult <- (xylim[4] - xylim[3])/(xylim[2] - xylim[1]) * plotdim[1]/plotdim[2]
+    devunits <- dev.size("px")
+    draw.arc.0 <- function(x, y, radius, angle1, angle2, n, col, lwd, ...)
+        {
+        delta.angle <- (angle2 - angle1)
+        if (n != as.integer(n))
+            n <- as.integer(1+delta.angle/n) # Divide total angle by desired segment angle to get number of segments
+        delta.angle <- delta.angle/n
+        angleS <- angle1 + seq(0, length=n) * delta.angle
+        angleE <- c(angleS[-1], angle2)
+        # Move segment starts/ends so that segments overlap enough to make wide segments
+        # not have an open slice in them.  The slice is open by delta.angle*half.lwd.user.
+        # That subtends an angle of that/(radius+half.lwd.user) radians, from center.
+        # Move segment endpoints by half of that, so together they equal that.
+        if (n > 1)
+            {
+            half.lwd.user <- (lwd/2)*(xylim[2]-xylim[1])/devunits[1]
+            adj.angle = delta.angle*half.lwd.user/(2*(radius+half.lwd.user))
+            angleS[2:n] = angleS[2:n] - adj.angle
+            angleE[1:(n-1)] = angleE[1:(n-1)] + adj.angle
+            }
+        p1x <- x + radius * cos(angleS)
+        p1y <- y + radius * sin(angleS) * ymult
+        p2x <- x + radius * cos(angleE)
+        p2y <- y + radius * sin(angleE) * ymult
+        segments(p1x, p1y, p2x, p2y, col=col, lwd=lwd, ...)
+        }
+    xy <- xy.coords(x, y)
+    x <- xy$x
+    y <- xy$y
+    a1 <- pmin(angle1, angle2)
+    a2 <- pmax(angle1, angle2)
+    angle1 <- a1
+    angle2 <- a2
+    args <- data.frame(x, y, radius, angle1, angle2, n, col, lwd, stringsAsFactors=FALSE)
+    for (i in 1:nrow(args))
+        do.call("draw.arc.0", c(args[i, ], ...))
+    invisible(args)
+    }

@@ -5,7 +5,7 @@
 \usage{
 
 vectorField(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
- vecspec=c("lonlat","rad","deg"))
+ vecspec=c("lonlat","rad","deg"),col=par("fg"))
 }
 \arguments{
  \item{u,v}{x (longitude) and y (latitude) offsets OR
@@ -16,6 +16,7 @@ vectorField(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
  \item{headspan}{The extent of the heads of the arrows as a proportion of
   cell size.}
  \item{vecspec}{How the vectors are described. See details}
+ \item{col}{Color(s) for the arrows.}
 }
 \value{ nil }
 \details{
@@ -57,6 +58,7 @@ vectorField(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
  dir<-runif(100)*2*pi
  xpos<-rep(1:10,10)
  ypos<-rep(1:10,each=10)
- vectorField(dir,mag,xpos,ypos,scale=0.8,vecspec="rad")
+ vectorcol<-sample(colors(),100)
+ vectorField(dir,mag,xpos,ypos,scale=0.8,vecspec="rad",col=vectorcol)
 }
 \keyword{misc}

@@ -5,7 +5,7 @@
 \usage{
  barp(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
- staxx=FALSE,staxy=FALSE, height.at=NULL,height.lab=NULL,
+ x=NULL,staxx=FALSE,staxy=FALSE, height.at=NULL,height.lab=NULL,
  cex.axis=par("cex.axis"),pch=NULL,cylindrical=FALSE,shadow=FALSE,
  do.first=NULL,ylog=FALSE,srt=NA)
 }
@@ -23,7 +23,8 @@
  \item{main}{The title at the top of the plot.}
  \item{xlab,ylab}{The labels for the X and Y axes respectively.}
  \item{xlim,ylim}{Optional horizontal and vertical limits for the plot.}
- \item{staxx,staxy}{Whether to use \link{staxlab} to stagger the 
+ \item{x}{Optional horizontal positions for the bars. Defaults to 1:length(height).} 
+\item{staxx,staxy}{Whether to use \link{staxlab} to stagger the 
   X or Y axis tick labels.}
  \item{height.at}{Optional positions of the tick marks on the Y axis.}
  \item{height.lab}{Optional tick labels for the Y axis.}
@@ -35,7 +36,7 @@
  \item{do.first}{An optional expression that will be evaluated before anything
   else is displayed on the plot. Useful for background colors or lines.}
  \item{ylog}{Logical for whether a log scale is to be used. see details.}
- \item{srt}{Rotation of axis labels if staxx or staxy is TRUE (see \samp{staxlab}.}
+ \item{srt}{Rotation of axis labels if staxx or staxy is TRUE (see \samp{staxlab}).}
 }
 \value{
  A list containing two components of the same form as \samp{height}:
@@ -45,12 +46,17 @@
 \details{
  \samp{barp} displays a bar plot similar to \samp{barplot} but with axes and
  horizontal bar positions more like \samp{plot}. Bars or groups of bars are
- centered on integral X values, and so both the width and spacing of the bars
- are controlled by a single number. If \samp{height} is a vector, single bars
- representing each value will be displayed centered at \samp{1:length(height)}.
+ centered on integral X values by default, and so both the width and spacing of
+ the bars are controlled by a single number. If the user passes expicit \samp{x}
+ values, those values will determine the spacing. If \samp{height} is a vector,
+ single bars representing each value will be displayed centered at
+ \samp{1:length(height)} unless the user has specified \samp{x} values.
  If \samp{height} is a matrix, 2D array, or data frame, a group of bars will be
  drawn for each column, with the values of the group taken from the rows of that
- column. The values from \samp{freq} or \samp{brkdn} in the prettyR package can
+ column. Explicit x values cannot be used with a matrix, however, by adjusting the
+ values of x, grouped bars can be displayed.
+
+ The values from \samp{freq} or \samp{brkdn} in the prettyR package can
  be used as the \samp{height} argument. The value from \samp{table} can also be
  passed as \samp{height}, as can a 2D array returned from the \samp{by} function.
  
@@ -134,5 +140,9 @@
  barp(hmat,names.arg=names(h1),width=0.45,col=2:4,
   main="Multiple histogram using barp",xlab="Bins",ylab="Frequency")
  legend(3.8,50,c("h1","h2","h3"),fill=2:4)
+ # now display a positive/negative plot
+ barp(c(2,-3,4,-5,6,-7,8),main="Positive/negative plot",
+  xlab="Alternating colors",ylab="For alternating values",
+  col=2+(c(2,-3,4,-5,6,-7,8)>0))
 }
 \keyword{misc}

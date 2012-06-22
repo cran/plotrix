@@ -13,6 +13,7 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
   x<-x$x
  }
  tabdim<-dim(table)
+ if(is.null(dim(bg))) bg<-matrix(bg,nrow=tabdim[1],ncol=tabdim[2])
  column.names<-colnames(table)
  if(is.null(column.names) && display.colnames)
   column.names<-1:tabdim[1]
@@ -41,10 +42,6 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  ytop<-y+yjust*nvcells*cellheight
  # adjust for logarithmic plotting and allow the table to extend beyond the plot
  oldpar<-par(xlog=FALSE,ylog=FALSE,xpd=TRUE)
- # draw the box if wanted
- if(bty=="o")
-  rect(xleft,ytop-nvcells*cellheight,xleft+nhcells*cellwidth,ytop,
-   lwd=lwd,col=bg,border=box.col)
  for(row in 1:tabdim[1]) {
   # draw the horizontal lines unless at the bottom
   if(row <= nvcells-1 && hlines)
@@ -55,20 +52,25 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    text(xleft+0.5*cellwidth,
     ytop-(row+display.colnames-0.5)*cellheight,
     row.names[row],cex=cex,col=text.col)
-  for(col in 1:tabdim[2]) {
-   text(xleft+(col+display.rownames-0.5)*cellwidth,
-    ytop-(row+display.colnames-0.5)*cellheight,
-    table[row,col],cex=cex,col=text.col)
-   if(vlines) segments(xleft+(col+display.rownames-1)*cellwidth,
+  for(column in 1:tabdim[2]) {
+   rect(xleft+(column+display.rownames-1)*cellwidth,
+    ytop-(row+display.colnames-1)*cellheight,
+    xleft+(column+display.rownames)*cellwidth,
     ytop-(row+display.colnames)*cellheight,
-    xleft+(col+display.rownames-1)*cellwidth,
+    col=bg[row,column])
+   text(xleft+(column+display.rownames-0.5)*cellwidth,
+    ytop-(row+display.colnames-0.5)*cellheight,
+    table[row,column],cex=cex,col=text.col)
+   if(vlines) segments(xleft+(column+display.rownames-1)*cellwidth,
+    ytop-(row+display.colnames)*cellheight,
+    xleft+(column+display.rownames-1)*cellwidth,
     ytop-row*cellheight,col=box.col)
   }
  }
  if(display.colnames)
-  for(col in 1:tabdim[2]) {
-   text(xleft+(col+display.rownames-0.5)*cellwidth,
-    ytop-0.5*cellheight,column.names[col],cex=cex,col=text.col)
+  for(column in 1:tabdim[2]) {
+   text(xleft+(column+display.rownames-0.5)*cellwidth,
+    ytop-0.5*cellheight,column.names[column],cex=cex,col=text.col)
   if(!hlines)
    segments(xleft,ytop-cellheight,
     xleft+nhcells*cellwidth,ytop-cellheight,

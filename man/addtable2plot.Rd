@@ -34,8 +34,12 @@
  and \samp{addtable2plot} has been programmed to be as similar to \samp{legend}
  as possible. The defaults are those that were most popular in scientific
  journals at the time of programming.
+
+ If \samp{bg} is a matrix of colors of the same dimensions as \samp{x}, those
+ colors will be the backgrounds of the cells. The default is no background color.
 }
-\author{Original by John Kane, mods by Jim Lemon and Brian Diggs}
+\author{Original by John Kane, mods by Jim Lemon and Brian Diggs. Thanks to
+ Andrija Djurovic for asking for the individual cell colors}
 \seealso{\link{legend}}
 \examples{
  testdf<-data.frame(Before=c(10,7,5),During=c(8,6,2),After=c(5,3,4))

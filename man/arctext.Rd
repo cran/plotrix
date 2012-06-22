@@ -1,7 +1,7 @@
 \name{arctext}
 \title{Display text on a circular arc}
 \usage{
- arctext(x,center=c(0,0),radius=1,start=NA,middle=pi/2,stretch=1,cex=1,...)
+ arctext(x,center=c(0,0),radius=1,start=NA,middle=pi/2,end=NA,stretch=1,cex=NA,...)
 }
 \alias{arctext}
 \arguments{
@@ -10,6 +10,7 @@
  \item{radius}{The radius of the arc in user units.}
  \item{start}{The starting position of the string in radians.}
  \item{middle}{The middle position of the string in radians.}
+ \item{end}{The end position of the string in radians.}
  \item{stretch}{How much to stretch the string for appearance.}
  \item{cex}{The character expansion factor.}
  \item{...}{additional arguments passed to \samp{text}.}
@@ -27,7 +28,8 @@
  be somewhat elliptical.
 }
 \value{nil}
-\author{Jim Lemon - Thanks to Suhas Parandekar for the idea.}
+\author{Jim Lemon - Thanks to Suhas Parandekar for the idea and Ted Toal
+ for greatly improving the placement of the text.}
 \seealso{\link{text}}
 \examples{
  plot(0,xlim=c(1,5),ylim=c(1,5),main="Test of arctext",xlab="",ylab="",

@@ -7,7 +7,7 @@
 # this function doesn't assume a 1:1 aspect ratio
 
 vectorField<-function(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
- vecspec=c("lonlat","rad","deg")) {
+ vecspec=c("lonlat","rad","deg"),col=par("fg")) {
  udim<-dim(u)
  if(is.na(xpos[1])) xpos<-col(u)
  if(is.na(ypos[1])) ypos<-udim[1]-row(u)+1
@@ -27,5 +27,5 @@ vectorField<-function(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
  v2<-v*scale*maxmag
  if(is.null(udim)) length=headspan
  else length<-headspan*par("pin")[1]/udim[2]
- arrows(xpos-u2,ypos-v2,xpos+u2,ypos+v2,length=length)
+ arrows(xpos-u2,ypos-v2,xpos+u2,ypos+v2,length=length,col=col)
 }
