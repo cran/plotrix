@@ -25,7 +25,9 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
  grad.corr.full<-c(0,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1)
 
  R<-cor(ref,model,use="pairwise")
-
+ # convert any list elements or data frames to vectors
+ if(is.list(ref)) ref<-unlist(ref)
+ if(is.list(model)) ref<-unlist(model)
  sd.r<-sd(ref)
  sd.f<-sd(model)
  if(normalize) {

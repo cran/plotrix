@@ -8,33 +8,35 @@
 \usage{
  pyramid.plot(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
   main="",laxlab=NULL,raxlab=NULL,unit="\%",lxcol,rxcol,gap=1,
-  ppmar=c(4,2,4,2),labelcex=1,add=FALSE,xlim,show.values=FALSE,ndig=1)
+  ppmar=c(4,2,4,2),labelcex=1,add=FALSE,xlim,show.values=FALSE,ndig=1,
+  do.first=NULL)
 }
 \arguments{
-  \item{lx,rx}{Vectors or a matrix or data frame (see Details) which
-   should be of equal length.}
-  \item{labels}{Labels for the categories represented by each pair of
-   bars. There should be a label for each lx or rx value, even if empty.
-   If \samp{labels} is a matrix or data frame, the first two columns will
-   be used for the left and right category labels respectively.} 
-  \item{top.labels}{The two categories represented on the left and right
-   sides of the plot and a heading for the labels in the center.}
-  \item{main}{Optional title for the plot.}
-  \item{laxlab}{Optional labels for the left x axis ticks.}
-  \item{raxlab}{Optional labels for the right x axis ticks.}
-  \item{unit}{The label for the units of the plot.}
-  \item{lxcol,rxcol}{Color(s) for the left and right sets of bars. Both of
-   these default to \samp{rainbow(length(labels))}.}
-  \item{gap}{One half of the space between the two sets of bars for the
-   \samp{labels} in user units.}
-  \item{ppmar}{Margins for the plot (see Details).}
-  \item{labelcex}{Expansion for the category labels.}
-  \item{add}{Whether to add bars to an existing plot. Usually this
-   involves overplotting a second set of bars, perhaps transparent.}
-  \item{xlim}{Optional x limit for the plot (see Details).}
-  \item{show.values}{Whether to display \samp{lx} and \samp{rx} at the
-   ends of the bars.}
-  \item{ndig}{The number of digits to round the values if displayed.}
+ \item{lx,rx}{Vectors or a matrix or data frame (see Details) which
+  should be of equal length.}
+ \item{labels}{Labels for the categories represented by each pair of
+  bars. There should be a label for each lx or rx value, even if empty.
+  If \samp{labels} is a matrix or data frame, the first two columns will
+  be used for the left and right category labels respectively.} 
+ \item{top.labels}{The two categories represented on the left and right
+  sides of the plot and a heading for the labels in the center.}
+ \item{main}{Optional title for the plot.}
+ \item{laxlab}{Optional labels for the left x axis ticks.}
+ \item{raxlab}{Optional labels for the right x axis ticks.}
+ \item{unit}{The label for the units of the plot.}
+ \item{lxcol,rxcol}{Color(s) for the left and right sets of bars. Both of
+  these default to \samp{rainbow(length(labels))}.}
+ \item{gap}{One half of the space between the two sets of bars for the
+  \samp{labels} in user units.}
+ \item{ppmar}{Margins for the plot (see Details).}
+ \item{labelcex}{Expansion for the category labels.}
+ \item{add}{Whether to add bars to an existing plot. Usually this
+  involves overplotting a second set of bars, perhaps transparent.}
+ \item{xlim}{Optional x limit for the plot (see Details).}
+ \item{show.values}{Whether to display \samp{lx} and \samp{rx} at the
+  ends of the bars.}
+ \item{ndig}{The number of digits to round the values if displayed.}
+ \item{do.first}{Optional expression to evaluate before displaying anything.} 
 }
 \details{
  \samp{pyramid.plot} is principally intended for population pyramids,

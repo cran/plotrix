@@ -1,7 +1,9 @@
 version 3.4-2
 
 	Character spacing and placement improved in draw.arc and arctext (thanks to Ted Toal)
-	radialtext and draw.radial.line functions added (also thanks to Ted Toal 
+	radialtext and draw.radial.line functions added (also thanks to Ted Toal)
+	weighted.hist now allows a custom X axis to be displayed (thanks to Ben Graf)
+	Added the barlabels function
 
 version 3.4-1
 
