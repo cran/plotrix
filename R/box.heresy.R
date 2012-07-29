@@ -1,5 +1,6 @@
 box.heresy<-function(x,y,uinner,linner=uinner,ulim,llim=ulim,intervals=FALSE,
- arrow.cap=NA,pch=22,main="",xlab="",ylab="",xaxlab=NA,col="white",...) {
+ arrow.cap=NA,pch=22,main="",xlab="",ylab="",xaxlab=NA,col="white",
+ do.first=NULL,...) {
 
  if(missing(y)) {
   y<-x
@@ -16,6 +17,7 @@ box.heresy<-function(x,y,uinner,linner=uinner,ulim,llim=ulim,intervals=FALSE,
  boxwidth<-diff(xrange)/(4*length(x))
  plot(x,y,xlim=c(xrange[1]-xspace,xrange[2]+xspace),ylim=range(c(llim,ulim)),
   main=main,xlab=xlab,ylab=ylab,type="n",xaxt="n")
+ if(!is.null(do.first)) eval(do.first)
  axis(1,at=x,labels=xaxlab)
  if(is.na(arrow.cap)) arrow.cap<-boxwidth/diff(par("usr")[1:2])
  dispersion(x,y,ulim,llim,intervals=FALSE,arrow.cap=arrow.cap,...)

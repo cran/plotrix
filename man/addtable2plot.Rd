@@ -5,7 +5,7 @@
  Displays a table of values at a user-specified position on an existing plot}
 \usage{
  addtable2plot(x,y=NULL,table,lwd=par("lwd"),bty="n",bg=par("bg"),
-  cex=1,xjust=0,yjust=1,box.col=par("fg"),text.col=par("fg"),
+  cex=1,xjust=0,yjust=1,xpad=0.1,ypad=0.5,box.col=par("fg"),text.col=par("fg"),
   display.colnames=TRUE,display.rownames=FALSE,hlines=FALSE,vlines=FALSE,
   title=NULL)
 }
@@ -18,6 +18,8 @@
  \item{bg}{The background color for the table.}
  \item{cex}{Character expansion for the table.}
  \item{xjust,yjust}{Positioning for the table relative to \samp{x,y}.}
+ \item{xpad,ypad}{The amount of padding around text in the cells as a
+  proportion of the maximum width and height of the strings in each column.}
  \item{box.col}{The color for the box and lines.}
  \item{text.col}{The color for the text.}
  \item{display.colnames}{Whether to display the column names in the table.}
@@ -39,13 +41,14 @@
  colors will be the backgrounds of the cells. The default is no background color.
 }
 \author{Original by John Kane, mods by Jim Lemon and Brian Diggs. Thanks to
- Andrija Djurovic for asking for the individual cell colors}
+ Andrija Djurovic for asking for the individual cell colors and gabor Grothendieck
+ for alerting me to the problem of widely varying column widths.}
 \seealso{\link{legend}}
 \examples{
- testdf<-data.frame(Before=c(10,7,5),During=c(8,6,2),After=c(5,3,4))
- rownames(testdf)<-c("Red","Green","Blue")
+ testdf<-data.frame(Before=c(10,7,5,9),During=c(8,6,2,5),After=c(5,3,4,3))
+ rownames(testdf)<-c("Red","Green","Blue","Lightblue")
  barp(testdf,main="Test addtable2plot",ylab="Value",
-  names.arg=colnames(testdf),col=2:4)
+  names.arg=colnames(testdf),col=2:5)
  # show most of the options
  addtable2plot(2,8,testdf,bty="o",display.rownames=TRUE,hlines=TRUE,
   vlines=TRUE,title="The table")

@@ -9,7 +9,7 @@
 }
 \usage{
  weighted.hist(x,w,breaks="Sturges",col=NULL,plot=TRUE,
- freq=TRUE,ylim,ylab=NULL,...)
+ freq=TRUE,ylim,ylab=NULL,xaxis=TRUE,...)
 }
 \arguments{
  \item{x}{A vector of numeric values}
@@ -21,6 +21,7 @@
  \item{freq}{Whether to plot counts or densities.}
  \item{ylim}{The limits of the plot ordinate.}
  \item{ylab}{Label for the ordinate.}
+ \item{xaxis}{Whether to display the default x axis.}
  \item{...}{Additional arguments passed to \link{barplot}.}
 }
 \details{
@@ -52,7 +53,8 @@ xname - the name of \samp{x}.
 
 equidist - Whether the intervals differ by less than the total range/1000.
 }
-\author{Jim Lemon and Hadley Wickham}
+\author{Jim Lemon and Hadley Wickham - thanks to Ben Graf for asking for a
+ custom x axis option}
 \seealso{\link{hist}}
 \examples{
  testx<-sample(1:10,300,TRUE)

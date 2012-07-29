@@ -3,7 +3,7 @@
 \title{Display a sort of box plot}
 \usage{
  box.heresy(x,y,uinner,linner=uinner,ulim,llim=ulim,intervals=FALSE,
- arrow.cap=NA,pch=22,main="",xlab="",ylab="",xaxlab=NA,col="white",...)
+ arrow.cap=NA,pch=22,main="",xlab="",ylab="",xaxlab=NA,col="white",do.first=NULL,...)
 }
 \arguments{
  \item{x,y}{Vectors of numeric values representing measures of central tendency.}
@@ -21,6 +21,7 @@
  \item{xlab,ylab}{The x and y axis labels.}
  \item{xaxlab}{Optional labels for the boxes.}
  \item{col}{The fill colors for the "inner" rectangles.}
+ \item{do.first}{An expression that will be evaluated before anything is displayed.}
  \item{...}{additional arguments passed to the \samp{dispersion} function.}
 }
 \description{

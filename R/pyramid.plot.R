@@ -1,6 +1,6 @@
 pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
  main="",laxlab=NULL,raxlab=NULL,unit="%",lxcol,rxcol,gap=1,ppmar=c(4,2,4,2),
- labelcex=1,add=FALSE,xlim,show.values=FALSE,ndig=1) {
+ labelcex=1,add=FALSE,xlim,show.values=FALSE,ndig=1,do.first=NULL) {
 
  xdim<-length(dim(lx))
  if(missing(rx) && xdim > 0) {
@@ -24,6 +24,7 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
   # create an empty plot
   plot(0,xlim=c(-(xlim[1]+gap),xlim[2]+gap),ylim=c(0,ncats+1),
    type="n",axes=FALSE,xlab="",ylab="",xaxs="i",yaxs="i",main=main)
+  if(!is.null(do.first)) eval(do.first)
   # add the bottom axes
   if(is.null(laxlab)) {
    laxlab<-seq(xlim[1]-gap,0,by=-1)

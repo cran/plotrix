@@ -18,7 +18,7 @@ get.breaks<-function(x,breaks) {
 }
 
 weighted.hist<-function(x,w,breaks="Sturges",col=NULL,plot=TRUE,
- freq=TRUE,ylim=NA,ylab=NULL,...) {
+ freq=TRUE,ylim=NA,ylab=NULL,xaxis=TRUE,...) {
  
  if(missing(x))
   stop("Usage: weighted.hist(x,...) vector of values x required")
@@ -56,7 +56,7 @@ weighted.hist<-function(x,w,breaks="Sturges",col=NULL,plot=TRUE,
   if(is.na(ylim)) ylim<-c(0,1.1*max(heights,na.rm=TRUE))
   mids<-barplot(heights,width=width,col=col,space=0,ylim=ylim,ylab=ylab,...)
   tickpos<-c(mids-width/2,mids[length(mids)]+width[length(width)]/2)
-  axis(1,at=tickpos,labels=signif(c(breaks[1:nbreaks],lastbreak),3))
+  if(xaxis) axis(1,at=tickpos,labels=signif(c(breaks[1:nbreaks],lastbreak),3))
  }
  else mids<-breaks[-length(breaks)]+width/2
  invisible(list(breaks=breaks,counts=counts,density=density,
