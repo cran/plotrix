@@ -1,7 +1,7 @@
-1e738a7380204cc0a22bb62cb2516730 *DESCRIPTION
+821dc51a9df0600f4e19b74641d0a57b *DESCRIPTION
 b0e18923dc71ae968d2081c98d095d21 *INDEX
-0f6225658345a31b13b4eba280b300cb *NAMESPACE
-b3afc1fc5e94cacd07595e01cd3c931a *NEWS
+deaf2d34088a4d3dfed4d78101766bb1 *NAMESPACE
+61afde831b3408dee3672f7cced7ebc0 *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 54f531a76de0b83b120f3f6a15108f4e *R/add.ps.R
 fef1283640ada7e516caf7dab0d12363 *R/addtable2plot.R
@@ -17,7 +17,7 @@ f33ab44a010f9c4ea06b6ff38fa5b30c *R/battleship.plot.R
 8cd0454ac9ccb08caf27867d61679552 *R/box.heresy.R
 c5ffa3ae37e01c6b6516bfa554963379 *R/boxed.labels.R
 49aed74b2115a5e2d1e684abb9280f15 *R/brkdn.plot.R
-4e76be1219e0939e18612a7826703122 *R/brkdnNest.R
+1d844da3740e79baf61c4f896d4abcfc *R/brkdnNest.R
 9475c574cda34c05dbf8dbd98ef66c2c *R/bumpchart.R
 f34b066424d85a26ff27d52dc0d9849a *R/centipede.plot.R
 11f91483daa47b2d17ede65741fe6863 *R/clean.args.R
@@ -209,7 +209,7 @@ df16d5a7e051f52e37eb2624bed0abf2 *man/paxis3d.Rd
 205c4049d34feca3d7c8cd7c55648547 *man/polar.plot.Rd
 1cc76d969a46335a5f672db98377c8e9 *man/polygon.shadow.Rd
 8d1dc46509d56126301ed969bff3ed8c *man/print.brklist.Rd
-15e7dd32e46937941e44d2ba0968c29f *man/propbrk.Rd
+192c0db4d2f6dc5182eb952f90efad97 *man/propbrk.Rd
 d3979b4cb2e49006ebd6bc1e2c795fb9 *man/psegments3d.Rd
 a239386f59c013ebc0e4bf9fcabc5747 *man/ptext3d.Rd
 efd9794d76ca58e1dff86d71c9b17a6b *man/pyramid.plot.Rd

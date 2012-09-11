@@ -1,3 +1,11 @@
+version 3.4-4
+
+	added the radial.grid function to the NAMESPACE
+
+version 3.4-3
+
+	minor bug that counted NAs in the propbrk function fixed
+
 version 3.4-2
 
 	Character spacing and placement improved in draw.arc and arctext (thanks to Ted Toal)
