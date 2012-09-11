@@ -98,6 +98,7 @@ export(
  psegments3d,
  ptext3d,
  pyramid.plot,
+ radial.grid,
  radial.pie,
  radial.plot,
  radial.plot.labels,

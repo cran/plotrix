@@ -1,7 +1,8 @@
 valid.n<-function(x,na.rm=TRUE) return(ifelse(na.rm,sum(!is.na(x)),length(x)))
 
 propbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
- return(sum(x==trueval,na.rm=TRUE)/length(x))
+ if(na.rm) return(sum(x==trueval,na.rm=TRUE)/valid.n(x))
+ else return(sum(x==trueval,na.rm=TRUE)/length(x))
 }
 
 sumbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
