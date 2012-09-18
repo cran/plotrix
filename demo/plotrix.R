@@ -211,7 +211,7 @@ intersectDiagram(druglist)
 testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
  sin(1:50)),ncol=50,byrow=TRUE)
 kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
- timepos=seq(1:50,by=5))
+ timepos=seq(1,50,by=5))
 didf<-data.frame(subject=1:50,interv=rep(c("therapist","ex-drinker"),each=25),
  outcome=sample(c("more","less"),50,TRUE))
 didf.tab<-table(didf$interv,didf$outcome)

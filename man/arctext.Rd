@@ -48,5 +48,7 @@
  arctext("bendy like spaghetti",center=c(3,3),radius=1.5,start=pi,cex=2)
  arctext("bendy like spaghetti",center=c(3,3),radius=0.5,
   start=pi/2,stretch=1.2)
+ arctext("bendy like spaghetti",center=c(3,3),radius=1.7,start=4*pi/3,cex=1.3,
+  clockwise=FALSE)
 }
 \keyword{misc}
