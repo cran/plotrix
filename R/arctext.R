@@ -32,7 +32,7 @@ arctext<-function(x,center=c(0,0),radius=1,start=NA,middle=pi/2,end=NA,stretch=1
   srt <- 180 * charpos[xchar]/pi - 90
   text(center[1] + radius * cos(charpos[xchar]), 
    center[2] + radius * sin(charpos[xchar]) * ymult,xvec[xchar], 
-   adj=c(0.5, 0.5),srt=srt + 180 * clockwise, ...)
+    adj=c(0.5, 0.5),srt=srt + 180 * !clockwise, ...)
  }
  par(cex=oldcex)
 }
