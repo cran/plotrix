@@ -9,7 +9,7 @@
 }
 \usage{
  radial.plot(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FALSE,
- start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",xlab="",ylab="",
+ start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,rad.col="gray",
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
@@ -147,7 +147,7 @@
  ion.names<-c("Na","Ca","Mg","Cl","HCO3","SO4")
  radial.plot(ions,labels=ion.names,rp.type="p",main="Dissolved ions in water",
   grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow")
- # add points inside the polygon - radial.lim is supplied by plotrixInfo
+ # add points inside the polygon - radial.lim is supplied by plotrix_env
  radial.plot(ions-0.4,rp.type="s",point.symbols=4,point.col="red",add=TRUE)
  radmat<-matrix(c(sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),
   sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),

@@ -34,7 +34,8 @@ color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
    cs1s[segindex]<-rescale(x[segindex],cs1[c(seg,seg+1)])
    xstart<-xstart+xinc
   }
-  if(min(cs1s) < 0 || max(cs1s) > maxcs1) cs1s<-rescale(cs1s,c(0,maxcs1))
+  if(min(cs1s,na.rm=TRUE) < 0 || max(cs1s,na.rm=TRUE) > maxcs1)
+   cs1s<-rescale(cs1s,c(0,maxcs1))
  }
  else cs1s<-rep(cs1,ncolors)
  ncs2<-length(cs2)
@@ -47,7 +48,8 @@ color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
    cs2s[segindex]<-rescale(x[segindex],cs2[c(seg,seg+1)])
    xstart<-xstart+xinc
   }
-  if(min(cs2s) < 0 || max(cs2s) > maxcs2) cs2s<-rescale(cs2s,c(0,maxcs2))
+  if(min(cs2s,na.rm=TRUE) < 0 || max(cs2s,na.rm=TRUE) > maxcs2)
+   cs2s<-rescale(cs2s,c(0,maxcs2))
  }
  else cs2s<-rep(cs2,ncolors)
  ncs3<-length(cs3)
@@ -60,7 +62,8 @@ color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
    cs3s[segindex]<-rescale(x[segindex],cs3[c(seg,seg+1)])
    xstart<-xstart+xinc
   }
-  if(min(cs3s) < 0 || max(cs3s) > maxcs3) cs3s<-rescale(cs3s,c(0,maxcs3))
+  if(min(cs3s,na.rm=TRUE) < 0 || max(cs3s,na.rm=TRUE) > maxcs3)
+   cs3s<-rescale(cs3s,c(0,maxcs3))
  }
  else cs3s<-rep(cs3,ncolors)
  if(drop.extremes) {

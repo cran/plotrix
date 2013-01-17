@@ -23,7 +23,7 @@ count.overplot<-function(x,y,tol=NULL,col=par("fg"),pch="1",...) {
  xlen<-length(x)
  if(xlen != length(y)) stop("x and y must be the same length.")
  if(is.null(tol)) {
-  plot(x,y,type="n",axes=FALSE,xlab="",ylab="")
+  if(dev.cur() == 1 ) plot(x,y,type="n",axes=FALSE,xlab="",ylab="")
   tol<-c(strwidth("o")/2,strheight("o")/2)
  }
  else {

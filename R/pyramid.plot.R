@@ -3,19 +3,16 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
  ppmar=c(4,2,4,2),labelcex=1,add=FALSE,xlim,show.values=FALSE,ndig=1,
  do.first=NULL) {
 
- xdim<-length(dim(lx))
- if(missing(rx) && xdim > 0) {
-  rx<-lx[,2]
-  lx<-lx[,1]
- }
  if(any(c(lx,rx)<0,na.rm=TRUE)) stop("Negative quantities not allowed")
- ncats<-ifelse(xdim,dim(lx)[1],length(lx))
+ lxdim<-dim(lx)
+ rxdim<-dim(rx)
+ ncats<-ifelse(!is.null(lxdim),dim(lx)[1],length(lx))
  if(length(labels)==1) labels<-1:ncats
  ldim<-length(dim(labels))
  nlabels<-ifelse(ldim,length(labels[,1]),length(labels))
  if(nlabels != ncats) stop("lx and labels must all be the same length")
  if(missing(xlim))
-  xlim<-rep(ifelse(xdim,ceiling(max(c(rowSums(lx),rowSums(rx)),na.rm=TRUE)),
+  xlim<-rep(ifelse(!is.null(lxdim),ceiling(max(c(rowSums(lx),rowSums(rx)),na.rm=TRUE)),
    ceiling(max(c(lx,rx),na.rm=TRUE))),2)
  if(!is.null(laxlab) && xlim[1] < max(laxlab)) xlim[1]<-max(laxlab)
  if(!is.null(raxlab) && xlim[2] < max(raxlab)) xlim[2]<-max(raxlab)
@@ -38,10 +35,10 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
   }
   else axis(1,at=raxlab+gap,labels=raxlab)
   if(gap > 0) {
-   if(xdim) axis(2,at=1:ncats,labels=rep("",ncats),pos=gap,tcl=-0.25)
+   if(!is.null(lxdim)) axis(2,at=1:ncats,labels=rep("",ncats),pos=gap,tcl=-0.25)
    else axis(2,at=1:ncats * as.logical(rx+1),labels=rep("",ncats),pos=gap,
     tcl=-0.25)
-   if(xdim) axis(4,at=1:ncats,labels=rep("",ncats),pos=-gap,tcl=-0.25)
+   if(!is.null(lxdim)) axis(4,at=1:ncats,labels=rep("",ncats),pos=-gap,tcl=-0.25)
    else axis(4,at=1:ncats * as.logical(lx+1),labels=rep("",ncats),pos=gap,
     tcl=-0.25)
   }
@@ -70,7 +67,7 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
   mtext(c(unit,unit),1,2,at=c(-xlim[1]/2,xlim[2]/2))
  }
  halfwidth<-0.5-space/2
- if(xdim == 0) {
+ if(is.null(lxdim)) {
   if(missing(lxcol)) lxcol<-rainbow(ncats)
   if(missing(rxcol)) rxcol<-rainbow(ncats)
   rect(-(lx+gap),1:ncats-halfwidth,rep(-gap,ncats),1:ncats+halfwidth,

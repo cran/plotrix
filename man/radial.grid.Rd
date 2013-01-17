@@ -2,7 +2,7 @@
 \title{Display a radial grid}
 \usage{
  radial.grid(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
-  start=0,clockwise=FALSE,label.prop=1.15,grid.pos,
+  start=0,clockwise=FALSE,label.prop=1.1,show.grid.labels=4,grid.pos,
   grid.col="gray",grid.bg="transparent")
 }
 \alias{radial.grid}
@@ -16,12 +16,18 @@
  \item{clockwise}{Whether to increase angles clockwise rather than the
   default counterclockwise.}
  \item{label.prop}{Proportion of \samp{radial.lim} to place the labels.}
+ \item{show.grid.labels}{Whether and where to display the radial grid labels.}
  \item{grid.pos}{Radial positions for the circular grid lines.}
  \item{grid.col}{Color for the radial grid lines.}
  \item{grid.bg}{Background color for the radial grid.}
 }
 \description{
  \samp{radial.grid} displays a radial grid for the radial.pie function.
+}
+\details{
+ The \samp{show.grid.labels} argument tells the function where to place the
+ radial labels out from the center of the grid. The numbers 1 to 4 represent
+ the positions as in \samp{axis}, with 1 at the bottom and 4 at the right side.
 }
 \value{nil}
 \author{Jim Lemon}

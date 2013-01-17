@@ -31,7 +31,8 @@
  points will be generated that will create a cluster of points instead of one.
 }
 \keyword{misc}
-\author{Jim Lemon}
+\author{Jim Lemon - thanks to Markus Elze for the test for a current graphics
+ device}
 \seealso{\link{count.overplot},\link{sizeplot}}
 \examples{
  xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))

@@ -1,3 +1,11 @@
+version 3.5-3
+
+	fixed the problems with data frames and margins in battleship.plot (thanks to David Carlson)
+	set xpd=TRUE for the boxed.labels function (thanks to Francois Rousseu)
+	changed the pie.labels function to call text and adjust in x and y
+	added plain text labelling to pie.labels
+	tested for a current device in cluster.overplot and count.overplot (thanks to Markus Elze)
+
 version 3.5-2
 
 	added the get.tablepos function (thanks to Peter Murakami)

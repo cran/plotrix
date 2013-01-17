@@ -41,16 +41,16 @@ Function or function name used for aggregating the results. Default is
  corresponds to \samp{levels(factor(d.new[,col.offset]))[-ref.offset]}. 
 }
   \item{alternative}{
-same as in \samp{\link{t.test}}
+same as in \link{t.test}
 }
   \item{mu}{
-same as in \samp{\link{t.test}}
+same as in \link{t.test}
 }
   \item{paired}{
-same as in \samp{\link{t.test}}
+same as in \link{t.test}
 }
   \item{var.equal}{
-same as in \samp{\link{t.test}}
+same as in \link{t.test}
 }
   \item{lty}{
 line type of axis, Default is 0 (i.e., no line).
@@ -64,7 +64,7 @@ This function computes t-tests comparing the values at each x-axis position
  for each condition against the reference condition at and adds the p-values
  to the axis.
 
-This functions uses the same syntax as \samp{\link{raw.means.plot2}} and
+This functions uses the same syntax as \link{raw.means.plot2} and
  should be used in addition to it. Note that values are ordered according to
  the \samp{col.id} so \samp{paired = TRUE} should be fine.
 }
@@ -77,7 +77,7 @@ Henrik Singmann
 
 
 \seealso{
-\samp{\link{raw.means.plot}} as the accompanying main functions.
+ \link{raw.means.plot} as the accompanying main functions.
 }
 \examples{
 \dontrun{

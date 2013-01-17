@@ -1,4 +1,4 @@
-twoord.plot<-function(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL, 
+twoord.plot<-function(lx,ly,rx,ry,data=NULL,main="",xlim=NULL,lylim=NULL, 
  rylim=NULL,mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",
  lpch=1,rpch=2,type="b",xtickpos=NULL,xticklab=NULL,halfwidth=0.4,
  axislab.cex=1,do.first=NULL,...) {
@@ -38,8 +38,10 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,
  if(length(type) < 2) type<-rep(type,2)
  # first display the "left" plot
  if(match(type[1],"bar",0)) {
+  oldcex<-par(cex=axislab.cex)
   plot(lx,ly,xlim=xlim,ylim=lylim,xlab=xlab,ylab="",yaxs="i",type="n", 
-   axes=FALSE,...)
+   main="",axes=FALSE,...)
+  par(oldcex)
   if(!is.null(do.first)) eval(parse(text=do.first))
   ybottom<-par("usr")[3]
   if (lylim[1] < 0) abline(h=0,lty=2)
@@ -47,22 +49,26 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,
    ifelse(ly>0,ly,0),col=lcol)
  }
  else {
+  oldcex<-par(cex=axislab.cex)
   plot(lx,ly,xlim=xlim,ylim=lylim,xlab=xlab,ylab="",yaxs="i",type="n", 
-   axes=FALSE,...)
+   main="",axes=FALSE,...)
+  par(oldcex)
   if(!is.null(do.first)) eval(parse(text=do.first))
   points(lx,ly,col=lcol,pch=lpch,type=type[1])
  }
+ title(main=main)
  xylim<-par("usr")
  mtext(ylab,2,2,col=lcol,cex=axislab.cex)
  box()
- if(is.null(xticklab)) axis(1,cex=axislab.cex)
+ if(is.null(xticklab)) axis(1,cex.axis=axislab.cex)
  else {
   if(is.null(xtickpos)) xtickpos<-1:length(xticklab)
   if(is.null(xticklab)) xticklab<-xtickpos
-  axis(1,at=xtickpos,labels=xticklab,cex=axislab.cex)
+  axis(1,at=xtickpos,labels=xticklab,cex.axis=axislab.cex)
  }
  # display the left axis
- axat<-axis(2,col=ifelse(is.na(lcol),1,lcol),labels=FALSE)
+ axat<-axis(2,col=ifelse(is.na(lcol),1,lcol),labels=FALSE,
+  cex.axis=axislab.cex)
  abline(v=xylim[1],col=lcol)
  mtext(axat,2,1,at=axat,col=lcol,cex=axislab.cex)
  # get the "right" y limits
@@ -88,8 +94,8 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,
  if(max(axat) > rylim[2]) axat<-axat[-length(axat)]
  abline(v=xylim[2],col=rcol)
  axis(4,at=axat*ymult+yoff,labels=rep("",length(axat)),col=rcol,
-  cex=axislab.cex)
- mtext(axat,4,1,at = axat*ymult+yoff,col = rcol, cex = axislab.cex)
+  cex.axis=axislab.cex)
+ mtext(axat,4,1,at = axat*ymult+yoff,col=rcol,cex=axislab.cex)
  mtext(rylab,4,2,col=rcol,cex=axislab.cex)
  par(mar=oldmar,new=FALSE)
 }

@@ -11,7 +11,7 @@
  radial.pie(radial.extents,sector.edges=NULL,
  sector.colors=NULL,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
  alpha=1,labels=NA,label.pos=NULL,radlab=FALSE,start=0,
- clockwise=FALSE,label.prop=1.15,radial.lim=NULL,main="",xlab="",ylab="",
+ clockwise=FALSE,label.prop=1.1,radial.lim=NULL,main="",xlab="",ylab="",
  mar=c(2,2,3,2),show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
  radial.labels=NULL,boxed.radial=TRUE,add=FALSE,...)

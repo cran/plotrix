@@ -1,4 +1,5 @@
 sizeplot<-function(x,y,scale=1,pow=0.5,powscale=TRUE,size=c(1,4),add=FALSE,...) {
+
  pair <- function(x, y) paste(x, y, sep = "/")
  unpair <- function(x) t(sapply(strsplit(x, "/"), as.numeric))
  f<-factor(pair(x, y))
