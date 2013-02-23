@@ -3,7 +3,7 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  text.col=par("fg"),display.colnames=TRUE,display.rownames=FALSE,
  hlines=FALSE,vlines=FALSE,title=NULL) {
 
- # make sure that there is a plot device there
+ # make sure that there is a graphics device open
  if(dev.cur() == 1)
   stop("Cannot add table unless a graphics device is open")
  # check for an xy.coords structure
@@ -22,14 +22,15 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  row.names<-1:tabdim[1]
  if(par("xlog")) x<-log10(x)
  cellwidth<-rep(0,tabdim[2])
+ # assume that the column names will be at least as wide as the entries
  if(display.colnames) {
   for(column in 1:tabdim[2])
    cellwidth[column]<-max(strwidth(c(column.names[column],
     format(table[,column])),cex=cex))*(1+xpad)
-  nvcells<-tabdim[2]+1
+  nvcells<-tabdim[1]+1
  }
  else {
-  nvcells<-tabdim[2]
+  nvcells<-tabdim[1]
   for(column in 1:tabdim[2])
    cellwidth[column]<-max(strwidth(format(table[,column]),cex=cex))*(1+xpad)
  }
@@ -48,13 +49,17 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
  ytop<-y+yjust*nvcells*cellheight
  # adjust for logarithmic plotting and allow the table to extend beyond the plot
  oldpar<-par(xlog=FALSE,ylog=FALSE,xpd=TRUE)
+ if(display.colnames) {
+  xleft<-x+display.rownames*rowname.width
+  for(column in 1:tabdim[2]) {
+   text(xleft+cellwidth[column]*0.5,
+    ytop-0.5*cellheight,column.names[column],cex=cex,col=text.col)
+    xleft<-xleft+cellwidth[column]
+  }
+ }
  for(row in 1:tabdim[1]) {
-  xleft<-x-xjust*(sum(cellwidth)+rowname.width)
-  # draw the horizontal lines unless at the bottom
-  if(row <= nvcells-1 && hlines)
-   segments(xleft+rowname.width,ytop-row*cellheight,
-    xleft+sum(cellwidth)+rowname.width,ytop-row*cellheight,
-    lwd=lwd,col=box.col)
+  # start at the left edge of the table
+  xleft<-x
   if(display.rownames) {
    text(xleft+0.5*rowname.width,
     ytop-(row+display.colnames-0.5)*cellheight,
@@ -62,34 +67,32 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    xleft<-xleft+rowname.width
   }
   for(column in 1:tabdim[2]) {
-   rect(xleft,ytop-(row+display.colnames-1)*cellheight,
-    xleft+cellwidth[column],ytop-(row+display.colnames)*cellheight,
-    col=bg[row,column])
    text(xleft+0.5*cellwidth[column],
     ytop-(row+display.colnames-0.5)*cellheight,
     table[row,column],cex=cex,col=text.col)
-   if(vlines) segments(xleft,ytop-(row+display.colnames)*cellheight,
-    xleft+cellwidth[column],ytop-(row+display.colnames)*cellheight,col=box.col)
-   xleft<-xleft+cellwidth[column]
+    xleft<-xleft+cellwidth[column]
   }
  }
- if(display.colnames)
-  xleft<-x-xjust*(sum(cellwidth)+rowname.width)
- for(column in 1:tabdim[2]) {
-  text(xleft+display.rownames*rowname.width+cellwidth[column]*0.5,
-   ytop-0.5*cellheight,column.names[column],cex=cex,col=text.col)
-  if(!hlines)
-   segments(xleft+rowname.width,ytop-cellheight,
-    xleft+cellwidth[column],ytop-cellheight,
-    lwd=lwd,col=box.col)
-  xleft<-xleft+cellwidth[column]
+ if(vlines) {
+  xleft<-x+display.rownames*rowname.width
+  segments(xleft+cumsum(cellwidth[-tabdim[2]]),
+   ytop-display.colnames*cellheight,
+   xleft+cumsum(cellwidth[-tabdim[2]]),
+   ytop-(display.colnames+tabdim[1])*cellheight)
+ }
+ if(hlines) {
+  xleft<-x+display.rownames*rowname.width
+  segments(xleft,
+   ytop-display.colnames*cellheight-cumsum(rep(cellheight,tabdim[1]-1)),
+   xleft+sum(cellwidth),
+   ytop-display.colnames*cellheight-cumsum(rep(cellheight,tabdim[1]-1)))
  }
  if(!is.null(title)) {
+  if(bty=="n")
+   segments(xleft,ytop,xleft+sum(cellwidth)+rowname.width,ytop,lwd=lwd,col=box.col)
   xleft<-x-xjust*(sum(cellwidth)+rowname.width)
   text(xleft+(rowname.width+sum(cellwidth))/2,ytop+cellheight/2,title,
    cex=cex,col=text.col)
-  if(bty=="n")
-   segments(xleft,ytop,xleft+sum(cellwidth)+rowname.width,ytop,lwd=lwd,col=box.col)
  }
  par(oldpar)
 }

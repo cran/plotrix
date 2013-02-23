@@ -19,7 +19,7 @@
   rectangles so that they don't overlap.}
 }
 \description{
- \samp{battleship.plot} displays a matrix of rectangles, the widths of which are
+ \samp{battleship.plot} displays a matrix of rectangles, with widths
  proportional to the values in \samp{x}. The values are scaled so that half the
  width of the largest rectangle is equal to \samp{maxxspan} in user units. This
  prevents the rectangles from overlapping. The user can adjust the spacing of the

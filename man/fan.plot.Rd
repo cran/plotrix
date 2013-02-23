@@ -33,48 +33,11 @@
  \item{...}{Additional arguments passed to \samp{polygon}.}
 }
 \details{
- The fan plot is a variant of the pie chart that places the sectors
- "on top" of each other from the largest to the smallest. By default,
- the largest sector is centered with its circumferential arc upwards,
- giving the plot the appearance of a folding fan. Passing a value for
- \samp{align.at} will place the point of alignment at that angle in 
- radians. The sectors may be aligned at either the left or right edges
- or in the center. Note that \samp{align} must be one of \samp{left right}
- or \samp{center}. Each successive sector is radially "shrunk" by a
- constant amount so that two equal sectors will both be visible.
- 
- In cases where there are several segments with very small differences,
- the labels may be crowded. There is a simple routine in the function to
- spread out crowded labels, but it may not be sufficient for severe
- crowding. By capturing the return value and manually altering 
- the label positions, the crowded labels can be separated. This new
- vector of positions may then be passed as \samp{labelpos}.
- 
- The calculation of sectors tries to ensure that they are circular. Thus there
- will be white space if the plotting device dimensions are not proportional to
- the size of the plot. The user must adjust the dimensions of the plotting
- device to get the correct appearance.
+ \samp{fan.plot} is now a call to fanPlot.
 }
 \value{
  The circumferential positions of the labels in radians. These are
  returned in order of decreasing size of the values plotted.
 }
 \author{Jim Lemon, Anupam Tyagi}
-\seealso{\link{floating.pie}}
-\examples{
- # IUCN counts of threatened species by geographical area
- iucn.df<-data.frame(area=c("Africa","Asia","Europe","N&C America",
-  "S America","Oceania"),threatened=c(5994,7737,1987,4716,5097,2093))
- fan.plot(iucn.df$threatened,
-  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
-  main="Threatened species by geographical area",ticks=276)
- # expand the plot to a semicircle
- fan.plot(iucn.df$threatened,max.span=pi,
-  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
-  main="Threatened species by geographical area",ticks=276)
- # expand further to 3/4 of a circle
- fan.plot(iucn.df$threatened,max.span=1.5*pi,
-  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
-  main="Threatened species by geographical area",ticks=276)
-}
 \keyword{misc}

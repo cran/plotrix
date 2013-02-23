@@ -7,7 +7,7 @@
 \usage{
  kiteChart(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
  xlab=ifelse(timex,"Time","Groups"),ylab=ifelse(timex,"Groups","Time"),
- fill=NULL,border=par("fg"),varpos=NA,varlabels=NA,varscale=FALSE,
+ border=par("fg"),col=NULL,varpos=NA,varlabels=NA,varscale=FALSE,
  timepos=NA,timelabels=NA,mar=c(5,4,4,4),axlab=c(1,2,3,4),
  normalize=is.na(varpos[1]),shownorm=TRUE,...)
 }
@@ -17,9 +17,8 @@
  \item{ylim}{Vertical extent of the chart. Defaults to 0.5:dim(x)[1]+0.5.}
  \item{timex}{Whether the "time" axis is x (horizontal) or not.}
  \item{main,xlab,ylab}{As in \samp{plot}.}
- \item{fill}{The color(s) with which to fill the polygons. Defaults to
-  \samp{rainbow(1:dim(x)[1])}.}
- \item{border}{The color of the borders of the polygons.}
+ \item{border}{The border color(s) for the polygons.}
+ \item{col}{The fill colors for the polygons.}
  \item{varpos}{Optional positions for the "kite lines". Defaults to 1:dimx[1].
   (see Details)}
  \item{varlabels}{Labels for the rows of values - defaults to the rownames,

@@ -6,7 +6,7 @@
 }
 \usage{
  floating.pie(xpos,ypos,x,edges=200,radius=1,col=NULL,startpos=0,
-  shadow=FALSE,...)
+  shadow=FALSE,shadow.col=c("#ffffff","#cccccc"),...)
 }
 \arguments{
  \item{xpos,ypos}{x and y position of the center of the pie chart}
@@ -16,7 +16,12 @@
  \item{col}{the colors of the sectors - defaults to \samp{rainbow}}
  \item{startpos}{The starting position for drawing sectors in radians.}
  \item{shadow}{Logical - whether to draw a shadow}
+ \item{shadow.col}{Colors to use for a shadow.}
  \item{...}{graphical parameters passed to \samp{polygon}}
+}
+\details{
+ \samp{floating.pie} displays a pie chart with an optional shadow on an
+ existing plot (see \samp{polygon.shadow}).
 }
 \value{
  The bisecting angle of the sectors in radians. Useful for placing

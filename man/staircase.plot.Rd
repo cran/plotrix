@@ -63,12 +63,4 @@
 }
 \author{Jim Lemon}
 \seealso{\link{plot}, \link{getFigCtr}}
-\examples{
- sample_size<-c(500,-72,428,-94,334,-45,289)
- totals<-c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE)
- labels<-c("Contact list","Uncontactable","","Declined","","Ineligible",
-  "Final sample")
- staircase.plot(sample_size,totals,labels,main="Acquisition of the sample",
-  total.col=gray(0.4),inc.col=2:4,bg.col="#eeeebb",direction="s")
-}
 \keyword{misc}
