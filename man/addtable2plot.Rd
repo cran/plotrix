@@ -41,7 +41,7 @@
  colors will be the backgrounds of the cells. The default is no background color.
 }
 \author{Original by John Kane, mods by Jim Lemon and Brian Diggs. Thanks to
- Andrija Djurovic for asking for the individual cell colors and gabor Grothendieck
+ Andrija Djurovic for asking for the individual cell colors and Gabor Grothendieck
  for alerting me to the problem of widely varying column widths.}
 \seealso{\link{legend}}
 \examples{

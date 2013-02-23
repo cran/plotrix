@@ -48,9 +48,7 @@ Line width for the circumference.
 Additional arguments passed to \code{\link{polygon}}.
 }
 }
-\value{
-Draw ellipses as a side effect. Returns \code{NULL} invisibly.
-}
+\value{Draw ellipses as a side effect.}
 \author{Peter Solymos <solymos@ualberta.ca>}
 \seealso{\link{polygon}}
 \examples{

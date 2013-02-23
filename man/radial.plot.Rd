@@ -121,7 +121,7 @@
  the return values of the functions had changed.}
 \seealso{\link{polar.plot},\link{clock24.plot}}
 \examples{
- testlen<-rnorm(10)*2+5
+ testlen<-runif(10,0,10)
  testpos<-seq(0,18*pi/10,length=10)
  testlab<-letters[1:10]
  oldpar<-radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",lwd=3)

@@ -1,8 +1,7 @@
-bumpchart<-function (y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
+bumpchart<-function(y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
  mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,...) {
 
- if(missing(y)) 
-  stop("Usage: spread.labels(y,labels,...)")
+ if(missing(y)) stop("Usage: bumpchart(y,top.labels,labels,...)")
  ydim<-dim(y)
  if(is.null(ydim)) stop("y must be a matrix or data frame")
  oldmar<-par("mar")
@@ -15,7 +14,8 @@ bumpchart<-function (y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
  lty=rev(lty)
  lwd=rev(lwd)
  y<-apply(y,2,rev)
- matplot(t(y),ylab="",type="b",pch=pch,col=col,lty=lty,lwd=lwd,axes=FALSE,...)
+ matplot(t(y),ylab="",type="b",pch=pch,col=col,lty=lty,lwd=lwd,axes=FALSE,
+  ...)
  par(xpd=TRUE)
  xylim<-par("usr")
  minspacing<-strheight("M")*1.5

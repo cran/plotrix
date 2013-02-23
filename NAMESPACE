@@ -1,4 +1,4 @@
-# created 5/9/2011 - Jim Lemon,
+# created 5/9/2011 - Jim Lemon
 export(
  ablineclip,
  addtable2plot,
@@ -8,8 +8,6 @@ export(
  axis.mult,
  barlabels,
  barNest,
- barNest.svymean,
- barNest.svyprop,
  barp,
  battleship.plot,
  bin.wind.records,

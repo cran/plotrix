@@ -93,7 +93,7 @@ oz.windrose<-function(windagg,maxpct=20,wrmar=c(4,5,6,5),
  }
  text(-maxpct,maxpct/4,paste("Calm ",round(sum(windagg[1,]),1),"%",sep=""),col="blue")
  if(show.legend)
-  oz.windrose.legend(maxpct=maxpct,scale.factor=30,speed.col=speed.col,
+  oz.windrose.legend(maxpct=maxpct,scale.factor=scale.factor,speed.col=speed.col,
    speed.width=speed.width,legend.pos=legend.pos)
  par(oldmar)
 }

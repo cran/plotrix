@@ -24,7 +24,7 @@
  \item{...}{Additional arguments passed to \samp{matplot}.}
 }
 \details{
- \samp{bumpchart} calls \samp{matplot} to plot the values in the transposed
+ \samp{bumpChart} calls \samp{matplot} to plot the values in the transposed
  \samp{y} matrix or data frame, joining the points with lines. At the left and
  right edges of the plot, the labels identifying each row of points are
  displayed. This type of plot is often used to show the changing positions of
@@ -33,11 +33,11 @@
 
  Because of the way \samp{matplot} plots the values, the order of everything is
  reversed. If the user wants to rank in descending order, such as test scores,
- rank the values in the correct order before sending them to \samp{bumpchart}.
+ rank the values in the correct order before sending them to \samp{bumpChart}.
 }
 \value{nil}
 \author{Jim Lemon}
-\seealso{\link{matplot}, \link{ladderplot}}
+\seealso{\link{matplot}}
 \examples{
  # percentage of those over 25 years having completed high school
  # in 10 cities in the USA in 1990 and 2000
@@ -50,7 +50,8 @@
  bumpchart(educattn,main="Rank for high school completion by over 25s")
  # now show the raw percentages and add central ticks
  bumpchart(educattn,rank=FALSE,
-  main="Percentage high school completion by over 25s",col=rainbow(10))
+  main="Percentage high school completion by over 25s",
+  line.info=list(lty=1:10,lwd=1,col=rainbow(10)))
  # margins have been reset, so use
  par(xpd=TRUE)
  boxed.labels(1.5,seq(65,90,by=5),seq(65,90,by=5))

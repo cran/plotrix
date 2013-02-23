@@ -92,6 +92,9 @@ polygon.shadow		Display a shadow effect for a polygon
 propbrk			Calculate the proportion of a specified value in a vector
 pyramid.plot		Display a pyramid (opposed horizontal bar) plot
 radial.plot		Plot values as lines/polygon/symbols on radial scale
+radialGrid		Display the grid for radialPlot
+radialGridLabels	Display the grid labels for radialPlot
+radialPlot		Similar to radial.plot but with new argument structure
 radial.plot.labels	Display labels at specified points on a radial plot
 radialtext		Display text in a radial orientation
 raw,means.plot		Display means on a background of raw values

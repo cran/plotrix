@@ -18,9 +18,9 @@
  A list with the x and y coordinates of the points on the circumference
  of the last circle displayed.
 }
-\note{
- The principal advantage of \samp{draw.circle} is that it adjusts for 
- the aspect ratio of the plot.
+\details{
+ \samp{draw.circle} uses the dimensions of the plot and the \samp{x} and
+ \samp{y} coordinates to draw a circle rather than an ellipse.
 }
 \author{Jim Lemon}
 \seealso{\link{polygon}}
@@ -30,6 +30,5 @@
   col=c("#ff00ff","#ff77ff","#ffccff"),lty=1,lwd=1)
  draw.circle(2.5,8,0.6,border="red",lty=3,lwd=3)
  draw.circle(4,3,0.7,border="green",lty=1,lwd=1)
- draw.circle(3.5,7,0.8,border="blue",lty=2,lwd=2)
-}
+ draw.circle(3.5,7,0.8,border="blue",lty=2,lwd=2)}
 \keyword{misc}

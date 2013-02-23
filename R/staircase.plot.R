@@ -2,6 +2,18 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
  mar=NA,total.col="blue",inc.col=NA,bg.col=NA,direction="e",las=1,
  display.height=TRUE,stagger=FALSE,cex=par("cex"),prefix="",suffix="",...) {
 
+ staircasePlot(heights=heights,totals=totals,labels=labels,halfwidth=halfwidth,
+ main=main,mar=mar,stair.info=list(total.col=total.col,inc.col=inc.col,
+ border=par("fg")),bg.col=bg.col,direction=direction,las=las,
+ display.height=display.height,stagger=stagger,cex=cex,prefix=prefix,
+ suffix=suffix,...)
+}
+
+staircasePlot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
+ mar=NA,stair.info=list(total.col="blue",inc.col=NA,border=par("fg")),
+ bg.col=NA,direction="e",las=1,display.height=TRUE,stagger=FALSE,cex=par("cex"),
+ prefix="",suffix="",...) {
+
  if(is.matrix(heights) | is.data.frame(heights)) {
   dimheights<-dim(heights)
   if(dimheights[2] > 1) totals<-heights[,2]
@@ -46,10 +58,10 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
  }
  par(xpd=TRUE)
  bar.col<-rep(NA,nbars)
- if(length(inc.col) < sum(!totals))
-  inc.col=rep(inc.col,length.out=sum(!totals))
- bar.col[!totals]<-inc.col
- bar.col[totals]<-total.col
+ if(length(stair.info$inc.col) < sum(!totals))
+  stair.info$inc.col=rep(stair.info$inc.col,length.out=sum(!totals))
+ bar.col[!totals]<-stair.info$inc.col
+ bar.col[totals]<-stair.info$total.col
  label_offset<-ifelse(direction == "e" || direction == "w",
   strheight("M"),strwidth("M"))
  if(direction == "s" || direction == "w") {
@@ -69,7 +81,7 @@ staircase.plot<-function(heights,totals=NA,labels=NULL,halfwidth=0.3,main="",
   barend<-barstart+heights[bar]
   if(direction == "e" || direction == "w") {
    rect(barpos[bar]-halfwidth,barstart,barpos[bar]+halfwidth,barend,
-    col=bar.col[bar])
+    col=bar.col[bar],border=stair.info$border)
    if(display.height)
     text(barpos[bar],ifelse(heights[bar]<0,barstart,barend)+label_offset,
      paste(prefix[bar],heights[bar],suffix[bar],sep=""),cex=cex)

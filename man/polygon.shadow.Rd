@@ -28,7 +28,9 @@
 }
 \note{
  The background must be a constant color or the shadow effect will not 
- look right.
+ look right. A good starting point for the two colors is the color of the
+ background and the RGB components of that color multiplied by 0.8. Use a
+ smaller multiplier for a darker shadow.
 }
 \author{Jim Lemon}
 \seealso{\link{polygon}}

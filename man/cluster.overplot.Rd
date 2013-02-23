@@ -9,7 +9,7 @@
   or data frame. Typically the x/y coordinates of points to be plotted.}
  \item{away}{How far to move overlying points in user units. Defaults to
   the width of a lower case "o" in the x direction and 5/8 of the
-  height of a lower case "o" in the y direction.}
+  height of a lower case "o" in the y direction. Must have both values.}
  \item{tol}{The largest distance between points that will be considered
   to be overlying. Defaults to 1/2 of the width of a lower case "o" in 
   the x direction and 1/2 of the height of a lower case "o" in the y 

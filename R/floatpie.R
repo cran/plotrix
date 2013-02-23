@@ -1,7 +1,8 @@
 # display a pie chart at an arbitrary location on an existing plot
 
 floating.pie<-function(xpos,ypos,x,edges=200,radius=1,col=NULL,
- startpos=0,shadow=FALSE,...) {
+ startpos=0,shadow=FALSE,shadow.col=c("#ffffff","#cccccc"),...) {
+
  if (!is.numeric(x) || any(is.na(x) | x<=0))
   stop("floating.pie: x values must be positive.")
  x<-c(0,cumsum(x)/sum(x))
@@ -18,7 +19,7 @@ floating.pie<-function(xpos,ypos,x,edges=200,radius=1,col=NULL,
  if(shadow) {
   xc<-c(cos(seq(0,2*pi,length=edges))*radius+xpos)
   yc<-c(sin(seq(0,2*pi,length=edges))*yradius+ypos)
-  polygon.shadow(xc,yc)
+  polygon.shadow(xc,yc,col=shadow.col)
  }
  for(i in 1:nx) {
   n<-max(2,floor(edges*dx[i]))

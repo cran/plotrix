@@ -3,7 +3,7 @@
 \title{Display nested bars}
 \description{Displays the nested bars for barNest.}
 \usage{
- drawNestedBars(x,start,end,shrink=0.1,errbars=FALSE,label1="Overall",col=NA,
+ drawNestedBars(x,start,end,shrink=0.1,errbars=FALSE,col=NA,
  labelcex=1,lineht=NA,showall=TRUE,barlabels=NULL,showlabels=TRUE,
  arrow.cap=NA)
 }
@@ -13,7 +13,6 @@
   to be displayed.}
  \item{shrink}{The proportion to shrink the width of the bars at each level.}
  \item{errbars}{Whether to display error bars on the bars.}
- \item{label1}{The top level label for the summary stats for the entire dataset.}
  \item{col}{The colors to use to fill the bars. See Details.}
  \item{labelcex}{Character size for the group labels.}
  \item{lineht}{The height of a margin line in user units.}
@@ -31,7 +30,9 @@
 
  The combination of \samp{showlabels=TRUE} and \samp{showall=FALSE} allows
  the display of all of the labels below the plot with only the last set of
- bars being displayed.
+ bars being displayed. To have a set of labels not displayed, pass explicit
+ \samp{barlabels} and have zero length labels for the level that is not to
+ have labels.
 }
 \author{Jim Lemon and Ofir Levy}
 \seealso{\link{brkdnNest}, \link{drawNestedBars}}

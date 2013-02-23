@@ -1,6 +1,6 @@
 kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
  xlab=ifelse(timex,"Time","Groups"),ylab=ifelse(timex,"Groups","Time"),
- fill=NULL,border=par("fg"),varpos=NA,varlabels=NA,varscale=FALSE,
+ border=par("fg"),col=NULL,varpos=NA,varlabels=NA,varscale=FALSE,
  timepos=NA,timelabels=NA,mar=c(5,4,4,4),axlab=c(1,2,3,4),
  normalize=is.na(varpos[1]),shownorm=TRUE,...) {
 
@@ -13,12 +13,18 @@ kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
   kitemax<-1
  }
  else {
-  kitewidths<-apply(as.matrix(x),1,max,na.rm=TRUE)
-  varpos<-rep(0,length(kitewidths)-1)
-  varpos[1]<-1.1*kitewidths[1]/2
-  for(kite in 2:length(kitewidths))
-   varpos[kite]<-varpos[kite-1]+1.1*(kitewidths[kite-1]+kitewidths[kite])/2
-  kitemax<-1.1*sum(kitewidths)
+  if(is.na(varpos[1])) {
+   kitewidths<-apply(as.matrix(x),1,max,na.rm=TRUE)
+   varpos<-rep(0,length(kitewidths)-1)
+   varpos[1]<-1.1*kitewidths[1]/2
+   for(kite in 2:length(kitewidths))
+    varpos[kite]<-varpos[kite-1]+1.1*(kitewidths[kite-1]+kitewidths[kite])/2
+   kitemax<-1.1*sum(kitewidths)
+  }
+  else {
+   kitemax<-max(diff(varpos))
+   kitewidths<-apply(as.matrix(x),1,max,na.rm=TRUE)
+  }
  }
  oldmar<-par(mar=mar)
  if(is.na(xlim[1])) {
@@ -35,7 +41,8 @@ kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
   }
   else ylim<-c(1,dimx[2])
  }
- plot(0,xlim=xlim,ylim=ylim,main=main,xlab=xlab,ylab=ylab,type="n",axes=FALSE,...)
+ plot(0,xlim=xlim,ylim=ylim,main=main,xlab=xlab,ylab=ylab,type="n",
+  axes=FALSE,...)
  if(is.na(varpos[1])) varpos<-1:dimx[1]
  if(is.na(varlabels[1])) {
   if(is.null(rownames(x))) varlabels<-varpos[1:dimx[1]]
@@ -55,8 +62,8 @@ kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
    labels=rep("",2*length(varpos)))
  }
  box()
- if(is.null(fill)) fill<-rainbow(dimx[1])
- if(length(fill) < dimx[1]) fill<-rep(fill,length.out=dimx[1])
+ if(is.null(col)) col<-rainbow(dimx[1])
+ if(length(col) < dimx[1]) col<-rep(col,length.out=dimx[1])
  for(krow in 1:dimx[1]) {
   if(normalize) {
    if(shownorm)
@@ -69,12 +76,12 @@ kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
    polygon(c(xpos,rev(xpos)),
     c(varpos[krow]+x[krow,]/2,
     varpos[krow]-rev(x[krow,])/2),
-    col=fill[krow],border=border)
+    col=col[krow],border=border)
   else
    polygon(c(varpos[krow]+x[krow,]/2,
     varpos[krow]-rev(x[krow,])/2),
     c(xpos,rev(xpos)),
-    col=fill[krow],border=border)
+    col=col[krow],border=border)
  }
  invisible(oldmar)
 }

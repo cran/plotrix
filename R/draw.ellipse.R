@@ -2,6 +2,7 @@ draw.ellipse <-
 function(x, y, a = 1, b = 1, angle = 0, segment=c(0, 360), arc.only=TRUE, 
 deg = TRUE, nv=100, border=NULL, col=NA, lty=1, lwd=1, ...)
 {
+
     ## workhorse internal function draw ellipse
     draw1ellipse <-
     function(x, y, a = 1, b = 1, angle = 0, segment=c(0, 360), 
@@ -66,8 +67,8 @@ deg = TRUE, nv=100, border=NULL, col=NA, lty=1, lwd=1, ...)
         segment <- matrix(segment[1:2], n, 2, byrow=TRUE)
      lapply(1:n, function(i) draw1ellipse(x[i], y[i], a[i], b[i], 
       angle=angle[i], segment=segment[i,], arc.only=arc.only, deg=deg, 
-      nv=nv[i], col=col[i], border=border[i], lty=lty, lwd=lwd, ...))
+      nv=nv[i], col=col[i], border=border[i],
+      lty=lty, lwd=lwd, ...))
     }
     invisible(NULL)
 }
-
