@@ -6,14 +6,15 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
   y<-x$y
   x<-x$x
  }
+ # if no x values, just use integers from 1 to length(x)
  if(missing(y) && !missing(x)) {
   y<-x
   x<-1:length(x)
  }
- # if absolute values are passed, convert them to intervals
- if(!intervals) {
+ # if offsets are passed, convert them to absolute values
+ if(intervals) {
   llim<-y-llim
-  ulim<-ulim-y
+  ulim<-y+ulim
  }
  plotlim<-par("usr")
  npoints<-length(x)
@@ -21,50 +22,51 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
  for(i in 1:npoints) {
   if(toupper(type) == "A") {
    if(!is.na(llim[i])) {
-    if(arrow.gap >= llim[i] * 0.9) {
+    # display the lower dispersion limit
+    if(arrow.gap >= (y[i]-llim[i]) * 0.9) {
+     # avoid the zero length arrow problem
      caplen<-arrow.cap * diff(par("usr")[1:2])
      x0<-x[i]-caplen
      x1<-x[i]+caplen
-     y0<-rep(y[i]-llim[i],2)
-     y1<-rep(y[i]-llim[i],2)
+     y0<-y1<-llim[i]
      segments(x0,y0,x1,y1,...)
     }
     else {
      caplen<-arrow.cap*par("pin")[1]
-     x0<-x1<-rep(x[i],2)
+     x0<-x1<-x[i]
      y0<-y[i]-arrow.gap
-     y1<-y[i]-llim[i]
+     y1<-llim[i]
      arrows(x0,y0,x1,y1,length=caplen,angle=90,...)
     }
    }
    else {
     if(display.na) {
-     x0<-x1<-rep(x[i],2)
+     x0<-x1<-x[i]
      y0<-y[i]-arrow.gap
      y1<-plotlim[3]
      segments(x0,y0,x1,y1,...)
     }
    }
    if(!is.na(ulim[i])) {
-    if(arrow.gap >= ulim[i] * 0.9) {
+    # display the upper dispersion limit
+    if(arrow.gap >= (ulim[i]-y[i]) * 0.9) {
      caplen<-arrow.cap * diff(par("usr")[1:2])
      x0<-x[i]-caplen
      x1<-x[i]+caplen
-     y0<-rep(y[i]+ulim[i],2)
-     y1<-rep(y[i]+ulim[i],2)
+     y0<-y1<-ulim[i]
      segments(x0,y0,x1,y1,...)
     }
     else {
      caplen<-arrow.cap*par("pin")[1]
-     x0<-x1<-rep(x[i],2)
+     x0<-x1<-x[i]
      y0<-y[i]+arrow.gap
-     y1<-y[i]+ulim[i]
+     y1<-ulim[i]
      arrows(x0,y0,x1,y1,length=caplen,angle=90,...)
     }
    }
    else {
     if(display.na) {
-     x0<-x1<-rep(x[i],2)
+     x0<-x1<-x[i]
      y0<-y[i]+arrow.gap
      y1<-plotlim[4]
      segments(x0,y0,x1,y1,...)
@@ -74,7 +76,7 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
  }
  if(toupper(type) == "L") {
   if(!is.na(fill)) {
-   polygon(c(x,rev(x)),c(y+ulim,rev(y-llim)),col=fill,border=NA)
+   polygon(c(x,rev(x)),c(ulim,rev(llim)),col=fill,border=NA)
    if(!is.na(pch)) {
     if(is.na(lty)) points(x,y,pch=pch)
     else lines(x,y,lty=lty,pch=pch,type="b")
@@ -84,8 +86,8 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
    }
   }
   if(!is.na(border)) {
-   lines(x,y+ulim,lty=border,...)
-   lines(x,y-llim,lty=border,...)
+   lines(x,ulim,lty=border,...)
+   lines(x,llim,lty=border,...)
   }
  }
 }

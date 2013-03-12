@@ -71,7 +71,7 @@
  and the third, if present, will be interpreted as "obs".
 }
 \author{Jim Lemon}
-\seealso{\link{dispbars}}
+\seealso{\link{dispersion}}
 \examples{
  test.df<-data.frame(a=rnorm(80)+4,b=rnorm(80)+4,c=rep(LETTERS[1:4],each=20),
   d=rep(rep(letters[1:4],each=4),5))

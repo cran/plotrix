@@ -7,7 +7,7 @@
 \usage{
  boxed.labels(x,y=NA,labels,
   bg=ifelse(match(par("bg"),"transparent",0),"white",par("bg")),
-  border=TRUE,xpad=1.2,ypad=1.2,srt=0,cex=1,adj=0.5,...)
+  border=TRUE,xpad=1.2,ypad=1.2,srt=0,cex=1,adj=0.5,xlog=FALSE,ylog=FALSE,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the labels. \samp{x} can be an
@@ -23,6 +23,8 @@
  \item{cex}{Character expansion. See \samp{text}.}
  \item{adj}{left/right adjustment. If this is set outside the function,
   the box will not be aligned properly.}
+ \item{xlog}{Whether the X axis is a log axis}
+ \item{ylog}{Whether the Y axis is a log axis}
  \item{...}{additional arguments passed to \samp{text}.}
 }
 \details{
@@ -45,8 +47,8 @@
  where overlap is likely.
 }
 \value{nil}
-\author{Jim Lemon - thanks to Thorn Thaler for the code allowing user-specified
- text colors}
+\author{Jim Lemon - thanks to Thorn Thaler for the code allowing
+ user-specified text colors and Flemming Skjoth for the log axis correction}
 \seealso{\link{spread.labels}, \link{thigmophobe.labels}}
 \examples{
  x<-rnorm(10)

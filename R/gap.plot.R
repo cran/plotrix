@@ -22,8 +22,8 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
   else xlim[2]<-xlim[2]-gapsize[1]
  }
  rangexy <- c(range(xlim),range(ylim))
- xgw<-(rangexy[2]-rangexy[1])*brw
- ygw<-(rangexy[4]-rangexy[3])*brw
+ xgw<-(rangexy[2]-(rangexy[1]+gapsize))*brw
+ ygw<-(rangexy[4]-(rangexy[3]+gapsize))*brw
  if(is.na(xtics[1])) xtics<-pretty(x)
  if(is.na(ytics[1])) ytics<-pretty(y)
  if(missing(xticlab)) xticlab<-xtics
@@ -95,8 +95,8 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
    if(!is.na(xtics[1])) axis(1,at=xtics,labels=xticlab)
    littletics<-which(ytics < gap[1])
    if(length(gapsize) > 2) {
-    middletics<-which(ytics >= gap[2] & ytics <= gap[3])
-    bigtics<-which(ytics >= gap[4])
+    middletics<-which(ytics >= gap[2]+ygw & ytics <= gap[3])
+    bigtics<-which(ytics >= gap[4]+ygw)
     show.at<-c(ytics[littletics],ytics[middletics] - gapsize[1],
      ytics[bigtics]-(gapsize[1] + gapsize[3]))
     show.labels<-c(yticlab[littletics],yticlab[middletics],yticlab[bigtics])
@@ -127,16 +127,16 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
   # x gaps need to be fixed
   else {
    if(!is.na(ytics[1])) axis(2,at=ytics,labels=yticlab)
-   littletics<-which(xtics<gap[1])
+   littletics<-which(xtics < gap[1])
    if(length(gapsize) > 2) {
-    middletics<-which(xtics >= gap[2] & xtics <= gap[3])
-    bigtics<-which(xtics >= gap[4])
+    middletics<-which(xtics >= gap[2] + xgw & xtics <= gap[3])
+    bigtics<-which(xtics > gap[4]+xgw)
     show.at<-c(xtics[littletics],xtics[middletics]-gapsize[1],
      xtics[bigtics]-(gapsize[1]+gapsize[3]))
     show.labels<-c(xticlab[littletics],xticlab[middletics],xticlab[bigtics])
    }
    else {
-    bigtics<-which(xtics >= gap[2])
+    bigtics<-which(xtics > gap[2]+xgw)
     show.at<-c(xtics[littletics],xtics[bigtics]-gapsize[1])
     show.labels<-c(xticlab[littletics],xticlab[bigtics])
    }

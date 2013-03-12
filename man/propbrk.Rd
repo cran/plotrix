@@ -16,7 +16,9 @@
 \details{
  \samp{propbrk} calculates the proportion of values matching a specified value.
  It is mainly to allow proportions to be calculated in the \samp{brkdnNest}
- function. It now discards NA values in \samp{x} when calculating proportions.
+ function. It always discards NAs in \samp{x} when summing the number equal to
+ \samp{trueval}, but respects the \samp{na.rm} argument when calculating the
+ total number of values in \samp{x}.
 }
 \value{nil}
 \author{Jim Lemon}

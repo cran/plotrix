@@ -1,38 +1,44 @@
 # CLPLOT
+# Jan 2014 - Fixed a semibug in the way min/max cut levels are
+# 	generated, also cleaned up some random stuff.
 # 20 Oct.  2008 Now plots even pathological data sets without gaps
 #  Parameters:
 #	levels--	vector of desired cutpoints. Program will sort them.
 #	cols--	vector of desired color sequence (strings or numeric references)
 #	x, y--		The data, of  course.  
 #	'...' 		is intended for arguments to pass to PLOT or LINES calls
-#   lty--		plot parameter lty (see par() )
+#	lty--		plot parameter lty (see par() )
 #	showcuts--	Set to TRUE to plot gridlines at color cut levels  
 #
-# Note: warning message if levels[j] is outside range(y), but won't terminate or
-# modify levels
-clplot<-function(x,y,ylab=deparse(substitute(y)),xlab=deparse(substitute(x)),
-levels=seq(min(y)+(max(y)-min(y))/5,max(y)-(max(y)-min(y))/5,length.out=4),
-cols=c("black","blue","green","orange","red"),lty=1,showcuts=FALSE,...) {
-
+clplot<-function(x,y, ylab=deparse(substitute(y)), xlab=deparse(substitute(x)),
+levels=seq(min(y)+(max(y)-min(y))/5, max(y)-(max(y)-min(y))/5, length.out=4),
+cols=c("black", "blue", "green", "orange", "red"), lty=1, showcuts=FALSE, ...) 
+{
 if(missing(y)){
-	ylab=deparse(substitute(x))
+	ylab=xlab # no reason to recalc "deparse(substitute(x))"
 	y<-as.numeric(x)
 	x<-seq(1,length(y))
+# should have done this long ago: fix xlabel
+	xlab<-'index'
 	}
 xx<-as.numeric(x)
 yy<-as.numeric(y)
-#sort to be sure I catch the max and min
 levels<-sort(as.numeric(levels))
-if (levels[1]<min(yy)|levels[length(levels)]>max(yy)) {
-	cat('Warning: levels value(s) outside data range\n')
-	}
-#  set cols length to number of cuts. (number of colors to be used)
-if (length(levels)>=length(cols)) {
+
+#  Jan 2014:  Bugfix here: if levels has values outside min or max of data,
+# we do NOT want to creat cuts at the min,max values! And this needs to be done
+# PRIOR to checking lengths of levels vs colors; and check against cuts,
+# not against levels. 
+#### new code
+cuts<-sort(levels)
+if(min(yy)< min(levels) ) cuts<- c(min(yy),cuts)
+if(max(yy)> max(levels) ) cuts <- c(cuts, max(yy))
+#  set cols length to fit with number of cuts. (number of colors to be used)
+if (length(cuts)> length(cols)+1) {
 	cat("Warning: not enough colors. Will repeat.\n")
 	}
-cols<-rep(cols,length.out=length(levels)+1)
-# add "top" and "bottom" cut values to simplify loop; 
-cuts<-sort(c(min(yy),levels,max(yy)))
+#notice this will also truncate cols if it's longer than number of slices.
+cols<-rep(cols,length.out=length(cuts)-1)
 #build 'empty' graph 
 plot(xx,yy,type='n', xlab=xlab, ylab=ylab, ...)
 # initialize the list variable which will hold all modded slices
@@ -79,7 +85,7 @@ for(jj in 1 : (length(cuts)-1))
 for(j in 1: (length(cuts)-1))
 	 {
 	 slice <-rep(0,length(newxx))
-#get cut of data desired -- slicelog useful for generating NA strings outside cutlevels
+#get cut of data desired -- slicelog used to build NA strings outside cutlevels
 	 slicelog<-as.logical(cuts[j]<=newyy & newyy<=cuts[j+1])
 	 is.na(slice)<-!slicelog
 	 sly<-slice+newyy
@@ -130,4 +136,3 @@ stuff<-c(stuff,modslice)
 names(stuff)<-c('xin','yin','cuts',names(modslice))
 return(invisible(stuff))
 }
-

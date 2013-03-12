@@ -5,6 +5,7 @@ par(ask=TRUE)
 x <- rnorm(100)
 y <- x + rnorm(100)
 lmfit <- lm(y~x)
+par(xaxs="r",yaxs="r")
 plot(x,y,xlim=c(-3.5,3.5),main="Ablineclip")
 ablineclip(lmfit,x1=-2,x2=2,lty=2)
 ablineclip(h=0,x1=-2,x2=2,lty=3,col="red")
@@ -21,10 +22,11 @@ arctext("bendy like spaghetti",center=c(3,3),col="blue")
 arctext("bendy like spaghetti",center=c(3,3),radius=1.5,start=pi,cex=2)
 arctext("bendy like spaghetti",center=c(3,3),radius=0.5,
  start=pi/2,stretch=1.2)
-plot(3:10,main="Axis break test")
+plot(3:10,main="Axis break test",yaxt="n")
 # put a break at the default axis and position
 axis.break()
-axis.break(2,2.9,style="zigzag")
+axis(2,at=3:10,labels=c(0,4:10))
+axis.break(2,style="zigzag")
 twogrp<-c(rnorm(10)+4,rnorm(10)+20)
 gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
  main="Two separated groups with gap axis break",
@@ -32,8 +34,8 @@ gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
 legend(12,6,c("Low group","High group"),pch=1,col=2:3)
 plot(1:10*0.001,1:10*100,axes=FALSE,xlab="",ylab="",main="Axis multipliers")
 box()
-axis.mult(1,mult=0.001)
-axis.mult(2,mult=100)
+axis.mult(1,mult=0.001,mult.label="X")
+axis.mult(2,mult=100,mult.label="Y")
 par(mar=c(5,5,4,2))
 test.df<-data.frame(Age=rnorm(100,25,10),
  Sex=sample(c("M","F"),100,TRUE),
@@ -42,7 +44,7 @@ test.df<-data.frame(Age=rnorm(100,25,10),
 test.col<-list(Overall="green",Employ=c("purple","orange","brown"),
  Marital=c("#1affd8","#caeecc","#f7b3cc","#94ebff"),Sex=c(2,4))
 barNest(formula=Age~Employ+Marital+Sex,data=test.df,main="barNest",
- col=test.col,showall=TRUE)
+ col=test.col,showall=TRUE,ylab="Mean age")
 happyday<-data.frame(Monday=c(2.3,3.4),Tuesday=c(2.8,3.3),Wednesday=c(3.2,3.1),
 Thursday=c(3.6,2.8),Friday=c(4.2,2.6),Saturday=c(4.5,2.9),Sunday=c(4.1,2.8))
 happylabels<-c("Utterly dashed","Rather mopey","Indifferent","Somewhat elated",
@@ -208,7 +210,7 @@ druguse<-matrix(c(sample(c(0,1),200,TRUE),
 colnames(druguse)<-c("Alc","Tob","THC","Amp")
 druglist<-makeIntersectList(druguse)
 intersectDiagram(druglist)
-testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
+testmat<-matrix(c(runif(50),sample(1:25,50,TRUE),rnorm(50)+5,
  sin(1:50)),ncol=50,byrow=TRUE)
 kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
  timepos=seq(1,50,by=5))
@@ -227,7 +229,9 @@ l <- list(runif(10)*10,1:10,c(1,1,1,1,4,8))
 multhist(l,main="Test of multhist")
 windagg<-matrix(c(8,0,0,0,0,0,0,0,4,6,2,1,6,3,0,4,2,8,5,3,5,2,1,1,
  5,5,2,4,1,4,1,2,1,2,4,0,3,1,3,1),nrow=5,byrow=TRUE)
-oz.windrose(windagg,legend.pos=-26,main="Australian BoM wind rose")
+par(mar=c(5,4,4,2))
+oz.windrose(windagg,legend.pos=-25,wrmar=c(5,5,6,5),
+ main="Australian BoM wind rose")
 y<-runif(8)
 oldpar<-panes()
 boxplot(y,axes=FALSE)
@@ -330,6 +334,22 @@ labels<-c("Contact list","Uncontactable","","Declined","","Ineligible",
 staircase.plot(sample_size,totals,labels,
  main="Acquisition of the sample (staircase.plot)",
  total.col="gray",inc.col=2:4,bg.col="#eeeebb",direction="s")
+ date_mat<-data.frame(sex=rep(c("M","F"),each=10),
+  names=c("Abe","Bob","Col","Dave","Eddie","Frank","Geoff","Harry","Igor","Jack",
+  "Alice","Betty","Clare","Dora","Eva","Fran","Grace","Hilda","Iris","Joan"),
+  eating=sample(0:100,20),dancing=sample(0:100,20),movies=sample(0:100,20),
+  reading=sample(0:100,20),travel=sample(0:100,20))
+par(mar=c(5,4,4,2))
+ plot(0,xlim=c(0.5,10.5),ylim=c(0,3),type="n",axes=FALSE,xlab="",ylab="Sex",
+  main="Date matching matrix")
+ par(xpd=TRUE)
+ legend(0.7,-0.2,c("Eat out","Dance","Movies","Read","Travel"),fill=rainbow(5),
+  ncol=5)
+ par(xpd=FALSE)
+ box()
+ axis(2,at=c(0.9,2.4),labels=c("Male","Female"))
+ starPie(x=rep(1:10,2),y=rep(c(0.9,2.4),each=10),radext=0.5,
+  values=as.matrix(date_mat[,3:7]),label=as.character(date_mat[["names"]]))
 x<-rnorm(20)
 y<-rnorm(20)
 xlim<-range(x)
@@ -349,13 +369,14 @@ triax.retval<-triax.plot(soils[1:6,],main="Test triax.plot",
  show.grid=TRUE,show.legend=TRUE,col.symbols=1:6,pch=4)
 par(triax.retval$oldpar)
 twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
- 1:15,rev(60:74)+rnorm(15),xlab="Sequence",
- ylab="Ascending values",rylab="Descending values")
+ 1:15,rev(60:74)+rnorm(15),lylim=c(2,15),rylim=c(40,75),
+ rytickpos=seq(60,75,by=5),lytickpos=2:7,
+ xlab="Sequence",ylab="Ascending values",rylab="Descending values")
 tab.title("Test of twoord.plot and tab.title",tab.col="yellow",radius=0.5)
 o<-matrix(rep(pi*seq(0.1,0.8,by=0.1),7),ncol=8,byrow=TRUE)
 m<-matrix(rnorm(56)+4,ncol=8,byrow=TRUE)
-plot(0,xlim=c(0.7,8.3),ylim=c(0.7,7.3),type="n",
- main="Test vector.field with lengthKey")
+plot(0,xlim=c(0.7,8.3),ylim=c(0.7,7.3),type="n",xlab="Longitude",
+ ylab="Latitude",main="Test vector.field with lengthKey")
 vectorField(o,m,vecspec="rad")
 lengthKey(0.3,-0.5,c(0,5,10),0.24)
 zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),

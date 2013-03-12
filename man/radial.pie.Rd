@@ -13,7 +13,7 @@
  alpha=1,labels=NA,label.pos=NULL,radlab=FALSE,start=0,
  clockwise=FALSE,label.prop=1.1,radial.lim=NULL,main="",xlab="",ylab="",
  mar=c(2,2,3,2),show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
- grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
+ grid.col="gray",grid.bg="transparent",grid.unit=NULL,
  radial.labels=NULL,boxed.radial=TRUE,add=FALSE,...)
 }
 \arguments{
@@ -49,7 +49,6 @@
  \item{show.radial.grid}{Whether to draw radial lines to the plot labels.}
  \item{grid.col}{Color of the circular grid.}
  \item{grid.bg}{Fill color of above.}
- \item{grid.left}{Whether to place the radial grid labels on the left side.}
  \item{grid.unit}{Optional unit description for the grid.}
  \item{radial.labels}{Optional labels for the radial grid. The default is
   the values of radial.lim.}
@@ -79,7 +78,7 @@
  \samp{spreadout} function. If the \samp{show.grid.labels} argument is a number
  from 1 to 4, the labels will be placed along a horizontal or vertical radius.
  The numbers represent the same positions as in \samp{axis}, with the default
- (4) on the right.
+ (4) on the right. To suppress these labels, pass zero or FALSE.
 
  \samp{radial.pie} works somewhat differently from the \samp{radial.plot}
  family and is still under development. I have released it in order to get

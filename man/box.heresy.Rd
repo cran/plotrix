@@ -27,7 +27,7 @@
 \description{
  \samp{box.heresy} displays a box plot in which a symbol represents a measure of
  central tendency, a surrounding box that represents an "inner" measure of dispersion
- (e.g. standard error) and whiskers that represent an "outer" measure of dispersion
+ (e.g. standard error) and whiskers represent an "outer" measure of dispersion
  (e.g. standard deviation). The function is pretty basic at this time and will 
  probably change a bit.
 }

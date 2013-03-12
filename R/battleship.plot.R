@@ -28,5 +28,5 @@ battleship.plot<-function(x,mar=c(2,5,5,1),col="white",border="black",
  rect(rep(1:dimx[2],each=dimx[1])-normx,rep(dimx[1]:1,dimx[2])-maxyspan,
   rep(1:dimx[2],each=dimx[1])+normx,rep(dimx[1]:1,dimx[2])+maxyspan,
   col=col,border=border)
- par(oldmar)
+ par(mar=oldmar)
 }

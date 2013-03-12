@@ -120,9 +120,10 @@
  Evan Daugharty for requesting the \samp{add} argument, James MacCarthy
  for requesting better radial labels, Steve Ellison for noticing that
  the return values of the functions had changed, Don Dennerline for
- requesting the rank clock and Mehdi Nellen for the different colors for
- the radial and circumferential lines for the grid.}
-\seealso{\link{polar.plot},\link{clock24.plot},\link{plotrixInfo}}
+ requesting the rank clock, Mehdi Nellen for the different colors for
+ the radial and circumferential lines for the grid and Mayeul Kauffmann for
+ noticing the radial label bug when a separate radial.grid was included.}
+\seealso{\link{polar.plot},\link{clock24.plot}}
 \examples{
  testlen<-runif(10,0,10)
  testpos<-seq(0,18*pi/10,length=10)
@@ -131,11 +132,12 @@
   lwd=3,rad.col="lightblue")
  testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
  testpos<-seq(0,1.98*pi,length=100)
- radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")
+ radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue",
+  labels=LETTERS[1:8])
  # now do a 12 o'clock start with clockwise positive
- radial.plot(testlen,testpos,start=pi/2,clockwise=TRUE,
-  rp.type="s",main="Test Symbols (clockwise)",
-  point.symbols=16,point.col="green",show.centroid=TRUE)
+ radial.plot(testlen,testpos,start=pi/2,clockwise=TRUE,show.grid.labels=2,
+  rp.type="s",main="Test Symbols (clockwise)",radial.lim=c(0,3.5),
+  point.symbols=16,point.col="green",show.centroid=TRUE,labels=LETTERS[1:6])
  # one without the circular grid and multiple polygons
  # see the "diamondplot" function for variation on this
  posmat<-matrix(sample(2:9,30,TRUE),nrow=3)
@@ -146,7 +148,7 @@
  ions<-c(3.2,5,1,3.1,2.1,4.5)
  ion.names<-c("Na","Ca","Mg","Cl","HCO3","SO4")
  radial.plot(ions,labels=ion.names,rp.type="p",main="Dissolved ions in water",
-  grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow")
+  grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow",show.grid.labels=1)
  # add points inside the polygon - radial.lim is supplied by plotrix_env
  radial.plot(ions-0.4,rp.type="s",point.symbols=4,point.col="red",add=TRUE)
  radmat<-matrix(c(sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),
