@@ -37,7 +37,9 @@ floating.pie<-function(xpos,ypos,x,edges=200,radius=1,col=NULL,
 # place text labels at the specified distance from x,y on the radial lines
 # specified by angles.
 
-pie.labels<-function(x,y,angles,labels,radius=1,bg="white",border=TRUE,...) {
+pie.labels<-function(x,y,angles,labels,radius=1,bg="white",border=TRUE,
+ minangle=NA,...) {
+
  if(nargs()<4)
   stop("Usage: pie.labels(x,y,angles,labels,radius=1,bg=\"white\",border=TRUE,...)")
  # turn off clipping
@@ -46,6 +48,7 @@ pie.labels<-function(x,y,angles,labels,radius=1,bg="white",border=TRUE,...) {
  xylim<-par("usr")
  plotdim<-par("pin")
  yradius<-radius*(xylim[4]-xylim[3])/(xylim[2]-xylim[1])*plotdim[1]/plotdim[2]
+ if(!is.na(minangle)) angles<-spreadout(angles,minangle)
  xc<-cos(angles)*radius+x
  yc<-sin(angles)*yradius+y
  boxed.labels(xc,yc,labels,bg=bg,border=border,...)

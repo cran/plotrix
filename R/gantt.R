@@ -109,8 +109,8 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   text(plim[1]+(plim[2]-plim[1])/8,plim[3]-(plim[4]-plim[3])/9,
    priority.label,adj=c(0.5,1))
   par(xpd=FALSE)
-  mtext(priority.extremes,side=1,line=0,at=c(plim[1],plim[1]+(plim[2]-plim[1])/4),
-   c(1-ntasks/10,1-ntasks/10),cex=0.8)
+  mtext(priority.extremes,side=1,line=0,
+   at=c(plim[1],plim[1]+(plim[2]-plim[1])/4),cex=0.8)
  }
  par(oldpar)
  invisible(x)

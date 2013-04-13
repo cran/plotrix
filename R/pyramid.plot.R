@@ -7,15 +7,15 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
   rx<-lx[,2]
   lx<-lx[,1]
  }
- if(any(c(lx,rx)<0)) stop("Negative quantities not allowed")
+ if(any(c(lx,rx)<0,na.rm=TRUE)) stop("Negative quantities not allowed")
  ncats<-ifelse(xdim,dim(lx)[1],length(lx))
  if(length(labels)==1) labels<-1:ncats
  ldim<-length(dim(labels))
  nlabels<-ifelse(ldim,length(labels[,1]),length(labels))
  if(nlabels != ncats) stop("lx and labels must all be the same length")
  if(missing(xlim))
-  xlim<-rep(ifelse(xdim,ceiling(max(c(rowSums(lx),rowSums(rx)))),
-   ceiling(max(c(lx,rx)))),2)
+  xlim<-rep(ifelse(xdim,ceiling(max(c(rowSums(lx),rowSums(rx)),na.rm=TRUE)),
+   ceiling(max(c(lx,rx),na.rm=TRUE))),2)
  if(!is.null(laxlab) && xlim[1] < max(laxlab)) xlim[1]<-max(laxlab)
  if(!is.null(raxlab) && xlim[2] < max(raxlab)) xlim[2]<-max(raxlab)
  oldmar<-par("mar")
@@ -37,8 +37,12 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
   }
   else axis(1,at=raxlab+gap,labels=raxlab)
   if(gap > 0) {
-   axis(2,at=1:ncats,labels=rep("",ncats),pos=gap,tcl=-0.25)
-   axis(4,at=1:ncats,labels=rep("",ncats),pos=-gap,tcl=-0.25)
+   if(xdim) axis(2,at=1:ncats,labels=rep("",ncats),pos=gap,tcl=-0.25)
+   else axis(2,at=1:ncats * as.logical(rx+1),labels=rep("",ncats),pos=gap,
+    tcl=-0.25)
+   if(xdim) axis(4,at=1:ncats,labels=rep("",ncats),pos=gap,tcl=-0.25)
+   else axis(4,at=1:ncats * as.logical(lx+1),labels=rep("",ncats),pos=gap,
+    tcl=-0.25)
   }
   # display the category labels
   if(is.null(dim(labels))) {

@@ -1,3 +1,13 @@
+version 3.5
+
+	fixed the "priorities extremes" bug in gantt.chart (thanks to Michael Motta)
+	pyramid.plot now accepts NA values (thanks to Susumu Tanimura)
+	radial.plot now does a rank clock plot (thanks to Don Dennerline)
+
+version 3.4-7
+
+	added automatic spreading out to pie.labels
+
 version 3.4-6
 
 	fixed the kite line positioning in kiteChart (thanks to Justin Dellinger)

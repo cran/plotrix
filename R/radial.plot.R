@@ -71,11 +71,15 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
  lengths<-lengths-radial.lim[1]
  lengths[lengths<0]<-NA
  if(is.null(radial.pos[1]))
-  radial.pos<-seq(0,pi*(2-2/npoints),length.out=npoints)
+  radial.pos<-seq(0,pi*(2 - 2 * (rp.type != "l")/npoints),length.out=npoints)
  radial.pos.dim<-dim(radial.pos)
  if(is.null(radial.pos.dim))
   radial.pos<-matrix(rep(radial.pos,nsets),nrow=nsets,byrow=TRUE)
  else radial.pos<-as.matrix(radial.pos)
+ if(rp.type == "l") {
+  clockwise<-TRUE
+  start<-pi/2
+ }
  if(clockwise) radial.pos<--radial.pos
  if(start) radial.pos<-radial.pos+start
  if(show.grid) {
@@ -147,6 +151,8 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
     lwd=lwidth,...)
   if(match("s",rptype,0))
    points(xpos,ypos,pch=pointsymbols,col=pointcol,...)
+  if(match("l",rptype,0))
+   lines(xpos,ypos,lty=ltype,lwd=lwidth,col=linecol,...)
   if(show.centroid)
    if(match("p",rptype,0)) {
     nvertices<-length(xpos)
