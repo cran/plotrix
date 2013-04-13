@@ -117,8 +117,9 @@
  Baker for the request that led to \samp{radlab}, Thomas Steiner for
  the request for the \samp{radial.lim} and \samp{radial.labels} modifications,
  Evan Daugharty for requesting the \samp{add} argument, James MacCarthy
- for requesting better radial labels and Steve Ellison for noticing that
- the return values of the functions had changed.}
+ for requesting better radial labels, Steve Ellison for noticing that
+ the return values of the functions had changed and Don Dennerline for
+ requesting the rank clock.}
 \seealso{\link{polar.plot},\link{clock24.plot}}
 \examples{
  testlen<-runif(10,0,10)
@@ -146,6 +147,13 @@
  # add points inside the polygon
  radial.plot(ions-0.4,rp.type="s",radial.lim=c(0,5),
   point.symbols=4,point.col="red",add=TRUE)
+ radmat<-matrix(c(sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),
+  sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),
+  sample(1:4,4),sample(1:4,4)),nrow=4)
+ # finally a rank clock
+ radial.plot(radmat,rp.type="l",radial.pos=seq(0,20*pi/11.1,length.out=10),
+  label.pos=seq(0,20*pi/11.1,length.out=10),start=pi/2,clockwise=TRUE,
+  labels=2001:2010,radial.lim=c(0.2,4),main="Rank clock")
  par(xpd=oldpar$xpd,mar=oldpar$mar,pty=oldpar$pty)
  # reset the margins
  par(mar=c(5,4,4,2))

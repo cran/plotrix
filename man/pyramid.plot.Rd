@@ -81,7 +81,8 @@
 \value{
  The return value of \samp{par("mar")} when the function was called.
 }
-\author{Jim Lemon}
+\author{Jim Lemon (thanks to Susumu Tanimura for the patch that omits
+ ticks for NA values in vector input)}
 \seealso{\link{rect}}
 \examples{
  xy.pop<-c(3.2,3.5,3.6,3.6,3.5,3.5,3.9,3.7,3.9,3.5,3.2,2.8,2.2,1.8,
@@ -108,11 +109,11 @@
  oldmar<-pyramid.plot(malecook,femalecook,labels=agegrps,
   unit="Bowls per month",lxcol=c("#ff0000","#eeee88","#0000ff"),
   rxcol=c("#ff0000","#eeee88","#0000ff"),laxlab=c(0,10,20,30),
-  raxlab=c(0,10,20,30),top.labels=c("Males","Age","Females"),gap=3)
+  raxlab=c(0,10,20,30),top.labels=c("Males","Age","Females"),gap=4)
  # put a box around it
  box()
  # give it a title
- mtext("Porridge temperature by age and sex of cook",3,2,cex=1.5)
+ mtext("Porridge temperature by age and sex of bear",3,2,cex=1.5)
  # stick in a legend
  legend(par("usr")[1],11,c("Too hot","Just right","Too cold"),
   fill=c("#ff0000","#eeee88","#0000ff"))

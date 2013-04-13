@@ -87,9 +87,10 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    xleft+sum(cellwidth),
    ytop-display.colnames*cellheight-cumsum(rep(cellheight,tabdim[1]-1)))
  }
+ if(bty == "n")
+  rect(xleft,ytop-nvcells*cellheight,xleft+sum(cellwidth),
+   ytop-cellheight*display.colnames,lwd=lwd,border=box.col)
  if(!is.null(title)) {
-  if(bty=="n")
-   segments(xleft,ytop,xleft+sum(cellwidth)+rowname.width,ytop,lwd=lwd,col=box.col)
   xleft<-x-xjust*(sum(cellwidth)+rowname.width)
   text(xleft+(rowname.width+sum(cellwidth))/2,ytop+cellheight/2,title,
    cex=cex,col=text.col)
