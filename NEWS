@@ -1,12 +1,18 @@
-version 3.5
+version 3.4-8
 
-	fixed the "priorities extremes" bug in gantt.chart (thanks to Michael Motta)
-	pyramid.plot now accepts NA values (thanks to Susumu Tanimura)
-	radial.plot now does a rank clock plot (thanks to Don Dennerline)
+	fixed a minor bug in the ylim argument of gap.plot
+	twoord.plot had some bugs cleaned up and now has a do.first argument
+	fixed the missing background colors in addtable2plot
+	allowed floating.pie to ignore zero and NA values (thanks to Jose deSantos)
+	added the "stax" argument to gap.plot (thanks to Zheng Lu)
+	fixed the problem with "yaxlab" in gap.barplot (thanks to Giorgio Galetti)
 
 version 3.4-7
 
 	added automatic spreading out to pie.labels
+	fixed the "priorities extremes" bug in gantt.chart (thanks to Michael Motta)
+	pyramid.plot now accepts NA values (thanks to Susumu Tanimura)
+	radial.plot now does a rank clock plot (thanks to Don Dennerline)
 
 version 3.4-6
 

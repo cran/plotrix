@@ -2,13 +2,13 @@ kiteChart<-function(x,xlim=NA,ylim=NA,timex=TRUE,main="Kite chart",
  xlab=ifelse(timex,"Time","Groups"),ylab=ifelse(timex,"Groups","Time"),
  border=par("fg"),col=NULL,varpos=NA,varlabels=NA,varscale=FALSE,
  timepos=NA,timelabels=NA,mar=c(5,4,4,4),axlab=c(1,2,3,4),
- normalize=is.na(varpos[1]),shownorm=TRUE,...) {
+ normalize=FALSE,shownorm=TRUE,...) {
 
  # leave a bit more space on top if there is an axis
- if(varscale) mar<-mar+c(0,0,1,0)
+ if(varscale || normalize) mar<-mar+c(0,0,!timex,timex)
  dimx<-dim(x)
- if(is.na(varpos[1])) varpos<-1:dimx[2]
  if(normalize) {
+  if(is.na(varpos[1])) varpos<-1:dimx[2]
   kitewidths<-rep(1,dimx[2])
   kitemax<-1
  }

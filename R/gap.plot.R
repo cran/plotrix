@@ -1,8 +1,9 @@
 # Try to rewrite this for an arbitrary number of gaps
 
 gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
- brw=0.02,xlim,ylim,xticlab,xtics=NA,yticlab,ytics=NA,lty=rep(1,length(x)),
- col=rep(par("col"),length(x)),pch=rep(1,length(x)),add=FALSE,...) {
+ brw=0.02,xlim=range(x),ylim=range(y),xticlab,xtics=NA,yticlab,ytics=NA,
+ lty=rep(1,length(x)),col=rep(par("col"),length(x)),pch=rep(1,length(x)),
+ add=FALSE,stax=FALSE,...) {
 
  if(missing(y) && !missing(x)) {
   y<-x
@@ -12,19 +13,13 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
  gapsize<-diff(gap)
  xaxl<-par("xlog")
  yaxl<-par("ylog")
- if(missing(ylim)) {
-  if(gap.axis == "y") {
-   if(length(gap) > 3) ylim<-c(min(y),max(y) - (gapsize[1] + gapsize[3]))
-   else ylim<-c(min(y),max(y)-gapsize[1])
-   if(missing(xlim)) xlim<-range(x)
-  }
+ if(gap.axis == "y") {
+  if(length(gap) > 3) ylim[2]<-ylim[2] - (gapsize[1] + gapsize[3])
+  else ylim[2]<-ylim[2]-gapsize[1]
  }
- if(missing(xlim)) {
-  if(gap.axis == "x") {
-   if(length(gap) > 3) xlim<-c(min(x),max(x) - (gapsize[1] + gapsize[3]))
-   else xlim<-c(min(x),max(x)-gapsize[1])
-   if(missing(ylim)) ylim<-range(y)
-  }
+ if(gap.axis == "x") {
+  if(length(gap) > 3) xlim[2]<-xlim[2] - (gapsize[1] + gapsize[3])
+  else xlim[2]<-xlim[2]-gapsize[1]
  }
  rangexy <- c(range(xlim),range(ylim))
  xgw<-(rangexy[2]-rangexy[1])*brw
@@ -46,7 +41,7 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
    bigones<-which(y >= gap[2] + ygw)
    lostones<-sum(y > gap[1] & y < gap[2] + ygw)
   }
-  if(lostones) warning("some values of y will not be displayed")
+  if(lostones) warning("some values of y may not be displayed")
  }
  else {
   littleones<-which(x < gap[1])
@@ -111,7 +106,11 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
     show.at<-c(ytics[littletics],ytics[bigtics] - gapsize[1])
     show.labels<-c(ytics[littletics],yticlab[bigtics])
    }
-   axis(2,at=show.at,labels=show.labels)
+   if(stax) {
+    axis(2,at=show.at,labels=rep("",length(show.labels)))
+    staxlab(2,at=show.at,labels=show.labels)
+   }
+   else axis(2,at=show.at,labels=show.labels)
    axis.break(2,gap[1],style="gap",bgcol=bgcol,
     breakcol=breakcol,brw=brw)
    if(length(gapsize) > 2) {
@@ -141,7 +140,11 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
     show.at<-c(xtics[littletics],xtics[bigtics]-gapsize[1])
     show.labels<-c(xticlab[littletics],xticlab[bigtics])
    }
-   axis(1,at=show.at,labels=show.labels)
+   if(stax) {
+    axis(1,at=show.at,labels=rep("",length(show.labels)))
+    staxlab(1,at=show.at,labels=show.labels)
+   }
+   else axis(1,at=show.at,labels=show.labels)
    axis.break(1,gap[1],style="gap")
    if(length(gapsize) > 2) {
     axis.break(1,gap[3]-gapsize[1],style="gap")

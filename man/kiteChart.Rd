@@ -9,7 +9,7 @@
  xlab=ifelse(timex,"Time","Groups"),ylab=ifelse(timex,"Groups","Time"),
  border=par("fg"),col=NULL,varpos=NA,varlabels=NA,varscale=FALSE,
  timepos=NA,timelabels=NA,mar=c(5,4,4,4),axlab=c(1,2,3,4),
- normalize=is.na(varpos[1]),shownorm=TRUE,...)
+ normalize=FALSE,shownorm=TRUE,...)
 }
 \arguments{
  \item{x}{Numeric matrix or data frame}
@@ -69,9 +69,12 @@
   sin(1:50)),ncol=50,byrow=TRUE)
  kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
   timepos=seq(1,50,by=5),timex=FALSE)
+ # not enough space for the last label, add it
+ mtext("Sine",at=65,side=1,line=2)
  # now show it with kite line maxima
  kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
   timepos=seq(1,50,by=5),timex=FALSE,varscale=TRUE)
+ mtext("Sine",at=65,side=1,line=2)
  musicmat<-matrix(c(c(0.5,0.4,0.3,0.25,0.2,0.15,0.1,rep(0.05,44))+runif(51,0,0.05),
   c(0.1,0.2,0.3,0.35,0.4,0.5,0.4,rep(0.5,14),rep(0.4,15),rep(0.3,15))+runif(51,0,0.1),
   rep(0.15,51)+runif(51,0,0.1),
@@ -80,7 +83,11 @@
   ncol=51,byrow=TRUE)
  kiteChart(musicmat,varlabels=c("Swing","Rock","Jazz","Disco","Rap"),
   main="An utterly imaginary chart of music popularity",
+  timepos=seq(1,51,by=10),timelabels=seq(1950,2000,by=10),mar=c(5,4,4,2))
+ # now flip it to vertical, normalize and show the normalization factors
+ kiteChart(musicmat,varlabels=c("Swing","Rock","Jazz","Disco","Rap"),
+  main="An utterly imaginary chart of music popularity",xlab="Style",
   timepos=seq(1,51,by=10),timelabels=seq(1950,2000,by=10),mar=c(5,4,4,2),
-  normalize=FALSE)
+  timex=FALSE,normalize=TRUE,shownorm=TRUE)
 }
 \keyword{misc}

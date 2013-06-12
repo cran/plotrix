@@ -47,7 +47,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  else miny<-ylim[1]
  plot(ylim[1],type="n",main=main,xlab=xlab,ylab=ylab,axes=FALSE,xlim=xlim,
   ylim=ylim,xaxs="i",yaxs="i",log=ifelse(ylog,"y",""))
- if(!is.null(do.first)) eval(do.first)
+ if(!is.null(do.first)) eval(parse(text=do.first))
  if(negy) abline(h=0)
  if(is.null(names.arg)) names.arg<-x
  if(staxx) {

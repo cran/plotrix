@@ -8,13 +8,13 @@
  directions defined by angles in radians.
 }
 \usage{
- radial.plot(lengths,radial.pos=NULL,labels,label.pos=NULL,radlab=FALSE,
+ radial.plot(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FALSE,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
- point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
- radial.labels=NULL,boxed.radial=TRUE,poly.col=NULL,add=FALSE,...)
+ point.symbols=1,point.col=par("fg"),show.centroid=FALSE,radial.lim=NULL,
+ radial.labels=NULL,boxed.radial=TRUE,poly.col=NA,add=FALSE,...)
 }
 \arguments{
  \item{lengths}{A numeric data vector or matrix. If \samp{lengths}
@@ -154,6 +154,7 @@
  radial.plot(radmat,rp.type="l",radial.pos=seq(0,20*pi/11.1,length.out=10),
   label.pos=seq(0,20*pi/11.1,length.out=10),start=pi/2,clockwise=TRUE,
   labels=2001:2010,radial.lim=c(0.2,4),main="Rank clock")
+ legend(-1.7,4,c("Black","Red","Green","Blue"),col=1:4,lty=1)
  par(xpd=oldpar$xpd,mar=oldpar$mar,pty=oldpar$pty)
  # reset the margins
  par(mar=c(5,4,4,2))

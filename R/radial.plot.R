@@ -53,8 +53,8 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
- point.symbols=NULL,point.col=NULL,show.centroid=FALSE,radial.lim=NULL,
- radial.labels=NULL,boxed.radial=TRUE,poly.col=NULL,add=FALSE,...) {
+ point.symbols=1,point.col=par("fg"),show.centroid=FALSE,radial.lim=NULL,
+ radial.labels=NULL,boxed.radial=TRUE,poly.col=NA,add=FALSE,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
  length.dim<-dim(lengths)

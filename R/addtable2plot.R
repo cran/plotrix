@@ -67,6 +67,9 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    xleft<-xleft+rowname.width
   }
   for(column in 1:tabdim[2]) {
+   rect(xleft,ytop-(row+display.colnames-1)*cellheight,
+    xleft+cellwidth[column],ytop-(row+display.colnames)*cellheight,
+    col=bg[row,column])
    text(xleft+0.5*cellwidth[column],
     ytop-(row+display.colnames-0.5)*cellheight,
     table[row,column],cex=cex,col=text.col)

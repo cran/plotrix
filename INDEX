@@ -86,6 +86,7 @@ pie.labels		Display flat pie chart labels
 pie3D			Display a 3D pie chart
 pie3D.labels		Display labels on a 3D pie chart
 plot.dendrite		Display a dendrogram for a dendrite object
+plot_bg			Add a background color to a plot
 plotCI			Display confidence intervals/error bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
