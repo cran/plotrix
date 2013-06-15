@@ -21,11 +21,17 @@
 }
 \details{
  \samp{floating.pie} displays a pie chart with an optional shadow on an
- existing plot (see \samp{polygon.shadow}).
+ existing plot (see \samp{polygon.shadow}). \samp{floating.pie} now accepts
+ NAs or zeros in\samp{x}, but simply ignores them.
+
+ \samp{floating.pie} can be useful when multiple pie charts are placed on a
+ plot overlaying something else, like a map.
 }
 \value{
  The bisecting angle of the sectors in radians. Useful for placing
- text labels for each sector.
+ text labels for each sector. If any values in \samp{x} were zero or NA,
+ no angle is returned for that value. This means that the user must adjust
+ the labels accordingly if \samp{pie.labels} is called.
 }
 \note{
  As with most pie charts, simplicity is essential. Trying to display a

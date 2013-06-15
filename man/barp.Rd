@@ -33,7 +33,7 @@
  \item{cylindrical}{Whether to give the bars a cylindrical appearance
   by shading them.}
  \item{shadow}{Whether to place a shadow behind the bars.}
- \item{do.first}{An optional expression that will be evaluated before anything
+ \item{do.first}{An optional string that will be evaluated before anything
   else is displayed on the plot. Useful for background colors or lines.}
  \item{ylog}{Logical for whether a log scale is to be used. see details.}
  \item{srt}{Rotation of axis labels if staxx or staxy is TRUE (see \samp{staxlab}).}
@@ -47,7 +47,7 @@
  \samp{barp} displays a bar plot similar to \samp{barplot} but with axes and
  horizontal bar positions more like \samp{plot}. Bars or groups of bars are
  centered on integral X values by default, and so both the width and spacing of
- the bars are controlled by a single number. If the user passes expicit \samp{x}
+ the bars are controlled by a single number. If the user passes explicit \samp{x}
  values, those values will determine the spacing. If \samp{height} is a vector,
  single bars representing each value will be displayed centered at
  \samp{1:length(height)} unless the user has specified \samp{x} values.
@@ -82,7 +82,7 @@
  plots are appreciated. One is to give the bars a cylindrical look by shading the
  color. The other is to place an apparent shadow behind each bar. Both of these
  effects appear as though the light is coming from the upper left, and this is
- hard coded. You can add error bars by calling \samp{dispbars}, but many advise
+ hard coded. You can add error bars by calling \samp{dispersion}, but many advise
  against this.
 
  If \samp{legend.lab} is not NULL, a legend will be displayed. If 
@@ -134,8 +134,8 @@
  par(mar=c(5,4,4,2))
  # use barp to display a multiple histogram with a shaded background
  # notice how the expression uses local variables inside the barp function
- gradbg<-expression(gradient.rect(xlim[1],ylim[1],xlim[2],ylim[2],
-  c(1,0.5,1),c(1,0.5,1),c(1,0.5,1),gradient="y",nslices=100))
+ gradbg<-"gradient.rect(xlim[1],ylim[1],xlim[2],ylim[2],
+  c(1,0.5,1),c(1,0.5,1),c(1,0.5,1),gradient=\"y\",nslices=100)"
  h1<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
  h2<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
  h3<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))

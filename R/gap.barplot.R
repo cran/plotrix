@@ -32,7 +32,7 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,
   box()
   axis(2,at=xtics,labels=xaxlab,...)
   axis(1,at=c(ytics[littletics],ytics[bigtics]-gapsize),
-   labels=c(ytics[littletics],ytics[bigtics]),...)
+   labels=c(yaxlab[littletics],yaxlab[bigtics]),...)
   rect(botgap,xtics[y<gap[1]] - halfwidth,y[y<gap[1]],
    xtics[y<gap[1]] + halfwidth,col=col[y<gap[1]])
   rect(botgap,xtics[bigones] - halfwidth,y[bigones]-gapsize,
@@ -46,7 +46,7 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,
   box()
   axis(1,at=xtics,labels=xaxlab,...)
   axis(2,at=c(ytics[littletics],ytics[bigtics] - gapsize),
-   labels=c(ytics[littletics],ytics[bigtics]),...)
+   labels=c(yaxlab[littletics],yaxlab[bigtics]),...)
   rect(xtics[y<gap[1]] - halfwidth,botgap,xtics[y<gap[1]] + halfwidth,
    y[y<gap[1]],col=col[y<gap[1]])
   rect(xtics[bigones] - halfwidth,botgap,xtics[bigones] + halfwidth,

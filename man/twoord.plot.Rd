@@ -8,7 +8,8 @@
 \usage{
  twoord.plot(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
  mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,
- type="b",xtickpos=NULL,xticklab=NULL,halfwidth=0.4,axislab.cex=1,...)
+ type="b",xtickpos=NULL,xticklab=NULL,halfwidth=0.4,axislab.cex=1,
+ do.first=NULL,...)
 }
 \arguments{
  \item{lx,ly,rx,ry}{y and optional x values for the plot}
@@ -27,6 +28,8 @@
  \item{halfwidth}{Half the width of the bars in user units. The bars are
   centered on successive integers if no \samp{x} values are supplied.}
  \item{axislab.cex}{Character expansion for the axis labels and tick labels.}
+ \item{do.first}{Optional command(s) that will be executed immediately after
+  the blank plot is displayed.}
  \item{...}{additional arguments passed to \samp{plot}.}
 }
 \value{nil}
@@ -49,9 +52,10 @@
  the bars will be overlaid.
 
  Note that more values can be added to the plot using \samp{points} or \samp{lines},
- but remember that these will be plotted relative to the right ordinate, and the
- \samp{rylim} argument may need to be set so that more extreme points in subsequent
- series will be within the plot area.
+ but remember that these will be plotted relative to the left ordinate.
+
+ The \samp{do.first} argument is useful for adding a background color or grid
+ to the plot as shown in the first two examples.
 }
 \note{
  There are many objections to the use of plots with two different 
@@ -67,7 +71,7 @@
  relationship of the points opposed to their numerical relationship. That 
  is to say, if one set of values is in the range of 0-10 and the other 
  20-100, it is best to arrange the plot so that the latter values are 
- not plotted below the former.
+ not plotted below the former. See the second example.
  
  The viewer will assume that an intersection of lines indicates an 
  intersection of values.
@@ -80,29 +84,39 @@
  such as the probability of that value occurring under some conditions, it 
  may help to mark the point(s) where this occurs.
  
- It may be useful to consider \samp{gap.plot} as an alternative.
+ It may be useful to consider \samp{gap.plot} or separate plots as an
+ alternative.
 }
 \author{Jim Lemon (thanks to Christophe Dutang for the idea of using bars
  and lines in the same plot, Clair Crossupton for pointing out that
- dates on the x-axis weren't very good and Jacob Kasper for the axis
- character expansion.)}
+ dates on the x-axis weren't very good, Jacob Kasper for the axis
+ character expansion and Ye Lin for finally motivating me to add the
+ do.first argument.)}
 \seealso{\link{plot}}
 \examples{
- twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
-  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
+ going_up<-seq(3,7,by=0.5)+rnorm(9)
+ going_down<-rev(60:74)+rnorm(15)
+ twoord.plot(2:10,going_up,1:15,going_down,xlab="Sequence",
   ylab="Ascending values",rylab="Descending values",
-  main="Plot with two ordinates - points and lines")
- twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
-  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
+  main="Plot with two ordinates - points and lines",
+  do.first="plot_bg();grid(col=\"white\",lty=1)")
+ # now separate the lines
+ twoord.plot(2:10,going_up,1:15,going_down,xlab="Sequence",
+  lylim=c(1,15),rylim=c(50,80),
   ylab="Ascending values",rylab="Descending values",
-  main="Plot with two ordinates - bars on the left",
-  type=c("bar","l"),lcol=3,rcol=4)
- twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
-  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
+  main="Plot with two ordinates - separated lines",
+  do.first="plot_bg();grid(col=\"white\",lty=1)")
+ twoord.plot(2:10,going_up,1:15,going_down,xlab="Sequence",
+  lylim=c(1,15),rylim=c(50,80),type=c("bar","l"),
   ylab="Ascending values",rylab="Descending values",
-  main="Plot with two ordinates - bars on the right",
-  type=c("b","bar"),lcol=2,rcol=NA,halfwidth=0.2)
- # histogram with density curve overlaid
+  main="Bars on left axis, lines on right axis",
+  lcol=3,rcol=4,do.first="plot_bg()")
+ twoord.plot(2:10,going_up,1:15,going_down,xlab="Sequence",
+  lylim=c(0,8),rylim=c(50,100),type=c("l","bar"),
+  ylab="Ascending values",rylab="Descending values",
+  main="Lines on left axis, bars on right axis",
+  lcol=3,rcol=4,do.first="plot_bg(\"yellow\")")
+ # histogram with density curve superimposed
  xhist<-hist(rnorm(100),plot=FALSE)
  xdens<-dnorm(seq(-2,2,by=0.05))
  twoord.plot(xhist$mids,xhist$counts,seq(-2,2,by=0.05),

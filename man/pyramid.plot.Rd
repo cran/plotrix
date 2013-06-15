@@ -101,15 +101,14 @@
  avtemp<-c(seq(11,2,by=-1),rep(2:6,each=2),seq(11,2,by=-1))
  malecook<-matrix(avtemp+sample(-2:2,30,TRUE),ncol=3)
  femalecook<-matrix(avtemp+sample(-2:2,30,TRUE),ncol=3)
- # use a background color
- par(bg="#eedd55")
  # group by age
  agegrps<-c("0-10","11-20","21-30","31-40","41-50","51-60",
   "61-70","71-80","81-90","91+")
  oldmar<-pyramid.plot(malecook,femalecook,labels=agegrps,
   unit="Bowls per month",lxcol=c("#ff0000","#eeee88","#0000ff"),
   rxcol=c("#ff0000","#eeee88","#0000ff"),laxlab=c(0,10,20,30),
-  raxlab=c(0,10,20,30),top.labels=c("Males","Age","Females"),gap=4)
+  raxlab=c(0,10,20,30),top.labels=c("Males","Age","Females"),gap=4,
+  do.first="plot_bg(\"#eedd55\")")
  # put a box around it
  box()
  # give it a title
