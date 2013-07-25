@@ -13,6 +13,9 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
   x<-x$x
  }
  tabdim<-dim(table)
+ if(tabdim[1] == 1) hlines<-FALSE
+ if(tabdim[2] == 1) vlines<-FALSE
+ # cat(tabdim,vlines,hlines,"\n")
  if(is.null(dim(bg))) bg<-matrix(bg,nrow=tabdim[1],ncol=tabdim[2])
  column.names<-colnames(table)
  if(is.null(column.names) && display.colnames)
@@ -42,6 +45,7 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
   nhcells<-tabdim[2]
   rowname.width<-0
  }
+ # cat(cellwidth,"\n")
  if(par("ylog")) y<-log10(y)
  cellheight<-
   max(strheight(c(column.names,row.names,as.vector(unlist(table))),
@@ -90,9 +94,9 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    xleft+sum(cellwidth),
    ytop-display.colnames*cellheight-cumsum(rep(cellheight,tabdim[1]-1)))
  }
- if(bty == "n")
-  rect(xleft,ytop-nvcells*cellheight,xleft+sum(cellwidth),
-   ytop-cellheight*display.colnames,lwd=lwd,border=box.col)
+# if(bty == "n")
+#  rect(xleft,ytop-nvcells*cellheight,xleft+sum(cellwidth),
+#   ytop-cellheight*display.colnames,lwd=lwd,border=box.col)
  if(!is.null(title)) {
   xleft<-x-xjust*(sum(cellwidth)+rowname.width)
   text(xleft+(rowname.width+sum(cellwidth))/2,ytop+cellheight/2,title,

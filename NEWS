@@ -6,6 +6,7 @@ version 3.4-8
 	allowed floating.pie to ignore zero and NA values (thanks to Jose deSantos)
 	added the "stax" argument to gap.plot (thanks to Zheng Lu)
 	fixed the problem with "yaxlab" in gap.barplot (thanks to Giorgio Galetti)
+	added the "histStack" and "plotH" functions (thanks to Derek Ogle)
 
 version 3.4-7
 
