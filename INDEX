@@ -65,6 +65,7 @@ getIntersectList	Enter the information for an intersection diagram
 getMarginWidth		Calculate the margin width necessary to fit something
 gradient.rect		Display a rectangle with an arbitrary color gradient
 hexagon			Draw a hexagon
+histStack		Display a "stacked" histogram
 intersectDiagram	Graphically display set intersections
 kiteChart		Display the rows of a matrix of values as polygon widths
 labbePlot		Display a L'Abbe plot
@@ -88,6 +89,7 @@ pie3D.labels		Display labels on a 3D pie chart
 plot.dendrite		Display a dendrogram for a dendrite object
 plot_bg			Add a background color to a plot
 plotCI			Display confidence intervals/error bars
+plotH			Display a scatterplot with vertical bars
 polar.plot		Plot values as lines/polygon/symbols on a 0-360 scale
 polygon.shadow		Display a shadow effect for a polygon
 propbrk			Calculate the proportion of a specified value in a vector

@@ -65,6 +65,7 @@ export(
  getMarginWidth,
  gradient.rect,
  hexagon,
+ histStack,
  intersectDiagram,
  kiteChart,
  labbePlot,
@@ -90,6 +91,7 @@ export(
  pie3D.labels,
  plot.dendrite,
  plotCI,
+ plotH,
  polar.plot,
  polygon.shadow,
  propbrk,
@@ -145,3 +147,7 @@ export(
 # methods
 S3method(plot,dendrite)
 S3method(print,brklist)
+S3method(histStack,default)
+S3method(histStack,formula)
+S3method(plotH,formula)
+S3method(plotH,default)

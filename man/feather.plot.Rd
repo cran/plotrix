@@ -40,7 +40,7 @@
 \author{Jim Lemon, Eduardo Klein}
 \seealso{\link{spread.labels}}
 \examples{
- x11(width=8,height=3)
+ dev.new(width=8,height=3)
  r<-0.6+rnorm(24)/5
  theta<-c(seq(15*pi/16,pi/16,length.out=12),
   seq(17*pi/16,31*pi/16,length.out=12))

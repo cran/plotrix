@@ -106,8 +106,6 @@ pie3D<-function(x,edges=NA,radius=1,height=0.1,theta=pi/6,
 
  if(!is.numeric(x) || any(x < 0)) 
   stop("pie3D: x values must be positive numbers")
- # drop zeros
- if(any(x == 0)) x<-x[x>0]
  # drop NAs
  if(any(is.na(x))) x<-x[!is.na(x)]
  oldmar<-par("mar")
