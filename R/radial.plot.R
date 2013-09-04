@@ -51,7 +51,7 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
 radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FALSE,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
- show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
+ show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,rad.col="gray",
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
  point.symbols=1,point.col=par("fg"),show.centroid=FALSE,radial.lim=NULL,
  radial.labels=NULL,boxed.radial=TRUE,poly.col=NA,add=FALSE,...) {
@@ -193,7 +193,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
   if(start) label.pos<-label.pos+start
   xpos<-cos(label.pos)*maxlength
   ypos<-sin(label.pos)*maxlength
-  if(show.radial.grid) segments(0,0,xpos,ypos,col=grid.col)
+  if(show.radial.grid) segments(0,0,xpos,ypos,col=rad.col)
   xpos<-cos(label.pos)*maxlength*label.prop
   ypos<-sin(label.pos)*maxlength*label.prop
   if(radlab) {

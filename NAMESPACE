@@ -137,6 +137,7 @@ export(
  triax.frame,
  triax.plot,
  triax.points,
+ tsxpos,
  twoord.plot,
  twoord.stackplot,
  valid.n,

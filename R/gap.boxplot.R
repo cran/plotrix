@@ -1,7 +1,7 @@
 gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  range=1.5,width=NULL,varwidth=FALSE,notch=FALSE,outline=TRUE,names,
  ylim=NA,plot=TRUE,border=par("fg"),col=NULL,log="",axis.labels=NULL,
- pars=list(boxwex=0.8,staplewex=0.5,outwex=0.5), 
+ axes=TRUE,pars=list(boxwex=0.8,staplewex=0.5,outwex=0.5), 
  horizontal=FALSE,add=FALSE,at=NULL,main=NULL) {
 
  if(!is.na(gap$top[1]))
@@ -50,9 +50,9 @@ gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
   axes=FALSE,xlab="",ylab="",main=main)
  plotlim<-par("usr")
  box()
- axis(1,labels=bxpt$names,at=1:nboxes)
+ if(axes) axis(1,labels=bxpt$names,at=1:nboxes)
  midticks<-pretty(c(rangebottom,rangetop))
- axis(2,at=midticks[midticks > rangebottom & midticks < rangetop])
+ if(axes) axis(2,at=midticks[midticks > rangebottom & midticks < rangetop])
  if(is.null(width)) width<-pars$boxwex
  rect(1:nboxes-width/2,bxgap$stats[2,],1:nboxes+width/2, 
   bxgap$stats[4,],border=border,col=col)

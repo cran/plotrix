@@ -4,16 +4,17 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,
  axislab.cex=1,do.first=NULL,...) {
 
  if(!is.null(data)) {
-  ly<-data[ly]
-  ry<-data[ry]
+  ly<-unlist(data[ly])
+  ry<-unlist(data[ry])
   if(missing(lx)) lx<-1:length(ly)
-  else lx<-data[lx]
+  else lx<-unlist(data[lx])
   if(missing(rx)) rx <- 1:length(ry)
-  else rx<-data[rx]
+  else rx<-unlist(data[rx])
  }
+ if(missing(lx)) lx<-1:length(ly)
  if(missing(ry)) {
   if(missing(rx)) {
-   rx<-1:length(ly)
+   rx<-1:length(ry)
    ry<-ly
    ly<-lx
    lx<-1:length(ly)
@@ -30,6 +31,7 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,
  if(is.null(lylim)) {
   lylim<-range(ly,na.rm=TRUE)
   lyspan<-diff(lylim)
+  if(lyspan == 0) lyspan<-lylim[1]
   lylim[2]<-lylim[2]+lyspan*0.04
   if(lylim[1] != 0) lylim[1]<-lylim[1]-lyspan*0.04
  }
@@ -67,6 +69,7 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,
  if(is.null(rylim)) {
   rylim<-range(ry,na.rm=TRUE)
   ryspan<-diff(rylim)
+  if(ryspan == 0) ryspan<-rylim[1]
   rylim[2]<-rylim[2]+ryspan*0.04
   if(rylim[1] != 0) rylim[1]<-rylim[1]-ryspan*0.04
  }

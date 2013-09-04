@@ -8,7 +8,7 @@
  gap.boxplot(x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  range=1.5,width=NULL,varwidth=FALSE,notch=FALSE,outline=TRUE,
  names,ylim=NA,plot=TRUE,border=par("fg"),col=NULL,log="",
- axis.labels=NULL,pars=list(boxwex=0.8,staplewex=0.5,outwex=0.5),
+ axis.labels=NULL,axes=TRUE,pars=list(boxwex=0.8,staplewex=0.5,outwex=0.5),
  horizontal=FALSE,add=FALSE,at=NULL,main=NULL)
 }
 \arguments{
@@ -35,19 +35,22 @@
  \item{col}{optional color(s) to fill the boxes}
  \item{log}{whether to use a log scale - currently does nothing}
  \item{axis.labels}{Optional axis labels.}
+ \item{axes}{Whether to display axes.}
  \item{pars}{optional parameters for consistency with \samp{boxplot}}
  \item{horizontal}{whether to plot horizontal boxplots - currently
   does nothing}
  \item{add}{whether to add the boxplot(s) to a current plot - currently
-  does nothing}
+  does nothing.}
  \item{at}{optional horizontal locations for the boxplots - currently
-  does nothing}
- \item{main}{a title for the plot}
+  does nothing.}
+ \item{main}{a title for the plot.}
 }
 \value{
  A list with the same structure as returned by \samp{boxplot}, except that
  the values of elements beyond the gap(s) have their true positions on the
- plot rather than the original values.
+ plot rather than the original values. For example, in the second example,
+ the value returned for the upper staple of the right boxplot is 14 rather
+ than 20, due to the 6 unit gap.
 }
 \details{
  Displays boxplot(s) omitting range(s) of values on the top and/or bottom

@@ -7,7 +7,7 @@
 }
 \usage{
  pyramid.plot(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
-  main="",laxlab=NULL,raxlab=NULL,unit="\%",lxcol,rxcol,gap=1,
+  main="",laxlab=NULL,raxlab=NULL,unit="\%",lxcol,rxcol,gap=1,space=0.2,
   ppmar=c(4,2,4,2),labelcex=1,add=FALSE,xlim,show.values=FALSE,ndig=1,
   do.first=NULL)
 }
@@ -28,6 +28,7 @@
   these default to \samp{rainbow(length(labels))}.}
  \item{gap}{One half of the space between the two sets of bars for the
   \samp{labels} in user units.}
+ \item{space}{Space between the bars. Should be 0 <= space < 1.}
  \item{ppmar}{Margins for the plot (see Details).}
  \item{labelcex}{Expansion for the category labels.}
  \item{add}{Whether to add bars to an existing plot. Usually this
@@ -82,7 +83,8 @@
  The return value of \samp{par("mar")} when the function was called.
 }
 \author{Jim Lemon (thanks to Susumu Tanimura for the patch that omits
- ticks for NA values in vector input)}
+ ticks for NA values in vector input and Igor Rebeiro for the space
+ argument)}
 \seealso{\link{rect}}
 \examples{
  xy.pop<-c(3.2,3.5,3.6,3.6,3.5,3.5,3.9,3.7,3.9,3.5,3.2,2.8,2.2,1.8,

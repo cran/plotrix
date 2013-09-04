@@ -7,7 +7,7 @@
 }
 \usage{
  bumpchart(y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
-  mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,...)
+  mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,arrows=FALSE,...)
 }
 \arguments{
  \item{y}{A numeric matrix or data frame which may contain NAs.}
@@ -21,10 +21,11 @@
  \item{col}{The colors to use.}
  \item{lty}{The line types to use.}
  \item{lwd}{The line widths to use.}
- \item{...}{Additional arguments passed to \samp{matplot}.}
+ \item{arrows}{Whether to join the points with lines (FALSE) or arrows (TRUE).}
+ \item{...}{Additional arguments passed to \samp{matplot} or \samp{arrows}.}
 }
 \details{
- \samp{bumpChart} calls \samp{matplot} to plot the values in the transposed
+ \samp{bumpchart} calls \samp{matplot} to plot the values in the transposed
  \samp{y} matrix or data frame, joining the points with lines. At the left and
  right edges of the plot, the labels identifying each row of points are
  displayed. This type of plot is often used to show the changing positions of
@@ -32,8 +33,14 @@
  similar, but more flexible plot, see \link{ladderplot}.
 
  Because of the way \samp{matplot} plots the values, the order of everything is
- reversed. If the user wants to rank in descending order, such as test scores,
- rank the values in the correct order before sending them to \samp{bumpChart}.
+ reversed. As the typical display of ranks is with rank 1 at the top, the
+ actual rank positions are used to plot the values.
+ This places the lowest scores at the bottom of the plot and the highest at
+ the top.
+
+ Any arguments that are included in \samp{...} will be passed to \samp{matplot}
+ if the \samp{arrows} argument is FALSE, and to the \samp{arrows} function if
+ the \samp{arrows} argument is TRUE as in the first example.
 }
 \value{nil}
 \author{Jim Lemon}
@@ -47,7 +54,8 @@
   "Houston TX","Los Angeles CA","Louisville KY","New Orleans LA",
   "New York NY","Philadelphia PA","Washington DC")
  colnames(educattn)<-c(1990,2000)
- bumpchart(educattn,main="Rank for high school completion by over 25s")
+ bumpchart(educattn,main="Rank for high school completion by over 25s",
+  arrows=TRUE,length=0.2)
  # now show the raw percentages and add central ticks
  bumpchart(educattn,rank=FALSE,
   main="Percentage high school completion by over 25s",
