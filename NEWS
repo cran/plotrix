@@ -1,3 +1,10 @@
+version 3.5-1
+
+	added the tsxpos function (thanks to Prof J C Nash)
+	added a warning for off-axis labels to staxlab (thanks again to Prof Nash)
+	added the arrows argument to bumpchart (thanks to Jie)
+	added the axes argument to gap.boxplot (thanks to Shane Carey)
+
 version 3.4-8
 
 	fixed a minor bug in the ylim argument of gap.plot

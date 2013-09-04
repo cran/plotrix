@@ -1,6 +1,7 @@
 pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
- main="",laxlab=NULL,raxlab=NULL,unit="%",lxcol,rxcol,gap=1,ppmar=c(4,2,4,2),
- labelcex=1,add=FALSE,xlim,show.values=FALSE,ndig=1,do.first=NULL) {
+ main="",laxlab=NULL,raxlab=NULL,unit="%",lxcol,rxcol,gap=1,space=0.2,
+ ppmar=c(4,2,4,2),labelcex=1,add=FALSE,xlim,show.values=FALSE,ndig=1,
+ do.first=NULL) {
 
  xdim<-length(dim(lx))
  if(missing(rx) && xdim > 0) {
@@ -68,11 +69,14 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
   mtext(top.labels,3,0,at=c(-xlim[1]/2,0,xlim[2]/2),adj=0.5,cex=labelcex)
   mtext(c(unit,unit),1,2,at=c(-xlim[1]/2,xlim[2]/2))
  }
+ halfwidth<-0.5-space/2
  if(xdim == 0) {
   if(missing(lxcol)) lxcol<-rainbow(ncats)
   if(missing(rxcol)) rxcol<-rainbow(ncats)
-  rect(-(lx+gap),1:ncats-0.4,rep(-gap,ncats),1:ncats+0.4,col=lxcol)
-  rect(rep(gap,ncats),1:ncats-0.4,(rx+gap),1:ncats+0.4,col=rxcol)
+  rect(-(lx+gap),1:ncats-halfwidth,rep(-gap,ncats),1:ncats+halfwidth,
+   col=lxcol)
+  rect(rep(gap,ncats),1:ncats-halfwidth,(rx+gap),1:ncats+halfwidth,
+   col=rxcol)
   if(show.values) {
    par(xpd=TRUE)
    text(-(gap+lx),1:ncats,round(lx,ndig),pos=2,cex=labelcex)
@@ -88,8 +92,10 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
   for(i in 1:nstack) {
    lxcolor<-rep(lxcol[i],ncats)
    rxcolor<-rep(rxcol[i],ncats)
-   rect(-(lx[,i]+lxstart),1:ncats-0.4,-lxstart,1:ncats+0.4,col=lxcolor)
-   rect(rxstart,1:ncats-0.4,rx[,i]+rxstart,1:ncats+0.4,col=rxcolor)
+   rect(-(lx[,i]+lxstart),1:ncats-halfwidth,-lxstart,1:ncats+halfwidth,
+    col=lxcolor)
+   rect(rxstart,1:ncats-halfwidth,rx[,i]+rxstart,1:ncats+halfwidth,
+    col=rxcolor)
    lxstart<-lx[,i]+lxstart
    rxstart<-rx[,i]+rxstart
   }

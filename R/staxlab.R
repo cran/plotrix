@@ -8,6 +8,9 @@ staxlab<-function(side=1,at,labels,nlines=2,top.line=0.5,
  if(missing(labels)) labels<-at
  nlabels<-length(labels)
  if(missing(at)) at<-1:nlabels
+ axislim<-par("usr")[3:4-2*side%%2]
+ if(any(at < axislim[1]) || any(at > axislim[2]))
+  warning("Some axis labels are off the plot")
  if(is.na(srt)) {
   linepos<-rep(top.line,nlines)
   for(i in 2:nlines) linepos[i]<-linepos[i-1]+line.spacing

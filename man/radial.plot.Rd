@@ -11,7 +11,7 @@
  radial.plot(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FALSE,
  start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",xlab="",ylab="",
  line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
- show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
+ show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,rad.col="gray",
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
  point.symbols=1,point.col=par("fg"),show.centroid=FALSE,radial.lim=NULL,
  radial.labels=NULL,boxed.radial=TRUE,poly.col=NA,add=FALSE,...)
@@ -48,7 +48,8 @@
  \item{show.grid.labels}{Whether and where to display labels for the grid
   - see Details.}
  \item{show.radial.grid}{Whether to draw radial lines to the plot labels.}
- \item{grid.col}{Color of the circular grid.}
+ \item{rad.col}{Color of the radial lines on the grid.}
+ \item{grid.col}{Color of the circumferential lines on the grid.}
  \item{grid.bg}{Fill color of above.}
  \item{grid.left}{Whether to place the radial grid labels on the left side.}
  \item{grid.unit}{Optional unit description for the grid.}
@@ -118,14 +119,16 @@
  the request for the \samp{radial.lim} and \samp{radial.labels} modifications,
  Evan Daugharty for requesting the \samp{add} argument, James MacCarthy
  for requesting better radial labels, Steve Ellison for noticing that
- the return values of the functions had changed and Don Dennerline for
- requesting the rank clock.}
+ the return values of the functions had changed, Don Dennerline for
+ requesting the rank clock and Mehdi Nellen for the different colors for
+ the radial and circumferential lines for the grid.}
 \seealso{\link{polar.plot},\link{clock24.plot}}
 \examples{
  testlen<-runif(10,0,10)
  testpos<-seq(0,18*pi/10,length=10)
  testlab<-letters[1:10]
- oldpar<-radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",lwd=3)
+ oldpar<-radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",
+  lwd=3,rad.col="lightblue")
  testlen<-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
  testpos<-seq(0,1.98*pi,length=100)
  radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")

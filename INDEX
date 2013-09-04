@@ -134,6 +134,7 @@ triax.fill		Fill a three axis frame with smaller triangles
 triax.frame		Display a three axis frame with optional grid
 triax.plot		Display a triangle (three axis) plot
 triax.points		Display triplets of values as points on a triangle plot
+tsxpos			Calculate equispaced x positions for a plot
 twoord.plot		Display a plot with two ordinates of different scales
 twoord.stackplot	twoord.plot but with stacked bars
 vectorField		Display magnitude/direction arrows on a plot
