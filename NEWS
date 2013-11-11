@@ -1,3 +1,10 @@
+version 3.5-2
+
+	added the get.tablepos function (thanks to Peter Murakami)
+	passed the ... argument(s) to points and dispersion in brkdn.plot (thanks to Peter Mandeville)
+	added text adjustment for the circumferential labels to radial.plot
+	added the fill.corner function to do waffle plots (thanks to Zhao Jin)
+
 version 3.5-1
 
 	added the tsxpos function (thanks to Prof J C Nash)

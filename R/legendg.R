@@ -15,6 +15,15 @@ legendg<-function(x,y=NULL,legend,fill=NULL,col=par("col"),
   y<-x$y
   x<-x$x
  }
+ if(is.null(y)) {
+  if(is.character(x)) {
+   tablepos<-get.tablepos(x)
+   x<-tablepos$x
+   y<-tablepos$y
+   xjust<-tablepos$xjust
+   yjust<-tablepos$yjust
+  }
+ }
  if(!missing(xpd)) {
   oldxpd<-par("xpd")
   par(xpd=xpd)
