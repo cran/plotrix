@@ -4,6 +4,25 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
     y+unitcell*0.125,y-unitcell*0.125),col=col,border=border)
 }
 
+fill.corner<-function(x,nrow,ncol) {
+ xlen<-length(x)
+ ncells<-ifelse(nrow*ncol < xlen,nrow*ncol,xlen)
+ newmat<-matrix(NA,nrow=nrow,ncol=ncol)
+ xside<-1
+ while(xside*xside < ncells) xside<-xside+1
+ row=1
+ col=1
+ for(xindex in 1:ncells) {
+  newmat[row,col]<-x[xindex]
+  if(row == xside) {
+   col<-col+1
+   row<-1
+  }
+  else row<-row+1
+ }
+ return(newmat)
+}
+
 color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
  extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
  ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol=NA,vcex=1,

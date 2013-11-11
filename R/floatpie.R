@@ -51,7 +51,10 @@ pie.labels<-function(x,y,angles,labels,radius=1,bg="white",border=TRUE,
  if(!is.na(minangle)) angles<-spreadout(angles,minangle)
  xc<-cos(angles)*radius+x
  yc<-sin(angles)*yradius+y
- boxed.labels(xc,yc,labels,bg=bg,border=border,...)
+ label.adj<-abs(1-cos(angles))/2
+ for(label in 1:length(labels))
+  boxed.labels(xc[label],yc[label],labels[label],bg=bg,border=border,
+   adj=label.adj[label],...)
  # turn clipping back on
  par(xpd=FALSE)
 }

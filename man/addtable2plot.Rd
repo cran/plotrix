@@ -34,8 +34,9 @@
  coordinates specified by \samp{x,y}. The two justification arguments,
  \samp{xjust} and \samp{yjust} are the same as in the \samp{legend} function,
  and \samp{addtable2plot} has been programmed to be as similar to \samp{legend}
- as possible. The defaults are those that were most popular in scientific
- journals at the time of programming.
+ as possible. The function now accepts the positional arguments such as
+ "topright" if passed as \samp{x}. The defaults are those that were most
+ popular in scientific journals at the time of programming.
 
  If \samp{bg} is a matrix of colors of the same dimensions as \samp{x}, those
  colors will be the backgrounds of the cells. The default is no background color.

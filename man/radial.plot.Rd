@@ -122,7 +122,7 @@
  the return values of the functions had changed, Don Dennerline for
  requesting the rank clock and Mehdi Nellen for the different colors for
  the radial and circumferential lines for the grid.}
-\seealso{\link{polar.plot},\link{clock24.plot}}
+\seealso{\link{polar.plot},\link{clock24.plot},\link{plotrixInfo}}
 \examples{
  testlen<-runif(10,0,10)
  testpos<-seq(0,18*pi/10,length=10)
@@ -147,9 +147,8 @@
  ion.names<-c("Na","Ca","Mg","Cl","HCO3","SO4")
  radial.plot(ions,labels=ion.names,rp.type="p",main="Dissolved ions in water",
   grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow")
- # add points inside the polygon
- radial.plot(ions-0.4,rp.type="s",radial.lim=c(0,5),
-  point.symbols=4,point.col="red",add=TRUE)
+ # add points inside the polygon - radial.lim is supplied by plotrixInfo
+ radial.plot(ions-0.4,rp.type="s",point.symbols=4,point.col="red",add=TRUE)
  radmat<-matrix(c(sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),
   sample(1:4,4),sample(1:4,4),sample(1:4,4),sample(1:4,4),
   sample(1:4,4),sample(1:4,4)),nrow=4)

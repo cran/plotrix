@@ -48,13 +48,14 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
 # label.prop is the proportion of max(lengths) that gives the
 # radial position of the labels
 
-radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FALSE,
- start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",xlab="",ylab="",
- line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
- show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,rad.col="gray",
- grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
- point.symbols=1,point.col=par("fg"),show.centroid=FALSE,radial.lim=NULL,
- radial.labels=NULL,boxed.radial=TRUE,poly.col=NA,add=FALSE,...) {
+radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
+ radlab=FALSE,start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",
+ xlab="",ylab="",line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),
+ mar=c(2,2,3,2),show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
+ rad.col="gray",grid.col="gray",grid.bg="transparent",grid.left=FALSE,
+ grid.unit=NULL,point.symbols=1,point.col=par("fg"),show.centroid=FALSE,
+ radial.lim=NULL,radial.labels=NULL,boxed.radial=TRUE,poly.col=NA,
+ add=FALSE,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
  length.dim<-dim(lengths)
@@ -196,15 +197,23 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,radlab=FA
   if(show.radial.grid) segments(0,0,xpos,ypos,col=rad.col)
   xpos<-cos(label.pos)*maxlength*label.prop
   ypos<-sin(label.pos)*maxlength*label.prop
+  label.adj<-abs(1-cos(label.pos))/2
   if(radlab) {
    for(label in 1:length(labels)) {
     labelsrt<-(180*label.pos[label]/pi)+
      180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
-    text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),srt=labelsrt)
+    text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),
+     srt=labelsrt,adj=label.adj)
    }
   }
-  else
-   boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
+  else {
+   for(label in 1:length(labels)) {
+    text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),
+     adj=label.adj[label])
+   }
+  }
+#   boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"),
+#    adj=label.adj)
   if(show.grid.labels) {
    if(show.grid.labels%%2) {
     ypos<-grid.pos-radial.lim[1]

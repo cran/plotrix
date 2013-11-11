@@ -21,7 +21,6 @@ size_n_color<-function(x=NULL,y,size,sizefun="sqrt",col,main="",
   dimsize=c(length(size),1)
   if(is.null(x)) x<-1:length(size)
  }
- cat("length(yat)",length(yat),"\n")
  xylim<-par("usr")
  aspect_ratio<-(xylim[2]-xylim[1])/(xylim[4]-xylim[3])
  maxsize<-max(size)

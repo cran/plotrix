@@ -1,6 +1,6 @@
 Package: plotrix
-Version: 3.5-1
-Date: 2013-09-04
+Version: 3.5-2
+Date: 2013-11-11
 Title: Various plotting functions
 Author: Jim Lemon, Ben Bolker, Sander Oom,
 	Eduardo Klein, Barry Rowlingson,
@@ -15,7 +15,7 @@ Author: Jim Lemon, Ben Bolker, Sander Oom,
 Maintainer: Jim Lemon <jim@bitwrit.com.au>
 Description: Lots of plots, various labeling, axis and color scaling functions.
 License: GPL (>= 2)
-Packaged: 2013-09-04 12:00:41 UTC; root
+Packaged: 2013-11-11 08:01:43 UTC; root
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2013-09-04 14:56:19
+Date/Publication: 2013-11-11 12:51:15

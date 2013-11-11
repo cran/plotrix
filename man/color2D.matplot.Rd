@@ -82,7 +82,7 @@
  value.
 }
 \author{Jim Lemon (thanks to Ashoka Polpitiya for \samp{axes})}
-\seealso{\link{color.scale}, \link{image}}
+\seealso{\link{color.scale}, \link{fill.corner}, \link{image}}
 \examples{
  x<-matrix(rnorm(1024),nrow=32)
  # simulate a correlation matrix with values -0.5 to 0.5
@@ -122,7 +122,13 @@
   color.scale(deviates[deviates>0],0,c(0.7,0.8),c(0.5,0))
  color2D.matplot(x=round(deviates,2),cellcolors=cellcol,
   show.values=TRUE,main="Association plot")
+ # Hinton diagram
+ border.col<-color.scale(x,extremes=2:3)
  color2D.matplot(x,extremes=c(2,3),main="Hinton diagram (green +, red -)",
-  Hinton=TRUE)
+  Hinton=TRUE,border=border.col)
+ # waffle plot of percentages with two contributing elements
+ waffle.col<-fill.corner(c(rep("red",18),rep("blue",45)),10,10)
+ color2D.matplot(matrix(1:100,nrow=10),cellcolors=waffle.col,yrev=FALSE,
+  border="lightgray",xlab="",ylab="",main="Waffle plot",axes=FALSE)
 }
 \keyword{misc}

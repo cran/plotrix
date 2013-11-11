@@ -4,8 +4,7 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
 
  barcol<-ifelse(is.list(col),col[[1]],col)
  # may be only one bar per call
- #if(!is.null(x[[1]][[1]]) && (showall | length(x[[1]]) == 1) && nchar(barlabels[[1]]))
- if(!is.null(x[[1]][[1]]) && showall)
+ if(!is.null(x[[1]][[1]]) && (showall || length(x[[1]])==1))
   rect(start,0,end,unlist(x[[1]][[1]]),col=barcol)
  if(showlabels && !is.null(x[[1]][[1]])) {
   if(!is.null(barlabels)) barlabel<-barlabels[[1]]
