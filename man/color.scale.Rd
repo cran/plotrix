@@ -42,7 +42,7 @@
 
   If the user wants to specify a range of values with \samp{xrange},
   it must at least include the range of x values. This can be useful
-  when there is a notional range like 0-100% that the values do not
+  when there is a notional range like 0-100\% that the values do not
   cover, or when several series of values with different ranges are
   to be assigned the same color scale.
 
@@ -51,7 +51,7 @@
   separately for the values below and above zero. I may get around to
   adding an argument to do this in one shot. Until then, see the second
   example for \samp{color2D.matplot} and also the \samp{diverge.hcl} and
-  \samp{diverge.hsv} functions in the \samp{colorspace} package.
+  \samp{diverge.hsv} functions in the \pkg{colorspace} package.
 }
 \note{
  The function is useful for highlighting a numeric dimension or adding

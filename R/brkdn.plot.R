@@ -2,6 +2,12 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  stagger=NA,dispbar=TRUE,main="Breakdown plot",xlab=NA,ylab=NA,xaxlab=NA,
  ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,...) {
 
+ if(class(vars) == "formula") {
+  formbits<-all.vars(vars)
+  vars<-formbits[1]
+  groups<-formbits[2]
+  obs<-formbits[3]
+ }
  if(is.na(obs)) {
   if(is.na(groups[1]))
    stop("Must have at least one factor to subset data")

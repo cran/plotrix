@@ -5,6 +5,8 @@ battleship.plot<-function(x,mar=c(2,5,5,1),col="white",border="black",
  dimx<-dim(x)
  if(length(dimx) != 2) 
   stop("battleship.plot(x) where x is a 2 dimensional matrix or data frame")
+ if(is.data.frame(x)) x<-as.matrix(x)
+ oldmar<-par("mar")
  par(mar=mar)
  plot(0,xlim=c(0.5,dimx[2]+0.5),ylim=c(0.5,dimx[1]+0.5),axes=FALSE,
   type="n",xlab="",ylab="")
@@ -26,4 +28,5 @@ battleship.plot<-function(x,mar=c(2,5,5,1),col="white",border="black",
  rect(rep(1:dimx[2],each=dimx[1])-normx,rep(dimx[1]:1,dimx[2])-maxyspan,
   rep(1:dimx[2],each=dimx[1])+normx,rep(dimx[1]:1,dimx[2])+maxyspan,
   col=col,border=border)
+ par(oldmar)
 }

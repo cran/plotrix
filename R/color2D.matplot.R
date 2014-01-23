@@ -4,10 +4,10 @@ hexagon<-function(x,y,unitcell=1,col=NA,border="black") {
     y+unitcell*0.125,y-unitcell*0.125),col=col,border=border)
 }
 
-fill.corner<-function(x,nrow,ncol) {
+fill.corner<-function(x,nrow,ncol,na.value=NA) {
  xlen<-length(x)
  ncells<-ifelse(nrow*ncol < xlen,nrow*ncol,xlen)
- newmat<-matrix(NA,nrow=nrow,ncol=ncol)
+ newmat<-matrix(na.value,nrow=nrow,ncol=ncol)
  xside<-1
  while(xside*xside < ncells) xside<-xside+1
  row=1

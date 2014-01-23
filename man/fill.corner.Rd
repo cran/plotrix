@@ -5,14 +5,15 @@
 }
 \description{
  Fills one corner of a matrix with the supplied values, leaving the rest
- filled with NAs.
+ filled with a default value.
 }
 \usage{
- fill.corner(x,nrow,ncol)
+ fill.corner(x,nrow,ncol,na.value=NA)
 }
 \arguments{
  \item{x}{A vector of values.}
  \item{nrow,ncol}{The number of rows and columns in the matrix to be returned.}
+ \item{na.value}{The default value for unfilled cells.}
 }
 \details{
  \samp{fill.corner} creates an nrow by ncol matrix and fills the lower left

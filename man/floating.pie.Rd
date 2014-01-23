@@ -22,7 +22,7 @@
 \details{
  \samp{floating.pie} displays a pie chart with an optional shadow on an
  existing plot (see \samp{polygon.shadow}). \samp{floating.pie} now accepts
- NAs or zeros in\samp{x}, but simply ignores them.
+ NAs or zeros in \samp{x}, but simply ignores them.
 
  \samp{floating.pie} can be useful when multiple pie charts are placed on a
  plot overlaying something else, like a map.

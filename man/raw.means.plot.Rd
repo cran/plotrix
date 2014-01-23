@@ -58,36 +58,36 @@ raw.means.plot2(data, col.id, col.offset, col.x, col.value,
  character. What should happen to datapoints within one cell of the two
  factors that have the same value.
 \itemize{
- \item \samp{"y"} (the default) \samp{\link{jitter}} is added so that
+ \item \samp{"y"} (the default) \link{jitter} is added so that
   overlapping points are distinguishable on the \strong{y}-axis
- \item \samp{"x"} \samp{\link{jitter}} is added so that overlapping points
+ \item \samp{"x"} \link{jitter} is added so that overlapping points
  are distinguishable on the \strong{x}-axis
- \item \samp{"both"} \samp{\link{jitter}} is added so that overlapping points
+ \item \samp{"both"} \link{jitter} is added so that overlapping points
  are distinguishable on both the \strong{y}- and the \strong{x}-axis.
  \item anything else. No jitter is added.
 }
 }
   \item{y.factor}{
  \samp{factor} for controlling the amount of jitter on the y-axis
- (will be passed to \samp{\link{jitter}}).
+ (will be passed to \link{jitter}).
 }
   \item{y.amount}{
  \samp{amount} for controlling the amount of jitter on the y-axis
- (will be passed to \samp{\link{jitter}}).
+ (will be passed to \link{jitter}).
 }
   \item{x.amount}{
  \samp{amount} for controlling the amount of jitter on the x-axis
- (will be passed to \samp{\link{jitter}}).
+ (will be passed to \link{jitter}).
 }
   \item{pch}{
  \samp{pch} values (plot symbols) taken for plotting the data. Note that
- the same values are taken for raw data and means. see \samp{\link{points}}
+ the same values are taken for raw data and means. see \link{points}
  for more details. Recycled if too short (with warning). Default is 21:25,
  because those are the only values that can be displayed filled and non-filled.
  All other values should not be used. 
 }
   \item{lty}{
-\samp{lty} values (line types) for connecting the means. See \samp{\link{par}}
+\samp{lty} values (line types) for connecting the means. See \link{par}
  for more details. Recycled if too short (with warning). Default is 1:5.
 }
   \item{bg.b.col}{
@@ -107,7 +107,7 @@ raw.means.plot2(data, col.id, col.offset, col.x, col.value,
  \samp{black}
 }
   \item{type}{
- same as type in \samp{\link{plot}}. Default: \samp{o} ("overplotted")
+ same as type in \link{plot}. Default: \samp{o} ("overplotted")
 }
   \item{pt.cex}{
  \samp{numeric} specifying the \samp{cex} value used for plotting the points.
@@ -165,7 +165,7 @@ raw.means.plot2(data, col.id, col.offset, col.x, col.value,
 }
   \item{mar}{
  \samp{NULL} or \samp{numerical} vector of length 4 indicating the margins of
- the plot (see \samp{\link{par}}). If \samp{NULL} (the default) the right
+ the plot (see \link{par}). If \samp{NULL} (the default) the right
  margin (i.e., \samp{par("mar")[4]}) will be (imperfectly) guessed from the
  \samp{col.offset} factors for placing the legend right to the plot. If length
  is four this value will be taken. Ignored for \samp{plot = FALSE}.
@@ -190,8 +190,8 @@ raw.means.plot2(data, col.id, col.offset, col.x, col.value,
 }
   \item{l.adj}{
  \samp{numeric} of length 1 or 2; the string adjustment for legend text. Useful
- for y-adjustment when labels are plotmath expression. see \samp{\link{legend}}
- and \samp{\link{plotmath}} for more info.
+ for y-adjustment when labels are plotmath expression. see \link{legend}
+ and \link{plotmath} for more info.
 }
   \item{\dots}{
  further arguments which are either passed to plot or legend (or
@@ -215,9 +215,9 @@ raw.means.plot2(data, col.id, col.offset, col.x, col.value,
  participant).
 
 \samp{raw.means.plot} is basically an advanced wrapper for two other
- functions: \samp{\link{plot}} and (if \samp{legend=TRUE})
- \samp{\link{legend}}. Furthermore, raw data is plotted with a call to
- \samp{\link{points}} and the means with a call to \samp{\link{lines}}.
+ functions: \link{plot} and (if \samp{legend=TRUE})
+ \link{legend}. Furthermore, raw data is plotted with a call to
+ \link{points} and the means with a call to \link{lines}.
 
 You can use \samp{raw.means.plot} to plot only a legend by setting
  \samp{plot = FALSE} and \samp{legend = TRUE}. Then, \samp{raw.means.plot}
@@ -225,7 +225,7 @@ You can use \samp{raw.means.plot} to plot only a legend by setting
  \samp{ylim = c(0, 10)} and place the legend on this invisible plot. You
  can specify \samp{l.pos} to position the legend, otherwise it will be plotted
  at \samp{c(5,5)} (i.e., in the middle of the plot). Note that
- \samp{xpd = TRUE} in the call to \samp{legend} (see \samp{link{par}}).
+ \samp{xpd = TRUE} in the call to \samp{legend} (see \link{par}).
 }
 \value{
 Nothing. This function is invoked for its side effects.
@@ -238,7 +238,7 @@ Henrik Singmann (\email{henrik.singmann@psychologie.uni-freiburg.de}) with
  ideas from Jim Lemon
 }
 \seealso{
-\samp{\link{add.ps}} can be used in addition to\samp{raw.means.plot} to
+\link{add.ps} can be used in addition to\samp{raw.means.plot} to
  compare the factors at each x-axis position, by adding p-values from t-tests
  to the x-axis.
 }

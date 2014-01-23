@@ -17,16 +17,10 @@ drawSectorAnnulus<-function(angle1,angle2,radius1,radius2,col,angleinc=0.03) {
 }
 
 radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
- start=0,clockwise=FALSE,label.prop=1.15,grid.pos,
+ start=0,clockwise=FALSE,label.prop=1.1,show.grid.labels=4,grid.pos,
  grid.col="gray",grid.bg="transparent") {
 
  par(xpd=TRUE)
- angles<-seq(0,1.96*pi,by=0.04*pi)
- for(i in seq(length(grid.pos),1,by=-1)) {
-  xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
-  ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
-  polygon(xpos,ypos,border=grid.col,col=grid.bg)
- }
  if(is.na(labels[1])) {
   label.pos<-seq(0,1.8*pi,length=9)
   labels<-as.character(round(label.pos,2))
@@ -35,15 +29,29 @@ radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
   lablen<-length(labels)
   label.pos<-seq(0,pi*(2-2/lablen),length.out=lablen)
  }
- maxlength<-max(radial.lim)*1.05
- if(clockwise) {
-  label.pos<--label.pos
-  labels<-rev(labels)
- }
+ if(clockwise) label.pos<--label.pos
  if(start) label.pos<-label.pos+start
+ # display the circumferential grid
+ angles<-seq(0,1.96*pi,by=0.04*pi)
+ for(i in seq(length(grid.pos),1,by=-1)) {
+  xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
+  ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
+  polygon(xpos,ypos,border=grid.col,col=grid.bg)
+ }
+ # display the radial grid
+ maxlength<-max(grid.pos)-radial.lim[1]
  xpos<-cos(label.pos)*maxlength
  ypos<-sin(label.pos)*maxlength
  segments(0,0,xpos,ypos,col=grid.col)
+ xpos<-cos(label.pos)*maxlength
+ ypos<-sin(label.pos)*maxlength
+ # display the radial labels
+ if(!is.na(show.grid.labels)) {
+  xpos<-ifelse(show.grid.labels%%2,0,(grid.pos[i]-radial.lim[1]))
+  ypos<-ifelse(show.grid.labels%%2,(grid.pos[i]-radial.lim[1]),0)
+  boxed.labels(xpos,ypos,grid.pos,border=NA)
+ }
+ # display the circumferential labels
  xpos<-cos(label.pos)*maxlength*label.prop
  ypos<-sin(label.pos)*maxlength*label.prop
  if(radlab) {
@@ -72,12 +80,11 @@ radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
 
 radial.pie<-function(radial.extents,sector.edges=NULL,
  sector.colors=NULL,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
- labels=NA,label.pos=NULL,radlab=FALSE,start=0,clockwise=FALSE,label.prop=1.15,
- radial.lim=NULL,main="",xlab="",ylab="",mar=c(2,2,3,2),
+ labels=NA,label.pos=NULL,radlab=FALSE,start=0,clockwise=FALSE,
+ label.prop=1.1,radial.lim=NULL,main="",xlab="",ylab="",mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
  grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
- radial.labels=NULL,boxed.radial=TRUE,
- add=FALSE,...) {
+ radial.labels=NULL,boxed.radial=TRUE,add=FALSE,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(radial.extents)
  if(is.null(sector.edges)) {

@@ -37,7 +37,7 @@
  To have complete control over the labels, see \link{gradient.rect} and 
  \link{text} or \link{mtext}.
 
- samp{colorlegend} in the \pkg{shape} package offers a different approach,
+ \samp{colorlegend} in the \pkg{shape} package offers a different approach,
  creating a large number of colors from a color generating function (a bit
  like \samp{color.gradient}) and then allowing the user to specify tick
  marks at arbitrary points along the color bar.

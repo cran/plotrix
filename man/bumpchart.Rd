@@ -59,7 +59,7 @@
  # now show the raw percentages and add central ticks
  bumpchart(educattn,rank=FALSE,
   main="Percentage high school completion by over 25s",
-  line.info=list(lty=1:10,lwd=1,col=rainbow(10)))
+  lty=1:10,lwd=1,col=rainbow(10))
  # margins have been reset, so use
  par(xpd=TRUE)
  boxed.labels(1.5,seq(65,90,by=5),seq(65,90,by=5))

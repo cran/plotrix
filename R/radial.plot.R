@@ -10,14 +10,14 @@ clock24.plot<-function(lengths,clock.pos,labels=NULL,label.pos=NULL,
  # if no positions are given, spread the lines out over the circle 
  if(missing(clock.pos)) clock.pos<-seq(0,24-24/(npos+1),length=npos)
  # start at "midnight" and go clockwise
- radial.pos<-pi*(450-clock.pos*15)/180
- if(is.null(labels))
-  labels<-paste(0:23,"00",sep="")
- if(is.null(label.pos))
-  label.pos<-seq(5*pi/2,7*pi/12,by=-pi/12)
+ radial.pos<-pi*(clock.pos*15)/180
+ if(is.null(labels)) {
+  labels<-paste(0:23,"00",sep=":")
+  label.pos<-seq(0,pi*1.917,length.out=24)
+ }
  else label.pos<-pi*(450-clock.pos*15)/180
  invisible(radial.plot(lengths,radial.pos,labels=labels,label.pos=label.pos,
-  rp.type=rp.type,...))
+  rp.type=rp.type,start=pi/2,clockwise=TRUE,...))
 }
 
 # plots data as radial lines or a polygon starting at the right and going
@@ -49,7 +49,7 @@ polar.plot<-function(lengths,polar.pos=NULL,labels,label.pos=NULL,
 # radial position of the labels
 
 radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
- radlab=FALSE,start=0,clockwise=FALSE,rp.type="r",label.prop=1.15,main="",
+ radlab=FALSE,start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",
  xlab="",ylab="",line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),
  mar=c(2,2,3,2),show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
  rad.col="gray",grid.col="gray",grid.bg="transparent",grid.left=FALSE,
@@ -58,6 +58,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  add=FALSE,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
+ cat(radial.lim,"\n")
  length.dim<-dim(lengths)
  if(is.null(length.dim)) {
   npoints<-length(lengths)
@@ -100,11 +101,19 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
    main=main,xlab=xlab,ylab=ylab)
   if(show.grid) {
-   for(i in seq(length(grid.pos),1,by=-1)) {
-    xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
-    ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
-    polygon(xpos,ypos,border=grid.col,col=grid.bg)
+   if(is.na(labels[1])) {
+    label.pos<-seq(0,1.8*pi,length=9)
+    labels<-as.character(round(label.pos,2))
    }
+   if(is.null(label.pos[1])) {
+    lablen<-length(labels)
+    label.pos<-seq(0,pi*(2-2/lablen),length.out=lablen)
+   }
+   cat(grid.pos,"\n")
+   radial.grid(labels=labels,label.pos=label.pos,radlab=radlab,
+    radial.lim=radial.lim,start=start,clockwise=clockwise,
+    label.prop=label.prop,show.grid.labels=4,grid.pos=grid.pos,
+    grid.col=grid.col,grid.bg=grid.bg)
   }
  }
  par(xpd=TRUE)
@@ -154,7 +163,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
    points(xpos,ypos,pch=pointsymbols,col=pointcol,...)
   if(match("l",rptype,0))
    lines(xpos,ypos,lty=ltype,lwd=lwidth,col=linecol,...)
-  if(show.centroid)
+  if(show.centroid) {
    if(match("p",rptype,0)) {
     nvertices<-length(xpos)
     # first get the "last to first" area component
@@ -180,59 +189,6 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
    else
     points(mean(xpos),mean(ypos),col=pointcol,pch=pointsymbols,
      cex=2,...)
- }
- if(!add) {
-  if(is.na(labels[1])) {
-   label.pos<-seq(0,1.8*pi,length=9)
-   labels<-as.character(round(label.pos,2))
-  }
-  if(is.null(label.pos[1])) {
-   lablen<-length(labels)
-   label.pos<-seq(0,pi*(2-2/lablen),length.out=lablen)
-  }
-  if(clockwise) label.pos<--label.pos
-  if(start) label.pos<-label.pos+start
-  xpos<-cos(label.pos)*maxlength
-  ypos<-sin(label.pos)*maxlength
-  if(show.radial.grid) segments(0,0,xpos,ypos,col=rad.col)
-  xpos<-cos(label.pos)*maxlength*label.prop
-  ypos<-sin(label.pos)*maxlength*label.prop
-  label.adj<-abs(1-cos(label.pos))/2
-  if(radlab) {
-   for(label in 1:length(labels)) {
-    labelsrt<-(180*label.pos[label]/pi)+
-     180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
-    text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),
-     srt=labelsrt,adj=label.adj)
-   }
-  }
-  else {
-   for(label in 1:length(labels)) {
-    text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),
-     adj=label.adj[label])
-   }
-  }
-#   boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"),
-#    adj=label.adj)
-  if(show.grid.labels) {
-   if(show.grid.labels%%2) {
-    ypos<-grid.pos-radial.lim[1]
-    xpos<-rep(0,length(grid.pos))
-    if(show.grid.labels==1) ypos<--ypos
-   }
-   else {
-    xpos<-grid.pos-radial.lim[1]
-    ypos<-rep(0,length(grid.pos))
-    if(show.grid.labels==2) xpos<--xpos
-   }
-   if(is.null(radial.labels)) radial.labels=as.character(grid.pos)
-   if(!is.null(grid.unit))
-    radial.labels[length(grid.pos)]<-
-     paste(radial.labels[length(grid.pos)],grid.unit)
-   if(boxed.radial)
-    boxed.labels(xpos,ypos,radial.labels,border=FALSE,
-     cex=par("cex.lab"))
-   else text(xpos,ypos,radial.labels,cex=par("cex.lab"))
   }
  }
  invisible(oldpar)

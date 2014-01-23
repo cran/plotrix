@@ -34,11 +34,11 @@ floating.pie<-function(xpos,ypos,x,edges=200,radius=1,col=NULL,
  invisible(bc)
 }
 
-# place text labels at the specified distance from x,y on the radial lines
-# specified by angles.
+# place plain or boxed labels at the specified distance from x,y on the
+# radial lines specified by angles.
 
-pie.labels<-function(x,y,angles,labels,radius=1,bg="white",border=TRUE,
- minangle=NA,...) {
+pie.labels<-function(x,y,angles,labels,radius=1.05,bg="white",border=TRUE,
+ minangle=NA,boxed=FALSE,...) {
 
  if(nargs()<4)
   stop("Usage: pie.labels(x,y,angles,labels,radius=1,bg=\"white\",border=TRUE,...)")
@@ -51,10 +51,13 @@ pie.labels<-function(x,y,angles,labels,radius=1,bg="white",border=TRUE,
  if(!is.na(minangle)) angles<-spreadout(angles,minangle)
  xc<-cos(angles)*radius+x
  yc<-sin(angles)*yradius+y
- label.adj<-abs(1-cos(angles))/2
- for(label in 1:length(labels))
-  boxed.labels(xc[label],yc[label],labels[label],bg=bg,border=border,
-   adj=label.adj[label],...)
+ for(label in 1:length(labels)) {
+  label.adj<-c(abs(1-cos(angles[label]))/2,abs(1-sin(angles[label]))/2)
+  if(boxed)
+   boxed.labels(xc[label],yc[label],labels[label],adj=label.adj[1],
+    border=border,...)
+  else text(xc[label],yc[label],labels[label],adj=label.adj,...)
+ }
  # turn clipping back on
  par(xpd=FALSE)
 }

@@ -92,6 +92,7 @@ export(
  pie3D,
  pie3D.labels,
  plot.dendrite,
+ plot_bg,
  plotCI,
  plotH,
  polar.plot,

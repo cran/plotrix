@@ -6,7 +6,7 @@
  scales on the left and right.
 }
 \usage{
- twoord.plot(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
+ twoord.plot(lx,ly,rx,ry,data=NULL,main="",xlim=NULL,lylim=NULL,rylim=NULL,
  mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,
  type="b",xtickpos=NULL,xticklab=NULL,halfwidth=0.4,axislab.cex=1,
  do.first=NULL,...)
@@ -14,6 +14,7 @@
 \arguments{
  \item{lx,ly,rx,ry}{y and optional x values for the plot}
  \item{data}{an optional data frame from which to obtain the above values}
+ \item{main}{Title for the plot}
  \item{xlim}{optional x limits as in \samp{plot}}
  \item{lylim,rylim}{optional y limits for the left and right axes
   respectively}

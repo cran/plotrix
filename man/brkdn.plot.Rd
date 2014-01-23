@@ -9,7 +9,8 @@
 }
 \arguments{
  \item{vars}{The names or indices of one or more columns in a data frame.
-  The columns must contain numeric data.}
+  The columns must contain numeric data. If only one variable is to be
+  broken down, vars can be a formula.}
  \item{groups}{The name or index of a column in a data frame that classifies
   the values in \samp{vars} into different, usually fixed effect, levels.}
  \item{obs}{The name or index of a column in a data frame that classifies
@@ -63,6 +64,11 @@
  plot. If \samp{obs} is numeric, its unique values will be used as the 
  positions, if not, 1 to the number of unique values. This is a common way of 
  representing changes over time intervals for experimental groups.
+
+ If only one numeric variable is to be broken down, \samp{vars} may be a
+ formula like \samp{var~groups+obs}. The position of the two factors to break
+ down the variable is fixed - the second term will be interpreted as "groups"
+ and the third, if present, will be interpreted as "obs".
 }
 \author{Jim Lemon}
 \seealso{\link{dispbars}}
@@ -73,7 +79,7 @@
  brkdn.plot("a","c","d",test.df,pch=1:4,col=1:4)
  # now jazz it up a bit using medians and median absolute deviations
  # and some enhancements
- bp<-brkdn.plot("a","c","d",test.df,main="Test of the breakdown plot",
+ bp<-brkdn.plot(a~c+d,data=test.df,main="Test of the breakdown plot",
   mct="median",md="mad",xlab="Temperature range", ylab="Cognition",
   xaxlab=c("10-15","16-20","21-25","25-30"),pch=1:4,lty=1:4,col=1:4)
  es<-emptyspace(bp)

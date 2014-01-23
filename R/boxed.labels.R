@@ -2,8 +2,8 @@ boxed.labels<-function(x,y=NA,labels,
  bg=ifelse(match(par("bg"),"transparent",0),"white",par("bg")),
  border=TRUE,xpad=1.2,ypad=1.2,srt=0,cex=1,adj=0.5,...) {
 
- oldcex<-par("cex")
- par(cex=cex)
+ oldpars<-par(c("cex","xpd"))
+ par(cex=cex,xpd=TRUE)
  if(is.na(y) && is.list(x)) {
   y<-unlist(x[[2]])
   x<-unlist(x[[1]])
@@ -30,5 +30,5 @@ boxed.labels<-function(x,y=NA,labels,
  rect(x - lwidths * xpad, y - bheights * ypad, x + rwidths * 
      xpad, y + theights * ypad, col = bg, border = border)
  do.call(text, args)
- par(cex=oldcex)
+ par(cex=oldpars)
 }
