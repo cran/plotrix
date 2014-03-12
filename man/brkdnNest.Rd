@@ -4,7 +4,8 @@
 \description{Breaks down a numeric or categorical element of a data frame
  by one or more categorical elements.}
 \usage{
- brkdnNest(formula,data,FUN=c("mean","sd"),label1="Overall",trueval=NA)
+ brkdnNest(formula,data,FUN=c("mean","sd","sd","valid.n"),label1="Overall",
+  trueval=TRUE)
 }
 \arguments{
  \item{formula}{A formula with a numeric element of a data frame on the left and
@@ -16,7 +17,11 @@
   categorical response variable. See Details.}
 }
 \value{
- A list with as many elements as there are functions in \samp{FUN}.
+ A list with as many elements as there are functions in \samp{FUN}. It is
+ probably best to always specify four functions (summary measure, upper
+ dispersion measure, lower dispersion measure and number of valid observations)
+ even if this is redundant as in the default.
+
  This function is similar to \samp{brkdn} in the \pkg{prettyR} package, but
  is structured to be used with the \samp{barNest} function. It produces one
  or more measures for the overall data, then the subsets of the data defined by
@@ -34,17 +39,15 @@
  responses. If the function \samp{valid.n} is the first function in \samp{FUN},
  the counts of the groups and subgroups will be returned.
 
- Two specialized summary functions are defined within \samp{brkdnNest} for use
- when the \samp{trueval} argument is not NA. \samp{sumbrk} returns the count of 
- values in a factor equal to \samp{trueval}, while \samp{propbrk} returns the
- proportion of values equal to \samp{trueval}.
+ Two specialized summary functions are defined within \samp{brkdnNest}.
+ \samp{sumbrk} returns the count of values in a factor equal to \samp{trueval},
+ and \samp{propbrk} returns the proportion of values equal to \samp{trueval}.
 
  The user should take care when specifying different summary functions.
- \samp{barNest} expects a measure of central tendency or counting function as 
- the first function and measures of dispersion as the second and optionally third,
- if "error bars" are to be displayed. If two confidence interval functions are
- passed, the first must calculate the upper and the second the lower CI. The user
- must also decide whether the "error bars" have any useful meaning.
+ \samp{barNest} expects a summary measure as the first component of the list
+ and measures of dispersion as the second and third. If two different measures
+ of dispersion are passed, the first must calculate the upper and the second
+ the lower measure.
 }
 \author{Jim Lemon}
 \seealso{\link{by}}

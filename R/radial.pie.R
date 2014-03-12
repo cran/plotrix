@@ -17,17 +17,13 @@ drawSectorAnnulus<-function(angle1,angle2,radius1,radius2,col,angleinc=0.03) {
 }
 
 radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
- start=0,clockwise=FALSE,label.prop=1.1,show.grid.labels=4,grid.pos,
- grid.col="gray",grid.bg="transparent") {
+ start=0,clockwise=FALSE,label.prop=1.1,grid.pos,grid.col="gray",
+ grid.bg="transparent") {
 
  par(xpd=TRUE)
- if(is.na(labels[1])) {
-  label.pos<-seq(0,1.8*pi,length=9)
-  labels<-as.character(round(label.pos,2))
- }
- if(is.null(label.pos[1])) {
-  lablen<-length(labels)
-  label.pos<-seq(0,pi*(2-2/lablen),length.out=lablen)
+ if(is.null(label.pos)) label.pos<-seq(0,1.8*pi,length=9)
+ if(!is.null(labels)) {
+  if(is.na(labels[1])) labels<-as.character(round(label.pos,2))
  }
  if(clockwise) label.pos<--label.pos
  if(start) label.pos<-label.pos+start
@@ -45,24 +41,22 @@ radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
  segments(0,0,xpos,ypos,col=grid.col)
  xpos<-cos(label.pos)*maxlength
  ypos<-sin(label.pos)*maxlength
- # display the radial labels
- if(!is.na(show.grid.labels)) {
-  xpos<-ifelse(show.grid.labels%%2,0,(grid.pos[i]-radial.lim[1]))
-  ypos<-ifelse(show.grid.labels%%2,(grid.pos[i]-radial.lim[1]),0)
-  boxed.labels(xpos,ypos,grid.pos,border=NA)
- }
  # display the circumferential labels
- xpos<-cos(label.pos)*maxlength*label.prop
- ypos<-sin(label.pos)*maxlength*label.prop
- if(radlab) {
-  for(label in 1:length(labels)) {
-   labelsrt<-(180*label.pos[label]/pi)+
-    180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
-   text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),srt=labelsrt)
+ if(!is.null(labels)) {
+  xpos<-cos(label.pos)*maxlength*label.prop
+  ypos<-sin(label.pos)*maxlength*label.prop
+  if(radlab) {
+   for(label in 1:length(labels)) {
+    labelsrt<-(180*label.pos[label]/pi)+
+     180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
+    text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),
+     srt=labelsrt)
+   }
   }
+  else
+   boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
  }
- else
-  boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
+ par(xpd=FALSE)
 }
 
 # plots sectors composed of one or more sectors of annuli on a circular grid.
@@ -83,7 +77,7 @@ radial.pie<-function(radial.extents,sector.edges=NULL,
  labels=NA,label.pos=NULL,radlab=FALSE,start=0,clockwise=FALSE,
  label.prop=1.1,radial.lim=NULL,main="",xlab="",ylab="",mar=c(2,2,3,2),
  show.grid=TRUE,show.grid.labels=4,show.radial.grid=TRUE,
- grid.col="gray",grid.bg="transparent",grid.left=FALSE,grid.unit=NULL,
+ grid.col="gray",grid.bg="transparent",grid.unit=NULL,
  radial.labels=NULL,boxed.radial=TRUE,add=FALSE,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(radial.extents)

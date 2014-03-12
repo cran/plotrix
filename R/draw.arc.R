@@ -5,9 +5,8 @@ draw.arc <- function(x=1, y=NULL, radius=1, angle1=deg1*pi/180, angle2=deg2*pi/1
         col <- par("col")
     if (all(is.na(lwd)))
         lwd <- par("lwd")
-    xylim <- par("usr")
-    plotdim <- par("pin")
-    ymult <- (xylim[4] - xylim[3])/(xylim[2] - xylim[1]) * plotdim[1]/plotdim[2]
+    xylim<-par("usr")
+    ymult <- getYmult()
     devunits <- dev.size("px")
     draw.arc.0 <- function(x, y, radius, angle1, angle2, n, col, lwd, ...)
         {

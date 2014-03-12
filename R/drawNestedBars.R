@@ -1,5 +1,5 @@
 drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
- col=NA,labelcex=1,lineht=NA,showall=TRUE,
+ intervals=TRUE,col=NA,labelcex=1,lineht=NA,showall=TRUE,Nwidths=FALSE,
  barlabels=NULL,showlabels=TRUE,arrow.cap=NA) {
 
  barcol<-ifelse(is.list(col),col[[1]],col)
@@ -22,7 +22,7 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
  }
  if(errbars && length(x[[1]])==1)
   dispersion((start+end)/2,x[[1]][[1]],x[[2]][[1]],x[[3]][[1]],
-   intervals=errbars<3,arrow.cap=arrow.cap)
+   intervals=intervals,arrow.cap=arrow.cap)
  # remove the first component of each element of x displayed above
  for(xcomp in 1:length(x)) x[[xcomp]][[1]]<-NULL
  # if there are any more bars to display, set up the call
@@ -35,8 +35,10 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
   if(!is.null(barlabels) && length(barlabels) > 1) barlabels[[1]]<-NULL
   # width of all the spaces between the next group of bars
   barspace<-(end-start)*shrink
-  # width of each bar
-  barwidth<-((end-start)-barspace)/nvalues
+  # width of the bars
+  if(Nwidths)
+   barwidth<-((end-start)-barspace)*x[[4]][[1]]/sum(x[[4]][[1]])
+  else barwidth<-rep(((end-start)-barspace)/nvalues,nvalues)
   # width of each space between bars
   barspace<-barspace/(nvalues+1)
   # step through the values for this group of bars
@@ -50,12 +52,12 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
    newcol<-col
    if(is.list(col)) newcol[[1]]<-col[[1]][nextval]
    if(!is.null(barlabels)) newbarlabels[[1]]<-barlabels[[1]][nextval]
-   drawNestedBars(newx,start,start+barwidth,shrink=shrink,
+   drawNestedBars(newx,start,start+barwidth[nextval],shrink=shrink,
     errbars=errbars,col=newcol,labelcex=labelcex,lineht=lineht,
-    showall=showall,barlabels=newbarlabels,showlabels=showlabels,
-    arrow.cap=arrow.cap)
+    showall=showall,Nwidths=Nwidths,barlabels=newbarlabels,
+    showlabels=showlabels,arrow.cap=arrow.cap)
    #else print(newx)
-   start<-start+barwidth
+   start<-start+barwidth[nextval]
   }
  }
 }

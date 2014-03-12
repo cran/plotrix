@@ -1,9 +1,9 @@
-axis.mult<-function(side=1,at=NULL,labels,mult=1,mult.label,mult.line,
+axis.mult<-function(side=1,at=NULL,labels,mult=1,mult.label="",mult.line,
  mult.labelpos=NULL,...) {
  if(is.null(at)) at<-axTicks(side)
  if(missing(labels)) labels<-at/mult
  axis(side,at,labels,...)
- if(missing(mult.label)) mult.label<-paste("x",mult,collapse="")
+ mult.label<-paste(mult.label," (* ",mult," )",sep="",collapse="")
  # multiplier position defaults to centered on the outside
  if(is.null(mult.labelpos)) mult.labelpos<-side
  edges<-par("usr")

@@ -92,7 +92,7 @@
  cellcol<-color.scale(cbind(x,c(-1,rep(1,31))),c(0,1),0,c(1,0))[,1:32]
  color2D.matplot(x,cellcolors=cellcol,main="Blue to red correlations")
  # do the legend call separately to get the full range
- color.legend(0,-5,6.5,-3,legend=c(-1,-0.5,0,0.5,1),
+ color.legend(0,-4,10,-3,legend=c(-1,-0.5,0,0.5,1),
   rect.col=color.scale(c(-1,-0.5,0,0.5,1),c(0,1),0,c(1,0)),align="rb")
  x<-matrix(rnorm(100),nrow=10)
  # generate colors that show negative values in red to brown

@@ -7,7 +7,7 @@ histStack.formula<-function(x,data,breaks="Sturges",col="rainbow",right=TRUE,
 
  mf<-model.frame(x,data=data)
  if(is.null(xlab)) xlab<-names(mf)[1]
- histStack.default(mf[,1],mf[,2],breaks="Sturges",col=col,right=right,
+ histStack.default(mf[,1],mf[,2],breaks=breaks,col=col,right=right,
   main=main,xlab=xlab,legend.pos=legend.pos,cex.legend=cex.legend,...)
 }
 

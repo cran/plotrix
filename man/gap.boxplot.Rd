@@ -7,7 +7,7 @@
 \usage{
  gap.boxplot(x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  range=1.5,width=NULL,varwidth=FALSE,notch=FALSE,outline=TRUE,
- names,ylim=NA,plot=TRUE,border=par("fg"),col=NULL,log="",
+ names,xlim=NA,ylim=NA,plot=TRUE,border=par("fg"),col=NULL,log="",
  axis.labels=NULL,axes=TRUE,pars=list(boxwex=0.8,staplewex=0.5,outwex=0.5),
  horizontal=FALSE,add=FALSE,at=NULL,main=NULL)
 }
@@ -25,7 +25,7 @@
   median as notches}
  \item{outline}{whether to display outliers}
  \item{names}{optional names to display beneath each boxplot}
- \item{ylim}{Optional y axis limits for the plot.}
+ \item{xlim,ylim}{Optional x and y axis limits for the plot.}
  \item{boxwex}{scale factor for box widths}
  \item{staplewex}{staple width proportional to box width}
  \item{outwex}{outlier line width}
@@ -41,8 +41,7 @@
   does nothing}
  \item{add}{whether to add the boxplot(s) to a current plot - currently
   does nothing.}
- \item{at}{optional horizontal locations for the boxplots - currently
-  does nothing.}
+ \item{at}{optional horizontal locations for the boxplots.}
  \item{main}{a title for the plot.}
 }
 \value{

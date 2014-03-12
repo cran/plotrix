@@ -13,7 +13,7 @@
   \item{na.rm}{whether to remove NA values.}
 }
 \details{
- \samp{sumbrk} counts the values matching a specified value.
+ \samp{sumbrk} counts the values in \samp{x} matching a specified value.
  It is mainly to allow these sums to be calculated in the \samp{brkdnNest}
  function.
 }

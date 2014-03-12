@@ -36,6 +36,7 @@ legendg<-function(x,y=NULL,legend,fill=NULL,col=par("col"),
   trace=trace,plot=plot,ncol=ncol,horiz=horiz,title=title,
   inset=inset,title.col=title.col)
  if(!is.null(fill)) {
+  # display the rectangles
   rectheight<-strheight("Q")
   if(length(adj) > 1) yadj<-adj[2] else yadj<-0.5
   for(nel in 1:length(fill)) {
@@ -57,11 +58,13 @@ legendg<-function(x,y=NULL,legend,fill=NULL,col=par("col"),
     mycol[[nel]]<-rep(col,length.out=length(mycol[[nel]]))
   }
   else mycol<-col
-  pchwidth<-strwidth("O",cex=pt.cex)
-  for(nel in 1:length(pch)) {
+  lenpch<-length(pch)
+  xright<-
+   legend.info$text$x[1]-(legend.info$text$x[1]-legend.info$rect$left)*0.15
+  for(nel in 1:lenpch) {
    npch<-length(pch[[nel]])
-   xpos<-cumsum(c(legend.info$text$x[nel]-pchwidth,
-    rep(-pchwidth*pt.space,npch-1)))
+   pchwidth<-strwidth(pch[[nel]])*pt.space
+   xpos<-rev((xright+pchwidth/2)-cumsum(pchwidth))
    ypos<-rep(legend.info$text$y[nel],npch)
    points(xpos,ypos,pch=pch[[nel]],col=mycol[[nel]],cex=pt.cex)
   }

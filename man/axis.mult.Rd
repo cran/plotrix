@@ -38,9 +38,10 @@
 \author{Jim Lemon}
 \seealso{\link{axis}, \link{mtext}}
 \examples{
- plot(1:10*0.001,1:10*100,axes=FALSE,xlab="",ylab="",main="Axis multipliers")
+ plot(1:10 * 0.001, 1:10 * 100,axes = FALSE, xlab = "", ylab = "",
+  main = "Axis multipliers")
  box()
- axis.mult(1,mult=0.001)
- axis.mult(2,mult=100)
+ axis.mult(1, mult = 0.001)
+ axis.mult(2, mult = 100)
 }
 \keyword{misc}

@@ -58,7 +58,6 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  add=FALSE,...) {
  
  if(is.null(radial.lim)) radial.lim<-range(lengths)
- cat(radial.lim,"\n")
  length.dim<-dim(lengths)
  if(is.null(length.dim)) {
   npoints<-length(lengths)
@@ -72,7 +71,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  }
  lengths<-lengths-radial.lim[1]
  lengths[lengths<0]<-NA
- if(is.null(radial.pos[1]))
+ if(is.null(radial.pos))
   radial.pos<-seq(0,pi*(2 - 2 * (rp.type != "l")/npoints),length.out=npoints)
  radial.pos.dim<-dim(radial.pos)
  if(is.null(radial.pos.dim))
@@ -100,20 +99,19 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   par(mar=mar,pty="s")
   plot(c(-maxlength,maxlength),c(-maxlength,maxlength),type="n",axes=FALSE,
    main=main,xlab=xlab,ylab=ylab)
+  if(is.null(label.pos)) {
+   if(is.null(labels)) nlpos<-ifelse(npoints > 8,8,npoints)
+   else {
+    if(is.na(labels[1])) nlpos<-ifelse(npoints > 8,8,npoints)
+    else nlpos<-length(labels)
+   }
+   label.pos<-seq(0,pi*(2-2/nlpos),length.out=nlpos)
+  }
   if(show.grid) {
-   if(is.na(labels[1])) {
-    label.pos<-seq(0,1.8*pi,length=9)
-    labels<-as.character(round(label.pos,2))
-   }
-   if(is.null(label.pos[1])) {
-    lablen<-length(labels)
-    label.pos<-seq(0,pi*(2-2/lablen),length.out=lablen)
-   }
-   cat(grid.pos,"\n")
    radial.grid(labels=labels,label.pos=label.pos,radlab=radlab,
     radial.lim=radial.lim,start=start,clockwise=clockwise,
-    label.prop=label.prop,show.grid.labels=4,grid.pos=grid.pos,
-    grid.col=grid.col,grid.bg=grid.bg)
+    label.prop=label.prop,grid.pos=grid.pos,grid.col=grid.col,
+    grid.bg=grid.bg)
   }
  }
  par(xpd=TRUE)
@@ -190,6 +188,26 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
     points(mean(xpos),mean(ypos),col=pointcol,pch=pointsymbols,
      cex=2,...)
   }
+ }
+ if(show.grid.labels && !add) {
+  if(show.grid.labels%%2) {
+   ypos<-grid.pos-radial.lim[1]
+   xpos<-rep(0,length(grid.pos))
+   if(show.grid.labels==1) ypos<--ypos
+  }
+  else {
+   xpos<-grid.pos-radial.lim[1]
+   ypos<-rep(0,length(grid.pos))
+   if(show.grid.labels==2) xpos<--xpos
+  }
+  if(is.null(radial.labels)) radial.labels<-grid.pos
+  if(!is.null(grid.unit))
+   radial.labels[length(grid.pos)]<-
+    paste(radial.labels[length(grid.pos)],grid.unit)
+  if(boxed.radial)
+   boxed.labels(xpos,ypos,radial.labels,border=FALSE,
+    cex=par("cex.lab"))
+  else text(xpos,ypos,radial.labels,cex=par("cex.lab"))
  }
  invisible(oldpar)
 }

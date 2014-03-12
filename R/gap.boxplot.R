@@ -1,7 +1,7 @@
 gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  range=1.5,width=NULL,varwidth=FALSE,notch=FALSE,outline=TRUE,names,
- ylim=NA,plot=TRUE,border=par("fg"),col=NULL,log="",axis.labels=NULL,
- axes=TRUE,pars=list(boxwex=0.8,staplewex=0.5,outwex=0.5), 
+ xlim=NA,ylim=NA,plot=TRUE,border=par("fg"),col=NULL,log="",
+ axis.labels=NULL,axes=TRUE,pars=list(boxwex=0.8,staplewex=0.5,outwex=0.5), 
  horizontal=FALSE,add=FALSE,at=NULL,main=NULL) {
 
  if(!is.na(gap$top[1]))
@@ -30,7 +30,7 @@ gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  }
  else rangetop<-ylim[2]
  if(!is.na(gap$bottom[1])) {
-  bxgap$stats[bxgap$stats > gap$bottom[1] & bxgap$stats < gap$bottom[2]] <- NA
+  bxgap$stats[bxgap$stats > gap$bottom[1] & bxgap$stats < gap$bottom[2]]<-NA
   if(any(is.na(bxgap$stats))) 
    stop("gap cannot include the median, interquartiles or the staples")
   bottomdiff<-diff(gap$bottom)
@@ -46,47 +46,48 @@ gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  if(any(is.na(bxgap$out))) 
   warning("At least one outlier falls into a gap")
  nboxes<-dim(bxgap$stats)[2]
- plot(0,xlim=c(0.5,nboxes+0.5),ylim=ylim,type="n",
-  axes=FALSE,xlab="",ylab="",main=main)
+ if(is.na(xlim[1])) {
+  xlim<-c(0.5,nboxes+0.5)
+  at<-1:nboxes
+ }
+ bxgap$group<-at
+ plot(0,xlim=xlim,ylim=ylim,type="n",axes=FALSE,xlab="",ylab="",main=main)
  plotlim<-par("usr")
  box()
- if(axes) axis(1,labels=bxpt$names,at=1:nboxes)
+ if(axes) axis(1,labels=bxpt$names,at=at)
  midticks<-pretty(c(rangebottom,rangetop))
  if(axes) axis(2,at=midticks[midticks > rangebottom & midticks < rangetop])
  if(is.null(width)) width<-pars$boxwex
- rect(1:nboxes-width/2,bxgap$stats[2,],1:nboxes+width/2, 
+ rect(at-width/2,bxgap$stats[2,],at+width/2, 
   bxgap$stats[4,],border=border,col=col)
  if(notch) {
-  ymult<-diff(plotlim[3:4])/diff(plotlim[1:2])
+  ymult<-getYmult()
   if(is.null(col)) boxcol<-"white"
   else boxcol<-col
-  rect(1:nboxes-width/1.95,bxgap$conf[1,],1:nboxes+width/1.95,
+  rect(at-width/1.95,bxgap$conf[1,],at+width/1.95,
    bxgap$conf[2,],border=NA,col=boxcol)
-  median.left<-1:nboxes+width*bxgap$conf[1]/(ymult*nboxes)-width/2
-  median.right<-1:nboxes-width*bxgap$conf[1]/(ymult*nboxes)+width/2
-  segments(1:nboxes-width/2,bxgap$conf[1,],median.left, 
-   bxgap$stats[3,],col=border)
-  segments(1:nboxes-width/2,bxgap$conf[2,],median.left, 
-   bxgap$stats[3,],col=border)
-  segments(median.right,bxgap$stats[3,],1:nboxes+width/2, 
-   bxgap$conf[1,],col=border)
-  segments(median.right,bxgap$stats[3,],1:nboxes+width/2, 
-   bxgap$conf[2,],col=border)
+  insets<-(bxgap$conf[2,]-bxgap$conf[1,])*pars$boxwex/ymult
+  median.left<-((at-width/2)+insets)
+  median.right<-((at+width/2)-insets)
+  # display the notches
+  segments(at-width/2,bxgap$conf[1,],median.left,bxgap$stats[3,],col=border)
+  segments(at-width/2,bxgap$conf[2,],median.left,bxgap$stats[3,],col=border)
+  segments(median.right,bxgap$stats[3,],at+width/2,bxgap$conf[1,],col=border)
+  segments(median.right,bxgap$stats[3,],at+width/2,bxgap$conf[2,],col=border)
  }
  else {
-  median.left<-1:nboxes-width/2
-  median.right<-1:nboxes+width/2
+  median.left<-at-width/2
+  median.right<-at+width/2
  }
+ # draw the median line
  segments(median.left,bxgap$stats[3,],median.right,bxgap$stats[3,],
   lwd=2,col=border)
- segments(1:nboxes,bxgap$stats[1,],1:nboxes,bxgap$stats[2,],
-  lty=2,col=border)
- segments(1:nboxes, bxgap$stats[4,],1:nboxes,bxgap$stats[5,],
-  lty=2,col=border)
- segments(1:nboxes-pars$staplewex*width/2,bxgap$stats[1,],
-  1:nboxes+pars$staplewex*width/2,bxgap$stats[1,],col = border)
- segments(1:nboxes-pars$staplewex*width/2,bxgap$stats[5,],
-  1:nboxes+pars$staplewex*width/2,bxgap$stats[5,],col=border)
+ segments(at,bxgap$stats[1,],at,bxgap$stats[2,],lty=2,col=border)
+ segments(at,bxgap$stats[4,],at,bxgap$stats[5,],lty=2,col=border)
+ segments(at-pars$staplewex*width/2,bxgap$stats[1,],
+  at+pars$staplewex*width/2,bxgap$stats[1,],col = border)
+ segments(at-pars$staplewex*width/2,bxgap$stats[5,],
+  at+pars$staplewex*width/2,bxgap$stats[5,],col=border)
  if(!is.na(gap$top[1])) topadjust<-diff(gap$top)
  else topadjust<-0
  if(!is.na(gap$bottom[1])) bottomadjust<-diff(gap$bottom)
@@ -96,6 +97,6 @@ gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  if(!is.na(gap$top[1])) axis.break(2,gap$top[1],style="gap")
  if(!is.na(gap$bottom[1]))
   axis.break(2,gap$bottom[2]-diff(plotlim[3:4])*0.02,style="gap")
- points(bxgap$group,bxgap$out)
+ if(length(bxgap$group) == length(bxgap$out)) points(bxgap$group,bxgap$out)
  invisible(bxgap)
 }

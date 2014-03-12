@@ -33,11 +33,22 @@
  \item{...}{Additional arguments passed to \samp{polygon}.}
 }
 \details{
- \samp{fan.plot} is now a call to fanPlot.
+ \samp{fan.plot} displays sectors much like a pie chart except that the
+ sectors are overlapped. this allows the angular extents of the sectors to
+ be visually compared much more accurately by the viewer. Sectors are plotted
+ from the largest to the smallest, shrinking the radius of each successive
+ sector.
 }
 \value{
  The circumferential positions of the labels in radians. These are
  returned in order of decreasing size of the values plotted.
 }
 \author{Jim Lemon, Anupam Tyagi}
+\examples{
+ iucn.df<-data.frame(area=c("Africa","Asia","Europe","N&C America",
+  "S America","Oceania"),threatened=c(5994,7737,1987,4716,5097,2093))
+ fan.plot(iucn.df$threatened,max.span=pi,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  main="Threatened species by geographical area (fan.plot)",ticks=276)
+}
 \keyword{misc}

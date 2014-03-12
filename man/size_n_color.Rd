@@ -57,12 +57,12 @@
   xlab="Temperature (degrees C)",ylab="Rainfall (mm)",
   main="Number and weight of pumpkins by temperature and rainfall",
   xat=seq(15,30,by=5),yat=seq(80,200,by=20))  
- color.legend(15,65,18.5,60,seq(40,70,by=10),
+ color.legend(15,55,18.5,60,seq(40,70,by=10),
   rect.col=color.scale(seq(40,70,by=10),c(0.8,0),c(0.8,1),0))
  points(15:18,rep(126,4),cex=seq(1.5,3.0,by=0.5))
  text(15:19,rep(134,5),c("1.5","2.0","2.5","3.0","kg"))
  par(xpd=TRUE)
- text(13.5,65,"Number of\npumpkins")
+ text(13.5,60,"Number of\npumpkins")
  par(xpd=FALSE)
  # now display a "visual table" of delayed registrations by underlying cause of
  # death and year of observation. The sizes of the circles represent the log of

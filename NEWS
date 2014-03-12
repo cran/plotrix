@@ -1,3 +1,12 @@
+version 3.5-5
+
+	fixed the radial label bug in the radial.* functions (thanks to Mayeul Kauffmann)
+	changed the circumferential label suppress value in the radial.* functions to NULL
+	added the color.axis function
+	added log correction for boxed.labels (thanks to Flemming Skjøth)
+	fixed the breaks bug in histStack.default (thanks to Derek Ogle)
+	added scaled bar widths to barNest
+
 version 3.5-3
 
 	fixed the problems with data frames and margins in battleship.plot (thanks to David Carlson)
