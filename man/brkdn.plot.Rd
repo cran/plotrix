@@ -76,7 +76,7 @@
  test.df<-data.frame(a=rnorm(80)+4,b=rnorm(80)+4,c=rep(LETTERS[1:4],each=20),
   d=rep(rep(letters[1:4],each=4),5))
  # first use the default values
- brkdn.plot("a","c","d",test.df,pch=1:4,col=1:4)
+ brkdn.plot("a","c","d",test.df,pch=21:24,col=2:5)
  # now jazz it up a bit using medians and median absolute deviations
  # and some enhancements
  bp<-brkdn.plot(a~c+d,data=test.df,main="Test of the breakdown plot",

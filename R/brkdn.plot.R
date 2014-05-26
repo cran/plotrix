@@ -129,8 +129,10 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  offset<-0
  arrow.cap<-0.01-(groupdiv*0.001)
  for(group in 1:ngroups) {
+  bg<-col[group]
+  if(pch[group] > 20 && pch[group] < 26) col[group]<-par("fg")
   points(obs.pos+offset,brkdn[[1]][group,],type=type,col=col[group],
-   pch=pch[group],lty=lty[group],...)
+   pch=pch[group],lty=lty[group],bg=bg,...)
   if(dispbar)
    dispersion(obs.pos+offset,brkdn[[1]][group,],brkdn[[2]][group,],
     arrow.cap=arrow.cap,col=col[group],...)

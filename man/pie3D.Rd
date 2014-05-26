@@ -18,7 +18,7 @@
  \item{start}{The angle at which to start drawing sectors.}
  \item{border}{The color of the sector border lines}
  \item{col}{The colors of the sectors}
- \item{labels}{Optional labels for each sector}
+ \item{labels}{Optional labels for each sector - default names(x)}
  \item{labelpos}{Optional positions for the labels (see examples)}
  \item{labelcol}{The color of the labels}
  \item{labelcex}{The character expansion factor for the labels}
