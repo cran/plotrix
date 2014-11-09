@@ -25,9 +25,9 @@
  \samp{maxEmptyRect} finds a slightly larger narrow rectangle.
 }
 \value{
- A list containing the area of the rectangle and the coordinates of the
+ A list containing the area of the rectangle, the coordinates of the
  lower left and upper right corners (as used in \samp{rect}) of the rectangle
- found.
+ found and the x and y coordinates of the center of the rectangle.
 }
 \author{Hans Borchers}
 \references{
@@ -40,5 +40,6 @@
  plot(x,y,main="Find the maximum empty rectangle",xlab="X",ylab="Y")
  mer<-maxEmptyRect(c(0,1),c(0,1),x,y)
  rect(mer$rect[1],mer$rect[2],mer$rect[3],mer$rect[4],border="red")
+ legend(mer,c("Legend","Myth"),pch=1:2,col=2:3,xjust=0.5,yjust=0.5)
 }
 \keyword{misc}

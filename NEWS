@@ -1,3 +1,18 @@
+version 3.5-10
+
+	added calculation method for SD in taylor.diagram (thanks to Melanie Moeller)
+	added the assembly seat distribution functions "seats" and "election"
+	  (thanks to Barry Rowlingson and Duncan Murdoch)
+	fixed the rectangle border problem in legendg (thanks to Christian Graul)
+
+version 3.5-9
+
+	added tangential labels to radial.plot
+
+version 3.5-8
+
+	fixed the line length bug in feather.plot (thanks to Dr. Kazama)
+
 version 3.5-6
 
 	added optional radial lines to the radial.grid function (thanks to Darren Obbard)

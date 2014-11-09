@@ -4,7 +4,7 @@
 \description{Displays a legend with more than one rectangle, symbol or line.}
 \usage{
  legendg(x,y=NULL,legend,fill=NULL,col=par("col"),          
- border="black",lty,lwd,pch=NULL,angle=45,density=NULL,       
+ border=list("black"),lty,lwd,pch=NULL,angle=45,density=NULL,       
  bty="o",bg=par("bg"),box.lwd=par("lwd"),box.lty=par("lty"), 
  box.col=par("fg"),pt.bg=NA,cex=1,pt.cex=cex,pt.lwd=lwd,  
  pt.space=1,xjust=0,yjust=1,x.intersp=1,y.intersp=1,

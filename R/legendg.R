@@ -1,5 +1,5 @@
 legendg<-function(x,y=NULL,legend,fill=NULL,col=par("col"),          
- border="black",lty,lwd,pch=NULL,angle=45,density=NULL,       
+ border=list("black"),lty,lwd,pch=NULL,angle=45,density=NULL,       
  bty="o",bg=par("bg"),box.lwd=par("lwd"),box.lty=par("lty"), 
  box.col=par("fg"),pt.bg=NA,cex=1,pt.cex=cex,pt.lwd=lwd,  
  pt.space=1,xjust=0,yjust=1,x.intersp=1,y.intersp=1,
@@ -30,14 +30,15 @@ legendg<-function(x,y=NULL,legend,fill=NULL,col=par("col"),
  }
  legend.info<-legend(x=x,y=y,legend=legend,col=par("bg"),lty=1,       
   bty=bty,bg=bg,box.lwd=box.lwd,box.lty=box.lty, 
-  box.col=par("fg"),pt.bg=NA,cex=1,pt.cex=pt.cex,pt.lwd=pt.lwd,  
+  box.col=par("fg"),pt.bg=NA,cex=cex,pt.cex=pt.cex,pt.lwd=pt.lwd,  
   xjust=xjust,yjust=yjust,x.intersp=x.intersp,y.intersp=y.intersp,
   adj=adj,text.width=text.width,text.col=text.col,merge=merge,
   trace=trace,plot=plot,ncol=ncol,horiz=horiz,title=title,
   inset=inset,title.col=title.col)
  if(!is.null(fill)) {
+  if(length(border) < length(fill)) border<-rep(border,length(fill))
   # display the rectangles
-  rectheight<-strheight("Q")
+  rectheight<-strheight("Q",cex=cex)
   if(length(adj) > 1) yadj<-adj[2] else yadj<-0.5
   for(nel in 1:length(fill)) {
    nrect<-length(fill[[nel]])
@@ -47,7 +48,7 @@ legendg<-function(x,y=NULL,legend,fill=NULL,col=par("col"),
    rights<-lefts+0.7*rectspace/nrect
    bottoms<-rep(legend.info$text$y[nel]-yadj*rectheight,nrect)
    rect(lefts,bottoms,rights,bottoms+rectheight,col=fill[[nel]],
-    border=ifelse(is.na(fill[[nel]]),par("bg"),par("fg")))
+    border=ifelse(is.na(fill[[nel]]),NA,border[[nel]]))
   }
  }
  if(!is.null(pch)) {

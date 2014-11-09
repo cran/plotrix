@@ -54,8 +54,8 @@
   "Houston TX","Los Angeles CA","Louisville KY","New Orleans LA",
   "New York NY","Philadelphia PA","Washington DC")
  colnames(educattn)<-c(1990,2000)
- bumpchart(educattn,main="Rank for high school completion by over 25s",
-  arrows=TRUE,length=0.2)
+ bumpchart(educattn,arrows=TRUE,
+  main="Rank for high school completion by over 25s")
  # now show the raw percentages and add central ticks
  bumpchart(educattn,rank=FALSE,
   main="Percentage high school completion by over 25s",

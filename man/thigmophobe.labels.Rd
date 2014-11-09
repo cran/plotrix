@@ -41,11 +41,12 @@
  right.
 }
 \value{
- A vector of directions away from the point nearest to each point.
+ A list of the x and y positions of the labels is returned invisibly.
 }
 \keyword{misc}
-\author{Jim Lemon (thanks to Stephen Milborrow for finding the single point bug
- and Erik Aronesty for finding the two point problem.)}
+\author{Jim Lemon (thanks to Stephen Milborrow for finding the single point
+ bug, Erik Aronesty for finding the two point problem and Vincent Bonhomme
+ for suggesting the return value.)}
 \seealso{\link{thigmophobe}, \link{text}}
 \examples{
  x<-rnorm(20)

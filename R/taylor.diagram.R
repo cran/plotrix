@@ -16,10 +16,12 @@
 # 2010-4-30 - added the gamma.col argument for pos.cor=TRUE plots - Jim Lemon
 # 2010-6-24 - added mar argument to pos.cor=TRUE plots - Jim Lemon
 # 2012-1-31 - added the cex.axis argument - Jim Lemon
+# 2014-08-11 - added optional sample SD as in original - Jim Lemon
 
-taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
- xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,gamma.col=8,
- sd.arcs=0,ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),pcex=1,
+taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,
+ pos.cor=TRUE,xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,
+ ngamma=3,gamma.col=8,sd.arcs=0,ref.sd=FALSE,sd.method="sample",
+ grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),pcex=1,
  cex.axis=1,normalize=FALSE,mar=c(5,4,6,6),...) {
  
  grad.corr.full<-c(0,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1)
@@ -28,8 +30,16 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
  # convert any list elements or data frames to vectors
  if(is.list(ref)) ref<-unlist(ref)
  if(is.list(model)) ref<-unlist(model)
- sd.r<-sd(ref)
- sd.f<-sd(model)
+ SD<-function(x,subn) {
+  meanx<-mean(x,na.rm=TRUE)
+  devx<-x-meanx
+  ssd<-sqrt(sum(devx*devx,na.rm=TRUE)/(length(x[!is.na(x)])-subn))
+  return(ssd)
+ }
+ # subtract 1 from N if sample SD not specified
+ subn<-sd.method != "sample"
+ sd.r<-SD(ref,subn)
+ sd.f<-SD(model,subn)
  if(normalize) {
   sd.f<-sd.f/sd.r
   sd.r<-1

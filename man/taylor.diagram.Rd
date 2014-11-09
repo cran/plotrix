@@ -5,7 +5,8 @@
 \usage{
  taylor.diagram(ref,model,add=FALSE,col="red",pch=19,pos.cor=TRUE,
   xlab="",ylab="",main="Taylor Diagram",show.gamma=TRUE,ngamma=3,
-  gamma.col=8,sd.arcs=0,ref.sd=FALSE,grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),
+  gamma.col=8,sd.arcs=0,ref.sd=FALSE,sd.method="sample",
+  grad.corr.lines=c(0.2,0.4,0.6,0.8,0.9),
   pcex=1,cex.axis=1,normalize=FALSE,mar=c(5,4,6,6),...)
 }
 \arguments{
@@ -26,6 +27,8 @@
   (see Details).}
  \item{ref.sd}{whether to display the arc representing the reference
   standard deviation.}
+ \item{sd.method}{Whether to calculate the sample or population standard
+  deviation.}
  \item{grad.corr.lines}{the values for the radial lines for correlation
   values (see Details).}
  \item{pcex}{character expansion for the plotted points.}

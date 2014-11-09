@@ -5,13 +5,14 @@
  Places labels on an axis in a regular staggered order or at an angle
 }
 \usage{
- staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,
-  srt=NA,ticklen=0.03,adj=1,...)
+ staxlab(side=1,at,labels,pos=NA,nlines=2,top.line=0.5,
+  line.spacing=0.8,srt=NA,ticklen=0.03,adj=1,...)
 }
 \arguments{
  \item{side}{axis on which to place the labels, as in \samp{axis}}
  \item{at}{where to place the labels in user units, as in \samp{axis}}
  \item{labels}{text strings}
+ \item{pos}{Position to place the axis as in \samp{axis}}
  \item{nlines}{How many lines to use to stagger the labels.}
  \item{top.line}{Distance from the axis to place the first line of text.}
  \item{line.spacing}{Spacing between lines of text labels.} 

@@ -82,7 +82,13 @@
  bp<-brkdn.plot(a~c+d,data=test.df,main="Test of the breakdown plot",
   mct="median",md="mad",xlab="Temperature range", ylab="Cognition",
   xaxlab=c("10-15","16-20","21-25","25-30"),pch=1:4,lty=1:4,col=1:4)
- es<-emptyspace(bp)
+ plotlim<-par("usr")
+ dimbp<-dim(bp[[1]])
+ # create a vector of all mean and +- MAD values
+ bpvec<-c(unlist(bp[[1]]),unlist(bp[[2]]),unlist(-bp[[2]]))
+ # replicate the x values to match the above
+ es<-maxEmptyRect(plotlim[1:2],plotlim[3:4],
+  rep(rep(1:dimbp[2],each=dimbp[1]),3),bpvec)
  legend(es,legend=c("Sydney","Gosford","Karuah","Brisbane"),pch=1:4,
   col=1:4,lty=1:4,xjust=0.5,yjust=0.5)
 }

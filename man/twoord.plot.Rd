@@ -129,6 +129,14 @@
   lytickpos=3:7,rytickpos=seq(55,75,by=5),ylab.at=5,rylab.at=65,
   main="Lines on left axis, bars on right axis",
   lcol=3,rcol=4,do.first="plot_bg(\"yellow\")")
+ x1<-as.Date(paste(2014,10,c(2,10,15,20,23,28),sep="-"))
+ x2<-as.Date(paste(2014,10,c(5,8,16,22,25,29),sep="-"))
+ y1<-sample(1:10,6)
+ y2<-sample(1:10,6)
+ datepos<-pretty(c(x1,x2))
+ twoord.plot(x1,y1,x2,y2,type="b",main="X axis dates",
+  xtickpos=as.numeric(datepos),
+  xticklab=as.character(datepos))
  # histogram with density curve superimposed
  xhist<-hist(rnorm(100),plot=FALSE)
  xdens<-dnorm(seq(-3,3,by=0.05))

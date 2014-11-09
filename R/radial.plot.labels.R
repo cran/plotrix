@@ -12,6 +12,8 @@ radial.plot.labels<-function(lengths,radial.pos=NULL,units="radians",
  }
  if(clockwise && units != "clock24") radial.pos<--radial.pos
  if(start && units != "clock24") radial.pos<-radial.pos+start
+ if(length(radial.pos) < npoints)
+  radial.pos<-rep(radial.pos,length.out=npoints)
  if(is.null(radial.lim)) radial.lim<-range(lengths)
  lengths<-lengths-radial.lim[1]
  # get the vector of x positions

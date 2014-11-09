@@ -38,13 +38,16 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
    y=as.matrix(height))
  }
  if(is.null(xlim)) xlim<-range(x)+c(-0.6,0.6)
- negy<-any(height<0,na.rm=TRUE)
  if(is.null(ylim)) {
+  negy<-any(height<0,na.rm=TRUE)
   if(negy) miny<-min(height,na.rm=TRUE)*1.05
   else miny<-ifelse(ylog,min(height)/10,0)
   ylim<-c(miny,max(height,na.rm=TRUE)*1.05)
  }
- else miny<-ylim[1]
+ else {
+  miny<-ylim[1]
+  negy<-miny<0
+ }
  plot(ylim[1],type="n",main=main,xlab=xlab,ylab=ylab,axes=FALSE,xlim=xlim,
   ylim=ylim,xaxs="i",yaxs="i",log=ifelse(ylog,"y",""))
  if(!is.null(do.first)) eval(parse(text=do.first))

@@ -14,7 +14,7 @@ starPie<-function(x,y,radext,values,maxval=NA,border=par("fg"),col=NA,
   labelpos<-rep(labelpos,length.out=valdim[1]*valdim[2])
  if(is.na(col[1])) col<-rainbow(nfaces)
  if(length(col)<nfaces) col<-rep(col,length.out=nfaces)
- if(is.na(maxval)) maxval<-max(values)
+ if(is.na(maxval[1])) maxval<-max(values)
  # get the y adjustment
  ymult<-getYmult()
  if(prop.area) values<-sqrt(values)

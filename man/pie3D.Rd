@@ -7,7 +7,7 @@
 \usage{
  pie3D(x,edges=NA,radius=1,height=0.1,theta=pi/6,start=0,border=par("fg"),
   col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
-  sector.order=NULL,explode=0,shade=0.8,mar=c(4,4,4,4),pty="s",...)
+  labelrad=1.25,sector.order=NULL,explode=0,shade=0.8,mar=c(4,4,4,4),pty="s",...)
 }
 \arguments{
  \item{x}{a numeric vector for which each value will be a sector}
@@ -22,6 +22,8 @@
  \item{labelpos}{Optional positions for the labels (see examples)}
  \item{labelcol}{The color of the labels}
  \item{labelcex}{The character expansion factor for the labels}
+ \item{labelrad}{The radius for placing the labels as a proportion of
+  the pie radius}
  \item{sector.order}{Allows the operator to specify the order in
   which the sectors are drawn.}
  \item{explode}{The amount to "explode" the pie in user units}
@@ -66,22 +68,29 @@
  sectors.
 
  Contributed fixes and improvements:
- thanks to Jesse Brown for the "shade" fix and Qinghua Zhao for alerting me to
- the problem with labels and margins
+ thanks to Jesse Brown for the "shade" fix, Qinghua Zhao for alerting me to
+ the problem with labels and margins and Ben Earnest for the fix for
+ pie sectors that "wrap around" more than pi radians.
 }
 \author{Jim Lemon}
 \seealso{\link{pie3D.labels}, \link{draw.tilted.sector}}
 \examples{
  pieval<-c(2,4,6,8)
- pielabels<-
-  c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
+ pielabels<-c("We hate\n pies","We oppose\n  pies",
+  "We don't\n  care","We just love pies")
  # grab the radial positions of the labels
- lp<-pie3D(pieval,radius=0.9,labels=pielabels,explode=0.1,main="3D PIE OPINIONS")
+ lp<-pie3D(pieval,radius=0.8,labels=pielabels,explode=0.1,
+  labelrad=1.4,main="3D PIE OPINIONS")
  # lengthen the last label and move it to the left
  pielabels[4]<-"We cannot survive without our pies"
  lp[4]<-4.8
  # specify some new colors
- pie3D(pieval,radius=0.9,labels=pielabels,explode=0.1,main="3D PIE OPINIONS",
-  col=c("brown","#ddaa00","pink","#dd00dd"),labelpos=lp)
+ pie3D(pieval,radius=0.8,labels=pielabels,explode=0.1,
+  col=c("brown","#ddaa00","pink","#dd00dd"),
+  labelrad=1.4,labelpos=lp,main="3D PIE OPINIONS")
+ pieval<-c(2,3,4,20)
+ pielabels<-
+  c("Tiny","Very\nsmall","Small","Great big one")
+ pie3D(pieval,labels=pielabels,start=4,main="Wraparound sector")
 }
 \keyword{misc}
