@@ -59,7 +59,6 @@
  box.heresy(ymean,uinner=uinner,linner=linner,ulim=ulim,llim=llim,
   main="Boxplot of means, central spread and range",xlab="Distribution",
   xaxlab=c("Uniform","Normal","Sample"))
- y1outer<-
  y<-runif(5)
  ulim<-runif(5)
  llim<-runif(5)

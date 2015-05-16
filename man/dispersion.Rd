@@ -8,7 +8,7 @@
 }
 \usage{
  dispersion(x,y,ulim,llim=ulim,intervals=TRUE,arrow.cap=0.01,arrow.gap=NA,
-  type="a",fill=NA,lty=NA,pch=NA,border=NA,display.na=TRUE,...)
+  type="a",fill=NA,lty=NA,pch=NA,border=NA,col=par("fg"),display.na=TRUE,...)
 }
 \arguments{
  \item{x,y}{x and y position of the centers of the bars}
@@ -25,6 +25,7 @@
  \item{lty}{Line type for redrawing the lines if necessary.}
  \item{pch}{Symbol for redrawing the points if necessary.}
  \item{border}{Line type for drawing a border on the confidence band.}
+ \item{col}{Color(s) to use for the lines or capped bars.}
  \item{display.na}{Whether to display NA values as lines going off the plot.}
  \item{...}{additional arguments passed to \samp{arrows} or \samp{lines}
   depending upon \samp{type}.}
@@ -57,10 +58,11 @@
  disptest.means<-rowMeans(disptest)
  row.order<-order(disptest.means)
  se.disptest<-unlist(apply(disptest,1,std.error))
- plot(disptest.means[row.order],main="Dispersion as error bars",
+ plot(disptest.means[row.order],main="Dispersion as outlined error bars",
   ylim=c(min(disptest.means-se.disptest),max(disptest.means+se.disptest)),
   xlab="Occasion",ylab="Value")
- dispersion(1:20,disptest.means[row.order],se.disptest[row.order])
+ dispersion(1:20,disptest.means[row.order],se.disptest[row.order],lwd=3)
+ dispersion(1:20,disptest.means[row.order],se.disptest[row.order],col="white")
  plot(disptest.means[row.order],main="Dispersion as confidence band",
   ylim=c(min(disptest.means-se.disptest),max(disptest.means+se.disptest)),
   xlab="Occasion",ylab="Value")

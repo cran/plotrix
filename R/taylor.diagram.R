@@ -153,7 +153,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,
     lines(c(-maxray,maxray),c(0,0))
     lines(c(0,0),c(0,maxray))
 
-    # lignes radiales jusqu'� R = +/- 0.8
+    # lignes radiales R = +/- 0.8
     for (i in grad.corr.lines){
      lines(c(0,maxray*i),c(0,maxray*sqrt(1-i^2)),lty=3)
      lines(c(0,-maxray*i),c(0,maxray*sqrt(1-i^2)),lty=3)

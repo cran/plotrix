@@ -12,13 +12,13 @@ scaling, text placement and legends.
 \details{
 \tabular{ll}{
 Package: \tab plotrix\cr
-Version: \tab 3.5-4\cr
-Date: \tab 2014-03-01\cr
+Version: \tab 3.5-12\cr
+Date: \tab 2015-05-13\cr
 License: \tab GPL (>=2)\cr
-Packaged: \tab 2014-03-01 20:55:16 UTC; root\cr
-Built: \tab R 3.0.2; ; 2014-03-01 20:56:19 UTC; linux\cr
+Packaged: \tab 2015-05-13 20:55:16 UTC; root\cr
+Built: \tab R 3.2.0; ; 2015-05-13 20:56:19 UTC; linux\cr
 }
- The plotrix package is intended to provide a method for getting many sorts of
+ The plotrix package is intended to allow users to get many sorts of
  specialized plots quickly, yet allow easy customization of those plots
  without learning a great deal of specialized syntax. There are three major
  aims that can be represented as follows:
@@ -37,7 +37,7 @@ You can customize plotrix as much as you want. Like the ageing machinery that
  understand. plotrix is modular. You can create a frame for your plot, then
  you can add whatever bits you like to it instead of just taking the default
  plot that is available. You can have wide wheels and chromed exhaust pipes if
- you want.
+ you wish.
 
 No black boxes
 
@@ -54,10 +54,10 @@ Because plotrix encourages users to learn how it works, you usually begin to
  You may find that you like other graphics systems like grid or lattice better.
  That's great, because one idea behind plotrix is that if you get into R and
  can get things done quickly and easily, you'll stick with it and soon want to
- get things done your way. 
+ do things your own way. 
 }
 \author{
-Jim Lemon <jim@bitwrit.com.au>, and many others
-Maintainer: Jim Lemon <jim@bitwrit.com.au>
+Jim Lemon <drjimlemon@gmail.com>, and many others
+Maintainer: Jim Lemon <drjimlemon@gmail.com>
 }
 \keyword{ package }

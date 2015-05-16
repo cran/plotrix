@@ -8,7 +8,7 @@
 }
 \usage{
  gap.barplot(y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,xlab=NULL,
-  ylab=NULL,horiz=FALSE,col,...)
+  ylab=NULL,halfwidth=NA,horiz=FALSE,col,...)
 }
 \arguments{
  \item{y}{a vector of data values}
@@ -21,6 +21,8 @@
  \item{ylim}{optional y limits for the plot}
  \item{xlab}{label for the x axis}
  \item{ylab}{label for the y axis}
+ \item{halfwidth}{Half of the width of the bars. Set this to zero for
+  adjoining bars.}
  \item{horiz}{whether to have vertical or horizontal bars}
  \item{col}{color(s) in which to plot the values}
  \item{...}{arguments passed to \samp{barplot}.}

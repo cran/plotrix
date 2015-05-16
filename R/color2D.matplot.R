@@ -29,6 +29,7 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
  border="black",na.color=NA,xrange=NULL,color.spec="rgb",yrev=TRUE,
  xat=NULL,yat=NULL,Hinton=FALSE,...) {
  
+ if(diff(range(x,na.rm=TRUE))==0) x<-x/max(x,na.rm=TRUE)
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
   if(is.data.frame(x)) x<-unlist(x)

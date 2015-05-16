@@ -1,6 +1,7 @@
 color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
  extremes=NA,na.color=NA,xrange=NULL,color.spec="rgb") {
- 
+
+ if(diff(range(x,na.rm=TRUE))==0) x<-x/max(x,na.rm=TRUE)
  naxs<-is.na(x)
  if(!is.na(extremes[1])){
   # calculate the color ranges from the extremes - only for rgb

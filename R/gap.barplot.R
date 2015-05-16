@@ -1,5 +1,5 @@
 gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,
- xlab=NULL,ylab=NULL,horiz=FALSE,col=NULL,...) {
+ xlab=NULL,ylab=NULL,halfwidth=NA,horiz=FALSE,col=NULL,...) {
  if (missing(y)) stop("y values required")
  if(missing(xtics)) xtics <- 1:length(y)
  if (missing(gap)) stop("gap must be specified")
@@ -19,7 +19,7 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,
  if(missing(yaxlab)) yaxlab <- ytics
  littletics <- which(ytics < gap[1])
  bigtics <- which(ytics >= gap[2])
- halfwidth <- min(diff(xtics))/2
+ if(is.na(halfwidth)) halfwidth <- min(diff(xtics))/2
  if(horiz) {
   if(!is.null(xlab)) {
    tmplab<-xlab
@@ -28,7 +28,7 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,
   }
   plot(0,xlim=ylim,ylim=xlim,xlab=xlab,ylab=ylab,axes=FALSE,type="n",...)
   plot.lim <- par("usr")
-  botgap<-ifelse(gap[1]<0,gap[1],ylim[1])
+  botgap<-ifelse(gap[1]<0,gap[1],xlim[1])
   box()
   axis(2,at=xtics,labels=xaxlab,...)
   axis(1,at=c(ytics[littletics],ytics[bigtics]-gapsize),
@@ -42,7 +42,7 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,
  else {
   plot(0,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab,axes=FALSE,type="n",...)
   plot.lim <- par("usr")
-  botgap<-ifelse(gap[1]<0,gap[1],xlim[1])
+  botgap<-ifelse(gap[1]<0,gap[1],ylim[1])
   box()
   axis(1,at=xtics,labels=xaxlab,...)
   axis(2,at=c(ytics[littletics],ytics[bigtics] - gapsize),

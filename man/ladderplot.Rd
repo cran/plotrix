@@ -2,9 +2,7 @@
 \Rdversion{1.1}
 \alias{ladderplot}
 \alias{ladderplot.default}
-\title{
-Ladder Plot
-}
+\title{Ladder Plot}
 \description{
 Makes a ladder plot, similar to \link[MASS]{parcoord} but with more
 flexibility and graphical options.

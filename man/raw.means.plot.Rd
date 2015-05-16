@@ -230,9 +230,6 @@ You can use \samp{raw.means.plot} to plot only a legend by setting
 \value{
 Nothing. This function is invoked for its side effects.
 }
-\references{
-see \url{http://www.psychologie.uni-freiburg.de/Members/singmann/R/rm.plot}
-}
 \author{
 Henrik Singmann (\email{henrik.singmann@psychologie.uni-freiburg.de}) with
  ideas from Jim Lemon

@@ -43,7 +43,8 @@ get.gantt.info<-function(format="%Y/%m/%d") {
 gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL, 
  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1,
- border.col=NA,priority.label="Priorities",priority.extremes=c("High","Low")) {
+ border.col=NA,priority.label="Priorities",priority.extremes=c("High","Low"),
+ time.axis=3) {
 
  oldpar<-par("mai","omi","xpd","xaxs","yaxs")
  if(is.null(x)) x<-get.gantt.info(format=format)
@@ -62,9 +63,9 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  else barcolors<-taskcolors
  if(length(barcolors) < ntasks) barcolors <- barcolors[x$priorities]
  nlabels<-length(x$labels)
+ bottom.margin<-ifelse(time.axis==3,0.8,1.3)
  if(length(barcolors) < nlabels) 
   barcolors<-barcolors[as.numeric(factor(x$labels))]
- bottom.margin<-ifelse(priority.legend || nchar(xlab),0.7,0)
  par(mai=c(bottom.margin,maxwidth,charheight*5,0.1))
  par(omi=c(0.1,0.1,0.1,0.1),xaxs="i",yaxs="i")
  plot(range(x$starts),c(1,ntasks),xlim=xlim,ylim=c(0.5,ntasks+0.5),
@@ -74,7 +75,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  if(nchar(xlab)) mtext(xlab,1,1)
  if(is.na(vgrid.format)) {
   if(is.null(vgridlab)) vgridlab<-vgridpos
-  axis(3,at=vgridpos,labels=vgridlab)
+  axis(time.axis,at=vgridpos,labels=vgridlab,padj=0)
   tickpos<-vgridpos
  }
  else {
@@ -83,7 +84,7 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
   if(is.null(vgridlab) && !is.null(vgridpos)) 
    vgridlab<-format.POSIXct(vgridpos,vgrid.format)
   if(is.null(vgridlab)) axis.POSIXct(3,xlim,format=vgrid.format)
-  else axis(3,at=tickpos,labels=vgridlab)
+  else axis(time.axis,at=tickpos,labels=vgridlab,padj=0)
  }
  topdown<-seq(ntasks,1)
  axis(2,at=topdown,labels=tasks,las=2,cex.axis=label.cex)
@@ -103,14 +104,19 @@ gantt.chart<-function(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
  if(priority.legend) {
   par(xpd=TRUE)
   plim<-par("usr")
-  gradient.rect(plim[1],plim[3]-(plim[4]-plim[3])/10, 
-   plim[1]+(plim[2]-plim[1])/4,plim[3]-(plim[4]-plim[3])/20,col=taskcolors)
+  plot.width<-diff(plim[1:2])
+  line.height<-strheight("W")
+  color.legend(plim[1]+2*plot.width/5,
+   plim[3]-(6.5-time.axis)*line.height,
+   plim[1]+3*plot.width/5,
+   plim[3]-(5.5-time.axis)*line.height,
+   legend=c("High",rep("",length(taskcolors)-2),"Low"),
+   rect.col=taskcolors)
   par(xpd=NA)
-  text(plim[1]+(plim[2]-plim[1])/8,plim[3]-(plim[4]-plim[3])/9,
+  text(plim[1]+plot.width/2,
+   plim[3]-(7-time.axis)*line.height,
    priority.label,adj=c(0.5,1))
   par(xpd=FALSE)
-  mtext(priority.extremes,side=1,line=0,
-   at=c(plim[1],plim[1]+(plim[2]-plim[1])/4),cex=0.8)
  }
  par(oldpar)
  invisible(x)

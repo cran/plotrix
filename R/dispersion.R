@@ -1,6 +1,6 @@
 dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
  arrow.cap=0.01,arrow.gap=NA,type="a",fill=NA,lty=NA,pch=NA,
- border=NA,display.na=TRUE,...) {
+ border=NA,col=par("fg"),display.na=TRUE,...) {
 
  if(is.list(x) && length(x[[1]]) == length(x[[2]])) {
   y<-x$y
@@ -19,6 +19,11 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
  plotlim<-par("usr")
  npoints<-length(x)
  if(is.na(arrow.gap)) arrow.gap<-strheight("O")/1.5
+ # this hack for matrices may not work in all cases
+ if(length(col) < npoints) {
+  if(is.matrix(x) && length(col) == dim(x)[2]) col<-rep(col,each=dim(x)[1])
+  else col<-rep(col,npoints)
+ }
  for(i in 1:npoints) {
   if(toupper(type) == "A") {
    if(!is.na(llim[i])) {
@@ -29,14 +34,14 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
      x0<-x[i]-caplen
      x1<-x[i]+caplen
      y0<-y1<-llim[i]
-     segments(x0,y0,x1,y1,...)
+     segments(x0,y0,x1,y1,col=col[i],...)
     }
     else {
      caplen<-arrow.cap*par("pin")[1]
      x0<-x1<-x[i]
      y0<-y[i]-arrow.gap
      y1<-llim[i]
-     arrows(x0,y0,x1,y1,length=caplen,angle=90,...)
+     arrows(x0,y0,x1,y1,length=caplen,angle=90,col=col[i],...)
     }
    }
    else {
@@ -44,7 +49,7 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
      x0<-x1<-x[i]
      y0<-y[i]-arrow.gap
      y1<-plotlim[3]
-     segments(x0,y0,x1,y1,...)
+     segments(x0,y0,x1,y1,col=col[i],...)
     }
    }
    if(!is.na(ulim[i])) {
@@ -54,14 +59,14 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
      x0<-x[i]-caplen
      x1<-x[i]+caplen
      y0<-y1<-ulim[i]
-     segments(x0,y0,x1,y1,...)
+     segments(x0,y0,x1,y1,col=col[i],...)
     }
     else {
      caplen<-arrow.cap*par("pin")[1]
      x0<-x1<-x[i]
      y0<-y[i]+arrow.gap
      y1<-ulim[i]
-     arrows(x0,y0,x1,y1,length=caplen,angle=90,...)
+     arrows(x0,y0,x1,y1,length=caplen,angle=90,col=col[i],...)
     }
    }
    else {
@@ -69,7 +74,7 @@ dispersion<-function (x,y,ulim,llim=ulim,intervals=TRUE,
      x0<-x1<-x[i]
      y0<-y[i]+arrow.gap
      y1<-plotlim[4]
-     segments(x0,y0,x1,y1,...)
+     segments(x0,y0,x1,y1,col=col[i],...)
     }
    }
   }

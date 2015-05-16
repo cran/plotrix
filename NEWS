@@ -1,3 +1,9 @@
+version 3.5-12
+
+	added choice of time axis (1 or 3) to gantt.chart (thanks to Mathias Collins)
+	added outlined error bars to the dispersion function (thanks to Michael Eisenring)
+	added a check for no variation in values to color.scale and color2D.matplot (thanks to Diego Calzolari)
+
 version 3.5-11
 
 	changed my email address
