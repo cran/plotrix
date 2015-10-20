@@ -39,7 +39,7 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
    else axis(2,at=1:ncats * as.logical(rx+1),labels=rep("",ncats),pos=gap,
     tcl=-0.25)
    if(!is.null(lxdim)) axis(4,at=1:ncats,labels=rep("",ncats),pos=-gap,tcl=-0.25)
-   else axis(4,at=1:ncats * as.logical(lx+1),labels=rep("",ncats),pos=gap,
+   else axis(4,at=1:ncats * as.logical(lx+1),labels=rep("",ncats),pos=-gap,
     tcl=-0.25)
   }
   # display the category labels

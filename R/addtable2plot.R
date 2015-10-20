@@ -12,6 +12,7 @@ addtable2plot<-function(x,y=NULL,table,lwd=par("lwd"),bty="n",
    tablepos<-get.tablepos(x)
    x<-tablepos$x
    y<-tablepos$y
+   if (par("ylog")) y<-10^y
    xjust<-tablepos$xjust
    yjust<-tablepos$yjust
   }

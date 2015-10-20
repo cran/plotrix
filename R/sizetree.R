@@ -1,7 +1,9 @@
 sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,
- showcount=TRUE,firstcall=TRUE,col=NULL,border=NA,toplab=NULL,base.cex=1,...) {
+ showcount=TRUE,stacklabels=TRUE,firstcall=TRUE,col=NULL,border=NA,
+ toplab=NULL,base.cex=1,...) {
 
  dimx<-dim(x)
+ colname<-names(x)[1]
  if(firstcall) {
   x<-x[do.call(order,x),]
   oldmar<-par("mar")
@@ -65,6 +67,7 @@ sizetree<-function(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,
    }
    top<-top-xfreq[bar]
   }
+  if(stacklabels) mtext(colname,side=1,at=(left+right)/2,line=-0.4)
  }
  if(firstcall) {
   if(!is.null(toplab)) {

@@ -1,3 +1,12 @@
+version 3.6
+
+	fixed the missing left axis ticks in pyramid.plot (thanks to Jacob Clark)
+	corrected addtable2plot for log y plots (thanks to Andrew Metcalfe)
+	made the axis label and axis tick expansions the same in twoord.plot (thanks to wxj)
+	made the axis label and tick labels the same color as the axis in twoord.plot
+	added stack labels to the sizetree function
+	added imports now necessary for R CMD check
+
 version 3.5-12
 
 	added choice of time axis (1 or 3) to gantt.chart (thanks to Mathias Collins)

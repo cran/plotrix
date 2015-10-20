@@ -3,7 +3,7 @@
 \title{A pie-like graphic object}
 \usage{
  starPie(x,y,radext,values,maxval=NA,border=par("fg"),col=NA,prop.area=FALSE,
-  label="",labelpos=1)
+  label="",labelpos=1,radlab=NA,radprop=1.05,radlabcex=1)
 }
 \description{
  Display a polygon with each sector proportional to a vector of numeric values.
@@ -21,6 +21,9 @@
   radial extent (FALSE) of the polygon sectors.}
  \item{label}{Optional text labels for the starPies.}
  \item{labelpos}{Positions of the labels relative to the starPies.}
+ \item{radlab}{Optional labels for the sectors of the starPie.}
+ \item{radprop}{Proportional radial placement for the radial labels.}
+ \item{radlabcex}{Character expansion for the radial labels.}
 }
 \value{nil}
 \details{
@@ -43,6 +46,11 @@
  to have different sector colors for different objects, but the user can display
  more than one set of starPies on a plot with different sector colors if
  necessary.
+ 
+ Sector labels may be placed around each starPie to identify the sectors.
+ Currently only one set of radial labels can be specified, as there does not
+ seem to be any reason to have different labels when multiple starPies are
+ displayed.
 
  \samp{starPie} calls \samp{getYmult} to automatically adjust for both the aspect
  and coordinate ratio of the plot.
@@ -66,5 +74,10 @@
  starPie(x=rep(1:10,2),y=rep(c(0.9,2.4),each=10),radext=0.5,
   values=as.matrix(date_mat[,3:7]),label=as.character(date_mat[["names"]]))
  par(mar=c(5,4,4,2))
+ # now a representation of different ion concentrations (see radial.plot)
+ ions<-c(3.2,5.0,1.0,3.1,2.1,4.5)
+ ion.names<-c("Na","Ca","Mg","Cl","HCO3","SO4")
+ plot(0:1,0:1,type="n",xlab="",ylab="",axes=FALSE)
+ starPie(0.5,0.5,0.5,ions,radlab=ion.names)
 }
 \keyword{misc}

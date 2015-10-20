@@ -6,7 +6,8 @@
  rectangles.}
 \usage{
  sizetree(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,showcount=TRUE,
-  firstcall=TRUE,col=NULL,border=NA,toplab=NULL,base.cex=1,...)
+  stacklabels=TRUE,firstcall=TRUE,col=NULL,border=NA,toplab=NULL,base.cex=1,
+  ...)
 }
 \arguments{
  \item{x}{A data frame in which each successive column represents
@@ -18,6 +19,8 @@
   breakdown of categories arises. There is almost no reason to change it.}
  \item{showval}{Whether to display the values representing the categories.}
  \item{showcount}{Whether to display the count for the categories.}
+ \item{stacklabels}{Whether to display the names of the dataframe beneath
+  the stacked rectangles.}
  \item{firstcall}{A flag for the function - do not alter this.}
  \item{col}{Optional fill colors for the rectangles. See Details}
  \item{border}{Color for border around the rectangles. See details}

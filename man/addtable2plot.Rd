@@ -42,8 +42,9 @@
  colors will be the backgrounds of the cells. The default is no background color.
 }
 \author{Original by John Kane, mods by Jim Lemon and Brian Diggs. Thanks to
- Andrija Djurovic for asking for the individual cell colors and Gabor Grothendieck
- for alerting me to the problem of widely varying column widths.}
+ Andrija Djurovic for asking for the individual cell colors, Gabor Grothendieck
+ for alerting me to the problem of widely varying column widths and Andrew
+ Metcalfe for the y log scale fix.}
 \seealso{\link{legend}}
 \examples{
  testdf <- data.frame(Before = c(10, 7, 5, 9), During = c(8, 6, 2, 5),

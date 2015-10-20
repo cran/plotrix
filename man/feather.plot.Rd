@@ -46,8 +46,9 @@
  feather.plot(r,theta,xlabels=1:24,
   main="Standard Coordinates",xlab="Time",ylab="Value")
  # rearrange theta for meteorological coordinates
- feather.plot(r,c(theta[19:24],rev(theta[7:18]),theta[1:6]),xlabels=1:24,fp.type="m",
-  main="Meteorological Coordinates",xlab="Time",ylab="Value")
+ feather.plot(r,c(theta[19:24],rev(theta[7:18]),theta[1:6]),
+  xlabels=1:24,fp.type="m",main="Meteorological Coordinates",
+  xlab="Time",ylab="Value")
  dev.off()
 }
 \keyword{misc}

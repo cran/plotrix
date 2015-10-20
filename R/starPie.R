@@ -1,5 +1,5 @@
 starPie<-function(x,y,radext,values,maxval=NA,border=par("fg"),col=NA,
- prop.area=FALSE,label="",labelpos=1) {
+ prop.area=FALSE,label="",labelpos=1,radlab=NA,radprop=1.05,radlabcex=1) {
 
  valdim<-dim(values)
  if(is.null(valdim)) {
@@ -20,6 +20,7 @@ starPie<-function(x,y,radext,values,maxval=NA,border=par("fg"),col=NA,
  if(prop.area) values<-sqrt(values)
  for(spie in 1:valdim[1]) {
   angles<-5*pi/2-seq(0,pi*2,length.out=nfaces+1)
+  labangles<-angles+diff(angles[1:2]/2)
   # for proportional area sectors, use the square root 
   # adjust the maximum value to the radius
   facerad<-radext*values[spie,]/maxval
@@ -31,6 +32,13 @@ starPie<-function(x,y,radext,values,maxval=NA,border=par("fg"),col=NA,
    polygon(xpos,ypos,col=col[face])
    segments(x[spie],y[spie],x[spie]+cos(angles[face])*radext,
     y[spie]+sin(angles[face])*radext*ymult)
+   if(!is.na(radlab[1])) {
+    par(xpd=TRUE)
+    text(x[spie]+cos(labangles[face])*radext*radprop,
+     y[spie]+sin(labangles[face])*radext*radprop,
+     radlab[face],cex=radlabcex)
+    par(xpd=FALSE)
+   }
   }
   if(nchar(label[spie])) {
    x[spie]<-ifelse(labelpos[spie]%%2,x[spie],x[spie]+radext*(labelpos[spie]-3))

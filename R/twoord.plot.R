@@ -10,9 +10,12 @@ color.axis<-function(side=1,at=NULL,labels=TRUE,axlab=NA,axlab.at=NA,
   if(min(at) < xylim[3]) at<-at[at >= xylim[3]]
   if(max(at) > xylim[4]) at<-at[at <= xylim[4]]
  }
+ axcol<-par("col.axis")
+ par(col.axis=col)
  axis(side=side,at=at,labels=rep("",length(at)),col=col)
  if(labels[1] == TRUE && length(labels) == 1) labels<-at
  mtext(labels,side=side,at=at,line=0.7,col=col,cex=cex.axis)
+ par(col.axis=axcol)
  if(!is.na(axlab)) {
   if(is.na(axlab.at))
    axlab.at<-ifelse(side%%2,sum(xylim[1:2])/2,sum(xylim[3:4])/2)
@@ -97,7 +100,7 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,main="",xlim=NULL,lylim=NULL,
  if(is.na(lytickpos[1])) lytickpos<-pretty(ly)
  if(is.na(ylab.at)) ylab.at<-mean(lytickpos)
  color.axis(2,at=lytickpos,axlab=ylab,axlab.at=ylab.at,
-  col=ifelse(is.na(lcol),1,lcol),cex.axis=axislab.cex)
+  col=ifelse(is.na(lcol),1,lcol),cex.axis=axislab.cex,cex=axislab.cex)
  # get the "right" y limits
  if(is.null(rylim)) {
   rylim<-range(ry,na.rm=TRUE)
@@ -125,6 +128,6 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,main="",xlim=NULL,lylim=NULL,
  if(!is.na(rylab.at)) rylab.at<-rylab.at*ymult+yoff
  # display the right axis
  color.axis(4,at=axat,labels=rylabels,axlab=rylab,axlab.at=rylab.at,
-  col=ifelse(is.na(rcol),1,rcol),cex.axis=axislab.cex)
- par(mar=oldmar,new=FALSE)
+  col=ifelse(is.na(rcol),1,rcol),cex.axis=axislab.cex,cex=axislab.cex)
+ par(mar=oldmar,new=FALSE,col.axis="black")
 }

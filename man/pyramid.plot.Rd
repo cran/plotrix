@@ -120,5 +120,19 @@
   fill=c("#ff0000","#eeee88","#0000ff"))
  # don't forget to restore the margins and background
  par(mar=oldmar,bg="transparent")
+ # a "propensity score plot"
+ lx<-c(0,0,0,0,0,0,0,0,0,0,0,0,0,20,30,55,60,60,70,80,100,90)
+ rx<-c(90,95,95,80,70,65,75,54,52,50,40,20,0,0,0,0,0,0,0,0,0,0)
+ oldmar<-pyramid.plot(lx,rx,labels=rep("",22),gap=0,
+  top.labels=rep("",3),laxlab=seq(0,100,by=20),raxlab=seq(0,100,by=20),
+  unit="",lxcol=rep("gray",22),rxcol=rep("gray",22),ppmar=c(4,6,2,6))
+ axis(2,at=c(1,11,22),labels=c(0,0.5,1),pos=-110)
+ mtext("Number of observed subjects",side=1,line=2)
+ mtext("Estimated probability of exposure",side=2,line=4)
+ par(xpd=TRUE)
+ arrows(c(-100,100),c(0,0),c(-110,110),c(0,0),length=0.15)
+ text(-85,17,"Exposed")
+ text(98,7,"Unexposed")
+ par(xpd=FALSE,mar=oldmar)
 }
 \keyword{misc}

@@ -1,4 +1,18 @@
 # created 5/9/2011 - Jim Lemon
+ importFrom("grDevices", "col2rgb", "colors", "dev.cur", "dev.list",
+    "dev.size", "gray", "heat.colors", "palette", "rainbow",
+    "rgb", "trans3d", "xy.coords")
+ importFrom("graphics", "abline", "arrows", "axTicks", "axis",
+    "axis.POSIXct", "barplot", "barplot.default", "box",
+    "boxplot", "clip", "hist", "hist.default", "layout",
+    "legend", "lines", "locator", "matplot", "mtext", "par",
+    "persp", "plot", "plot.new", "plot.window", "points",
+    "polygon", "rect", "segments", "strheight", "strwidth",
+    "symbols", "text", "title", "xinch", "yinch")
+ importFrom("stats", "aggregate", "approx", "as.formula",
+    "complete.cases", "cor", "dist", "model.frame", "na.omit",
+    "pnorm", "sd", "t.test", "terms")
+ importFrom("utils", "combn", "modifyList")
 export(
  ablineclip,
  addtable2plot,
