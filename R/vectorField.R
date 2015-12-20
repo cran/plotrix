@@ -11,18 +11,22 @@ vectorField<-function(u,v,xpos=NA,ypos=NA,scale=1,headspan=0.1,
  udim<-dim(u)
  if(is.na(xpos[1])) xpos<-col(u)
  if(is.na(ypos[1])) ypos<-udim[1]-row(u)+1
+ ymult<-getYmult()
  # if long/lat not specified
  if(match(vecspec[1],"lonlat",0) == 0) {
   # convert the degrees to radians if necessary
   if(match(vecspec[1],"deg",0)) u<-pi*u/180.
+  # save the magnitudes
   mag<-v
+  # get the x offsets without losing the direction
   tempu<-v*cos(u)
-  v<-v*sin(u)
+  v<-v*sin(u)*ymult
   u<-tempu
  }
  else mag<-sqrt(u*u+v*v)
- if(is.null(dim(xpos))) maxmag<-0.5*max(diff(xpos))/max(mag)
- else maxmag<-0.5*max(diff(xpos[1,]))/max(mag)
+ # make sure that date/time x values are their numeric equivalents
+ if(is.null(dim(xpos))) maxmag<-0.5*max(diff(as.numeric(xpos)))/max(mag)
+ else maxmag<-0.5*max(diff(as.numeric(xpos[1,])))/max(mag)
  u2<-u*scale*maxmag
  v2<-v*scale*maxmag
  if(is.null(udim)) length=headspan

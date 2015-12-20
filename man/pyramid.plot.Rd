@@ -83,8 +83,9 @@
  The return value of \samp{par("mar")} when the function was called.
 }
 \author{Jim Lemon (thanks to Susumu Tanimura for the patch that omits
- ticks for NA values in vector input and Igor Rebeiro for the space
- argument)}
+ ticks for NA values in vector input, Igor Rebeiro for the space
+ argument and Simon Thornley for the fix for trailing zeros in the
+ display of values)}
 \seealso{\link{rect}}
 \examples{
  xy.pop<-c(3.2,3.5,3.6,3.6,3.5,3.5,3.9,3.7,3.9,3.5,3.2,2.8,2.2,1.8,

@@ -1,3 +1,10 @@
+version 3.6-1
+
+	updated ehplot function (thanks to Robby Englemann)
+	pyramid.plot now displays trailing zeros (thanks to Simon Thornley)
+	problem with time/date x values in vectorField fixed
+	colors and staggering added to plot.dendrite (thanks to Marna Wagley)
+
 version 3.6
 
 	fixed the missing left axis ticks in pyramid.plot (thanks to Jacob Clark)

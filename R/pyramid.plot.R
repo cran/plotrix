@@ -76,8 +76,12 @@ pyramid.plot<-function(lx,rx,labels=NA,top.labels=c("Male","Age","Female"),
    col=rxcol)
   if(show.values) {
    par(xpd=TRUE)
-   text(-(gap+lx),1:ncats,round(lx,ndig),pos=2,cex=labelcex)
-   text(gap+rx,1:ncats,round(rx,ndig),pos=4,cex=labelcex)
+   #text(-(gap+lx),1:ncats,round(lx,ndig),pos=2,cex=labelcex)
+   #text(gap+rx,1:ncats,round(rx,ndig),pos=4,cex=labelcex)
+   lxt<-formatC(lx,format="f",digits=ndig)
+   rxt<-formatC(rx,format="f",digits=ndig)
+   text(-(gap+lx),1:ncats,lxt,pos=2,cex=labelcex)
+   text(gap+rx,1:ncats,rxt,pos=4,cex=labelcex)
    par(xpd=FALSE)
   }
  }

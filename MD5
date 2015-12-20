@@ -1,6 +1,6 @@
-a97ae593ce6b19bf2b4263f6e602f347 *DESCRIPTION
+43732823e9cc4fc3efd15890b95491c6 *DESCRIPTION
 ec64d76232d9c58d7ac65708e87e1a15 *NAMESPACE
-9ae7582a5329be378e0fde91bfd7d300 *NEWS
+cbb1ba0af24ff33c1efee4e1914a2691 *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 54f531a76de0b83b120f3f6a15108f4e *R/add.ps.R
 f72887ed57a08e179bde6ce408a8e568 *R/addtable2plot.R
@@ -30,7 +30,7 @@ f1dcc78b243e40ccd379fff2a1ca0590 *R/color.id.R
 65c5fa3bbabbcdc976ef41067f5c1f1a *R/corner.label.R
 7595c8d33778f6df60d97729f4e16f3e *R/count.overplot.R
 aa20dff9cb6508240f5ffe0b0f62e4d2 *R/cylindrect.R
-f484ea5befb6c1aeeb623b989d19a5a1 *R/dendrite.R
+50781e7d1c6466cef46afb87b5a9b4de *R/dendrite.R
 6ddb8ce458b2848f5fe22abb58e2f608 *R/dendroPlot.R
 6ded5907b37e91f755f5c80c1bbd7b81 *R/diamondplot.R
 b161cf7db40dda386def4e432ff1cad1 *R/dispersion.R
@@ -41,7 +41,7 @@ e9e3f23cd4216bb463bf0993f2c604d8 *R/dotplot.mtb.R
 ad6f95f688d5ba348298b2c71a2d7ede *R/draw.ellipse.R
 1a1383ac27b34b7bfa800009969abfc0 *R/draw.radial.line.R
 bfe20a66089ca8fa472c0554707cbc6b *R/drawNestedBars.R
-386cd3bb808215ed21d4e2fe5591599e *R/ehplot.R
+e78c9475f48c3bd1df8240cfe0761da1 *R/ehplot.R
 5690e7d7fc3795124df5b97a514b9305 *R/emptyspace.R
 be485fa47a06b433fa03396457693e93 *R/fan.plot.R
 6250d3994bf9f6657d38e199159c92d5 *R/feather.plot.R
@@ -77,7 +77,7 @@ b9a64d1b0d4f890dbc817c1172fec476 *R/plotCI.R
 d81ea105e35ed97f34aa697445006b82 *R/plotH.R
 960aae874cd12958dd6dccde3558879d *R/plot_bg.R
 f10e1defb3c27cbd4459f322752389f0 *R/polygon.shadow.R
-611b55229bb16d8fbf22b1b2b830f4f9 *R/pyramid.plot.R
+aa068a0cf006164854936927c2e5d0b5 *R/pyramid.plot.R
 033e0d8e7423babf74e3ffbad1657eca *R/radial.grid.R
 3d460c1979184c49e49a284d81f58a4a *R/radial.pie.R
 6523fd0ad72f791e6654b046f2520bb9 *R/radial.plot.R
@@ -112,12 +112,12 @@ ed20aff50590ba744f276b1b4da0d3b8 *R/triax.R
 dec059d897186f22ea6815dbd00b9f10 *R/tsxpos.R
 a73ca66e54d1d1c02a38e9e25a1d20c5 *R/twoord.plot.R
 580be3c65f98df81f92dff1eff5e671c *R/twoord.stackplot.R
-6b679551bcc23563f69f83ad38061c06 *R/vectorField.R
+053dff2f1aedadb7c3513bf7cb9ce6ea *R/vectorField.R
 cdcdd0cd94badf90f50620c73d576c0c *R/weighted.hist.R
 481b3f85c721c582bc955c5059ba7c1e *R/windrose.R
 52d0de3c89b6d90fe1e9157b0c76f291 *R/zoomInPlot.R
 6c5b0047d50b0d071c9a8162c81ccb31 *data/death_reg.rda
-68f776a70403da3fd62b8cd1609d29e6 *data/soils.rda
+e8ff1183289e4e1993bbf41c3ecfb9ec *data/soils.rda
 afe626471214438383c01dfcc2a12e10 *demo/00Index
 3225895bf979a4ef032878d540bba379 *demo/plotrix.R
 b35ca73e819dbad59881960986301ef3 *inst/CITATION
@@ -127,7 +127,7 @@ cac3ca2c6c03d9c470cf05cdd24bde40 *man/addtable2plot.Rd
 cf79bc5cc57fa626df9fc1b8e629921a *man/arctext.Rd
 f3fbc2cf0c4cb7aaa71d074dc59e6d60 *man/axis.break.Rd
 282b2f8fcd742e3d6a60ab081aaa405b *man/axis.mult.Rd
-afd4383215c0480b1b8062b43adeee95 *man/barNest.Rd
+e4703b0b309b0cf8e10c8ce0be557e50 *man/barNest.Rd
 0e0e139faa3faf1cbcd989eea0081a3b *man/barlabels.Rd
 cbcf01934c6148ec20aef47077a82bce *man/barp.Rd
 13a6e1f637b62476def20eece0eded3d *man/battleship.plot.Rd
@@ -168,7 +168,7 @@ b24a1bf68bf35cfa467a648040003df5 *man/draw.circle.Rd
 c771ff20c909ba6d894c1dd73499b079 *man/draw.tilted.sector.Rd
 5008fddaa27f126c13839b2ea3b4cb7e *man/drawNestedBars.Rd
 e0cf4b49c5d11ec218ef091e3766443c *man/drawSectorAnnulus.Rd
-ff9c5395618869a65b04d6400b0cf2c4 *man/ehplot.Rd
+6a042c43698809a86ca34bca4bbad53d *man/ehplot.Rd
 c0fd67de14cd1c3d88bcb04cf1442074 *man/election.Rd
 4eb5b9648e8de073082c4d98fbb108af *man/emptyspace.Rd
 4ee490709973efd8b4280377d9b62aab *man/fan.plot.Rd
@@ -176,7 +176,7 @@ faf151005b658ce113436f9248f41629 *man/feather.plot.Rd
 7fc047f882280b8673a96f6d21b9a1d9 *man/fill.corner.Rd
 4553726de27e6b437b90b726f7fe37f4 *man/floating.pie.Rd
 ef0018a2314c3b5bf4d0e953ae036aed *man/fullaxis.Rd
-d4c458f97727e45e3deec31be4f67a18 *man/furc.Rd
+57c7a78552ca7cbc5d3d5afc3851b70e *man/furc.Rd
 b027a05e42ab9956e5f464ed5d55b4c6 *man/gantt.chart.Rd
 3a71f16cddd71e84aae2ae067bf17981 *man/gap.barplot.Rd
 0fe07939aca17dfbac6226843ed189d1 *man/gap.boxplot.Rd
@@ -218,7 +218,7 @@ df16d5a7e051f52e37eb2624bed0abf2 *man/paxis3d.Rd
 a89c6ca83e82949f9fbfdf04a8cc96b2 *man/pie.labels.Rd
 b5edc34a21e57c41da8702890f35c160 *man/pie3D.Rd
 9209e3496d57207f40745b435e473b03 *man/pie3D.labels.Rd
-4ebf99e8a0238ba7bacbcaa8af75f9e2 *man/plot.dendrite.Rd
+9c4fee5041448a42f55d9dcece6ed9a9 *man/plot.dendrite.Rd
 94da9e98fdf1f64739b188fea1f021f6 *man/plotCI.Rd
 64665bf5d11d49c15c04393ae0a8fe7f *man/plotH.Rd
 d0be8d8872d21c55c387ed117d60bc92 *man/plot_bg.Rd
@@ -229,7 +229,7 @@ aacd4acbdc1275ecff45c6d962ae8f16 *man/polygon.shadow.Rd
 3624e09ffd23b05f6681cc1c31734345 *man/propbrk.Rd
 d3979b4cb2e49006ebd6bc1e2c795fb9 *man/psegments3d.Rd
 a239386f59c013ebc0e4bf9fcabc5747 *man/ptext3d.Rd
-a20f23826a69b4915826ede4aaa0535b *man/pyramid.plot.Rd
+1a38f05932fe060f8b992233f10f8a55 *man/pyramid.plot.Rd
 a077966650ff8698ef0c799e281a826e *man/radial.grid.Rd
 e1ecf218a7dd9d4b5bec2a491a079982 *man/radial.pie.Rd
 c035013cce6aa4827e14ab1bfc41cbf9 *man/radial.plot.Rd

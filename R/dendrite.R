@@ -29,23 +29,30 @@ sumDendrite<-function(x) {
  return(dsum)
 }
 
-furc<-function(x,xpos,yrange,toplevel,cex=1) {
+furc<-function(x,xpos,yrange,toplevel,maxx,cex=1,col) {
  xlen<-length(x)
  if(xlen) {
   yinc<-diff(yrange)/xlen
   ypos<-seq(yrange[1] + yinc/2, yrange[2] - yinc/2,length.out=xlen)
+  if(xpos > maxx) xoffset<-rep(c(-0.17,0.17),length.out=xlen)
+  else xoffset<-rep(0,xlen)
   if(!toplevel) {
-   segments(xpos-0.5,ypos[1],xpos-0.5,ypos[length(ypos)])
-   segments(xpos-0.5,ypos,xpos,ypos)
+   # only draw vertical segments if there is more than one category
+   if(xlen > 1) segments(xpos-0.5,ypos[1],xpos-0.5,ypos[xlen])
+   # horizontal segments
+   segments(xpos-0.5,ypos,xpos+xoffset,ypos)
   }
   for(i in 1:xlen) {
    if(is.list(x[[i]][[2]])) {
+    # draw the line to the next furcation
     segments(xpos,ypos[i],xpos+0.5,ypos[i])
     furc(x[[i]][[2]],xpos+1,c(ypos[i]-yinc/2, 
-     ypos[i]+yinc/2),FALSE,cex=cex)
+     ypos[i]+yinc/2),FALSE,maxx,cex=cex,col=col)
    }
-   boxed.labels(xpos,ypos[i],paste(names(x[[i]][[1]]), 
-    x[[i]][[1]]),cex=cex)
+   xname<-names(x[[i]][[1]])
+   if(is.na(xname)) xname<-"NA"
+   boxed.labels(xpos+xoffset[i],ypos[i],paste(xname,x[[i]][[1]]),
+    cex=cex,bg=col[which(names(col)==xname)])
   }
  }
 }
@@ -62,18 +69,27 @@ listDepth<-function(x) {
  return(maxdepth)
 }
 
-plot.dendrite<-function(x,xlabels=NULL,main="",mar=c(1,0,3,0),cex=1,...) {
+plot.dendrite<-function(x,xlabels=NULL,main="",mar=c(1,0,3,0),cex=1,
+ col="white",...) {
 
+ if(class(x) != "dendrite") x<-makeDendrite(x)
+ xnames<-unique(names(unlist(x)))
+ xnames[is.na(xnames)]<-"NA"
+ xnames<-sort(xnames)
+ if(length(col) < length(xnames)) {
+  col<-rep(col,length.out=length(xnames))
+  names(col)<-as.character(xnames)
+ }
  oldmar<-par("mar")
  par(mar=mar)
  xmax<-listDepth(x)/2
  ymax<-sumDendrite(x)
- plot(0,main=main,xlim=c(0,xmax),ylim=c(1,ymax), 
+ plot(0,main=main,xlim=c(0.25,xmax),ylim=c(1,ymax), 
   xlab="",ylab="",type="n",axes=FALSE,...)
  par(xpd=TRUE)
  text(seq(0.5,xmax),par("usr")[3],xlabels)
  par(xpd=FALSE)
- furc(x,0.5,c(1,ymax),TRUE,cex=cex)
+ furc(x,0.5,c(1,ymax),TRUE,maxx=xmax-1,cex=cex,col=col)
  par(mar=oldmar)
 }
 

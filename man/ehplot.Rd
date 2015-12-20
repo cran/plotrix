@@ -9,9 +9,10 @@
   grouped numerical data.
 }
 \usage{
-  ehplot(data, groups, intervals=50, offset=0.1, log=FALSE, 
+  ehplot(data, groups, intervals=50, offset=0.1, log=FALSE,
          median=TRUE, box=FALSE, boxborder="grey50",
-         xlab="groups", ylab="values", col="black", ...)
+         xlab="groups", ylab="values", col="black",
+         add=FALSE, sort=TRUE, ...)
 }
 \arguments{
   \item{data}{
@@ -49,6 +50,13 @@
   \item{col}{
     vector of colors for the datapoints. (recycled as necessary).
 }
+  \item{add}{
+    add this plot to an existing one (i.e. do not call plot.new).
+}
+  \item{sort}{
+    normally, the groups are sorted by name. To keep the order as provided in
+    the groups-vector, set this to FALSE
+}
   \item{\dots}{
     additional plot-parameters will be passed to the plot-function
 }
@@ -58,7 +66,7 @@
   Robby Engelmann <robby.engelmann@med.uni-rostock.de> and
   Michael Hecker <michael.hecker@rocketmail.com>
 }
-\seealso{\link{dendroPlot}}
+
 \examples{
 data(iris)
 ehplot(iris$Sepal.Length, iris$Species, intervals=20, cex=1.8, pch=20)
