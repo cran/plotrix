@@ -22,8 +22,9 @@
  the dendrogram is done by \samp{furc}.
  
  If samp{col} is a vector of colors as long as the number of category labels,
- each category label will be displayed in a different colored box. This is 
- probably only useful when the same category labels are used at each level.
+ each category label will be displayed in a different colored box. This may 
+ may cause problems when different category labels are used at each level
+ with common names, as the color for a name will be the same at all levels.
 }
 \value{nil}
 \author{Jim Lemon}

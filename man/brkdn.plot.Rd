@@ -5,7 +5,7 @@
 \usage{
  brkdn.plot(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",stagger=NA,
  dispbar=TRUE,main="Breakdown plot",xlab=NA,ylab=NA,xaxlab=NA,
- ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,...)
+ ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,yat=NA,...)
 }
 \arguments{
  \item{vars}{The names or indices of one or more columns in a data frame.
@@ -33,6 +33,7 @@
  \item{col}{Color(s) for the symbols and lines.}
  \item{staxx}{Whether to call \link{staxlab} to display the X axis
   labels.}
+ \item{yat}{Optional y axis tick positions.}
  \item{...}{additional arguments passed to \samp{plot}.}
 }
 \value{
@@ -76,19 +77,13 @@
  test.df<-data.frame(a=rnorm(80)+4,b=rnorm(80)+4,c=rep(LETTERS[1:4],each=20),
   d=rep(rep(letters[1:4],each=4),5))
  # first use the default values
- brkdn.plot("a","c","d",test.df,pch=21:24,col=2:5)
+ brkdn.plot("a","c","d",test.df,pch=1:4,col=1:4)
  # now jazz it up a bit using medians and median absolute deviations
  # and some enhancements
  bp<-brkdn.plot(a~c+d,data=test.df,main="Test of the breakdown plot",
   mct="median",md="mad",xlab="Temperature range", ylab="Cognition",
   xaxlab=c("10-15","16-20","21-25","25-30"),pch=1:4,lty=1:4,col=1:4)
- plotlim<-par("usr")
- dimbp<-dim(bp[[1]])
- # create a vector of all mean and +- MAD values
- bpvec<-c(unlist(bp[[1]]),unlist(bp[[2]]),unlist(-bp[[2]]))
- # replicate the x values to match the above
- es<-maxEmptyRect(plotlim[1:2],plotlim[3:4],
-  rep(rep(1:dimbp[2],each=dimbp[1]),3),bpvec)
+ es<-emptyspace(bp)
  legend(es,legend=c("Sydney","Gosford","Karuah","Brisbane"),pch=1:4,
   col=1:4,lty=1:4,xjust=0.5,yjust=0.5)
 }

@@ -61,9 +61,13 @@ soil.texture(soiltexture=NULL, main="", at=seq(0.1, 0.9, by=0.1),
 \note{This is now a special case of \samp{triax.plot}.}
 \author{Sander Oom, Jim Lemon, and Michael Toews}
 \references{
- Soil Survey Staff, Natural Resources Conservation Service,
- United States Department of Agriculture. Official Soil Series Descriptions.
- \url{http://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/class/?cid=nrcs142p2_053587}
+ U.S. Department of Agriculture, Natural Resources Conservation Service,
+ 2007. \emph{National Soil Survey Handbook}, title 430-VI.//
+ \url{http://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/class/taxonomy/?cid=nrcs142p2_053577}
+
+ U.S. Department of Agriculture, Natural Resources Conservation Service,
+ 2007. \emph{Soil Texture Calculator}//
+ \url{http://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/class/taxonomy/?cid=nrcs142p2_053577}
 }
 \seealso{\link{get.soil.texture}, \link{triax.plot}}
 \examples{

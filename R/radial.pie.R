@@ -60,7 +60,8 @@ radial.pie<-function(radial.extents,sector.edges=NULL,
  if(!add) {
   par(mar=mar,pty="s")
   maxrad<-max(unlist(radial.extents))
-  plot(0,xlim=c(-maxrad,maxrad),ylim=c(-maxrad,maxrad),type="n",axes=FALSE)
+  plot(0,xlim=c(-maxrad,maxrad),ylim=c(-maxrad,maxrad),type="n",
+   axes=FALSE,xlab=xlab,ylab=ylab)
   if(show.grid)
    radial.grid(labels=labels,label.pos=label.pos,radlab=radlab,
     radial.lim=radial.lim,start=start,clockwise=clockwise,

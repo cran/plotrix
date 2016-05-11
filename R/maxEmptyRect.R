@@ -57,7 +57,5 @@ maxEmptyRect <- function(ax, ay, x, y) {
    maxR <- c(li, ay[1], ri, Y[i])
   }
  }
- xcenter<-sum(maxR[c(1,3)])/2
- ycenter<-sum(maxR[c(2,4)])/2
- return(list(area = maxr, rect = maxR, x = xcenter, y = ycenter))
+ return(list(area = maxr, rect = maxR))
 }

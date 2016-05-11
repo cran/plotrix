@@ -27,8 +27,7 @@
   (see Details).}
  \item{ref.sd}{whether to display the arc representing the reference
   standard deviation.}
- \item{sd.method}{Whether to calculate the sample or population standard
-  deviation.}
+ \item{sd.method}{Whether to use the sample or estimated population SD.}
  \item{grad.corr.lines}{the values for the radial lines for correlation
   values (see Details).}
  \item{pcex}{character expansion for the plotted points.}

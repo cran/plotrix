@@ -3,19 +3,16 @@
 # Remember to convert hour/minute values to hour/decimal values.
 # example: clock24.plot(rnorm(16)+3,seq(5.5,20.5,length.out=16))
 
-clock24.plot<-function(lengths,clock.pos,labels=NULL,label.pos=NULL,
- rp.type="r",...) {
+clock24.plot<-function(lengths,clock.pos,labels=0:23,minutes=FALSE,
+ label.pos=NULL,rp.type="r",...) {
  
  npos<-length(lengths)
  # if no positions are given, spread the lines out over the circle 
  if(missing(clock.pos)) clock.pos<-seq(0,24-24/(npos+1),length=npos)
  # start at "midnight" and go clockwise
  radial.pos<-pi*(clock.pos*15)/180
- if(is.null(labels)) {
-  labels<-paste(0:23,"00",sep=":")
-  label.pos<-seq(0,pi*1.917,length.out=24)
- }
- else label.pos<-pi*(450-clock.pos*15)/180
+ if(minutes) labels<-paste(labels,"00",sep=":")
+ if(is.null(label.pos)) label.pos<-seq(0,pi*1.917,length.out=24)
  invisible(radial.plot(lengths,radial.pos,labels=labels,label.pos=label.pos,
   rp.type=rp.type,start=pi/2,clockwise=TRUE,...))
 }

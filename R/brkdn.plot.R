@@ -1,6 +1,6 @@
 brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  stagger=NA,dispbar=TRUE,main="Breakdown plot",xlab=NA,ylab=NA,xaxlab=NA,
- ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,...) {
+ ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,yat=NA,...) {
 
  if(class(vars) == "formula") {
   formbits<-all.vars(vars)
@@ -121,7 +121,8 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  box()
  if(staxx) staxlab(at=xat,labels=xaxlab)
  else axis(1,at=xat,labels=xaxlab)
- axis(2)
+ if(is.na(yat[1])) axis(2)
+ else axis(2,at=yat)
  if(length(pch) < ngroups) pch<-rep(pch,length.out=ngroups)
  if(length(col) < ngroups) col<-rep(col,length.out=ngroups)
  if(length(lty) < ngroups) lty<-rep(lty,length.out=ngroups)
@@ -129,10 +130,8 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  offset<-0
  arrow.cap<-0.01-(groupdiv*0.001)
  for(group in 1:ngroups) {
-  bg<-col[group]
-  if(pch[group] > 20 && pch[group] < 26) col[group]<-par("fg")
   points(obs.pos+offset,brkdn[[1]][group,],type=type,col=col[group],
-   pch=pch[group],lty=lty[group],bg=bg,...)
+   pch=pch[group],lty=lty[group],...)
   if(dispbar)
    dispersion(obs.pos+offset,brkdn[[1]][group,],brkdn[[2]][group,],
     arrow.cap=arrow.cap,col=col[group],...)

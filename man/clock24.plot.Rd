@@ -1,7 +1,8 @@
 \name{clock24.plot}
 \title{Plot values on a 24 hour "clockface"}
 \usage{
- clock24.plot(lengths,clock.pos,labels=NULL,label.pos=NULL,rp.type="r",...)
+ clock24.plot(lengths,clock.pos,labels=0:23,minutes=FALSE,
+  label.pos=NULL,rp.type="r",...)
 }
 \alias{clock24.plot}
 \arguments{
@@ -10,6 +11,7 @@
  \item{clock.pos}{numeric vector of positions on the 'clockface'.
   These must be in decimal hours and will be rescaled to radians.}
  \item{labels}{Labels to place at the circumference.}
+ \item{minutes}{Whether to add minutes (".00") to the labels.}
  \item{label.pos}{Radial positions of the labels.}
  \item{rp.type}{Whether to plot radial lines, symbols or a polygon.}
  \item{...}{additional arguments are passed to \samp{radial.plot} and

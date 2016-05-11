@@ -7,10 +7,11 @@
 }
 \usage{
  gantt.chart(x=NULL,format="\%Y/\%m/\%d",xlim=NULL,taskcolors=NULL,
-  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="\%Y/\%m/\%d",
-  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,label.cex=1,
-  border.col=NA,priority.label="Priorities",priority.extremes=c("High","Low"),
-  time.axis=3)
+  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,
+  vgrid.format="\%Y/\%m/\%d",
+  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE,
+  label.cex=1,border.col=NA,priority.label="Priorities",
+  priority.extremes=c("High","Low"),time.axis=3)
 }
 \arguments{
  \item{x}{a list of task labels, start/end times and task priorities
@@ -35,7 +36,7 @@
  \item{border.col}{The color for an optional border for the bars (NA=none).}
  \item{priority.label}{Label for the priority color legend.}
  \item{priority.extremes}{Labels for each end of the priority color legend.}
- \item{time.axis}{Axis for time scale. Should only be 1 or 3.}
+ \item{time.axis}{Where to place the time axis labels.}
 }
 \value{
  The list used to create the chart - see \link{get.gantt.info} for

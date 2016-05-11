@@ -1,4 +1,4 @@
-#######################################################################################
+#
 # Fix problems with plotrix package function textbox():
 #   1. 'cex' wasn't getting passed to text() so wasn't effective.
 #   2. Top of box was higher than specified y.
@@ -12,7 +12,7 @@
 #
 #   textbox             Draw text in a box
 #
-#######################################################################################
+#
 textbox <- function(x, y, textlist, justify=c('l','c','r'), cex=1, leading=0.5,
     box=TRUE, adj=c(0,0), font=NULL, vfont=NULL, col=NULL, border=NULL, fill=NA,
     density=NULL, angle=45, lty=par("lty"), lwd=par("lwd"), margin=0) {

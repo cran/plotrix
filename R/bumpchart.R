@@ -1,6 +1,5 @@
-bumpchart<-function(y,top.labels=colnames(y),labels=rownames(y),
- rank=TRUE,mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,
- arrows=FALSE,...) {
+bumpchart<-function(y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
+ mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,arrows=FALSE,...) {
 
  if(missing(y)) stop("Usage: bumpchart(y,top.labels,labels,...)")
  ydim<-dim(y)
@@ -16,14 +15,13 @@ bumpchart<-function(y,top.labels=colnames(y),labels=rownames(y),
  lwd=rev(lwd)
  y<-apply(y,2,rev)
  if(arrows) {
-  matplot(t(y),ylab="",type="p",pch=pch,col=col,axes=FALSE,...)
+  matplot(t(y),ylab="",type="p",pch=pch,col=col,axes=FALSE)
   for(row in 1:(ydim[2]-1))
    p2p_arrows(rep(row,ydim[1]),y[,row],rep(row+1,ydim[1]),y[,row+1],
     col=col,lty=lty,lwd=lwd,...)
  }
  else 
-  matplot(t(y),ylab="",type="b",pch=pch,col=col,lty=lty,
-   lwd=lwd,axes=FALSE,...)
+  matplot(t(y),ylab="",type="b",pch=pch,col=col,lty=lty,lwd=lwd,axes=FALSE,...)
  par(xpd=TRUE)
  xylim<-par("usr")
  minspacing<-strheight("M")*1.5

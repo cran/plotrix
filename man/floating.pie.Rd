@@ -35,15 +35,9 @@
 }
 \note{
  As with most pie charts, simplicity is essential. Trying to display a
- complicated breakdown of data rarely succeeds. The example of bullying
- is about as complex as one can get with a pie chart and still convey the
- relevant information.
+ complicated breakdown of data rarely succeeds.
 }
 \author{Jim Lemon}
-\references{
- Li, Q. (2006) Cyberbullying in schools: A research of gender differences.
- School Psychology International, 27(2): 157-170.
-}
 \seealso{\link{pie.labels}, \link{boxed.labels}, \link{polygon.shadow}}
 \examples{
  plot(1:5,type="n",main="Floating Pie test",xlab="",ylab="",axes=FALSE)
@@ -62,14 +56,5 @@
  draw.circle(4.07,2.55,radius=0.04,col="white")
  draw.circle(4.03,2.85,radius=0.04,col="white")
  text(c(1.7,3.1,4),c(3.7,3.7,3.7),c("Pass","Pass","Fail"))
- # type of bullying by sex as superimposed pies
- plot(0,xlim=c(-1,1),ylim=c(-1,1),type="n",axes=FALSE,
-  main="Type of bullying by sex (Li, 2006)")
- bc<-floating.pie(0,0,c(90,129,45,67),radius=1,col=2:5)
- pie.labels(0,0,bc,c("Physical\nbully","Physical\nvictim",
-  "Cyber\nbully","Cyber\nvictim"))
- bc<-floating.pie(0,0,c(53,37,70,59,29,16,33,34),
-  radius=0.7,col=c("lightblue","pink"))
- pie.labels(0,0,bc,radius=0.5,labels=rep(c("M","F"),4))
 }
 \keyword{misc}

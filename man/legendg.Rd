@@ -17,7 +17,7 @@
  \item{legend}{Labels for the legend as in \samp{legend}.}
  \item{fill}{List of fill colors for the rectangles.}
  \item{col}{Color(s), perhaps as a list, for the symbols.}
- \item{border}{Border color for the rectangles.}
+ \item{border}{Border color(s) for the rectangles.}
  \item{lty}{Line type, currently ignored and set to 1.}
  \item{lwd}{Line width, currently ignored.}
  \item{pch}{List of symbols for the legend.}

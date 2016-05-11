@@ -3,33 +3,30 @@
 \title{Assign party members to seats}
 \description{Create a layout for an election result in an assembly}
 \usage{
- election(seats, result, formula,
-  colours = sample(rainbow(length(counts))))
+ election(seats,result,formula,colours = sample(rainbow(length(counts))))
 }
 \arguments{
  \item{seats}{A data frame of x and y positions, row numbers and angles
-  (usually the output from the seats function). }
- \item{result}{A data frame with party names and seat counts}
- \item{formula}{a formula with the party name column on the left and the
+  (usually the output from the seats function).}
+ \item{result}{A data frame with party names and seat counts.}
+ \item{formula}{A formula with the party name column on the left and the
   count column on the right. Think of the twiddle symbol as "got".}
  \item{colours}{A vector of colours. If missing a random rainbow is used.
   This may cause Green parties to show as red.}
 }
-\details{
- The \samp{seats} function works out where the seats are in a
- semi-circular assembly hall. This function assigns colours and party
- labels to those seats.
-}
 \value{
  A data frame including:
- \item{x}{The x positions of the seats to be plotted on semi-circular arcs}
- \item{y}{The y positions of the seats to be plotted on semi-circular arcs}
- \item{r}{The row numbers for each seat}
- \item{theta}{The angle of each seat, going from pi to zero radians}
- \item{party}{The labels for the party holding each seat}
- \item{colour}{The colour that has been assigned to the party}
+ \item{x}{The x positions of the seats to be plotted on semi-circular
+  arcs.}
+ \item{y}{The y positions of the seats to be plotted on semi-circular
+  arcs.}
+ \item{r}{The row numbers for each seat.}
+ \item{theta}{The angle of each seat, going from pi to zero radians.}
+ \item{party}{The labels for the party holding each seat.}
+ \item{colour}{The colour that has been assigned to the party.}
 }
 \author{Barry Rowlingson}
+\seealso{\link{seats}}
 \examples{
  # The EU parliament has 751 seats, and Wikipedia currently shows this
  eu = structure(list(colour = c("#3399FF", "#F0001C", "#0054A5", "#FFD700",
@@ -46,7 +43,7 @@
  legend(-0.7,-0.3,eu$party,fill=eu$colour)
  par(oldmar)
  # or using ggplot2
- \dontrun{
+ \dontrun{ 
   require(ggplot2)
   blank = theme(axis.line=element_blank(),
         axis.text.x=element_blank(),

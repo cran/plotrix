@@ -56,9 +56,10 @@
  linner<-c(y1inner[2],y2inner[2],y3inner[2])
  ulim<-c(max(y1),max(y2),max(y3))
  llim<-c(min(y1),min(y2),min(y3))
- box.heresy(ymean,uinner=uinner,linner=linner,ulim=ulim,llim=llim,
+ box.heresy(ymean,uinner=uinner,linner=linner,ulim=ulim,llim=llim,boxwidth=Ns,
   main="Boxplot of means, central spread and range",xlab="Distribution",
   xaxlab=c("Uniform","Normal","Sample"))
+ y1outer<-
  y<-runif(5)
  ulim<-runif(5)
  llim<-runif(5)

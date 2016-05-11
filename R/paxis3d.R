@@ -1,5 +1,5 @@
-## 'enhanced' persp -- return value has attributes containing
-##  x,y,z ranges
+# 'enhanced' persp -- return value has attributes containing
+#  x,y,z ranges
 perspx <- function(x,y,z,...) {
   if (missing(z)) {
     if (!missing(x)) {
@@ -31,8 +31,8 @@ psegments3d <- function(x, y = NULL, z = NULL, pmat, ...) {
     x <- x$x
   }
   xy <- trans3d(x,y,z,pmat)
-  ## translate from 'segments3d' (successive pairs) to
-  ##  'segments' (x0,x1,y0,y1) format
+  # translate from 'segments3d' (successive pairs) to
+  #  'segments' (x0,x1,y0,y1) format
   n <- length(xy$x)
   x0 <- xy$x[seq(1,n,by=2)]
   x1 <- xy$x[seq(2,n,by=2)]
@@ -85,7 +85,7 @@ get_axispos3d <- function(edge,pmat,at,pos=NULL, dist=0) {
 
 mtext3d <- function (edge, pmat, labels = TRUE, at = NULL, dist=0.3, xpd=NA, ...) {
   ranges <- attr(pmat,"ranges")
-  edge.orig <- edge ## hack
+  edge.orig <- edge # hack
   edge <- c(strsplit(edge, "")[[1]], "-", "-")[1:3]
   coord <- match(toupper(edge[1]), c("X", "Y", "Z"))
   range <- ranges[[coord]]
@@ -104,7 +104,7 @@ function (edge, pmat,
           xpd=NA, ...) 
 {
   ranges <- attr(pmat,"ranges")
-  edge.orig <- edge ## hack
+  edge.orig <- edge # hack
   edge <- c(strsplit(edge, "")[[1]], "-", "-")[1:3]
   coord <- match(toupper(edge[1]), c("X", "Y", "Z"))
   range <- ranges[[coord]]
@@ -118,7 +118,7 @@ function (edge, pmat,
     else labels <- NA
   }
   mpos <- get_axispos3d(edge.orig,pmat,at,pos,dist=0)
-  ## draw axes
+  # draw axes
   x <- c(mpos[1, 1], mpos[1, length(at)])
   y <- c(mpos[2, 1], mpos[2, length(at)])
   z <- c(mpos[3, 1], mpos[3, length(at)])

@@ -31,19 +31,14 @@ radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
   ypos<-sin(label.pos)*maxlength*label.prop
   if(radlab) {
    for(label in 1:length(labels)) {
-    if(radlab < 0)
-     labelsrt<-180*label.pos[label]/pi-90+
-      180*(label.pos[label] > pi && label.pos[label] < 2*pi)
-    else
-     labelsrt<-(180*label.pos[label]/pi)+
-      180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
+    labelsrt<-(180*label.pos[label]/pi)+
+     180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
     text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),
      srt=labelsrt)
    }
   }
   else
-   boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,
-    cex=par("cex.axis"))
+   boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
  }
  par(xpd=FALSE)
 }

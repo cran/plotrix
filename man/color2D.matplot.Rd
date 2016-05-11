@@ -20,9 +20,8 @@
   precedence over the color ranges.}
  \item{cellcolors}{A precalculated matrix of cell colors. This must have
   the same number of rows and columns as the matrix or it will be
-  uninformative. It can be a vector, but be careful that the order of values
-  is the same as the corresponding matrix. Takes precedence over both
-  \samp{extremes} and color ranges.}
+  uninformative. It can be a vector, but be careTakes precedence over both \samp{extremes}
+  and color ranges.}
  \item{show.legend}{whether to display a color legend with the
   extreme numeric values in the lower left corner of the plot. This will
   force the color specification to "rgb", so if this is different from

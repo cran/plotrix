@@ -20,7 +20,7 @@ rectFill<-function(x1,y1,x2,y2,fg=par("fg"),bg=par("bg"),xinc=NA,yinc=NA,
    lenypos<-length(ypos)
    xpos<-rep(xpos,each=lenypos)
    ypos<-rep(ypos,lenxpos)
-   clip(x1[frect],y1[frect],x2[frect],y2[frect])
+   clip(x1[frect],x2[frect],y1[frect],y2[frect])
    points(xpos,ypos,pch=pch[frect],cex=pch.cex[frect],col=pch.col[frect],...)
   }
  }

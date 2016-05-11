@@ -1,3 +1,10 @@
+version 3.6-2
+
+        fixed the call to clip in rectFill (thanks to Cheng Zhou)
+        fixed the incorrect placing of some text in arctext (thanks to Mark Heckmann)
+        fixed the misbehaving y axis in brkdn.plot
+        improved the circumferential labels in clock24.plot
+
 version 3.6-1
 
 	updated ehplot function (thanks to Robby Englemann)
@@ -42,7 +49,6 @@ version 3.5-8
 version 3.5-6
 
 	added optional radial lines to the radial.grid function (thanks to Darren Obbard)
-	fixed top.line bug in staxlab when using text rotation
 
 version 3.5-5
 

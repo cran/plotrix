@@ -155,25 +155,5 @@
  barNest(formula=Age~Sex+Marital+Employ,data=test.df,ylab="Counts",
   main="Show all the counts in subgroups",FUN="valid.n",mar=c(5,5,4,2),
   col=test.col)
- # recreate the UCB admissions data by case 
- UCB.df<-data.frame(dept=c(rep("A",933),rep("B",585),rep("C",918),
-  rep("D",792),rep("E",584),rep("F",714)),
-  sex=c(rep("M",825),rep("F",108),rep("M",560),rep("F",25),
-  rep("M",325),rep("F",593),rep("M",417),rep("F",375),
-  rep("M",191),rep("F",393),rep("M",373),rep("F",341)),
-  admit=c(rep("Admit",512),rep("Reject",313),rep("Admit",89),rep("Reject",19),
-  rep("Admit",353),rep("Reject",207),rep("Admit",17),rep("Reject",8),
-  rep("Admit",120),rep("Reject",205),rep("Admit",202),rep("Reject",391),
-  rep("Admit",138),rep("Reject",279),rep("Admit",131),rep("Reject",244),
-  rep("Admit",53),rep("Reject",138),rep("Admit",94),rep("Reject",299),
-   rep("Admit",22),rep("Reject",351),rep("Admit",24),rep("Reject",317)))
- # display both the proportion admitted by sex and the relative
- # numbers of males and females applying to each department
- # note that confidence intervals are calculated even though not used
- barNest(admit~dept+sex,UCB.df,ylab="Proportion admitted",
-  main="Admission to six University of California, Berkeley departments",
-  FUN=c("propbrk","binciWu","binciWl","valid.n"),
-  col=list("gray90",rainbow(6),c("pink","lightblue")),
-  shrink=0.15,trueval="Admit",Nwidths=TRUE)
-}
+ }
 \keyword{misc}

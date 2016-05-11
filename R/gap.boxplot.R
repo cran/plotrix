@@ -50,7 +50,7 @@ gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
   xlim<-c(0.5,nboxes+0.5)
   at<-1:nboxes
  }
- bxgap$group<-bxpt$group
+ bxgap$group<-at
  plot(0,xlim=xlim,ylim=ylim,type="n",axes=FALSE,xlab="",ylab="",main=main)
  plotlim<-par("usr")
  box()
@@ -97,6 +97,6 @@ gap.boxplot<-function (x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
  if(!is.na(gap$top[1])) axis.break(2,gap$top[1],style="gap")
  if(!is.na(gap$bottom[1]))
   axis.break(2,gap$bottom[2]-diff(plotlim[3:4])*0.02,style="gap")
- if(length(bxgap$out)) points(bxgap$group,bxgap$out)
+ if(length(bxgap$group) == length(bxgap$out)) points(bxgap$group,bxgap$out)
  invisible(bxgap)
 }

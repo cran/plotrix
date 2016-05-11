@@ -84,5 +84,4 @@ thigmophobe.labels<-function(x,y,labels=NULL,text.pos=NULL,...) {
  text(x[validxy],y[validxy],labels[validxy],pos=text.pos,...)
  # restore the clipping
  par(xpd=FALSE)
- invisible(list(x=x[validxy],y=y[validxy]))
 }

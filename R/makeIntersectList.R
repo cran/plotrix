@@ -22,7 +22,6 @@ categoryReshape<-function(x) {
   newx[row_index,column_index]<-1
  }
  names(newx)<-column_values
- rownames(newx)<-row_values
  return(newx)
 }
 
