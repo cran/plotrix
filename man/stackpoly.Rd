@@ -52,7 +52,8 @@
  The options for \samp{axis2} and \samp{axis4} can be used to produce
  panel plots. See the last example.
 }
-\author{Jim Lemon and Thomas Petzoldt (waterfall plot option)}
+\author{Jim Lemon and Thomas Petzoldt (waterfall plot option) - thanks to
+ Phil Novack-Gottshall for the mismatched x and y fix}
 \seealso{\link{polygon}}
 \examples{
  testx<-matrix(abs(rnorm(100)),nrow=10)

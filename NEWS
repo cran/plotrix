@@ -1,3 +1,8 @@
+version 3.6-3
+
+        fixed the errant y label in radial.pie
+        fixed the problem with degrees/radians in draw.ellipse (thanks to Wouter vander Bijl)
+
 version 3.6-2
 
         fixed the call to clip in rectFill (thanks to Cheng Zhou)

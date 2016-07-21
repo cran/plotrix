@@ -9,6 +9,8 @@ stackpoly<-function(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
   if(is.null(ydim)) x<-1:length(y)
   else x<-matrix(rep(1:ydim[1],ydim[2]),ncol=ydim[2])
  }
+ # fix when x is a vector and y a matrix - Phil Novack-Gottshall
+ if(!identical(dim(x),ydim)) x<-matrix(rep(x,ydim[2]),ncol=ydim[2])
  if(stack) y<-t(unlist(apply(as.matrix(y),1,cumsum)))
  if(is.na(xlim[1])) xlim<-range(x)
  if(is.na(ylim[1])) ylim<-range(y)

@@ -1,6 +1,6 @@
-6db12617336ae0ac34b58f02d29e412d *DESCRIPTION
+706b3dfd6c8844efe1b6703e7ff4c81d *DESCRIPTION
 ec64d76232d9c58d7ac65708e87e1a15 *NAMESPACE
-07ecb1fad4f51ca583df4c1b2830f737 *NEWS
+d4d8df558c609615b226561bfee2db50 *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 54f531a76de0b83b120f3f6a15108f4e *R/add.ps.R
 76f5fc2c4426b0e082293a71976151e0 *R/addtable2plot.R
@@ -37,7 +37,7 @@ e055bee51aa987733e1edcf6af130c29 *R/dendrite.R
 e9e3f23cd4216bb463bf0993f2c604d8 *R/dotplot.mtb.R
 52b5052b1734781b8148077b036982ae *R/draw.arc.R
 f2a99bd058d0dd5bd10a696896bcf1db *R/draw.circle.R
-ad6f95f688d5ba348298b2c71a2d7ede *R/draw.ellipse.R
+bfcbf3aff9d82db63603f4773e280e64 *R/draw.ellipse.R
 1a1383ac27b34b7bfa800009969abfc0 *R/draw.radial.line.R
 bfe20a66089ca8fa472c0554707cbc6b *R/drawNestedBars.R
 92b383d4c98800cf63c623407dfa77de *R/ehplot.R
@@ -97,7 +97,7 @@ f1cf3329798b8c9a63871d5a6817ed2b *R/soil.texture.R
 3da214e101fe17bebd16fb4649a666a8 *R/soil.texture.uk.R
 86a9d362ca31c72a7e1be15add46b3a9 *R/spread.labels.R
 45b113476e355fa9117ee728b8071f2a *R/spreadout.R
-d8630c1c4a7ce0332242e576cfc253dc *R/stackpoly.R
+2e36e418ee1b79c69ea92a2b7935855a *R/stackpoly.R
 1476947622a48a0584ddc801394ebbdf *R/staircase.plot.R
 92140017f521faa7596e7e42ef3fd5a6 *R/starPie.R
 9c2ab674d5414a2c06ff0465a8fd20f6 *R/staxlab.R
@@ -163,7 +163,7 @@ afb5f5ce1e6dbc78e8843df397f2f10c *man/dendroPlot.Rd
 aae69bd515cac9d9ebdc8d89759b4029 *man/dotplot.mtb.Rd
 cb68dd72282e0a252f1689d786a10371 *man/draw.arc.Rd
 b24a1bf68bf35cfa467a648040003df5 *man/draw.circle.Rd
-1797cc0d2d618f6769f6bf7f8779494b *man/draw.ellipse.Rd
+4a4c1b00cab07fbe4a3d426c9e99ed6f *man/draw.ellipse.Rd
 84e9daf9df6dc02632d28aad82fe552e *man/draw.radial.line.Rd
 c771ff20c909ba6d894c1dd73499b079 *man/draw.tilted.sector.Rd
 5008fddaa27f126c13839b2ea3b4cb7e *man/drawNestedBars.Rd
@@ -251,7 +251,7 @@ d3a29fca855fdced8e042681255cd481 *man/soil.texture.Rd
 1538a56e8001fbdac5bc6fe59989cb75 *man/soils.Rd
 94621600224164995f082b46963b8f87 *man/spread.labels.Rd
 68ecac1afb03f4f889768018295f8a2c *man/spreadout.Rd
-ccc9108bc93acce70abff100c678aa44 *man/stackpoly.Rd
+67b5e4985491c2c0d6613aac7f25fe1c *man/stackpoly.Rd
 c2ce7111858d31a7b5f06edd041ef529 *man/staircase.plot.Rd
 13f237779bc123645ee131e980706d31 *man/starPie.Rd
 df4893370735f220266cab0699133250 *man/staxlab.Rd

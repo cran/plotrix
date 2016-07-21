@@ -3,7 +3,7 @@
 \title{Draw ellipse}
 \description{Draws ellipses on an existing plot.}
 \usage{
-draw.ellipse(x, y, a = 1, b = 1, angle = 0, segment = c(0, 360), 
+draw.ellipse(x, y, a = 1, b = 1, angle = 0, segment = NULL, 
 arc.only = TRUE, deg = TRUE, nv = 100, border = NULL, 
 col = NA, lty = 1, lwd = 1, ...)
 }
