@@ -1,3 +1,15 @@
+version 3.6-4
+
+        fixed a typo in twoord.plot that caused an error when the range
+        of the right axis went negative
+        added the jiggle function
+        changed the show.nulls argument in intersectDiagram to the nulls label
+        fixed the "fill" problem in textbox (thanks to Kohleth Chia)
+        added the placeLabels function
+        enhancement to raw.means.plot (thanks to Henrik Singmann)
+        added the binciW function, which fixes an error (thanks to Marc Girondot)
+        fixed the bug with displaying dispersion in barNest
+
 version 3.6-3
 
         fixed the errant y label in radial.pie

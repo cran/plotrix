@@ -55,7 +55,7 @@ drawNestedBars<-function(x,start,end,shrink=0.1,errbars=FALSE,
    drawNestedBars(newx,start,start+barwidth[nextval],shrink=shrink,
     errbars=errbars,col=newcol,labelcex=labelcex,lineht=lineht,
     showall=showall,Nwidths=Nwidths,barlabels=newbarlabels,
-    showlabels=showlabels,arrow.cap=arrow.cap)
+    showlabels=showlabels,arrow.cap=arrow.cap,intervals=intervals)
    #else print(newx)
    start<-start+barwidth[nextval]
   }

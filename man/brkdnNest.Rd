@@ -30,18 +30,21 @@
 }
 \details{
  \samp{brkdnNest} performs a nested breakdown of an element of a data frame
- by one or more categorical elements. For each category and optionally
+ by one or more categorical elements. For each category and optional
  subcategories, the variable on the left of the formula is summarized as
  specified by the functions named in \samp{FUN}.
 
  If \samp{trueval} is not NA, brkdnNest will calculate the proportion of
  \samp{trueval} values in the response variable out of the total valid
- responses. If the function \samp{valid.n} is the first function in \samp{FUN},
- the counts of the groups and subgroups will be returned.
+ responses. If the function \samp{valid.n} is the first function in 
+ \samp{FUN}, the counts of the groups and subgroups will be returned.
 
  Two specialized summary functions are defined within \samp{brkdnNest}.
  \samp{sumbrk} returns the count of values in a factor equal to \samp{trueval},
- and \samp{propbrk} returns the proportion of values equal to \samp{trueval}.
+ and \samp{propbrk} returns the proportion of values equal to 
+ \samp{trueval}. Be aware that if a categorical variable is specified on 
+ the left of the formula, functions which expect numeric data such as 
+ \samp{mean} should not be included in \samp{FUN}.
 
  The user should take care when specifying different summary functions.
  \samp{barNest} expects a summary measure as the first component of the list

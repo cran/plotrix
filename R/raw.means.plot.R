@@ -102,6 +102,26 @@ raw.means.plot <-function(data, col.offset = 2, col.x = 3, col.value = 4,  na.rm
         # ditto for the line type
         lty <- rep(lty, length.out=n.offset)
     }
+    if (!is.null(bg.b.col)) {
+      while (length(bg.b.col) < n.offset) {
+        bg.b.col <- rep(bg.b.col, length.out=n.offset)
+      }
+    }
+    if (!is.null(bg.f.col)) {
+      while (length(bg.f.col) < n.offset) {
+        bg.f.col <- rep(bg.f.col, length.out=n.offset)
+      }
+    }
+    if (!is.null(fg.b.col)) {
+      while (length(fg.b.col) < n.offset) {
+        fg.b.col <- rep(fg.b.col, length.out=n.offset)
+      }
+    }
+    if (!is.null(fg.f.col)) {
+      while (length(fg.f.col) < n.offset) {
+        fg.f.col <- rep(fg.f.col, length.out=n.offset)
+      }
+    }
     if (missing(x.labels)) {
         x.labels <- levels(data[, col.x])
     }
@@ -144,7 +164,7 @@ raw.means.plot <-function(data, col.offset = 2, col.x = 3, col.value = 4,  na.rm
             dp <- create.dp(lst = d.lst, n.x = n.x, avoid.overlap = avoid.overlap, y.factor = y.factor, y.amount = y.amount, x.amount = x.amount)
             x <- dp[[1]] - ((offset.start) - ((c - 1) * offset.dist))
             y <- dp[[2]]
-            points(x, y, pch = pch[c], col = bg.b.col, bg = bg.f.col, 
+            points(x, y, pch = pch[c], col = bg.b.col[c], bg = bg.f.col[c], 
                 cex = pt.cex)
         }
         for (c in 1:n.offset) {
@@ -153,7 +173,7 @@ raw.means.plot <-function(data, col.offset = 2, col.x = 3, col.value = 4,  na.rm
             x <- 1:n.x - ((offset.start) - ((c - 1) * offset.dist))
             y <- vapply(d.lst, mean, 0, na.rm = na.rm)
             lines(x, y, pch = pch[c], type = type, lty = lty[c], 
-                col = fg.b.col, bg = fg.f.col, cex = pt.cex, 
+                col = fg.b.col[c], bg = fg.f.col[c], cex = pt.cex, 
                 lwd = lwd)
         }
         if (xaxis == TRUE) 

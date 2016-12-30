@@ -19,10 +19,15 @@ barNest<-function(formula=NULL,data=NULL,FUN=c("mean","sd","sd","valid.n"),
   if(is.null(ylim)) ylim<-c(0,1.04*max(unlist(x[[1]][[2]]),na.rm=TRUE))
   if(FUN[1]=="valid.n" || FUN[1]=="sum") barlabels[[1]]<-""
  }
+ intervals<-xnames[2] == xnames[3]
  if(is.null(ylim)) {
-  if(errbars)
-   ylim<-c(min(unlist(x[[1]]),na.rm=TRUE)-max(unlist(x[[3]]),na.rm=TRUE),
-    max(unlist(x[[1]]),na.rm=TRUE)+max(unlist(x[[2]]),na.rm=TRUE))
+  if(errbars) {
+   if(intervals)
+    ylim<-c(min(unlist(x[[1]]),na.rm=TRUE)-max(unlist(x[[3]]),na.rm=TRUE),
+     max(unlist(x[[1]]),na.rm=TRUE)+max(unlist(x[[2]]),na.rm=TRUE))
+   else ylim<-
+    c(min(unlist(x[[3]]),na.rm=TRUE),max(unlist(x[[2]]),na.rm=TRUE))
+  }
   else ylim<-range(unlist(x[[1]]),na.rm=TRUE)
  }
  if(is.na(arrow.cap)) arrow.cap<-0.25/length(unlist(x[[1]]))
@@ -41,7 +46,6 @@ barNest<-function(formula=NULL,data=NULL,FUN=c("mean","sd","sd","valid.n"),
    (par("mai")[1]/par("pin")[2])/par("mar")[1]
  # number of levels to plot
  nlevels=length(x[[1]])
- intervals<-xnames[2] == xnames[3]
  drawNestedBars(x,start=0,end=1,shrink=shrink,errbars=errbars,
   intervals=intervals,col=col,labelcex=labelcex,lineht=lineht,
   showall=showall,Nwidths=Nwidths,barlabels=barlabels,

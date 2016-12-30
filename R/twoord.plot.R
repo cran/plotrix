@@ -111,7 +111,7 @@ twoord.plot<-function(lx,ly,rx,ry,data=NULL,main="",xlim=NULL,lylim=NULL,
 # offset for the "right" y values
  yoff<-lylim[1]-rylim[1]*ymult
  if(match(type[2],"bar",0)) {
-  if(rylim[1] < 0) abline("h", 0)
+  if(rylim[1] < 0) abline(h=0,lty=2)
   rect(rx-halfwidth,ifelse(ry<0,ry,rylim[1]*ymult+yoff),rx+halfwidth,
    ifelse(ry>0,ry*ymult+yoff,0),col=rcol)
  }

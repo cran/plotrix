@@ -121,7 +121,7 @@
   ylab="Number",FUN="valid.n",shrink=0.15)
  # to see this properly displayed, start a wide plot window
  # x11(width=10)
- test.df<-data.frame(Age=rnorm(100,25,10),
+ test.df<-data.frame(Age=rnorm(100,35,10),
   Sex=sample(c("Male","Female"),100,TRUE),
   Marital=sample(c("Div","Mar","Sing","Wid"),100,TRUE),
   Employ=sample(c("FT","PT","Un"),100,TRUE))

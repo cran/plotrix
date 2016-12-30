@@ -2,7 +2,7 @@
 \alias{color.id}
 \title{Identify closest match to a color}
 \description{
- Given a color given as a hex string, find the closest match in the
+ Given a color specified as a hex string, find the closest match in the
  table of known (named) colors
 }
 \usage{

@@ -14,8 +14,10 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,
  gapsize <- gap[2] - gap[1]
  if(missing(xaxlab)) xaxlab <- as.character(xtics)
  if(is.na(xlim[1])) xlim <- range(xtics)
- if(is.na(ylim[1])) ylim <- c(min(valid.y),max(valid.y) - gapsize)
+ if(is.na(ylim[1])) ylim <- c(min(valid.y)-gapsize,max(valid.y)-gapsize)
+ if(ylim[1] < 0) ylim[1]<-0
  if(missing(ytics)) ytics <- pretty(y)
+ if(any(ytics<0)) ytics<-ytics[ytics >= 0]
  if(missing(yaxlab)) yaxlab <- ytics
  littletics <- which(ytics < gap[1])
  bigtics <- which(ytics >= gap[2])
@@ -42,13 +44,13 @@ gap.barplot<-function (y,gap,xaxlab,xtics,yaxlab,ytics,xlim=NA,ylim=NA,
  else {
   plot(0,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab,axes=FALSE,type="n",...)
   plot.lim <- par("usr")
-  botgap<-ifelse(gap[1]<0,gap[1],xlim[1])
+  botgap<-ylim[1]
   box()
   axis(1,at=xtics,labels=xaxlab,...)
   axis(2,at=c(ytics[littletics],ytics[bigtics] - gapsize),
    labels=c(yaxlab[littletics],yaxlab[bigtics]),...)
-  rect(xtics[y<gap[1]] - halfwidth,botgap,xtics[y<gap[1]] + halfwidth,
-   y[y<gap[1]],col=col[y<gap[1]])
+  rect(xtics[littleones] - halfwidth,botgap,
+   xtics[littleones] + halfwidth,y[littleones],col=col[littleones])
   rect(xtics[bigones] - halfwidth,botgap,xtics[bigones] + halfwidth,
    y[bigones]-gapsize,col=col[bigones])
   axis.break(2,gap[1],style="gap")

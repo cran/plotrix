@@ -5,7 +5,7 @@
 \usage{
  intersectDiagram(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,sep="+",
   mar=c(0,0,3,0),main="Intersection Diagram",cex=1,col=NULL,
-  minspacing=NA,all.intersections=FALSE,include=NULL)
+  minspacing=NA,all.intersections=FALSE,include=NULL,null.label="Non-set")
 }
 \arguments{
  \item{x}{A list containing as many numeric vectors as there are sets. The
@@ -16,8 +16,9 @@
   identifiers can be passed - see Details.}
  \item{pct}{Whether to display counts (FALSE) or percentages (TRUE) of the
   number of entities.}
- \item{show.nulls}{Whether to display the number of original objects that were
-  not members of any set.}
+ \item{show.nulls}{Whether to display the number of original objects that 
+  are not members of any set. Any value that is not NA will become the 
+  label for this category.}
  \item{xnames}{Optional user supplied names for the set categories (see
   Details).}
  \item{sep}{The separator to use between category names (see Details).}
@@ -30,6 +31,7 @@
  \item{all.intersections}{Whether to display all intersections, even if empty
   (Dangerous - see Detail).}
  \item{include}{Which set identifiers to include in the diagram (see Details).}
+ \item{null.label}{The label for the non-set entities if displayed.}
 }
 \details{
  \samp{intersectDiagram} displays rows of optionally colored rectangles that

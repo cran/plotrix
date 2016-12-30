@@ -39,6 +39,17 @@ textbox <- function(x, y, textlist, justify=c('l','c','r'), cex=1, leading=0.5,
         x.pos <- x.pos + x.len
         adj2[1] <- 1
     }
+    if (box) {
+        xbox <- x
+        ybox <- c(y.pos, y)
+        ybox[1] <- ybox[1] - abs(margin[1])
+        xbox[1] <- xbox[1] - abs(margin[2])
+        ybox[2] <- ybox[2] + abs(margin[3])
+        xbox[2] <- xbox[2] + abs(margin[4])
+        rect(xbox[1], ybox[1], xbox[2], ybox[2], border=border, col=fill, density=density,
+            angle=angle, lty=lty, lwd=lwd)
+        y.pos <- ybox[1]
+    }
     curword <- 1
     while (curword <= length(words)) {
         curline <- ""
@@ -51,17 +62,6 @@ textbox <- function(x, y, textlist, justify=c('l','c','r'), cex=1, leading=0.5,
         }
         text(x.pos, y.pos, curline, adj=adj+adj2, cex=cex, col=col, font=font, vfont=vfont)
         y.pos <- y.pos - line.height
-    }
-    if (box) {
-        xbox <- x
-        ybox <- c(y.pos, y)
-        ybox[1] <- ybox[1] - abs(margin[1])
-        xbox[1] <- xbox[1] - abs(margin[2])
-        ybox[2] <- ybox[2] + abs(margin[3])
-        xbox[2] <- xbox[2] + abs(margin[4])
-        rect(xbox[1], ybox[1], xbox[2], ybox[2], border=border, col=fill, density=density,
-            angle=angle, lty=lty, lwd=lwd)
-        y.pos <- ybox[1]
     }
     par(saveAdj)
     return(y.pos)

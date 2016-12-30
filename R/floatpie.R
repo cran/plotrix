@@ -54,7 +54,7 @@ pie.labels<-function(x,y,angles,labels,radius=1.05,bg="white",border=TRUE,
  for(label in 1:length(labels)) {
   label.adj<-c(abs(1-cos(angles[label]))/2,abs(1-sin(angles[label]))/2)
   if(boxed)
-   boxed.labels(xc[label],yc[label],labels[label],adj=label.adj[1],
+   boxed.labels(xc[label],yc[label],labels[label],adj=label.adj,
     border=border,...)
   else text(xc[label],yc[label],labels[label],adj=label.adj,...)
  }

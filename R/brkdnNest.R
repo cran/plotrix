@@ -1,3 +1,5 @@
+jiggle<-function(n,range=c(-1,1)) return(rescale(sample(1:n,n),range))
+
 valid.n<-function(x,na.rm=TRUE) return(ifelse(na.rm,sum(!is.na(x)),length(x)))
 
 propbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
@@ -10,26 +12,34 @@ sumbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
  return(sum(x==trueval,na.rm=TRUE))
 }
 
+binciW<-function(x,n,alpha=0.05,cc=FALSE) {
+ p<-x/n
+ q<-1-p
+ z<-qnorm(1-alpha/2)
+ z2<-z*z
+ if(cc) {
+  cil<-(2*n*p+z2-(z*sqrt(z2-1/n+4*n*p*q+(4*p-2))+1))/(2*(n+z2))
+  ciu<-(2*n*p+z2+(z*sqrt(z2-1/n+4*n*p*q+(4*p-2))+1))/(2*(n+z2))
+ } else {
+ cil<-(1/(1+z2/n))*(p+z2/(2*n)-z*sqrt((p/n*q)+z2/(4*n*n)))
+ ciu<-(1/(1+z2/n))*(p+z2/(2*n)+z*sqrt((p/n*q)+z2/(4*n*n)))
+ }
+ if(cil < 0) cil<-0
+ if(ciu > 1) ciu<-1
+ return(c(cil,ciu))
+}
+
 binciWu<-function(x,n,alpha=0.05,trueval=TRUE,na.rm=TRUE) {
  if(missing(n)) n<-ifelse(na.rm,valid.n(x),length(x))
  x<-sum(x==trueval,na.rm=TRUE)
- z<-pnorm(1-alpha/2)
- zsq<-z*z
- phat<-ifelse(x<1,x,x/n)
- pest<-phat+zsq/(2*n)
- ci<-(pest+z*sqrt((phat*(1-phat))/n+zsq/(4*n*n)))/(1+zsq/n)
- return(ci)
+ return(binciW(x,n,alpha=alpha)[2])
 }
 
 binciWl<-function(x,n,alpha=0.05,trueval=TRUE,na.rm=TRUE) {
  if(missing(n)) n<-ifelse(na.rm,valid.n(x),length(x))
  x<-sum(x==trueval,na.rm=TRUE)
- z<-pnorm(1-alpha/2)
- zsq<-z*z
- phat<-ifelse(x<1,x,x/n)
- pest<-phat+zsq/(2*n)
- ci<-(pest-z*sqrt((phat*(1-phat))/n+zsq/(4*n*n)))/(1+zsq/n)
- return(ci)
+ z<-qnorm(1-alpha/2)
+ return(binciW(x,n,alpha=alpha)[1])
 }
 
 brkdnNest<-function(formula,data,FUN=c("mean","sd","sd","valid.n"),

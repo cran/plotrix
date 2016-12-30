@@ -1,6 +1,7 @@
 intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL, 
  sep="+",mar=c(0,0,3,0),main="Intersection Diagram",cex=1,col=NULL,
- minspacing=NA,all.intersections=FALSE,include=NULL) {
+ minspacing=NA,all.intersections=FALSE,include=NULL,
+ null.label="Non-set") {
 
  matchParts<-function(x,table,ignore.case=TRUE) {
   for(pattern in 1:length(x)) {
@@ -41,8 +42,9 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
  # index of level with the most objects
  maxlevel<-which.max(objectsums)
  nNonZero<-function(x) return(sum(x > 0))
- # number of intersections with at least one member for each intersection level
- # or all intersections if the somewhat dangerous "show everything" option is TRUE
+ # number of intersections with at least one member for each
+ # intersection level or all intersections if the somewhat dangerous
+ # "show everything" option is TRUE
  if(all.intersections) nintersects<-sapply(x,length)
  else nintersects<-sapply(x,nNonZero)
  # maximum number of intersections in a given level
@@ -53,7 +55,8 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
  if(is.na(minspacing)) minspacing<-0.1 * maxn
  # x limit that will hold the maximum number of objects and allow
  # spacing for the maximum number of intersections in units of objects 
- maxx<-objectsums[maxlevel] + minspacing * maxintersections
+ maxx<-ifelse(nobjects > objectsums[maxlevel],
+  nobjects,objectsums[maxlevel] + minspacing * maxintersections)
  # have to escape the separator in case it is "+" (default) or
  # some other character that means something to some function
  attsep<-paste("[",sep,"]",sep="")
@@ -80,8 +83,8 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
    if(matchParts(include,blocknames[intersect])) {
     # make the label for the intersection
     cellqnt<-ifelse(pct,
-     paste(round(100*x[[level]][intersections[intersect]]/nobjects,1),"%",sep=""),
-     x[[level]][intersections[intersect]])
+     paste(round(100*x[[level]][intersections[intersect]]/nobjects,1),
+     "%",sep=""),x[[level]][intersections[intersect]])
     # indices of the colors to use for this rectangle
     colindex<-
      which(attributes %in% unlist(strsplit(blocknames[intersect],attsep)))
@@ -124,7 +127,7 @@ intersectDiagram<-function(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,
   xpos<-leftnulls+nonset/2
   # display the label
   if(pct) nonset<-paste(round(100*nonset/nobjects,1),"%",sep="")
-  boxed.labels(xpos,0.5,paste("Non-members",nonset,sep="\n"),cex=cex)
+  boxed.labels(xpos,0.5,paste(null.label,nonset,sep="\n"),cex=cex)
  }
  # restore the original plot parameters
  par(mar=oldmar)

@@ -91,19 +91,19 @@ raw.means.plot2(data, col.id, col.offset, col.x, col.value,
  for more details. Recycled if too short (with warning). Default is 1:5.
 }
   \item{bg.b.col}{
- background border color: border color of raw data points. Default:
- \samp{"darkgrey"}
+ background border color: border color of raw data points. Silently recycled. Default:
+ \samp{"darkgrey"} 
 }
   \item{bg.f.col}{
- background filling color: fill color of raw data points. Default:
+ background filling color: fill color of raw data points. Silently recycled. Default:
  \samp{NULL}
 }
   \item{fg.b.col}{
- foreground border color: border color of mean data points. Default:
+ foreground border color: border color of mean data points. Silently recycled. Default:
  \samp{black}
 }
   \item{fg.f.col}{
- foreground fill color: fill color for mean data points. Default:
+ foreground fill color: fill color for mean data points. Silently recycled. Default:
  \samp{black}
 }
   \item{type}{
@@ -211,7 +211,7 @@ raw.means.plot2(data, col.id, col.offset, col.x, col.value,
 
 \samp{raw.means.plot2} is probably the more useful function, as it allows for
  using a data.frame with more than two-factors and aggregates across the other
- factors, but needs a column specifiying the experimental unit (e.g.,
+ factors, but needs a column specifying the experimental unit (e.g.,
  participant).
 
 \samp{raw.means.plot} is basically an advanced wrapper for two other
@@ -257,6 +257,10 @@ raw.means.plot(x, "offset", "xaxis", "data")
 raw.means.plot(x, "xaxis", "offset", "data")
 
 raw.means.plot(x, 3, 2, 4)
+
+# different colors:
+raw.means.plot(x, main = "Example", ylab = "Values", xlab = "Factor",
+ title = "Groups", fg.f.col = c("red","blue", "green"))
 
 x2 <- data.frame(id = 1:150, offset = rep(c("Group A", "Group B", "Group C"),
  each = 50), xaxis = sample(c("A", "B", "C", "D"),150, replace = TRUE),

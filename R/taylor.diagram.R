@@ -23,8 +23,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor = TRUE,
     grad.corr.lines = c(0.2, 0.4, 0.6, 0.8, 0.9), pcex = 1, cex.axis = 1, 
     normalize = FALSE, mar = c(5, 4, 6, 6), ...) {
     
-    grad.corr.full <- c(0, 0.2, 0.4, 0.6, 0.8, 0.9, 0.95, 0.99, 
-        1)
+    grad.corr.full <- c(0, 0.2, 0.4, 0.6, 0.8, 0.9, 0.95, 0.99, 1)
   # convert any list elements or data frames to vectors
    R <- cor(ref, model, use = "pairwise")
     if (is.list(ref)) 

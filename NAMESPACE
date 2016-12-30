@@ -7,11 +7,11 @@
     "boxplot", "clip", "hist", "hist.default", "layout",
     "legend", "lines", "locator", "matplot", "mtext", "par",
     "persp", "plot", "plot.new", "plot.window", "points",
-    "polygon", "rect", "segments", "strheight", "strwidth",
-    "symbols", "text", "title", "xinch", "yinch")
+    "polygon", "rect", "segments", "strheight",
+    "strwidth", "symbols", "text", "title", "xinch", "yinch")
  importFrom("stats", "aggregate", "approx", "as.formula",
     "complete.cases", "cor", "dist", "model.frame", "na.omit",
-    "pnorm", "sd", "t.test", "terms")
+    "qnorm", "sd", "t.test", "terms")
  importFrom("utils", "combn", "modifyList")
 export(
  ablineclip,
@@ -25,6 +25,7 @@ export(
  barp,
  battleship.plot,
  bin.wind.records,
+ binciW,
  binciWl,
  binciWu,
  box.heresy,
@@ -86,6 +87,7 @@ export(
  hexagon,
  histStack,
  intersectDiagram,
+ jiggle,
  kiteChart,
  labbePlot,
  ladderplot,
@@ -109,6 +111,7 @@ export(
  pie.labels,
  pie3D,
  pie3D.labels,
+ placeLabels,
  plot.dendrite,
  plot_bg,
  plotCI,

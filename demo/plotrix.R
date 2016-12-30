@@ -53,7 +53,7 @@ barp(happyday,names.arg=names(happyday),legend.lab=c("Slaves","Unemployed"),
  legend.pos=list(x=2,y=4.5),col=c("#ee7700","#3333ff"),
  main="Test of barp, staxlab and color.legend",
  xlab="Day of week",ylab="Happiness rating",ylim=c(1,5),staxx=TRUE,staxy=TRUE,
- height.at=1:5,height.lab=happylabels,cex.axis=0.9,cylindrical=TRUE,
+ height.at=1:5,height.lab=happylabels,cex.axis=1,cylindrical=TRUE,
  shadow=TRUE)
 par(mar=c(5,4,4,2))
 h1<-table(cut(rnorm(100,4),breaks=seq(0,8,by=2)))
