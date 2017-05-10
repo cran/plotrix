@@ -11,7 +11,6 @@ soil.texture<-function(soiltexture=NULL,main="",at=seq(0.1,0.9,by=0.1),
  col.symbols="black",pch=par("pch"), ...) {
 
  par(xpd=TRUE)
- plot(0.5,type="n",axes=FALSE,xlim=c(0,1),ylim=c(0,1),main=NA,xlab=NA, ylab=NA)
  triax.plot(x=NULL,main=main,at=at,axis.labels=axis.labels,tick.labels=tick.labels,
   col.axis=col.axis,show.grid=show.grid,col.grid=col.grid,lty.grid=lty.grid)
  arrows(0.12,0.41,0.22,0.57,length=0.15)

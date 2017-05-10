@@ -1,3 +1,11 @@
+version 3.6-5
+
+        added the clustered.dotplots and violin_plot functions
+        fixed the extra call to plot in soil.texture (thanks to Dylan Beaudette)
+        added an option to radial.grid to allow it to display a blank grid
+        fixed a mysterious problem with equating one argument to another
+        in the box.heresy function
+
 version 3.6-4
 
         fixed a typo in twoord.plot that caused an error when the range

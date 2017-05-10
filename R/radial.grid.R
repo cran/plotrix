@@ -1,7 +1,12 @@
 radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
  start=0,clockwise=FALSE,label.prop=1.1,grid.pos,grid.col="gray",
- grid.bg="transparent",show.radial.grid=TRUE) {
+ grid.bg="transparent",show.radial.grid=TRUE,start.plot=FALSE) {
 
+ if(start.plot) {
+  radial.span<-diff(radial.lim)
+  plot(0,type="n",xlim=c(-radial.span,radial.span),
+   ylim=c(-radial.span,radial.span),xlab="",ylab="",axes=FALSE)
+ }
  par(xpd=TRUE)
  if(is.null(label.pos)) label.pos<-seq(0,1.8*pi,length=9)
  if(!is.null(labels)) {
@@ -10,7 +15,7 @@ radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
  if(clockwise) label.pos<--label.pos
  if(start) label.pos<-label.pos+start
  # display the circumferential grid
- angles<-seq(0,1.96*pi,by=0.04*pi)
+ angles<-seq(0,1.96*pi,by=0.04* pi)
  for(i in seq(length(grid.pos),1,by=-1)) {
   xpos<-cos(angles)*(grid.pos[i]-radial.lim[1])
   ypos<-sin(angles)*(grid.pos[i]-radial.lim[1])
@@ -31,14 +36,14 @@ radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
   ypos<-sin(label.pos)*maxlength*label.prop
   if(radlab) {
    for(label in 1:length(labels)) {
-    labelsrt<-(180*label.pos[label]/pi)+
-     180*(label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
-    text(xpos[label],ypos[label],labels[label],cex=par("cex.axis"),
-     srt=labelsrt)
+    labelsrt<-(180*label.pos[label]/pi)+180*
+     (label.pos[label] > pi/2 && label.pos[label] < 3*pi/2)
+    text(xpos[label],ypos[label],labels[label],
+     cex=par("cex.axis"),srt=labelsrt)
    }
   }
   else
    boxed.labels(xpos,ypos,labels,ypad=0.7,border=FALSE,cex=par("cex.axis"))
  }
- par(xpd=FALSE)
+ par(xpd = FALSE)
 }

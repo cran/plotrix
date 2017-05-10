@@ -21,8 +21,6 @@ soil.texture.uk <- function (soiltexture = NULL, main = "",
  if(is.na(snames[1])) snames <- c("Clays","Medium silts","Medium loams",
   "Sands","Light loams","Light silts")
  par(xpd = TRUE)
- plot(0.5, type = "n", axes = FALSE, xlim = c(0,1),ylim = c(0,1),
-  main = NA, xlab = NA, ylab = NA)
  triax.plot(x=NULL,main = main, at = at, axis.labels = axis.labels,
   tick.labels = tick.labels, col.axis = col.axis, show.grid = show.grid,
    col.grid = col.grid, lty.grid = lty.grid)

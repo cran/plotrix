@@ -2,7 +2,7 @@
 \alias{box.heresy}
 \title{Display a sort of box plot}
 \usage{
- box.heresy(x,y,uinner,linner=uinner,ulim,llim=ulim,boxwidth=NA,
+ box.heresy(x,y,uinner,linner,ulim,llim,boxwidth=NA,
   intervals=FALSE,arrow.cap=NA,pch=22,main="",xlab="",ylab="",
   xaxlab=NA,col="white",do.first=NULL,...)
 }
@@ -32,6 +32,15 @@
  (e.g. standard error) and whiskers represent an "outer" measure of dispersion
  (e.g. standard deviation). The function is pretty basic at this time and will 
  probably change a bit.
+ 
+ The argument "intervals" is particularly important, and can wreak
+ havoc on the resulting plot. The default of FALSE means that the
+ values passed to the inner and outer measures of dispersion are
+ absolute, not intervals away from the measure of central tendency.
+ Mixing absolute and relative values will always lead to errors and
+ typically a very strange looking plot. It is probably easiest to
+ calculate the absolute values before calling box.heresy. The first and
+ second examples show how intervals=FALSE and intervals=TRUE can be used.
 
  One of the first changes is to allow varying box widths. The user can specify
  the box widths as a vector of numeric values at least as long as the number

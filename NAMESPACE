@@ -1,7 +1,7 @@
 # created 5/9/2011 - Jim Lemon
- importFrom("grDevices", "col2rgb", "colors", "dev.cur", "dev.list",
-    "dev.size", "gray", "heat.colors", "palette", "rainbow",
-    "rgb", "trans3d", "xy.coords")
+ importFrom("grDevices", "boxplot.stats", "col2rgb", "colors",
+    "dev.cur", "dev.list", "dev.size", "gray", "heat.colors",
+    "palette", "rainbow", "rgb", "trans3d", "xy.coords")
  importFrom("graphics", "abline", "arrows", "axTicks", "axis",
     "axis.POSIXct", "barplot", "barplot.default", "box",
     "boxplot", "clip", "hist", "hist.default", "layout",
@@ -10,8 +10,8 @@
     "polygon", "rect", "segments", "strheight",
     "strwidth", "symbols", "text", "title", "xinch", "yinch")
  importFrom("stats", "aggregate", "approx", "as.formula",
-    "complete.cases", "cor", "dist", "model.frame", "na.omit",
-    "qnorm", "sd", "t.test", "terms")
+    "complete.cases", "cor", "density", "dist", "model.frame",
+    "na.omit", "qnorm", "rnorm", "sd", "t.test", "terms")
  importFrom("utils", "combn", "modifyList")
 export(
  ablineclip,
@@ -39,6 +39,7 @@ export(
  clock24.plot,
  clplot,
  cluster.overplot,
+ clustered.dotplots,
  color.axis,
  color.gradient,
  color.id,
@@ -168,6 +169,7 @@ export(
  twoord.stackplot,
  valid.n,
  vectorField,
+ violin_plot,
  weighted.hist,
  zoomInPlot
 )

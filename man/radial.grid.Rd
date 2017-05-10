@@ -4,7 +4,7 @@
 \usage{
  radial.grid(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
   start=0,clockwise=FALSE,label.prop=1.1,grid.pos,grid.col="gray",
-  grid.bg="transparent",show.radial.grid=TRUE)
+  grid.bg="transparent",show.radial.grid=TRUE,start.plot=FALSE)
 }
 \arguments{
  \item{labels}{The labels to display around the circumference of the grid.}
@@ -20,6 +20,7 @@
  \item{grid.col}{Color for the radial grid lines.}
  \item{grid.bg}{Background color for the radial grid.}
  \item{show.radial.grid}{Whether to display the radial lines on the grid.}
+ \item{start.plot}{If TRUE, sets up a blank radial grid.}
 }
 \description{
  \samp{radial.grid} displays a radial grid for the \samp{radial.plot} and
