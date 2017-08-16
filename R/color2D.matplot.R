@@ -103,8 +103,9 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
    if(show.values) {
     if(yrev) texty<-rep(seq(xdim[1]-0.5,0,by=-1),xdim[2])
     else texty<-rep(seq(0.5,xdim[1]-0.5,by=1),xdim[2])
-    text(sort(rep((1:xdim[2])-0.5,xdim[1])),texty,
-     round(x,show.values),col=vcol,cex=vcex)
+    text(sort(rep((1:xdim[2])-0.5,xdim[1])), texty,
+     formatC(round(x,show.values),format="f",digits=show.values),
+     col=vcol,cex=vcex)
    }
   }
   naxs<-which(is.na(x))

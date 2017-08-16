@@ -1,8 +1,8 @@
 # the interactive plotrix demo
 par(ask=FALSE)
-answer<-"X"
-whichplot<-"X"
-while(answer != "Q" && whichplot != "Q") {
+answer<-"Z"
+whichplot<-"Z"
+while(answer != "X" && whichplot != "X") {
 cat("1. Plots B-K\n2. Plots L-Z\n3. Enhancements A-L\n")
 cat("4. Enhancements L-V\nQ. Quit\n")
 answer<-toupper(readline("Choose a group - "))
@@ -15,24 +15,25 @@ if(answer=="1") {
  cat("6. bumpchart - A league table by time plot\n")
  cat("7. centipede.plot - A league table (ranking) plot\n")
  cat("8. clock24.plot - Plot values on a 24 hour 'clockface'\n")
- cat("9. color2D.matplot - Display a numeric matrix as colors\n")
- cat("A. color.scale.lines - Plot lines with colors dependent upon values\n")
- cat("B. dendroPlot - Display distributions as dendrites\n")
- cat("C. diamondplot - Plot variables as polygons on a radial grid\n")
- cat("D. dotplot.mtb - Minitab style dotplot\n")
- cat("E. ehplot - Englemann-Hecker plot\n")
- cat("F. election - Display party affiliations by color\n")
- cat("G. fan.plot - Like a pie chart with overlaid sectors\n")
- cat("H. feather.plot - Display vectors along a horizontal line\n")
- cat("I. floating.pie - Display one or more pie charts\n")
- cat("J. gantt.chart - Display a Gantt chart\n")
- cat("K. gap.barplot - A bar plot with an specified gap\n")
- cat("L. gap.boxplot - A box plot with a specified gap\n")
- cat("M. gap.plot - A scatterplot with a specified gap\n")
- cat("N. histStack - Display a stacked histogram\n")
- cat("O. intersectDiagram - Display set intersections as rectangles\n")
- cat("P. kiteChart - Display a matrix of values as polygon segments\n")
- cat("Q. Quit\n")
+ cat("9. clustered.dotplots - a sort of graphical crosstabulation\n")
+ cat("A. color2D.matplot - Display a numeric matrix as colors\n")
+ cat("B. color.scale.lines - Plot lines with colors dependent upon values\n")
+ cat("C. dendroPlot - Display distributions as dendrites\n")
+ cat("D. diamondplot - Plot variables as polygons on a radial grid\n")
+ cat("E. dotplot.mtb - Minitab style dotplot\n")
+ cat("F. ehplot - Englemann-Hecker plot\n")
+ cat("G. election - Display party affiliations by color\n")
+ cat("H. fan.plot - Like a pie chart with overlaid sectors\n")
+ cat("I. feather.plot - Display vectors along a horizontal line\n")
+ cat("J. floating.pie - Display one or more pie charts\n")
+ cat("K. gantt.chart - Display a Gantt chart\n")
+ cat("L. gap.barplot - A bar plot with an specified gap\n")
+ cat("M. gap.boxplot - A box plot with a specified gap\n")
+ cat("N. gap.plot - A scatterplot with a specified gap\n")
+ cat("O. histStack - Display a stacked histogram\n")
+ cat("P. intersectDiagram - Display set intersections as rectangles\n")
+ cat("Q. kiteChart - Display a matrix of values as polygon segments\n")
+ cat("X. Exit\n")
  #par(ask=TRUE)
  whichplot<-toupper(readline("Choose a plot - "))
  if(whichplot == "1") {
@@ -120,7 +121,24 @@ if(answer=="1") {
   clock24.plot(testlen,testpos,main="Test Clock24 (lines)",show.grid=FALSE,
    line.col="green",lwd=3)
  }
-  if(whichplot == "9") {
+ if(whichplot == "9") {
+  data(mtcars)
+  cumcars<-by(mtcars$carb,list(mtcars$cyl,mtcars$gear),valid.n)
+  mtcars2<-data.frame(cyl=NA,gear=NA,carb=NA)
+  rownum<-1
+  for(cyl in dimnames(cumcars)[[1]]) {
+   for(gear in dimnames(cumcars)[[2]]) {
+    if(!is.na(cumcars[cyl,gear])) {
+     mtcars2[rownum,]<-c(as.numeric(cyl),as.numeric(gear),cumcars[cyl,gear])
+     rownum<-rownum+1
+    }
+   }
+  }
+  clustered.dotplots(xgroup = mtcars2$cyl, ygroup = mtcars2$gear,
+   freq = mtcars2$carb,main="Cars by number of cylinders and gears",
+   xlab="Number of cylinders",ylab="Number of gears",type="points",pch=5)
+ }
+ if(whichplot == "A") {
   x<-matrix(rnorm(1024),nrow=32)
   # simulate a correlation matrix with values -0.5 to 0.5
   x<-rescale(x,c(-0.5,0.5))
@@ -132,7 +150,7 @@ if(answer=="1") {
   color.legend(0,-4,10,-3,legend=c(-1,-0.5,0,0.5,1),
    rect.col=color.scale(c(-1,-0.5,0,0.5,1),c(0,1),0,c(1,0)),align="rb")
  }
- if(whichplot == "A") {
+ if(whichplot == "B") {
   x<-c(0,cumsum(rnorm(99)))
   y<-c(0,cumsum(rnorm(99)))
   xydist<-sqrt(x*x+y*y)
@@ -140,25 +158,25 @@ if(answer=="1") {
   color.scale.lines(x,y,c(1,1,0),0,c(0,1,1),colvar=xydist,lwd=2)
   boxed.labels(x,y,labels=1:100,border=FALSE,cex=0.5)
  }
- if(whichplot == "B") {
+ if(whichplot == "C") {
   x<-list(runif(90,1,2),factor(sample(LETTERS,100,TRUE)),rnorm(80,mean=5))
   dendroPlot(x,breaks=list(seq(1,2,by=0.1),0,0:10),nudge=c(0.03,0.3),
    xlab="Groups",ylab="Counts",main="Test dendroPlot")
  } 
- if(whichplot == "C") {
+ if(whichplot == "D") {
   data(mtcars)
   mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]
   diamondplot(mysubset,name="Diamondplot")
  } 
- if(whichplot == "D") {
+ if(whichplot == "E") {
   x <- rpois(100,10)
   dotplot.mtb(x,yaxis=TRUE,main="Minitab dotplot with y-axis.")
  } 
- if(whichplot == "E") {
+ if(whichplot == "F") {
   data(iris)
   ehplot(iris$Sepal.Length, iris$Species, intervals=20, cex=1.8, pch=20)
  } 
- if(whichplot == "F") {
+ if(whichplot == "G") {
   eu = structure(list(colour = c("#3399FF", "#F0001C", "#0054A5",
   "#FFD700", "#990000", "#909090", "#32CD32", "#40E0D0"),
    party = c("EPP", "S and D", "ECR", "ALDE", "GUE-NGL",
@@ -174,18 +192,18 @@ if(answer=="1") {
   legend(-0.7,-0.3,eu$party,fill=eu$colour)
   par(oldmar)
  } 
- if(whichplot == "G") {
+ if(whichplot == "H") {
   iucn.df<-data.frame(area=c("Africa","Asia","Europe","N&C America",
    "S America","Oceania"),threatened=c(5994,7737,1987,4716,5097,2093))
   fan.plot(iucn.df$threatened,max.span=pi,
    labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
    main="Threatened species by geographical area (fan.plot)",ticks=276)
  } 
- if(whichplot == "H") {
+ if(whichplot == "I") {
   feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
    main="Test of feather.plot",xlab="Time",ylab="Value")
  } 
- if(whichplot == "I") {
+ if(whichplot == "J") {
   plot(1:5,type="n",main="Floating Pie test",xlab="",ylab="",axes=FALSE)
   box()
   polygon(c(0,0,5.5,5.5),c(0,3,3,0),border="#44aaff",col="#44aaff")
@@ -203,7 +221,7 @@ if(answer=="1") {
   draw.circle(4.03,2.85,radius=0.04,col="white")
   text(c(1.7,3.1,4),c(3.7,3.7,3.7),c("Pass","Pass","Fail"))
  } 
- if(whichplot == "J") {
+ if(whichplot == "K") {
   Ymd.format<-"%Y/%m/%d"
   gantt.info<-list(labels=
    c("First task","Second task","Third task","Fourth task","Fifth task"),
@@ -222,29 +240,29 @@ if(answer=="1") {
   gantt.chart(gantt.info,main="Calendar date Gantt chart (2004)",
    priority.legend=TRUE,vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE)
  }
- if(whichplot == "K") {
+ if(whichplot == "L") {
   twogrp<-c(rnorm(10)+4,rnorm(10)+20)
   gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
   ylab="Group values",main="gap.barplot")
  } 
- if(whichplot == "L") {
+ if(whichplot == "M") {
   twovec<-list(vec1=c(rnorm(30),-6),vec2=c(sample(1:10,40,TRUE),20))
   gap.boxplot(twovec,gap=list(top=c(12,18),bottom=c(-5,-3)),
    main="Test gap.boxplot")
  }
- if(whichplot == "M") {
+ if(whichplot == "N") {
   twogrp<-c(rnorm(5)+4,rnorm(5)+20,rnorm(5)+5,rnorm(5)+22)
   gpcol<-c(2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5)
   gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
    main="Test gap.plot",col=gpcol)
  }
- if(whichplot == "N") {
+ if(whichplot == "O") {
   df<-data.frame(len=rnorm(100)+5,
    grp=sample(c("A","B","C","D"),100,replace=TRUE))
   histStack(len~grp,data=df,main="Default (rainbow) colors",
    xlab="Length category")
  }
- if(whichplot == "O") {
+ if(whichplot == "P") {
   druguse<-matrix(c(sample(c(0,1),200,TRUE,prob=c(0.15,0.85)),
    sample(c(0,1),200,TRUE,prob=c(0.35,0.65)),
    sample(c(0,1),200,TRUE,prob=c(0.5,0.5)),
@@ -254,7 +272,7 @@ if(answer=="1") {
   # first display it as counts
   intersectDiagram(druglist,main="Patterns of drug use",sep="\n")
  }
- if(whichplot == "P") {
+ if(whichplot == "Q") {
   testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
    sin(1:50)),ncol=50,byrow=TRUE)
   kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
@@ -287,9 +305,10 @@ if(answer == "2") {
  cat("L. triax.plot - Triangle (three axis) plot\n")
  cat("M. twoord.plot - Plot with two ordinates\n")
  cat("N. vectorField - Diaplay magnitude/direction vectors\n")
- cat("O. weighted.hist - Display a weighted histogram\n")
- cat("P. zoomInPlot - Display a plot with a magnified section\n")
- cat("Q. Quit\n")
+ cat("O. violin_plot - Display a violin plot\n")
+ cat("P. weighted.hist - Display a weighted histogram\n")
+ cat("Q. zoomInPlot - Display a plot with a magnified section\n")
+ cat("X. Exit\n")
  whichplot<-toupper(readline("Choose a plot - "))
  if(whichplot == "1") {
   didf<-data.frame(subject=1:50,interv=rep(c("therapist","ex-drinker"),each=25),
@@ -510,11 +529,17 @@ if(answer == "2") {
   vectorField(dir,mag,xpos,ypos,scale=0.8,vecspec="rad",col=vectorcol)
  }
  if(whichplot == "O") {
+  normvar<-c(rnorm(49),-4)
+  unifvar<-runif(50,-2,2)
+  violin_plot(matrix(c(normvar,unifvar),ncol=2),
+   main="Default plot",x_axis_labels=c("Normal","Uniform"))
+ }
+ if(whichplot == "P") {
   testx<-sample(1:10,300,TRUE)
   testw<-seq(1,4,by=0.01)
   weighted.hist(testx,testw,breaks=1:10,main="Test weighted histogram")
  }
- if(whichplot == "P") {
+ if(whichplot == "Q") {
   zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),
    zoomtitle="Zoom In Plot",titlepos=-1.5)
  }
@@ -545,7 +570,7 @@ if(answer=="3") {
  cat("N. jiggle - Move points apart, a bit like jitter\n")
  cat("O. legendg - Display a grouped legend\n")
  cat("P. length.key - Key for interpreting lengths in a plot\n")
- cat("Q. Quit\n")
+ cat("X. Exit\n")
  whichplot<-toupper(readline("Choose an enhancement - "))
  if(whichplot == "1") {
   x <- rnorm(100)
@@ -774,7 +799,7 @@ if(answer == "4") {
  cat("M. triax.fill - Color the triangles on a triangle plot\n")
  cat("N. tsxpos - Calculated equispaced x positions of plotted values\n")
  cat("O. valid.n - Find the number of valid (not NA) values\n")
- cat("Q. Quit\n")
+ cat("X. Exit\n")
  whichplot<-toupper(readline("Choose an enhancement - "))
  if(whichplot == "1") {
   plot(1:10,1:10,type="n")

@@ -3,15 +3,15 @@ fan.plot<-function (x,edges=200,radius=1,col=NULL,align.at=NULL,
  shrink=0.02,main="",ticks=NULL,include.sumx=FALSE,...) {
 
  if(!is.numeric(x) || any(is.na(x) | x <= 0)) 
-  stop("fan.plot: x values must be positive.")
+  stop("fan.plot: x values must be positive numbers.")
  nticks<-ifelse(ticks==1,sum(x),ticks)
  if(include.sumx) x<-c(x,sum(x))
- xorder<-order(x, decreasing = TRUE)
+ xorder<-order(x,decreasing=TRUE)
  oldmar<-par("mar")
- # convert values into angular extents
+ # convert values into angular extents summing to 2*pi
  if (align == "center") x<-pi*x/sum(x)
  else x<-2*pi*x/sum(x)
- # stretch or shrink the values if max.span has been specified
+ # stretch or shrink the values to fit into max.span if specified
  if(!is.null(max.span)) x<-x*max.span/max(x)
  if(is.null(align.at)) {
   if(align == "center") align.at<-pi/2
@@ -21,11 +21,12 @@ fan.plot<-function (x,edges=200,radius=1,col=NULL,align.at=NULL,
  nx<-length(x)
  tempradius<-radius
  if(is.null(col)) col<-rainbow(nx)
- else if (length(col) < nx) col<-rep(col,length = nx)
+ else if(length(col) < nx) col<-rep(col,length = nx)
+ # center should be 0,0
  if(align == "left") lowpoint<-min(sin(align.at-x))
  else lowpoint<-min(sin(align.at+x))
  if(lowpoint > 0) lowpoint<-0
- par(mar=c(1,1,1,1),xpd=TRUE)
+ par(mar=c(5,2,1,2),xpd=TRUE)
  xspan<-max(label.radius+0.012*max(nchar(labels)))
  plot(0,xlim=c(-xspan,xspan),ylim=c(lowpoint,xspan), 
   xlab="",ylab="",type="n",axes=FALSE)

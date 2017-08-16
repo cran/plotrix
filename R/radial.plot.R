@@ -74,10 +74,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
  if(is.null(radial.pos.dim))
   radial.pos<-matrix(rep(radial.pos,nsets),nrow=nsets,byrow=TRUE)
  else radial.pos<-as.matrix(radial.pos)
- if(rp.type == "l") {
-  clockwise<-TRUE
-  start<-pi/2
- }
+ if(rp.type == "l" && clockwise == TRUE) start<-pi/2
  if(clockwise) radial.pos<--radial.pos
  if(start) radial.pos<-radial.pos+start
  if(show.grid) {

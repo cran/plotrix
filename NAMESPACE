@@ -11,7 +11,7 @@
     "strwidth", "symbols", "text", "title", "xinch", "yinch")
  importFrom("stats", "aggregate", "approx", "as.formula",
     "complete.cases", "cor", "density", "dist", "model.frame",
-    "na.omit", "qnorm", "rnorm", "sd", "t.test", "terms")
+    "na.omit", "bw.nrd0", "qnorm", "rnorm", "sd", "t.test", "terms")
  importFrom("utils", "combn", "modifyList")
 export(
  ablineclip,

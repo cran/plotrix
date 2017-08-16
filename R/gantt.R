@@ -67,12 +67,13 @@ gantt.chart<-function (x=NULL,format="%Y/%m/%d",xlim=NULL,
  bottom.margin <- ifelse(time.axis == 3, 0.8, 1.3)
  if(length(barcolors) < nlabels) 
   barcolors<-barcolors[as.numeric(factor(x$labels))]
- par(mai=c(bottom.margin,maxwidth,charheight*5,0.1))
+ par(mai=c(bottom.margin,maxwidth,charheight*4*(1+(nchar(main) > 0)),0.1))
  par(omi=c(0.1,0.1,0.1,0.1),xaxs="i",yaxs="i")
  plot(range(x$starts),c(1,ntasks),xlim=xlim,ylim=c(0.5,ntasks+0.5),
  main="",xlab="",ylab="",axes=FALSE,type = "n")
  box()
- if(nchar(main)) mtext(main,3,2,at=getFigCtr()[1])
+ if(nchar(main)) mtext(main,side=3,line=2.5,cex=par("cex.main"),
+  col=par("col.main"))
  if(nchar(xlab)) mtext(xlab,1,1)
  if(is.na(vgrid.format)) {
   if(is.null(vgridlab)) vgridlab<-vgridpos
@@ -91,7 +92,7 @@ gantt.chart<-function (x=NULL,format="%Y/%m/%d",xlim=NULL,
  }
  topdown<-seq(ntasks,1)
  axis(2,at=topdown,labels=tasks,las=2,cex.axis=label.cex)
- abline(v=tickpos,col="darkgray",lty=3)
+ abline(v=tickpos,col="darkgray",lty=3,lwd=2)
  for(i in 1:ntasks) {
   if(cylindrical) 
    cylindrect(x$starts[x$labels==tasks[i]],topdown[i] - 
@@ -103,7 +104,7 @@ gantt.chart<-function (x=NULL,format="%Y/%m/%d",xlim=NULL,
  }
  if(hgrid) 
   abline(h=(topdown[1:(ntasks-1)]+topdown[2:ntasks])/2, 
-   col="darkgray",lty=3)
+   col="darkgray",lty=3,lwd=2)
  if(priority.legend) {
   par(xpd=TRUE)
   plim<-par("usr")
@@ -112,8 +113,8 @@ gantt.chart<-function (x=NULL,format="%Y/%m/%d",xlim=NULL,
   color.legend(plim[1]+2*plot.width/5,
    plim[3]-(6.5-time.axis)*line.height,
    plim[1]+3*plot.width/5,plim[3]-(5.5-time.axis)*line.height,
-   legend=c("High",rep("",length(taskcolors)-2),"Low"),
-   rect.col=taskcolors)
+   legend=c(priority.extremes[1],rep("",length(taskcolors)-2),
+    priority.extremes[1]),rect.col=taskcolors)
   par(xpd=NA)
   text(plim[1]+plot.width/2,plim[3]-(7-time.axis)*line.height,
    priority.label,adj=c(0.5,1))

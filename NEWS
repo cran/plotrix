@@ -1,3 +1,11 @@
+version 3.6-6
+
+        added fill arguments to draw.circle (thanks to David Winsemius)
+        color2D.matplot now adds trailing zeros to values (thanks to Yuan Zhou)
+        a few ehancements to gantt.chart (thanks to Suman Khanal)
+        fixed the problem of asking for "l" type in polar.plot (thanks to Alex Pal)
+        improved version of violin_plot (thanks to Darshan Baral)
+
 version 3.6-5
 
         added the clustered.dotplots and violin_plot functions

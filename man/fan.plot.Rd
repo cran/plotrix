@@ -38,6 +38,10 @@
  be visually compared much more accurately by the viewer. Sectors are plotted
  from the largest to the smallest, shrinking the radius of each successive
  sector.
+ 
+ When sending output to the postscript device, the resulting image can be
+ trimmed by changing the values in BoundingBox in the header with a text 
+ editor.
 }
 \value{
  The circumferential positions of the labels in radians. These are
