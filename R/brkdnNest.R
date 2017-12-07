@@ -54,6 +54,8 @@ brkdnNest<-function(formula,data,FUN=c("mean","sd","sd","valid.n"),
  nFUN<-length(FUN)
  brklist<-vector("list",nFUN)
  truevalFUN<-c("propbrk","binciWu","binciWl","sumbrk")
+ brklevels<-list()
+ for(brk in 1:nbn) brklevels[[brk]]<-levels(data[,bn[brk]])
  for(brkfun in 1:nFUN) {
   brklist[[brkfun]]<-vector("list",nbn)
   if(FUN[brkfun] %in% truevalFUN) 
@@ -70,7 +72,7 @@ brkdnNest<-function(formula,data,FUN=c("mean","sd","sd","valid.n"),
    else
     brklist[[brkfun]][[brk]]<-tapply(data[[bn[1]]], 
      data[bn[2:brk]],FUN=match.fun(FUN[brkfun]),na.rm=TRUE)
-   names(brklist[[brkfun]][[brk]])<-levels(data[[brkfun[brk]]])
+   names(brklist[[brkfun]][[brk]])<-brklevels[[brk]]
   }
   # get rid of the NAs in valid.n
   if(FUN[brkfun] == "valid.n")

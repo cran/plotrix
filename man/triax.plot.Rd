@@ -6,7 +6,8 @@
 }
 \usage{
  triax.plot(x=NULL,main="",at=seq(0.1,0.9,by=0.1),
- axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
+ axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,
+ cex.ticks=1,
  align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
  cc.axes=FALSE,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
  col.symbols="black",pch=par("pch"),mar=c(5,2,4,2),no.add=TRUE,...)

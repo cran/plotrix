@@ -32,7 +32,8 @@ if(answer=="1") {
  cat("N. gap.plot - A scatterplot with a specified gap\n")
  cat("O. histStack - Display a stacked histogram\n")
  cat("P. intersectDiagram - Display set intersections as rectangles\n")
- cat("Q. kiteChart - Display a matrix of values as polygon segments\n")
+ cat("Q. joyPlot - Display a series of density or other curves\n")
+ cat("R. kiteChart - Display a matrix of values as polygon segments\n")
  cat("X. Exit\n")
  #par(ask=TRUE)
  whichplot<-toupper(readline("Choose a plot - "))
@@ -273,6 +274,12 @@ if(answer=="1") {
   intersectDiagram(druglist,main="Patterns of drug use",sep="\n")
  }
  if(whichplot == "Q") {
+  numbmat<-matrix(runif(500,0,1),nrow=10)
+  denslist<-apply(numbmat,1,density)
+  names(denslist)<-month.abb[1:10]
+  joyPlot(denslist,main="Test of joyPlot",fill="lightgray")
+ }
+  if(whichplot == "R") {
   testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
    sin(1:50)),ncol=50,byrow=TRUE)
   kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),

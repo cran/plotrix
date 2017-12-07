@@ -103,12 +103,17 @@
  do.first argument.)}
 \seealso{\link{plot}}
 \examples{
+ xval1 <- seq.Date(as.Date("2017-01-02"),
+  as.Date("2017-01-10"), by="day")
+ xval2 <- seq.Date(as.Date("2017-01-01"),
+  as.Date("2017-01-15"), by="day")
  going_up<-seq(3,7,by=0.5)+rnorm(9)
  going_down<-rev(60:74)+rnorm(15)
  twoord.plot(2:10,going_up,1:15,going_down,xlab="Sequence",
   ylab="Ascending values",rylab="Descending values",lcol=4,
   main="Plot with two ordinates - points and lines",
   do.first="plot_bg();grid(col=\"white\",lty=1)")
+ axis.Date(1,xval2)
  # now separate the lines
  twoord.plot(2:10,going_up,1:15,going_down,xlab="Sequence",
   lylim=range(going_up)+c(-1,10),rylim=range(going_down)+c(-10,2),

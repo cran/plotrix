@@ -19,7 +19,7 @@
   \link{get.gantt.info} will be called.}
  \item{format}{the format to be used in entering dates/times
   (see \link{strptime}).}
- \item{xlim}{the horizontal limits of the plot.}
+ \item{xlim}{the horizontal limits of the plot (see Details).}
  \item{taskcolors}{a vector of colors used to illustrate task priority.}
  \item{priority.legend}{Whether to display a priority color legend.}
  \item{vgridpos}{optional positions of the vertical grid lines.}
@@ -44,6 +44,10 @@
  information each time the chart is displayed.
 }
 \details{
+ Because the "time" axis is calculated using POSIXct values, the
+ values passed as \samp{xlim} must also be POSIXct. See the second plot
+ in the examples.
+ 
  If task priority colors are not wanted, set \samp{taskcolors} to a single
  value to suppress the coloring. If this is not done, \samp{rainbow} will
  be called to generate a different color for each task. If colors other than
@@ -87,6 +91,11 @@
   c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
  gantt.chart(gantt.info,main="Calendar date Gantt chart (2004)",
   priority.legend=TRUE,vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE)
+ # add a little extra space on the right side
+ gantt.chart(gantt.info,main="Calendar date Gantt chart (2004)",
+ priority.legend=TRUE,vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE,
+ xlim=as.POSIXct(strptime(c("2004/01/01","2004/12/20"),
+ format=Ymd.format)))
  # if both vgidpos and vgridlab are specified,
  # starts and ends don't have to be dates
  info2<-list(labels=c("Jim","Joe","Jim","John","John","Jake","Joe","Jed","Jake"),

@@ -3,13 +3,17 @@ barNest<-function(formula=NULL,data=NULL,FUN=c("mean","sd","sd","valid.n"),
  col=NA,labelcex=1,lineht=NA,showall=TRUE,Nwidths=FALSE,
  barlabels=NULL,showlabels=TRUE,mar=NULL,arrow.cap=NA,trueval=TRUE) {
 
- x<-brkdnNest(formula=formula,data=data,FUN=FUN,trueval=trueval)
+ # This allows the user to create the brklist and then modify it
+ if(class(data) == "brklist") x<-data
+ else x<-brkdnNest(formula=formula,data=data,FUN=FUN,trueval=trueval)
  getBreakListNames<-function(x) {
   blnames<-list(names(x[[1]][[1]]))
   for(level in 2:length(x[[1]]))
    blnames[[level]]<-dimnames(x[[1]][[level]])[[level-1]]
   return(blnames)
  }
+ if(FUN[1] == "valid.n" && is.null(trueval))
+   barlabels<-getBreakListNames(x)
  if(is.null(barlabels)) barlabels<-getBreakListNames(x)
  xnames<-names(x)
  nbn<-length(as.character(attr(terms(formula),"variables")[-1]))

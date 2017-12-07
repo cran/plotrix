@@ -1,9 +1,9 @@
 \name{dotplot.mtb}
 \alias{dotplot.mtb}
-\title{ Minitab style dotplots }
+\title{ Minitab style dotplots. }
 \description{
- Create a dotplot of a data vector in the sense of ``dotplot'' as
- used in the Minitab\eqn{\mbox{\copyright}}{\ (copyright)} package.
+ Create a dotplot of a data vector in the sense of "dotplot" as
+ used in the Minitab\eqn{\mbox{\copyright}} package.
 }
 \usage{
 dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
@@ -17,12 +17,12 @@ dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
   \item{ylab}{ A label for the y axis; defaults to blank.}
   \item{pch}{ The plotting symbol for the dots in the plot;
               defaults to a solid disc. }
-  \item{hist}{ Logical scalar; should the plot be done ``histogram
+  \item{hist}{ Logical scalar; should the plot be done "histogram"
                style, i.e. using vertical lines rather than stacks
                of dots?}
   \item{yaxis}{ Logical scalar; should a y-axis be produced? }
   \item{mtbstyle}{ Logical scalar; should the dotplot be done in
-                   the ``Minitab'' style?  I.e. should the zero level
+                   the "Minitab" style?  I.e. should the zero level
                    be at the vertical midway point? }
 }
 \details{
@@ -36,6 +36,7 @@ dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
   \email{B.Rowlingson@lancaster.ac.uk}
   and Rolf Turner
   \email{r.turner@auckland.ac.nz}
+  \url{http://www.stat.auckland.ac.nz/~rolf}
 }
 \section{Warnings}{
 This function does something toadally different from the \code{dotplot()}

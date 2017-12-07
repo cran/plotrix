@@ -1,20 +1,20 @@
-711049dcb3def7607d32d2e033d98dad *DESCRIPTION
-c9b4b892374ee33c731533248687d3e0 *NAMESPACE
-14f67bad76184f050a1917fc40c9309c *NEWS
+425f37c7778ecae0b3d53c84a3478945 *DESCRIPTION
+d84263406c003155696a5f086f3e226f *NAMESPACE
+84e52e699274ec271c52b1a968f10443 *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 54f531a76de0b83b120f3f6a15108f4e *R/add.ps.R
 76f5fc2c4426b0e082293a71976151e0 *R/addtable2plot.R
 1b938b88b8835cc2cd007b75b7321ad1 *R/arctext.R
 fab32acaa7362918ba978d5ea0df6180 *R/axis.break.R
 e8b305523ba68e063cc674adcc66f524 *R/axis.mult.R
-21f4cb17afac59c319d6570d56bb0c9f *R/barNest.R
+e3996ef9f6926b0a6bad73988326f2a5 *R/barNest.R
 94ebceeee14c8e482cb2b91858c4e6e6 *R/barlabels.R
 9e56390451aa2e680bd2fb5e4aa25f8d *R/barp.R
 3293205a5ce0e392f8449846405fe75d *R/battleship.plot.R
 ae1f90fd971b7b524a2d278d6e2eefe8 *R/box.heresy.R
 d77477c61c4d24eca7251137b17b62aa *R/boxed.labels.R
 e542d7d83dc92d250706baebb5dfd064 *R/brkdn.plot.R
-d27dc1004e0056c0cbbc2c7715e9706f *R/brkdnNest.R
+abca320bd2824f00937e6ed310e5ee85 *R/brkdnNest.R
 99340b1fddd5cf81e613058033d73679 *R/bumpchart.R
 f34b066424d85a26ff27d52dc0d9849a *R/centipede.plot.R
 11f91483daa47b2d17ede65741fe6863 *R/clean.args.R
@@ -40,7 +40,7 @@ e9e3f23cd4216bb463bf0993f2c604d8 *R/dotplot.mtb.R
 cd5446e359661beb91c140df02817fa0 *R/draw.circle.R
 bfcbf3aff9d82db63603f4773e280e64 *R/draw.ellipse.R
 1a1383ac27b34b7bfa800009969abfc0 *R/draw.radial.line.R
-36db48f20dca62cf756d0958e33a22b0 *R/drawNestedBars.R
+b192b2b7597424b6a564baf9f8510b87 *R/drawNestedBars.R
 92b383d4c98800cf63c623407dfa77de *R/ehplot.R
 e3fbaf25887012ffb1b0e5b94dfb796a *R/election.R
 5690e7d7fc3795124df5b97a514b9305 *R/emptyspace.R
@@ -60,6 +60,7 @@ f62328458fae81303b94fbb7287175c6 *R/getMarginWidth.R
 39c5a2ab540444944f48a55f990045e6 *R/gradient.rect.R
 09764fd0be45b01ef35f7bc551a5ecf4 *R/histStack.R
 5a75434b24f5a4682efdc0cfd51bd8dc *R/intersectDiagram.R
+a4d95ff5c4b5b264fea2e37be7f912a7 *R/joyPlot.R
 0c0c4a957e0acc1f78cc56f1aef4ac4b *R/kiteChart.R
 d4f22f0d1204a8436c58bef182abbeb4 *R/labbePlot.R
 27982a3d5d4ea2879657c1dc56c9d070 *R/ladderplot.R
@@ -69,6 +70,7 @@ f88facb736d50a863537818e29e9098f *R/lengthKey.R
 18a4b16260b37c922a70a6c439909b59 *R/makeIntersectList.R
 83032771e287d63ea164fed14d1977f1 *R/maxEmptyRect.R
 000018eff02dd539f58a75e49ebc3fb8 *R/multhist.R
+c0308070eea46c9b63fb270088a60211 *R/multivari.R
 0922537b9c49e3cc345347e46e7087b4 *R/multsymbolbox.R
 96972ee73b58d77aa5c074df75d65600 *R/p2p_arrows.R
 53fc688fbe92d2f624a881d24a2745a0 *R/panes.R
@@ -93,7 +95,7 @@ da39dde9cdb82f81e5f3373588756c59 *R/rescale.R
 e761953480126b28a14326faa3cb680c *R/ruginv.R
 94f6212eb3c3dda4532094d0547cee9f *R/size_n_color.R
 ff774605f2db5e411bcef2424909bc79 *R/sizeplot.R
-e7b06c1b1c82384327516614cd5b2307 *R/sizetree.R
+f59fd0f29e21ccbb91a120cbc7b9bcf1 *R/sizetree.R
 de129c7ed4e840767bbc911fb5256708 *R/smoothColors.R
 4aa496843da6c03ce4273d8b3b6ae9d6 *R/soil.texture.R
 16ff8805beef2f4885d4c93c5bd7ff63 *R/soil.texture.uk.R
@@ -110,7 +112,7 @@ baa253c7a54bcde2837f305ef2b492b4 *R/symbolbox.R
 0cee4a8f25e15353f2ae849e6c63ff33 *R/taylor.diagram.R
 0e6fccb0b8e686d8c01b51366d8aacec *R/textbox.R
 0e19d932405569d60b97d7fcca655786 *R/thigmophobe.R
-ed20aff50590ba744f276b1b4da0d3b8 *R/triax.R
+1f986c0d9dd119a07f63bcfae6c3db9f *R/triax.R
 dec059d897186f22ea6815dbd00b9f10 *R/tsxpos.R
 64111d9cb0418d4a2e004ec5b3e9d143 *R/twoord.plot.R
 580be3c65f98df81f92dff1eff5e671c *R/twoord.stackplot.R
@@ -120,9 +122,9 @@ cdcdd0cd94badf90f50620c73d576c0c *R/weighted.hist.R
 481b3f85c721c582bc955c5059ba7c1e *R/windrose.R
 52d0de3c89b6d90fe1e9157b0c76f291 *R/zoomInPlot.R
 6c5b0047d50b0d071c9a8162c81ccb31 *data/death_reg.rda
-7539f0c84332135ddc88531e2080c611 *data/soils.rda
+ade13a1535ffd0b782ea766b2e7d972b *data/soils.rda
 afe626471214438383c01dfcc2a12e10 *demo/00Index
-d19f39f86793a365c06123f7603d707e *demo/plotrix.R
+ed8fb5d7f12b7b5686c5e422357a21b6 *demo/plotrix.R
 b35ca73e819dbad59881960986301ef3 *inst/CITATION
 f13b4b048731bb65adabe2be9610ecb7 *man/ablineclip.Rd
 537da0d23075efb4f8a3632aa39f3901 *man/add.ps.Rd
@@ -165,7 +167,7 @@ afb5f5ce1e6dbc78e8843df397f2f10c *man/dendroPlot.Rd
 470583ce423fd9c05502a784d10114eb *man/diamondplot.Rd
 1780eb1f4a06114e83870dd1de250ce8 *man/dispersion.Rd
 316cbd9616959d741b2ecbe6ec3254cd *man/do.first.Rd
-aae69bd515cac9d9ebdc8d89759b4029 *man/dotplot.mtb.Rd
+4f25fe768fe00195d5ac270098c261f5 *man/dotplot.mtb.Rd
 cb68dd72282e0a252f1689d786a10371 *man/draw.arc.Rd
 385b175c50e92fe72d33111d350e702f *man/draw.circle.Rd
 4a4c1b00cab07fbe4a3d426c9e99ed6f *man/draw.ellipse.Rd
@@ -182,7 +184,7 @@ fffabb21a837f2c1263dc71d2911f3d0 *man/feather.plot.Rd
 76b772c9da227812f734f66cfe7c3331 *man/floating.pie.Rd
 ef0018a2314c3b5bf4d0e953ae036aed *man/fullaxis.Rd
 57c7a78552ca7cbc5d3d5afc3851b70e *man/furc.Rd
-081e9bab5cd97a5cc874488ffb9447a6 *man/gantt.chart.Rd
+0f87c03e28f4f3528dd031077897cf98 *man/gantt.chart.Rd
 4ac19f9bcfde71dd07c1326d6750b1ed *man/gap.barplot.Rd
 0fe07939aca17dfbac6226843ed189d1 *man/gap.boxplot.Rd
 32e58044c651a2949554e2ca6a8a8e5f *man/gap.plot.Rd
@@ -202,6 +204,7 @@ b38bf1ec364fc7e0d352d23949ff09d8 *man/get.triprop.Rd
 22245bc76aae5426664addcec8114c43 *man/histStack.Rd
 a63853e93a6fbab6cf1ea8b7c2e9e0c9 *man/intersectDiagram.Rd
 970087f83b357355eb675516f4689bfe *man/jiggle.Rd
+8cf14dcef1f2178b39c1464d4c455161 *man/joyPlot.Rd
 055fb77f6c128cd174b0e3620ae82e8e *man/kiteChart.Rd
 47d8e24c27f66b5d9bb08cec09bcee56 *man/labbePlot.Rd
 ea06b6e8b663a57af433a17c15721e2f *man/ladderplot.Rd
@@ -213,6 +216,7 @@ e108e4437e6471fa37c1ca95e96e3965 *man/makeDendrite.Rd
 4bf0a63a5ee0f446c2dd210ebd97b726 *man/maxEmptyRect.Rd
 4bb726d76edd975db9258cd700783dcc *man/mtext3d.Rd
 3c782a3683c1e4d09c2a178116f5421d *man/multhist.Rd
+317c1293cfb2cf7cdcf7d0633fe4e9ac *man/multivari.Rd
 a6b1e2596340a535c74848aeffe98833 *man/multsymbolbox.Rd
 41c1c83e66a33d35bb0f48d9dfd68909 *man/oz.windrose.Rd
 00585c01256159f892de1181dd9f63f3 *man/oz.windrose.legend.Rd
@@ -260,6 +264,7 @@ d3a29fca855fdced8e042681255cd481 *man/soil.texture.Rd
 68ecac1afb03f4f889768018295f8a2c *man/spreadout.Rd
 67b5e4985491c2c0d6613aac7f25fe1c *man/stackpoly.Rd
 c2ce7111858d31a7b5f06edd041ef529 *man/staircase.plot.Rd
+fbcccb22f79e1e9e7240425bb4eff6d7 *man/staircasePlot.Rd
 13f237779bc123645ee131e980706d31 *man/starPie.Rd
 df4893370735f220266cab0699133250 *man/staxlab.Rd
 40286c6064e6b9e29ba37f06058b89df *man/std.error.Rd
@@ -275,10 +280,10 @@ cbc39b26a24639a81dd65defa94c7817 *man/taylor.diagram.Rd
 ac5071d4a906c8d08c62d24c1059d548 *man/triax.abline.Rd
 5fc757905ff2fb69baab63abdba3d364 *man/triax.fill.Rd
 ef26303ff7d7fca80a4e6aa6a4faface *man/triax.frame.Rd
-fc7ea4a90434e5b05a28e1be6b00c0ef *man/triax.plot.Rd
-cae9faa9c12feab91f4b7e3a03eb02f3 *man/triax.points.Rd
+478c52edbe8942350a7c74977f0e7668 *man/triax.plot.Rd
+c3cb06c35bef99ec1f66e7fe577a9ddf *man/triax.points.Rd
 d0def030f355745d885dcabf7e1beb2e *man/tsxpos.Rd
-88d19cd56964360cf9e8efa5c7e4f4ff *man/twoord.plot.Rd
+179635ba87133f7d93d9ac6d8b20912a *man/twoord.plot.Rd
 4b0b895d4f207d31f039876eee86c956 *man/twoord.stackplot.Rd
 517c4cd06972f8ccde88ccd063e40dd1 *man/valid.n.Rd
 fec04eee273289a8f3cc6c1ab2c74741 *man/vectorField.Rd

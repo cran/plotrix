@@ -5,8 +5,9 @@
  Display points on a triangle plot.
 }
 \usage{
- triax.points(x,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
- col.symbols=par("fg"),pch=par("pch"),bg.symbols=par("bg"),cc.axes=FALSE,...)
+ triax.points(x,show.legend=FALSE,label.points=FALSE,
+ point.labels=NULL,col.symbols=par("fg"),pch=par("pch"),
+ bg.symbols=par("bg"),cc.axes=FALSE,...)
 }
 \arguments{
  \item{x}{Matrix or data frame where each row is three proportions or 

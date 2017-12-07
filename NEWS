@@ -1,3 +1,9 @@
+version 3.7
+
+        fixed brkdnNest due to changes arriving in R-3.4.3
+        added the joyPlot function
+        multivari plot function added (thanks to Ulrike Groemping)
+
 version 3.6-6
 
         added fill arguments to draw.circle (thanks to David Winsemius)

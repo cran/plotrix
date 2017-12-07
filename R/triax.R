@@ -89,9 +89,9 @@ triax.abline<-function(b=NULL,r=NULL,l=NULL,col=par("col"),lty=par("lty"),
  }
 }
 
-triax.points<-function(x,show.legend=FALSE,label.points=FALSE,
- point.labels=NULL,col.symbols=par("fg"),pch=par("pch"),
- bg.symbols=par("bg"),cc.axes=FALSE,...) {
+triax.points<-function(x,show.legend=FALSE,
+ label.points=FALSE,point.labels=NULL,col.symbols=par("fg"),
+ pch=par("pch"),bg.symbols=par("bg"),cc.axes=FALSE,...) {
 
  if(dev.cur() == 1)
   stop("Cannot add points unless the triax.frame has been drawn")
@@ -260,8 +260,8 @@ triax.fill<-function(col) {
 
 triax.plot<-function (x=NULL,main="",at=seq(0.1,0.9,by=0.1),
   axis.labels=NULL,tick.labels=NULL,col.axis="black",
-  cex.axis=1,cex.ticks=1,align.labels=TRUE,show.grid=FALSE,
-  col.grid="gray",lty.grid=par("lty"),cc.axes=FALSE,
+  cex.axis=1,cex.ticks=1,align.labels=TRUE,
+  show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),cc.axes=FALSE,
   show.legend=FALSE,label.points=FALSE,point.labels=NULL,
   col.symbols="black",pch=par("pch"),mar=c(5,2,4,2),no.add=TRUE,...) {
 
@@ -278,7 +278,8 @@ triax.plot<-function (x=NULL,main="",at=seq(0.1,0.9,by=0.1),
   if(is.null(x)) xypos <- NULL
   else
    xypos<-triax.points(x,show.legend=show.legend,
-    label.points=label.points,point.labels=point.labels,
+    label.points=label.points,
+    point.labels=point.labels,
     col.symbols=col.symbols,pch=pch,cc.axes=cc.axes,...)
   if(no.add) par(oldpar)
   invisible(list(xypos=xypos,oldpar=oldpar))
