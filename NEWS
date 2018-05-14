@@ -1,3 +1,8 @@
+version 3.7-1
+
+        fix for the multivari function (thanks for Ulrike Groemping)
+        added the plotH function (thanks to Derek Ogle)
+
 version 3.7
 
         fixed brkdnNest due to changes arriving in R-3.4.3

@@ -1,10 +1,8 @@
-## write in plotrix style in order to send to Jim Lemon
-
 multivari <- function(var, fac1, fac2, fac3=NULL, fac4=NULL, data, 
                             sort=FALSE, fun=mean, pch=list(15, 16, 17), 
                 col=list("black", "blue","red"), col0="black", 
                 cex=1, fac.cex=2, xlab.depth=3, legend=FALSE,
-                main=paste("multivari chart of", var), ...){
+                main=paste("multivari chart of", var), add=FALSE, ...){
   ## if fac4 is given, make two separate multivaricharts for fac1 to fac3
   ## on the same y scale
   ## fac4 only allowed if there is also fac3
@@ -26,6 +24,18 @@ multivari <- function(var, fac1, fac2, fac3=NULL, fac4=NULL, data,
   ## fac.cex is a factor to enlarge the points versus the text
   ## xlab.depth gives the highest level for which the horizontal axis 
   ##        carries labels for the factor levels
+  
+  ## Changes Dec 8: 
+  ## bug fix: colors and symbols did not work correctly, 
+  ##    if some levels do not occur in the data; 
+  ##    now, colors and symbols are always picked according to factor levels
+  ## added extra space for legend on horizontal axis
+  ## added an add option (for adding to otherwise prepared plotting template)
+  ## modified initial plot call: 
+  ##    more logical choice for x and y, which should not change anything
+  ##    added cex.axis=cex and cex.lab=cex, 
+  ##    so that y-axis labeling is also affected by cex
+  ## added/modified/removed some comment text
   
   stopifnot(is.data.frame(data))
   nc <- ncol(data)
@@ -58,7 +68,8 @@ multivari <- function(var, fac1, fac2, fac3=NULL, fac4=NULL, data,
   ## all factors are columns of data or NULL
   
   ## make non-factors into factors
-  ## if (sort), respect level ordering as encountered in the data
+  ## if (!sort), respect level ordering as encountered in the data
+  ## sort does not touch level ordering in factors
   nfac <- 2
   if (!sort){
     if (!is.factor(data[[fac1]])) data[[fac1]] <- factor(data[[fac1]], levels=unique(data[[fac1]]))
@@ -109,7 +120,7 @@ multivari <- function(var, fac1, fac2, fac3=NULL, fac4=NULL, data,
   
   
   npanel <- length(dat_split)
-  xlim <- c(0.5, (nlevels(data[[fac1]])+1)*npanel)
+  xlim <- c(0.5, (nlevels(data[[fac1]])+1)*npanel+legend)
 
   ## within each panel, use x positions 1 to nlevels(dat[[fac1]])
   ## continue from these with x positions at most +/-0.25
@@ -170,8 +181,9 @@ multivari <- function(var, fac1, fac2, fac3=NULL, fac4=NULL, data,
       hilf
     })
   
-  plot(0,0,type="n", xaxt="n", xlab="", ylab=var, tcl=0.5,
-       xlim=xlim, ylim=ylim, main=main, ...)
+  ## prepare plot
+  if (!add) plot(xlim,ylim,type="n", xaxt="n", xlab="", ylab=var, tcl=0.5,
+       xlim=xlim, ylim=ylim, main=main, cex.axis=cex, cex.lab=cex, ...)
   for (i in 1:npanel){
     plotlist <- calcresults[[i]]
       ## last column of each list element holds x-position
@@ -179,15 +191,19 @@ multivari <- function(var, fac1, fac2, fac3=NULL, fac4=NULL, data,
       tit <- ""
       if (nfac==4) tit <- paste(fac4, "=", levels(data[[fac4]])[i])
       for (j in 1:length(plotlist)){
+        ## jth hierarchy level
         dd <- plotlist[[j]]
         if (j==1) {
           lines(dd$x, dd[[var]], col=col0, ...)
-          points(dd$x, dd[[var]], col=col[[1]], pch=pch[[1]], cex=fac.cex*cex, ...)
+          points(dd$x, dd[[var]], col=col[[1]][as.numeric(dd[[fac1]])], 
+                 pch=pch[[1]][as.numeric(dd[[fac1]])], cex=fac.cex*cex, ...)
           mtext(side=3, at=mean(dd$x), text=tit, line=0, cex=1.5*cex, ...)
           mtext(side=1, at=dd$x, line=0, levels(data[[fac1]]), cex=cex, ...)
           mtext(side=1, at=xlim[2], line=0, fac1, cex=cex, adj=1, ...)
         }
         else {
+          ## not first level of hierarchy
+          ## hilf contains separate portions for each level of fac1 to facj-1
           hilf <- split(dd, dd[fn[1:(j-1)]])
           if (xlab.depth >= j){
             mtext(side=1, at=dd$x, line=j-1, dd[[fn[j]]], cex=cex, ...)
@@ -195,10 +211,13 @@ multivari <- function(var, fac1, fac2, fac3=NULL, fac4=NULL, data,
           }
           for (ii in 1:length(hilf)){
             dd <- hilf[[ii]]
+            ## color from previous hierarchy level
           lines(dd$x, dd[[var]], 
                 col=col[[j-1]][as.numeric(dd[[fn[j-1]]])[1]], ...)
+            ## point symbol and color from current hierarchy level
           points(dd$x, dd[[var]], cex=fac.cex*cex, 
-                col=col[[j]], pch=pch[[j]], ...)
+                col=col[[j]][as.numeric(dd[[fn[j]]])], 
+                pch=pch[[j]][as.numeric(dd[[fn[j]]])], ...)
           }
         }
       }

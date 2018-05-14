@@ -11,7 +11,7 @@ to four categorical variables can be drawn.
 multivari(var, fac1, fac2, fac3 = NULL, fac4 = NULL, data, sort = FALSE,
  fun = mean, pch = list(15, 16, 17), col = list("black", "blue", "red"),
  col0 = "black", cex = 1, fac.cex = 2, xlab.depth = 3, legend = FALSE,
- main = paste("multivari chart of", var), ...)
+ main = paste("multivari chart of", var), add = FALSE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,19 +19,19 @@ multivari(var, fac1, fac2, fac3 = NULL, fac4 = NULL, data, sort = FALSE,
   variable, required
 }
   \item{fac1}{variable name (character string) or column index of first
-  level factor, required
+  level factor, required; precedes \code{fac2} and \code{fac3} (if present) in the hierarchy (see Details)
 }
   \item{fac2}{variable name (character string) or column index of second
-  level factor, required
+  level factor, required; follows \code{fac1} and precedes \code{fac3} (if present) 
+  in the hierarchy (see Details)
 }
   \item{fac3}{variable name (character string) or column index of third
-  level factor, optional
+  level factor, optional; if present, \code{fac3} is the last factor in the hierarchy (see Details)
 }
   \item{fac4}{
 variable name (character string) or column index of fourth level factor,
 optional; can only be specified if there is also a third level factor;
-separate multivari charts for the first three factors are drawn for each
-level of this factor}
+if present, this factor is the first in the hierarchy (see Details), and separate multivari charts for the first three factors are drawn for each level of this factor}
   \item{data}{
 a data frame, required
 }
@@ -59,7 +59,7 @@ a function to be used in aggregation; default: \code{mean}
 the color for the first line to be drawn
 }
   \item{cex}{
-the size of the annotation text below the horizontal axis
+the size of axis annotation text
 (annotation of the fourth level header is 1.5 times this size)
 }
   \item{fac.cex}{
@@ -81,33 +81,43 @@ margin
   \item{main}{
 title, as usual; a default is provided
 }
+  \item{add}{
+logical; add to an existing plot (which of course has to have suitable axis limits)?; default: FALSE;
+note that horizontal axis labeling will always be printed by function multivari, while vertical axis labeling will be omitted for \code{add=TRUE}
+}
   \item{\dots}{
 further arguments to functions \code{plot}, \code{lines}, \code{points}, 
    \code{mtext}
 }
 }
 \details{
-A multivari chart as implemented here mainly serves exploratory purposes.
-It works particularly well with balanced data, and it serves the purpose
-to visualize an interaction of degree up to four. The order of the
-factors can make a big difference in the display. If there is no natural
-order, it may be worthwhile inspect several orders.
-
-The function is inspired by Minitabs behavior for multivari charts. It
+The function is inspired by Minitabs behavior for multivari charts 
+(see also Bruno Scibilia's blog which is linked in the references). It
 does not attempt to visualize individual observations.
 
+A multivari chart mainly serves exploratory purposes.
+It works particularly well with balanced data, but can also be used for messy data. 
+\code{multivari} can visualize the dependence of a single quantitative variable on up to four factors (i.e., interactions of order up to four can be visualized). The display is hierarchical: for factors later in the hierarchy, conditional means given level combinations of factors earlier in the hierarchy are displayed. Therefore, the order of the
+factors can make a big difference in the display. If there is no natural
+order, it may be worthwhile to inspect several orders.
+
 For interactions with two factors only, it is often preferrable to use
-function \code{\link{interaction.plot}}.
+function \code{\link{interaction.plot}} or \code{\link{raw.means.plot}}.
+
 }
 \value{
 a list of (lists of) data frames with summary statistics to be plotted
+}
+
+\references{
+Scibilia, Bruno (2013). Using Multi-Vari Charts to Analyze Families of Variations. \url{http://blog.minitab.com/blog/applying-statistics-in-quality-projects/using-multi-vari-charts-to-analyze-families-of-variations}.
 }
 
 \author{
 Ulrike Groemping
 }
 \seealso{
-See also \code{\link{interaction.plot}}
+See also \code{\link{interaction.plot}}, \code{\link{raw.means.plot}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----

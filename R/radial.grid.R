@@ -1,6 +1,7 @@
 radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
- start=0,clockwise=FALSE,label.prop=1.1,grid.pos,grid.col="gray",
- grid.bg="transparent",show.radial.grid=TRUE,start.plot=FALSE) {
+ start=0,clockwise=FALSE,label.prop=1.1,grid.pos,rad.col="gray",
+ grid.col="gray",grid.bg="transparent",show.radial.grid=TRUE,
+ start.plot=FALSE) {
 
  if(start.plot) {
   radial.span<-diff(radial.lim)
@@ -26,7 +27,7 @@ radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
  if(show.radial.grid) {
   xpos<-cos(label.pos)*maxlength
   ypos<-sin(label.pos)*maxlength
-  segments(0,0,xpos,ypos,col=grid.col)
+  segments(0,0,xpos,ypos,col=rad.col)
   xpos<-cos(label.pos)*maxlength
   ypos<-sin(label.pos)*maxlength
  }

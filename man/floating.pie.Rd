@@ -5,8 +5,8 @@
  Displays a pie chart at an arbitrary position on an existing plot
 }
 \usage{
- floating.pie(xpos,ypos,x,edges=200,radius=1,col=NULL,startpos=0,
-  shadow=FALSE,shadow.col=c("#ffffff","#cccccc"),...)
+ floating.pie(xpos=0,ypos=0,x,edges=200,radius=1,col=NULL,startpos=0,
+  shadow=FALSE,shadow.col=c("#ffffff","#cccccc"),explode=0,...)
 }
 \arguments{
  \item{xpos,ypos}{x and y position of the center of the pie chart}
@@ -17,6 +17,7 @@
  \item{startpos}{The starting position for drawing sectors in radians.}
  \item{shadow}{Logical - whether to draw a shadow}
  \item{shadow.col}{Colors to use for a shadow.}
+ \item{explode}{How much to "explode" one or more of the sectors.}
  \item{...}{graphical parameters passed to \samp{polygon}}
 }
 \details{
@@ -32,6 +33,12 @@
  text labels for each sector. If any values in \samp{x} were zero or NA,
  no angle is returned for that value. This means that the user must adjust
  the labels accordingly if \samp{pie.labels} is called.
+ 
+ If \samp{floating.pie} is called with no graphics device, it will try to
+ open one with the appropriate dimensions.
+ 
+ If \samp{pie.labels} is called, ensure that the center of the pie chart
+ and any \samp{explode} values are the same.
 }
 \note{
  As with most pie charts, simplicity is essential. Trying to display a
@@ -56,5 +63,8 @@
  draw.circle(4.07,2.55,radius=0.04,col="white")
  draw.circle(4.03,2.85,radius=0.04,col="white")
  text(c(1.7,3.1,4),c(3.7,3.7,3.7),c("Pass","Pass","Fail"))
+ plot(0,xlim=c(-1.5,1.5),ylim=c(-1.5,1.5),type="n",axes=FALSE,
+  main="Floating pie with minor explosions",xlab="",ylab="")
+ floating.pie(x=1:5,explode=c(0,0.1,0,0.2,0))
 }
 \keyword{misc}

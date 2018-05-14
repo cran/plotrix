@@ -37,8 +37,11 @@ thigmophobe<-function(x,y) {
  xy.dist<-as.matrix(dist(cbind(x,y)))
  lenx<-length(x)
  nearest.index<-rep(0,lenx)
- for(index in 1:lenx)
-  nearest.index[index]<-as.numeric(names(which.min(xy.dist[-index,index])))
+ if(lenx < 3) nearest.inces<-1:2
+ else {
+  for(index in (1:lenx))
+   nearest.index[index]<-as.numeric(names(which.min(xy.dist[-index,index])))
+ }
  # get the x and y differences for each point to the nearest point
  xdiff<-x - x[nearest.index]
  ydiff<-y - y[nearest.index]

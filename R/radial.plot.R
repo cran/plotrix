@@ -104,8 +104,9 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   if(show.grid) {
    radial.grid(labels=labels,label.pos=label.pos,radlab=radlab,
     radial.lim=radial.lim,start=start,clockwise=clockwise,
-    label.prop=label.prop,grid.pos=grid.pos,grid.col=grid.col,
-    grid.bg=grid.bg,show.radial.grid=show.radial.grid)
+    label.prop=label.prop,grid.pos=grid.pos,rad.col=rad.col,
+    grid.col=grid.col,grid.bg=grid.bg,
+    show.radial.grid=show.radial.grid)
   }
  }
  par(xpd=TRUE)

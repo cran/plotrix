@@ -5,8 +5,8 @@
  Places labels on a pie chart
 }
 \usage{
- pie.labels(x,y,angles,labels,radius=1.05,bg="white",border=TRUE,
-  minangle=NA,boxed=FALSE,...)
+ pie.labels(x=0,y=0,angles,labels,radius=1.05,bg="white",border=TRUE,
+  minangle=NA,boxed=FALSE,explode=0,...)
 }
 \arguments{
  \item{x,y}{x and y position of the center of the pie chart}
@@ -20,6 +20,7 @@
  \item{minangle}{Minimum angle between labels.}
  \item{boxed}{Whether to use \samp{text} or \samp{boxed.labels} to display
   the labels.}
+ \item{explode}{How much the pie chart has been "exploded".}
  \item{...}{Arguments passed to \samp{text} or \samp{boxed.labels}.}
 }
 \value{nil}
@@ -40,12 +41,10 @@
 \seealso{\link{floating.pie}, \link{boxed.labels}, \link{spreadout}}
 \examples{
  pieval<-c(2,1,3,94)
- plot(1:5,type="n",axes=FALSE,xlab="",ylab="")
+ plot(0,xlim=c(1.5,5),ylim=c(1,5),type="n",axes=FALSE,xlab="",ylab="")
  box()
- bisect.angles<-floating.pie(3,3,pieval)
- pie.labels(3,3,bisect.angles,c("two","one","three","ninety\nfour"))
- pie.labels(3,3,bisect.angles,radius=1.5,
-  c("First\nvalue","Second\nvalue","Third\nvalue","Fourth\nvalue"),
-  minangle=0.2,boxed=TRUE)
+ bisect.angles<-floating.pie(3,3,pieval,explode=c(0.1,0.2,0.3,0))
+ pie.labels(3,3,bisect.angles,c("two","one","three","ninety\nfour"),
+  minangle=0.2,,explode=c(0.1,0.2,0.3,0))
 }
 \keyword{misc}

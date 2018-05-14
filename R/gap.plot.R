@@ -104,7 +104,7 @@ gap.plot<-function(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",
    else {
     bigtics<-which(ytics >= gap[2])
     show.at<-c(ytics[littletics],ytics[bigtics] - gapsize[1])
-    show.labels<-c(ytics[littletics],yticlab[bigtics])
+    show.labels<-c(yticlab[littletics],yticlab[bigtics])
    }
    if(stax) {
     axis(2,at=show.at,labels=rep("",length(show.labels)))
