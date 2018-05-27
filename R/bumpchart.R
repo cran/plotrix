@@ -1,5 +1,6 @@
-bumpchart<-function(y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
- mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,arrows=FALSE,...) {
+bumpchart<-function(y,top.labels=colnames(y),labels=rep(rownames(y),2),
+ rank=TRUE,mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,arrows=FALSE,
+ ...) {
 
  if(missing(y)) stop("Usage: bumpchart(y,top.labels,labels,...)")
  ydim<-dim(y)
@@ -25,10 +26,10 @@ bumpchart<-function(y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
  par(xpd=TRUE)
  xylim<-par("usr")
  minspacing<-strheight("M")*1.5
- text(1:ydim[2],xylim[4],top.labels)
+ text(1:ydim[2],xylim[4]+(xylim[4]-xylim[3])/20,top.labels)
  labelpos<-spreadout(y[,1],minspacing)
- text(xylim[1],labelpos,labels,adj=1)
+ text(xylim[1],labelpos,labels[1:ydim[1]],adj=1)
  labelpos<-spreadout(y[,ydim[2]],minspacing)
- text(xylim[2],labelpos,labels,adj=0)
+ text(xylim[2],labelpos,labels[(ydim[1]+1):(2*ydim[1])],adj=0)
  par(mar=oldmar,xpd=FALSE)
 }

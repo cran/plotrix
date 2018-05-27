@@ -1,6 +1,6 @@
-ed307de6a21968cae4a540738ad20b62 *DESCRIPTION
+f6f0c3ffaf0382b96e7dd8bf53fe8d02 *DESCRIPTION
 d84263406c003155696a5f086f3e226f *NAMESPACE
-6c07b21d7ac8dc897b632201d68beace *NEWS
+440d1010befec9c4cc64d9a7f132d019 *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 54f531a76de0b83b120f3f6a15108f4e *R/add.ps.R
 76f5fc2c4426b0e082293a71976151e0 *R/addtable2plot.R
@@ -15,7 +15,7 @@ ae1f90fd971b7b524a2d278d6e2eefe8 *R/box.heresy.R
 d77477c61c4d24eca7251137b17b62aa *R/boxed.labels.R
 e542d7d83dc92d250706baebb5dfd064 *R/brkdn.plot.R
 abca320bd2824f00937e6ed310e5ee85 *R/brkdnNest.R
-99340b1fddd5cf81e613058033d73679 *R/bumpchart.R
+4c0c6ece9594d421306f12016366fb2f *R/bumpchart.R
 f34b066424d85a26ff27d52dc0d9849a *R/centipede.plot.R
 11f91483daa47b2d17ede65741fe6863 *R/clean.args.R
 19e5a990971d1e53823c784bb93ccc92 *R/clplot.R
@@ -50,7 +50,7 @@ bda3e7166adaeffc7b2d2a5686ad924f *R/feather.plot.R
 9d2cc070d1d3eb1c477e3374a42a036c *R/fullaxis.R
 ea968455cb37f8e4290975272352ad20 *R/gantt.R
 26d4b90ccbb2f301c5a965a403ca5c74 *R/gap.barplot.R
-7ceb38125bddf5ab64dd9598016dcf15 *R/gap.boxplot.R
+ba8176da651ae88bf258dfdaeef98b34 *R/gap.boxplot.R
 095568ff5335532c40644171ef6460e7 *R/gap.plot.R
 f2c451d076cbcf808802e54b1b39f1e9 *R/get.tablepos.R
 6949cc16ed4e73cc7358684e3ecab02b *R/getFigCtr.R
@@ -110,7 +110,7 @@ aee2eae39690917f1a489cb30122e977 *R/std.error.R
 baa253c7a54bcde2837f305ef2b492b4 *R/symbolbox.R
 03fb7639ade1f0447d3630d247adfb12 *R/tab.title.R
 0cee4a8f25e15353f2ae849e6c63ff33 *R/taylor.diagram.R
-0e6fccb0b8e686d8c01b51366d8aacec *R/textbox.R
+c6ac650f1204191a4da58698aa063467 *R/textbox.R
 d1fd2e623d002adf528ba80996c60826 *R/thigmophobe.R
 1f986c0d9dd119a07f63bcfae6c3db9f *R/triax.R
 dec059d897186f22ea6815dbd00b9f10 *R/tsxpos.R
@@ -144,7 +144,7 @@ ce6a7a21766880d71efe042eb039e7f6 *man/binciWu.Rd
 6f218d69cf8ba86a10cc976a50652329 *man/boxed.labels.Rd
 332e8ded50b760f79a08e80e093d3d32 *man/brkdn.plot.Rd
 cf4596e29fe0c81f3abc405a9176ad81 *man/brkdnNest.Rd
-190ace3439edbc4c1fe28dd3fb828fc1 *man/bumpchart.Rd
+b4ec74a339658168569e5364d0694609 *man/bumpchart.Rd
 fdd959e735ce69d626bc683c7142a487 *man/categoryReshape.Rd
 e57177261b61c4ef3b8caf59dbda3091 *man/centipede.plot.Rd
 d6019ca90bd3aaaff4e63d9b55aff24c *man/clean.args.Rd
@@ -233,7 +233,7 @@ df16d5a7e051f52e37eb2624bed0abf2 *man/paxis3d.Rd
 94da9e98fdf1f64739b188fea1f021f6 *man/plotCI.Rd
 d537e859f11754e2ab779d75c82a0086 *man/plotH.Rd
 d0be8d8872d21c55c387ed117d60bc92 *man/plot_bg.Rd
-56b0dbcab851735ae4b7e76d62580dcd *man/plotrix-package.Rd
+80784aab1236200b5f0923902ec82fbe *man/plotrix-package.Rd
 31556e9a35a48fbccdff23395a8cdb07 *man/polar.plot.Rd
 aacd4acbdc1275ecff45c6d962ae8f16 *man/polygon.shadow.Rd
 8d1dc46509d56126301ed969bff3ed8c *man/print.brklist.Rd

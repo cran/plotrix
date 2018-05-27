@@ -118,6 +118,6 @@ gap.boxplot<-function (x, ..., gap = list(top = c(NA, NA), bottom = c(NA,
     if (!is.na(gap$bottom[1])) 
         axis.break(2, gap$bottom[2] - diff(plotlim[3:4]) * 0.02, 
             style = "gap")
-    points(rep(bxgap$group,length.out=length(bxgap$out)),bxgap$out)
+    points(bxpt$group,bxgap$out)
     invisible(bxgap)
 }

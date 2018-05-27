@@ -1,3 +1,8 @@
+version 3.7-2
+
+        align plotrix-package.Rd with DESCRIPTION file
+        added user-specified labels to bumpchart
+
 version 3.7-1
 
         fix for the multivari function (thanks for Ulrike Groemping)

@@ -12,11 +12,11 @@ scaling, text placement and legends.
 \details{
 \tabular{ll}{
 Package: \tab plotrix\cr
-Version: \tab 3.6-6\cr
-Date: \tab 2017-05-09\cr
+Version: \tab 3.7-2\cr
+Date: \tab 2018-05-27\cr
 License: \tab GPL (>=2)\cr
-Packaged: \tab 2017-05-09 10:31:35 UTC; root\cr
-Built: \tab R 3.4.1; ; 2017-05-09 20:45:26 UTC; linux\cr
+Packaged: \tab 2018-05-27 11:33:00 UTC; root\cr
+Built: \tab R 3.5.0; ; 2018-05-27 11:33:00 UTC; linux\cr
 }
  The plotrix package is intended to provide a method for getting many sorts of
  specialized plots quickly, yet allow easy customization of those plots

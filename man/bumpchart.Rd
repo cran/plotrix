@@ -6,7 +6,7 @@
  with lines connecting the points in a row.
 }
 \usage{
- bumpchart(y,top.labels=colnames(y),labels=rownames(y),rank=TRUE,
+ bumpchart(y,top.labels=colnames(y),labels=rep(rownames(y),2),rank=TRUE,
   mar=c(2,8,5,8),pch=19,col=par("fg"),lty=1,lwd=1,arrows=FALSE,...)
 }
 \arguments{
@@ -28,7 +28,12 @@
  \samp{bumpchart} calls \samp{matplot} to plot the values in the transposed
  \samp{y} matrix or data frame, joining the points with lines. At the left and
  right edges of the plot, the labels identifying each row of points are
- displayed. This type of plot is often used to show the changing positions of
+ displayed. These labels may now be different for each side of the plot,
+ for example if the values of \samp{y} are to be included. Remember that
+ due to the transposition of the values for plotting, the labels on the 
+ right have to precede those on the left - see the second example.
+ 
+ This type of plot is often used to show the changing positions of
  entities over time, like the ranking in surveys in different years. For a
  similar, but more flexible plot, see \link{ladderplot}.
 
@@ -56,8 +61,10 @@
  colnames(educattn)<-c(1990,2000)
  bumpchart(educattn,main="Rank for high school completion by over 25s",
   arrows=TRUE,length=0.2)
+ vallab<-c(paste(educattn[,2],rownames(educattn),sep="-"),
+  paste(rownames(educattn),educattn[,1],sep="-"))
  # now show the raw percentages and add central ticks
- bumpchart(educattn,rank=FALSE,
+ bumpchart(educattn,rank=FALSE,labels=vallab,
   main="Percentage high school completion by over 25s",
   lty=1:10,lwd=1,col=rainbow(10))
  # margins have been reset, so use
