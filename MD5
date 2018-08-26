@@ -1,6 +1,6 @@
-f6f0c3ffaf0382b96e7dd8bf53fe8d02 *DESCRIPTION
+53390a109465c62d0d9d77322fca2fc8 *DESCRIPTION
 d84263406c003155696a5f086f3e226f *NAMESPACE
-440d1010befec9c4cc64d9a7f132d019 *NEWS
+0b99efe604156bff185c526a081a806f *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 54f531a76de0b83b120f3f6a15108f4e *R/add.ps.R
 76f5fc2c4426b0e082293a71976151e0 *R/addtable2plot.R
@@ -9,7 +9,7 @@ fab32acaa7362918ba978d5ea0df6180 *R/axis.break.R
 e8b305523ba68e063cc674adcc66f524 *R/axis.mult.R
 e3996ef9f6926b0a6bad73988326f2a5 *R/barNest.R
 94ebceeee14c8e482cb2b91858c4e6e6 *R/barlabels.R
-9e56390451aa2e680bd2fb5e4aa25f8d *R/barp.R
+c2d04982bbe7fbdd1b6049dddc5747f5 *R/barp.R
 3293205a5ce0e392f8449846405fe75d *R/battleship.plot.R
 ae1f90fd971b7b524a2d278d6e2eefe8 *R/box.heresy.R
 d77477c61c4d24eca7251137b17b62aa *R/boxed.labels.R
@@ -48,7 +48,7 @@ a9e4e279a0d9c08f06200c401415dd05 *R/fan.plot.R
 bda3e7166adaeffc7b2d2a5686ad924f *R/feather.plot.R
 6ed220c02428cc8976d1244c46698378 *R/floatpie.R
 9d2cc070d1d3eb1c477e3374a42a036c *R/fullaxis.R
-ea968455cb37f8e4290975272352ad20 *R/gantt.R
+abf8099f5da1836abdb01b0a0482eb98 *R/gantt.R
 26d4b90ccbb2f301c5a965a403ca5c74 *R/gap.barplot.R
 ba8176da651ae88bf258dfdaeef98b34 *R/gap.boxplot.R
 095568ff5335532c40644171ef6460e7 *R/gap.plot.R
@@ -57,7 +57,7 @@ f2c451d076cbcf808802e54b1b39f1e9 *R/get.tablepos.R
 30440670860262b4287ee6de35cc675d *R/getIntersectList.R
 f62328458fae81303b94fbb7287175c6 *R/getMarginWidth.R
 67d21436412022723965cff6a8c88177 *R/getYmult.R
-39c5a2ab540444944f48a55f990045e6 *R/gradient.rect.R
+41230526b92eb5a58df69aa54e0a6066 *R/gradient.rect.R
 09764fd0be45b01ef35f7bc551a5ecf4 *R/histStack.R
 5a75434b24f5a4682efdc0cfd51bd8dc *R/intersectDiagram.R
 a4d95ff5c4b5b264fea2e37be7f912a7 *R/joyPlot.R
@@ -111,7 +111,7 @@ baa253c7a54bcde2837f305ef2b492b4 *R/symbolbox.R
 03fb7639ade1f0447d3630d247adfb12 *R/tab.title.R
 0cee4a8f25e15353f2ae849e6c63ff33 *R/taylor.diagram.R
 c6ac650f1204191a4da58698aa063467 *R/textbox.R
-d1fd2e623d002adf528ba80996c60826 *R/thigmophobe.R
+48f4e44ee02e783f00d697fde880726b *R/thigmophobe.R
 1f986c0d9dd119a07f63bcfae6c3db9f *R/triax.R
 dec059d897186f22ea6815dbd00b9f10 *R/tsxpos.R
 64111d9cb0418d4a2e004ec5b3e9d143 *R/twoord.plot.R
@@ -122,7 +122,7 @@ cdcdd0cd94badf90f50620c73d576c0c *R/weighted.hist.R
 481b3f85c721c582bc955c5059ba7c1e *R/windrose.R
 52d0de3c89b6d90fe1e9157b0c76f291 *R/zoomInPlot.R
 6c5b0047d50b0d071c9a8162c81ccb31 *data/death_reg.rda
-ade13a1535ffd0b782ea766b2e7d972b *data/soils.rda
+9be52f63966e960a3e9ac157c826b393 *data/soils.rda
 afe626471214438383c01dfcc2a12e10 *demo/00Index
 ed8fb5d7f12b7b5686c5e422357a21b6 *demo/plotrix.R
 b35ca73e819dbad59881960986301ef3 *inst/CITATION
@@ -233,7 +233,7 @@ df16d5a7e051f52e37eb2624bed0abf2 *man/paxis3d.Rd
 94da9e98fdf1f64739b188fea1f021f6 *man/plotCI.Rd
 d537e859f11754e2ab779d75c82a0086 *man/plotH.Rd
 d0be8d8872d21c55c387ed117d60bc92 *man/plot_bg.Rd
-80784aab1236200b5f0923902ec82fbe *man/plotrix-package.Rd
+2eabed7848736c270bca48db58f72f0f *man/plotrix-package.Rd
 31556e9a35a48fbccdff23395a8cdb07 *man/polar.plot.Rd
 aacd4acbdc1275ecff45c6d962ae8f16 *man/polygon.shadow.Rd
 8d1dc46509d56126301ed969bff3ed8c *man/print.brklist.Rd
@@ -275,7 +275,7 @@ ae8f69cda8160327316c915a992151c9 *man/symbolbox.Rd
 d9f79a0e522fcb9a4d1af0873723a412 *man/tab.title.Rd
 cbc39b26a24639a81dd65defa94c7817 *man/taylor.diagram.Rd
 78e9845825dfde81846bdca59142da45 *man/textbox.Rd
-435910f39b3e5a2b60fb8906aa45e390 *man/thigmophobe.Rd
+0cd3d208641f8774b021bc8ce820d048 *man/thigmophobe.Rd
 4f7a77bbf7f29248928acc1e22ab25a3 *man/thigmophobe.labels.Rd
 ac5071d4a906c8d08c62d24c1059d548 *man/triax.abline.Rd
 5fc757905ff2fb69baab63abdba3d364 *man/triax.fill.Rd

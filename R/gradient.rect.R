@@ -4,6 +4,7 @@ gradient.rect<-function(xleft,ybottom,xright,ytop,reds,greens,blues,
  if(is.null(col)) col<-color.gradient(reds, greens, blues, nslices)
  else nslices<-length(col)
  nrect<-max(unlist(lapply(list(xleft,ybottom,xright,ytop),length)))
+ oldxpd<-par(xpd=NA)
  if(nrect > 1) {
   if(length(xleft) < nrect) xleft<-rep(xleft,length.out=nrect)
   if(length(ybottom) < nrect) ybottom<-rep(ybottom,length.out=nrect)
@@ -29,5 +30,6 @@ gradient.rect<-function(xleft,ybottom,xright,ytop,reds,greens,blues,
    rect(xleft,ybottoms[1],xright,ytops[nslices],border=border)
   }
  }
+ par(oldxpd)
  invisible(col)
 }

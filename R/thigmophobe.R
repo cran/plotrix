@@ -1,7 +1,9 @@
 # thigmophobe returns the direction (as 1|2|3|4 - see pos= in the text function) 
 # _away_ from the nearest point where x and y are vectors of 2D coordinates
 
-thigmophobe<-function(x,y) {
+thigmophobe<-function(x,y,plot.span=par("usr"),xlog=par("xlog"),
+ ylog=par("ylog")) {
+ 
  # if x has at least two columns, split it
  if(missing(y)) {
   if(is.list(x) && length(x) >= 2) {
@@ -20,12 +22,11 @@ thigmophobe<-function(x,y) {
  if(is.array(x)) x<-as.numeric(x)
  if(is.array(y)) y<-as.numeric(y)
  # get the current upper and lower limits of the plot
- plot.span<-par("usr")
  x.span<-plot.span[2] - plot.span[1]
  y.span<-plot.span[4] - plot.span[3]
  # if either axis is logarithmic, transform the values into logarithms
- if(par("xlog")) x<-log(x)
- if(par("ylog")) y<-log(y)
+ if(xlog) x<-log(x)
+ if(ylog) y<-log(y)
  # scale the values to the plot span
  # this avoids the numerically larger
  # axis dominating the distance measure

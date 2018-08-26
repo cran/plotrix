@@ -1,3 +1,10 @@
+version 3.7-3
+
+        enhancement for gradient.rect function (thanks to Rod Lamming)
+        fix for gantt.chart function (thanks to Andrius Getzinis)
+        improvement to thigmophobe (thanks to Duncan Murdoch)
+        fixed specified legend position in the barp function
+
 version 3.7-2
 
         align plotrix-package.Rd with DESCRIPTION file
@@ -5,7 +12,7 @@ version 3.7-2
 
 version 3.7-1
 
-        fix for the multivari function (thanks for Ulrike Groemping)
+        fix for the multivari function (thanks to Ulrike Groemping)
         added the plotH function (thanks to Derek Ogle)
 
 version 3.7

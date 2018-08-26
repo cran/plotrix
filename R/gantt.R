@@ -114,7 +114,7 @@ gantt.chart<-function (x=NULL,format="%Y/%m/%d",xlim=NULL,
    plim[3]-(6.5-time.axis)*line.height,
    plim[1]+3*plot.width/5,plim[3]-(5.5-time.axis)*line.height,
    legend=c(priority.extremes[1],rep("",length(taskcolors)-2),
-    priority.extremes[1]),rect.col=taskcolors)
+    priority.extremes[2]),rect.col=taskcolors)
   par(xpd=NA)
   text(plim[1]+plot.width/2,plim[3]-(7-time.axis)*line.height,
    priority.label,adj=c(0.5,1))
