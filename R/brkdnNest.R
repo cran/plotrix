@@ -42,45 +42,51 @@ binciWl<-function(x,n,alpha=0.05,trueval=TRUE,na.rm=TRUE) {
  return(binciW(x,n,alpha=alpha)[1])
 }
 
-brkdnNest<-function(formula,data,FUN=c("mean","sd","sd","valid.n"),
- label1="Overall",trueval=TRUE) {
+brkdnNest<-function(formula, data, FUN = c("mean", "sd", "sd", "valid.n"),
+ label1 = "Overall", trueval = TRUE) {
 
- if(missing(data) || missing(formula)) 
-  stop("brkdnNest must be called with a formula for breakdown and a data frame.")
- bn<-as.character(attr(terms(formula),"variables")[-1])
- # number of variables used to break down the leftmost term
+ if(missing(data) || missing(formula)) stop("brkdnNest(formula,data,...")
+ bn<-as.character(attr(terms(formula), "variables")[-1])
  nbn<-length(bn)
- # number of functions to apply at each level of breakdown
  nFUN<-length(FUN)
- brklist<-vector("list",nFUN)
+ brklist<-vector("list", nFUN)
  truevalFUN<-c("propbrk","binciWu","binciWl","sumbrk")
  brklevels<-list()
- for(brk in 1:nbn) brklevels[[brk]]<-levels(data[,bn[brk]])
- for(brkfun in 1:nFUN) {
-  brklist[[brkfun]]<-vector("list",nbn)
-  if(FUN[brkfun] %in% truevalFUN) 
-   brklist[[brkfun]][[1]]<-do.call(FUN[brkfun],list(data[[bn[1]]], 
-    trueval=trueval,na.rm=TRUE))
-  else
-   brklist[[brkfun]][[1]]<-do.call(FUN[brkfun],list(data[[bn[1]]],
-    na.rm=TRUE))
-  names(brklist[[brkfun]][[1]])<-label1
-  for(brk in 2:nbn) {
-   if(FUN[brkfun] %in% truevalFUN) 
-    brklist[[brkfun]][[brk]]<-tapply(data[[bn[1]]],data[bn[2:brk]],
-     FUN=match.fun(FUN[brkfun]),trueval=trueval)
-   else
-    brklist[[brkfun]][[brk]]<-tapply(data[[bn[1]]], 
-     data[bn[2:brk]],FUN=match.fun(FUN[brkfun]),na.rm=TRUE)
-   names(brklist[[brkfun]][[brk]])<-brklevels[[brk]]
+ for(brk in 1:nbn)
+  if(is.factor(data[,bn[brk]])) brklevels[[brk]]<-levels(data[,bn[brk]])
+  else brklevels[[brk]]<-sort(unique(data[,bn[brk]]))
+  for(brkfun in 1:nFUN) {
+   brklist[[brkfun]] <- vector("list", nbn)
+   if(FUN[brkfun] %in% truevalFUN)
+    brklist[[brkfun]][[1]] <- do.call(FUN[brkfun], list(data[[bn[1]]],
+    trueval = trueval, na.rm = TRUE))
+   else brklist[[brkfun]][[1]] <- do.call(FUN[brkfun], list(data[[bn[1]]],
+    na.rm = TRUE))
+   names(brklist[[brkfun]][[1]]) <- label1
+   for(brk in 2:nbn) {
+    if(FUN[brkfun] %in% truevalFUN)
+     brklist[[brkfun]][[brk]] <- tapply(data[[bn[1]]],
+      data[bn[2:brk]], FUN = match.fun(FUN[brkfun]),
+      trueval = trueval)
+    else brklist[[brkfun]][[brk]] <- tapply(data[[bn[1]]],
+     data[bn[2:brk]], FUN = match.fun(FUN[brkfun]),
+     na.rm = TRUE)
+    names(brklist[[brkfun]][[brk]]) <- brklevels[[brk]]
+   }
+   if(FUN[brkfun] == "valid.n")
+    brklist[[brkfun]]<-
+     rapply(brklist[[brkfun]],function(x) ifelse(is.na(x),0,x),how="replace")
   }
-  # get rid of the NAs in valid.n
-  if(FUN[brkfun] == "valid.n")
-   brklist[[brkfun]]<-
-    rapply(brklist[[brkfun]],function(x) ifelse(is.na(x),0,x),how="replace")
+ if(trueval == "prop") {
+  brklist[[1]][[2]]<-brklist[[1]][[2]]/brklist[[1]][[1]]
+  for(column in 1:ncol(brklist[[1]][[3]])) {
+   brklist[[1]][[3]][,column]<-
+   brklist[[1]][[3]][,column]/sum(brklist[[1]][[3]][,column])
+  }
+  brklist[[1]][[1]]<-1
  }
- attr(brklist,"class")<-"brklist"
- names(brklist)<-FUN
+ attr(brklist, "class") <- "brklist"
+ names(brklist) <- FUN
  return(brklist)
 }
 

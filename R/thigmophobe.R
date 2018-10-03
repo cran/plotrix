@@ -38,7 +38,7 @@ thigmophobe<-function(x,y,plot.span=par("usr"),xlog=par("xlog"),
  xy.dist<-as.matrix(dist(cbind(x,y)))
  lenx<-length(x)
  nearest.index<-rep(0,lenx)
- if(lenx < 3) nearest.inces<-1:2
+ if(lenx < 3) nearest.incex<-1:2
  else {
   for(index in (1:lenx))
    nearest.index[index]<-as.numeric(names(which.min(xy.dist[-index,index])))

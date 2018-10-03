@@ -64,8 +64,8 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor = TRUE,
                 0))
             axis.ticks <- pretty(c(0, maxsd))
             axis.ticks <- axis.ticks[axis.ticks <= maxsd]
-            axis(1, at = axis.ticks, cex.axis = cex.axis)
-            axis(2, at = axis.ticks, cex.axis = cex.axis)
+            axis(1, at = axis.ticks,cex.axis=cex.axis)
+            axis(2, at = axis.ticks,cex.axis=cex.axis)
             if (sd.arcs[1]) {
                 if (length(sd.arcs) == 1) 
                   sd.arcs <- axis.ticks
@@ -123,8 +123,8 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor = TRUE,
             text(cos(c(bigtickangles, acos(c(0.95, 0.99)))) * 
                 1.05 * maxsd, sin(c(bigtickangles, acos(c(0.95, 
                 0.99)))) * 1.05 * maxsd, c(seq(0.1, 0.9, by = 0.1), 
-                0.95, 0.99))
-            text(maxsd * 0.8, maxsd * 0.8, "Correlation", srt = 315)
+                0.95, 0.99),cex=cex.axis)
+            text(maxsd * 0.8, maxsd * 0.8, "Correlation", srt = 315,cex=cex.axis)
             segments(cos(medtickangles) * maxsd, sin(medtickangles) * 
                 maxsd, cos(medtickangles) * 0.98 * maxsd, sin(medtickangles) * 
                 0.98 * maxsd)

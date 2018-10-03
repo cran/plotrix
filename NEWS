@@ -1,3 +1,7 @@
+version 3.7-4
+
+        fixed the dimension loss in color.scale when xrange specified
+
 version 3.7-3
 
         enhancement for gradient.rect function (thanks to Rod Lamming)

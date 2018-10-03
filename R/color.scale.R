@@ -1,6 +1,7 @@
 color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
  extremes=NA,na.color=NA,xrange=NULL,color.spec="rgb") {
  
+ xdim<-dim(x)
  if (diff(range(x, na.rm = TRUE)) == 0) x<-x/max(x,na.rm=TRUE)
  naxs<-is.na(x)
  if(!is.na(extremes[1])){
@@ -72,7 +73,6 @@ color.scale<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),alpha=1,
   cs2s<-cs2s[-(1:2)]
   cs3s<-cs3s[-(1:2)]
  }
- xdim<-dim(x)
  colors<-do.call(color.spec,list(cs1s,cs2s,cs3s,alpha=alpha))
  if(!is.null(xdim)) colors<-matrix(colors,nrow=xdim[1])
  if(length(naxs)) colors[naxs]<-na.color

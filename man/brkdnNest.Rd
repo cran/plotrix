@@ -56,7 +56,7 @@
 \seealso{\link{by}}
 \examples{
  brkdntest<-data.frame(Age=rnorm(100,25,10),
-  Sex=sample(c("M","F"),100,TRUE),
+  Sex=factor(sample(c("M","F"),100,TRUE)),
   Marital=sample(c("M","X","S","W"),100,TRUE),
   Employ=sample(c("FT","PT","NO"),100,TRUE))
  brkdnNest(formula=Age~Sex+Marital+Employ,data=brkdntest)
