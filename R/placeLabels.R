@@ -2,7 +2,7 @@ placeLabels<-function(x,y=NA,labels,pointer=TRUE,cex=1,labelcol=par("fg"),
  labelbg="white",border=par("fg"),pointercol=par("fg"),
  pch=1,col=1,bg="white",flagcol="red") {
 
- if(is.na(y) && is.list(x)) {
+ if(identical(NA, y) && is.list(x)) {
   y<-unlist(x[[2]])
   x<-unlist(x[[1]])
  }

@@ -1,11 +1,10 @@
 \name{ehplot}
 \alias{ehplot}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
   Engelmann-Hecker-Plot - EH-Plot
 }
 \description{
-  This R function provides a convenient way to visualize the distribution of 
+  This R function provides a convenient way to visualize the distribution of
   grouped numerical data.
 }
 \usage{
@@ -81,7 +80,4 @@ pwid <- abs(rnorm(150, 1.2))
 spec <- iris$Species[rnd]
 ehplot(plen, spec, pch=19, cex=pwid, col=rainbow(3, alpha=0.6)[as.numeric(spec)])
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{hplot}

@@ -9,8 +9,8 @@ barNest<-function (formula = NULL, data = NULL, FUN = c("mean", "sd",
         trueval = trueval)
     getBreakListNames <- function(x) {
         blnames <- list(names(x[[1]][[1]]))
-        for (level in 2:length(x[[1]])) blnames[[level]] <- dimnames(x[[1]][[level]])[[level - 
-            1]]
+        for(level in seq_along(x[[1]])[-1])
+            blnames[[level]] <- dimnames(x[[1]][[level]])[[level-1L]]
         return(blnames)
     }
     if (is.null(barlabels)) barlabels <- getBreakListNames(x)
@@ -47,7 +47,7 @@ barNest<-function (formula = NULL, data = NULL, FUN = c("mean", "sd",
     parusr <- par("usr")
     if (is.na(lineht)) 
         lineht <- 1.05 * labelcex * diff(parusr[3:4]) * (par("mai")[1]/par("pin")[2])/par("mar")[1]
-    nlevels = length(x[[1]])
+    nlevels  <- length(x[[1]])
     drawNestedBars(x, start = 0, end = 1, shrink = shrink, errbars = errbars, 
         intervals = intervals, col = col, labelcex = labelcex, 
         lineht = lineht, showall = showall, Nwidths = Nwidths, 
