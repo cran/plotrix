@@ -3,8 +3,8 @@
 \description{Displays a character string on the circumference of an imaginary
  circle on an existing plot.}
 \usage{
- arctext(x,center=c(0,0),radius=1,start=NA,middle=pi/2,end=NA,stretch=1,
- clockwise=TRUE,cex=NA,...)
+ arctext(x,center=c(0,0),radius=1,start=NULL,middle=pi/2,end=NULL,stretch=1,
+ clockwise=TRUE,cex=NULL,...)
 }
 \alias{arctext}
 \arguments{

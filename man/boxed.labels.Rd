@@ -5,7 +5,7 @@
  Places labels in boxes on an existing plot
 }
 \usage{
- boxed.labels(x,y=NA,labels,
+ boxed.labels(x,y=NULL,labels,
   bg=ifelse(match(par("bg"),"transparent",0),"white",par("bg")),
   border=TRUE,xpad=1.2,ypad=1.2,srt=0,cex=1,adj=0.5,xlog=FALSE,ylog=FALSE,...)
 }

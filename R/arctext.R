@@ -1,9 +1,9 @@
-arctext<-function(x,center=c(0,0),radius=1,start=NA,middle=pi/2,end=NA,stretch=1,
- clockwise=TRUE,cex=NA, ...) {
+arctext<-function(x,center=c(0,0),radius=1,start=NULL,middle=pi/2,end=NULL,
+ stretch=1,clockwise=TRUE,cex=NULL, ...) {
 
  oldcex <- par("cex")
  # have to do this to get strwidth to work
- if(is.na(cex)) cex <- oldcex
+ if(is.null(cex)) cex <- oldcex
  par(cex = cex)
  xvec <- strsplit(x, "")[[1]]
  lenx <- length(xvec)
@@ -12,11 +12,11 @@ arctext<-function(x,center=c(0,0),radius=1,start=NA,middle=pi/2,end=NA,stretch=1
  # make really narrow characters wider
  changrang <- range(charangles)
  charangles[charangles < changrang[2]/2] <- changrang[2]/2
- if(!is.na(end)) {
+ if(!is.null(end)) {
   if(clockwise) start <- end + sum(charangles)
   else start <- end - sum(charangles)
  }
- if(is.na(start)) {
+ if(is.null(start)) {
   if (clockwise) start <- middle + sum(charangles)/2
   else start <- middle - sum(charangles)/2
  }

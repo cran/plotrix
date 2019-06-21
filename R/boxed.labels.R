@@ -1,11 +1,11 @@
-boxed.labels<-function (x, y = NA, labels,
+boxed.labels<-function (x, y = NULL, labels,
  bg = ifelse(match(par("bg"), "transparent", 0), "white", par("bg")),
- border = TRUE, xpad = 1.2, ypad = 1.2,
+ border = TRUE, xpad = 1.2, ypad = 1.2, 
  srt = 0, cex = 1, adj = 0.5, xlog=FALSE, ylog=FALSE, ...) {
 
     oldpars <- par(c("cex", "xpd"))
     par(cex = cex, xpd = TRUE)
-    if (identical(NA, y) && is.list(x)) {
+    if (is.null(y) && is.list(x)) {
         y <- unlist(x[[2]])
         x <- unlist(x[[1]])
     }
@@ -22,8 +22,8 @@ boxed.labels<-function (x, y = NA, labels,
         lwidths <- lwidths * box.adj
         bheights <- theights <- strheight(labels) * 0.5
     }
-    args <- list(x = x, y = y, labels = labels, srt = srt, adj = adj,
-        col = ifelse(colSums(col2rgb(bg) * c(1, 1.4, 0.6)) <
+    args <- list(x = x, y = y, labels = labels, srt = srt, adj = adj, 
+        col = ifelse(colSums(col2rgb(bg) * c(1, 1.4, 0.6)) < 
             350, "white", "black"))
     args <- modifyList(args, list(...))
     if(xlog){
@@ -43,8 +43,8 @@ boxed.labels<-function (x, y = NA, labels,
     else{
     	yb<-y - bheights * ypad
     	yt<-y + theights * ypad
-    	}
+    	}	
     	rect(xr, yb, xl, yt, col = bg, border = border)
     do.call(text, args)
-    par(cex = oldpars)
+    par(oldpars)
 }

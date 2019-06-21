@@ -1,6 +1,6 @@
-brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
- stagger=NA,dispbar=TRUE,main="Breakdown plot",xlab=NA,ylab=NA,xaxlab=NA,
- ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,yat=NA,...) {
+brkdn.plot<-function(vars,groups=NULL,obs=NULL,data,mct="mean",md="std.error",
+ stagger=NULL,dispbar=TRUE,main="Breakdown plot",xlab=NULL,ylab=NULL,xaxlab=NA,
+ ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,yat=NULL,...) {
 
  if(class(vars) == "formula") {
   formbits<-all.vars(vars)
@@ -8,8 +8,8 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
   groups<-formbits[2]
   obs<-formbits[3]
  }
- if(is.na(obs)) {
-  if(is.na(groups[1]))
+ if(is.null(obs)) {
+  if(is.null(groups[1]))
    stop("Must have at least one factor to subset data")
   bygroup<-as.factor(data[[groups]])
   grouplevels<-levels(bygroup)
@@ -29,7 +29,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
    nobs<-length(obslevels)
    obs.pos<-1:nobs
   }
-  if(is.na(groups)) {
+  if(is.null(groups)) {
    ngroups<-length(vars)
    grouplevels<-1:ngroups
   }
@@ -45,8 +45,8 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  }
  brkdn<-list(matrix(NA,nrow=ngroups,ncol=nobs),
   matrix(NA,nrow=ngroups,ncol=nobs))
- if(is.na(groups)) {
-  if(is.na(xlab)) xlab<-"Observation"
+ if(is.null(groups)) {
+  if(is.null(xlab)) xlab<-"Observation"
   xat<-1:nobs
   if(is.na(xaxlab[1])) xaxlab<-obslevels
   for(group in 1:ngroups) {
@@ -55,7 +55,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
     if(length(thisbit)) {
      if(length(thisbit) > 1) {
       brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
-      if(!is.na(md))
+      if(!is.null(md))
        brkdn[[2]][group,ob]<-do.call(md,list(thisbit,na.rm=TRUE))
      }
      else brkdn[[1]][group,ob]<-thisbit
@@ -74,7 +74,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
      if(length(thisbit)) {
       if(length(thisbit) > 1) {
        brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
-       if(!is.na(md))
+       if(!is.null(md))
        brkdn[[2]][group,ob]<-do.call(md,list(thisbit,na.rm=TRUE))
       }
       else brkdn[[1]][group,ob]<-thisbit
@@ -83,7 +83,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
    }
   }
   else {
-   if(is.na(xlab)) xlab<-"Observation"
+   if(is.null(xlab)) xlab<-"Observation"
    xat<-obs.pos
    if(is.na(xaxlab[1])) xaxlab<-obslevels
    for(group in 1:ngroups) {
@@ -93,7 +93,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
      if(length(thisbit)) {
       if(length(thisbit) > 1) {
        brkdn[[1]][group,ob]<-do.call(mct,list(thisbit,na.rm=TRUE))
-       if(!is.na(md))
+       if(!is.null(md))
         brkdn[[2]][group,ob]<-do.call(md,list(thisbit,na.rm=TRUE))
       }
       else brkdn[[1]][group,ob]<-thisbit
@@ -104,15 +104,15 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  }
  if(is.na(ylim[1])) {
   ylim<-range(brkdn[[1]],na.rm=TRUE)
-  if(!is.na(md)) {
+  if(!is.null(md)) {
    dlim<-c(min(brkdn[[1]]-brkdn[[2]],na.rm=TRUE),
      max(brkdn[[1]]+brkdn[[2]],na.rm=TRUE))
    ylim<-c(min(c(ylim[1],dlim[1])),max(c(ylim[2],dlim[2])))
   }
  }
  groupdiv<-ifelse(ngroups < 3,1,ngroups-2)
- if(is.na(stagger)) stagger<-0.025-groupdiv*0.0025
- if(is.na(ylab)) {
+ if(is.null(stagger)) stagger<-0.025-groupdiv*0.0025
+ if(is.null(ylab)) {
   if(length(vars) == 1) ylab<-vars[1]
   else ylab<-paste(vars,collapse=" and ")
  }
@@ -121,7 +121,7 @@ brkdn.plot<-function(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",
  box()
  if(staxx) staxlab(at=xat,labels=xaxlab)
  else axis(1,at=xat,labels=xaxlab)
- if(is.na(yat[1])) axis(2)
+ if(is.null(yat)) axis(2)
  else axis(2,at=yat)
  if(length(pch) < ngroups) pch<-rep(pch,length.out=ngroups)
  if(length(col) < ngroups) col<-rep(col,length.out=ngroups)

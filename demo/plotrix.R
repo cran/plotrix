@@ -2,10 +2,11 @@
 par(ask=FALSE)
 answer<-"Z"
 whichplot<-"Z"
-while(answer != "X" && whichplot != "X") {
+while(answer != "Q" && whichplot != "X") {
 cat("1. Plots B-K\n2. Plots L-Z\n3. Enhancements A-L\n")
 cat("4. Enhancements L-V\nQ. Quit\n")
 answer<-toupper(readline("Choose a group - "))
+if(answer == "Q") break
 if(answer=="1") {
  cat("1. barNest - Plot nested breakdowns as superimposed bars\n")
  cat("2. barp - A bar plotting routine similar to barplot\n")
@@ -19,21 +20,22 @@ if(answer=="1") {
  cat("A. color2D.matplot - Display a numeric matrix as colors\n")
  cat("B. color.scale.lines - Plot lines with colors dependent upon values\n")
  cat("C. dendroPlot - Display distributions as dendrites\n")
- cat("D. diamondplot - Plot variables as polygons on a radial grid\n")
- cat("E. dotplot.mtb - Minitab style dotplot\n")
- cat("F. ehplot - Englemann-Hecker plot\n")
- cat("G. election - Display party affiliations by color\n")
- cat("H. fan.plot - Like a pie chart with overlaid sectors\n")
- cat("I. feather.plot - Display vectors along a horizontal line\n")
- cat("J. floating.pie - Display one or more pie charts\n")
- cat("K. gantt.chart - Display a Gantt chart\n")
- cat("L. gap.barplot - A bar plot with an specified gap\n")
- cat("M. gap.boxplot - A box plot with a specified gap\n")
- cat("N. gap.plot - A scatterplot with a specified gap\n")
- cat("O. histStack - Display a stacked histogram\n")
- cat("P. intersectDiagram - Display set intersections as rectangles\n")
- cat("Q. joyPlot - Display a series of density or other curves\n")
- cat("R. kiteChart - Display a matrix of values as polygon segments\n")
+ cat("D. densityGrid - Overlay observation density and intensity on a map\n")
+ cat("E. diamondplot - Plot variables as polygons on a radial grid\n")
+ cat("F. dotplot.mtb - Minitab style dotplot\n")
+ cat("G. ehplot - Englemann-Hecker plot\n")
+ cat("H. election - Display party affiliations by color\n")
+ cat("I. fan.plot - Like a pie chart with overlaid sectors\n")
+ cat("J. feather.plot - Display vectors along a horizontal line\n")
+ cat("K. floating.pie - Display one or more pie charts\n")
+ cat("L. gantt.chart - Display a Gantt chart\n")
+ cat("M. gap.barplot - A bar plot with a specified gap\n")
+ cat("N. gap.boxplot - A box plot with a specified gap\n")
+ cat("O. gap.plot - A scatterplot with a specified gap\n")
+ cat("P. histStack - Display a stacked histogram\n")
+ cat("Q. intersectDiagram - Display set intersections as rectangles\n")
+ cat("R. joyPlot - Display a series of density or other curves\n")
+ cat("S. kiteChart - Display a matrix of values as polygon segments\n")
  cat("X. Exit\n")
  #par(ask=TRUE)
  whichplot<-toupper(readline("Choose a plot - "))
@@ -163,21 +165,41 @@ if(answer=="1") {
   x<-list(runif(90,1,2),factor(sample(LETTERS,100,TRUE)),rnorm(80,mean=5))
   dendroPlot(x,breaks=list(seq(1,2,by=0.1),0,0:10),nudge=c(0.03,0.3),
    xlab="Groups",ylab="Counts",main="Test dendroPlot")
- } 
+ }
  if(whichplot == "D") {
+  x<-sample(1:20,400,TRUE)
+  y<-sample(1:20,400,TRUE)
+  z<-runif(400,5,20)
+  xyz<-makeDensityMatrix(x,y,z,nx=20,ny=20,xlim=c(1,10),ylim=c(1,10),
+   geocoord=FALSE)
+  par(mar=c(7,3,2,3))
+  plot(0,xlim=c(1,10),ylim=c(1,10),type="n",xlab="",axes=FALSE)
+  box()
+  densityGrid(xyz,range.cex=c(1,4),xlim=c(1,10),ylim=c(1,10),
+   red=c(0,0.5,0.8,1),green=c(1,0.8,0.5,0),blue=0,pch=15)
+  color.legend(3,-0.7,7,-0.2,c(5,10,15,20),
+   rect.col=color.scale(1:4,cs1=c(0,0.5,0.8,1),cs2=c(1,0.8,0.5,0),cs3=0,alpha=1))
+  par(xpd=TRUE)
+  text(5,0.3,"Intensity")
+  points(c(3.5,4.5,5.5,6.5),rep(-1.7,4),pch=15,cex=1:4)
+  text(c(3.5,4.5,5.5,6.5),rep(-1.3,4),1:4)
+  text(5,-1,"Density")
+  par(xpd=FALSE)
+ } 
+ if(whichplot == "E") {
   data(mtcars)
   mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]
   diamondplot(mysubset,name="Diamondplot")
  } 
- if(whichplot == "E") {
+ if(whichplot == "F") {
   x <- rpois(100,10)
   dotplot.mtb(x,yaxis=TRUE,main="Minitab dotplot with y-axis.")
  } 
- if(whichplot == "F") {
+ if(whichplot == "G") {
   data(iris)
   ehplot(iris$Sepal.Length, iris$Species, intervals=20, cex=1.8, pch=20)
  } 
- if(whichplot == "G") {
+ if(whichplot == "H") {
   eu = structure(list(colour = c("#3399FF", "#F0001C", "#0054A5",
   "#FFD700", "#990000", "#909090", "#32CD32", "#40E0D0"),
    party = c("EPP", "S and D", "ECR", "ALDE", "GUE-NGL",
@@ -193,18 +215,18 @@ if(answer=="1") {
   legend(-0.7,-0.3,eu$party,fill=eu$colour)
   par(oldmar)
  } 
- if(whichplot == "H") {
+ if(whichplot == "I") {
   iucn.df<-data.frame(area=c("Africa","Asia","Europe","N&C America",
    "S America","Oceania"),threatened=c(5994,7737,1987,4716,5097,2093))
   fan.plot(iucn.df$threatened,max.span=pi,
    labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
    main="Threatened species by geographical area (fan.plot)",ticks=276)
  } 
- if(whichplot == "I") {
+ if(whichplot == "J") {
   feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
    main="Test of feather.plot",xlab="Time",ylab="Value")
  } 
- if(whichplot == "J") {
+ if(whichplot == "K") {
   plot(1:5,type="n",main="Floating Pie test",xlab="",ylab="",axes=FALSE)
   box()
   polygon(c(0,0,5.5,5.5),c(0,3,3,0),border="#44aaff",col="#44aaff")
@@ -222,7 +244,7 @@ if(answer=="1") {
   draw.circle(4.03,2.85,radius=0.04,col="white")
   text(c(1.7,3.1,4),c(3.7,3.7,3.7),c("Pass","Pass","Fail"))
  } 
- if(whichplot == "K") {
+ if(whichplot == "L") {
   Ymd.format<-"%Y/%m/%d"
   gantt.info<-list(labels=
    c("First task","Second task","Third task","Fourth task","Fifth task"),
@@ -241,29 +263,29 @@ if(answer=="1") {
   gantt.chart(gantt.info,main="Calendar date Gantt chart (2004)",
    priority.legend=TRUE,vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE)
  }
- if(whichplot == "L") {
+ if(whichplot == "M") {
   twogrp<-c(rnorm(10)+4,rnorm(10)+20)
   gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
   ylab="Group values",main="gap.barplot")
  } 
- if(whichplot == "M") {
+ if(whichplot == "N") {
   twovec<-list(vec1=c(rnorm(30),-6),vec2=c(sample(1:10,40,TRUE),20))
   gap.boxplot(twovec,gap=list(top=c(12,18),bottom=c(-5,-3)),
    main="Test gap.boxplot")
  }
- if(whichplot == "N") {
+ if(whichplot == "O") {
   twogrp<-c(rnorm(5)+4,rnorm(5)+20,rnorm(5)+5,rnorm(5)+22)
   gpcol<-c(2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5)
   gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
    main="Test gap.plot",col=gpcol)
  }
- if(whichplot == "O") {
+ if(whichplot == "P") {
   df<-data.frame(len=rnorm(100)+5,
    grp=sample(c("A","B","C","D"),100,replace=TRUE))
   histStack(len~grp,data=df,main="Default (rainbow) colors",
    xlab="Length category")
  }
- if(whichplot == "P") {
+ if(whichplot == "Q") {
   druguse<-matrix(c(sample(c(0,1),200,TRUE,prob=c(0.15,0.85)),
    sample(c(0,1),200,TRUE,prob=c(0.35,0.65)),
    sample(c(0,1),200,TRUE,prob=c(0.5,0.5)),
@@ -273,13 +295,13 @@ if(answer=="1") {
   # first display it as counts
   intersectDiagram(druglist,main="Patterns of drug use",sep="\n")
  }
- if(whichplot == "Q") {
+ if(whichplot == "R") {
   numbmat<-matrix(runif(500,0,1),nrow=10)
   denslist<-apply(numbmat,1,density)
   names(denslist)<-month.abb[1:10]
   joyPlot(denslist,main="Test of joyPlot",fill="lightgray")
  }
-  if(whichplot == "R") {
+  if(whichplot == "S") {
   testmat<-matrix(c(runif(50),sample(1:50,50),rnorm(50)+5,
    sin(1:50)),ncol=50,byrow=TRUE)
   kiteChart(testmat,varlabels=c("Uniform","Sample","Normal","Sine"),
@@ -287,6 +309,7 @@ if(answer=="1") {
   # not enough space for the last label, add it
   mtext("Sine",at=65,side=1,line=2)
  }
+ if(whichplot=="X") break
 }
 if(answer == "2") {
  cat("1. labbePlot - Display a L'Abbe plot - successes as sizes of circles\n")
@@ -550,6 +573,7 @@ if(answer == "2") {
   zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),
    zoomtitle="Zoom In Plot",titlepos=-1.5)
  }
+ if(whichplot=="X") break
 }
 if(answer=="3") {
  cat("1. ablineclip - add a line to a plot clipped to a specified rectangle\n")
@@ -780,6 +804,7 @@ if(answer=="3") {
   vectorField(o,m,vecspec="rad")
   lengthKey(0.3,-0.5,c(0,5,10),0.24)
  }
+ if(whichplot=="X") break
 }
 if(answer == "4") {
  cat("1. multsymbolbox - Draw boxes filled with symbols\n")
@@ -987,5 +1012,6 @@ if(answer == "4") {
  if(whichplot == "O") {
   cat("Valid n =",valid.n(c(1,2,3,NA,5,6,7,NA,9,10)),"\n")
  }
+ if(whichplot=="X") break
 }
 }

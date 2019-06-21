@@ -1,5 +1,5 @@
 battleship.plot<-function(x,mar=c(2,5,5,1),col="white",border="black", 
- main="",xlab="",ylab="",xaxlab=NA,yaxlab=NA,cex.labels=1,
+ main="",xlab="",ylab="",xaxlab=NULL,yaxlab=NULL,cex.labels=1,
  maxxspan=0.45,maxyspan=0.45) {
 
  dimx<-dim(x)
@@ -12,13 +12,13 @@ battleship.plot<-function(x,mar=c(2,5,5,1),col="white",border="black",
   type="n",xlab="",ylab="")
  title(main=main,line=mar[3]-2)
  mtext(xlab,side=1,line=0)
- if(is.na(xaxlab[1])) {
+ if(is.null(xaxlab)) {
   xaxlab<-colnames(x)
   if(is.null(xaxlab)) xaxlab<-1:dimx[2]
  }
  staxlab(side=3,at=1:dimx[2],labels=xaxlab,srt=45,adj=0,top.line=0,
   ticklen=0,cex=cex.labels)
- if(is.na(yaxlab[1])) {
+ if(is.null(yaxlab)) {
   yaxlab<-rownames(x)
   if(is.null(yaxlab)) yaxlab<-1:dimx[1]
  }

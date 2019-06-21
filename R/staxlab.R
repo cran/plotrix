@@ -3,7 +3,7 @@
 # even when axes=FALSE
 
 staxlab<-function(side=1,at,labels,nlines=2,top.line=0.5,
- line.spacing=0.8,srt=NA,ticklen=0.03,adj=1,...) {
+ line.spacing=0.8,srt=NULL,ticklen=0.03,adj=1,...) {
 
  if(missing(labels)) labels<-at
  nlabels<-length(labels)
@@ -11,7 +11,7 @@ staxlab<-function(side=1,at,labels,nlines=2,top.line=0.5,
  axislim<-par("usr")[3:4-2*side%%2]
  if(any(at < axislim[1]) || any(at > axislim[2]))
   warning("Some axis labels are off the plot")
- if(is.na(srt)) {
+ if(is.null(srt)) {
   linepos<-rep(top.line,nlines)
   for(i in 2:nlines) linepos[i]<-linepos[i-1]+line.spacing
   linepos<-rep(linepos,ceiling(nlabels/nlines))[1:nlabels]

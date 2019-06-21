@@ -3,9 +3,9 @@
 \title{A point/line plotting routine}
 \description{Display a point/line plot of breakdowns of one or more variables.}
 \usage{
- brkdn.plot(vars,groups=NA,obs=NA,data,mct="mean",md="std.error",stagger=NA,
- dispbar=TRUE,main="Breakdown plot",xlab=NA,ylab=NA,xaxlab=NA,
- ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,yat=NA,...)
+ brkdn.plot(vars,groups=NULL,obs=NULL,data,mct="mean",md="std.error",
+ stagger=NULL,dispbar=TRUE,main="Breakdown plot",xlab=NULL,ylab=NULL,xaxlab=NA,
+ ylim=NA,type="b",pch=1,lty=1,col=par("fg"),staxx=FALSE,yat=NULL,...)
 }
 \arguments{
  \item{vars}{The names or indices of one or more columns in a data frame.
@@ -43,15 +43,15 @@
  \samp{mct}. The second contains the measures of dispersion and its name
  is the name of the function passed as \samp{md}.
  
- If both \samp{groups} and \samp{obs} are not NA, the rows of each matrix
+ If both \samp{groups} and \samp{obs} are not NULL, the rows of each matrix
  will be the \samp{groups} and the columns the \samp{obs}. If \samp{obs}
- is NA, the rows will be the \samp{groups} and the columns the \samp{vars}.
- If \samp{groups} is NA, the rows will be the \samp{vars} and the columns
+ is NULL, the rows will be the \samp{groups} and the columns the \samp{vars}.
+ If \samp{groups} is NULL, the rows will be the \samp{vars} and the columns
  the \samp{obs}. That is, if \samp{vars} has more than one element, if
- \samp{obs} is NA, the elements of \samp{vars} will be considered to
- represent observations, while if \samp{groups} is NA, they will be
+ \samp{obs} is NULL, the elements of \samp{vars} will be considered to
+ represent observations, while if \samp{groups} is NULL, they will be
  considered to represent groups. At least one of \samp{groups} and \samp{obs}
- must be not NA or there is no point in using \samp{brkdn.plot}.
+ must be not NULL or there is no point in using \samp{brkdn.plot}.
 }
 \details{
  \samp{brkdn.plot} displays a plot useful for visualizing the breakdown of a

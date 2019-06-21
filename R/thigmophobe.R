@@ -1,91 +1,31 @@
-# thigmophobe returns the direction (as 1|2|3|4 - see pos= in the text function) 
-# _away_ from the nearest point where x and y are vectors of 2D coordinates
-
-thigmophobe<-function(x,y,plot.span=par("usr"),xlog=par("xlog"),
- ylog=par("ylog")) {
- 
- # if x has at least two columns, split it
- if(missing(y)) {
-  if(is.list(x) && length(x) >= 2) {
-   y<-x[[2]]
-   x<-x[[1]]
+# function contributed by Bill Venables as a replacement for thigmophobe
+thigmophobe <- function (x, y = NULL, names = seq_along(z),
+                   xlog = par("xlog"), ylog = par("ylog"), 
+                   usr = par("usr"), pin = par("pin"), 
+                   eps = .Machine$double.eps, pi = base::pi) {
+  # convert separete x and y coordinates to a two element list
+  xy <- grDevices::xy.coords(x, y, recycle = TRUE)
+  z <- with(xy, {
+    x <- ((if(xlog) log(x) else x) - usr[1])/diff(usr[1:2])*pin[1]
+    y <- ((if(ylog) log(y) else y) - usr[3])/diff(usr[3:4])*pin[2]
+    complex(real = x, imaginary = y)
+  })
+  # calculate the matrix of distances
+  xydist <- outer(z, z, function(x, y) Mod(x - y))
+  # remove "self" distances
+  diag(xydist) <- Inf
+  # get the indicies of the smallest distances
+  nearby <- apply(xydist, 2, which.min)
+  zdiff <- z - z[nearby]
+  # get the offset away from the nearest point for each label
+  pos <- findInterval((-pi/4 - Arg(zdiff)) %% (2*pi), 
+                      seq(0, 2*pi, by = pi/2), all.inside = TRUE)
+  # stagger the offsets for points with essentially zero differences
+  if(any(k <- Mod(zdiff) <= eps)) {
+    for(k in which(k)) {
+      pos[sort(c(k, nearby[k]))] <- c(1,3)
+    }
   }
-  else {
-   if(is.matrix(x) && dim(x)[2] >= 2) {
-    y<-x[,2]
-    x<-x[,1]
-   }
-   else
-    stop("if y is missing, x must be a list with at least 2 columns")
-  }
- }
- if(is.array(x)) x<-as.numeric(x)
- if(is.array(y)) y<-as.numeric(y)
- # get the current upper and lower limits of the plot
- x.span<-plot.span[2] - plot.span[1]
- y.span<-plot.span[4] - plot.span[3]
- # if either axis is logarithmic, transform the values into logarithms
- if(xlog) x<-log(x)
- if(ylog) y<-log(y)
- # scale the values to the plot span
- # this avoids the numerically larger
- # axis dominating the distance measure
- x<-x/x.span
- y<-y/y.span
- # trash any names that may be attached to x or y
- names(x)<-names(y)<-NULL
- # get the distance matrix as a full matrix
- xy.dist<-as.matrix(dist(cbind(x,y)))
- lenx<-length(x)
- nearest.index<-rep(0,lenx)
- if(lenx < 3) nearest.incex<-1:2
- else {
-  for(index in (1:lenx))
-   nearest.index[index]<-as.numeric(names(which.min(xy.dist[-index,index])))
- }
- # get the x and y differences for each point to the nearest point
- xdiff<-x - x[nearest.index]
- ydiff<-y - y[nearest.index]
- # first set the east/west direction
- dir.ew<-ifelse(xdiff > 0,4,2)
- # now do the north/south
- dir.ns<-ifelse(ydiff > 0,3,1)
- dir.away<-ifelse(abs(xdiff)>abs(ydiff),dir.ew,dir.ns)
- # set any congruent points to N/S labels or they'll overprint
- for(i in 1:lenx) {
-  if(!xdiff[i] & !ydiff[i])
-   dir.away[c(i,nearest.index[i])]<-c(1,3)
- }
- return(dir.away)
-}
-
-# thigmophobe.labels positions labels at points so that they
-# are most distant from the nearest other point, where the
-# points are described as x and y coordinates.
-
-thigmophobe.labels<-function(x,y,labels=NULL,text.pos=NULL,...) {
- if(missing(x))
-  stop("Usage: thigmophobe.labels(x,y,labels=1:length(x))")
- lenx<-length(x)
- # if x has at least two columns, split it
- if(missing(y)) {
-  if(is.list(x) && lenx >= 2) {
-   y<-x[[2]]
-   x<-x[[1]]
-  }
-  else
-   stop("if y is missing, x must be a list with at least 2 elements")
- }
- # check for NA or NaN
- validxy<-!(is.na(x) | is.na(y))
- if(is.null(labels)) labels<-1:lenx
- if(is.null(text.pos)) {
-  if(lenx > 1) text.pos<-thigmophobe(x[validxy],y[validxy])
-  else text.pos<-3
- }
- # allow labels to extend beyond the plot area
- par(xpd=TRUE)
- text(x[validxy],y[validxy],labels[validxy],pos=text.pos,...)
- # restore the clipping
- par(xpd=FALSE)
+  names(pos)<-names
+  return(pos)
 }

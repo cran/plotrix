@@ -9,7 +9,7 @@
 }
 \usage{
  weighted.hist(x,w,breaks="Sturges",col=NULL,plot=TRUE,
- freq=TRUE,ylim,ylab=NULL,xaxis=TRUE,...)
+ freq=TRUE,ylim=NA,ylab=NULL,xaxis=TRUE,...)
 }
 \arguments{
  \item{x}{A vector of numeric values}
@@ -21,8 +21,8 @@
  \item{freq}{Whether to plot counts or densities.}
  \item{ylim}{The limits of the plot ordinate.}
  \item{ylab}{Label for the ordinate.}
- \item{xaxis}{Whether to display the default x axis.}
- \item{...}{Additional arguments passed to \link{barplot}.}
+ \item{xaxis}{Whether to display an X axis.}
+ \item{...}{additional arguments passed to \samp{barplot}.}
 }
 \details{
  \samp{weighted.hist} calculates the weighted counts of values falling 
@@ -34,10 +34,7 @@
  single number representing the number of ranges desired or the name 
  of the function to calculate the ranges (see \link{hist}).
  If a vector of numbers is passed that does not include all values in 
- \samp{x}, the user is warned. If the ranges are not equal, a warning 
- will be displayed if \samp{freq} is TRUE or the heights of the bars 
- will be adjusted to display areas approximately equal to the counts 
- if \samp{freq} is FALSE.
+ \samp{x}, the user is warned.
 }
 \value{A list containing:
 
@@ -50,11 +47,9 @@ density - The weighted counts divided by their sum.
 mids - The midpoints of the intervals and the bars displayed.
 
 xname - the name of \samp{x}.
-
-equidist - Whether the intervals differ by less than the total range/1000.
 }
 \author{Jim Lemon and Hadley Wickham - thanks to Ben Graf for asking for a
- custom x axis option}
+ custom x axis option and Martin Maechler for fixing the barplot problem}
 \seealso{\link{hist}}
 \examples{
  testx<-sample(1:10,300,TRUE)

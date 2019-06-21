@@ -16,12 +16,13 @@
 # 2010-4-30 - added the gamma.col argument for pos.cor=TRUE plots - Jim Lemon
 # 2010-6-24 - added mar argument to pos.cor=TRUE plots - Jim Lemon
 # 2012-1-31 - added the cex.axis argument - Jim Lemon
+# 2019-02-22 - added cex.axis to Olivier's text calls plus adj and srt
 
 taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor = TRUE, 
-    xlab = "", ylab = "", main = "Taylor Diagram", show.gamma = TRUE, 
-    ngamma = 3, gamma.col = 8, sd.arcs = 0, ref.sd = FALSE, sd.method = "sample", 
-    grad.corr.lines = c(0.2, 0.4, 0.6, 0.8, 0.9), pcex = 1, cex.axis = 1, 
-    normalize = FALSE, mar = c(5, 4, 6, 6), ...) {
+    xlab = "Standard deviation", ylab = "", main = "Taylor Diagram",
+    show.gamma = TRUE, ngamma = 3, gamma.col = 8, sd.arcs = 0, ref.sd = FALSE,
+    sd.method = "sample", grad.corr.lines = c(0.2, 0.4, 0.6, 0.8, 0.9), 
+    pcex = 1, cex.axis = 1, normalize = FALSE, mar = c(4, 3, 4, 3), ...) {
     
     grad.corr.full <- c(0, 0.2, 0.4, 0.6, 0.8, 0.9, 0.95, 0.99, 1)
   # convert any list elements or data frames to vectors
@@ -47,14 +48,15 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor = TRUE,
     maxsd <- 1.5 * max(sd.f, sd.r)
     oldpar <- par("mar", "xpd", "xaxs", "yaxs")
     if (!add) {
-   # display the diagram
+       par(mar = mar)
+       # display the diagram
        if (pos.cor) {
             if (nchar(ylab) == 0) 
                 ylab = "Standard deviation"
-            par(mar = mar)
-            plot(0, xlim = c(0, maxsd), ylim = c(0, maxsd), xaxs = "i", 
-                yaxs = "i", axes = FALSE, main = main, xlab = xlab, 
+            plot(0, xlim = c(0, maxsd*1.1), ylim = c(0, maxsd*1.1), xaxs = "i", 
+                yaxs = "i", axes = FALSE, main = main, xlab = "", 
                 ylab = ylab, type = "n", cex = cex.axis, ...)
+            mtext(xlab,side=1,line=2.3)
             if (grad.corr.lines[1]) {
                 for (gcl in grad.corr.lines) lines(c(0, maxsd * 
                   gcl), c(0, maxsd * sqrt(1 - gcl^2)), lty = 3)
@@ -147,6 +149,7 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor = TRUE,
                maxray <- 1.5 * max(sd.f, sd.r)
                 plot(c(-maxray, maxray), c(0, maxray), type = "n", 
                   asp = 1, bty = "n", xaxt = "n", yaxt = "n", 
+                  xlim=c(-1.1*maxray,1.1*maxray),
                   xlab = xlab, ylab = ylab, main = main, cex = cex.axis)
                 discrete <- seq(180, 0, by = -1)
                 listepoints <- NULL
@@ -170,9 +173,9 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor = TRUE,
    # texte radial
                  for (i in grad.corr.full) {
                   text(1.05 * maxray * i, 1.05 * maxray * sqrt(1 - 
-                    i^2), i, cex = 0.6)
+                    i^2), i, cex = cex.axis,adj=cos(i)/2)
                   text(-1.05 * maxray * i, 1.05 * maxray * sqrt(1 - 
-                    i^2), -i, cex = 0.6)
+                    i^2), -i, cex = cex.axis,adj=1-cos(i)/2)
                 }
       # sd concentriques autour de la reference
                seq.sd <- seq.int(0, 2 * maxray, by = (maxray/10))[-1]
@@ -186,29 +189,29 @@ taylor.diagram<-function(ref,model,add=FALSE,col="red",pch=19,pos.cor = TRUE,
                         pch = ".")
                       if (j == 10) 
                         text(xcircle[j], ycircle[j], signif(i, 
-                          2), cex = 0.5, col = "darkgreen")
+                          2), cex = cex.axis, col = "darkgreen",srt=90)
                     }
                   }
                 }
      # sd concentriques autour de l'origine
               seq.sd <- seq.int(0, maxray, length.out = 5)
                 for (i in seq.sd) {
-                  xcircle <- (cos(discrete * pi/180) * i)
+                  xcircle <- cos(discrete * pi/180) * i
                   ycircle <- sin(discrete * pi/180) * i
                   if (i) 
                     lines(xcircle, ycircle, lty = 3, col = "blue")
-                  text(min(xcircle), -0.03 * maxray, signif(i, 
-                    2), cex = 0.5, col = "blue")
-                  text(max(xcircle), -0.03 * maxray, signif(i, 
-                    2), cex = 0.5, col = "blue")
+                  text(min(xcircle), -0.06 * maxray, signif(i, 
+                    2), cex = cex.axis, col = "blue")
+                  text(max(xcircle), -0.06 * maxray, signif(i, 
+                    2), cex = cex.axis, col = "blue")
                 }
-                text(0, -0.08 * maxray, "Standard Deviation", 
-                  cex = 0.7, col = "blue")
-                text(0, -0.12 * maxray, "Centered RMS Difference", 
-                  cex = 0.7, col = "darkgreen")
-                points(sd.r, 0, pch = 22, bg = "darkgreen", cex = 1.1)
-                text(0, 1.1 * maxray, "Correlation Coefficient", 
-                  cex = 0.7)
+                text(0, -0.14 * maxray, "Standard Deviation", 
+                  cex = cex.axis, col = "blue")
+                text(0, -0.22 * maxray, "Centered RMS Difference", 
+                  cex = cex.axis, col = "darkgreen")
+                points(sd.r, 0, pch = 22, bg = "darkgreen", cex = pcex)
+                text(0, 1.2 * maxray, "Correlation Coefficient", 
+                  cex = cex.axis)
             }
             S <- (2 * (1 + R))/(sd.f + (1/sd.f))^2
  #   Taylor<-S

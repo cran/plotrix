@@ -6,7 +6,7 @@
 }
 \usage{
  staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,
-  srt=NA,ticklen=0.03,adj=1,...)
+  srt=NULL,ticklen=0.03,adj=1,...)
 }
 \arguments{
  \item{side}{axis on which to place the labels, as in \samp{axis}}
@@ -28,7 +28,7 @@
  beneath the plot using \samp{mar} before calling \samp{staxlab}. It is
  probably only useful on the bottom or left side of the plot.
 
- If \samp{srt} is not NA, the labels will be rotated \samp{srt} degrees
+ If \samp{srt} is not NULL, the labels will be rotated \samp{srt} degrees
  and placed below the plot. This method will only place labels at the
  bottom. Note that this option only works on the lower and left axes.
 }

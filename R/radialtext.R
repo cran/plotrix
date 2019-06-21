@@ -1,5 +1,5 @@
 radialtext <- function(x, center=c(0,0), start=NA, middle=1, end=NA, angle=0, deg=NA,
-    expand=0, stretch=1, nice=TRUE, cex=NA, ...)
+    expand=0, stretch=1, nice=TRUE, cex=NA, ...) 
     {
     oldcex <- par("cex")
     if (is.na(cex))
@@ -16,13 +16,13 @@ radialtext <- function(x, center=c(0,0), start=NA, middle=1, end=NA, angle=0, de
         }
     angle <- deg*pi/180
     xvec <- strsplit(x, "")[[1]]
-    lenx <- length(xvec) ## FIXME: stopifnot(lenx >= 2) -- code below assumes that
+    lenx <- length(xvec)
     xwidths <- stretch * strwidth(xvec)
     xwrange <- range(xwidths)
     xwidths[xwidths < xwrange[2]/2] <- xwrange[2]/2 # Make really narrow characters wider
     # Compute expand factor for each character and adjust character widths accordingly.
     chexp <- rep(1, lenx)
-    if (!identical(start, NA) && expand != 0)
+    if (!is.na(start) && expand != 0)
         {
         # Note: width of each char changes in succession, affecting sizes AND positions.
         expfactor <- expand/start
@@ -37,10 +37,13 @@ radialtext <- function(x, center=c(0,0), start=NA, middle=1, end=NA, angle=0, de
             }
         }
     # Find start distance
-    else if (identical(start, NA))
-        start <- if(identical(end, NA))
-                     middle - sum(xwidths)/2
-                 else end - sum(xwidths)
+    if (is.na(start))
+        {
+        if (is.na(end))
+            start <- middle - sum(xwidths)/2
+        else
+            start <- end - sum(xwidths)
+        }
     cosang <- cos(angle)
     sinang <- sin(angle)
     charstart <- c(start, start + cumsum(xwidths)[-lenx])
@@ -51,8 +54,8 @@ radialtext <- function(x, center=c(0,0), start=NA, middle=1, end=NA, angle=0, de
     for (xchar in 1:lenx)
         {
         par(cex=cex*chexp[xchar])
-        text(center[1] + charpos[xchar] * cosang,
-            center[2] + charpos[xchar] * ymult * sinang, xvec[xchar],
+        text(center[1] + charpos[xchar] * cosang, 
+            center[2] + charpos[xchar] * ymult * sinang, xvec[xchar], 
             adj=c(0.5, 0.5), srt=chardeg, ...)
         }
     par(cex=oldcex)

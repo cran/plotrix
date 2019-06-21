@@ -4,7 +4,7 @@
 \description{Displays the nested bars for barNest.}
 \usage{
  drawNestedBars(x,start,end,shrink=0.1,errbars=FALSE,intervals=TRUE,col=NA,
- labelcex=1,lineht=NA,showall=TRUE,Nwidths=FALSE,barlabels=NULL,
+ labelcex=1,lineht=NULL,showall=TRUE,Nwidths=FALSE,barlabels=NULL,
  showlabels=TRUE,arrow.cap=NA)
 }
 \arguments{

@@ -7,7 +7,7 @@
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,
  x=NULL,staxx=FALSE,staxy=FALSE, height.at=NULL,height.lab=NULL,
  cex.axis=par("cex.axis"),pch=NULL,cylindrical=FALSE,shadow=FALSE,
- do.first=NULL,ylog=FALSE,srt=NA)
+ do.first=NULL,ylog=FALSE,srt=NULL)
 }
 \arguments{
  \item{height}{A numeric vector, matrix or data frame that will be represented
@@ -75,7 +75,7 @@
  labels on the vertical axis, usually representing the options. If \samp{staxx}
  or \samp{staxy} are TRUE, the labels on the horizontal or vertical axes
  respectively will be staggered, allowing the user to use many or lengthy variable
- or value labels. If \samp{srt} is not NA, these labels will be rotated 
+ or value labels. If \samp{srt} is not NULL, these labels will be rotated 
  counterclockwise by that value as angles in degrees instead of staggered.
 
  \samp{barp} allows two enhancements that may be useful in those areas where fancy
@@ -86,7 +86,7 @@
  against this.
 
  If \samp{legend.lab} is not NULL, a legend will be displayed. If 
- \samp{legend.pos} is NA, \samp{locator} is called to place the legend. On 
+ \samp{legend.pos} is NULL, \samp{locator} is called to place the legend. On 
  Windows, the alert may not appear on the console, and the function will 
  appear to hang unless the user clicks on the console window or the plot.
 

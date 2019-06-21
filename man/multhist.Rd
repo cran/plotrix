@@ -34,6 +34,7 @@
   but is equivalent to TRUE.
 }
 \examples{
+ set.seed(1234)
  l <- list(runif(10)*10,1:10,c(1,1,1,1,4,8))
  multhist(l)
 }

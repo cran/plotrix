@@ -6,8 +6,8 @@
 \usage{
  barNest(formula=NULL,data=NULL,FUN=c("mean","sd","sd","valid.n"),ylim=NULL,
  main="",xlab="",ylab="",shrink=0.1,errbars=FALSE,col=NA,
- labelcex=1,lineht=NA,showall=TRUE,Nwidths=FALSE,barlabels=NULL,
- showlabels=TRUE,mar=NULL,arrow.cap=NA,trueval=TRUE)
+ labelcex=1,lineht=NULL,showall=TRUE,Nwidths=FALSE,barlabels=NULL,
+ showlabels=TRUE,mar=NULL,arrow.cap=NULL,trueval=TRUE)
 }
 \arguments{
  \item{formula}{A formula with a numeric element of a data frame on the left and

@@ -1,7 +1,7 @@
 barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
  col=NULL,border=par("fg"),main=NULL,xlab="",ylab="",xlim=NULL,ylim=NULL,x=NULL,
  staxx=FALSE,staxy=FALSE,height.at=NULL,height.lab=NULL,cex.axis=par("cex.axis"),
- pch=NULL,cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE,srt=NA) {
+ pch=NULL,cylindrical=FALSE,shadow=FALSE,do.first=NULL,ylog=FALSE,srt=NULL) {
 
  height.class<-attr(height,"class")
  if(!is.null(height.class)) {

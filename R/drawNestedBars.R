@@ -1,5 +1,5 @@
 drawNestedBars<-function (x,start,end,shrink=0.1,errbars=FALSE,
- intervals=TRUE, col=NA,labelcex=1,lineht=NA,showall=TRUE,Nwidths = FALSE, 
+ intervals=TRUE,col=NA,labelcex=1,lineht=NULL,showall=TRUE,Nwidths = FALSE, 
  barlabels=NULL,showlabels=TRUE,arrow.cap=NA) {
 
  barcol <- ifelse(is.list(col), col[[1]], col)

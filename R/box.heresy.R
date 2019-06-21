@@ -1,6 +1,6 @@
 box.heresy<-function(x,y,uinner,linner,ulim,llim=ulim,
- boxwidth=NA,intervals=FALSE,arrow.cap=NA,pch=22,main="",xlab="",
- ylab="",xaxlab=NA,col="white",do.first=NULL,...) {
+ boxwidth=NULL,intervals=FALSE,arrow.cap=NULL,pch=22,main="",xlab="",
+ ylab="",xaxlab=NULL,col="white",do.first=NULL,...) {
 
  if(missing(y)) {
   y<-x
@@ -8,7 +8,7 @@ box.heresy<-function(x,y,uinner,linner,ulim,llim=ulim,
  }
  if(missing(llim)) llim<-ulim
  if(missing(linner)) linner<-uinner
- if(is.na(xaxlab[1])) xaxlab<-x
+ if(is.null(xaxlab)) xaxlab<-x
  # if dispersion is specified in intervals, convert to absolute values
  if(intervals) {
   ulim<-y+ulim
@@ -16,7 +16,7 @@ box.heresy<-function(x,y,uinner,linner,ulim,llim=ulim,
   uinner<-y+uinner
   linner<-y-linner
  }
- if(is.na(boxwidth[1])) {
+ if(is.null(boxwidth)) {
   if(length(x) > 1) xrange<-range(x)
   else xrange<-c(0.5,1.5)
   boxwidth<-diff(xrange)/(4*length(x))
@@ -33,7 +33,7 @@ box.heresy<-function(x,y,uinner,linner,ulim,llim=ulim,
  xlab=xlab,ylab=ylab,type="n",xaxt="n")
  if(!is.null(do.first)) eval(parse(text=do.first))
  axis(1,at=x,labels=xaxlab)
- if(is.na(arrow.cap)) arrow.cap<-boxwidth/diff(par("usr")[1:2])
+ if(is.null(arrow.cap)) arrow.cap<-boxwidth/diff(par("usr")[1:2])
  # upper and lower limits have already been converted
  dispersion(x,y,ulim,llim,intervals=FALSE,arrow.cap=arrow.cap,...)
  rect(x-boxwidth,linner,x+boxwidth,uinner,col=col)

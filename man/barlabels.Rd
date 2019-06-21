@@ -35,10 +35,14 @@
  barlabels(barpos,heights)
  # now with stacked bars and offsets
  heights<-matrix(sample(c(1,2,10,15),20,TRUE),ncol=4)
- barpos<-barplot(heights,main="Another redundant bar plot")
+ barpos<-barplot(heights,main="A redundant stacked bar plot")
  barlabels(barpos,heights,offset=0.1)
+ # do it again without stacking
+ barpos<-barplot(heights,main="An unstacked redundant bar plot",
+  beside=TRUE)
+ barlabels(barpos,heights)
  # finally use barp for the plot
- barpos<-barp(heights,main="A third and final bar plot",col=2:6,
+ barpos<-barp(heights,main="A fourth and final bar plot",col=2:6,
   names.arg=paste("Day",1:4))
  barlabels(barpos$x,barpos$y,matrix(LETTERS[1:5],nrow=5,ncol=4))
 }

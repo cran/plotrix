@@ -2,9 +2,9 @@
 \alias{box.heresy}
 \title{Display a sort of box plot}
 \usage{
- box.heresy(x,y,uinner,linner,ulim,llim,boxwidth=NA,
-  intervals=FALSE,arrow.cap=NA,pch=22,main="",xlab="",ylab="",
-  xaxlab=NA,col="white",do.first=NULL,...)
+ box.heresy(x,y,uinner,linner,ulim,llim,boxwidth=NULL,
+  intervals=FALSE,arrow.cap=NULL,pch=22,main="",xlab="",ylab="",
+  xaxlab=NULL,col="white",do.first=NULL,...)
 }
 \arguments{
  \item{x,y}{Vectors of numeric values representing measures of central tendency.}

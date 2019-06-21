@@ -1,16 +1,15 @@
 jiggle<-function(n,range=c(-1,1)) return(rescale(sample(1:n,n),range))
 
-valid.n <- function(x,na.rm=TRUE) if(na.rm) sum(!is.na(x)) else length(x)
+valid.n<-function(x,na.rm=TRUE) return(if(na.rm) sum(!is.na(x)) else length(x))
 
-propbrk <- function(x, trueval=TRUE, na.rm=TRUE) {
-    if(anyNA(x) || length(x) == 0)
-        0
-    else
-        sum(x==trueval,na.rm=TRUE) / (if(na.rm) valid.n(x) else length(x))
+propbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
+ if(anyNA(x) || length(x) == 0) return(0)
+ else return(sum(x==trueval,na.rm=TRUE)/
+  (if(na.rm) valid.n(x) else length(x)))
 }
 
 sumbrk<-function(x,trueval=TRUE,na.rm=TRUE) {
- return(sum(x==trueval,na.rm=TRUE)) # <= FIXME ?  rather   'na.rm=na.rm' ??
+ return(sum(x==trueval,na.rm=TRUE))
 }
 
 binciW<-function(x,n,alpha=0.05,cc=FALSE) {
@@ -39,7 +38,6 @@ binciWu<-function(x,n,alpha=0.05,trueval=TRUE,na.rm=TRUE) {
 binciWl<-function(x,n,alpha=0.05,trueval=TRUE,na.rm=TRUE) {
  if(missing(n)) n<-ifelse(na.rm,valid.n(x),length(x))
  x<-sum(x==trueval,na.rm=TRUE)
- z<-qnorm(1-alpha/2)
  return(binciW(x,n,alpha=alpha)[1])
 }
 

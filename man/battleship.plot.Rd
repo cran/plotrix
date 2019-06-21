@@ -3,7 +3,7 @@
 \title{Display a matrix of values as the widths of stacked rectangles}
 \usage{
  battleship.plot(x,mar=c(2,5,5,1),col="white",border="black",
- main="",xlab="",ylab="",xaxlab=NA,yaxlab=NA,cex.labels=1,
+ main="",xlab="",ylab="",xaxlab=NULL,yaxlab=NULL,cex.labels=1,
  maxxspan=0.45,maxyspan=0.45)
 }
 \arguments{

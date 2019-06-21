@@ -47,7 +47,7 @@
   to be assigned the same color scale.
 
   The user may not want the color scheme to be continuous across some
-  critical point, often zero. In this case, color scale can be called
+  critical point, often zero. In this case, \samp{color.scale} can be called
   separately for the values below and above zero. I may get around to
   adding an argument to do this in one shot. Until then, see the second
   example for \samp{color2D.matplot} and also the \samp{diverge.hcl} and
@@ -60,7 +60,8 @@
  There are quite a few R functions that transform numeric values into
  colors or produce colors that can be used to represent values. Two
  packages that might be of interest are \pkg{RColorBrewer} and 
- \pkg{colourschemes}.
+ \pkg{colourschemes}. See the last example for approximating other color
+ scales with \samp{color.scale}.
 }
 \value{A vector or matrix of hexadecimal color values.}
 \author{Jim Lemon}
@@ -81,5 +82,39 @@
   0.8,1,color.spec="hsv"))
  points(1:10,rep(3,10),pch=19,cex=8,col=color.scale(1:10,c(1,0.5,0),
   c(0,0.5,0),c(0,0,1),color.spec="rgb"))
+ \dontrun{
+  # requires viridisLite
+  library(viridisLite)
+  plot(0,xlim=c(-1,1),ylim=c(-1,1),type="n",axes=FALSE,
+   main="Approximating other color scales",xlab="",ylab="")
+  gradient.rect(-1,0.8,1,0.95,nslices=50,
+   col=color.scale(1:50,1,
+   c(0,0.3,0.6,0.8,1,1),
+   c(0,0,0,0,0,0,1)))
+  text(0,1,"color.scale")
+  gradient.rect(-1,0.65,1,0.8,col=heat.colors(50))
+  text(0,0.6,"heat.colors")
+  gradient.rect(-1,0.3,1,0.45,nslices=50,
+   col=color.scale(1:50,c(0,0.2,0.9,0.95,0.95),
+   c(0.7,0.8,0.9,0.7,0.95),
+   c(0.1,0,0,0.35,0.95)))
+  text(0,0.5,"color.scale")
+  gradient.rect(-1,0.15,1,0.3,col=terrain.colors(50))
+  text(0,0.1,"terrain.colors")
+  gradient.rect(-1,-0.2,1,-0.05,nslices=50,
+   col=color.scale(1:50,c(0.3,0,0.3,0.1,1,0.95,1),
+   c(0,0.3,0.9,1,1,0.85,0.85),
+   c(1,1,0.9,0.1,0,0.5,0.5)))
+  text(0,0,"color.scale")
+  gradient.rect(-1,-0.35,1,-0.2,col=topo.colors(50))
+  text(0,-0.4,"topo.colors")
+  gradient.rect(-1,-0.7,1,-0.55,nslices=50,
+   col=color.scale(1:50,c(0.3,0.2,0,0.4,0.95),
+   c(0.1,0.3,0.6,0.75,0.95),
+   c(0.3,0.6,0.5,0.4,0)))
+  text(0,-0.5,"color.scale")
+  gradient.rect(-1,-0.85,1,-0.7,col=viridis(50))
+  text(0,-0.9,"viridis")
+ }
 }
 \keyword{misc}

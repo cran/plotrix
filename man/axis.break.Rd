@@ -5,7 +5,7 @@
  Places a "break" mark on an axis on an existing plot.
 }
 \usage{
- axis.break(axis=1,breakpos=NULL,pos=NA,bgcol="white",breakcol="black",
+ axis.break(axis=1,breakpos=NULL,pos=NULL,bgcol="white",breakcol="black",
   style="slash",brw=0.02)
 }
 \arguments{

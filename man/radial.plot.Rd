@@ -24,7 +24,7 @@
   counterclockwise. If \samp{radial.pos} is a matrix, the rows must 
   correspond to rows of \samp{lengths}.}
  \item{labels}{Character strings to be placed at the outer ends of
-  the lines. If set to NA, will suppress printing of labels,
+  the lines. If set to NULL, will suppress printing of labels,
   but if missing, the radial positions will be used.}
  \item{label.pos}{The positions of the labels around the plot in radians.}
  \item{radlab}{Whether to rotate the outer labels to a radial orientation.}

@@ -63,7 +63,7 @@ furc<-function (x, xpos, yrange, toplevel, maxx, cex = 1, col)
 listDepth<-function(x) {
  if(is.list(x)) {
   maxdepth<-1
-  for(lindex in 1:length(x)) {
+  for(lindex in seq_along(x)) {
    newdepth<-listDepth(x[[lindex]])+1
    if(newdepth > maxdepth) maxdepth<-newdepth
   }
