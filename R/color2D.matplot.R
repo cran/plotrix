@@ -29,7 +29,10 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
  border="black",na.color=NA,xrange=NULL,color.spec="rgb",yrev=TRUE,
  xat=NULL,yat=NULL,Hinton=FALSE,...) {
  
- if(diff(range(x,na.rm=TRUE)) == 0) x<-x/max(x,na.rm=TRUE)
+ if(diff(range(x,na.rm=TRUE)) == 0) {
+  if(Hinton) stop("No differences to display in Hinton plot.")
+  x<-x/max(x,na.rm=TRUE)
+ }
  if(is.matrix(x) || is.data.frame(x)) {
   xdim<-dim(x)
   if(is.data.frame(x)) x<-unlist(x)
@@ -62,9 +65,10 @@ color2D.matplot<-function(x,cs1=c(0,1),cs2=c(0,1),cs3=c(0,1),
   # depending upon what color will be the background for the text
   if(is.na(vcol))
    vcol<-ifelse(colSums(col2rgb(cellcolors)*c(1,1.4,0.6))<350,"white","black")
-  # if it's a Hinton diagram,cellsize = x, rescaling to 0,1 if necessary
+  # if it's a Hinton diagram,cellsize = x, rescaling to 0.1,1 if necessary
   if(Hinton) {
-   if(any(x < 0 | x > 1)) cellsize<-matrix(rescale(abs(x),c(0,1)),nrow=xdim[1])
+   if(any(x < 0 | x > 1))
+    cellsize<-matrix(rescale(abs(x),c(0.03,1)),nrow=xdim[1])
   }
   else cellsize<-matrix(1,nrow=xdim[1],ncol=xdim[2])
   # start from the top left - isomorphic with the matrix layout

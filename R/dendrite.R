@@ -75,7 +75,7 @@ listDepth<-function(x) {
 plot.dendrite<-function (x, xlabels = NULL, main = "", mar = c(1, 0, 3, 0), 
     cex = 1, col = "white", ...) 
 {
-    if (class(x) != "dendrite") 
+    if (inherits(x,"dendrite")) 
         x <- makeDendrite(x)
     xnames <- unique(names(unlist(x)))
     xnames[is.na(xnames)] <- "NA"

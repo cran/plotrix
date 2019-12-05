@@ -5,7 +5,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
 
  height.class<-attr(height,"class")
  if(!is.null(height.class)) {
-  if(match(height.class,"dstat",0)) {
+  if(inherits(height.class,"dstat")) {
    md1<-length(height)
    md2<-dim(height[[1]])[2]
    meanmat<-matrix(NA,nrow=md1,ncol=md2)
@@ -13,7 +13,7 @@ barp<-function(height,width=0.4,names.arg=NULL,legend.lab=NULL,legend.pos=NULL,
    for(row in 1:md1) meanmat[row,]<-height[[row]][1,]
    height<-meanmat
   }
-  if(match(height.class,"freq",0)) height<-height[[1]] 
+  if(inherits(height.class,"freq")) height<-height[[1]] 
  }
  if(is.data.frame(height)) its_ok<-is.numeric(unlist(height))
  else its_ok<-is.numeric(height)
