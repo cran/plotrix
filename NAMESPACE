@@ -68,9 +68,9 @@ export(
  fan.plot,
  feather.plot,
  fill.corner,
+ find_max_cell,
  floating.pie,
  fullaxis,
- furc,
  gantt.chart,
  gap_barp,
  gap.barplot,
@@ -98,8 +98,6 @@ export(
  ladderplot.default,
  legendg,
  lengthKey,
- listDepth,
- makeDendrite,
  makeDensityMatrix,
  makeIntersectList,
  maxEmptyRect,
@@ -118,7 +116,6 @@ export(
  pie3D,
  pie3D.labels,
  placeLabels,
- plot.dendrite,
  plot_bg,
  plotCI,
  plotH,
@@ -156,7 +153,6 @@ export(
  starPie,
  staxlab,
  std.error,
- sumDendrite,
  sumbrk,
  symbolbarplot,
  symbolbox,
@@ -180,7 +176,6 @@ export(
  zoomInPlot
 )
 # methods
-S3method(plot,dendrite)
 S3method(print,brklist)
 S3method(histStack,default)
 S3method(histStack,formula)

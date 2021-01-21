@@ -210,7 +210,7 @@ radial.plot<-function(lengths,radial.pos=NULL,labels=NA,label.pos=NULL,
   if(is.null(radial.labels)) radial.labels<-grid.pos
   if(!is.null(grid.unit))
    radial.labels[length(grid.pos)]<-
-    paste(radial.labels[length(grid.pos)],grid.unit)
+    paste0(radial.labels[length(grid.pos)],grid.unit)
   if(boxed.radial)
    boxed.labels(xpos,ypos,radial.labels,border=FALSE,
     cex=par("cex.lab"))

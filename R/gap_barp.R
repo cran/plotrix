@@ -21,7 +21,10 @@ gap_barp<-function (height,gap,width=0.4,names.arg=names(height),
  if(mean(gap) < 0) to_gap<-which(height < min(gap))
  else to_gap<-which(height > max(gap))
  if(length(to_gap) == 0) stop("no values outside gap")
- if(any(height > gap[1] & height < gap[2])) warning("some heights within gap")
+ if(any(height > gap[1] & height < gap[2])) {
+  warning("some heights within gap")
+  height[height > gap[1] & height < gap[2]]<-gap[2-(mean(gap) < 0)]
+ }
  if(is.null(height.lab)) height.lab<-height.at
  if(mean(gap) < 0) {
   height[to_gap]<-height[to_gap] + diff(gap)
