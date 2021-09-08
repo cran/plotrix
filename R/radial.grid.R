@@ -1,6 +1,6 @@
 radial.grid<-function(labels=NA,label.pos=NULL,radlab=FALSE,radial.lim=NULL,
- start=0,clockwise=FALSE,label.prop=1.1,grid.pos=seq(0.25,1,0.25),rad.col="gray",
- grid.col="gray",grid.bg="transparent",show.radial.grid=TRUE,
+ start=0,clockwise=FALSE,label.prop=1.1,grid.pos=seq(0.25,1,0.25),
+ rad.col="gray",grid.col="gray",grid.bg="transparent",show.radial.grid=TRUE,
  start.plot=FALSE) {
 
  if(start.plot) {

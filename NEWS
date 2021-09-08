@@ -1,3 +1,9 @@
+version 3.8-2
+
+        fixed showcount option in sizetree
+        log10 plotting added to radial.plot family (thanks to Keziah Conroy)
+        added X and Y axis labels in gap.boxplot
+
 version 3.8-1
 
         dropped makeDendrite, plotDendrite and sumDendrite functions
