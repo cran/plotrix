@@ -1,6 +1,6 @@
-5e7492402b9803b372890e5f74e8fbb6 *DESCRIPTION
+61a58f396cd3ef0ea5021a5012723603 *DESCRIPTION
 51cdae9066a4386857ec0a8d0af63b4d *NAMESPACE
-58303b8d4d5bee0d9108b27f43b0619e *NEWS
+4dc24e46c20cdb212fe98ad0b9e9267b *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 163140184d1f3e7c2ac7d6131086cea4 *R/add.ps.R
 76f5fc2c4426b0e082293a71976151e0 *R/addtable2plot.R
@@ -128,7 +128,7 @@ db7ccec9c3f56f957ae404ac7eb806ab *data/l2010.rda
 28da395b56d0844c2810292c955c8390 *data/soils.rda
 271f59ed8376069aee632b80ba619089 *demo/00Index
 7d5c62634e9c734037c6e1381b3c246e *demo/plotrix.R
-b35ca73e819dbad59881960986301ef3 *inst/CITATION
+2bd599b79b6db238ec5ff004e628bae9 *inst/CITATION
 18976d8d5ea793f2c57cdc0a6a09d923 *man/ablineclip.Rd
 537da0d23075efb4f8a3632aa39f3901 *man/add.ps.Rd
 9eee36ce9e1b11859d11f4cd0f713f96 *man/addtable2plot.Rd
@@ -136,7 +136,7 @@ f38bcb4f376f4e73babaa106e7880804 *man/arctext.Rd
 a71910a0f86e93cf206486763a59aed8 *man/axis.break.Rd
 282b2f8fcd742e3d6a60ab081aaa405b *man/axis.mult.Rd
 4a254023ffa5135515e72a183fd8741a *man/barNest.Rd
-a5bcd07b2d0f85bbd20a4e0cc2ccf29b *man/barlabels.Rd
+4c3e618d95c3f620f3f209fac793d87a *man/barlabels.Rd
 309ef3fa24d49f8dbe43eb738b99cf88 *man/barp.Rd
 be8e61e3b745fbc214f0b4447de98aca *man/battleship.plot.Rd
 898f3abab9664c2f87d1a527f622e6ba *man/bin.wind.records.Rd
@@ -175,7 +175,7 @@ afb5f5ce1e6dbc78e8843df397f2f10c *man/dendroPlot.Rd
 cb68dd72282e0a252f1689d786a10371 *man/draw.arc.Rd
 385b175c50e92fe72d33111d350e702f *man/draw.circle.Rd
 4a4c1b00cab07fbe4a3d426c9e99ed6f *man/draw.ellipse.Rd
-84e9daf9df6dc02632d28aad82fe552e *man/draw.radial.line.Rd
+3728737f7da4b6284c59aabb12a96084 *man/draw.radial.line.Rd
 c771ff20c909ba6d894c1dd73499b079 *man/draw.tilted.sector.Rd
 5f708405095411f3d239bd13c6e37a4e *man/drawNestedBars.Rd
 e0cf4b49c5d11ec218ef091e3766443c *man/drawSectorAnnulus.Rd
@@ -185,7 +185,7 @@ e0cf4b49c5d11ec218ef091e3766443c *man/drawSectorAnnulus.Rd
 b55609273a2b9957e2c4f963392bb157 *man/fan.plot.Rd
 fffabb21a837f2c1263dc71d2911f3d0 *man/feather.plot.Rd
 7fc047f882280b8673a96f6d21b9a1d9 *man/fill.corner.Rd
-65bb7a717f1b836d2357ece04281236c *man/find_max_cell.Rd
+3ea877c312d51268a881aaa12db03d89 *man/find_max_cell.Rd
 a9bb487aa05d672d528cf05c823d4d12 *man/floating.pie.Rd
 ef0018a2314c3b5bf4d0e953ae036aed *man/fullaxis.Rd
 0f87c03e28f4f3528dd031077897cf98 *man/gantt.chart.Rd
@@ -226,7 +226,7 @@ a6b1e2596340a535c74848aeffe98833 *man/multsymbolbox.Rd
 41c1c83e66a33d35bb0f48d9dfd68909 *man/oz.windrose.Rd
 00585c01256159f892de1181dd9f63f3 *man/oz.windrose.legend.Rd
 6858a19ebe31e922e871d0a66ef5be43 *man/p2p_arrows.Rd
-f5f9a3f8fc633f528b69502756b032fe *man/panes.Rd
+5f828f918fa77c2485be523d5831890b *man/panes.Rd
 e64d53c83bcdabd46565c0ebee38e23c *man/pasteCols.Rd
 df16d5a7e051f52e37eb2624bed0abf2 *man/paxis3d.Rd
 024a5c644d2982a431cebaa10fd2131f *man/perspx.Rd
@@ -237,7 +237,7 @@ df16d5a7e051f52e37eb2624bed0abf2 *man/paxis3d.Rd
 94da9e98fdf1f64739b188fea1f021f6 *man/plotCI.Rd
 d537e859f11754e2ab779d75c82a0086 *man/plotH.Rd
 d0be8d8872d21c55c387ed117d60bc92 *man/plot_bg.Rd
-0d66618b9edc5d3b02b7037a634bf0cc *man/plotrix-package.Rd
+3a5bf5e31224f43b47216c78feca1539 *man/plotrix-package.Rd
 f99459c22b2d5267043f04a863105042 *man/polar.plot.Rd
 aacd4acbdc1275ecff45c6d962ae8f16 *man/polygon.shadow.Rd
 8d1dc46509d56126301ed969bff3ed8c *man/print.brklist.Rd
@@ -261,7 +261,7 @@ f2586a13028c3884bdc4335610c67dc9 *man/sizeplot.Rd
 5e3eaf86657a5d098e9c9c53e783d689 *man/sizetree.Rd
 554e180d9da267bedc3ad04b2bd6f4aa *man/sliceArray.Rd
 1b6f61faec620b2a1cc2b4c1b95fcc7e *man/smoothColors.Rd
-7ac386e8429fc20bed646d98078e267e *man/soil.texture.Rd
+62c787d9fcea4beaf91e31b9eb7f7efb *man/soil.texture.Rd
 56b0e186a2d31d3f9c4f5a38f54540df *man/soil.texture.uk.Rd
 1538a56e8001fbdac5bc6fe59989cb75 *man/soils.Rd
 94621600224164995f082b46963b8f87 *man/spread.labels.Rd
@@ -277,9 +277,9 @@ ef9a85ac60b082897b7a8c3a8c9892ee *man/symbolbarplot.Rd
 ae8f69cda8160327316c915a992151c9 *man/symbolbox.Rd
 d9f79a0e522fcb9a4d1af0873723a412 *man/tab.title.Rd
 76e9e7908a121e2282b6228d3fad3b1e *man/taylor.diagram.Rd
-78e9845825dfde81846bdca59142da45 *man/textbox.Rd
+e4d86cf7cdc4dbe969fc424d63573244 *man/textbox.Rd
 d3bceb4fb894f93c0c0d707927aa98e0 *man/thigmophobe.Rd
-4f7a77bbf7f29248928acc1e22ab25a3 *man/thigmophobe.labels.Rd
+b4246cd3e8e6cdf72a323d82ffbf5614 *man/thigmophobe.labels.Rd
 ac5071d4a906c8d08c62d24c1059d548 *man/triax.abline.Rd
 5fc757905ff2fb69baab63abdba3d364 *man/triax.fill.Rd
 ef26303ff7d7fca80a4e6aa6a4faface *man/triax.frame.Rd

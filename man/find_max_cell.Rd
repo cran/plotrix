@@ -14,7 +14,7 @@
 A list containing the column (x) and row (y) indices.
 }
 \note{
-Intended to enable the user to mark cells in samp{color2D.matplot}.
+Intended to enable the user to mark cells in \samp{color2D.matplot}.
 Remember to subtract 0.5 from both values to center the mark in the cell.
 }
 \author{Jim Lemon}

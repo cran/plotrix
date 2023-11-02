@@ -15,7 +15,7 @@
  \item{miny}{The minimum value at which to display labels.}
  \item{offset}{Amount to horizontally offset successive labels in case
   of vertical overlaps.}
- \item{nobox}{Whether to call samp{boxed.labels} or \samp{text}.}
+ \item{nobox}{Whether to call \samp{boxed.labels} or \samp{text}.}
  \item{...}{Extra arguments passed to \samp{boxed.labels} or \samp{text}.}
 }
 \details{
