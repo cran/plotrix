@@ -1,6 +1,6 @@
-61a58f396cd3ef0ea5021a5012723603 *DESCRIPTION
+72800e50c686e07b3d9a5d9c32e5f411 *DESCRIPTION
 51cdae9066a4386857ec0a8d0af63b4d *NAMESPACE
-4dc24e46c20cdb212fe98ad0b9e9267b *NEWS
+ad04993872ea3f9e561d6cc0238ea02f *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 163140184d1f3e7c2ac7d6131086cea4 *R/add.ps.R
 76f5fc2c4426b0e082293a71976151e0 *R/addtable2plot.R
@@ -82,7 +82,7 @@ b9a64d1b0d4f890dbc817c1172fec476 *R/plotCI.R
 d10a37e008c5dd3d32e5701b6da1f153 *R/plotH.R
 960aae874cd12958dd6dccde3558879d *R/plot_bg.R
 f10e1defb3c27cbd4459f322752389f0 *R/polygon.shadow.R
-0656a3a9339178d28c7c8f14208d1094 *R/pyramid.plot.R
+eda7e7316a7894f3c55c379b4eabb040 *R/pyramid.plot.R
 a9ca72cae93ae7857215c3c9345424a5 *R/radial.grid.R
 4a39b9cf3f827790062a28bba3dcfda4 *R/radial.pie.R
 7da2b2490a8e43021f87ee106b6a369c *R/radial.plot.R
@@ -123,6 +123,7 @@ dec059d897186f22ea6815dbd00b9f10 *R/tsxpos.R
 7c9cef5ec0a813acbf2ea12f50fd4e1d *R/weighted.hist.R
 481b3f85c721c582bc955c5059ba7c1e *R/windrose.R
 52d0de3c89b6d90fe1e9157b0c76f291 *R/zoomInPlot.R
+a2a666f4142c6841eb4365cfefcd9b92 *README.md
 6c5b0047d50b0d071c9a8162c81ccb31 *data/death_reg.rda
 db7ccec9c3f56f957ae404ac7eb806ab *data/l2010.rda
 28da395b56d0844c2810292c955c8390 *data/soils.rda
@@ -226,7 +227,7 @@ a6b1e2596340a535c74848aeffe98833 *man/multsymbolbox.Rd
 41c1c83e66a33d35bb0f48d9dfd68909 *man/oz.windrose.Rd
 00585c01256159f892de1181dd9f63f3 *man/oz.windrose.legend.Rd
 6858a19ebe31e922e871d0a66ef5be43 *man/p2p_arrows.Rd
-5f828f918fa77c2485be523d5831890b *man/panes.Rd
+7f6c01cce5a1311a4a74f9bc3ecd0143 *man/panes.Rd
 e64d53c83bcdabd46565c0ebee38e23c *man/pasteCols.Rd
 df16d5a7e051f52e37eb2624bed0abf2 *man/paxis3d.Rd
 024a5c644d2982a431cebaa10fd2131f *man/perspx.Rd
@@ -244,7 +245,7 @@ aacd4acbdc1275ecff45c6d962ae8f16 *man/polygon.shadow.Rd
 3624e09ffd23b05f6681cc1c31734345 *man/propbrk.Rd
 d3979b4cb2e49006ebd6bc1e2c795fb9 *man/psegments3d.Rd
 a239386f59c013ebc0e4bf9fcabc5747 *man/ptext3d.Rd
-dddf2ba43c782b71e5a155e6a4b2abe5 *man/pyramid.plot.Rd
+12a211af405d9057f2df676caf58cacd *man/pyramid.plot.Rd
 d0f65eab9235a7dc9694916771a796fd *man/radial.grid.Rd
 e1ecf218a7dd9d4b5bec2a491a079982 *man/radial.pie.Rd
 74aeeb71451d6b5d53df4f4959d576e2 *man/radial.plot.Rd
