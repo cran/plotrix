@@ -1,27 +1,81 @@
 Package: plotrix
-Version: 3.8-4
-Date: 2023-11-09
+Version: 3.8-13
 Title: Various Plotting Functions
-Author: Jim Lemon, Ben Bolker, Sander Oom,
-	Eduardo Klein, Barry Rowlingson,
-	Hadley Wickham, Anupam Tyagi,
-	Olivier Eterradossi, Gabor Grothendieck,
-	Michael Toews, John Kane, Rolf Turner,
-	Carl Witthoft, Julian Stander, Thomas Petzoldt,
-	Remko Duursma, Elisa Biancotto, Ofir Levy,
-	Christophe Dutang, Peter Solymos, Robby Engelmann, 
-	Michael Hecker, Felix Steinbeck, Hans Borchers,
-	Henrik Singmann, Ted Toal, Derek Ogle, Darshan Baral,
-	Ulrike Groemping, Bill Venables, The CRAN Team,
-	Duncan Murdoch
-Maintainer: Duncan Murdoch <murdoch.duncan@gmail.com>
+Authors@R: c(
+  person("Jim", "Lemon", role = "aut"),
+  person("Ben", "Bolker", role = "ctb"),
+  person("Sander", "Oom", role = "ctb"),
+  person("Eduardo", "Klein", role = "ctb"),
+  person("Barry", "Rowlingson", role = "ctb"),
+  person("Hadley", "Wickham", role = "ctb"),
+  person("Anupam", "Tyagi", role = "ctb"),
+  person("Olivier", "Eterradossi", role = "ctb"),
+  person("Gabor", "Grothendieck", role = "ctb"),
+  person("Michael", "Toews", role = "ctb"),
+  person("John", "Kane", role = "ctb"),
+  person("Rolf", "Turner", role = "ctb"),
+  person("Carl", "Witthoft", role = "ctb"),
+  person("Julian", "Stander", role = "ctb"),
+  person("Thomas", "Petzoldt", role = "ctb"),
+  person("Remko", "Duursma", role = "ctb"),
+  person("Elisa", "Biancotto", role = "ctb"),
+  person("Ofir", "Levy", role = "ctb"),
+  person("Christophe", "Dutang", role = "ctb"),
+  person("Peter", "Solymos", role = "ctb"),
+  person("Robby", "Engelmann", role = "ctb"),
+  person("Michael", "Hecker", role = "ctb"),
+  person("Felix", "Steinbeck", role = "ctb"),
+  person("Hans", "Borchers", role = "ctb"),
+  person("Henrik", "Singmann", role = "ctb"),
+  person("Ted", "Toal", role = "ctb"),
+  person("Derek", "Ogle", role = "ctb"),
+  person("Darshan", "Baral", role = "ctb"),
+  person("Ulrike", "Groemping", role = "ctb"),
+  person("Bill", "Venables", role = "ctb"),
+  person(family = "The CRAN Team", role = "ctb"),
+  person("Duncan", "Murdoch", email = "murdoch.duncan@gmail.com",
+         role = c("ctb", "cre")))
 Imports: grDevices, graphics, stats, utils
 Description: Lots of plots, various labeling, axis and color scaling functions. The author/maintainer died in September 2023.
 License: GPL (>= 2)
 NeedsCompilation: no
 Depends: R (>= 3.5.0)
 Repository: CRAN
-Date/Publication: 2023-11-10 10:10:02 UTC
-URL: https://github.com/dmurdoch/plotrix
-BugReports: https://github.com/dmurdoch/plotrix/issues
-Packaged: 2023-11-09 16:39:28 UTC; murdoch
+Date/Publication: 2025-11-15 00:30:02 UTC
+URL: https://plotrix.github.io/plotrix/,
+        https://github.com/plotrix/plotrix
+BugReports: https://github.com/plotrix/plotrix/issues
+Packaged: 2025-11-14 21:54:31 UTC; murdoch
+Author: Jim Lemon [aut],
+  Ben Bolker [ctb],
+  Sander Oom [ctb],
+  Eduardo Klein [ctb],
+  Barry Rowlingson [ctb],
+  Hadley Wickham [ctb],
+  Anupam Tyagi [ctb],
+  Olivier Eterradossi [ctb],
+  Gabor Grothendieck [ctb],
+  Michael Toews [ctb],
+  John Kane [ctb],
+  Rolf Turner [ctb],
+  Carl Witthoft [ctb],
+  Julian Stander [ctb],
+  Thomas Petzoldt [ctb],
+  Remko Duursma [ctb],
+  Elisa Biancotto [ctb],
+  Ofir Levy [ctb],
+  Christophe Dutang [ctb],
+  Peter Solymos [ctb],
+  Robby Engelmann [ctb],
+  Michael Hecker [ctb],
+  Felix Steinbeck [ctb],
+  Hans Borchers [ctb],
+  Henrik Singmann [ctb],
+  Ted Toal [ctb],
+  Derek Ogle [ctb],
+  Darshan Baral [ctb],
+  Ulrike Groemping [ctb],
+  Bill Venables [ctb],
+  The CRAN Team [ctb],
+  Duncan Murdoch [ctb, cre]
+Maintainer: Duncan Murdoch <murdoch.duncan@gmail.com>

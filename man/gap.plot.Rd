@@ -5,10 +5,12 @@
  Displays a plot with one or two missing ranges on one of the axes.
 }
 \usage{
- gap.plot(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",brw=0.02,
-  xlim=range(x),ylim=range(y),xticlab,xtics=NA,yticlab,ytics=NA,
-  lty=rep(1,length(x)),col=rep(par("col"),length(x)),pch=rep(1,length(x)),
-  add=FALSE,stax=FALSE,...)
+gap.plot(x,y,gap,gap.axis="y",
+         bgcol="white",breakcol="black",brw=0.02,
+         xlim=range(x),ylim=range(y),xticlab,xtics=NA,yticlab,ytics=NA,
+         lty=rep(1,length(x)),col=rep(par("col"),length(x)),pch=rep(1,length(x)),
+         add=FALSE,stax=FALSE,
+         style="gap",bty=par("bty"),xaxt=par("xaxt"),yaxt=par("yaxt"),...) 
 }
 \arguments{
  \item{x,y}{data values}
@@ -27,6 +29,8 @@
  \item{pch}{symbols to use in plotting.}
  \item{add}{whether to add values to an existing plot.}
  \item{stax}{whether to call staxlab for staggered axis labels.}
+ \item{style}{the style to use for the break; see \code{\link{axis.break}}}
+ \item{bty,xaxt,yaxt}{type of box and axes (see \code{\link{par}} for details.)}
  \item{...}{arguments passed to \samp{plot} and \samp{points}.}
 }
 \value{nil}
@@ -83,5 +87,10 @@
  type="b")
  gap.plot(21:30,rnorm(10)+40,gap=c(8,16,25,35),add=TRUE,
   lty=rep(3,10),col=rep(4,10),type="l")
+  
+ # Use non-standard box type and break
+  gap.plot(twogrp,gap=c(7,17),xlab="Index",ylab="Group values",
+  main="Gap on Y axis",col=gpcol,bty="L",style="slash",
+  ytics=pretty(twogrp, 8))
 }
 \keyword{misc}
