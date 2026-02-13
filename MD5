@@ -1,6 +1,6 @@
-1f549302145b0465623630ffdd565917 *DESCRIPTION
+0a9c6c043ecae4bfe11d340821d32b92 *DESCRIPTION
 51cdae9066a4386857ec0a8d0af63b4d *NAMESPACE
-3a014fbfb95993ae7010cbfbfa852b38 *NEWS
+f6b8f2dcbe4422c927a56d10ee7a4185 *NEWS
 2c74abe5f355af8948fa9087f56959c9 *R/ablineclip.R
 163140184d1f3e7c2ac7d6131086cea4 *R/add.ps.R
 5c658559492397e2e5b0d253c046c7b5 *R/addtable2plot.R
@@ -85,7 +85,7 @@ f10e1defb3c27cbd4459f322752389f0 *R/polygon.shadow.R
 eda7e7316a7894f3c55c379b4eabb040 *R/pyramid.plot.R
 a9ca72cae93ae7857215c3c9345424a5 *R/radial.grid.R
 4a39b9cf3f827790062a28bba3dcfda4 *R/radial.pie.R
-3e9e25f2df7084f3f45b624bf1328bdf *R/radial.plot.R
+e2e9eae84c69c2c03bd1e45bbd435749 *R/radial.plot.R
 d192a9ecba891ee23933ef1083eb5658 *R/radial.plot.labels.R
 f3ec3c43b07cc3f536c00da149714272 *R/radialtext.R
 c456509ff0ba2454d8d15fe780834972 *R/raw.means.plot.R
